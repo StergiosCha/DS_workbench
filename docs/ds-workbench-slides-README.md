@@ -1,11 +1,14 @@
 # DS Workbench presentation
 
-English research presentation, updated 7 October 2026. It includes the
-literature survey, native nonrestrictive-relative implementation and community
-handover work, while retaining the original dates of earlier evaluations.
-Designed for roughly 25–30 minutes, with 30 main slides and nine optional
-technical appendix slides. Allow another three to five minutes for the live
-demonstrations.
+English research presentation, updated 8 October 2026 against application
+snapshot [`1aff525`](https://github.com/StergiosCha/DS_workbench/tree/1aff525).
+It covers the public workspace, model controls, computational-rule playback,
+DS Research Library and community repository alongside the semantic backends
+and grammar extensions. Earlier evaluations retain their original dates.
+Designed for roughly 30–35 minutes, with 33 main slides and ten optional
+technical appendix slides. Allow another four to six minutes for the live
+demonstration. For a shorter talk, omit the worked-relative details (14–16)
+and use the appendix only for questions.
 
 - `ds-workbench-slides.tex`: standalone editable Beamer source, 16:9.
 - `ds-workbench-slides.pdf`: projection/share version.
@@ -21,14 +24,25 @@ stated evaluations; updating the slides does not rerun those experiments.
 
 ## Added in this update
 
-- A source-linked map of 18 DS categories and 91 tracked research topics.
-- LINK's different semantic uses, followed by a worked nonrestrictive relative:
-  `John, who Mary knows, walks.`
-- The new family's scope, failure controls and dated verification evidence.
-- Community use, independent grammar extensions, packaging and maintenance.
-- A research-driven roadmap and a reproducible Python extension example.
-- Updated verification and source-release status, including the unresolved
-  licence mismatch. Local preparation is distinguished from a public release.
+- Four workspace views, model settings drawer, grouped lexical evidence,
+  retained zoom, mobile controls and meaning below the tree.
+- The four LLM/Jev switch combinations, including the combined mode's lack of
+  construction assistance, and actual usage counters separate from permissions.
+- Lexical and computational rules in execution order, their relation to
+  Introduction/Prediction, and the limits of rule/operation replay.
+- The in-app library: 53 works, 30 fingerprinted source versions and eight
+  analysis cards; source inspection and implementation are different records.
+- An explicit distinction between the inherited DS–TTR semantic backend and
+  Cooper and Larsson's TTR-DS recasting of states/actions, which is not implemented.
+- The SMG PCC control `του με έδωσε`, alongside the valid third-person cluster.
+- The public repository and current verification evidence; source publication
+  is complete, while a tagged workbench package and contributor terms remain pending.
+- Updated demo steps using the visible model switches and library tab.
+
+The 18-category/91-topic research map, worked nonrestrictive relative, PP
+analysis, architecture, recorded model/Jev demonstrations, limitations and
+extension tutorial are retained. No new linguistic coverage or live model
+evaluation is claimed by this presentation update.
 
 ## Build
 
@@ -54,12 +68,13 @@ xelatex ds-workbench-slides.tex
 ## Suggested delivery
 
 1. Slides 1–6: development tools, problem, incremental tree growth and software foundation.
-2. Slides 7–16: semantic systems, literature map, LINK, the worked relative and Greek clitics.
-3. Slides 17–23: independent DS execution, architecture, model construction
-   proposals, Jev and evidence sources.
-4. Slides 24–30: interaction, coverage evidence, limits, community handover, roadmap and demo.
-5. Slides 31–39: optional algorithms, program/Coq details, verification, references,
-   full taxonomy, the extension tutorial and release decisions.
+2. Slides 7–17: semantic systems, literature/library map, LINK, worked relative and Greek clitics/PCC.
+3. Slides 18–25: independent DS execution, architecture, model responsibilities,
+   explicit switches, construction proposals, Jev and evidence sources.
+4. Slides 26–33: interaction, redesigned workspace, rule playback, coverage,
+   limits, community use, roadmap and demo.
+5. Slides 34–43: optional TTR distinction, algorithms, program/Coq details,
+   verification, references, taxonomy, extension tutorial and source/release status.
 
 The notes clarify schematic diagrams, source/draft pagination, readable naming
 of generated predicates, sample limitations and interpretation assumptions.
@@ -67,11 +82,41 @@ The taxonomy is a structured review, not an exhaustive literature census or
 91 implemented features. The deck separates formal completion from correct
 interpretation and the frozen baseline from new authored construction checks.
 
-For the live demo, open <https://ds-workbench.vercel.app/>. Start with **Original
-lexicon** and `John, who Mary knows, walks.` in Classical and Constructive.
-Then choose **Open text · LLM + verified DS** for the `provided` example and
-**See Jev in action** for the `lends` comparison. Enter any API key privately;
-model calls use that account. If services are unavailable, use the recorded
-examples on slides 21–22 and identify them as recorded results. The new relative
-example needs no model request. The offline extension tutorial is in
-`examples/community/extend_grammar.py`; details are in `docs/community/extending.md`.
+For the live demo, open <https://ds-workbench.vercel.app/> in **Parse**.
+
+1. Leave **Use analysis LLM** and **Use Jev** off. Parse
+   `John, who Mary knows, walks.` in native English Classical/Constructive.
+   Step through **Rules**, inspect LINK/MERGE, and select **Show final result**.
+   To force the original vocabulary, open **Connect / models → Advanced** and
+   choose **Original lexicon**, then close the drawer.
+2. Connect an OpenRouter key privately. Turn **LLM on, Jev off** for
+   `John walks provided Mary walks.` Inspect the proposed/used relation and
+   **This result** counts. Both switches on selects a lexical assistance route
+   without construction assistance, so it is not the configuration for this example.
+3. Turn **LLM off, Jev on**, open **See Jev in action**, and compare
+   `John lends a book to Mary.` with the same lexical candidates in two DS runs.
+4. Open **DS Library**, search `PCC` or `CL25`, inspect review scope, and return
+   to Parse to show the preserved result.
+
+If services are unavailable, use the recorded examples on slides 23–24 and
+identify them as recorded. The relative and library need no model request.
+The extension tutorial is `examples/community/extend_grammar.py`; details are
+in `docs/community/extending.md`.
+
+## Verification scope
+
+The 8 October workspace snapshot passed 81 targeted Python tests, six rule-playback
+browser cases, 19 PCC browser cases, and seven grouped workspace checks on source,
+the exact deployment bundle and the public URL. Workspace model controls were
+checked with fixture credentials; these are not new live model-quality results.
+CI [37753914626](https://github.com/StergiosCha/DS_workbench/actions/runs/37753914626)
+passed Python 3.11/3.12 and installed-package jobs; its Python 3.13 job was
+cancelled at the 45-minute limit. It is not described as an all-green run.
+The preceding rule-playback commit had a successful full CI run. Counts overlap
+and should not be added together. Earlier dated coverage samples remain unchanged.
+
+Both presentation PDFs were rebuilt with two XeLaTeX passes on 8 October:
+43 pages each, zero overflowing boxes and zero missing characters. The slides
+were visually reviewed, including the new diagrams/tables and presenter notes;
+extracted text stayed inside the page bounds. The library builder's consistency
+check also passed for the counts shown in the deck.

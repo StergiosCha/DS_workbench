@@ -99,7 +99,7 @@ semantic expectations and independently sourced judgments.
 - [Theoretical coverage catalogue](docs/research/ds-theoretical-coverage.md): 18 categories, 91 topics; source inspection and implementation status are distinct.
 - [DS Research Library](docs/research/library/README.md): searchable bibliography (53 works, mostly abstract-level readings), source-to-implementation cards, classification guide and Zotero-compatible exports.
 - [Technical walkthrough PDF](docs/workbench-walkthrough.pdf) · [LaTeX](docs/workbench-walkthrough.tex)
-- [39 presentation slides](docs/ds-workbench-slides.pdf) · [presenter notes](docs/ds-workbench-slides-notes.pdf) · [LaTeX](docs/ds-workbench-slides.tex)
+- [43 presentation slides](docs/ds-workbench-slides.pdf) · [presenter notes](docs/ds-workbench-slides-notes.pdf) · [LaTeX](docs/ds-workbench-slides.tex)
 
 Contributions can be linguistic evidence, teaching material, grammar programs,
 tests or engine/UI changes. No model subscription is needed. Start with

@@ -1,7 +1,7 @@
 % !TeX program = xelatex
 % Standalone Beamer source. Compile twice with XeLaTeX.
 % Optional presenter view: define \DSnotes before loading this file.
-% Updated 7 October 2026: literature map, nonrestrictive relatives and community handover.
+% Updated 8 October 2026: public workspace, rule playback, AI switches and DS Library.
 % Dated evaluations retain their original dates and denominators.
 \documentclass[aspectratio=169,11pt]{beamer}
 \usepackage{fontspec}
@@ -36,7 +36,7 @@
 \setbeamertemplate{frametitle}{\vspace{3mm}\insertframetitle\par\vspace{1mm}}
 \newif\ifDSappendix
 \setbeamertemplate{footline}{%
-  \hspace{9mm}\textcolor{Muted}{\scriptsize DS Workbench\quad\textbar\quad updated 7 October 2026}%
+  \hspace{9mm}\textcolor{Muted}{\scriptsize DS Workbench\quad\textbar\quad updated 8 October 2026}%
   \hfill\textcolor{Muted}{\scriptsize\ifDSappendix Appendix\enspace\fi\insertframenumber}\hspace{9mm}\vspace{3mm}}
 \setbeamertemplate{note page}[plain]
 \ifdefined\DSnotes
@@ -68,7 +68,7 @@
 \title{DS Workbench}
 \subtitle{Syntax as the growth of transparent semantic representations}
 \author{\DSPresenter}
-\date{7 October 2026}
+\date{8 October 2026}
 
 \begin{document}
 
@@ -80,9 +80,9 @@
   {\large An executable research workbench for Dynamic Syntax}\par\vspace{4mm}
   \aside{Classical semantics\quad /\quad Constructive semantics\quad /\quad TTR}
   \vfill
-  {\small\DSPresenter\quad 7 October 2026}\par\smallskip
+  {\small\DSPresenter\quad 8 October 2026}\par\smallskip
   \href{https://ds-workbench.vercel.app/}{\small ds-workbench.vercel.app}
-  \note{Updated on 7 October with the literature map, native English nonrestrictive relatives and local community handover. These additions do not update the dated unseen-text baseline by assertion. Present the app as a research and teaching system with expanding coverage, not an arbitrary-text parser or an LLM producing a verified tree. The public app contains the relative extension; the new packaging and community guides are local handover artifacts pending a dedicated source release.}
+  \note{Updated on 8 October against public application/source snapshot 1aff525. The community repository is now github.com/StergiosCha/DS\_workbench. This edition adds the redesigned workspace, explicit model controls, computational-rule playback and the searchable research library, alongside the earlier grammar extensions. The frozen coverage measurements retain their original dates. Present a research and teaching system with expanding fragments, not an arbitrary-text parser. A tagged workbench package release remains pending.}
 \end{frame}
 
 % Slide 2
@@ -181,7 +181,7 @@
     Parsing & Incrementality, action language, alternatives, context DAG & Recovery, limits, diagnostics, replay and state isolation\\[4pt]
     Semantics & TTR records and composition & Native Classical/Constructive terms; TTR identity corrections\\[4pt]
     Grammar & Bundled resources and induction infrastructure & English/Greek fragments; typed templates; supplemental relatives\\[4pt]
-    Application & Existing interfaces and visualisation work & Browser UI, sources, models, installable app and extension guides\\\bottomrule
+    Application & Existing interfaces and visualisation work & Focused browser views, live rule replay, research library and community source\\\bottomrule
   \end{tabularx}\par
   \vspace{4mm}
   \aside{The contribution includes changes to the engine and grammars, as well as the interface.}
@@ -200,7 +200,7 @@
   \end{tabularx}\par
   \vspace{4mm}
   \keypoint{Selecting a backend selects its grammar and semantic operations. It does not reformat a completed TTR parse.}
-  \note{The shared parser architecture does not mean identical trees, coverage or meanings. Classical common-noun restrictors and Constructive common-noun types have different internal structure. Coq export belongs to the supported Constructive path, not all three systems.}
+  \note{The shared parser architecture does not mean identical trees, coverage or meanings. Classical common-noun restrictors and Constructive common-noun types have different internal structure. Coq export belongs to the supported Constructive path, not all three systems. The app's TTR backend supplies record meanings to the Python DS executor. This is distinct from Cooper and Larsson's TTR-DS recasting of DS states and actions inside TTR; see the dedicated appendix slide and library card CL25.}
 \end{frame}
 
 % Slide 8
@@ -270,7 +270,7 @@
   \note{Do not claim that every determiner, relative, question or word order is supported. Number, agreement, tense, aspect and discourse remain partial. The dialect and historical displays have different evidential and executable scope.}
 \end{frame}
 
-% Slide 11 — Research map
+% Slide 11
 \begin{frame}{A literature map now guides implementation}
   \color{Ink}
   \tagline{18 categories\quad /\quad 91 tracked topics\quad /\quad source-linked obligations}
@@ -285,10 +285,36 @@
   \end{tabularx}\par
   \vspace{1mm}
   \keypoint{An analysis in the literature is a starting point for a program and semantic tests. It is not automatically implemented here.}
-  \note{This is a structured citation-led review conducted on 6–7 October, not an exhaustive systematic review. The ledger has 14 bibliography entries: 13 inspected source artifacts and one metadata-only follow-up. Long books and theses received targeted section review. The five rows group the eighteen categories for presentation; the complete category list is in the appendix and the machine-readable catalogue. Distinguish worked analyses, implementation reports, proposals, secondary pointers and metadata from the independent status of this code.}
+  \note{The initial citation-led coverage review on 6–7 October had 14 bibliography entries: 13 inspected artifacts and one metadata-only follow-up. The later selected-work library has 53 works and its own inspection records; these are different inventories, not competing counts. Long books and theses received targeted section review. The five rows group the eighteen categories for presentation. The map is not exhaustive. Distinguish worked analyses, reported implementations, proposals, secondary pointers and metadata from this code's independent implementation status.}
 \end{frame}
 
 % Slide 12
+\begin{frame}{A searchable library connects papers to implementation}
+  \color{Ink}
+  \tagline{53 selected works\quad /\quad 30 source versions\quad /\quad 8 analysis cards}
+  \begin{columns}[T,onlytextwidth]
+    \column{.47\textwidth}
+      \textbf{Find and inspect}\medskip
+      \begin{itemize}\setlength\itemsep{7pt}
+        \item Open the app's \textbf{DS Library} tab.
+        \item Search text; filter topic and semantic framework.
+        \item See review scope and publication links.
+      \end{itemize}
+    \column{.49\textwidth}
+      \textbf{Trace an analysis}\medskip
+      \begin{enumerate}\setlength\itemsep{6pt}
+        \item Work and source version.
+        \item Bounded claim and exact passages.
+        \item DS mechanisms and semantic obligations.
+        \item Backend-specific code and tests.
+      \end{enumerate}
+  \end{columns}
+  \vspace{3mm}
+  \keypoint{Most readings are partial. A bibliographic record never establishes implemented coverage.}
+  \note{The app has a read-only, generated catalogue. Filtering it sends no model request and preserves the parse. The offline library in docs/research/library has the fuller version/evidence view, eight analysis cards and BibTeX/CSL exports. The 30 source versions are fingerprinted; this does not mean 30 full readings. Work, source version, bounded analysis and implementation are separate entities. A source PDF is not redistributed by the in-app catalogue. Zotero import files exist; shared-group editing and reviewed synchronization remain future work. Include semantic framework and TTR-integration tags so DS--TTR content semantics is not confused with the separate TTR-DS recasting.}
+\end{frame}
+
+% Slide 13
 \begin{frame}{PP arguments and modifiers do different jobs}
   \color{Ink}
   \begin{tabularx}{\textwidth}{@{}p{48mm}Y@{}}\toprule
@@ -304,7 +330,7 @@
   \note{Address the common intuition that modifiers should be LINK structures: these PP modifiers do use LINK. Selected arguments are different. A location PP cannot silently fill a missing recipient or selected preposition requirement. These are implementation choices within this fragment, not a claim that one analysis is the only possible DS treatment.}
 \end{frame}
 
-% Slide 13 — LINK is not a semantic prescription
+% Slide 14
 \begin{frame}{The same LINK mechanism can compose different meanings}
   \color{Ink}
   \begin{tabularx}{\textwidth}{@{}p{32mm}YY@{}}\toprule
@@ -319,7 +345,7 @@
   \note{The LINK relation is a structural resource, not a universal instruction to conjoin. The current PP treatment is the workbench's declared implementation choice. The nonrestrictive follows the source's initial conjunctive account, which is not a complete theory of projection or conventional implicature. The Classical and Constructive compilers must each satisfy the intended identity and scope contract; TTR requires its own audit.}
 \end{frame}
 
-% Slide 14 — Worked new construction
+% Slide 15
 \begin{frame}{From the source analysis to an executable relative}
   \color{Ink}
   \tagline{John, who Mary knows, walks.\quad No LLM needed.}
@@ -348,7 +374,7 @@
   \note{The matrix head at 00 links into 00L. Who copies its referent to L*, and the existing merge-relative rule fixes that copy at the relative subject L0 or object L10; here it is the object. Closing comma checks the relative and returns to the head. Completion-time evaluation conjoins the propositions after matrix composition. The head remains the same constant. The graphic is a compressed dependency schematic, not a screenshot or a full binary derivation. Both native backends produce the displayed formula. Classical follows the cited conjunction analysis; the Constructive typed conjunction/witness treatment is our implementation adaptation, not a claim that the source provided that exact code.}
 \end{frame}
 
-% Slide 15 — Scope and evidence for the implementation
+% Slide 16
 \begin{frame}{Test the relative's meaning and its boundaries}
   \color{Ink}
   \begin{columns}[T,onlytextwidth]
@@ -373,7 +399,7 @@
   \note{The tests check exact formulas, head identity, roles, local witness scope, LINK/unfixed/MERGE operations, alternatives and Coq exports when the compiler is available. The two negative public checks use John, who Mary walks, arrives: there is no compatible object gap. They are implementation contrasts, not independently elicited judgments. Who/which animacy is not yet enforced. Polar questions, causal/temporal/conditional combinations and attitudes require a projection account before support can be claimed. The public record is data/coverage/nonrestrictive-public-2026-10-07.json, with no model calls.}
 \end{frame}
 
-% Slide 16
+% Slide 17
 \begin{frame}{Greek clitics: order, case and tree growth}
   \color{Ink}
   \tagline{της τον έδωσε.\quad “S/he gave him to her.”}
@@ -389,14 +415,14 @@
         \[\pred{give}(\pred{pro},\pred{him},\pred{her})\]
         \small subject\quad theme\quad recipient
       \end{block}
-      \aside{The actual corpus predicate has a stable generated identifier. Pronoun reference remains a contextual assumption.}
+      \aside{Predicate renamed for readability; pronoun reference is assumed.}
   \end{columns}
-  \vspace{4mm}
-  \aside{SMG and Grico: reviewed cluster/PCC rules. Cypriot and Pontic: smaller placement fragments. Historical panels describe evidence and proposals.}
-  \note{The slide renames the generated predicate for readability and preserves its role order. The genitive clitic needs a recipient slot; adding a transitive lexical entry alone previously left it unresolved. Mention that corpus frames are hypotheses rather than exhaustive valency descriptions. Do not present Koine or medieval panels as runnable historical grammars.}
+  \vspace{3mm}
+  \keypoint{PCC control: \emph{του με έδωσε} fails in the modeled SMG clitic reading, in both native backends.}
+  \note{The formula renames the generated predicate while preserving roles. Genitive needs a recipient slot; a transitive lexical entry previously left it unresolved. The PCC card links Chatzikyriakidis's thesis entry (6.49) and the 2011 article: genitive and first/second-person accusative programs compete for a locally unfixed address, while third-person accusatives have a fixed strategy. An unfixed node in a prefix is legitimate; the full PCC cluster must not receive a complete result. The user-supplied control is a regression example, not an independently sourced sentence judgment or a restriction generalized to all dialects and strong pronouns. Corpus frames remain hypotheses. Historical panels are not executable historical grammars.}
 \end{frame}
 
-% Slide 17
+% Slide 18
 \begin{frame}{What already works without an LLM}
   \color{Ink}
   \centering
@@ -416,7 +442,7 @@
   \note{In dictionary or corpus mode there is no lexical model request. Corpus investigation may involve a live source service, but that is not an LLM call. A fully supported sentence can complete without a model in assisted mode too, except that ambiguous connective selection may deliberately request a contextual preference.}
 \end{frame}
 
-% Slide 18
+% Slide 19
 \begin{frame}{From the browser to an isolated DS worker}
   \color{Ink}
   \centering
@@ -436,7 +462,7 @@
   \note{The local standard-library HTTP server and hosted ASGI application use the same parser API. Request, response, worker and concurrency limits are part of deployment. The model key stays in the tab until refresh/disconnect, travels through the DS server for requests, and is not saved by the app. Avoid claiming that process isolation itself proves the implementation correct.}
 \end{frame}
 
-% Slide 19
+% Slide 20
 \begin{frame}{The model and the engine have distinct responsibilities}
   \color{Ink}
   \begin{tabularx}{\textwidth}{@{}p{30mm}YY@{}}\toprule
@@ -450,7 +476,25 @@
   \note{This is the central architectural change. Previously the model could only propose content words; conjunctions were excluded. The new interface supports construction hypotheses while keeping the underlying grammar operations reviewed. A model may still propose the wrong interpretation even if every schema and type check passes.}
 \end{frame}
 
-% Slide 20
+% Slide 21
+\begin{frame}{Two switches choose what the next parse may use}
+  \color{Ink}
+  \tagline{Use analysis LLM\qquad /\qquad Use Jev}
+  \small
+  \begin{tabularx}{\textwidth}{@{}p{17mm}p{17mm}Y@{}}\toprule
+    \textbf{LLM} & \textbf{Jev} & \textbf{Enabled route}\\\midrule
+    OFF & OFF & DS with the selected original, bundled, dictionary or corpus vocabulary.\\[6pt]
+    ON & OFF & Bounded lexical and construction assistance when needed.\\[6pt]
+    OFF & ON & Jev word-meaning preferences; no generative fallback.\\[6pt]
+    ON & ON & Jev preferences plus lexical-model fallback; no construction assistance in this combined mode.\\\bottomrule
+  \end{tabularx}\par
+  \vspace{3mm}
+  \normalsize\keypoint{\textbf{Connect / models} sets up access. The switches authorize use.\par
+    \textbf{This result} reports the requests actually made.}
+  \note{Both switches default off. Connecting or choosing a model does not enable either, and switching does not start a parse. An enabled LLM can make zero calls when the available grammar is sufficient. The result counters describe the displayed parse even if the settings change afterward. Jev sense assistance is native-English only; neither model assists TTR here. English dialogue supports lexical proposals, not open-text construction assistance. Jev's advanced search-order control is distinct and still calibration-gated; Turn off all AI also resets it. No key is needed for grammar-only work. Model calls use the visitor's OpenRouter account, and input goes to the selected provider.}
+\end{frame}
+
+% Slide 22
 \begin{frame}{A construction family replaces one-off conjunction fixes}
   \color{Ink}
   \tagline{Surface word $\longrightarrow$ declared relation $\longrightarrow$ shared DS program}
@@ -466,7 +510,7 @@
   \note{There are twelve relation IDs, not one generic conjunction that erases distinctions. The model can choose among declared readings or add a previously absent single-word lexicalization. The table lists supported finite-clause uses only: nominal after, interrogative when, multiword markers and nonfinite complements are not licensed by these templates.}
 \end{frame}
 
-% Slide 21
+% Slide 23
 \begin{frame}{A recorded example of model assistance}
   \color{Ink}
   \tagline{John walks provided Mary walks.}
@@ -489,7 +533,7 @@
   \note{These were real OpenRouter calls followed by DS parsing, recorded on 4 October, not new calls made for this slide update. For καθότι, the missing-word request returned a construction directly instead of exhausting the retry budget on noun/verb guesses. The public browser check also verified provided, export and key privacy. These demonstrations do not estimate general model accuracy.}
 \end{frame}
 
-% Slide 22
+% Slide 24
 \begin{frame}{Jev has a different, visible role}
   \color{Ink}
   \tagline{John lends a book to Mary.}
@@ -515,7 +559,7 @@
   \note{Show the distinction between semantic adequacy and formal completion: both parses completed. Jev's early response may be uncertain and outcomes vary across calls. The controlled comparison freezes candidates and semantic profiles; simply switching dictionary modes would not be a fair comparison because their candidate order differs. Comparison currently supports native English sentences only.}
 \end{frame}
 
-% Slide 23
+% Slide 25
 \begin{frame}{Corpora and dictionaries supply evidence}
   \color{Ink}
   \begin{columns}[T,onlytextwidth]
@@ -539,7 +583,7 @@
   \note{Live parsing integration is opt-in and bounded, for native Standard Greek sentence/paragraph assistance. Retrieved IDs are validated, but citation relevance is not automatically proven. Held-out GDT material is separate from the training builder. Explain the independent source licenses if the audience asks about redistribution.}
 \end{frame}
 
-% Slide 24
+% Slide 26
 \begin{frame}{Sentences, paragraphs and dialogue}
   \color{Ink}
   \begin{tabularx}{\textwidth}{@{}p{27mm}YY@{}}\toprule
@@ -553,31 +597,53 @@
   \note{The interface supports up to 400 paragraph tokens and 24 sentences, and up to 12 dialogue turns and 80 tokens. Basic name-based pronoun resolution is not a general discourse model. Open-text construction assistance applies to sentences and paragraphs; it is not the dialogue assistance pipeline.}
 \end{frame}
 
-% Slide 25
-\begin{frame}{The interface makes the derivation inspectable}
+% Slide 27
+\begin{frame}{A workspace organised around the growing tree}
   \color{Ink}
-  \begin{columns}[T,onlytextwidth]
-    \column{.48\textwidth}
-      \textbf{Follow the derivation}\medskip
-      \begin{itemize}\setlength\itemsep{7pt}
-        \item Word, rule or operation playback.
-        \item Pointer and changed-node highlighting.
-        \item Full labels, expanded formulas and action traces.
-      \end{itemize}
-    \column{.48\textwidth}
-      \textbf{Inspect the evidence}\medskip
-      \begin{itemize}\setlength\itemsep{7pt}
-        \item Missing words and open requirements.
-        \item Model proposals versus actual DS choices.
-        \item JSON export; supported Constructive Coq export.
-      \end{itemize}
-  \end{columns}
-  \vspace{4mm}
-  \keypoint{“Show final result” separates the completed analysis from an earlier, still-incomplete animation frame.}
-  \note{A previous UI ambiguity showed a complete parse next to a partial earlier tree. The playback banner now states both facts. Coq export is generated by the backend, but the public server does not execute Coq; development checks compile supported examples. The JSON record is useful when discussing a failure or model decision.}
+  \centering
+  \begin{tikzpicture}[x=1cm,y=1cm]
+    \node[box,text width=122mm,minimum height=7mm] at (0,0)
+      {\textbf{Parse}\quad |\quad Corpus \& dictionary\quad |\quad Greek lab\quad |\quad DS Library};
+    \node[box,text width=122mm,minimum height=8mm] at (0,-1.0)
+      {Input and semantic system\quad /\quad visible LLM and Jev switches};
+    \node[box,text width=79mm,minimum height=17mm] at (-2.1,-2.3)
+      {\textbf{Tree and playback}\\Meaning directly below the tree};
+    \node[box,text width=32mm,minimum height=17mm] at (4.2,-2.3)
+      {Node inspector\\and active rule};
+    \node[box,text width=122mm,minimum height=7mm] at (0,-3.55)
+      {\textbf{Evidence \& lexical analyses}\quad entries grouped by word};
+  \end{tikzpicture}\par
+  \vspace{3mm}
+  \aside{Settings open in a drawer. Tabs preserve the parse. Manual zoom persists; Auto-fit resumes following the tree.}
+  \note{This is a layout schematic, not an application screenshot. The new desktop view places the tree closer to input. Three examples are shown initially; All examples expands them. Parse options and coverage are a disclosure. On mobile, larger playback targets and a wrapping timeline keep controls accessible; meaning stays below the tree and Inspect this step opens the inspector. A node click pauses playback and opens its details. Evidence follows the tree, with candidate programs grouped by word and reported selections first. Inspect failure opens the evidence. Tabs alone make no parser/model request; asking DS to analyse a corpus or Greek-lab example returns to Parse. Fullscreen and side-by-side semantic comparison are not implemented by this redesign.}
 \end{frame}
 
-% Slide 26
+% Slide 28
+\begin{frame}{Computational rules appear while the tree grows}
+  \color{Ink}
+  \tagline{Rules is the default playback level}
+  \begin{columns}[T,onlytextwidth]
+    \column{.48\textwidth}
+      \textbf{See the active program}\medskip
+      \begin{itemize}\setlength\itemsep{6pt}
+        \item Lexical and computational rules in execution order.
+        \item Introduction and anticipation; completion and elimination.
+        \item Pointer movement and changed decorations.
+      \end{itemize}
+    \column{.48\textwidth}
+      \textbf{Choose the level of detail}\medskip
+      \begin{itemize}\setlength\itemsep{6pt}
+        \item \textbf{Words}: states at word boundaries.
+        \item \textbf{Rules}: each lexical/computational action.
+        \item \textbf{Operations}: make/go/put inside a rule, where recorded.
+      \end{itemize}
+  \end{columns}
+  \vspace{2mm}
+  \keypoint{Backtracking restores a prior state. \textbf{Show final result} returns to the endpoint.}
+  \note{In the current grammar, intro-pred combines Introduction/Prediction by creating argument and predicate daughters with type requirements. Anticipation0/1 separately move the pointer to children with open requirements. These are DS grammar actions, not model predictions; names and schedules differ across grammars. Rule-level events are emitted as parsing advances for ordinary, assisted and paragraph paths; the browser replays recorded states. This is not a debugger over every rejected branch. Assisted retries restart at a labelled axiom; paragraph rows have independent traces. Ordinary sentence/dialogue traces can show atomic instructions, while assisted/paragraph traces use compact rule-level snapshots. Bounded hosted traces may make an explicitly labelled jump to the final state. A partial playback frame does not contradict a complete final result. JSON and supported Constructive Coq export remain available; the public server does not execute Coq.}
+\end{frame}
+
+% Slide 29
 \begin{frame}{Evidence for coverage: keep the samples separate}
   \color{Ink}
   \small
@@ -597,7 +663,7 @@
   \note{The old unseen-source baseline is intentionally retained rather than silently replaced by successful demos. Greek passages group three consecutive test sentences; original paragraph boundaries were unavailable. The new three-sentence examples use dictionaries/corpus candidates without an LLM. Tests of known examples establish regression behavior, not open-text coverage.}
 \end{frame}
 
-% Slide 27
+% Slide 30
 \begin{frame}{What “complete” does—and does not—establish}
   \color{Ink}
   \begin{columns}[T,onlytextwidth]
@@ -621,7 +687,7 @@
   \note{Condition(main, subordinate) is not silently treated as material implication. A later modifier once erased a nested clause in an alternative reading; the regression check had to assert the actual formula, not only completion. Type systems help expose errors but do not prove this Python implementation or its grammar correct.}
 \end{frame}
 
-% Slide 28 — Community use
+% Slide 31
 \begin{frame}{A resource other DS researchers can use and extend}
   \color{Ink}
   \begin{tabularx}{\textwidth}{@{}p{29mm}YY@{}}\toprule
@@ -633,43 +699,59 @@
   \end{tabularx}\par
   \vspace{4mm}
   \keypoint{The app and grammar tutorial work without a model subscription or the original developer's machine.}
-  \note{The community guide separates practical use, linguistic evidence, grammar work and maintenance. The wheel now includes static assets and selected runtime data; a clean installation outside the checkout passed HTTP/streaming and tutorial checks. Large WordNet/corpus indexes remain optional. Source/wheel artifacts and guides are local; a dedicated public source home, maintainer responsibilities and licensing clarification are still needed. Do not present the upstream repository as already hosting the workbench additions.}
+  \note{Source, issues and pull requests are at github.com/StergiosCha/DS\_workbench. The public snapshot preserves inherited history and adds the workbench implementation. The community guide separates practical use, linguistic evidence, grammar work and maintenance. The wheel includes static assets and selected runtime data; clean installation outside the checkout passed HTTP/streaming and tutorial checks. Large WordNet/corpus indexes remain optional. Source publication is complete; a tagged workbench package, contributor terms and broader maintainer responsibilities remain future work. Installing the upstream PyPI package by name does not give this snapshot.}
 \end{frame}
 
-% Slide 29
+% Slide 32
 \begin{frame}{Next: extend families, then measure generalisation}
   \color{Ink}
   \begin{enumerate}\setlength\itemsep{8pt}
     \item \textbf{Reference and relatives.} Source a Greek \emph{που} fragment; audit TTR identity and roles; specify supplement projection.
     \item \textbf{Predicate reuse and ellipsis.} \emph{John knows Mary. Bill does too.} Test antecedents and strict/sloppy readings.
     \item \textbf{Nominals and events.} Coordination, possessives and plurality; then auxiliaries/voice with explicit event semantics.
-    \item \textbf{Community and evaluation.} Version the source, resolve release terms, freeze fresh English/Greek samples and publish all outcomes.
+    \item \textbf{Community and evaluation.} Review analysis cards, tag a release, freeze fresh English/Greek samples and publish all outcomes.
   \end{enumerate}
   \vspace{2mm}\aside{Each extension needs positive examples, negative contrasts, meaningful output checks and reproducible evidence.}
   \note{These priorities follow the literature map. The first bounded English nonrestrictive increment is implemented; the Greek relative, broader ellipsis, nominal and event work listed here is future work. Ellipsis needs an accessible typed predicate history and freshening before a model can rank compatible antecedents. The full programme also includes questions, agreement, clause semantics and wider typology. Reevaluate on a fresh held-out sample; do not train on failed baseline examples and continue calling them unseen. Each backend has its own semantic obligations.}
 \end{frame}
 
-% Slide 30
+% Slide 33
 \begin{frame}{A short demonstration}
   \color{Ink}
-  \tagline{\href{https://ds-workbench.vercel.app/}{Open DS Workbench}}
-  \begin{enumerate}\setlength\itemsep{9pt}
+  \tagline{\href{https://ds-workbench.vercel.app/}{Open DS Workbench}\quad /\quad start in Parse}
+  \begin{enumerate}\setlength\itemsep{7pt}
     \item \textbf{Without AI}\quad John, who Mary knows, walks.\\
-      {\small Choose \emph{Original lexicon}; inspect LINK, MERGE and the shared referent.}
+      {\small Leave both switches OFF; follow Rules, LINK and MERGE.}
     \item \textbf{Construction assistance}\quad John walks provided Mary walks.\\
-      {\small Choose \emph{Open text · LLM + verified DS}; inspect the proposed and used relation.}
+      {\small Connect privately; LLM ON, Jev OFF. Inspect the relation and actual usage.}
     \item \textbf{Jev comparison}\quad John lends a book to Mary.\\
-      {\small Choose \emph{See Jev in action}; compare the two actual DS runs.}
+      {\small LLM OFF, Jev ON; open \emph{See Jev in action} and compare.}
+    \item \textbf{Find the research}\quad DS Library $\to$ search PCC or CL25.\\
+      {\small Inspect review scope; return to Parse with the derivation preserved.}
   \end{enumerate}
-  \vspace{4mm}
-  \keypoint{Broader coverage should preserve the connection between words, programs, trees and meanings.}
-  \note{Allow three to five minutes for a live demo. The new first example uses only the original lexicon and implemented native rules. Compare Classical and Constructive, then try John, who Mary walks, arrives as an incomplete control. A further dictionary-only example is When George opened the door, Mary entered the room. Connect the key privately for the remaining demos; provider requests incur charges and may abstain or fail. If unavailable, use the recorded model-assistance and Jev slides without claiming a fresh run.}
+  \note{Allow four to six minutes. Use native English and Classical or Constructive. The relative uses bundled original entries; to force Original lexicon use Connect / models, Advanced, Vocabulary source, then close the drawer. Step in Rules, expand a formula and show the final result. John, who Mary walks, arrives is an incomplete control. For provided enable only the analysis LLM: combining both switches selects a different lexical route without construction assistance. For lends enable only Jev and open the comparison below the evidence area, or use See Jev in action. Do not expose an API key on the projector. No new live model evaluation was run for this slide update: if the provider is unavailable, use the recorded demonstrations and identify them as recorded. The library needs no model or key.}
 \end{frame}
 
 \appendix
 \DSappendixtrue
 
-% Slide 31
+% Slide 34
+\begin{frame}{Appendix: DS--TTR and TTR-DS are different proposals}
+  \color{Ink}
+  \small
+  \begin{tabularx}{\textwidth}{@{}p{30mm}YY@{}}\toprule
+    & \textbf{DS--TTR content semantics} & \textbf{TTR-DS recasting}\\\midrule
+    What TTR represents & Semantic records, fields and dependencies in DS processing & DS tree descriptions, parse states and action rules themselves\\[7pt]
+    In this workbench & Inherited record-semantic machinery in a Python executor & Research card and prototype specification as future work\\[7pt]
+    What follows & A separate TTR grammar must be tested on its own & The existing TTR dropdown is not an implementation of this recasting\\\bottomrule
+  \end{tabularx}\par
+  \vspace{3mm}
+  \normalsize\keypoint{A representation of DS in TTR does not require every semantic content to be a TTR record.}
+  \source{Cooper \& Larsson (2025), §§1--2.2, 3, 4.8--5; DS Library record CL25 and linked analysis card.}
+  \note{The inspected proposal concentrates on classical e/t contents while representing the surrounding DS machinery in TTR. Further semantic integrations and a detailed implemented grammar are left as future work. Do not read the title as evidence of a new implemented backend or of parity with Classical and Constructive. Selected sections were inspected, not every formal rule. The library keeps this distinction in a separate TTR-integration facet. An experimental prototype would require its own state/action specification and semantic regression tests before integration into the app.}
+\end{frame}
+
+% Slide 35
 \begin{frame}{Appendix: bounded proposal–compile–parse loop}
   \color{Ink}
   \centering
@@ -692,7 +774,7 @@
   \note{Construction-only calls have a 16-second ceiling, vocabulary calls up to 22 seconds within remaining time. The worker boundary is 55 seconds and the hosted function 60 seconds. The model may inspect full context; this pipeline is not a strictly prefix-only cognitive model. Jev's lexical prefix experiments have a different context contract.}
 \end{frame}
 
-% Slide 32
+% Slide 36
 \begin{frame}[fragile]{Appendix: the model never supplies this program}
   \color{Ink}
   \begin{columns}[T,onlytextwidth]
@@ -719,7 +801,7 @@ ELSE abort
   \note{Validation restricts surface, relation and evidence fields; known connectives also have a reviewed reading inventory. Relation signatures cannot be invented. New lexicalizations remain hypotheses within the request, not persistent grammar training. Show the expanded program in the UI if asked.}
 \end{frame}
 
-% Slide 33
+% Slide 37
 \begin{frame}{Appendix: local content closure and Coq}
   \color{Ink}
   \tagline{A man walks if a dog walks.}
@@ -736,7 +818,7 @@ ELSE abort
   \note{Bound variables are renamed for readability. The Type-level arguments allow dependent witness contents without pretending that every content has already been reduced to a simple extensional proposition. The current choice does not deliver a full proof-theoretic analysis of natural-language conditionals. Classical preserves its own choice-term contents.}
 \end{frame}
 
-% Slide 34
+% Slide 38
 \begin{frame}{Appendix: implementation details that matter}
   \color{Ink}
   \begin{tabularx}{\textwidth}{@{}p{37mm}Y@{}}\toprule
@@ -751,27 +833,24 @@ ELSE abort
   \note{These are not cosmetic details. Global metavariable pools can corrupt independent requests; stale ancestors can erase a relation after a modifier; mutable lexical inventories can invalidate a before/after comparison. The controlled Jev comparison hashes identical inventories and resets bindings between runs.}
 \end{frame}
 
-% Slide 35
-\begin{frame}{Appendix: the 7 October verification record}
+% Slide 39
+\begin{frame}{Appendix: verification of the current workspace}
   \color{Ink}
   \small
-  \textbf{Full-suite audit: 1,862 passed; 3 skipped; 4 initial failures}\medskip
-  \begin{itemize}\setlength\itemsep{3pt}
-    \item Two stale lexical-cut expectations: updated for the new period entry; all 24 readings tests pass.
-    \item One HTTP test: passed with loopback permission outside the sandbox restriction.
-    \item One optional TeX export: missing \code{pst-tree.sty}; now reports an explicit dependency skip.
-  \end{itemize}
-  \medskip\textbf{Separate focused and installation evidence}\medskip
-  \begin{itemize}\setlength\itemsep{3pt}
-    \item 56 nonrestrictive tests; 8 public browser outcomes as expected.
-    \item 12 installed HTTP/streaming checks; 12 independent grammar-tutorial checks.
-    \item Source and wheel checked for required assets and excluded private files.
-  \end{itemize}
-  \aside{The runs overlap. Do not add these counts or call them one clean full-suite run.}
-  \note{The complete handover audit ran before the focused fixes and environment checks. There was no second full-suite run. The optional older LaTeX-export toolchain is separate from XeLaTeX used successfully for the presentation and technical report. Inherited TTR loading still logs malformed/skipped entries; one successful TTR probe is not strict validation of the whole grammar. These figures are software verification, not linguistic accuracy. See docs/community/handover-checks.md and the dated public nonrestrictive artifact.}
+  \tagline{8 October 2026\quad /\quad application source 1aff525}
+  \begin{tabularx}{\textwidth}{@{}p{43mm}Y@{}}\toprule
+    \textbf{Check} & \textbf{Observed result}\\\midrule
+    Local targeted Python tests & 81 passed: API, ASGI, rule playback and readings.\\[5pt]
+    Focused browser regressions & 6 rule-playback cases; 19 PCC cases as expected.\\[5pt]
+    Workspace browser checks & 7 grouped checks passed on source, staged bundle and public app, including desktop/mobile and AI permissions.\\[5pt]
+    GitHub CI at this commit & Python 3.11/3.12 and installed-package jobs passed; Python 3.13 cancelled at the time limit.\\\bottomrule
+  \end{tabularx}\par
+  \vspace{3mm}
+  \aside{These are overlapping software checks. They do not update linguistic coverage or model-quality estimates.}
+  \note{Check scripts: check\_workspace\_browser.py, check\_rule\_playback\_browser.py and check\_pcc\_browser.py. Workspace checks cover tab persistence, library filters, Greek examples, lexical groups, zoom, explicit model permissions, paragraph/dialogue and mobile bounds. Model connection tests use fixtures; no fresh billed model evaluation is claimed. CI run 37753914626 is not an all-green run: its 3.13 job reached the 45-minute job limit; the other three jobs passed. Earlier commit 02229a9 had a successful full CI run. Keep the historical 7 October audit in docs/community/handover-checks.md: 1,862 passed, three skips, four initial failures followed by focused corrections/environment checks. These counts are different runs and must not be added. Optional Coq/TeX checks need their dependencies; inherited TTR loading still needs a whole-grammar audit.}
 \end{frame}
 
-% Slide 36
+% Slide 40
 \begin{frame}{Appendix: foundations and further reading}
   \color{Ink}
   \small
@@ -784,14 +863,15 @@ ELSE abort
     \item \textbf{Greek clitics.} Chatzikyriakidis (2010), thesis, chapters 3 and 6;
       Chatzikyriakidis (2012), \emph{Lingua} 122(6), 642–672.
     \item \textbf{Project reports.} Complete technical walkthrough; theoretical-coverage catalogue; community contribution and maintenance guides.
-    \item \textbf{Application.} \href{https://ds-workbench.vercel.app/}{ds-workbench.vercel.app}.
+    \item \textbf{Application and source.} \href{https://ds-workbench.vercel.app/}{Public workbench};
+      \href{https://github.com/StergiosCha/DS_workbench}{community repository}.
   \end{itemize}
   \vspace{1mm}
   \aside{The slides describe the modified workbench snapshot. They do not claim complete implementations of the cited linguistic theories.}
   \note{The repository's technical report links the individual design documents, source code, data artifacts and software lineage. This is a selected reference list for the presentation, not a comprehensive bibliography of Dynamic Syntax or TTR.}
 \end{frame}
 
-% Slide 37 — Full taxonomy
+% Slide 41
 \begin{frame}{Appendix: the complete 18-category map}
   \color{Ink}\small
   \begin{columns}[T,onlytextwidth]
@@ -824,7 +904,7 @@ ELSE abort
   \note{The shortened slide headings correspond to the eighteen catalogue categories, including concessive linkage in C11 and aspect in C10. The 91 topics are tracked research units, not 91 complete grammar implementations. Evidence labels distinguish worked analyses, implemented studies, sketches, secondary pointers and metadata-only records. Implementation labels separately distinguish tested fragments, partial infrastructure, absent native features and unaudited inherited capabilities. The ledger contains 13 inspected artifacts with hashes and one metadata-only 2026 follow-up.}
 \end{frame}
 
-% Slide 38 — Contributor example
+% Slide 42
 \begin{frame}[fragile]{Appendix: extend an independent grammar}
   \color{Ink}
   \tagline{Copy the grammar; add a predicate and lexical entries; check meanings.}
@@ -855,28 +935,29 @@ print(result.semantics)
   \note{This is a lexical extension using existing syntax, not a new construction family. The script copies packaged resources and refuses to overwrite an existing destination. It checks two names, negation, the nonrestrictive and two incomplete/extra-argument contrasts in each backend. Run with --output pointing to a new directory. \code{top\_n=0} retains lexical alternatives; the inherited default of three can prune a necessary function-word/punctuation entry. Search caps still apply. Custom grammar folders load through Python; arbitrary uploads are not accepted by the public web interface.}
 \end{frame}
 
-% Slide 39 — Public release boundary
-\begin{frame}{Appendix: what remains for a community release}
+% Slide 43
+\begin{frame}{Appendix: public source and the next release}
   \color{Ink}
+  \tagline{\href{https://github.com/StergiosCha/DS_workbench}{github.com/StergiosCha/DS\_workbench}}
   \begin{columns}[T,onlytextwidth]
     \column{.48\textwidth}
-      \textbf{Prepared and tested locally}\medskip
-      \begin{itemize}\setlength\itemsep{7pt}
-        \item Source and wheel with UI, grammars and selected evidence.
-        \item Contribution templates, tutorial and maintainer guide.
-        \item Clean-install checks and a new CI job.
+      \textbf{Available now}\medskip
+      \begin{itemize}\setlength\itemsep{6pt}
+        \item Public source, issues and pull requests.
+        \item UI, grammars, research library, slides and guides.
+        \item Reproducible install and independent grammar tutorial.
       \end{itemize}
     \column{.48\textwidth}
-      \textbf{Decisions still needed}\medskip
-      \begin{itemize}\setlength\itemsep{7pt}
-        \item Community repository and maintainers.
-        \item Resolve the inherited BSD/LGPL licence mismatch.
-        \item Agree contribution terms and publish a versioned release.
+      \textbf{Release work ahead}\medskip
+      \begin{itemize}\setlength\itemsep{6pt}
+        \item Agree maintainers and review responsibilities.
+        \item Resolve inherited licence and contributor terms.
+        \item Tag a workbench release with artifacts and citation metadata.
       \end{itemize}
   \end{columns}
-  \vspace{4mm}
-  \aside{Code and data terms are separate. The GDT export carries CC BY-NC-SA 3.0; other sources retain their conditions.}
-  \note{The old package metadata said BSD while its LICENSE deferred to DyLan; the inspected upstream LICENSE.txt is LGPLv3. The unsupported BSD label was removed and licence texts retained, but terms for all later workbench contributions remain to be settled. Do not imply that preparing an archive settles redistribution rights. The only configured Git remote is upstream, not a published community fork. Local runtime and tutorial checks passed; the new CI job has not been represented as a completed remote run. Optional WordNet/Brown/Gutenberg indexes are not in the wheel.}
+  \vspace{3mm}
+  \aside{Run from this source checkout; installing the upstream package by name does not reproduce the workbench.}
+  \note{Clone the public repository, run uv sync --locked --python 3.12, then uv run --no-sync ds-workbench --port 8000. No Node build, Azure account or model key is needed for bundled examples. No tagged workbench package release is claimed; old inherited tags are not workbench releases. The installed-package CI job now passes remotely. The old metadata claimed BSD while LICENSE deferred to DyLan; the referenced licence is LGPLv3. The unsupported BSD label was removed and source texts retained, but workbench contribution terms remain a release decision. GDT data separately carries CC BY-NC-SA 3.0; optional WordNet/Brown/Gutenberg indexes are not in the wheel. Community source publication and a cleared, versioned package release are distinct milestones.}
 \end{frame}
 
 \end{document}
