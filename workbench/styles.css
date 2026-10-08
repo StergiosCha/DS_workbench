@@ -819,11 +819,19 @@ input::placeholder {
 }
 footer {
   display:flex;
+  flex-wrap:wrap;
   justify-content:space-between;
   gap:12px;
   color:#98a18e;
   font-size:9px;
   padding:21px 1px 26px;
+}
+.footer-dedication {
+  flex-basis:100%;
+  margin:0 0 4px;
+  color:var(--sub);
+  font:italic 16px/1.5 var(--serif);
+  text-align:center;
 }
 footer span span {
   padding:0 10px;
@@ -1070,7 +1078,7 @@ kbd {
   footer {
     font-size:8px;
   }
-  footer>span:first-child {
+  footer>span:first-of-type {
     max-width:55%;
     line-height:1.7;
   }
