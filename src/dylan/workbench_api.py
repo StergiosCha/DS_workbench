@@ -259,13 +259,20 @@ def tree_snapshot(tree: Tree, context: Any) -> dict[str, Any]:
     }
 
 
-def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _setup=None) -> dict[str, Any]:
+def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _setup=None,
+                  _trace_budget=None) -> dict[str, Any]:
     """Record word states and replayed action states, stopping at the first failure."""
     from dynamicsyntax import icp
     from dylan.parser.parse_stats import ParseStats
     from dylan.action.lexical_action import LexicalAction
     from dynamicsyntax._parse import _active_path_edges, _steps_from_edge
-    from dylan.workbench_readings import collect_readings, operation_frame
+    from dylan.workbench_readings import collect_readings, operation_frame, rule_frame, RuleTraceBudget
+    from dynamicsyntax.parse_trace import action_kind
+
+    trace_operations = _trace is True
+    trace_level = "operations" if trace_operations else "actions" if _trace else "words"
+    trace_budget = _trace_budget or (RuleTraceBudget() if _trace == "actions" else None)
+    trace_truncated = False
 
     if isinstance(payload, dict) and "paragraph" in payload:
         from dylan.paragraph_workbench import parse_paragraph
@@ -280,7 +287,7 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
         if "dialogue" in payload:
             raise ValueError("Open-text assistance currently accepts sentence or paragraph input.")
         from dylan.assisted_parsing import parse_assisted
-        return parse_assisted(payload, on_event, parser=_parser)
+        return parse_assisted(payload, on_event, parser=_parser, trace_budget=trace_budget)
     from dylan.dialogue_workbench import transcript_words, validate_dialogue
 
     dialogue = validate_dialogue(payload) if "dialogue" in payload else None
@@ -373,6 +380,7 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
                     "tokens": tokens,
                     "sentence": sentence,
                     "grammar": grammar,
+                    "trace_level": trace_level,
                     "lexical": lexical,
                     "dialogue": dialogue,
                     "token_metadata": metadata if dialogue else None,
@@ -380,12 +388,19 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
             )
 
         def append(channel, value):
+            nonlocal trace_truncated
+            if channel == "operations" and not trace_operations:
+                return
+            if channel == "actions" and trace_budget and not trace_budget.accept(value):
+                trace_truncated = True
+                return
             {"words": words, "actions": actions, "operations": operations}[channel].append(value)
             if on_event:
                 on_event({"event": "frame", "channel": channel, "frame": value})
 
         def append_operation(effect, rule, index, rule_index):
-            append("operations", operation_frame(effect, rule, index, rule_index, frame))
+            append("operations", {**operation_frame(effect, rule, index, rule_index, frame),
+                                  "rule_kind": actions[rule_index].get("rule_kind", "action")})
 
         def cap_failure(index):
             name = parser.last_cap_hit
@@ -417,11 +432,12 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
             if completion_actions:
                 replay = last
                 for action in completion_actions if _trace else []:
-                    with capture_effects() as effects:
+                    before = replay.clone()
+                    with capture_effects() if trace_operations else contextlib.nullcontext([]) as effects:
                         replay = parser.apply_actions(replay, [action])
                     if replay is None:
                         break
-                    append("actions", frame(replay, action.name, index, "action"))
+                    append("actions", rule_frame(before, replay, action.name, action_kind(action), index, frame))
                     for effect in effects:
                         append_operation(effect, action.name, index, len(actions) - 1)
                 final = frame(completed, "Completion", index, "completion")
@@ -608,12 +624,12 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
                 if edge.edge_id in seen_edges:
                     continue
                 seen_edges.add(edge.edge_id)
-                for step in _steps_from_edge(parser, edge, operations=True):
-                    append("actions", frame(step.after_tree, step.action_name, index, "action"))
+                for step in _steps_from_edge(parser, edge, operations=trace_operations):
+                    append("actions", rule_frame(step.before_tree, step.after_tree, step.action_name, step.action_kind, index, frame))
                     if step.operations:
                         for effect in step.operations:
                             append_operation(effect, step.action_name, index, len(actions) - 1)
-                    else:
+                    elif trace_operations:
                         append(
                             "operations",
                             {
@@ -648,7 +664,7 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
             if selected is not None:
                 completed, last_completion_actions, edges = selected
                 replay = replay_reading(parser, edges, last_completion_actions, completed, tokens,
-                                        include_operations=_trace)
+                                        include_operations=trace_operations, include_actions=bool(_trace))
                 rollback = {**replay["words"][0], "kind": "backtrack",
                             "word_index": len(tokens) - 1,
                             "label": "End of input: try another DS derivation",
@@ -660,6 +676,12 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
             if parser.last_cap_hit is not None:
                 failure = cap_failure(len(tokens) - 1)
         final = words[-1]
+        if trace_truncated:
+            gap = {**final, "kind": "trace_gap",
+                   "label": "Rule trace limit reached · final recorded tree"}
+            actions.append(gap)
+            if on_event:
+                on_event({"event": "frame", "channel": "actions", "frame": gap})
         if failure is None and final["complete"] and (final["semantic_error"] or final["type_errors"]):
             failure = {"kind": "semantic_type_mismatch", "index": len(tokens) - 1,
                        "token": tokens[-1] if tokens else "",
@@ -718,7 +740,7 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
             "decision": decision_report(parser, payload.get("decision_mode", "off")),
             "words": words,
             "actions": actions,
-            "operations": operations,
+            "operations": operations if trace_operations else [],
             "dialogue": dialogue,
             "token_metadata": metadata if dialogue else None,
             "repairs": repairs,
@@ -746,7 +768,10 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
             # Store the completed tree, including final substitutions, as the
             # context endpoint used by the next sentence.
             parser.get_best_tuple().tree = completed
-        result["trace_level"] = "operations" if _trace else "words"
+        result["trace_level"] = trace_level
+        result["trace_truncated"] = trace_truncated
+        if trace_truncated:
+            result["trace_note"] += " The rule snapshot budget was reached: playback explicitly jumps to the final recorded tree. Parsing and coverage are unaffected."
         result["elapsed_ms"] = round((time.perf_counter() - started) * 1000)
         return result
     finally:

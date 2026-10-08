@@ -17,7 +17,7 @@ from dylan.parser.interactive_context_parser import (
 from dylan.tree.tree import Tree
 
 from dynamicsyntax._session import resolved_grammar_path
-from dynamicsyntax.parse_trace import ParseActionStep
+from dynamicsyntax.parse_trace import ParseActionStep, action_kind
 from dynamicsyntax.parse_result import ParseResult
 
 
@@ -96,6 +96,7 @@ def _replay_steps_from_edge(
                 after_tree=after.clone(),
                 edge_id=edge.edge_id,
                 operations=tuple(effects),
+                action_kind=action_kind(action),
             ),
         )
         cur = after

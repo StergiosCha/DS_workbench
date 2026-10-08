@@ -19,3 +19,16 @@ class ParseActionStep:
     after_tree: Tree
     edge_id: int | None = None
     operations: tuple[EffectStep, ...] = ()
+    action_kind: str = "grouped"
+
+
+def action_kind(action) -> str:
+    """Classify the executed program, independently of its name or vocabulary."""
+    from dylan.action.lexical_action import LexicalAction
+    from dylan.action.computational_action import ComputationalAction
+
+    if isinstance(action, LexicalAction):
+        return "lexical"
+    if isinstance(action, ComputationalAction):
+        return "computational"
+    return "action"

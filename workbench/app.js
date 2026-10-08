@@ -1,7 +1,7 @@
 "use strict";
 
 const $ = (id) => document.getElementById(id);
-const state = { config: null, result: null, paragraph: null, paragraphIndex: 0, readingIndex: 0, mode: "operations", inputMode: "sentence", index: 0, selected: null, timer: null, busy: false, view: null, drag: null, expandedFormulas: [] };
+const state = { config: null, result: null, paragraph: null, paragraphIndex: 0, readingIndex: 0, mode: "actions", inputMode: "sentence", index: 0, selected: null, timer: null, busy: false, view: null, drag: null, expandedFormulas: [] };
 const selectedReading = () => state.result?.readings?.[state.readingIndex];
 const playback = () => selectedReading()?.trace || state.result;
 const frames = () => playback()?.[state.mode] || [];
@@ -67,7 +67,7 @@ function updateControls() {
   $("reading").disabled = state.busy;
   $("show-final").disabled = unavailable || state.busy || state.index >= frames().length - 1;
   $("copy").disabled = unavailable || !current()?.semantics;
-  for (const button of document.querySelectorAll("[data-mode]")) button.disabled = unavailable || Boolean((state.paragraph || state.result?.trace_level === "words") && button.dataset.mode !== "words");
+  for (const button of document.querySelectorAll("[data-mode]")) button.disabled = unavailable || !playback()?.[button.dataset.mode]?.length;
   for (const id of ["zoom-in", "zoom-out", "fit"]) $(id).disabled = unavailable;
 }
 
@@ -105,6 +105,11 @@ function receiveEvent(event) {
     state.paragraph = { sentences: event.sentences.map((s, index) => ({...s, index, status: "pending"})) };
     renderParagraph();
     $("result-status").textContent = "Reading paragraph…";
+  } else if (event.event === "paragraph_trace") {
+    state.paragraphIndex = event.sentence_index;
+    receiveEvent(event.trace);
+    state.paragraph.sentences[event.sentence_index].status = "parsing";
+    renderParagraph();
   } else if (event.event === "paragraph_sentence") {
     state.paragraph.sentences[event.sentence.index] = event.sentence;
     renderParagraph();
@@ -114,15 +119,19 @@ function receiveEvent(event) {
   } else if (event.event === "lexical") {
     $("result-status").textContent = event.message;
   } else if (event.event === "start") {
-    state.result = { ...event, words: [event.initial], actions: [event.initial], operations: [event.initial], repairs: [], context_trees: [], backend: event.initial.backend };
+    stop();
+    state.result = { ...event, words: [event.initial], actions: [event.initial], operations: event.trace_level === "actions" ? [] : [event.initial], repairs: [], context_trees: [], backend: event.initial.backend };
     state.readingIndex = 0; $("readings-panel").hidden = true;
-    state.mode = "operations"; state.index = 0; state.selected = "0"; state.view = null;
+    state.mode = event.trace_level === "words" ? "words" : "actions"; state.index = 0; state.selected = "0"; state.view = null;
     $("empty-state").hidden = true; $("loading-state").hidden = true;
     $("result-status").textContent = event.dialogue ? "Reading dialogue…" : "Reading sentence…";
     selectTab("trace"); renderTrace(); render(); play();
     renderLexicalReport(event.lexical);
   } else if (event.event === "frame") {
     state.result[event.channel].push(event.frame);
+    if (state.paragraph && event.channel === "actions" && ["word", "completion", "backtrack", "repair", "trace_gap"].includes(event.frame.kind)) {
+      state.result.words.push({...event.frame, label: event.frame.kind === "word" ? state.result.tokens[event.frame.word_index] : event.frame.label});
+    }
     renderTrace(); updateControls();
     $("timeline").max = frames().length - 1;
   } else if (event.event === "result") {
@@ -455,11 +464,12 @@ function renderTokens(frame) {
 function renderTrace() {
   const list = $("action-list"); list.replaceChildren();
   const channel = state.mode === "operations" ? "operations" : "actions";
-  playback()[channel].forEach((frame, index) => {
+  (playback()[channel] || []).forEach((frame, index) => {
     const item = element("li");
     const button = element("button"); button.dataset.actionIndex = index; button.dataset.channel = channel;
     button.append(element("span", "action-word", frame.word_index < 0 ? "START" : `${frame.speaker ? frame.speaker + " · " : ""}WORD ${frame.word_index + 1} · ${state.result.tokens[frame.word_index]}`));
-    if (frame.rule) button.append(element("span", "action-rule", frame.rule));
+    if (frame.rule_kind) button.append(element("span", `rule-kind ${frame.rule_kind}`, ruleKindLabel(frame)));
+    if (frame.rule && frame.rule !== frame.label) button.append(element("span", "action-rule", frame.rule));
     button.append(document.createTextNode(math(frame.label)));
     button.addEventListener("click", () => { stop(); state.mode = channel; setIndex(index); });
     item.append(button); list.append(item);
@@ -486,8 +496,23 @@ function renderReadings() {
   $("readings-summary").textContent = `${readings.length} complete ${readings.length === 1 ? "analysis" : "analyses"}. ${notes[search.stop_reason] || ""}${search.top_n_cuts?.length ? " Some lexical readings were excluded by the entry limit." : ""} Strategy labels describe tree operations, not discourse or grammaticality judgments.`;
 }
 
+function ruleKindLabel(frame) {
+  return { lexical: "Lexical rule", computational: "Computational rule", grouped: "Grouped transition", action: "Parser action" }[frame.rule_kind] || "Parser transition";
+}
+
 function renderOperation(frame) {
-  if (state.mode === "operations" && frame.kind === "backtrack") {
+  $("operation-rule").hidden = frame.kind === "action" && frame.rule === frame.label;
+  $("operation-kind").textContent = ruleKindLabel(frame);
+  $("operation-kind").className = `rule-kind ${frame.rule_kind || "transition"}`;
+  if (state.mode !== "words" && frame.kind === "trace_gap") {
+    $("operation-detail").hidden = false; $("operation-program").hidden = true;
+    $("operation-rule").textContent = "Trace limit";
+    $("operation-code").textContent = "Jump to the final recorded tree";
+    $("pointer-transition").textContent = "";
+    $("operation-change").textContent = "Intermediate rule snapshots exceeded the display budget. DS continued parsing; this jump does not represent one rule.";
+    return;
+  }
+  if (state.mode !== "words" && frame.kind === "backtrack") {
     $("operation-detail").hidden = false; $("operation-program").hidden = true;
     $("operation-rule").textContent = "Revise an earlier interpretation";
     $("operation-code").textContent = "Return to the earlier tree";
@@ -495,7 +520,7 @@ function renderOperation(frame) {
     $("operation-change").textContent = frame.lexical_changes?.length ? frame.lexical_changes.map((change) => `${change.reason}: ${change.before.word}, ${change.before.template} / ${change.before.symbol} → ${change.after.template} / ${change.after.symbol}`).join("; ") : "The observed continuation requires another derivation. The following steps replay its actions.";
     return;
   }
-  if (state.mode === "operations" && frame.kind === "repair") {
+  if (state.mode !== "words" && frame.kind === "repair") {
     $("operation-detail").hidden = false; $("operation-program").hidden = true;
     $("operation-rule").textContent = "Local repair · context transition";
     $("operation-code").textContent = "Restore the earlier tree";
@@ -503,15 +528,16 @@ function renderOperation(frame) {
     $("operation-change").textContent = `Reopen the position before “${frame.repair.replaced.map((i) => state.result.tokens[i]).join(" ")}”. The next frames execute the replacement’s lexical actions.`;
     return;
   }
-  const active = state.mode === "operations" && frame.kind === "operation";
+  const atomic = state.mode === "operations" && frame.kind === "operation";
+  const active = atomic || (state.mode === "actions" && frame.kind === "action");
   $("operation-detail").hidden = !active;
-  $("operation-program").hidden = !active;
+  $("operation-program").hidden = !atomic;
   if (!active) return;
   $("operation-rule").textContent = frame.rule;
   $("operation-code").textContent = math(frame.label);
   const moved = frame.pointer_before !== frame.pointer;
   $("pointer-transition").textContent = moved ? `Pointer ${frame.pointer_before} → ${frame.pointer}` : `Pointer stays at ${frame.pointer}`;
-  const delta = frame.delta;
+  const delta = frame.delta || {created: [], removed: [], decorations: []};
   const changes = [];
   if (delta.created.length) changes.push("Created " + delta.created.map((id) => `Tn(${id})`).join(", "));
   if (delta.removed.length) changes.push("Removed " + delta.removed.map((id) => `Tn(${id})`).join(", "));
@@ -519,7 +545,8 @@ function renderOperation(frame) {
     if (decoration.added.length) changes.push(`At ${decoration.node}: + ${decoration.added.map(math).join(", ")}`);
     if (decoration.removed.length) changes.push(`At ${decoration.node}: − ${decoration.removed.map(math).join(", ")}`);
   }
-  $("operation-change").textContent = changes.join(" · ") || (moved ? "Traversal; node decorations are unchanged." : "Tree unchanged by this operation.");
+  $("operation-change").textContent = changes.join(" · ") || (moved ? "Traversal; node decorations are unchanged." : "Tree unchanged by this step.");
+  if (!atomic) return;
   const program = $("operation-program"); program.replaceChildren();
   program.append(element("p", "program-heading", frame.rule));
   for (const condition of frame.conditions) {
@@ -537,6 +564,12 @@ function renderOperation(frame) {
 
 function render() {
   const frame = current(); if (!frame) return;
+  const word = frame.word_index < 0 ? "Initial tree" : `While processing word ${frame.word_index + 1}: “${state.result.tokens[frame.word_index]}”`;
+  const attempt = state.result.attempt || state.result.assistance?.derivation_attempts?.length;
+  $("rule-progress").textContent = `${state.paragraph ? `Sentence ${state.paragraphIndex + 1} · ` : ""}${attempt ? `DS attempt ${attempt} · ` : ""}${word}`;
+  $("playback-explanation").textContent = state.result.trace_truncated
+    ? state.result.trace_note
+    : "Rules shows lexical and computational steps in order as the tree grows. These steps replay the path selected at each word; a backtrack explicitly returns to an earlier tree.";
   if (!frame.nodes.some((node) => node.id === state.selected)) state.selected = frame.pointer;
   $("frame-label").textContent = state.mode === "words" ? (state.index ? `After ${frame.label === "Completion" ? "completion" : "“" + frame.label + "”"}` : `The axiom · ?Ty(${frame.nodes[0]?.required_type || "t"})`) : math(frame.label) + (frame.kind === "grouped" ? " · grouped replay" : "");
   $("frame-label").title = $("frame-label").textContent;
@@ -570,7 +603,15 @@ function render() {
     const active = button.dataset.mode === state.mode;
     button.classList.toggle("active", active); button.setAttribute("aria-pressed", String(active));
   }
-  for (const button of document.querySelectorAll("[data-action-index]")) button.classList.toggle("current", button.dataset.channel === state.mode && Number(button.dataset.actionIndex) === state.index);
+  for (const button of document.querySelectorAll("[data-action-index]")) {
+    const active = button.dataset.channel === state.mode && Number(button.dataset.actionIndex) === state.index;
+    button.classList.toggle("current", active);
+    button.setAttribute("aria-current", String(active));
+    if (active && !$("trace-panel").hidden) {
+      const panel = $("trace-panel"), bounds = panel.getBoundingClientRect(), item = button.getBoundingClientRect();
+      if (item.top < bounds.top || item.bottom > bounds.bottom) panel.scrollTop += item.top - bounds.top - 12;
+    }
+  }
   renderOperation(frame); renderTree(frame); renderInspector(frame); renderTokens(frame); renderDialoguePlayback(frame); updateControls();
 }
 
@@ -748,7 +789,7 @@ function renderParagraph() {
     button.disabled = !paragraph.coverage;
     button.setAttribute("aria-pressed", String(index === state.paragraphIndex));
     button.addEventListener("click", () => showParagraphSentence(index));
-    item.append(button, element("span", "paragraph-status", row.complete ? "Complete DS derivation" : row.status === "pending" ? "Waiting…" : row.failure?.message || "Incomplete"));
+    item.append(button, element("span", "paragraph-status", row.complete ? "Complete DS derivation" : row.status === "pending" ? "Waiting…" : row.status === "parsing" ? "Reading rules…" : row.failure?.message || "Incomplete"));
     if (row.context_gaps?.length) item.append(element("span", "paragraph-status", `Context excludes failed sentence${row.context_gaps.length > 1 ? "s" : ""} ${row.context_gaps.map(i => i + 1).join(", ")}.`));
     return item;
   }));
@@ -758,7 +799,7 @@ function showParagraphSentence(index) {
   stop(); state.paragraphIndex = index; state.expandedFormulas = [];
   const row = state.paragraph.sentences[index];
   state.result = row.result || null;
-  state.readingIndex = 0; state.mode = "words"; state.index = Math.max(0, (row.result?.words.length || 1) - 1);
+  state.readingIndex = 0; state.mode = row.result?.actions?.length ? "actions" : "words"; state.index = 0;
   state.selected = "0"; state.view = null;
   $("loading-state").hidden = true; $("empty-state").hidden = Boolean(row.result);
   $("readings-panel").hidden = true;
@@ -780,6 +821,7 @@ function showParagraphSentence(index) {
     $("operation-detail").hidden = true;
   }
   renderParagraph(); updateControls();
+  if (row.result) play();
 }
 
 for (const button of document.querySelectorAll("[data-input-mode]")) button.addEventListener("click", () => setInputMode(button.dataset.inputMode));

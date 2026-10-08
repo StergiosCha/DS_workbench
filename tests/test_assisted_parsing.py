@@ -94,12 +94,17 @@ def test_failure_drives_additional_sense_then_actual_reparse(monkeypatch):
         assert context["failure"] is not None
         return {"entries": [entry("examines", "examine", "transitive", ["human", "object"])]}, {"provider": "fixture", "model": "fixture"}
     monkeypatch.setattr(lexical_provider, "propose", provider)
-    result = parse_request({"sentence": "The researcher examines a sample.", "grammar": "2026-english-mltt", "lexical_mode": "assisted"})
+    events = []
+    result = parse_request({"sentence": "The researcher examines a sample.", "grammar": "2026-english-mltt", "lexical_mode": "assisted"}, events.append)
     assert result["complete"]
     attempts = result["assistance"]["derivation_attempts"]
     assert [a["complete"] for a in attempts] == [False, True]
     assert "examine_" in result["words"][-1]["normalized"]
     assert len(calls) == 1
+    assert [e["attempt"] for e in events if e["event"] == "start"] == [1, 2]
+    second = [e for e in events if e.get("attempt") == 2]
+    assert second[0]["initial"]["nodes"] == result["actions"][0]["nodes"]
+    assert [e["frame"] for e in second if e["event"] == "frame" and e["channel"] == "actions"] == result["actions"][1:]
 
 
 def test_rejected_batch_is_atomic_and_closed_classes_cannot_be_names():

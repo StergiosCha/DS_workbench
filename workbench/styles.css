@@ -1163,6 +1163,11 @@ kbd {
 @media (prefers-reduced-motion:reduce) { .tree-node.entering .node-box, .tree-node.entering text, .tree-node.changed .node-box { animation:none; } }
 
 .operation-detail { padding:10px 20px; background:#f0f5ed; border-bottom:1px solid var(--line); font-size:12px; }
+.playback-explanation { padding:10px 20px; border-bottom:1px solid var(--line); font-size:12px; color:#52674f; }
+.playback-explanation p { margin:4px 0 0; font-size:11px; line-height:1.5; }
+.rule-kind { display:inline-block; padding:3px 7px; margin:2px 5px 3px 0; border-radius:4px; font:600 10px/1.4 var(--font-sans, sans-serif); background:#e8e9ed; color:#34405b; }
+.rule-kind.computational { background:#dcebd4; color:#254d31; }
+.rule-kind.lexical { background:#f2e4cf; color:#754a16; }
 .operation-heading { display:flex; align-items:center; flex-wrap:wrap; gap:8px 16px; }
 #operation-rule { color:#637568; font-size:10px; }
 #operation-code { font-weight:600; overflow-wrap:anywhere; }

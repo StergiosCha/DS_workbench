@@ -8,10 +8,35 @@ not establish grammaticality judgments.
 from __future__ import annotations
 
 import json
+from contextlib import nullcontext
 from copy import deepcopy
 
 from dylan.action.execution_trace import capture_effects
 from dylan.action.meta.element import restore_meta_bindings, snapshot_meta_bindings
+
+
+class RuleTraceBudget:
+    """Bound extra rule snapshots without altering parsing or word endpoints."""
+
+    def __init__(self, remaining=600_000):
+        self.remaining = remaining
+
+    def accept(self, frame):
+        size = len(json.dumps(frame, ensure_ascii=False).encode())
+        if size > self.remaining:
+            self.remaining = 0
+            return False
+        self.remaining -= size
+        return True
+
+
+def rule_frame(before, after, name, kind, index, frame):
+    """An actual rule transition, with its pointer and changed decorations."""
+    from types import SimpleNamespace
+    value = operation_frame(SimpleNamespace(before_tree=before, after_tree=after,
+                            operation=name, conditions=()), name, index, None, frame)
+    value.update(kind="action", rule_kind=kind)
+    return value
 
 
 def operation_frame(effect, rule, index, rule_index, frame):
@@ -49,10 +74,15 @@ def strategy_tags(action_names, snapshot):
     return tags or ["fixed"]
 
 
-def replay_reading(parser, edges, completion_actions, completed, tokens, *, include_operations=True):
+def replay_reading(parser, edges, completion_actions, completed, tokens, *, include_operations=True,
+                   include_actions=None):
     """Replay one complete path from its axiom, at words, rules and operations."""
     from dynamicsyntax._parse import _steps_from_edge
     from dylan.workbench_api import tree_snapshot
+    from dynamicsyntax.parse_trace import action_kind
+
+    if include_actions is None:
+        include_actions = include_operations
 
     def frame(tree, label, index, kind):
         return {"label": label, "word_index": index, "kind": kind,
@@ -65,11 +95,14 @@ def replay_reading(parser, edges, completion_actions, completed, tokens, *, incl
         channels = {name: [initial] for name in ("words", "actions", "operations")}
         index = -1
 
-        def action_frames(after, name, effects):
-            channels["actions"].append(frame(after, name, index, "action"))
+        def action_frames(before, after, name, kind, effects):
+            channels["actions"].append(rule_frame(before, after, name, kind, index, frame))
+            if not include_operations:
+                return
             if effects:
                 channels["operations"].extend(
-                    operation_frame(effect, name, index, len(channels["actions"]) - 1, frame)
+                    {**operation_frame(effect, name, index, len(channels["actions"]) - 1, frame),
+                     "rule_kind": kind}
                     for effect in effects
                 )
             else:
@@ -82,19 +115,20 @@ def replay_reading(parser, edges, completion_actions, completed, tokens, *, incl
             if edge.word is not None:
                 index = next((i for i in range(index + 1, len(tokens))
                               if tokens[i] == edge.word.word), index)
-            for step in _steps_from_edge(parser, edge, operations=True) if include_operations else []:
-                action_frames(step.after_tree, step.action_name, step.operations)
+            for step in _steps_from_edge(parser, edge, operations=include_operations) if include_actions else []:
+                action_frames(step.before_tree, step.after_tree, step.action_name, step.action_kind, step.operations)
             if edge.word is not None:
                 boundary = frame(edge.dst.tree, edge.word.word, index, "word")
                 for channel in channels.values():
                     channel.append(boundary)
         replay = parser.get_best_tuple().tree.clone()
-        for action in completion_actions if include_operations else []:
-            with capture_effects() as effects:
+        for action in completion_actions if include_actions else []:
+            before = replay.clone()
+            with capture_effects() if include_operations else nullcontext([]) as effects:
                 replay = parser.apply_actions(replay, [action])
             if replay is None:
                 break
-            action_frames(replay, action.name, effects)
+            action_frames(before, replay, action.name, action_kind(action), effects)
         final = frame(completed, "Completion", len(tokens) - 1, "completion")
         for channel in channels.values():
             channel.append(final)

@@ -15,6 +15,23 @@ node formula for its full lambda term. During playback, the current tree can
 be partial even if the final derivation completed: use Show final result or
 advance to the last step.
 
+Playback starts in **Rules**: lexical rules and computational rules carry
+different labels and appear in execution order, with the active rule, pointer
+movement and changed decorations above the tree. This includes assisted
+sentences and individual sentences in a paragraph. Pause and use Next to
+inspect introduction, prediction/anticipation, completion, elimination and
+other rules wherever the selected grammar actually uses them. **Operations**
+opens the instructions within a rule for ordinary sentence/dialogue traces;
+assisted and paragraph traces use the more compact rule level.
+
+These are replays of the path selected by DS at each word, emitted as the
+parser advances, not a debugger showing every rejected search branch.
+Backtracking explicitly restores an earlier tree. An assisted retry starts
+at a new axiom and displays its attempt number. Paragraph rows each have
+their own replay. To keep hosted responses bounded, large rule traces can
+end with an explicitly labelled jump to the final recorded tree; this display
+limit does not change parsing or the coverage count.
+
 Change semantic systems and repeat. Classical uses individual terms with
 λ/ε/τ/ι; Constructive composes propositions and dependent types including
 Σ/Π. TTR has distinct record grammars: choose a supported TTR example rather

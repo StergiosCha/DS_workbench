@@ -339,10 +339,12 @@ class Assistance:
                 "verification": "LLM lexical and construction hypotheses instantiate this backend's reviewed DS templates; DS checks completion, not the linguistic truth of the interpretation."}
 
 
-def parse_assisted(payload, on_event=None, *, parser=None):
+def parse_assisted(payload, on_event=None, *, parser=None, trace_budget=None):
     from dynamicsyntax import icp
     from dylan.workbench_api import parse_request
     from dylan.paragraph_workbench import time_budget
+    from dylan.workbench_readings import RuleTraceBudget
+    trace_budget = trace_budget or RuleTraceBudget()
     grammar = payload["grammar"]
     started = time.monotonic()
     if grammar not in GRAMMARS:
@@ -364,8 +366,12 @@ def parse_assisted(payload, on_event=None, *, parser=None):
         checkpoint, bindings = deepcopy(parser.context), snapshot_meta_bindings()
         attempts = []
         for retry in range(3):
+            def emit(event):
+                if on_event:
+                    on_event({**event, "attempt": retry + 1})
             with time_budget(min(4, max(.05, helper.deadline - time.monotonic()))):
-                result = parse_request({**payload, "lexical_mode": "off", "live_greek_sources": False}, _parser=parser, _trace=False)
+                result = parse_request({**payload, "lexical_mode": "off", "live_greek_sources": False},
+                                       emit, _parser=parser, _trace="actions", _trace_budget=trace_budget)
             attempts.append({"complete": result["complete"], "failure": result["failure"], "tokens_consumed": max(0, len(result["words"]) - 1)})
             if result["complete"] or retry == 2:
                 break
@@ -392,7 +398,7 @@ def parse_assisted(payload, on_event=None, *, parser=None):
         result["assistance"] = {"derivation_attempts": attempts, "backend": result["backend"], "verified": result["complete"]}
         result["elapsed_ms"] = round((time.monotonic() - started) * 1000)
         result["interpretation_notes"] = parser.semantic_profile.get("interpretation_notes", [])
-        result["trace_note"] = "Actual DS word states and selected derivation. Model proposals are lexical or construction assumptions; no model-generated tree substitutes for a DS derivation."
+        result["trace_note"] += " Each assisted attempt starts a new replay. Model proposals are lexical or construction assumptions; no model-generated tree substitutes for a DS derivation."
         return result
     finally:
         if own:

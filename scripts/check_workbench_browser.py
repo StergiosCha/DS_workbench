@@ -47,7 +47,8 @@ def main():
         page.screenshot(path=str(out / "growing.png"), full_page=True)
 
         # Make, traversal and decoration are separate calculus instructions.
-        expect(page.locator('[data-mode="operations"]')).to_have_attribute("aria-pressed", "true")
+        expect(page.locator('[data-mode="actions"]')).to_have_attribute("aria-pressed", "true")
+        page.get_by_role("button", name="Operations", exact=True).click()
         page.get_by_role("button", name="Go to axiom", exact=True).click()
         page.get_by_role("button", name="Next step", exact=True).click()
         assert page.locator(".tree-node").count() == 2
@@ -74,6 +75,7 @@ def main():
 
         def finish():
             expect(page.locator("#parse-button")).to_be_enabled(timeout=35000)
+            page.get_by_role("button", name="Operations", exact=True).click()
             page.get_by_role("tab", name="Action trace").click()
             page.locator("#action-list button").last.click()
 
@@ -213,7 +215,7 @@ def main():
         assert page.locator("#grammar").input_value() == "2026-cypriot-classical"
         page.locator('[data-greek-example="cg-neg-reverse"]').click()
         finish()
-        assert page.locator("#diagnosis-title").inner_text() == "Placement constraint violated"
+        assert page.locator("#diagnosis-title").inner_text() == "Grammar constraint violated"
         assert page.locator("#lexicon-summary").inner_text() == "Every token has an entry"
         assert "Unlicensed" in page.locator("#judgment-title").inner_text()
         page.screenshot(path=str(out / "greek_constraint.png"), full_page=True)

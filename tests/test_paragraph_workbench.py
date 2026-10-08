@@ -100,9 +100,27 @@ def test_whole_paragraph_budget_retains_unattempted_rows(monkeypatch):
 def test_stream_accounts_for_each_sentence_and_is_bounded():
     events = []
     result = parse_request({"paragraph": "John walks. Unknown. Mary walks.", "grammar": "2026-english-mltt"}, events.append)
-    assert [e["event"] for e in events] == ["paragraph_start"] + ["paragraph_sentence"] * 3
+    assert [e["event"] for e in events if e["event"] != "paragraph_trace"] == ["paragraph_start"] + ["paragraph_sentence"] * 3
+    for index, row in enumerate(result["sentences"]):
+        streamed = [e["trace"] for e in events if e["event"] == "paragraph_trace" and e["sentence_index"] == index]
+        assert streamed[0]["event"] == "start"
+        assert [e["frame"] for e in streamed if e["event"] == "frame"] == row["result"]["actions"][1:]
+        end = next(i for i, e in enumerate(events) if e["event"] == "paragraph_sentence" and e["sentence"]["index"] == index)
+        assert all(e["sentence_index"] <= index for e in events[:end] if e["event"] == "paragraph_trace")
     assert len(json.dumps(result).encode()) < 500_000
     assert result["coverage"]["total"] == 3
+
+
+def test_large_paragraph_bounds_rule_snapshots_without_changing_coverage():
+    events = []
+    result = parse_request({"paragraph": "John knows Mary. " * 24, "grammar": "2026-english-mltt"}, events.append)
+    assert result["coverage"]["complete"] == 24
+    assert len(json.dumps([events, result], ensure_ascii=False).encode()) < 4 * 1024 * 1024
+    for row in result["sentences"]:
+        trace = row["result"]
+        assert trace["actions"][-1]["nodes"] == trace["words"][-1]["nodes"]
+        if trace["trace_truncated"]:
+            assert trace["actions"][-1]["kind"] == "trace_gap"
 
 
 def test_reused_lexical_hypotheses_keep_their_source_and_programs():

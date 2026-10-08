@@ -167,11 +167,12 @@
       <div class="explorer">
         <div class="tree-column">
           <div class="tree-toolbar">
-            <div class="segmented" aria-label="Playback detail"><button class="active" data-mode="operations" aria-pressed="true">Operations</button><button data-mode="actions" aria-pressed="false">Rules</button><button data-mode="words" aria-pressed="false">Words</button></div>
+            <div class="segmented" aria-label="Playback detail"><button data-mode="operations" aria-pressed="false">Operations</button><button class="active" data-mode="actions" aria-pressed="true">Rules</button><button data-mode="words" aria-pressed="false">Words</button></div>
             <span id="frame-label">The tree starts with a requirement.</span>
             <div class="zoom-controls"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><button id="fit" title="Fit tree to view">Fit</button><button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button></div>
           </div>
-          <div id="operation-detail" class="operation-detail" hidden><div class="operation-heading"><span id="operation-rule"></span><code id="operation-code"></code><span id="pointer-transition"></span></div><p id="operation-change"></p></div>
+          <div class="playback-explanation"><strong id="rule-progress">Initial tree</strong><p id="playback-explanation">Follow lexical and computational rules as the tree grows.</p></div>
+          <div id="operation-detail" class="operation-detail" hidden><div class="operation-heading"><span id="operation-kind" class="rule-kind"></span><span id="operation-rule"></span><code id="operation-code"></code><span id="pointer-transition"></span></div><p id="operation-change"></p></div>
           <div class="tree-stage" id="tree-stage">
             <svg id="tree" role="group" aria-label="Dynamic Syntax derivation tree" viewBox="0 0 900 460"><defs><marker id="pointer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#275a43"/></marker></defs><g id="tree-edges"></g><g id="tree-pointer-motion"></g><g id="tree-nodes"></g></svg>
             <div id="empty-state" class="empty-state"><span class="empty-symbol">?Ty(Prop)</span><p>A sentence begins with an open possibility.</p><span>Build a derivation to follow its growth.</span></div>
@@ -187,7 +188,7 @@
         <aside class="inspector" aria-label="Node and action inspector">
           <div class="inspector-tabs" role="tablist" aria-label="Inspect"><button id="node-tab" role="tab" aria-selected="true" aria-controls="node-panel">Node inspector</button><button id="trace-tab" role="tab" aria-selected="false" aria-controls="trace-panel">Action trace</button></div>
           <div id="node-panel" role="tabpanel" aria-labelledby="node-tab"><div class="inspector-empty">Select a node to see its type, formula, and outstanding requirements.</div></div>
-          <div id="trace-panel" role="tabpanel" aria-labelledby="trace-tab" hidden><p class="trace-note">Operations execute inside the selected rule. IF checks select THEN or ELSE. Word boundaries show the recorded parser state.</p><div id="operation-program" hidden></div><ol id="action-list"></ol></div>
+          <div id="trace-panel" role="tabpanel" aria-labelledby="trace-tab" hidden><p class="trace-note">Lexical and computational rules are interleaved in execution order. Select a step to see its tree. Operations opens the instructions inside a rule, where available.</p><div id="operation-program" hidden></div><ol id="action-list"></ol></div>
         </aside>
       </div>
 
@@ -285,7 +286,7 @@
     </details>
     <details class="guide-section"><summary>Read the growing tree</summary>
       <p>Build a sentence, then pause, change speed or step by operation, rule or word.</p>
-      <dl><dt>?Ty(t) / ?Ty(Prop)</dt><dd>A requirement still to be satisfied. Other labels starting with ? are also outstanding requirements.</dd><dt>Fo(…)</dt><dd>The formula decorating a node. Use Expand formula below an abbreviated expression to read it in full inside the tree; Collapse formula restores the preview. Selecting a node also shows its full formula in the inspector.</dd><dt>The green pointer</dt><dd>The node the parser is working on. Changed nodes have a pale green fill.</dd><dt>Operations / Rules / Words</dt><dd>Operations show executed instructions; Rules group lexical and computational programs; Words show recorded token boundaries. Open text and paragraph results currently show word states and the selected derivation. The formula develops through composition as the tree grows.</dd></dl>
+      <dl><dt>?Ty(t) / ?Ty(Prop)</dt><dd>A requirement still to be satisfied. Other labels starting with ? are also outstanding requirements.</dd><dt>Fo(…)</dt><dd>The formula decorating a node. Use Expand formula below an abbreviated expression to read it in full inside the tree; Collapse formula restores the preview. Selecting a node also shows its full formula in the inspector.</dd><dt>The green pointer</dt><dd>The node the parser is working on. Changed nodes have a pale green fill.</dd><dt>Operations / Rules / Words</dt><dd>Operations show executed instructions; Rules group lexical and computational programs; Words show recorded token boundaries. Rules is the default, including assisted sentences and paragraphs. The active program is labelled lexical or computational; its tree changes appear above the tree. Operations detail is available for ordinary sentence and dialogue traces. A display-budget jump is labelled explicitly. The formula develops through composition as the tree grows.</dd></dl>
       <p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> Step &nbsp; <kbd>Space</kbd> Play / pause &nbsp; <kbd>Home</kbd> Axiom &nbsp; <kbd>End</kbd> Last step</p>
     </details>
     <details class="guide-section"><summary>Paragraphs, dialogue and coverage</summary>

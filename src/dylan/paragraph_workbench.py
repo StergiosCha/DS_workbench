@@ -140,6 +140,10 @@ def time_budget(seconds):
 def parse_paragraph(payload, on_event=None):
     from dynamicsyntax import icp
     from dylan.workbench_api import parse_request
+    from dylan.workbench_readings import RuleTraceBudget
+
+    trace_budget = RuleTraceBudget()
+    word_bytes_left = 600_000
 
     text, spans = validate_paragraph(payload)
     started = time.monotonic()
@@ -179,23 +183,26 @@ def parse_paragraph(payload, on_event=None):
                 try:
                     with time_budget(min(remaining, 30 if assisted else SENTENCE_SECONDS)):
                         parser.semantic_profile = {**parser.semantic_profile, "sentence_namespace": f"s{index + 1}_"}
-                        result = parse_request({**options, "sentence": span["text"]}, _parser=parser, _trace=False)
+                        def emit(event):
+                            # Rule boundaries already carry the word states.
+                            # Avoid sending duplicate word snapshots on the wire.
+                            if on_event and (event["event"] != "frame" or event["channel"] == "actions"):
+                                on_event({"event": "paragraph_trace", "sentence_index": index, "trace": event})
+                        result = parse_request({**options, "sentence": span["text"]}, emit,
+                                               _parser=parser, _trace="actions", _trace_budget=trace_budget)
                     row.update(status="complete" if result["complete"] else "failed",
                                complete=result["complete"], failure=result["failure"],
                                result=result)
-                    # Paragraph inspection keeps actual word boundaries. Replay
-                    # duplicates are omitted so hundreds of tokens fit the host.
-                    result["actions"] = []
-                    result["operations"] = []
-                    result["trace_note"] = "Recorded DS word states; paragraph inspection uses word steps. Each completed sentence includes its selected rule sequence and semantic export."
                     if not result["complete"] and not row["failure"]:
                         row["failure"] = {"kind": "incomplete_tree", "message": "The sentence leaves unsatisfied DS requirements."}
                     # Bound unusually large individual traces, keeping the final
                     # tree and stating exactly which earlier states were omitted.
-                    if len(json.dumps(result, ensure_ascii=False).encode()) > 180_000:
+                    word_size = len(json.dumps(result["words"], ensure_ascii=False).encode())
+                    if word_size > min(180_000, word_bytes_left):
                         result["words"] = [result["words"][0], result["words"][-1]]
-                        result["trace_level"] = "endpoints"
-                        result["trace_note"] += " Only the initial and final states fit this sentence's trace budget."
+                        result["word_trace_level"] = "endpoints"
+                        result["trace_note"] += " Words mode keeps only the initial and final states within the paragraph snapshot budget."
+                    word_bytes_left = max(0, word_bytes_left - len(json.dumps(result["words"], ensure_ascii=False).encode()))
                     if result["complete"]:
                         committed.append(index)
                 except SentenceDeadline as exc:

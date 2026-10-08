@@ -310,6 +310,15 @@ transitions cannot be replayed instruction by instruction and are explicitly
 grouped. The word-boundary state remains authoritative. The trace is not a
 complete debugger recording every explored and abandoned search branch.
 
+Rules is now the default playback view. Lexical and computational programs
+carry separate badges; the active rule, pointer movement and changed
+decorations appear above the tree. Assisted sentences and paragraphs stream
+rule transitions too. Each assisted retry starts a separate, numbered replay;
+paragraph events identify the sentence they belong to. These modes retain
+rule-level snapshots without the larger primitive-operation trace. The
+classification comes from the executed action class, not a model's account
+of what the parser did. This display adds no model requests.
+
 Click a node to inspect its full labels, formula and open requirements. Node
 types wrap to remain visible. Long formulas can be expanded in the tree; this
 only changes presentation and makes no model or parser request. Pan, zoom and
@@ -833,10 +842,14 @@ step. A completed parse can still be displaying an early, incomplete tree.
 an incomplete input retains its failure status. In paragraph mode the banner
 describes the selected sentence, not the completeness of the whole paragraph.
 
-Large paragraph traces are bounded: a sentence result above the trace budget
-can retain only initial/final states, with an explicit note. This protects
-response size; it is not evidence that intermediate derivation steps did not
-exist.
+Large rule traces are bounded independently of DS search: assisted attempts
+share a 600 kB rule-snapshot budget, and paragraph sentences share that budget
+across the paragraph. When exhausted, playback explicitly jumps from the
+retained prefix to the final recorded tree. Paragraph word traces have a
+separate 600 kB allowance and a 180 kB per-sentence threshold; oversized word
+traces retain their endpoints with a note. These display limits preserve
+parsing, final semantics and coverage accounting. They do not imply that
+omitted intermediate derivation steps did not exist.
 
 The repository also contains an older Pyodide frontend under `web/`, a Flet GUI
 path, and LaTeX/Manim tooling. They are separate interfaces, not components of
