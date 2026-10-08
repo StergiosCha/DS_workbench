@@ -99,7 +99,7 @@ Test pointer return, head identity, local requirements and final composition.
 | Lexical/model assistance | `lexical_expansion.py`, `lexical_provider.py`, `assisted_parsing.py`, `construction_assistance.py` |
 | Jev preferences / comparison | `lexical_selection.py`, `jev_comparison.py` |
 | Server and workers | `workbench_server.py`, `workbench_asgi.py`, `workbench_api.py`, `workbench_paths.py` |
-| Browser | `workbench/index.html`, `app.js`, `styles.css`, `research.js`, `openrouter.js`; no Node build |
+| Browser | `workbench/index.html`, `app.js`, `styles.css`, `workspace.js`, `workspace.css`, `research.js`, `openrouter.js`; generated library metadata in `library-data.js`; no Node build |
 
 `dylan.*` is implementation code, not a stable plugin ABI. Prefer the public
 API and independent grammar directories for downstream experiments. Threaded

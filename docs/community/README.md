@@ -5,6 +5,11 @@ run a pinned local copy for research, or extend a grammar/engine with executable
 evidence. Handover should work without the original developer's machine,
 model keys, Azure account or conversation history.
 
+For colleagues joining the project, start with the
+[proposed first community cycle](next-cycle.md): small entry tasks, a
+source-to-implementation workflow and suggested review responsibilities.
+A [draft personal invitation](invitation-draft.md) is available for circulation.
+
 | I want to… | Start here |
 | --- | --- |
 | Demonstrate DS and inspect a derivation | [Using the app](using.md), [slides](../ds-workbench-slides.pdf) |
