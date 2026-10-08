@@ -120,6 +120,10 @@ class TTRInfixExpression(TTRFormula):
         """Render parenthesised infix form."""
         return f"({self.arg1} {self.functor} {self.arg2})"
 
+    def __hash__(self) -> int:
+        """String-based hash consistent with dataclass ``__eq__`` (equal fields ⇒ equal str)."""
+        return hash((type(self), str(self)))
+
     def java_hash_code(self) -> int:
         """Java ``TTRInfixExpression.hashCode`` (super string-hash then fold args/functor)."""
         from dylan.tree.label.labels import _java_int_add, java_string_hashcode

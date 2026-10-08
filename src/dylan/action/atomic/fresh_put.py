@@ -43,6 +43,13 @@ class FreshPut(Effect):
             fresh = tree.get_fresh_proposition_variable()
         else:
             fresh = tree.get_fresh_entity_variable()
+        if tree.semantic_profile:
+            from dylan.formula.mltt.semantics import SemanticFormula
+            from dylan.formula.mltt.terms import name
+
+            fresh = SemanticFormula(
+                name(str(fresh)), tree.semantic_profile["backend"], theory=tree.semantic_profile
+            )
         self.var.get_meta().reset()
         _ = self.var == fresh
         tree.put(FormulaLabel(self.var.instantiate()))

@@ -18,7 +18,7 @@ _MAKE_RE = re.compile(r"(?i)make\((.+)\)")
 
 
 class Make(Effect):
-    """Create a new daughter node below the pointed node."""
+    """Create a daughter or a separate tree connected by inverse LINK."""
 
     FUNCTOR = "make"
 

@@ -25,6 +25,10 @@ class BetaReduce(Effect):
         t1 = d1.get_type()
         f0 = d0.get_formula()
         f1 = d1.get_formula()
+        if tree.semantic_profile:
+            from dylan.action.atomic.semantic_effects import eliminate
+
+            return eliminate(tree)
         if not isinstance(t1, ConstructedType):
             raise RuntimeError(f"beta-reduce: unsuitable functor type {t1}")
         ct1 = t1

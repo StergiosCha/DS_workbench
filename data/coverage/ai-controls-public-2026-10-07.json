@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-07",
+  "public_url": "https://ds-workbench.vercel.app/#ai-controls",
+  "deployment_id": "dpl_75awDHsN99GSe875jqpCESk8JCZG",
+  "deployment_url": "https://ds-workbench-o8ccihoqm-stergios-projects3.vercel.app",
+  "staging_directory": ".ds-workbench/vercel-ai-controls-20261007",
+  "scope": "Visible independent analysis-LLM and Jev controls, request reporting, and model-fallback isolation.",
+  "manifest_sha256": "c5a9c373530b492dd76745969f8e3904040122c989e5bc59ecbbe16cd648f9f2",
+  "changed_files": {
+    "workbench/index.html": {
+      "before": "e40bc6fa45d01813518585321a537e463f544c130c8f5b8a8afaf8e3bca2bd37",
+      "after": "a38bde1c6a20ea43dcafff4d0a6a560244c114602a90727f671492d5b36f6c9c"
+    },
+    "workbench/app.js": {
+      "before": "26554217c1e4f98363f63903415b485b1e517ac929c656c9f913e60cb2686515",
+      "after": "67c6235ffb39f6134e0c2e8feca7a178b13c140e763011ff63181f5cd174e043"
+    },
+    "workbench/styles.css": {
+      "before": "f2aea0f012aaee3f1a798f97e5304075ecdb4f61b885940ed1ab7aafda910f60",
+      "after": "d381aa33d659f8514705223acaf25364a3d0422955145dc66d50b03b4165a6de"
+    },
+    "workbench/openrouter.js": {
+      "before": "2e7badf1d8c52626ca7e6f5783e7391f71c3ebe4be459c21eb78a0cac3a96b86",
+      "after": "651dc7b935fe41ecb5d4db39b409bbbf8cf5312fbf0385ec3ec2629b46217abf"
+    },
+    "src/dylan/lexical_expansion.py": {
+      "before": "20b76a65998717e51961109884f05ae2b7fe4315b3524c2523d42effd700d0b2",
+      "after": "309c0614a2b34db5d5fc86a6a7770fb7c805add4a2bfa3973dde38c4b5bf691d"
+    },
+    "src/dylan/lexical_selection.py": {
+      "before": "bb02a8273adbfa8067b99bfcdad7396e5565c70a1587a664da1f1e29daeec034",
+      "after": "2e6dae061184182963245663f2325b35f0009a9ecfb8befec8d9c92dea086bb2"
+    },
+    "src/dylan/workbench_api.py": {
+      "before": "1c7f39ad83732d9578bf7655252d5bff9269521c707e0bc51c78136a728264e3",
+      "after": "24ada24d8b91c163a207c4bee047056b0ea1aa49c4ae5b091e9bc5547e59d133"
+    },
+    "src/dylan/jev_comparison.py": {
+      "before": "8888de241e5f6fd664d7c03969361288e0057172f090060b20d841a90419cb06",
+      "after": "3445e775e5cc169dc77f3afd830b9a1b4132a3e56697bb3ad9ef5f7a79c83598"
+    },
+    "src/dylan/openrouter_connection.py": {
+      "before": "1c3cb538959e5d9710cadb8257747e87b87b01a43353ca45145d28c477c5c555",
+      "after": "352b10d0d665610303224e875f1c330c7c39ffa9ae7a1b9a8860c42b0e33963c"
+    }
+  },
+  "browser_checks": [
+    "No AI or credential sent on initial parse",
+    "Connecting enables the controls without switching on either model",
+    "Real DS parse: 2026-english-mltt, analysis LLM=False, Jev=False",
+    "Real DS parse: 2026-english-mltt, analysis LLM=True, Jev=False",
+    "Real DS parse: 2026-english-mltt, analysis LLM=True, Jev=True",
+    "Real DS parse: 2026-english-mltt, analysis LLM=False, Jev=True",
+    "Real DS parse: 2026-english-classical, analysis LLM=False, Jev=False",
+    "Real DS parse: 2026-english-classical, analysis LLM=True, Jev=False",
+    "Real DS parse: 2026-english-classical, analysis LLM=True, Jev=True",
+    "Real DS parse: 2026-english-classical, analysis LLM=False, Jev=True",
+    "Fixture counts remain separate and stay attached to their result",
+    "Advanced strategy changes and Turn off all AI stay synchronized",
+    "Greek, dialogue, paragraph and TTR capability changes cannot leave hidden AI on",
+    "Disconnect clears both switches; credentials stay out of state and storage",
+    "Desktop/mobile layout, keyboard control, refresh and console checks passed"
+  ],
+  "method": "Chromium on the public alias; real DS parses of John walks in both native backends, fixture model connection. Displayed nonzero request counts use response fixtures. No live inference or accuracy benchmark.",
+  "live_html_matches_staged": true
+}

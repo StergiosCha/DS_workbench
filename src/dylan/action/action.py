@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
+from dylan.action.execution_trace import execute_effect
+
 if TYPE_CHECKING:
     from dylan.action.atomic.effect import Effect
     from dylan.context.context import Context
@@ -37,13 +39,13 @@ class Action:
         """Execute this action against *tree* and *context*."""
         if self.effect is None:
             return None
-        return self.effect.exec(tree, context)
+        return execute_effect(self.effect, tree, context)
 
     def exec_tuple_context(self, tree: Tree, context: ParserTuple | None = None) -> Tree | None:
         """Apply the wrapped effect via :meth:`Effect.exec_tuple_context` (Java ``execTupleContext``)."""
         if self.effect is None:
             return None
-        return self.effect.exec_tuple_context(tree, context)
+        return execute_effect(self.effect, tree, context, tuple_context=True)
 
     def instantiate(self) -> Action:
         """Return an instantiated copy of this action."""

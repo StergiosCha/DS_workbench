@@ -34,9 +34,10 @@ def run_latex_pipeline(
     do_compile: bool,
     image_path: Path | None,
     pdf_out: Path | None,
+    include_dsttr: bool = True,
 ) -> LaTeXBuildResult:
     """Build full document from *body*, optionally write/compile and rasterise to PNG."""
-    full_tex = build_standalone_document(body, title=title)
+    full_tex = build_standalone_document(body, title=title, include_dsttr=include_dsttr)
     tex_path: Path | None = None
     pdf_path: Path | None = None
     png_path: Path | None = None

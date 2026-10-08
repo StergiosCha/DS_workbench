@@ -31,6 +31,10 @@ class TTRPath(Formula, ABC):
     def __post_init__(self) -> None:
         super().__init__()
 
+    def __hash__(self) -> int:
+        """String-based hash consistent with dataclass ``__eq__``; concrete paths override."""
+        return hash((type(self), str(self)))
+
     def _walk_to_container(self, domain: "TTRRecordType") -> tuple["TTRRecordType", TTRLabel] | None:
         """Walk all but the last label, returning the containing record and final label."""
         from dylan.formula.ttr_record_type import TTRRecordType

@@ -1,0 +1,1622 @@
+{
+  "2026-catalan-mltt:all": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-catalan-mltt:cluster": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-catalan-mltt:ethical_dative": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-catalan-mltt:pcc": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-catalan-mltt:placement": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-classical:all": {
+    "rows": 88,
+    "vocabulary": [
+      23,
+      88
+    ],
+    "agreement": [
+      23,
+      23
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-classical:cluster": {
+    "rows": 30,
+    "vocabulary": [
+      4,
+      30
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-classical:dp_case": {
+    "rows": 15,
+    "vocabulary": [
+      0,
+      15
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-classical:imperative": {
+    "rows": 5,
+    "vocabulary": [
+      4,
+      5
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-classical:na": {
+    "rows": 9,
+    "vocabulary": [
+      4,
+      9
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-classical:negation": {
+    "rows": 17,
+    "vocabulary": [
+      9,
+      17
+    ],
+    "agreement": [
+      9,
+      9
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-classical:pcc": {
+    "rows": 4,
+    "vocabulary": [
+      0,
+      4
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-classical:placement": {
+    "rows": 88,
+    "vocabulary": [
+      23,
+      88
+    ],
+    "agreement": [
+      23,
+      23
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-mltt:all": {
+    "rows": 88,
+    "vocabulary": [
+      23,
+      88
+    ],
+    "agreement": [
+      23,
+      23
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-mltt:cluster": {
+    "rows": 30,
+    "vocabulary": [
+      4,
+      30
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-mltt:dp_case": {
+    "rows": 15,
+    "vocabulary": [
+      0,
+      15
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-mltt:imperative": {
+    "rows": 5,
+    "vocabulary": [
+      4,
+      5
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-mltt:na": {
+    "rows": 9,
+    "vocabulary": [
+      4,
+      9
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-mltt:negation": {
+    "rows": 17,
+    "vocabulary": [
+      9,
+      17
+    ],
+    "agreement": [
+      9,
+      9
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-mltt:pcc": {
+    "rows": 4,
+    "vocabulary": [
+      0,
+      4
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-cypriot-mltt:placement": {
+    "rows": 88,
+    "vocabulary": [
+      23,
+      88
+    ],
+    "agreement": [
+      23,
+      23
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-french-mltt:all": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-french-mltt:pcc": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-french-mltt:placement": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-classical:all": {
+    "rows": 25,
+    "vocabulary": [
+      15,
+      25
+    ],
+    "agreement": [
+      15,
+      15
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-classical:cluster": {
+    "rows": 10,
+    "vocabulary": [
+      9,
+      10
+    ],
+    "agreement": [
+      9,
+      9
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-classical:gerund": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-classical:imperative": {
+    "rows": 11,
+    "vocabulary": [
+      8,
+      11
+    ],
+    "agreement": [
+      8,
+      8
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-classical:na": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-classical:pcc": {
+    "rows": 4,
+    "vocabulary": [
+      3,
+      4
+    ],
+    "agreement": [
+      3,
+      3
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-classical:placement": {
+    "rows": 25,
+    "vocabulary": [
+      15,
+      25
+    ],
+    "agreement": [
+      15,
+      15
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-mltt:all": {
+    "rows": 25,
+    "vocabulary": [
+      15,
+      25
+    ],
+    "agreement": [
+      15,
+      15
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-mltt:cluster": {
+    "rows": 10,
+    "vocabulary": [
+      9,
+      10
+    ],
+    "agreement": [
+      9,
+      9
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-mltt:gerund": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-mltt:imperative": {
+    "rows": 11,
+    "vocabulary": [
+      8,
+      11
+    ],
+    "agreement": [
+      8,
+      8
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-mltt:na": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-mltt:pcc": {
+    "rows": 4,
+    "vocabulary": [
+      3,
+      4
+    ],
+    "agreement": [
+      3,
+      3
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-grico-mltt:placement": {
+    "rows": 25,
+    "vocabulary": [
+      15,
+      25
+    ],
+    "agreement": [
+      15,
+      15
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-italian-mltt:all": {
+    "rows": 4,
+    "vocabulary": [
+      0,
+      4
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-italian-mltt:cluster": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-italian-mltt:negation": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-italian-mltt:pcc": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-italian-mltt:placement": {
+    "rows": 4,
+    "vocabulary": [
+      0,
+      4
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-koine-mltt:all": {
+    "rows": 6,
+    "vocabulary": [
+      0,
+      6
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-koine-mltt:diachronic": {
+    "rows": 6,
+    "vocabulary": [
+      0,
+      6
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-koine-mltt:placement": {
+    "rows": 6,
+    "vocabulary": [
+      0,
+      6
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-latin-mltt:all": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-latin-mltt:placement": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-mainland-mltt:all": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-mainland-mltt:diachronic": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-mainland-mltt:imperative": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-mainland-mltt:placement": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-pontic-classical:all": {
+    "rows": 34,
+    "vocabulary": [
+      17,
+      34
+    ],
+    "agreement": [
+      17,
+      17
+    ],
+    "semantic": [
+      4,
+      4
+    ]
+  },
+  "2026-pontic-classical:cluster": {
+    "rows": 8,
+    "vocabulary": [
+      5,
+      8
+    ],
+    "agreement": [
+      5,
+      5
+    ],
+    "semantic": [
+      4,
+      4
+    ]
+  },
+  "2026-pontic-classical:dp_case": {
+    "rows": 3,
+    "vocabulary": [
+      0,
+      3
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-pontic-classical:na": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-pontic-classical:negation": {
+    "rows": 4,
+    "vocabulary": [
+      4,
+      4
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-pontic-classical:pcc": {
+    "rows": 4,
+    "vocabulary": [
+      4,
+      4
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      4,
+      4
+    ]
+  },
+  "2026-pontic-classical:placement": {
+    "rows": 34,
+    "vocabulary": [
+      17,
+      34
+    ],
+    "agreement": [
+      17,
+      17
+    ],
+    "semantic": [
+      4,
+      4
+    ]
+  },
+  "2026-pontic-mltt:all": {
+    "rows": 34,
+    "vocabulary": [
+      17,
+      34
+    ],
+    "agreement": [
+      17,
+      17
+    ],
+    "semantic": [
+      4,
+      4
+    ]
+  },
+  "2026-pontic-mltt:cluster": {
+    "rows": 8,
+    "vocabulary": [
+      5,
+      8
+    ],
+    "agreement": [
+      5,
+      5
+    ],
+    "semantic": [
+      4,
+      4
+    ]
+  },
+  "2026-pontic-mltt:dp_case": {
+    "rows": 3,
+    "vocabulary": [
+      0,
+      3
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-pontic-mltt:na": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-pontic-mltt:negation": {
+    "rows": 4,
+    "vocabulary": [
+      4,
+      4
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-pontic-mltt:pcc": {
+    "rows": 4,
+    "vocabulary": [
+      4,
+      4
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      4,
+      4
+    ]
+  },
+  "2026-pontic-mltt:placement": {
+    "rows": 34,
+    "vocabulary": [
+      17,
+      34
+    ],
+    "agreement": [
+      17,
+      17
+    ],
+    "semantic": [
+      4,
+      4
+    ]
+  },
+  "2026-romeyka-mltt:all": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-romeyka-mltt:cluster": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-romeyka-mltt:pcc": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-romeyka-mltt:placement": {
+    "rows": 2,
+    "vocabulary": [
+      0,
+      2
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:all": {
+    "rows": 100,
+    "vocabulary": [
+      30,
+      94
+    ],
+    "agreement": [
+      30,
+      30
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-smg-classical:climbing": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:clld": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:cluster": {
+    "rows": 15,
+    "vocabulary": [
+      7,
+      15
+    ],
+    "agreement": [
+      7,
+      7
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:doubling": {
+    "rows": 3,
+    "vocabulary": [
+      0,
+      3
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:dp_case": {
+    "rows": 26,
+    "vocabulary": [
+      3,
+      26
+    ],
+    "agreement": [
+      3,
+      3
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-smg-classical:ethical_dative": {
+    "rows": 3,
+    "vocabulary": [
+      0,
+      3
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:gerund": {
+    "rows": 2,
+    "vocabulary": [
+      2,
+      2
+    ],
+    "agreement": [
+      2,
+      2
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:htld": {
+    "rows": 2,
+    "vocabulary": [
+      1,
+      2
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:imperative": {
+    "rows": 10,
+    "vocabulary": [
+      8,
+      10
+    ],
+    "agreement": [
+      8,
+      8
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:na": {
+    "rows": 6,
+    "vocabulary": [
+      4,
+      6
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:negation": {
+    "rows": 6,
+    "vocabulary": [
+      4,
+      6
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:pcc": {
+    "rows": 3,
+    "vocabulary": [
+      0,
+      3
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:placement": {
+    "rows": 92,
+    "vocabulary": [
+      27,
+      86
+    ],
+    "agreement": [
+      27,
+      27
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:relative": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-classical:svo": {
+    "rows": 1,
+    "vocabulary": [
+      1,
+      1
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      1,
+      1
+    ]
+  },
+  "2026-smg-classical:vso": {
+    "rows": 1,
+    "vocabulary": [
+      1,
+      1
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      1,
+      1
+    ]
+  },
+  "2026-smg-mltt:all": {
+    "rows": 100,
+    "vocabulary": [
+      30,
+      94
+    ],
+    "agreement": [
+      30,
+      30
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-smg-mltt:climbing": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:clld": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:cluster": {
+    "rows": 15,
+    "vocabulary": [
+      7,
+      15
+    ],
+    "agreement": [
+      7,
+      7
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:doubling": {
+    "rows": 3,
+    "vocabulary": [
+      0,
+      3
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:dp_case": {
+    "rows": 26,
+    "vocabulary": [
+      3,
+      26
+    ],
+    "agreement": [
+      3,
+      3
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-smg-mltt:ethical_dative": {
+    "rows": 3,
+    "vocabulary": [
+      0,
+      3
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:gerund": {
+    "rows": 2,
+    "vocabulary": [
+      2,
+      2
+    ],
+    "agreement": [
+      2,
+      2
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:htld": {
+    "rows": 2,
+    "vocabulary": [
+      1,
+      2
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:imperative": {
+    "rows": 10,
+    "vocabulary": [
+      8,
+      10
+    ],
+    "agreement": [
+      8,
+      8
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:na": {
+    "rows": 6,
+    "vocabulary": [
+      4,
+      6
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:negation": {
+    "rows": 6,
+    "vocabulary": [
+      4,
+      6
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:pcc": {
+    "rows": 3,
+    "vocabulary": [
+      0,
+      3
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:placement": {
+    "rows": 92,
+    "vocabulary": [
+      27,
+      86
+    ],
+    "agreement": [
+      27,
+      27
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:relative": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-smg-mltt:svo": {
+    "rows": 1,
+    "vocabulary": [
+      1,
+      1
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      1,
+      1
+    ]
+  },
+  "2026-smg-mltt:vso": {
+    "rows": 1,
+    "vocabulary": [
+      1,
+      1
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      1,
+      1
+    ]
+  },
+  "2026-spanish-mltt:all": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-spanish-mltt:cluster": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-spanish-mltt:pcc": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-spanish-mltt:placement": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      1
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  }
+}

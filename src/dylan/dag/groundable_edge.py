@@ -8,6 +8,8 @@ from dylan.dag.dag_edge import DAGEdge
 class GroundableEdge(DAGEdge):
     """Computational actions + lexical action + word."""
 
+    prior: float | None = None
+
     def traverse(self, dag: object) -> None:
         """Move the DAG cursor from source to destination."""
         from dylan.dag.word_level_context_dag import WordLevelContextDAG
@@ -30,6 +32,10 @@ class GroundableEdge(DAGEdge):
 
 class CompletionEdge(GroundableEdge):
     """Edge created by parser completion actions."""
+
+
+class AxiomEdge(GroundableEdge):
+    """An explicit new-tree boundary retaining the preceding dialogue DAG."""
 
 
 class BacktrackingEdge(GroundableEdge):

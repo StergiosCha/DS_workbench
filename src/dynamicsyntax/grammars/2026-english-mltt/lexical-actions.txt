@@ -1,0 +1,964 @@
+// First-person nominative: interpretation comes from this word's speaker.
+pronoun-speaker(UNUSED)
+IF ?Ty(mltt:object)
+   </\0>?Ty(mltt:Prop)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-speaker
+ELSE abort
+
+// Predicative a/an introduces a nominal property, without an epsilon referent.
+copula(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,arrow(object,Prop))))
+   put(Fo(mltt:lam(A,CN,lam(x,object,predication(A,x)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+   put(?[+PREDICATIVE-ARTICLE])
+ELSE abort
+
+predicative-article(UNUSED)
+IF ?[+PREDICATIVE-ARTICLE]
+   ?Ty(mltt:CN)
+THEN delete(?[+PREDICATIVE-ARTICLE])
+ELSE abort
+
+proper(NAME,SORT)
+IF ?Ty(mltt:object)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:SORT))
+   put(Fo(mltt:NAME))
+ELSE abort
+
+noun(NAME)
+IF ?Ty(mltt:CN)
+   ¬?[+PREDICATIVE-ARTICLE]
+   ¬[+DISTRIBUTIVE-PLURAL]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:CN))
+   put(Fo(mltt:NAME))
+ELSE abort
+
+indef(UNUSED)
+IF ?Ty(mltt:object)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,sigma(x,A,top))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+universal(UNUSED)
+IF ?Ty(mltt:object)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:pi(A,CN,arrow(arrow(A,Prop),Prop))))
+   put(Fo(mltt:lam(A,CN,lam(P,arrow(A,Prop),pi(x,A,P(x))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+intransitive(PRED,SORT)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN put(Ty(mltt:arrow(SORT,Prop)))
+   put(Fo(mltt:lam(x,SORT,PRED(x))))
+ELSE abort
+
+transitive(PRED,SUBJ,OBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(OBJ,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(y,OBJ,lam(x,SUBJ,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+adjective(PRED)
+IF ?Ty(mltt:CN)
+   ¬?[+PREDICATIVE-ARTICLE]
+   ¬[+DISTRIBUTIVE-PLURAL]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,CN)))
+   put(Fo(mltt:lam(A,CN,refine(A,PRED))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+adverb(PRED)
+IF Ty(mltt:Prop)
+   ¬Ex.?x
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+punctuation(UNUSED)
+IF Ty(mltt:Prop)
+   complete
+THEN do_nothing
+ELSE abort
+
+
+clausal(PRED,SUBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(Content,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(c,Content,lam(x,SUBJ,PRED(x,c)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:Prop))
+   put([+CLAUSE])
+   put(?[+COMP])
+   put(?[+CLOSED])
+ELSE abort
+
+complementizer(UNUSED)
+IF ?[+COMP]
+   ?Ty(mltt:Prop)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN delete(?[+COMP])
+   put([+OVERT-COMP])
+ELSE abort
+
+// A second lexical action offers attachment inside a completed complement.
+adverb-embedded(PRED)
+IF Ty(mltt:Prop)
+   ¬Ex.?x
+   <Y>([+CLAUSE] & [+CLOSED])
+THEN go(Y)
+   go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+
+// Do-support records a requirement for a bare predicate, without tense semantics.
+aux-do(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬[+DO]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+DO])
+   put(?[+BARE-VERB])
+ELSE abort
+
+negative(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ?[+BARE-VERB]
+   ¬[+MODAL]
+   ¬</\1>?[+NEG]
+THEN go(/\1)
+   put(?[+NEG])
+   go(\/1)
+ELSE abort
+
+
+intransitive-base(PRED,SORT)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   put(Ty(mltt:arrow(SORT,Prop)))
+   put(Fo(mltt:lam(x,SORT,PRED(x))))
+ELSE abort
+
+transitive-base(PRED,SUBJ,OBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(OBJ,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(y,OBJ,lam(x,SUBJ,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+clausal-base(PRED,SUBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(Content,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(c,Content,lam(x,SUBJ,PRED(x,c)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:Prop))
+   put([+CLAUSE])
+   put(?[+COMP])
+   put(?[+CLOSED])
+ELSE abort
+
+
+// Restrictive LINK below the determiner; the relativizer supplies a head copy.
+relativizer(UNUSED)
+IF Ty(mltt:CN)
+   ¬Ex.?x
+THEN semantic-relative
+ELSE abort
+
+
+// Give-family frames: semantic argument order is giver, recipient, theme.
+ditransitive(PRED,AGENT,RECIPIENT,THEME)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(mltt:arrow(object,arrow(object,Prop))))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(THEME,arrow(RECIPIENT,arrow(AGENT,Prop)))))
+   put(Fo(mltt:lam(z,THEME,lam(y,RECIPIENT,lam(x,AGENT,PRED(x,y,z))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   go(/\0)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+ditransitive-base(PRED,AGENT,RECIPIENT,THEME)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(?Ty(mltt:arrow(object,arrow(object,Prop))))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(THEME,arrow(RECIPIENT,arrow(AGENT,Prop)))))
+   put(Fo(mltt:lam(z,THEME,lam(y,RECIPIENT,lam(x,AGENT,PRED(x,y,z))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   go(/\0)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+dative-to(PRED,AGENT,RECIPIENT,THEME)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(mltt:arrow(object,arrow(object,Prop))))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(RECIPIENT,arrow(THEME,arrow(AGENT,Prop)))))
+   put(Fo(mltt:lam(z,RECIPIENT,lam(y,THEME,lam(x,AGENT,PRED(x,z,y))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put(?[+TO-DATIVE])
+   go(/\0)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+dative-to-base(PRED,AGENT,RECIPIENT,THEME)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(?Ty(mltt:arrow(object,arrow(object,Prop))))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(RECIPIENT,arrow(THEME,arrow(AGENT,Prop)))))
+   put(Fo(mltt:lam(z,RECIPIENT,lam(y,THEME,lam(x,AGENT,PRED(x,z,y))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put(?[+TO-DATIVE])
+   go(/\0)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+to-recipient(UNUSED)
+IF ?Ty(mltt:object)
+   ?[+TO-DATIVE]
+   ¬Ex.Fo(x)
+THEN delete(?[+TO-DATIVE])
+   put([+TO-DATIVE])
+ELSE abort
+
+// Postverbal PP modifiers: their DP complements are built below the LINK tree.
+pp-modifier(PRED)
+IF Ty(mltt:Prop)
+   ¬Ex.?x
+THEN go(\/1)
+   semantic-pp(PRED)
+ELSE abort
+
+pp-modifier-embedded(PRED)
+IF Ty(mltt:Prop)
+   ¬Ex.?x
+   <Y>([+CLAUSE] & [+CLOSED])
+THEN go(Y)
+   go(\/1)
+   semantic-pp(PRED)
+ELSE abort
+
+// Selected on-complements remain incomplete until their preposition and DP arrive.
+prepositional-on(PRED,SUBJ,OBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(OBJ,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(y,OBJ,lam(x,SUBJ,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put(?[+ON-COMPLEMENT])
+ELSE abort
+
+on-complement(UNUSED)
+IF ?Ty(mltt:object)
+   ?[+ON-COMPLEMENT]
+   ¬Ex.Fo(x)
+THEN delete(?[+ON-COMPLEMENT])
+   put([+ON-COMPLEMENT])
+ELSE abort
+
+prepositional-on-base(PRED,SUBJ,OBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(OBJ,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(y,OBJ,lam(x,SUBJ,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put(?[+ON-COMPLEMENT])
+ELSE abort
+
+// Everyday construction extensions. Generated by scripts/build_everyday_extensions.py.
+
+definite(UNUSED)
+IF ?Ty(mltt:object)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,definite(A))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+copula-adjective(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+   ¬[+COPULA]
+THEN put([+COPULA])
+ELSE abort
+
+degree(PRED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(arrow(object,Prop),arrow(object,Prop))))
+   put(Fo(mltt:lam(P,arrow(object,Prop),lam(x,object,PRED(P(x))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:arrow(object,Prop)))
+   put([+COPULA])
+ELSE abort
+
+predicative-adjective(PRED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:arrow(object,Prop)))
+   put(Fo(mltt:lam(x,object,PRED(x))))
+ELSE abort
+
+copula-negative-nominal(UNUSED)
+IF ?Ty(mltt:CN)
+   ?[+PREDICATIVE-ARTICLE]
+   ¬</\0></\1>?[+NEG]
+THEN go(/\0)
+   go(/\1)
+   put(?[+NEG])
+   go(\/1)
+   go(\/0)
+ELSE abort
+
+copula-negative-adjective(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   </\1>?Ty(mltt:Prop)
+   ¬</\1>?[+NEG]
+THEN go(/\1)
+   put(?[+NEG])
+   go(\/1)
+ELSE abort
+
+pronoun-subject(REF,SORT)
+IF ?Ty(mltt:object)
+   </\0>?Ty(mltt:Prop)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-pronoun(REF,SORT)
+ELSE abort
+
+pronoun-object(REF,SORT)
+IF ?Ty(mltt:object)
+   ¬</\0>?Ty(mltt:Prop)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-pronoun(REF,SORT)
+ELSE abort
+
+pronoun-any(REF,SORT)
+IF ?Ty(mltt:object)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-pronoun(REF,SORT)
+ELSE abort
+
+all-plural(UNUSED)
+IF ?Ty(mltt:object)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:pi(A,CN,arrow(arrow(A,Prop),Prop))))
+   put(Fo(mltt:lam(A,CN,lam(P,arrow(A,Prop),pi(x,A,P(x))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+   put([+DISTRIBUTIVE-PLURAL])
+ELSE abort
+
+all-contextual(UNUSED)
+IF ?Ty(mltt:object)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:pi(A,CN,arrow(arrow(A,Prop),Prop))))
+   put(Fo(mltt:lam(A,CN,lam(P,arrow(A,Prop),pi(x,A,P(x))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+   put([+DISTRIBUTIVE-PLURAL])
+   put([+CONTEXT-ALL])
+   put(?[+ALL-ARTICLE])
+ELSE abort
+
+all-article(UNUSED)
+IF ?[+ALL-ARTICLE]
+   [+DISTRIBUTIVE-PLURAL]
+THEN delete(?[+ALL-ARTICLE])
+ELSE abort
+
+plural-noun(NAME)
+IF ?Ty(mltt:CN)
+   ¬?[+PREDICATIVE-ARTICLE]
+   [+DISTRIBUTIVE-PLURAL]
+   ¬[+CONTEXT-ALL]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:CN))
+   put(Fo(mltt:NAME))
+ELSE abort
+
+contextual-plural-noun(NAME)
+IF ?Ty(mltt:CN)
+   ¬?[+PREDICATIVE-ARTICLE]
+   [+DISTRIBUTIVE-PLURAL]
+   [+CONTEXT-ALL]
+   ¬?[+ALL-ARTICLE]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:CN))
+   put(Fo(mltt:sigma(x,NAME,in_context(x))))
+ELSE abort
+
+plural-adjective(PRED)
+IF ?Ty(mltt:CN)
+   ¬?[+PREDICATIVE-ARTICLE]
+   [+DISTRIBUTIVE-PLURAL]
+   ¬[+CONTEXT-ALL]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,CN)))
+   put(Fo(mltt:lam(A,CN,refine(A,PRED))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+   put([+DISTRIBUTIVE-PLURAL])
+ELSE abort
+
+contextual-plural-adjective(PRED)
+IF ?Ty(mltt:CN)
+   ¬?[+PREDICATIVE-ARTICLE]
+   [+DISTRIBUTIVE-PLURAL]
+   [+CONTEXT-ALL]
+   ¬?[+ALL-ARTICLE]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,CN)))
+   put(Fo(mltt:lam(A,CN,refine(A,PRED))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+   put([+DISTRIBUTIVE-PLURAL])
+   put([+CONTEXT-ALL])
+ELSE abort
+
+
+copular-location(PRED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(object,arrow(object,Prop))))
+   put(Fo(mltt:lam(y,object,lam(x,object,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+locative(PRED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:arrow(object,Prop)))
+   put(Fo(mltt:lam(x,object,PRED(x))))
+ELSE abort
+
+clause-and(UNUSED)
+IF Ty(mltt:Prop)
+   complete
+THEN semantic-coordinate
+ELSE abort
+
+clause-comma(UNUSED)
+IF Ty(mltt:Prop)
+   complete
+THEN do_nothing
+ELSE abort
+
+vp-and(UNUSED)
+IF Ty(mltt:Prop)
+   complete
+THEN go(\/1)
+   semantic-vp-coordinate
+ELSE abort
+
+modal-possible(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-POSSIBLE])
+   go(\/1)
+ELSE abort
+
+modal-permitted(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-PERMITTED])
+   go(\/1)
+ELSE abort
+
+modal-necessary(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-NECESSARY])
+   go(\/1)
+ELSE abort
+
+modal-obligatory(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-OBLIGATORY])
+   go(\/1)
+ELSE abort
+
+modal-future(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-FUTURE])
+   go(\/1)
+ELSE abort
+
+modal-conditional(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-CONDITIONAL])
+   go(\/1)
+ELSE abort
+
+
+postverbal-pp(PRED)
+IF Ty(mltt:Prop)
+   complete
+THEN go(\/1)
+   semantic-pp(PRED)
+ELSE abort
+
+nominal-simile(UNUSED)
+IF Ty(mltt:Prop)
+   complete
+THEN go(\/1)
+   semantic-comparison(manner_like)
+   put(?[+COMPARISON-ARTICLE])
+ELSE abort
+
+simile-article(UNUSED)
+IF ?Ty(mltt:CN)
+   [+COMPARISON]
+   ?[+COMPARISON-ARTICLE]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN delete(?[+COMPARISON-ARTICLE])
+ELSE abort
+
+prepositional-to(PRED,SUBJ,OBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(OBJ,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(y,OBJ,lam(x,SUBJ,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put(?[+TO-GOAL])
+ELSE abort
+
+prepositional-to-base(PRED,SUBJ,OBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(OBJ,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(y,OBJ,lam(x,SUBJ,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put(?[+TO-GOAL])
+ELSE abort
+
+to-goal-complement(UNUSED)
+IF ?Ty(mltt:object)
+   ?[+TO-GOAL]
+   ¬Ex.Fo(x)
+THEN delete(?[+TO-GOAL])
+   put([+TO-GOAL])
+ELSE abort
+
+prepositional-into(PRED,SUBJ,OBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(OBJ,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(y,OBJ,lam(x,SUBJ,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put(?[+INTO-GOAL])
+ELSE abort
+
+prepositional-into-base(PRED,SUBJ,OBJ)
+IF ?Ty(mltt:arrow(object,Prop))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(OBJ,arrow(SUBJ,Prop))))
+   put(Fo(mltt:lam(y,OBJ,lam(x,SUBJ,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put(?[+INTO-GOAL])
+ELSE abort
+
+into-goal-complement(UNUSED)
+IF ?Ty(mltt:object)
+   ?[+INTO-GOAL]
+   ¬Ex.Fo(x)
+THEN delete(?[+INTO-GOAL])
+   put([+INTO-GOAL])
+ELSE abort
+
+
+// Polar questions preserve their propositional content with an explicit act label.
+polar-do(UNUSED)
+IF Tn(0)
+   ?Ty(mltt:Prop)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+COMP]
+THEN put([+POLAR-QUESTION])
+   make(\/1)
+   go(\/1)
+   put(?Ty(mltt:arrow(object,Prop)))
+   put([+DO])
+   put(?[+BARE-VERB])
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+question-boundary(UNUSED)
+IF Tn(0)
+   Ty(mltt:Prop)
+   [+POLAR-QUESTION]
+   ¬[+QUESTION-PUNCTUATED]
+   complete
+THEN put([+QUESTION-PUNCTUATED])
+ELSE abort
+
+local-reflexive(ROLE)
+IF ?Ty(mltt:object)
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-reflexive(ROLE)
+ELSE abort
+
+polarity-answer(POLARITY)
+IF Tn(0)
+   ?Ty(mltt:Prop)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-answer(POLARITY)
+ELSE abort
+
+// Finite causal clauses. Generated by scripts/build_causal_extensions.py.
+
+causal-post(UNUSED)
+IF Ty(mltt:Prop)
+THEN causal-post
+ELSE abort
+
+causal-front(UNUSED)
+IF ?Ty(mltt:Prop)
+THEN causal-front
+ELSE abort
+
+causal-boundary(UNUSED)
+IF Tn(a)
+THEN causal-boundary
+ELSE abort
+
+causal-post-content(UNUSED)
+IF Ty(mltt:Content)
+   [+CLAUSE]
+THEN causal-post
+ELSE abort
+
+clause-post(REL)
+IF Ty(mltt:Prop)
+THEN causal-post(REL)
+ELSE abort
+
+clause-front(REL)
+IF ?Ty(mltt:Prop)
+THEN causal-front(REL)
+ELSE abort
+
+clause-post-content(REL)
+IF Ty(mltt:Content)
+   [+CLAUSE]
+THEN causal-post(REL)
+ELSE abort
+
+temporal-adverb(PRED)
+IF Ty(mltt:Prop)
+   ¬Ex.?x
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+temporal-embedded(PRED)
+IF Ty(mltt:Prop)
+   ¬Ex.?x
+   <Y>([+CLAUSE] & [+CLOSED])
+THEN go(Y)
+   go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+temporal-local-content(PRED)
+IF [+CLAUSE]
+   [+CLOSED]
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+// Nonrestrictive relatives. Generated by scripts/build_nonrestrictive_extensions.py.
+
+nonrestrictive-open(UNUSED)
+IF Tn(a)
+THEN nonrestrictive-open
+ELSE abort
+
+nonrestrictive-pronoun(UNUSED)
+IF Tn(a)
+THEN nonrestrictive-pronoun
+ELSE abort
+
+nonrestrictive-close(UNUSED)
+IF Tn(a)
+THEN nonrestrictive-close
+ELSE abort
+
+nonrestrictive-end(UNUSED)
+IF Tn(a)
+THEN nonrestrictive-end
+ELSE abort
+
+nonrestrictive-adverb(PRED)
+IF Ty(mltt:Prop)
+   (?[+APPOS-CLOSED] || ?[+APPOS-EVAL])
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort

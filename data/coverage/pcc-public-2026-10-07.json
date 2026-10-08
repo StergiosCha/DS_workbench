@@ -1,0 +1,181 @@
+{
+  "date": "2026-10-07",
+  "public_url": "https://ds-workbench.vercel.app/",
+  "deployment_id": "dpl_3Y1wYaPPk27C9syVhDyhZca6Zt8A",
+  "deployment_url": "https://ds-workbench-l95rksktb-stergios-projects3.vercel.app",
+  "staging_directory": ".ds-workbench/vercel-pcc-20261007",
+  "base_deployment_id": "dpl_75awDHsN99GSe875jqpCESk8JCZG",
+  "scope": "Restore failed conditional effects before metavariable backtracking; identify genitive/acc12 clitic-reading PCC failures; stop lexical-model retries after that diagnosis.",
+  "manifest_sha256": "e16be08aebba731a465371287aaa304acb3d6546de535201d1821488cd48f2e4",
+  "changed_files": {
+    "src/dylan/greek_workbench.py": {
+      "before": "0cc6e3b88dc62a332f17ddb5cb2cf76d2e4c8e890d9d47eb3fc10920ec036575",
+      "after": "f211355ff0b02d0c3e009b67be130f661c2bb808569721c1ca5813ff6d6f5f1e"
+    },
+    "src/dylan/assisted_parsing.py": {
+      "before": "4d7272b1095a4c0be7a3cbe76576db4afad7b53f76482864f6ff43fae6f12d6e",
+      "after": "f02479cdbf82e54ec7483df1f3b995b6b0398dda803c978f29454d4da4416d8d"
+    },
+    "src/dylan/tree/tree.py": {
+      "before": "40c0cff13e5bf3c37444c952d80cdd6e7c5634f1294508562e683fadaf9dccbd",
+      "after": "02afcde6448980424c413cfa421d2688ab7b3f08df3e3f4461db91dbfe3d0e34"
+    },
+    "src/dylan/action/atomic/if_then_else.py": {
+      "before": "eee0e7f18ee87b2043338f83979ce156a6702cc934932e65a7f62cc2a5de422a",
+      "after": "3da1d86d28c970d52df4cd9d313f32e7a4eef8cba1f1bc83733d85d5a1c1368a"
+    },
+    "workbench/app.js": {
+      "before": "67c6235ffb39f6134e0c2e8feca7a178b13c140e763011ff63181f5cd174e043",
+      "after": "12eff4729b77c95f507c1545c87adcf6e1d23f29d28b30e62c7e44ce48401053"
+    }
+  },
+  "regressions": {
+    "passed": 1888,
+    "skipped": 4,
+    "warnings": 2,
+    "seconds": 241.76,
+    "command": ".venv/bin/python -m pytest -q"
+  },
+  "browser_checks": [
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "του με έδωσε",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "του με έδωσε.",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "της με έδωσε",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "του σε έδωσε",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "του το έδωσε",
+      "complete": true,
+      "assisted": false,
+      "failure_kind": null
+    },
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "της τον έδωσε",
+      "complete": true,
+      "assisted": false,
+      "failure_kind": null
+    },
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "με αγαπά",
+      "complete": true,
+      "assisted": false,
+      "failure_kind": null
+    },
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "του με έδωσε",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "του με έδωσε",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "του με έδωσε.",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "της με έδωσε",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "του σε έδωσε",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "του το έδωσε",
+      "complete": true,
+      "assisted": false,
+      "failure_kind": null
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "της τον έδωσε",
+      "complete": true,
+      "assisted": false,
+      "failure_kind": null
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "με αγαπά",
+      "complete": true,
+      "assisted": false,
+      "failure_kind": null
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "του με έδωσε",
+      "complete": false,
+      "assisted": false,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "text": "του με έδωσε",
+      "complete": false,
+      "assisted": true,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "grammar": "2026-smg-mltt",
+      "text": "του με έδωσε",
+      "complete": false,
+      "assisted": true,
+      "failure_kind": "pcc_violation"
+    },
+    {
+      "paragraph": "failed PCC sentence retained; valid following sentence completed"
+    }
+  ],
+  "additional_browser_checks": [
+    "Explicit PCC explanation in both backends",
+    "JSON exports retain PCC failure",
+    "No nested PP node in displayed word states",
+    "Valid controls have no outstanding requirements or unfixed nodes",
+    "Assisted exact repro makes no model requests",
+    "No credential in state or storage",
+    "Mobile layout has no horizontal overflow",
+    "No browser console errors"
+  ],
+  "method": "Chromium against the public alias, real DS API. Model connection is a fixture; no model inference or real credentials. Both native backends; bad clusters with and without punctuation, valid controls, exports, LLM permission and a paragraph retaining a failed sentence."
+}

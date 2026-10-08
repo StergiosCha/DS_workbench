@@ -39,3 +39,7 @@ class OpaqueTTRSpec(TTRFormula):
 
     def __str__(self) -> str:
         return self.source
+
+    def __hash__(self) -> int:
+        """Hash by the raw source string (the only dataclass field)."""
+        return hash((OpaqueTTRSpec, self.source))

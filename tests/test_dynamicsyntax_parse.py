@@ -227,11 +227,19 @@ def test_to_latex_incremental_with_trace() -> None:
 
 
 def test_compile_tex_smoke_if_latexmk_available(tmp_path: Path) -> None:
-    """When ``latexmk`` is on PATH, smoke-compile semantics to PDF."""
+    """With the optional TeX toolchain installed, compile semantics to PDF."""
     import shutil
+    import subprocess
 
     if shutil.which("latexmk") is None:
         pytest.skip("latexmk not available")
+    if shutil.which("kpsewhich") is None:
+        pytest.skip("kpsewhich not available to locate optional TeX packages")
+    for package in ("pst-tree", "pstricks", "epic", "ecltree", "txfonts", "rotating"):
+        found = subprocess.run(["kpsewhich", f"{package}.sty"], capture_output=True,
+                               text=True, check=False)
+        if found.returncode or not found.stdout.strip():
+            pytest.skip(f"Optional TeX dependency {package}.sty not installed")
     p = ds.parse("a man arrives", "ttr")
     tex = tmp_path / "smoke.tex"
     pdf = tmp_path / "smoke.pdf"

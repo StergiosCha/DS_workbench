@@ -5,12 +5,23 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterator
+import unicodedata
 
 from dylan.dag.uttered_word import UtteredWord
 
 DEFAULT_SPEAKER = "Dylan"
 RELEASE_TURN_TOKEN = "<rt>"
 WAIT_TOKEN = "<wait>"
+TERMINAL_PUNCTUATION = (".", "?", "!", ",", ";", ";")
+CONTRACTIONS = {
+    "i'm": ("i", "am"), "you're": ("you", "are"), "we're": ("we", "are"),
+    "they're": ("they", "are"), "don't": ("do", "not"), "doesn't": ("does", "not"),
+    "didn't": ("did", "not"), "isn't": ("is", "not"), "aren't": ("are", "not"),
+    "wasn't": ("was", "not"), "weren't": ("were", "not"), "can't": ("can", "not"),
+    "cannot": ("can", "not"), "couldn't": ("could", "not"), "shouldn't": ("should", "not"),
+    "mustn't": ("must", "not"), "won't": ("will", "not"), "wouldn't": ("would", "not"),
+    "haven't": ("have", "not"), "hasn't": ("has", "not"), "hadn't": ("had", "not"),
+}
 
 
 @dataclass
@@ -86,9 +97,33 @@ class Dialogue:
         return [dialogue] if dialogue.utterances else []
 
 
+def _detach_terminal_punctuation(chunk: str) -> list[str]:
+    """Split trailing terminal punctuation off *chunk* into separate tokens.
+
+    ``"you."`` becomes ``["you", "."]`` and ``"you?!"`` becomes
+    ``["you", "?", "!"]``; a bare punctuation token like ``"."`` and
+    word-internal punctuation like ``"3.5"`` are left untouched.
+    """
+    trailing: list[str] = []
+    while len(chunk) > 1 and chunk[-1] in TERMINAL_PUNCTUATION:
+        trailing.append(chunk[-1])
+        chunk = chunk[:-1]
+    trailing.reverse()
+    return [chunk, *trailing]
+
+
 def whitespace_tokenize(text: str) -> list[str]:
-    """Split on whitespace for tests and default parsing."""
-    return [w for w in text.strip().lower().split() if w]
+    """Split on whitespace for tests and default parsing.
+
+    Terminal punctuation (``.``, ``?``, ``!``, ``,``) attached to the end of a
+    word is detached into its own token so lexical actions triggered by
+    punctuation (e.g. the ``.`` assert action) see it as a word.
+    """
+    tokens: list[str] = []
+    for chunk in unicodedata.normalize("NFC", text).strip().lower().split():
+        for token in _detach_terminal_punctuation(chunk):
+            tokens.extend(CONTRACTIONS.get(token.replace("’", "'"), (token,)))
+    return tokens
 
 
 def utterance_from_text(speaker: str, text: str) -> Utterance:

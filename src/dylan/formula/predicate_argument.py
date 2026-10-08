@@ -155,3 +155,7 @@ class PredicateArgumentFormula(Formula):
             return self.predicate.name
         inner = ", ".join(str(a) for a in self.arguments)
         return f"{self.predicate.name}({inner})"
+
+    def __hash__(self) -> int:
+        """String-based hash consistent with dataclass ``__eq__`` (equal fields ⇒ equal str)."""
+        return hash((PredicateArgumentFormula, str(self)))

@@ -1,0 +1,17 @@
+name: Reproducible parser or interface problem
+description: Report a concrete result that others can reproduce.
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Input and settings
+      description: Exact sentence/turns, language, grammar ID, semantic backend, vocabulary mode, search settings, version/commit and OS. Attach exported JSON after checking its contents; never include keys.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Actual and expected result
+      description: Include the intended meaning and any source/context. A failed parse may be a coverage gap; a timeout is inconclusive.
+    validations:
+      required: true

@@ -38,14 +38,60 @@ jobs:
       - name: Install dependencies (uv sync)
         run: |
           set -euo pipefail
-          uv sync --group dev --python ${{ matrix.python-version }} -v
+          uv sync --locked --group dev --extra hosting --python ${{ matrix.python-version }} -v
 
       - name: Ruff lint
         run: |
           set -euo pipefail
           uv run ruff check tests
 
+      - name: Prepare pinned WordNet integration-test data
+        run: |
+          curl --fail --location --retry 3 https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/wordnet.zip --output /tmp/ds-wordnet.zip
+          uv run python scripts/build_wordnet_dictionary.py /tmp/ds-wordnet.zip
+
+      - name: Research library consistency
+        run: uv run python scripts/build_ds_library.py --check
+
       - name: Pytest
+        # Corpus semantic floors include compiled constructive exports.
+        # Existing LaTeX smoke checks still skip when TeX is not installed.
         run: |
           set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y coq
           uv run pytest -q
+
+      - name: Corpus coverage floors
+        run: |
+          set -euo pipefail
+          uv run python scripts/corpus_run.py --all --in-process
+          uv run python scripts/coverage_report.py --check
+          uv run python scripts/sync_grammars.py
+
+  installed-workbench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v4
+        with:
+          version: "0.10.9"
+      - name: Build source distribution and wheel
+        run: uv build
+      - name: Check release contents
+        run: python3 scripts/check_release_contents.py dist
+      - name: Install wheel in a fresh environment
+        shell: bash
+        run: |
+          uv venv /tmp/ds-installed --python 3.12
+          wheel=(dist/*.whl)
+          uv pip install --python /tmp/ds-installed/bin/python "${wheel[0]}[hosting]"
+      - name: Exercise installed app and independent grammar extension
+        shell: bash
+        run: |
+          cd /tmp
+          /tmp/ds-installed/bin/python -I "$GITHUB_WORKSPACE/scripts/check_installed_workbench.py"
+          /tmp/ds-installed/bin/python -I "$GITHUB_WORKSPACE/examples/community/extend_grammar.py" --output /tmp/ds-independent-grammar

@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from dylan.action.execution_trace import EffectStep
+
 from dylan.tree.tree import Tree
 
 
@@ -16,4 +18,4 @@ class ParseActionStep:
     before_tree: Tree
     after_tree: Tree
     edge_id: int | None = None
-
+    operations: tuple[EffectStep, ...] = ()

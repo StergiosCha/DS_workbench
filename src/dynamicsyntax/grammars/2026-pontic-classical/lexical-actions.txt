@@ -1,0 +1,113 @@
+// Hand-maintained Pontic fragment. Locally unfixed clitics and cluster entry (6.62).
+
+*clitic(REF,PERSON)
+IF ?Ty(classical:t)
+   Tn(a)
+   <\/1+>Ty(x)
+   ¬?[+CLUSTER]
+THEN make(\/P)
+   go(\/P)
+   put(?Ex.Tn(x))
+   put(</\0></\1+>Tn(a))
+   put(Ty(classical:e))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+verb-finite(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬?[+CLUSTER]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-transitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-ditransitive(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬?[+CLUSTER]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-ditransitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-imperative(PRED)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NEG]
+   ¬?[+CLUSTER]
+THEN put(Mood(Imp))
+   put([+VERB])
+   build-transitive(PRED,hearer,2,sg)
+ELSE abort
+
+verb-ditransitive-imperative(PRED)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NEG]
+   ¬?[+CLUSTER]
+THEN put(Mood(Imp))
+   put([+VERB])
+   build-ditransitive(PRED,hearer,2,sg)
+ELSE abort
+
+negative(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NEG]
+   ¬?[+CLUSTER]
+THEN put([+NEG])
+ELSE abort
+
+// A single cluster entry predicts its required second surface component.
+// The first component builds both argument decorations; the second only
+// discharges the lexical continuation. Completion is impossible in between.
+*pontic-cluster(REF1,PERSON1,REF2,PERSON2)
+IF ?Ty(classical:t)
+   Tn(a)
+   <\/1+>Ty(x)
+   ¬?[+CLUSTER]
+   <\/1\/1>?Ty(classical:arrow(e,arrow(e,t)))
+THEN go(\/1\/1)
+   make(\/0)
+   go(\/0)
+   IF ¬Ex.Fo(x)
+   THEN put(Ty(classical:e))
+      delete(?Ty(classical:e))
+      put(Fo(U_REF1))
+      put(?Ex.Fo(x))
+      put(Person(PERSON1))
+      put(Case(gen))
+      gofirst(?Ty(classical:t))
+      make(\/P)
+      go(\/P)
+      put(?Ex.Tn(x))
+      put(</\0></\1+>Tn(a))
+      put(Ty(classical:e))
+      put(Fo(U_REF2))
+      put(?Ex.Fo(x))
+      put(Person(PERSON2))
+      put(Case(acc))
+      gofirst(?Ty(classical:t))
+      put(?[+CLUSTER])
+      put(?[+CLUSTER-REF2])
+   ELSE abort
+ELSE abort
+
+*cluster-tail(REF)
+IF ?[+CLUSTER]
+   ?[+CLUSTER-REF]
+THEN delete(?[+CLUSTER-REF])
+   delete(?[+CLUSTER])
+ELSE abort
+
+punctuation(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN do_nothing
+ELSE abort

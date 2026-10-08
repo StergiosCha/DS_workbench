@@ -27,14 +27,16 @@ def test_merge_moves_daughter_and_merges_labels() -> None:
     t = Tree()
     t.pointer = NodeAddress("00")
     t[NodeAddress("00")] = Node(NodeAddress("00"))
-    t[NodeAddress("01*")] = Node(NodeAddress("01*"))
-    t[NodeAddress("01*0")] = Node(NodeAddress("01*0"))
+    t[NodeAddress("0*")] = Node(NodeAddress("0*"))
+    t[NodeAddress("0*0")] = Node(NodeAddress("0*0"))
     t.pointed_node.add_label(TypeLabel(DSType.e))
-    t[NodeAddress("01*")].add_label(TypeLabel(DSType.cn))
-    path = f"{EXIST_LEFT}{ARROW_UP}{ARROW_DOWN}1{ARROW_DOWN}*{EXIST_RIGHT}"
+    t[NodeAddress("0*")].add_label(TypeLabel(DSType.e))
+    path = f"{EXIST_LEFT}{ARROW_UP}{ARROW_DOWN}*{EXIST_RIGHT}"
     m = Merge(Modality.parse(path))
     assert m.exec_tuple_context(t, None) is not None
-    assert NodeAddress("01*") not in t
+    assert NodeAddress("0*") not in t
+    assert NodeAddress("0*0") not in t
+    assert NodeAddress("000") in t
     assert t.pointed_node.get_type_label() is not None
 
 

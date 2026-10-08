@@ -1,4 +1,4 @@
-"""Setuptools entry: discover packages under ``src/`` plus ``dynamicsyntax.resources`` from repo ``resources/``."""
+"""Package discovery and explicit source-to-wheel runtime resource mappings."""
 
 from __future__ import annotations
 
@@ -10,9 +10,10 @@ _ROOT = Path(__file__).resolve().parent
 
 
 def _packages() -> list[str]:
-    """Return every package under ``src/`` plus :mod:`dynamicsyntax.resources`."""
+    """Return engine packages and the explicitly mapped resource packages."""
     names = set(find_packages(where=str(_ROOT / "src")))
-    names.add("dynamicsyntax.resources")
+    names.update({"dynamicsyntax.resources", "dynamicsyntax.workbench_assets",
+                  "dynamicsyntax.workbench_data"})
     return sorted(names)
 
 
@@ -21,5 +22,7 @@ setup(
     package_dir={
         "": "src",
         "dynamicsyntax.resources": "resources",
+        "dynamicsyntax.workbench_assets": "workbench",
+        "dynamicsyntax.workbench_data": "data",
     },
 )

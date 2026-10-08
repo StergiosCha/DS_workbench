@@ -71,10 +71,11 @@ def test_parse_mini_sentence_2026_grammar() -> None:
     assert len(s) > 10
     assert "subj(" in s and "obj(" in s and "man(" in s
     assert "pres(" in s and "pres(head)" not in s.replace(" ", "")
-    # Object and subject both resolve to the NP entity ``x`` (no residual addressee metavar).
+    # Independent NPs retain distinct fields; the object's addressee is manifest.
     compact = s.replace(" ", "")
     assert "==X:" not in compact and "|X==" not in compact
-    assert "subj(e1,x)" in compact and "obj(e1,x)" in compact
+    assert "subj(e0,x0)" in compact and "obj(e0,x1)" in compact
+    assert "x1==you:e" in compact and "man(x0)" in compact
     assert any(
         "Fo(" in str(lab)
         for node in tup.tree.values()

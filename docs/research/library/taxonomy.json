@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "principle": "A work has multiple facets. Claims, source versions and backend-specific implementation evidence are separate records.",
+  "collections": [
+    {"id": "foundations", "label": "Foundations and semantic frameworks", "categories": ["C01", "C18"]},
+    {"id": "meaning", "label": "Reference, predication and modification", "categories": ["C02", "C03", "C06", "C08"]},
+    {"id": "dependencies", "label": "Order, dependencies and information structure", "categories": ["C04", "C05", "C14", "C15"]},
+    {"id": "clitics", "label": "Clitics, PCC and variation", "categories": ["C09", "C16"]},
+    {"id": "clauses", "label": "Clause structure and composition", "categories": ["C07", "C10", "C11"]},
+    {"id": "dialogue", "label": "Ellipsis, dialogue and repair", "categories": ["C12", "C13"]},
+    {"id": "computation", "label": "Parsing, generation and learning", "categories": ["C17"]}
+  ],
+  "mechanisms": {
+    "tree_growth": "Incremental tree growth / Introduction / Prediction",
+    "requirements": "Requirements, completion and type checking",
+    "link": "LINK",
+    "unfixed": "Unfixed nodes / adjunction",
+    "merge": "MERGE",
+    "substitution": "SUBSTITUTION / anaphoric resolution",
+    "case_filters": "Case and address filters",
+    "quantification": "Quantification / scope",
+    "context_reuse": "Context and action reuse",
+    "record_update": "Record-type update / dependency",
+    "situation_structure": "Event / situation structure",
+    "lexical_learning": "Learning lexical action programs",
+    "search": "Search / probabilistic ranking",
+    "generation": "Incremental generation",
+    "repair": "Repair / revision",
+    "underspecification": "Lexical / semantic underspecification"
+  },
+  "frameworks": {
+    "classical": "Classical DS / lambda and term semantics",
+    "ttr": "TTR / record types",
+    "constructive": "Constructive DS / dependent types",
+    "distributional": "Distributional / vector semantics",
+    "general": "Framework-general / comparison",
+    "unclassified": "Semantic framework not yet checked"
+  },
+  "roles": {
+    "foundation": "Foundation / formal machinery",
+    "overview": "Overview / synthesis",
+    "analysis": "Linguistic analysis",
+    "implementation": "Computational study",
+    "proposal": "Proposal / abstract",
+    "background": "Supporting literature"
+  },
+  "ttr_integrations": {
+    "ds_ttr": "DS–TTR: TTR meanings in a DS parser",
+    "ttr_ds": "TTR-DS: DS states and parsing actions represented in TTR"
+  },
+  "review_statuses": {
+    "selected_passages": "Selected passages inspected",
+    "overview_read": "Full overview inspected",
+    "paper_read": "Full short paper inspected",
+    "abstract_read": "Abstract / introductory scope inspected",
+    "metadata_only": "Publication metadata only",
+    "citation_only": "Cited reference; source review pending"
+  },
+  "evidence_levels": {
+    "worked_analysis": "Worked analysis in inspected passages",
+    "implemented_study": "Implementation reported by the source",
+    "proposal": "Proposal / sketch",
+    "secondary_pointer": "Secondary pointer",
+    "metadata_only": "Metadata only"
+  },
+  "implementation_statuses": {
+    "tested_fragment": "Tested fragment",
+    "partial_infrastructure": "Partial infrastructure",
+    "not_implemented": "Not implemented in the stated scope",
+    "not_audited": "Not yet audited"
+  },
+  "review_steps": [
+    "Discover and deduplicate the work; identify publication and version separately.",
+    "Check title, author order, venue, dates and identifier against a primary bibliographic source.",
+    "Locate an accessible source version and record its fingerprint without uploading the full text by default.",
+    "Read the relevant analysis; add exact section/example and printed/PDF page locators.",
+    "Create one analysis card per bounded claim with context, contrasts and limitations.",
+    "Record a community review separately from machine-assisted indexing or previous inspection.",
+    "Implement and test each semantic backend separately; link tests and dated verification records."
+  ]
+}

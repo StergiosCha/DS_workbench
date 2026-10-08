@@ -1,0 +1,34 @@
+anticipation0
+IF <\/0>Ex.?x
+THEN go(\/0)
+ELSE abort
+
+anticipation1
+IF <\/1>Ex.?x
+THEN go(\/1)
+ELSE abort
+
+*thinning
+IF Ty(x)
+   Ex.?x
+THEN semantic-thin
+ELSE abort
+
+completion
+IF Ty(x)
+   ¬Ex.?x
+   </\>Ex.x
+   ¬</\L>Ex.x
+THEN go(/\)
+ELSE abort
+
+*elimination
+IF Ex.?x
+   ¬Ex.fo(x)
+   <\/0>Ty(x)
+   <\/1>Ty(x)
+   ¬<\/0>Ex.?x
+   ¬<\/1>Ex.?x
+THEN beta-reduce
+ELSE abort
+

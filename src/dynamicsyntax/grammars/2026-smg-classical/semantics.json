@@ -1,0 +1,445 @@
+{
+  "backend": "classical",
+  "axiom": "classical:t",
+  "subtyping": {
+    "human": [
+      "object"
+    ],
+    "book": [
+      "object"
+    ],
+    "man": [
+      "human"
+    ],
+    "person": [
+      "human"
+    ],
+    "woman": [
+      "human"
+    ],
+    "doctor": [
+      "human"
+    ],
+    "teacher": [
+      "human"
+    ],
+    "female_teacher": [
+      "human"
+    ],
+    "patient": [
+      "human"
+    ],
+    "malakas": [
+      "human"
+    ],
+    "child": [
+      "human"
+    ],
+    "dog": [
+      "object"
+    ],
+    "cat": [
+      "object"
+    ],
+    "letter": [
+      "object"
+    ],
+    "house": [
+      "object"
+    ],
+    "park": [
+      "object"
+    ],
+    "pista": [
+      "object"
+    ],
+    "peacock": [
+      "object"
+    ],
+    "lion": [
+      "object"
+    ]
+  },
+  "constants": {
+    "speaker": "human",
+    "hearer": "human",
+    "pro": "human",
+    "him": "human",
+    "theme": "object",
+    "her": "human",
+    "them": "object",
+    "we": "human",
+    "you_group": "human",
+    "giorgos": "human",
+    "giannis": "human",
+    "maria": "human"
+  },
+  "predicates": {
+    "know": [
+      "object",
+      "object"
+    ],
+    "love": [
+      "object",
+      "object"
+    ],
+    "write": [
+      "object",
+      "object"
+    ],
+    "potential": [
+      "Prop"
+    ],
+    "give": [
+      "object",
+      "object",
+      "object"
+    ],
+    "talk": [
+      "object",
+      "object"
+    ],
+    "telephone": [
+      "object",
+      "object"
+    ],
+    "hit": [
+      "object",
+      "object"
+    ],
+    "read": [
+      "object",
+      "object"
+    ],
+    "man": [
+      "object"
+    ],
+    "person": [
+      "object"
+    ],
+    "woman": [
+      "object"
+    ],
+    "doctor": [
+      "object"
+    ],
+    "teacher": [
+      "object"
+    ],
+    "female_teacher": [
+      "object"
+    ],
+    "patient": [
+      "object"
+    ],
+    "malakas": [
+      "object"
+    ],
+    "child": [
+      "object"
+    ],
+    "dog": [
+      "object"
+    ],
+    "cat": [
+      "object"
+    ],
+    "book": [
+      "object"
+    ],
+    "letter": [
+      "object"
+    ],
+    "house": [
+      "object"
+    ],
+    "park": [
+      "object"
+    ],
+    "happy": [
+      "object"
+    ],
+    "good": [
+      "object"
+    ],
+    "red": [
+      "object"
+    ],
+    "tired": [
+      "object"
+    ],
+    "examine": [
+      "object",
+      "object"
+    ],
+    "walk": [
+      "object"
+    ],
+    "run": [
+      "object"
+    ],
+    "sleep": [
+      "object"
+    ],
+    "here_location": [
+      "object"
+    ],
+    "there_location": [
+      "object"
+    ],
+    "nearby_location": [
+      "object"
+    ],
+    "outside_location": [
+      "object"
+    ],
+    "inside_location": [
+      "object"
+    ],
+    "upstairs_location": [
+      "object"
+    ],
+    "downstairs_location": [
+      "object"
+    ],
+    "located_at": [
+      "object",
+      "object"
+    ],
+    "manner_like": [
+      "CN",
+      "Prop"
+    ],
+    "at_location": [
+      "object",
+      "Prop"
+    ],
+    "enter_goal": [
+      "object",
+      "object"
+    ],
+    "enter": [
+      "object"
+    ],
+    "go_goal": [
+      "object",
+      "object"
+    ],
+    "go": [
+      "object"
+    ],
+    "pista": [
+      "object"
+    ],
+    "peacock": [
+      "object"
+    ],
+    "lion": [
+      "object"
+    ],
+    "wild": [
+      "object"
+    ],
+    "big": [
+      "object"
+    ],
+    "because": [
+      "Content",
+      "Content"
+    ],
+    "when_clause": [
+      "Content",
+      "Content"
+    ],
+    "whenever_clause": [
+      "Content",
+      "Content"
+    ],
+    "while_clause": [
+      "Content",
+      "Content"
+    ],
+    "before_clause": [
+      "Content",
+      "Content"
+    ],
+    "after_clause": [
+      "Content",
+      "Content"
+    ],
+    "since_time": [
+      "Content",
+      "Content"
+    ],
+    "until_clause": [
+      "Content",
+      "Content"
+    ],
+    "condition": [
+      "Content",
+      "Content"
+    ],
+    "unless_clause": [
+      "Content",
+      "Content"
+    ],
+    "concession": [
+      "Content",
+      "Content"
+    ],
+    "contrast": [
+      "Content",
+      "Content"
+    ]
+  },
+  "fragment": "thesis",
+  "dialect": "smg",
+  "reference_classes": {
+    "speaker": {
+      "person": 1,
+      "number": "sg",
+      "default": "speaker"
+    },
+    "hearer": {
+      "person": 2,
+      "number": "sg",
+      "default": "hearer"
+    },
+    "pro": {
+      "person": 3,
+      "number": "sg",
+      "default": "pro"
+    },
+    "him": {
+      "person": 3,
+      "gender": "masc",
+      "number": "sg",
+      "default": "him"
+    },
+    "theme": {
+      "person": 3,
+      "gender": "neut",
+      "number": "sg",
+      "default": "theme"
+    },
+    "her": {
+      "person": 3,
+      "gender": "fem",
+      "number": "sg",
+      "default": "her"
+    },
+    "them": {
+      "person": 3,
+      "number": "pl",
+      "default": "them"
+    },
+    "we": {
+      "person": 1,
+      "number": "pl",
+      "default": "we"
+    },
+    "you_group": {
+      "person": 2,
+      "number": "pl",
+      "default": "you_group"
+    }
+  },
+  "referents": {
+    "speaker": {
+      "person": 1,
+      "number": "sg"
+    },
+    "hearer": {
+      "person": 2,
+      "number": "sg"
+    },
+    "pro": {
+      "person": 3,
+      "number": "sg"
+    },
+    "him": {
+      "person": 3,
+      "gender": "masc",
+      "number": "sg"
+    },
+    "theme": {
+      "person": 3,
+      "gender": "neut",
+      "number": "sg"
+    },
+    "her": {
+      "person": 3,
+      "gender": "fem",
+      "number": "sg"
+    },
+    "them": {
+      "person": 3,
+      "number": "pl"
+    },
+    "we": {
+      "person": 1,
+      "number": "pl"
+    },
+    "you_group": {
+      "person": 2,
+      "number": "pl"
+    },
+    "maria": {
+      "person": 3,
+      "gender": "fem",
+      "number": "sg"
+    }
+  },
+  "modifiers": {
+    "very": [
+      "Prop"
+    ],
+    "later": [
+      "Prop"
+    ],
+    "earlier": [
+      "Prop"
+    ],
+    "late": [
+      "Prop"
+    ],
+    "early": [
+      "Prop"
+    ],
+    "today": [
+      "Prop"
+    ],
+    "yesterday": [
+      "Prop"
+    ],
+    "tomorrow": [
+      "Prop"
+    ],
+    "soon": [
+      "Prop"
+    ]
+  },
+  "interpretation_notes": [
+    "Location predicates here/there/home depend on the utterance context; no geographic referent is resolved.",
+    "Tense and full number agreement are not represented by this fragment.",
+    "Positive English modals use explicit content operators (possible, permitted, necessary, obligatory, future, conditional); their modal axioms and negative scope readings are not supplied.",
+    "Nominal similes compare a manner with a CN description. manner_like supplies no resemblance axioms, animal existence, or identification of the subject with the comparison noun. Selected goal frames and LINK location/path modifiers remain distinct; temporal and spatial inference is not supplied.",
+    "because(main, reason) relates two locally closed clause contents. It is an opaque causal relation, with no causal inference or truth axioms. Postposed reasons use LINK; preposed finite reasons require a comma and a main clause. Because-of nominals, nonfinite reasons, and unrestricted attachment/scope are not supplied.",
+    "Finite clause relations preserve distinct causal, temporal, conditional, concessive and contrastive contributions as typed, opaque relations (main, subordinate). Conditional is not material implication; no tense/event calculus, temporal anchoring, counterfactual or concessive inference is supplied. Structural completion does not validate an ambiguous connective's interpretation.",
+    "Temporal adverbs retain distinct later/earlier/late/early and deictic operators. Their comparison/reference times and calendar anchoring are contextual; past/present tense inference and full temporal reasoning are not implemented."
+  ],
+  "clause_relations": {
+    "because": "The subordinate content gives a reason for the main content.",
+    "when_clause": "The subordinate content supplies a temporal occasion for the main content.",
+    "whenever_clause": "The subordinate content supplies repeated occasions; quantification over times is not resolved.",
+    "while_clause": "Temporal overlap of the main and subordinate situations.",
+    "before_clause": "The main situation precedes the subordinate situation.",
+    "after_clause": "The main situation follows the subordinate situation.",
+    "since_time": "The subordinate situation supplies a starting boundary for the main situation.",
+    "until_clause": "The subordinate situation supplies an ending boundary for the main situation.",
+    "condition": "The subordinate content conditions the main content; not automatically material implication.",
+    "unless_clause": "The subordinate content supplies an exception condition; no automatic negation or biconditional.",
+    "concession": "The main content holds despite an expectation associated with the subordinate content.",
+    "contrast": "The main and subordinate contents are contrasted."
+  }
+}

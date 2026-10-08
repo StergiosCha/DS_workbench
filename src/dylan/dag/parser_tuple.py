@@ -4,23 +4,23 @@ from __future__ import annotations
 
 from typing import Any
 
-from dylan.formula.ttr_formula import TTRFormula
+from dylan.formula.formula import Formula
 from dylan.tree.tree import Tree
 
 
 class ParserTuple:
     """Member of parse state — primarily a `Tree`."""
 
-    def __init__(self, tree: Tree | None = None, semantics: TTRFormula | None = None) -> None:
+    def __init__(self, tree: Tree | None = None, semantics: Formula | None = None) -> None:
         self.tree = tree if tree is not None else Tree()
-        self.semantics: TTRFormula | None = semantics
+        self.semantics: Formula | None = semantics
 
     def set_tree(self, tree: Tree) -> None:
         """Replace the tuple tree and clear cached semantics."""
         self.tree = tree
         self.semantics = None
 
-    def set_maximal_semantics(self, sem: TTRFormula | None) -> None:
+    def set_maximal_semantics(self, sem: Formula | None) -> None:
         """Set cached maximal semantics."""
         self.semantics = sem
 
@@ -28,7 +28,7 @@ class ParserTuple:
         """Whether the tuple's tree is complete."""
         return self.tree.is_complete()
 
-    def get_semantics(self, context: Any = None) -> TTRFormula:
+    def get_semantics(self, context: Any = None) -> Formula:
         """Return cached semantics or compute from the tree."""
         if self.semantics is not None:
             return self.semantics
@@ -44,4 +44,3 @@ ParserTuple.setMaximalSemantics = ParserTuple.set_maximal_semantics  # type: ign
 ParserTuple.isComplete = ParserTuple.is_complete  # type: ignore[attr-defined]
 ParserTuple.getSemantics = ParserTuple.get_semantics  # type: ignore[attr-defined]
 ParserTuple.getTree = ParserTuple.get_tree  # type: ignore[attr-defined]
-

@@ -192,6 +192,64 @@ class EffectFactory:
         s = line.strip()
         low = s.lower()
 
+        if low == "substitute":
+            from dylan.action.atomic.substitute import Substitute
+
+            return Substitute()
+
+        if low.startswith(("semantic-reflexive(", "semantic-answer(")):
+            from dylan.action.atomic.native_dialogue import NativeDialogueEffect
+
+            match = re.fullmatch(r"(semantic-reflexive|semantic-answer)\(([a-z]+)\)", s)
+            if match is None:
+                raise ValueError("A dialogue action requires one licensed role or polarity")
+            return NativeDialogueEffect(*match.groups())
+
+        if low.startswith("semantic-pronoun("):
+            from dylan.action.atomic.semantic_effects import SemanticEffect
+
+            match = re.fullmatch(r"semantic-pronoun\(([a-z_]+),([a-z_]+)\)", s)
+            if match is None:
+                raise ValueError("A pronoun needs a reference role and nominal sort")
+            return SemanticEffect("semantic-pronoun", match.groups())
+
+        if low.startswith(("semantic-adverb(", "semantic-pp(", "semantic-comparison(", "semantic-modal(")):
+            from dylan.action.atomic.semantic_effects import SemanticEffect
+
+            match = re.fullmatch(r"(semantic-adverb|semantic-pp|semantic-comparison|semantic-modal)\(([A-Za-z_][A-Za-z_0-9']*)\)", s)
+            if match is None:
+                raise ValueError("A semantic modifier requires one predicate symbol")
+            return SemanticEffect(match.group(1), (match.group(2),))
+
+        if low in {"causal-post", "causal-front", "causal-boundary", "causal-link-close"}:
+            from dylan.action.atomic.causal_effects import CausalEffect
+
+            return CausalEffect(low)
+
+        if low.startswith(("causal-post(", "causal-front(")):
+            from dylan.action.atomic.causal_effects import CausalEffect
+
+            match = re.fullmatch(r"(causal-post|causal-front)\(([a-z_]+)\)", s)
+            if match is None:
+                raise ValueError("A clause construction requires a reviewed relation ID")
+            return CausalEffect(*match.groups())
+
+        if low in {"nonrestrictive-open", "nonrestrictive-pronoun", "nonrestrictive-close", "nonrestrictive-end", "nonrestrictive-evaluate"}:
+            from dylan.action.atomic.nonrestrictive_effects import NonrestrictiveEffect
+
+            return NonrestrictiveEffect(low)
+
+        if low in {"semantic-relative", "semantic-restrict"}:
+            from dylan.action.atomic.relative_effects import RelativeEffect
+
+            return RelativeEffect(low)
+
+        if low in {"semantic-thin", "semantic-link", "semantic-close-complement", "semantic-negate",
+                   "semantic-project-parent-type", "semantic-speaker", "semantic-coordinate", "semantic-coordinate-close", "semantic-vp-coordinate", "semantic-vp-coordinate-types"}:
+            from dylan.action.atomic.semantic_effects import SemanticEffect
+
+            return SemanticEffect(low)
+
         if low.startswith(Abort.FUNCTOR.lower()):
             return Abort()
         if low.startswith(AddAxiom.FUNCTOR):

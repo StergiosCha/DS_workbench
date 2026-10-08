@@ -49,3 +49,7 @@ class FOLLambdaAbstract(Formula):
 
     def __str__(self) -> str:
         return f"{self.variable}^{self.body}"
+
+    def __hash__(self) -> int:
+        """String-based hash consistent with dataclass ``__eq__`` (equal fields ⇒ equal str)."""
+        return hash((FOLLambdaAbstract, str(self)))

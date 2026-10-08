@@ -1,0 +1,22 @@
+name: Construction or empirical evidence
+description: Propose a DS analysis, language extension, or sourced correction.
+body:
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Construction and source
+      description: Language/variety, reference, page/example number, source judgment and context. Identify your own diagnostic examples separately.
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples and intended meanings
+      description: Include positive examples, excluded contrasts and context-sensitive cases. Do not infer grammaticality from parser failure.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: DS operations and semantic systems
+      description: Classical, Constructive, TTR; proposed tree growth, LINK/MERGE, binding/scope and known limits. Leave implementation open if contributing linguistic evidence only.

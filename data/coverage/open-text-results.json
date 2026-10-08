@@ -1,0 +1,2265 @@
+{
+  "sample": "open-text-probe.json",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "note": "Six hand-written development passages, frozen before this model-assisted run. Includes harder passages with known unsupported construction families. Not a random corpus sample or an accuracy estimate.",
+  "summary": {
+    "english-classical": {
+      "complete_passages": 2,
+      "passages": 3,
+      "complete_sentences": 6,
+      "sentences": 9
+    },
+    "english-mltt": {
+      "complete_passages": 2,
+      "passages": 3,
+      "complete_sentences": 6,
+      "sentences": 9
+    },
+    "smg-classical": {
+      "complete_passages": 1,
+      "passages": 3,
+      "complete_sentences": 5,
+      "sentences": 9
+    },
+    "smg-mltt": {
+      "complete_passages": 1,
+      "passages": 3,
+      "complete_sentences": 5,
+      "sentences": 9
+    }
+  },
+  "results": [
+    {
+      "id": "en-archive",
+      "backend": "classical",
+      "language": "english",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "elapsed_ms": 156,
+      "sentences": [
+        {
+          "text": "The archivist catalogues a manuscript.",
+          "complete": true,
+          "failure": null,
+          "meaning": "catalogue_vho00652622(ι x0:e. archivist_n09806944(x0), ε x1:e. manuscript_n06406979(x1))",
+          "attempts": []
+        },
+        {
+          "text": "A visitor is downstairs and the curator is in the library.",
+          "complete": true,
+          "failure": null,
+          "meaning": "(downstairs_location(ε x0:e. visitor_n10757193(x0)) ∧ located_in(ι x1:e. curator_n09983889(x1), ι x2:e. library(x2)))",
+          "attempts": []
+        },
+        {
+          "text": "The curator can read the manuscript.",
+          "complete": true,
+          "failure": null,
+          "meaning": "possible(read(ι x0:e. curator_n09983889(x0), ι x1:e. manuscript_n06406979(x1)))",
+          "attempts": []
+        }
+      ]
+    },
+    {
+      "id": "en-archive",
+      "backend": "mltt",
+      "language": "english",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "elapsed_ms": 138,
+      "sentences": [
+        {
+          "text": "The archivist catalogues a manuscript.",
+          "complete": true,
+          "failure": null,
+          "meaning": "Σ x:manuscript_n06406979. catalogue_vho00652622(definite_s1_00, x)",
+          "attempts": []
+        },
+        {
+          "text": "A visitor is downstairs and the curator is in the library.",
+          "complete": true,
+          "failure": null,
+          "meaning": "(Σ x:visitor_n10757193. downstairs_location(x) ∧ located_in(definite_s2_0L00, definite_s2_0L010))",
+          "attempts": []
+        },
+        {
+          "text": "The curator can read the manuscript.",
+          "complete": true,
+          "failure": null,
+          "meaning": "possible(read(definite_s3_00, definite_s3_010))",
+          "attempts": []
+        }
+      ]
+    },
+    {
+      "id": "en-workshop",
+      "backend": "classical",
+      "language": "english",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "elapsed_ms": 150,
+      "sentences": [
+        {
+          "text": "A mechanic repairs the bicycle.",
+          "complete": true,
+          "failure": null,
+          "meaning": "repair_vho00260648(ε x0:e. mechanic_n10279018(x0), ι x1:e. bicycle_n02834778(x1))",
+          "attempts": []
+        },
+        {
+          "text": "The customer is very happy.",
+          "complete": true,
+          "failure": null,
+          "meaning": "very(happy_a01148283(ι x0:e. customer_n09984659(x0)))",
+          "attempts": []
+        },
+        {
+          "text": "A child admires the bicycle and smiles.",
+          "complete": true,
+          "failure": null,
+          "meaning": "(admire(ε x0:e. child(x0), ι x1:e. bicycle_n02834778(x1)) ∧ smile(ε x0:e. child(x0)))",
+          "attempts": []
+        }
+      ]
+    },
+    {
+      "id": "en-workshop",
+      "backend": "mltt",
+      "language": "english",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "elapsed_ms": 132,
+      "sentences": [
+        {
+          "text": "A mechanic repairs the bicycle.",
+          "complete": true,
+          "failure": null,
+          "meaning": "Σ x:mechanic_n10279018. repair_vho00260648(x, definite_s1_010)",
+          "attempts": []
+        },
+        {
+          "text": "The customer is very happy.",
+          "complete": true,
+          "failure": null,
+          "meaning": "very(happy_a01148283(definite_s2_00))",
+          "attempts": []
+        },
+        {
+          "text": "A child admires the bicycle and smiles.",
+          "complete": true,
+          "failure": null,
+          "meaning": "Σ x:child. (admire(x, definite_s3_010) ∧ smile(x))",
+          "attempts": []
+        }
+      ]
+    },
+    {
+      "id": "en-complex",
+      "backend": "classical",
+      "language": "english",
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 5554,
+      "sentences": [
+        {
+          "text": "The researchers have collected several samples from the river.",
+          "complete": false,
+          "failure": {
+            "token": "researchers",
+            "index": 1,
+            "message": "“researchers” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        },
+        {
+          "text": "They will compare the results before publishing their report.",
+          "complete": false,
+          "failure": {
+            "token": "results",
+            "index": 4,
+            "message": "The grammar could not continue at “results”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        },
+        {
+          "text": "Although the water looks clean, it may contain harmful bacteria.",
+          "complete": false,
+          "failure": {
+            "token": "although",
+            "index": 0,
+            "message": "“although” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-complex",
+      "backend": "mltt",
+      "language": "english",
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 9975,
+      "sentences": [
+        {
+          "text": "The researchers have collected several samples from the river.",
+          "complete": false,
+          "failure": {
+            "token": "researchers",
+            "index": 1,
+            "message": "“researchers” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        },
+        {
+          "text": "They will compare the results before publishing their report.",
+          "complete": false,
+          "failure": {
+            "token": "results",
+            "index": 4,
+            "message": "The grammar could not continue at “results”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        },
+        {
+          "text": "Although the water looks clean, it may contain harmful bacteria.",
+          "complete": false,
+          "failure": {
+            "token": "although",
+            "index": 0,
+            "message": "“although” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "researchers"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "researchers: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "researchers: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "el-museum",
+      "backend": "classical",
+      "language": "smg",
+      "coverage": {
+        "complete": 2,
+        "total": 3,
+        "failed": 1,
+        "all_complete": false
+      },
+      "elapsed_ms": 9337,
+      "sentences": [
+        {
+          "text": "Η αρχαιολόγος ανακαλύπτει ένα αγγείο.",
+          "complete": false,
+          "failure": {
+            "token": "αρχαιολόγος",
+            "index": 1,
+            "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "αρχαιολόγος",
+                "ανακαλύπτει",
+                "αγγείο",
+                "συντηρητής",
+                "καθαρίζει"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 11,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 3,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 3,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        },
+        {
+          "text": "Ο επισκέπτης είναι στο μουσείο και η Μαρία είναι έξω.",
+          "complete": true,
+          "failure": null,
+          "meaning": "(located_at(ι x0:e. el_episkeptis_e6ae75_n(x0), ι x1:e. el_moyseio_f05033_n(x1)) ∧ outside_location(maria))",
+          "attempts": [
+            {
+              "requested": [
+                "αρχαιολόγος",
+                "ανακαλύπτει",
+                "αγγείο",
+                "συντηρητής",
+                "καθαρίζει"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 11,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 3,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 3,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        },
+        {
+          "text": "Ο συντηρητής καθαρίζει το αγγείο.",
+          "complete": true,
+          "failure": null,
+          "meaning": "el_katharizo_02297c58(ι x0:e. el_syntiritis_6676ed15(x0), ι x1:e. el_aggeio_67c52108(x1))",
+          "attempts": [
+            {
+              "requested": [
+                "αρχαιολόγος",
+                "ανακαλύπτει",
+                "αγγείο",
+                "συντηρητής",
+                "καθαρίζει"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 11,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 3,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 3,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "el-museum",
+      "backend": "mltt",
+      "language": "smg",
+      "coverage": {
+        "complete": 2,
+        "total": 3,
+        "failed": 1,
+        "all_complete": false
+      },
+      "elapsed_ms": 5351,
+      "sentences": [
+        {
+          "text": "Η αρχαιολόγος ανακαλύπτει ένα αγγείο.",
+          "complete": false,
+          "failure": {
+            "token": "αρχαιολόγος",
+            "index": 1,
+            "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "αρχαιολόγος",
+                "ανακαλύπτει",
+                "αγγείο",
+                "συντηρητής",
+                "καθαρίζει"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 7,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(Prop)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?</\\0>Ty(Prop)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?Ty(object)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(CN)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ A:CN. def(A))",
+                      "Ty(CN → object)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 2,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(Prop)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?</\\0>Ty(Prop)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?Ty(object)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(CN)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ A:CN. def(A))",
+                      "Ty(CN → object)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "rejected",
+              "message": "αρχαιολόγος: include a short lexical explanation."
+            }
+          ]
+        },
+        {
+          "text": "Ο επισκέπτης είναι στο μουσείο και η Μαρία είναι έξω.",
+          "complete": true,
+          "failure": null,
+          "meaning": "(located_at(definite_s2_0_2a_, definite_s2_010) ∧ outside_location(maria))",
+          "attempts": [
+            {
+              "requested": [
+                "αρχαιολόγος",
+                "ανακαλύπτει",
+                "αγγείο",
+                "συντηρητής",
+                "καθαρίζει"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 7,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(Prop)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?</\\0>Ty(Prop)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?Ty(object)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(CN)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ A:CN. def(A))",
+                      "Ty(CN → object)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 2,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(Prop)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?</\\0>Ty(Prop)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?Ty(object)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(CN)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ A:CN. def(A))",
+                      "Ty(CN → object)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "rejected",
+              "message": "αρχαιολόγος: include a short lexical explanation."
+            }
+          ]
+        },
+        {
+          "text": "Ο συντηρητής καθαρίζει το αγγείο.",
+          "complete": true,
+          "failure": null,
+          "meaning": "el_katharizo_02297c58(definite_s3_0_2a_, definite_s3_010)",
+          "attempts": [
+            {
+              "requested": [
+                "αρχαιολόγος",
+                "ανακαλύπτει",
+                "αγγείο",
+                "συντηρητής",
+                "καθαρίζει"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 7,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(Prop)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?</\\0>Ty(Prop)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?Ty(object)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(CN)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ A:CN. def(A))",
+                      "Ty(CN → object)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 2,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "αρχαιολόγος"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "token": "αρχαιολόγος",
+                "index": 1,
+                "message": "The grammar could not continue at “αρχαιολόγος”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(Prop)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?</\\0>Ty(Prop)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?Ty(object)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(CN)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ A:CN. def(A))",
+                      "Ty(CN → object)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "rejected",
+              "message": "αρχαιολόγος: include a short lexical explanation."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "el-workshop",
+      "backend": "classical",
+      "language": "smg",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "elapsed_ms": 33866,
+      "sentences": [
+        {
+          "text": "Ο μηχανικός επισκευάζει το ποδήλατο.",
+          "complete": true,
+          "failure": null,
+          "meaning": "el_episkeyazo_399dbb74(ι x0:e. el_michanikos_ed0bfab8(x0), ι x1:e. el_podilato_48155f14(x1))",
+          "attempts": [
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο",
+                "πελάτισσα"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit."
+            },
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "μηχανικός",
+                "index": 1,
+                "message": "“μηχανικός” is not in this grammar’s lexicon.",
+                "kind": "lexicon_gap",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(m)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 4,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        },
+        {
+          "text": "Η πελάτισσα είναι χαρούμενη.",
+          "complete": true,
+          "failure": null,
+          "meaning": "happy(ι x0:e. el_pelatissa_125ff9ea(x0))",
+          "attempts": [
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο",
+                "πελάτισσα"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit."
+            },
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "μηχανικός",
+                "index": 1,
+                "message": "“μηχανικός” is not in this grammar’s lexicon.",
+                "kind": "lexicon_gap",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(m)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 4,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "πελάτισσα"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "πελάτισσα",
+                "index": 1,
+                "message": "“πελάτισσα” is not in this grammar’s lexicon.",
+                "kind": "lexicon_gap",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 2,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        },
+        {
+          "text": "Το παιδί διαβάζει το βιβλίο και ο δάσκαλος είναι εδώ.",
+          "complete": true,
+          "failure": null,
+          "meaning": "(read(ι x0:e. child(x0), ι x1:e. book(x1)) ∧ here_location(ι x2:e. teacher(x2)))",
+          "attempts": [
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο",
+                "πελάτισσα"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit."
+            },
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "μηχανικός",
+                "index": 1,
+                "message": "“μηχανικός” is not in this grammar’s lexicon.",
+                "kind": "lexicon_gap",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(m)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 4,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            },
+            {
+              "requested": [
+                "πελάτισσα"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "token": "πελάτισσα",
+                "index": 1,
+                "message": "“πελάτισσα” is not in this grammar’s lexicon.",
+                "kind": "lexicon_gap",
+                "tree_at_failure": [
+                  {
+                    "address": "0",
+                    "labels": [
+                      "?Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*",
+                    "labels": [
+                      "+DEFINITE",
+                      "Number(sg)",
+                      "?Ty(e)",
+                      "+FULL-DP",
+                      "Gender(f)",
+                      "?Ex.Tn(x)",
+                      "Case(nom)",
+                      "Person(3)",
+                      "?</\\0>Ty(t)"
+                    ]
+                  },
+                  {
+                    "address": "0*0",
+                    "labels": [
+                      "?Ty(cn)"
+                    ]
+                  },
+                  {
+                    "address": "0*1",
+                    "labels": [
+                      "Fo(λ P:cn. ι(P))",
+                      "Ty(cn → e)",
+                      "!"
+                    ]
+                  }
+                ]
+              },
+              "status": "compiled",
+              "entries": 2,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "el-workshop",
+      "backend": "mltt",
+      "language": "smg",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "elapsed_ms": 2117,
+      "sentences": [
+        {
+          "text": "Ο μηχανικός επισκευάζει το ποδήλατο.",
+          "complete": true,
+          "failure": null,
+          "meaning": "el_episkeyazo_399dbb74(definite_s1_0_2a_, definite_s1_010)",
+          "attempts": [
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο",
+                "πελάτισσα"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 6,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        },
+        {
+          "text": "Η πελάτισσα είναι χαρούμενη.",
+          "complete": true,
+          "failure": null,
+          "meaning": "happy(definite_s2_0_2a_)",
+          "attempts": [
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο",
+                "πελάτισσα"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 6,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        },
+        {
+          "text": "Το παιδί διαβάζει το βιβλίο και ο δάσκαλος είναι εδώ.",
+          "complete": true,
+          "failure": null,
+          "meaning": "(read(definite_s3_0_2a_, definite_s3_010) ∧ here_location(definite_s3_0L0_2a_))",
+          "attempts": [
+            {
+              "requested": [
+                "μηχανικός",
+                "επισκευάζει",
+                "ποδήλατο",
+                "πελάτισσα"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "compiled",
+              "entries": 6,
+              "provider": "OpenRouter",
+              "model": "deepseek/deepseek-v4.1-flash"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "el-complex",
+      "backend": "classical",
+      "language": "smg",
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 33438,
+      "sentences": [
+        {
+          "text": "Οι ερευνητές συνέλεξαν αρκετά δείγματα από το ποτάμι.",
+          "complete": false,
+          "failure": {
+            "token": "οι",
+            "index": 0,
+            "message": "“οι” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit."
+            }
+          ]
+        },
+        {
+          "text": "Θα συγκρίνουν τα αποτελέσματα πριν δημοσιεύσουν την έκθεσή τους.",
+          "complete": false,
+          "failure": {
+            "token": "συγκρίνουν",
+            "index": 1,
+            "message": "“συγκρίνουν” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit."
+            }
+          ]
+        },
+        {
+          "text": "Αν και το νερό φαίνεται καθαρό, μπορεί να περιέχει επικίνδυνα βακτήρια.",
+          "complete": false,
+          "failure": {
+            "token": "αν",
+            "index": 0,
+            "message": "“αν” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": null,
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "classical",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "el-complex",
+      "backend": "mltt",
+      "language": "smg",
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 20802,
+      "sentences": [
+        {
+          "text": "Οι ερευνητές συνέλεξαν αρκετά δείγματα από το ποτάμι.",
+          "complete": false,
+          "failure": {
+            "token": "οι",
+            "index": 0,
+            "message": "“οι” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        },
+        {
+          "text": "Θα συγκρίνουν τα αποτελέσματα πριν δημοσιεύσουν την έκθεσή τους.",
+          "complete": false,
+          "failure": {
+            "token": "συγκρίνουν",
+            "index": 1,
+            "message": "“συγκρίνουν” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        },
+        {
+          "text": "Αν και το νερό φαίνεται καθαρό, μπορεί να περιέχει επικίνδυνα βακτήρια.",
+          "complete": false,
+          "failure": {
+            "token": "αν",
+            "index": 0,
+            "message": "“αν” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "attempts": [
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": null,
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": null
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            },
+            {
+              "requested": [
+                "ερευνητές",
+                "συνέλεξαν",
+                "αρκετά",
+                "δείγματα",
+                "συγκρίνουν",
+                "αποτελέσματα",
+                "δημοσιεύσουν",
+                "φαίνεται",
+                "καθαρό",
+                "μπορεί",
+                "επικίνδυνα",
+                "βακτήρια"
+              ],
+              "backend": "mltt",
+              "trigger": {
+                "kind": "proposal_validation",
+                "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                "previous_failure": {
+                  "kind": "proposal_validation",
+                  "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template.",
+                  "previous_failure": null
+                }
+              },
+              "status": "rejected",
+              "message": "ερευνητές: plural or unspecified number is outside this nominal/Greek template."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

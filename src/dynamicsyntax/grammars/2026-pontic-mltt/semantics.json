@@ -1,0 +1,128 @@
+{
+  "backend": "mltt",
+  "axiom": "mltt:Prop",
+  "subtyping": {
+    "human": [
+      "object"
+    ]
+  },
+  "constants": {
+    "speaker": "human",
+    "hearer": "human",
+    "pro": "human",
+    "him": "human",
+    "theme": "object",
+    "her": "human",
+    "them": "object"
+  },
+  "predicates": {
+    "know": [
+      "object",
+      "object"
+    ],
+    "love": [
+      "object",
+      "object"
+    ],
+    "write": [
+      "object",
+      "object"
+    ],
+    "potential": [
+      "Prop"
+    ],
+    "give": [
+      "object",
+      "object",
+      "object"
+    ],
+    "talk": [
+      "object",
+      "object"
+    ],
+    "telephone": [
+      "object",
+      "object"
+    ],
+    "show": [
+      "object",
+      "object",
+      "object"
+    ]
+  },
+  "fragment": "thesis",
+  "dialect": "pontic",
+  "reference_classes": {
+    "speaker": {
+      "person": 1,
+      "number": "sg",
+      "default": "speaker"
+    },
+    "hearer": {
+      "person": 2,
+      "number": "sg",
+      "default": "hearer"
+    },
+    "pro": {
+      "person": 3,
+      "number": "sg",
+      "default": "pro"
+    },
+    "him": {
+      "person": 3,
+      "gender": "masc",
+      "number": "sg",
+      "default": "him"
+    },
+    "theme": {
+      "person": 3,
+      "gender": "neut",
+      "number": "sg",
+      "default": "theme"
+    },
+    "her": {
+      "person": 3,
+      "gender": "fem",
+      "number": "sg",
+      "default": "her"
+    },
+    "them": {
+      "person": 3,
+      "number": "pl",
+      "default": "them"
+    }
+  },
+  "referents": {
+    "speaker": {
+      "person": 1,
+      "number": "sg"
+    },
+    "hearer": {
+      "person": 2,
+      "number": "sg"
+    },
+    "pro": {
+      "person": 3,
+      "number": "sg"
+    },
+    "him": {
+      "person": 3,
+      "gender": "masc",
+      "number": "sg"
+    },
+    "theme": {
+      "person": 3,
+      "gender": "neut",
+      "number": "sg"
+    },
+    "her": {
+      "person": 3,
+      "gender": "fem",
+      "number": "sg"
+    },
+    "them": {
+      "person": 3,
+      "number": "pl"
+    }
+  }
+}

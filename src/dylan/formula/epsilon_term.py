@@ -38,3 +38,7 @@ class EpsilonTerm(PredicateArgumentFormula):
     def evaluate(self) -> Formula:
         """Keep restrictor paths unevaluated (Java maximal semantics / induction extraction)."""
         return self.clone()
+
+    def __hash__(self) -> int:
+        """String-based hash consistent with dataclass ``__eq__`` (equal fields ⇒ equal str)."""
+        return hash((EpsilonTerm, str(self)))

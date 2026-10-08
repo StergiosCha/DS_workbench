@@ -1,0 +1,139 @@
+{
+  "backend": "mltt",
+  "axiom": "mltt:Prop",
+  "subtyping": {
+    "human": [
+      "object"
+    ]
+  },
+  "constants": {
+    "speaker": "human",
+    "hearer": "human",
+    "pro": "human",
+    "him": "human",
+    "theme": "object",
+    "her": "human",
+    "them": "object",
+    "we": "human",
+    "you_group": "human"
+  },
+  "predicates": {
+    "know": [
+      "object",
+      "object"
+    ],
+    "love": [
+      "object",
+      "object"
+    ],
+    "write": [
+      "object",
+      "object"
+    ],
+    "potential": [
+      "Prop"
+    ],
+    "give": [
+      "object",
+      "object",
+      "object"
+    ],
+    "talk": [
+      "object",
+      "object"
+    ]
+  },
+  "fragment": "thesis",
+  "dialect": "grico",
+  "reference_classes": {
+    "speaker": {
+      "person": 1,
+      "number": "sg",
+      "default": "speaker"
+    },
+    "hearer": {
+      "person": 2,
+      "number": "sg",
+      "default": "hearer"
+    },
+    "pro": {
+      "person": 3,
+      "number": "sg",
+      "default": "pro"
+    },
+    "him": {
+      "person": 3,
+      "gender": "masc",
+      "number": "sg",
+      "default": "him"
+    },
+    "theme": {
+      "person": 3,
+      "gender": "neut",
+      "number": "sg",
+      "default": "theme"
+    },
+    "her": {
+      "person": 3,
+      "gender": "fem",
+      "number": "sg",
+      "default": "her"
+    },
+    "them": {
+      "person": 3,
+      "number": "pl",
+      "default": "them"
+    },
+    "we": {
+      "person": 1,
+      "number": "pl",
+      "default": "we"
+    },
+    "you_group": {
+      "person": 2,
+      "number": "pl",
+      "default": "you_group"
+    }
+  },
+  "referents": {
+    "speaker": {
+      "person": 1,
+      "number": "sg"
+    },
+    "hearer": {
+      "person": 2,
+      "number": "sg"
+    },
+    "pro": {
+      "person": 3,
+      "number": "sg"
+    },
+    "him": {
+      "person": 3,
+      "gender": "masc",
+      "number": "sg"
+    },
+    "theme": {
+      "person": 3,
+      "gender": "neut",
+      "number": "sg"
+    },
+    "her": {
+      "person": 3,
+      "gender": "fem",
+      "number": "sg"
+    },
+    "them": {
+      "person": 3,
+      "number": "pl"
+    },
+    "we": {
+      "person": 1,
+      "number": "pl"
+    },
+    "you_group": {
+      "person": 2,
+      "number": "pl"
+    }
+  }
+}

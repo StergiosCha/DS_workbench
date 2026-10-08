@@ -12,7 +12,7 @@ import re
 from abc import ABC, abstractmethod
 from typing import Any
 
-from dylan.action.meta.element import MetaElement
+from dylan.action.meta.element import MetaElement, restore_meta_bindings, snapshot_meta_bindings
 from dylan.formula.atomic_formula import AtomicFormula
 from dylan.formula.formula import Formula
 from dylan.formula.opaque_formula import OpaqueFormula
@@ -23,7 +23,8 @@ from dylan.type.dstype import DSType
 
 logger = logging.getLogger(__name__)
 
-_UNARY_PRED_RE = re.compile(r"(?i)^(Tense|Class|person|Accept)\((.+)\)\s*$")
+_UNARY_PRED_RE = re.compile(r"(?i)^(Tense|Class|Person|Case|Number|Gender|Aspect|Accept|Mood)\((.+)\)\s*$")
+_WARNED_GENERIC_LABELS: set[str] = set()
 _METALABEL_PATTERN = re.compile(r"^(?:[V-Z][0-9]*|META)$")
 # Note: do not use a repeated *capturing* group for operators — in Python only the
 # last repetition is stored; Java's regex differs.  We slice by the closing bracket.
@@ -140,6 +141,53 @@ TypeLabel.e = TypeLabel(DSType.e)  # type: ignore[attr-defined]
 TypeLabel.cn = TypeLabel(DSType.cn)  # type: ignore[attr-defined]
 
 
+class ArbitraryTypeLabel(Label):
+    """``Ty(x)`` queries any type without binding a rule metavariable."""
+
+    def __hash__(self) -> int:
+        return hash(ArbitraryTypeLabel)
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, ArbitraryTypeLabel)
+
+    def check(self, node: Any) -> bool:
+        return any(isinstance(lab, (TypeLabel, ArbitraryTypeLabel)) for lab in node.labels)
+
+    def __str__(self) -> str:
+        return "Ty(x)"
+
+
+class TnLabel(Label):
+    """``Tn(x)`` tests fixedness; ``Tn(a)`` binds an address; ``Tn(0)`` tests it."""
+
+    def __init__(self, address: str) -> None:
+        self.address = address
+        self._meta = (
+            MetaElement.get(address, NodeAddress)
+            if address != "x" and not re.fullmatch(r"[01LB*UPC]+", address) else None
+        )
+
+    def __hash__(self) -> int:
+        return hash((TnLabel, self.address))
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, TnLabel) and self.address == other.address
+
+    def check(self, node: Any) -> bool:
+        if self.address == "x":
+            return node.address.is_fixed()
+        if self._meta is not None:
+            return bool(self._meta == node.address)
+        return str(node.address) == self.address
+
+    def instantiate(self) -> Label:
+        value = self._meta.get_value() if self._meta is not None else None
+        return TnLabel(str(value)) if value is not None else self
+
+    def __str__(self) -> str:
+        return f"Tn({self.address})"
+
+
 class Requirement(Label):
     """Requirement ``?X``."""
 
@@ -166,6 +214,12 @@ class Requirement(Label):
         """True when the node carries this requirement (Java ``Node.hasLabel`` / ``equals``)."""
         if isinstance(self.inner, ArbitraryLabel) and self.inner.name == "x":
             return any(isinstance(lab, Requirement) for lab in node.labels)
+        if isinstance(self.inner, ArbitraryTypeLabel):
+            return any(
+                isinstance(lab, Requirement)
+                and isinstance(lab.inner, (TypeLabel, ArbitraryTypeLabel))
+                for lab in node.labels
+            )
         for lab in node.labels:
             if self == lab or lab == self:
                 return True
@@ -291,7 +345,9 @@ class ScopeStatement(Label):
 
     def __eq__(self, other: object) -> bool:
         return (
-            isinstance(other, ScopeStatement) and self.wide == other.wide and self.narrow == other.narrow
+            isinstance(other, ScopeStatement)
+            and self.wide == other.wide
+            and self.narrow == other.narrow
         )
 
     def __str__(self) -> str:
@@ -349,6 +405,43 @@ def _formula_for_fo_inner(inner: str, *, in_ex_conj: bool = False) -> Formula:
     if parsed is not None:
         return parsed
     return OpaqueFormula(s)
+
+
+class SharedFormulaLabel(Label):
+    """Topic copy condition: a fixed occurrence in this clause or a forward LINK.
+
+    This names the D-path condition in thesis (2.94). Backward LINKs and
+    context edges are excluded, so the topic cannot satisfy its own condition.
+    Only concrete native formulas count; checking never binds a placeholder.
+    """
+
+    def __init__(self, formula: Formula) -> None:
+        self.formula = formula
+
+    def instantiate(self) -> Label:
+        return SharedFormulaLabel(self.formula.instantiate().evaluate())
+
+    def __hash__(self) -> int:
+        return hash((SharedFormulaLabel, self.formula))
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, SharedFormulaLabel) and self.formula == other.formula
+
+    def __str__(self) -> str:
+        return f"SharedFo({self.formula})"
+
+    def check_with_tuple_as_context(self, tree: Any, context: Any) -> bool:
+        from dylan.formula.mltt.semantics import SemanticFormula
+
+        prefix = str(tree.pointer)
+        for address, node in tree.items():
+            suffix = str(address)[len(prefix):]
+            if not str(address).startswith(prefix) or not suffix or set(suffix) - set("01L"):
+                continue
+            formula = node.get_formula()
+            if isinstance(formula, SemanticFormula) and formula == self.formula:
+                return True
+        return False
 
 
 class ArbitraryLabel(Label):
@@ -443,6 +536,70 @@ class AddresseeLabel(Label):
         return f"{self.FUNCTOR}({self._formula})"
 
 
+class SpeakerLabel(Label):
+    """``Speaker(X)`` — uses dialogue context (Java ``SpeakerLabel``)."""
+
+    FUNCTOR = "Speaker"
+
+    def __init__(self, formula: Formula) -> None:
+        super().__init__()
+        self._formula = formula
+
+    @classmethod
+    def parse(cls, s: str) -> SpeakerLabel | None:
+        """Parse ``Speaker(...)`` with ``Formula.create(..., True)`` like Java ``LabelFactory``."""
+        low = s.strip().lower()
+        if not low.startswith(cls.FUNCTOR.lower() + "("):
+            return None
+        i = s.index("(")
+        inner = s[i + 1 : s.rindex(")")].strip()
+        f = Formula.create(inner, True)
+        if f is None:
+            return None
+        return cls(f)
+
+    def instantiate(self) -> Label:
+        """Resolve metavariables inside the inner formula (Java ``SpeakerLabel.instantiate``)."""
+        ev = self._formula.instantiate().evaluate()
+        return SpeakerLabel(ev.clone())
+
+    def __hash__(self) -> int:
+        return hash((self.FUNCTOR, self._formula))
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, SpeakerLabel) and self._formula == other._formula
+
+    def check_with_tuple_as_context(self, tree: Any, context: Any) -> bool:
+        """True when the rule metavariable unifies with the current speaker (Java ``check``)."""
+        speaker = _dialogue_speaker(context)
+        if speaker is None:
+            return False
+        return self._formula == AtomicFormula(speaker)
+
+    def __str__(self) -> str:
+        return f"{self.FUNCTOR}({self._formula})"
+
+
+class CompleteLabel(Label):
+    """``complete`` — holds when the whole tree is complete (Java ``CompleteLabel``)."""
+
+    FUNCTOR = "complete"
+
+    def __hash__(self) -> int:
+        return hash(self.FUNCTOR)
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, CompleteLabel)
+
+    def check_with_tuple_as_context(self, tree: Any, context: Any) -> bool:
+        """True when the tree pointer is at root and no node carries a requirement."""
+        del context
+        return bool(tree.is_complete())
+
+    def __str__(self) -> str:
+        return self.FUNCTOR
+
+
 class MetaLabel(Label):
     """Label-position metavariable ``V``–``Z`` / ``META`` (Java ``MetaLabel`` / ``LabelFactory`` pattern)."""
 
@@ -514,19 +671,43 @@ class ModalLabel(Label):
         )
 
     def check_with_tuple_as_context(self, tree: Any, context: Any) -> bool:
-        """Holds if some node reachable via ``modality`` from the pointer satisfies all ``inners``."""
-        pointed: NodeAddress = tree.pointer
+        """Diamonds require a witness; boxes hold at every target (including none)."""
+        from dylan.action.meta.meta_modality import MetaModality
+
         save = tree.pointer
+        initial = snapshot_meta_bindings()
+        modality = self.modality.instantiate()
+        meta = modality.get_meta() if isinstance(modality, MetaModality) else None
+        if meta is not None and modality.required:
+            raise ValueError("A box modality metavariable must be bound before checking")
+        targets = tree.keys() if meta is not None else modality.reachable(save, tree.keys())
+        success = False
         try:
             for addr in tree.keys():
-                if not self.modality.relates(pointed, addr):
+                if addr not in targets:
+                    continue
+                candidate = snapshot_meta_bindings()
+                if meta is not None and not (meta == Modality.relating(save, addr)):
+                    restore_meta_bindings(candidate)
                     continue
                 tree.pointer = addr
-                if all(lab.check_with_tuple_as_context(tree, context) for lab in self.inners):
+                holds = all(lab.check_with_tuple_as_context(tree, context) for lab in self.inners)
+                if modality.required and not holds:
+                    return False
+                if not modality.required and holds:
+                    success = True
                     return True
-            return False
+                if not holds:
+                    restore_meta_bindings(candidate)
+            success = modality.required
+            return success
         finally:
             tree.pointer = save
+            if not success:
+                restore_meta_bindings(initial)
+
+    def instantiate(self) -> Label:
+        return ModalLabel(self.modality.instantiate(), [lab.instantiate() for lab in self.inners])
 
     def __str__(self) -> str:
         body = (
@@ -557,14 +738,105 @@ class NegatedLabel(Label):
         return isinstance(other, NegatedLabel) and self.inner == other.inner
 
     def check(self, node: Any) -> bool:
-        return not self.inner.check(node)
+        saved = snapshot_meta_bindings()
+        try:
+            return not self.inner.check(node)
+        finally:
+            restore_meta_bindings(saved)
 
     def check_with_tuple_as_context(self, tree: Any, context: Any) -> bool:
         """Negate modal / contextual checks (Java ``NegatedLabel.checkWithTupleAsContext``)."""
-        return not self.inner.check_with_tuple_as_context(tree, context)
+        saved = snapshot_meta_bindings()
+        try:
+            return not self.inner.check_with_tuple_as_context(tree, context)
+        finally:
+            restore_meta_bindings(saved)
 
     def __str__(self) -> str:
         return f"{self.PREFIX}{self.inner}"
+
+
+class DisjunctionLabel(Label):
+    """Inclusive trigger disjunction with isolated failed alternatives."""
+
+    separator = " || "
+
+    def __init__(self, parts: list[Label]) -> None:
+        self.parts = parts
+
+    def __hash__(self) -> int:
+        return hash((type(self), tuple(self.parts)))
+
+    def __eq__(self, other: object) -> bool:
+        return type(self) is type(other) and self.parts == other.parts
+
+    def _check(self, check: Any) -> bool:
+        for part in self.parts:
+            saved = snapshot_meta_bindings()
+            if check(part):
+                return True
+            restore_meta_bindings(saved)
+        return False
+
+    def check(self, node: Any) -> bool:
+        return self._check(lambda part: part.check(node))
+
+    def check_with_tuple_as_context(self, tree: Any, context: Any) -> bool:
+        return self._check(lambda part: part.check_with_tuple_as_context(tree, context))
+
+    def instantiate(self) -> Label:
+        return type(self)([part.instantiate() for part in self.parts])
+
+    def __str__(self) -> str:
+        return "(" + self.separator.join(str(part) for part in self.parts) + ")"
+
+
+class ConjunctionLabel(DisjunctionLabel):
+    """Grouped trigger conjunction, e.g. the GSG imperative condition."""
+
+    separator = " & "
+
+    def _check(self, check: Any) -> bool:
+        saved = snapshot_meta_bindings()
+        if all(check(part) for part in self.parts):
+            return True
+        restore_meta_bindings(saved)
+        return False
+
+
+# Every label spec that fell through to GenericLabel, recorded at parse time so grammar lint can
+# list vocabulary gaps (e.g. ``UnsupportedFeature(x)``) even before a trigger is evaluated.
+generic_label_seen: set[str] = set()
+
+
+class SubsumesLabel(Label):
+    """The unfixed node reached by a bound modality subsumes the pointer address."""
+
+    def __init__(self, modality: Modality) -> None:
+        self.modality = modality
+
+    def check_with_tuple_as_context(self, tree: Any, context: Any) -> bool:
+        from dylan.action.meta.meta_modality import MetaModality
+
+        modality = self.modality.instantiate()
+        if isinstance(modality, MetaModality):
+            return False  # Witness enumeration belongs to the preceding modal trigger.
+        return any(
+            address.subsumes(tree.pointer)
+            for address in modality.reachable(tree.pointer, tree.keys())
+        )
+
+    def instantiate(self) -> Label:
+        return SubsumesLabel(self.modality.instantiate())
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, SubsumesLabel) and self.modality == other.modality
+
+    def __hash__(self) -> int:
+        return hash((SubsumesLabel, self.modality))
+
+    def __str__(self) -> str:
+        return f"subsumes({self.modality})"
 
 
 class GenericLabel(Label):
@@ -573,6 +845,7 @@ class GenericLabel(Label):
     def __init__(self, spec: str) -> None:
         super().__init__()
         self.spec = spec
+        generic_label_seen.add(spec)
 
     def __hash__(self) -> int:
         return hash(self.spec)
@@ -581,10 +854,13 @@ class GenericLabel(Label):
         return isinstance(other, GenericLabel) and self.spec == other.spec
 
     def check(self, node: Any) -> bool:
+        if self.spec not in _WARNED_GENERIC_LABELS:
+            _WARNED_GENERIC_LABELS.add(self.spec)
+            logger.warning("Unsupported trigger label %r; evaluating as False", self.spec)
         return False
 
     def check_with_tuple_as_context(self, tree: Any, context: Any) -> bool:
-        return False
+        return self.check(tree.pointed_node)
 
     def __str__(self) -> str:
         return self.spec
@@ -593,7 +869,23 @@ class GenericLabel(Label):
 # ── factory ──────────────────────────────────────────────────────────
 
 _NEG = "\u00ac"
-_DISJUNCTION_SEP = "||"
+def _split_trigger_group(s: str, separator: str) -> list[str]:
+    """Split only at top level; formulas/types may contain their own groups."""
+    depth = 0
+    start = 0
+    parts = []
+    for i, ch in enumerate(s):
+        if ch in "([":
+            depth += 1
+        elif ch in ")]":
+            depth -= 1
+        elif ch == separator and depth == 0:
+            if s[start:i].strip():
+                parts.append(s[start:i].strip())
+            start = i + 1
+    if s[start:].strip():
+        parts.append(s[start:].strip())
+    return parts
 
 
 def _dialogue_addressee(context: Any) -> str | None:
@@ -606,15 +898,19 @@ def _dialogue_addressee(context: Any) -> str | None:
     return None
 
 
+def _dialogue_speaker(context: Any) -> str | None:
+    """Return speaker string from a :class:`~dylan.context.context.Context`, if any."""
+    if context is None:
+        return None
+    fn = getattr(context, "get_current_speaker", None)
+    if callable(fn):
+        return fn()
+    return None
+
+
 def _parse_modal_inner(rest: str, *, in_existential: bool = False) -> list[Label]:
     """Parse label group after a modality (possibly ``(a & b)``)."""
     rest = rest.strip()
-    if rest.startswith("(") and rest.endswith(")") and "&" in rest:
-        inner = rest[1:-1]
-        return [
-            label_factory_create(x.strip(), in_existential=in_existential)
-            for x in inner.split("&")
-        ]
     return [label_factory_create(rest, in_existential=in_existential)]
 
 
@@ -671,8 +967,18 @@ def label_factory_create(
     """Parse label specs used in IF clauses (partial Java ``LabelFactory.create``)."""
     s = string.strip()
 
-    if s.startswith("(") and _DISJUNCTION_SEP in s:
-        return GenericLabel(s)
+    if s.startswith("(") and s.endswith(")"):
+        depth = 0
+        for i, ch in enumerate(s):
+            depth += (ch == "(") - (ch == ")")
+            if depth == 0:
+                if i == len(s) - 1:
+                    return label_factory_create(s[1:-1], ite, in_existential=in_existential)
+                break
+    for separator, cls in (("|", DisjunctionLabel), ("&", ConjunctionLabel)):
+        parts = _split_trigger_group(s, separator)
+        if len(parts) > 1:
+            return cls([label_factory_create(p, ite, in_existential=in_existential) for p in parts])
 
     if s.startswith(_NEG):
         inner_s = s[len(_NEG) :].strip()
@@ -690,10 +996,28 @@ def label_factory_create(
         return Requirement(inner)
 
     low = s.lower()
+    if re.fullmatch(r"(?i:ty)\(\s*x\s*\)", s):
+        return ArbitraryTypeLabel()
+    subsumes = re.fullmatch(r"(?i:subsumes)\((.+)\)", s)
+    if subsumes:
+        return SubsumesLabel(Modality.parse(subsumes.group(1)))
+    tn = re.fullmatch(r"(?i)tn\(([^()]+)\)", s)
+    if tn:
+        return TnLabel(tn.group(1).strip())
+    if s.startswith("[+") and s.endswith("]"):
+        return FeatureLabel(s[2:-1].strip())
     if low.startswith(AddresseeLabel.FUNCTOR.lower() + "("):
         ad = AddresseeLabel.parse(s)
         if ad is not None:
             return ad
+
+    if low.startswith(SpeakerLabel.FUNCTOR.lower() + "("):
+        sp = SpeakerLabel.parse(s)
+        if sp is not None:
+            return sp
+
+    if low == CompleteLabel.FUNCTOR:
+        return CompleteLabel()
 
     up = UnaryPredicateLabel.parse(s)
     if up is not None:
@@ -710,6 +1034,9 @@ def label_factory_create(
         if tail == "x":
             return ExistentialLabelConjunction([ArbitraryLabel("x")])
         return ExistentialLabelConjunction([label_factory_create(tail, ite, in_existential=True)])
+
+    if low.startswith("sharedfo(") and s.endswith(")"):
+        return SharedFormulaLabel(_formula_for_fo_inner(s[s.index("(") + 1:-1]))
 
     if low.startswith("fo("):
         inner = s[s.index("(") + 1 : s.rindex(")")]

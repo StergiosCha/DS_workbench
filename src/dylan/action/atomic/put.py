@@ -6,8 +6,9 @@ import logging
 import re
 
 from dylan.action.atomic.effect import Effect
+from dylan.formula.formula_metavariable import FormulaMetavariable
 from typing import Any
-from dylan.tree.label.labels import Label, label_factory_create
+from dylan.tree.label.labels import FormulaLabel, Label, UnaryPredicateLabel, label_factory_create
 from dylan.tree.tree import Tree
 
 logger = logging.getLogger(__name__)
@@ -34,10 +35,25 @@ class Put(Effect):
 
     def exec_tuple_context(self, tree: Tree, context: Any) -> Tree | None:
         node = tree.pointed_node
-        if node.contains(self.label):
-            logger.debug("put: label %s already present at %s", self.label, node.address)
+        label = self.label.instantiate()
+        if isinstance(label, UnaryPredicateLabel) and label.predicate.lower() == "case":
+            if any(isinstance(old, UnaryPredicateLabel) and old.predicate.lower() == "case"
+                   and old.arg != label.arg for old in node.labels):
+                logger.debug("put: incompatible Case decorations at %s", node.address)
+                return None
+        if isinstance(label, FormulaLabel):
+            old = node.get_formula()
+            new = label.get_formula()
+            if isinstance(old, FormulaMetavariable) and isinstance(new, FormulaMetavariable):
+                if old.restriction and new.restriction and old.restriction != new.restriction:
+                    logger.debug("put: incompatible clitic restrictions at %s", node.address)
+                    return None
+                if old.restriction:
+                    return tree  # Keep the established restriction on a collapsed node.
+        if node.contains(label):
+            logger.debug("put: label %s already present at %s", label, node.address)
             return tree
-        tree.put_label(self.label)
+        tree.put_label(label)
         return tree
 
     def instantiate(self) -> Effect:

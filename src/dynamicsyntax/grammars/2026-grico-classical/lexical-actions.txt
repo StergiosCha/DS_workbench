@@ -1,0 +1,156 @@
+// Hand-maintained Grico thesis fragment. Genitive imperative gate (3.104).
+
+*clitic(REF,PERSON,CASE)
+IF ?Ty(classical:t)
+   ([\/1+]?Ty(x) || Mood(Imp) || Mood(Ger))
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,t)))
+   make(\/0)
+   go(\/0)
+   IF ¬Ex.Fo(x)
+   THEN put(Ty(classical:e))
+      put(Fo(U_REF))
+      put(?Ex.Fo(x))
+      put(Case(CASE))
+      put(Person(PERSON))
+      delete(?Ty(classical:e))
+      gofirst(?Ty(classical:t))
+   ELSE abort
+ELSE abort
+
+verb-finite(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-transitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-dependent(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ([+NA] || [+FUT])
+THEN put([+VERB])
+   put(Mood(Subj))
+   build-potential-transitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-imperative(PRED)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NEG]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Imp))
+   put([+VERB])
+   build-transitive(PRED,hearer,2,sg)
+ELSE abort
+
+gerund(PRED)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Ger))
+   put([+VERB])
+   build-transitive(PRED,pro,3,sg)
+ELSE abort
+
+den(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NEG]
+THEN put([+NEG])
+ELSE abort
+
+min(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NEG]
+THEN put([+NEG])
+   put([+PROHIB])
+ELSE abort
+
+subjunctive(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+NA])
+ELSE abort
+
+future(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+FUT])
+ELSE abort
+
+punctuation(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN do_nothing
+ELSE abort
+
+// Genitives build the locally unfixed non-subject node, (3.100), (3.102).
+*clitic-gen(REF,PERSON)
+IF ?Ty(classical:t)
+   Tn(a)
+   ([\/+]?Ex.Tn(x) || (Mood(Imp) & [\/1+][\/0]?Ty(x)))
+THEN make(\/P)
+   go(\/P)
+   put(?Ex.Tn(x))
+   put(</\0></\1+>Tn(a))
+   put(Ty(classical:e))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Case(gen))
+   put(Person(PERSON))
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+verb-ditransitive(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-ditransitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-ditransitive-imperative(PRED)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NEG]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Imp))
+   put([+VERB])
+   build-ditransitive(PRED,hearer,2,sg)
+ELSE abort
+
+// First/second-person accusatives, (6.49). Clitic chunks suppress left adjustment.
+*clitic-acc12(REF,PERSON)
+IF ?Ty(classical:t)
+   Tn(a)
+   ([\/1+]?Ty(x) || Mood(Imp) || Mood(Ger))
+THEN make(\/P)
+   go(\/P)
+   put(?Ex.Tn(x))
+   put(</\0></\1+>Tn(a))
+   put(Ty(classical:e))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Case(acc))
+   put(Person(PERSON))
+   put(?</\0>Ty(classical:arrow(e,t)))
+   gofirst(?Ty(classical:t))
+ELSE abort

@@ -20,6 +20,11 @@ class FormulaMetavariable(Formula):
     def __post_init__(self) -> None:
         super().__init__()
 
+    @property
+    def restriction(self) -> str | None:
+        """Lexical substitution presupposition, e.g. ``Sp'``, ``Hr'`` or ``x``."""
+        return self.name.partition("_")[2] or None
+
     @classmethod
     def get(cls, name: str) -> FormulaMetavariable:
         if name not in cls._pool:
@@ -43,3 +48,7 @@ class FormulaMetavariable(Formula):
 
     def __str__(self) -> str:
         return self.name
+
+    def __hash__(self) -> int:
+        """Hash by name (the only dataclass field), like :class:`MetaFormula`."""
+        return hash((FormulaMetavariable, self.name))

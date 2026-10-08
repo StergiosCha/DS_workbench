@@ -1,0 +1,817 @@
+{
+  "date": "2026-10-04",
+  "purpose": "Construction regressions and real model integration; not a language accuracy estimate",
+  "live": [
+    {
+      "text": "John walks provided Mary walks.",
+      "backend": "classical",
+      "complete": true,
+      "failure": null,
+      "meaning": "condition(walk(john), walk(mary))",
+      "used": [
+        {
+          "index": 2,
+          "surface": "provided",
+          "relation": "condition",
+          "template": "clause-post",
+          "description": "The subordinate content conditions the main content; not automatically material implication.",
+          "source": "model-construction"
+        }
+      ],
+      "proposals": [
+        {
+          "surface": "provided",
+          "relation": "condition",
+          "evidence": "the real subordinating use of provided introduces a finite subordinate clause that states a condition on the main clause, so provided mary walks conditions john walks",
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash",
+          "source": "model-construction",
+          "validation": "Reviewed template and signature checks passed; interpretation remains a hypothesis.",
+          "programs": [
+            [
+              "IF Ty(classical:t)",
+              "THEN causal-post(condition)",
+              "ELSE abort"
+            ],
+            [
+              "IF ?Ty(classical:t)",
+              "THEN causal-front(condition)",
+              "ELSE abort"
+            ]
+          ],
+          "added_programs": 2,
+          "alternatives_retained": 9,
+          "tokens": [
+            "john",
+            "walks",
+            "provided",
+            "mary",
+            "walks",
+            "."
+          ],
+          "reused": false
+        }
+      ],
+      "attempts": [
+        {
+          "kind": "construction",
+          "requested": [
+            "provided"
+          ],
+          "backend": "classical",
+          "trigger": {
+            "token": "provided",
+            "index": 2,
+            "message": "The grammar could not continue at “provided”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure",
+            "tree_at_failure": [
+              {
+                "address": "0",
+                "labels": [
+                  "?Ty(t)"
+                ]
+              },
+              {
+                "address": "00",
+                "labels": [
+                  "Ty(e)",
+                  "Fo(john)"
+                ]
+              },
+              {
+                "address": "01",
+                "labels": [
+                  "?Ty(e → t)",
+                  "Fo(λ x:e. walk(x))",
+                  "Ty(e → t)"
+                ]
+              }
+            ]
+          },
+          "status": "compiled",
+          "constructions": 1,
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash"
+        }
+      ],
+      "derivation_attempts": [
+        {
+          "complete": false,
+          "failure": {
+            "token": "provided",
+            "index": 2,
+            "message": "The grammar could not continue at “provided”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "tokens_consumed": 2
+        },
+        {
+          "complete": true,
+          "failure": null,
+          "tokens_consumed": 6
+        }
+      ]
+    },
+    {
+      "text": "Ο Γιώργος περπατάει καθότι η Μαρία περπατάει.",
+      "backend": "classical",
+      "complete": true,
+      "failure": null,
+      "meaning": "because(walk(giorgos), walk(maria))",
+      "used": [
+        {
+          "index": 3,
+          "surface": "καθότι",
+          "relation": "because",
+          "template": "clause-post",
+          "description": "The subordinate content gives a reason for the main content.",
+          "source": "model-construction"
+        }
+      ],
+      "proposals": [
+        {
+          "surface": "καθότι",
+          "relation": "because",
+          "evidence": "καθότι introduces a finite clause (η μαρία περπατάει) giving the reason for the main clause (ο γιώργος περπατάει).",
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash",
+          "source": "model-construction",
+          "validation": "Reviewed template and signature checks passed; interpretation remains a hypothesis.",
+          "programs": [
+            [
+              "IF Ty(classical:t)",
+              "THEN causal-post(because)",
+              "ELSE abort"
+            ],
+            [
+              "IF ?Ty(classical:t)",
+              "THEN causal-front(because)",
+              "ELSE abort"
+            ]
+          ],
+          "added_programs": 2,
+          "alternatives_retained": 0,
+          "tokens": [
+            "ο",
+            "γιώργος",
+            "περπατάει",
+            "καθότι",
+            "η",
+            "μαρία",
+            "περπατάει",
+            "."
+          ],
+          "reused": false
+        }
+      ],
+      "attempts": [
+        {
+          "kind": "vocabulary_and_construction",
+          "requested": [
+            "καθότι"
+          ],
+          "backend": "classical",
+          "trigger": null,
+          "status": "compiled",
+          "entries": 0,
+          "constructions": 1,
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash"
+        }
+      ],
+      "derivation_attempts": [
+        {
+          "complete": true,
+          "failure": null,
+          "tokens_consumed": 9
+        }
+      ]
+    },
+    {
+      "text": "John walks since Mary walks.",
+      "backend": "classical",
+      "complete": true,
+      "failure": null,
+      "meaning": "because(walk(john), walk(mary))",
+      "used": [
+        {
+          "index": 2,
+          "surface": "since",
+          "relation": "because",
+          "template": "clause-post",
+          "description": "The subordinate content gives a reason for the main content.",
+          "source": "grammar"
+        }
+      ],
+      "proposals": [
+        {
+          "surface": "since",
+          "relation": "because",
+          "evidence": "In 'John walks since Mary walks.', the subordinate clause 'Mary walks' is most naturally read as giving the reason or explanation for John's walking, fitting the causal relation 'because'. The alternative 'since_time' reading would require 'since' to supply a temporal starting boundary, but the present-tense stative/habitual 'walks' does not readily denote a bounded event beginning at Mary's walking, making the temporal boundary reading less warranted here.",
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash",
+          "source": "model-construction",
+          "validation": "Reviewed template and signature checks passed; interpretation remains a hypothesis.",
+          "programs": [
+            [
+              "IF Ty(classical:t)",
+              "THEN causal-post(because)",
+              "ELSE abort"
+            ],
+            [
+              "IF ?Ty(classical:t)",
+              "THEN causal-front(because)",
+              "ELSE abort"
+            ]
+          ],
+          "added_programs": 0,
+          "alternatives_retained": 2,
+          "tokens": [
+            "john",
+            "walks",
+            "since",
+            "mary",
+            "walks",
+            "."
+          ],
+          "reused": false
+        }
+      ],
+      "attempts": [
+        {
+          "kind": "construction",
+          "requested": [
+            "since"
+          ],
+          "backend": "classical",
+          "trigger": null,
+          "status": "compiled",
+          "constructions": 1,
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash"
+        }
+      ],
+      "derivation_attempts": [
+        {
+          "complete": true,
+          "failure": null,
+          "tokens_consumed": 6
+        }
+      ]
+    },
+    {
+      "text": "John walks provided Mary walks.",
+      "backend": "mltt",
+      "complete": true,
+      "failure": null,
+      "meaning": "condition(walk(john), walk(mary))",
+      "used": [
+        {
+          "index": 2,
+          "surface": "provided",
+          "relation": "condition",
+          "template": "clause-post",
+          "description": "The subordinate content conditions the main content; not automatically material implication.",
+          "source": "model-construction"
+        }
+      ],
+      "proposals": [
+        {
+          "surface": "provided",
+          "relation": "condition",
+          "evidence": "“provided mary walks” supplies a condition on which “john walks” holds; this is the finite-clause conditional use of provided, not a temporal or reason relation.",
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash",
+          "source": "model-construction",
+          "validation": "Reviewed template and signature checks passed; interpretation remains a hypothesis.",
+          "programs": [
+            [
+              "IF Ty(mltt:Prop)",
+              "THEN causal-post(condition)",
+              "ELSE abort"
+            ],
+            [
+              "IF ?Ty(mltt:Prop)",
+              "THEN causal-front(condition)",
+              "ELSE abort"
+            ],
+            [
+              "IF Ty(mltt:Content)",
+              "[+CLAUSE]",
+              "THEN causal-post(condition)",
+              "ELSE abort"
+            ]
+          ],
+          "added_programs": 3,
+          "alternatives_retained": 9,
+          "tokens": [
+            "john",
+            "walks",
+            "provided",
+            "mary",
+            "walks",
+            "."
+          ],
+          "reused": false
+        }
+      ],
+      "attempts": [
+        {
+          "kind": "construction",
+          "requested": [
+            "provided"
+          ],
+          "backend": "mltt",
+          "trigger": {
+            "token": "provided",
+            "index": 2,
+            "message": "The grammar could not continue at “provided”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure",
+            "tree_at_failure": [
+              {
+                "address": "0",
+                "labels": [
+                  "?Ty(Prop)"
+                ]
+              },
+              {
+                "address": "00",
+                "labels": [
+                  "Fo(john)",
+                  "Ty(human)"
+                ]
+              },
+              {
+                "address": "01",
+                "labels": [
+                  "Fo(λ x:animal. walk(x))",
+                  "?Ty(object → Prop)",
+                  "Ty(animal → Prop)"
+                ]
+              }
+            ]
+          },
+          "status": "compiled",
+          "constructions": 1,
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash"
+        }
+      ],
+      "derivation_attempts": [
+        {
+          "complete": false,
+          "failure": {
+            "token": "provided",
+            "index": 2,
+            "message": "The grammar could not continue at “provided”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "tokens_consumed": 2
+        },
+        {
+          "complete": true,
+          "failure": null,
+          "tokens_consumed": 6
+        }
+      ]
+    },
+    {
+      "text": "Ο Γιώργος περπατάει καθότι η Μαρία περπατάει.",
+      "backend": "mltt",
+      "complete": true,
+      "failure": null,
+      "meaning": "because(walk(giorgos), walk(maria))",
+      "used": [
+        {
+          "index": 3,
+          "surface": "καθότι",
+          "relation": "because",
+          "template": "clause-post",
+          "description": "The subordinate content gives a reason for the main content.",
+          "source": "model-construction"
+        }
+      ],
+      "proposals": [
+        {
+          "surface": "καθότι",
+          "relation": "because",
+          "evidence": "Introduces a finite clause (η Μαρία περπατάει) giving the reason for the main content (ο Γιώργος περπατάει); the connective is causal, not temporal or conditional.",
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash",
+          "source": "model-construction",
+          "validation": "Reviewed template and signature checks passed; interpretation remains a hypothesis.",
+          "programs": [
+            [
+              "IF Ty(mltt:Prop)",
+              "THEN causal-post(because)",
+              "ELSE abort"
+            ],
+            [
+              "IF ?Ty(mltt:Prop)",
+              "THEN causal-front(because)",
+              "ELSE abort"
+            ],
+            [
+              "IF Ty(mltt:Content)",
+              "[+CLAUSE]",
+              "THEN causal-post(because)",
+              "ELSE abort"
+            ]
+          ],
+          "added_programs": 3,
+          "alternatives_retained": 0,
+          "tokens": [
+            "ο",
+            "γιώργος",
+            "περπατάει",
+            "καθότι",
+            "η",
+            "μαρία",
+            "περπατάει",
+            "."
+          ],
+          "reused": false
+        }
+      ],
+      "attempts": [
+        {
+          "kind": "vocabulary_and_construction",
+          "requested": [
+            "καθότι"
+          ],
+          "backend": "mltt",
+          "trigger": null,
+          "status": "compiled",
+          "entries": 0,
+          "constructions": 1,
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash"
+        }
+      ],
+      "derivation_attempts": [
+        {
+          "complete": true,
+          "failure": null,
+          "tokens_consumed": 9
+        }
+      ]
+    },
+    {
+      "text": "John walks since Mary walks.",
+      "backend": "mltt",
+      "complete": true,
+      "failure": null,
+      "meaning": "because(walk(john), walk(mary))",
+      "used": [
+        {
+          "index": 2,
+          "surface": "since",
+          "relation": "because",
+          "template": "clause-post",
+          "description": "The subordinate content gives a reason for the main content.",
+          "source": "grammar"
+        }
+      ],
+      "proposals": [
+        {
+          "surface": "since",
+          "relation": "because",
+          "evidence": "Review aggregate for 'since' admits both a temporal and a causal reading. Reported DS failure is null. The main clause presents an ongoing/characteristic situation ('John walks'), and the subordinate clause 'Mary walks' is another full finite proposition; no temporal anchor or change-of-state is supplied, so a starting-boundary reading is weak. The causal reading is structurally natural and does not require an additional time-indexed operation.",
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash",
+          "source": "model-construction",
+          "validation": "Reviewed template and signature checks passed; interpretation remains a hypothesis.",
+          "programs": [
+            [
+              "IF Ty(mltt:Prop)",
+              "THEN causal-post(because)",
+              "ELSE abort"
+            ],
+            [
+              "IF ?Ty(mltt:Prop)",
+              "THEN causal-front(because)",
+              "ELSE abort"
+            ],
+            [
+              "IF Ty(mltt:Content)",
+              "[+CLAUSE]",
+              "THEN causal-post(because)",
+              "ELSE abort"
+            ]
+          ],
+          "added_programs": 0,
+          "alternatives_retained": 3,
+          "tokens": [
+            "john",
+            "walks",
+            "since",
+            "mary",
+            "walks",
+            "."
+          ],
+          "reused": false
+        }
+      ],
+      "attempts": [
+        {
+          "kind": "construction",
+          "requested": [
+            "since"
+          ],
+          "backend": "mltt",
+          "trigger": null,
+          "status": "compiled",
+          "constructions": 1,
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash"
+        }
+      ],
+      "derivation_attempts": [
+        {
+          "complete": true,
+          "failure": null,
+          "tokens_consumed": 6
+        }
+      ]
+    }
+  ],
+  "paragraph_checks": [
+    {
+      "language": "english",
+      "backend": "classical",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "sentences": [
+        {
+          "text": "When George opened the door, Mary entered the room.",
+          "complete": true,
+          "failure": null,
+          "meaning": "when_clause(enter_vho02016523(mary, ι x1:e. room_n04105893(x1)), open_vho01346003(george, ι x0:e. door_n03221720(x0)))"
+        },
+        {
+          "text": "John walks although Mary walks later.",
+          "complete": true,
+          "failure": null,
+          "meaning": "concession(walk(john), later(walk(mary)))"
+        },
+        {
+          "text": "If Bill shouts, John walks because Mary walks.",
+          "complete": true,
+          "failure": null,
+          "meaning": "condition(because(walk(john), walk(mary)), shout(bill))"
+        }
+      ]
+    },
+    {
+      "language": "english",
+      "backend": "mltt",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "sentences": [
+        {
+          "text": "When George opened the door, Mary entered the room.",
+          "complete": true,
+          "failure": null,
+          "meaning": "when_clause(enter_vho02016523(mary, definite_s1_01010), open_vho01346003(george, definite_s1_0010))"
+        },
+        {
+          "text": "John walks although Mary walks later.",
+          "complete": true,
+          "failure": null,
+          "meaning": "concession(walk(john), later(walk(mary)))"
+        },
+        {
+          "text": "If Bill shouts, John walks because Mary walks.",
+          "complete": true,
+          "failure": null,
+          "meaning": "condition(because(walk(john), walk(mary)), shout(bill))"
+        }
+      ]
+    },
+    {
+      "language": "smg",
+      "backend": "classical",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "sentences": [
+        {
+          "text": "Όταν η Μαρία περπατάει, ο Γιώργος περπατάει.",
+          "complete": true,
+          "failure": null,
+          "meaning": "when_clause(walk(giorgos), walk(maria))"
+        },
+        {
+          "text": "Ο Γιώργος περπατάει παρότι η Μαρία περπατάει αργότερα.",
+          "complete": true,
+          "failure": null,
+          "meaning": "concession(walk(giorgos), later(walk(maria)))"
+        },
+        {
+          "text": "Αν η Μαρία περπατάει, ο Γιώργος περπατάει σήμερα.",
+          "complete": true,
+          "failure": null,
+          "meaning": "condition(today(walk(giorgos)), walk(maria))"
+        }
+      ]
+    },
+    {
+      "language": "smg",
+      "backend": "mltt",
+      "coverage": {
+        "complete": 3,
+        "total": 3,
+        "failed": 0,
+        "all_complete": true
+      },
+      "sentences": [
+        {
+          "text": "Όταν η Μαρία περπατάει, ο Γιώργος περπατάει.",
+          "complete": true,
+          "failure": null,
+          "meaning": "when_clause(walk(giorgos), walk(maria))"
+        },
+        {
+          "text": "Ο Γιώργος περπατάει παρότι η Μαρία περπατάει αργότερα.",
+          "complete": true,
+          "failure": null,
+          "meaning": "concession(walk(giorgos), later(walk(maria)))"
+        },
+        {
+          "text": "Αν η Μαρία περπατάει, ο Γιώργος περπατάει σήμερα.",
+          "complete": true,
+          "failure": null,
+          "meaning": "condition(today(walk(giorgos)), walk(maria))"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Opaque content relations, not full temporal or conditional inference",
+    "Native Classical/Constructive only; TTR compiler absent",
+    "Hand-written examples, not held-out coverage"
+  ],
+  "deployment": {
+    "id": "dpl_J8zfEcRmnVCiNxYbaRYNQhfpoxmf",
+    "url": "https://ds-workbench.vercel.app/",
+    "staged_files": 350,
+    "size_mib": 80.34
+  },
+  "public_browser": {
+    "passed": true,
+    "checks": [
+      {
+        "backend": "classical",
+        "text": "When George opened the door, Mary entered the room.",
+        "meaning": "when_clause(enter_vho02016523(mary, ι x1:e. room_n04105893(x1)), open_vho01346003(george, ι x0:e. door_n03221720(x0)))",
+        "used": [
+          {
+            "index": 0,
+            "surface": "when",
+            "relation": "when_clause",
+            "template": "clause-front",
+            "description": "The subordinate content supplies a temporal occasion for the main content.",
+            "source": "grammar"
+          }
+        ]
+      },
+      {
+        "backend": "classical",
+        "text": "If Bill shouts, John walks because Mary walks.",
+        "meaning": "condition(because(walk(john), walk(mary)), shout(bill))",
+        "used": [
+          {
+            "index": 0,
+            "surface": "if",
+            "relation": "condition",
+            "template": "clause-front",
+            "description": "The subordinate content conditions the main content; not automatically material implication.",
+            "source": "grammar"
+          },
+          {
+            "index": 6,
+            "surface": "because",
+            "relation": "because",
+            "template": "clause-post",
+            "description": "The subordinate content gives a reason for the main content.",
+            "source": "grammar"
+          }
+        ]
+      },
+      {
+        "backend": "classical",
+        "text": "Ο Γιώργος περπατάει παρότι η Μαρία περπατάει αργότερα.",
+        "meaning": "concession(walk(giorgos), later(walk(maria)))"
+      },
+      {
+        "backend": "mltt",
+        "text": "When George opened the door, Mary entered the room.",
+        "meaning": "when_clause(enter_vho02016523(mary, definite_01010), open_vho01346003(george, definite_0010))",
+        "used": [
+          {
+            "index": 0,
+            "surface": "when",
+            "relation": "when_clause",
+            "template": "clause-front",
+            "description": "The subordinate content supplies a temporal occasion for the main content.",
+            "source": "grammar"
+          }
+        ]
+      },
+      {
+        "backend": "mltt",
+        "text": "If Bill shouts, John walks because Mary walks.",
+        "meaning": "condition(because(walk(john), walk(mary)), shout(bill))",
+        "used": [
+          {
+            "index": 0,
+            "surface": "if",
+            "relation": "condition",
+            "template": "clause-front",
+            "description": "The subordinate content conditions the main content; not automatically material implication.",
+            "source": "grammar"
+          },
+          {
+            "index": 6,
+            "surface": "because",
+            "relation": "because",
+            "template": "clause-post-content",
+            "description": "The subordinate content gives a reason for the main content.",
+            "source": "grammar"
+          }
+        ]
+      },
+      {
+        "backend": "mltt",
+        "text": "Ο Γιώργος περπατάει παρότι η Μαρία περπατάει αργότερα.",
+        "meaning": "concession(walk(giorgos), later(walk(maria)))"
+      }
+    ],
+    "live_provided": {
+      "complete": true,
+      "meaning": "condition(walk(john), walk(mary))",
+      "proposals": [
+        {
+          "surface": "provided",
+          "relation": "condition",
+          "evidence": "“provided” here introduces a finite subordinate clause (provided mary walks) that conditions the main content (john walks); the main situation is conditional on the subordinate situation, and no temporal, causal, or concessive reading fits.",
+          "provider": "OpenRouter",
+          "model": "deepseek/deepseek-v4.1-flash",
+          "source": "model-construction",
+          "validation": "Reviewed template and signature checks passed; interpretation remains a hypothesis.",
+          "programs": [
+            [
+              "IF Ty(mltt:Prop)",
+              "THEN causal-post(condition)",
+              "ELSE abort"
+            ],
+            [
+              "IF ?Ty(mltt:Prop)",
+              "THEN causal-front(condition)",
+              "ELSE abort"
+            ],
+            [
+              "IF Ty(mltt:Content)",
+              "[+CLAUSE]",
+              "THEN causal-post(condition)",
+              "ELSE abort"
+            ]
+          ],
+          "added_programs": 3,
+          "alternatives_retained": 9,
+          "tokens": [
+            "john",
+            "walks",
+            "provided",
+            "mary",
+            "walks",
+            "."
+          ],
+          "reused": false
+        }
+      ],
+      "used": [
+        {
+          "index": 2,
+          "surface": "provided",
+          "relation": "condition",
+          "template": "clause-post",
+          "description": "The subordinate content conditions the main content; not automatically material implication.",
+          "source": "model-construction"
+        }
+      ]
+    },
+    "mobile_export_and_key_privacy": true
+  }
+}

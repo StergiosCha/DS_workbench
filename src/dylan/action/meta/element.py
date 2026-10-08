@@ -96,6 +96,21 @@ def reset_bound_metas() -> None:
             m.reset()
 
 
+def snapshot_meta_bindings() -> dict[str, tuple[Any, set[str], Any]]:
+    """Checkpoint bindings before trying a trigger candidate."""
+    return {key: (m.value, set(m.tried_values), m.last) for key, m in _POOL.items()}
+
+
+def restore_meta_bindings(snapshot: dict[str, tuple[Any, set[str], Any]]) -> None:
+    """Undo a failed candidate without discarding earlier rule bindings."""
+    for key, m in _POOL.items():
+        if key in snapshot:
+            m.value, tried, m.last = snapshot[key]
+            m.tried_values = set(tried)
+        else:
+            m.reset()
+
+
 def reset_all_meta_bindings() -> None:
     """Clear values on every pooled meta (keys unchanged); use in tests / between utterances when needed."""
     for m in _POOL.values():

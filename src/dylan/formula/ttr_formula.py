@@ -27,12 +27,18 @@ logger = logging.getLogger(__name__)
 
 
 def resolve_freshen_tree(context: Any) -> Any:
-    """Return the :class:`~dylan.tree.tree.Tree` used for variable pools (Java ``Context`` / ``Tree``)."""
+    """Resolve an explicit tree or parser tuple; never silently skip freshening."""
     from dylan.dag.dag_induction_tuple import DAGInductionTuple
     from dylan.dag.parser_tuple import ParserTuple
+    from dylan.tree.tree import Tree
 
     if isinstance(context, (DAGInductionTuple, ParserTuple)):
         return context.get_tree()
+    if not isinstance(context, Tree):
+        raise TypeError(
+            "TTR freshening requires the receiving Tree or a parser tuple; "
+            f"got {type(context).__name__}. Pass the active branch explicitly."
+        )
     return context
 
 
@@ -98,7 +104,7 @@ class TTRFormula(Formula):
         return self
 
     def freshen_vars(self, context: Any, var_map: dict[Any, Any] | None = None) -> TTRFormula:
-        """Alpha-rename using a tree/context, or relative to a gold record and *var_map* (Java overloads)."""
+        """Alpha-rename using a tree/tuple, or a gold record and *var_map* (Java overloads)."""
         if var_map is not None:
             from dylan.formula.ttr_record_type import TTRRecordType
 

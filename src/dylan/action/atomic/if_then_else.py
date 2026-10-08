@@ -11,8 +11,15 @@ from typing import TYPE_CHECKING, Any
 
 from dylan.action.atomic.effect import Effect
 from dylan.action.atomic.effect_factory import EffectFactory
+from dylan.action.execution_trace import (
+    execute_effect,
+    trace_branch,
+    tracing,
+    trace_checkpoint,
+    discard_effects_since,
+)
 from dylan.action.meta.element import reset_all_meta_bindings, reset_bound_metas
-from dylan.tree.label.labels import Label, MetaLabel, Requirement, label_factory_create
+from dylan.tree.label.labels import Label, MetaLabel, label_factory_create
 from dylan.tree.tree import Tree
 
 if TYPE_CHECKING:
@@ -68,13 +75,21 @@ class Backtracker:
     @staticmethod
     def _label_metas(label: Label) -> list[Any]:
         """Collect :class:`MetaElement` cells referenced by *label*."""
-        from dylan.tree.label.labels import MetaLabel as _ML
+        from dylan.action.meta.meta_modality import MetaModality
+        from dylan.tree.label.labels import ModalLabel, TnLabel
 
-        if isinstance(label, _ML):
-            return [label._meta]
-        if isinstance(label, Requirement) and isinstance(label.inner, _ML):
-            return [label.inner._meta]
-        return []
+        metas = []
+        if isinstance(label, (MetaLabel, TnLabel)) and label._meta is not None:
+            metas.append(label._meta)
+        if isinstance(label, ModalLabel) and isinstance(label.modality, MetaModality):
+            metas.append(label.modality.get_meta())
+        inner = getattr(label, "inner", None)
+        if isinstance(inner, Label):
+            metas.extend(Backtracker._label_metas(inner))
+        for attr in ("inners", "parts"):
+            for child in getattr(label, attr, []):
+                metas.extend(Backtracker._label_metas(child))
+        return metas
 
     def can_backtrack_tuple_context(
         self,
@@ -131,7 +146,7 @@ class IfThenElse(Effect):
         parent: IfThenElse | None = None,
     ) -> IfThenElse:
         """Parse IF/THEN/ELSE blocks with full nesting support (mirrors Java constructor)."""
-        src = [str(l) for l in lines]
+        src = [str(line) for line in lines]
         if_labels: list[Label] = []
         then_effects: list[Effect] = []
         else_effects: list[Effect] = []
@@ -223,32 +238,49 @@ class IfThenElse(Effect):
         result: Tree | None = None
         attempts = 0
         while attempts < 64:
+            checkpoint = trace_checkpoint()
             attempts += 1
             success = True
             start = self.backtracker.index
+            checks = []
             for i in range(start, len(self.if_labels)):
                 lab = self.if_labels[i]
                 self.backtracker.set_index(i)
-                if not lab.check_with_tuple_as_context(tree, context):
+                label_text = str(lab) if tracing() else ""
+                passed = lab.check_with_tuple_as_context(tree, context)
+                if tracing():
+                    checks.append({"label": label_text, "passed": bool(passed)})
+                if not passed:
                     success = False
                     break
             branch = self.then_effects if success else self.else_effects
             if not branch:
                 return None
+            # Alternate IF bindings must be checked against the pre-branch tree.
+            # A failed put/go may already have moved the pointer and added nodes.
+            # Keeping those effects can rebind Tn(a) inside an unfixed node and
+            # wrongly license a nested clitic projection on the next attempt.
+            tree_checkpoint = tree.clone() if self.backtracker._metas else None
             result = tree
-            for eff in branch:
-                result = eff.exec_tuple_context(result, context)
-                if result is None:
-                    break
+            with trace_branch(checks, "THEN" if success else "ELSE"):
+                for eff in branch:
+                    result = execute_effect(eff, result, context, tuple_context=True)
+                    if result is None:
+                        break
             if result is not None:
                 return result
+            discard_effects_since(checkpoint)
+            if tree_checkpoint is not None:
+                tree.restore_from(tree_checkpoint)
             if not self.backtracker.can_backtrack_tuple_context(tree, context, self.if_labels):
                 return None
 
     def exec(self, tree: Tree, context: Any) -> Tree | None:
         return self.exec_tuple_context(tree, context)
 
-    def exec_exhaustively(self, tree: Tree, context: Any = None) -> "list[tuple[IfThenElse, Tree]] | None":
+    def exec_exhaustively(
+        self, tree: Tree, context: Any = None
+    ) -> "list[tuple[IfThenElse, Tree]] | None":
         """Enumerate successful parses (Java ``execExhaustively``); metavar backtracking is single-path-only for now."""
         result = self.exec_tuple_context(tree.clone(), context)
         if result is None:

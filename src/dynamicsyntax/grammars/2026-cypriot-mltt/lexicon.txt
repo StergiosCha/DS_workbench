@@ -1,0 +1,40 @@
+// Greek spelling and ASCII transliteration aliases; finite vocabulary.
+τον clitic him
+ton clitic him
+το clitic theme
+to clitic theme
+ιξέρω finite-plain know speaker
+ιξέρω finite-neg know speaker
+ιξέρω finite-na know speaker
+iksero finite-plain know speaker
+iksero finite-neg know speaker
+iksero finite-na know speaker
+γράφει finite-plain write pro
+γράφει finite-neg write pro
+γράφει finite-na write pro
+grafi finite-plain write pro
+grafi finite-neg write pro
+grafi finite-na write pro
+γράψει dependent-na write pro
+grapsi dependent-na write pro
+γράφε imperative-plain write hearer
+γράφε imperative-neg write hearer
+γράφε imperative-na write hearer
+grafe imperative-plain write hearer
+grafe imperative-neg write hearer
+grafe imperative-na write hearer
+γράψε imperative-plain write hearer
+γράψε imperative-neg write hearer
+γράψε imperative-na write hearer
+grapse imperative-plain write hearer
+grapse imperative-neg write hearer
+grapse imperative-na write hearer
+εν negative x
+en negative x
+να subjunctive x
+na subjunctive x
+. punctuation x
+! punctuation x
+? punctuation x
+; punctuation x
+; punctuation x

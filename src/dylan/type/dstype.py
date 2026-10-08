@@ -201,6 +201,10 @@ def _parse_meta_type(string: str) -> DSType | None:
 def DSType_parse(string: str) -> DSType | None:  # noqa: N802
     """Parse a type string like ``e``, ``e>t``, ``(e>t)>t``."""
     string = string.strip()
+    if string.startswith(("mltt:", "classical:")):
+        from dylan.formula.mltt.semantics import parse_semantic_type
+
+        return parse_semantic_type(string)
     if TYPE_SEP in string:
         parts = _split_top_level(string)
         if parts is None:

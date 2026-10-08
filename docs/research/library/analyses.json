@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "note": "Bounded source-to-implementation cards. Source inspection, community review, parser completion and semantic adequacy are independent. Examples marked authored are not quotations from the cited work. Cards added on 7 October (evening) rest on abstract/introduction-level inspection and say so in their locators; they are reading queues, not implemented analyses.",
+  "analyses": [
+    {
+      "id": "smg-pcc-acc12",
+      "title": "SMG PCC: genitive + first/second-person accusative clitic clash",
+      "topics": [
+        "C09.02",
+        "C09.03"
+      ],
+      "sources": [
+        {
+          "paper": "C10",
+          "locator": "Chapter 6, acc12 entry (6.49); chapter 3 genitive entries (3.100)/(3.102).",
+          "version": "396-page thesis PDF identified in the paper record."
+        },
+        {
+          "paper": "CK11",
+          "locator": "Printed pp.144–145 and surrounding structural/case analysis.",
+          "version": "40-page published article identified in the paper record."
+        }
+      ],
+      "claim": "In the modeled SMG clitic reading, genitive and acc12 programs compete for the same locally unfixed address. Their incompatible requirements block the cluster; a third-person accusative has a fixed-node strategy.",
+      "mechanisms": [
+        "unfixed",
+        "case_filters",
+        "substitution",
+        "merge"
+      ],
+      "language": "Standard Modern Greek",
+      "limits": "This card does not generalize the SMG restriction to Pontic or to strong-pronoun readings. An accepted prefix may retain an unfixed node. The supplied sentence has no independent corpus judgment in the workbench.",
+      "examples": [
+        {
+          "text": "του με έδωσε",
+          "origin": "User-supplied regression, not a source quotation",
+          "expected": "Stop at με; PCC diagnosis; no complete derivation."
+        },
+        {
+          "text": "του το έδωσε",
+          "origin": "Authored control, not a source quotation",
+          "expected": "Complete with subject, theme and recipient preserved."
+        }
+      ],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "tested_fragment",
+          "scope": "Native SMG clitic templates; failed branch rollback and PCC diagnosis."
+        },
+        {
+          "backend": "constructive",
+          "status": "tested_fragment",
+          "scope": "Separate native compiler using the same structural clitic restrictions; our adaptation."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_implemented",
+          "scope": "No equivalent Greek dialect suite is provided by the current TTR grammar."
+        }
+      ],
+      "code": [
+        "tests/test_pcc.py",
+        "tests/test_greek_ditransitive_expansion.py",
+        "tests/test_loft_engine.py",
+        "docs/design/thesis-clitic-system.md",
+        "data/coverage/pcc-public-2026-10-07.json"
+      ],
+      "community_review": "pending",
+      "next_action": "Review source-specific person/case contrasts and dialect scope; preserve these negative controls when expanding vocabulary."
+    },
+    {
+      "id": "english-named-nonrestrictive",
+      "title": "Named-head English nonrestrictive relatives",
+      "topics": [
+        "C05.02"
+      ],
+      "sources": [
+        {
+          "paper": "CKM05",
+          "locator": "§3.1, printed pp.74–80 (physical PDF pp.84–90), examples (3.6), (3.9), (3.13).",
+          "version": "Final draft dated 2004-12-12, not final-publication pagination."
+        },
+        {
+          "paper": "HG21",
+          "locator": "§2.5.1, printed p.272.",
+          "version": "Published article."
+        }
+      ],
+      "claim": "A LINK and copied nominal head support a supplemental relative. MERGE fixes the copied head and the supplemental assertion combines with the matrix content; this differs from a restrictive nominal interpretation.",
+      "mechanisms": [
+        "link",
+        "unfixed",
+        "merge",
+        "context_reuse"
+      ],
+      "language": "English",
+      "limits": "Current fragment: named matrix subject/direct-object hosts and local gaps. Quantified/complex definite hosts, embedded projection, question scope and nonlocal/PP gaps require separate work.",
+      "examples": [
+        {
+          "text": "John, who Mary knows, walks.",
+          "origin": "Authored regression, not a source quotation",
+          "expected": "walk(john) and know(mary, john), with the same John in both assertions."
+        }
+      ],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "tested_fragment",
+          "scope": "Native named-head English fragment."
+        },
+        {
+          "backend": "constructive",
+          "status": "tested_fragment",
+          "scope": "Explicit dependent-type adaptation, not a claim made by the 2005 source."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_audited",
+          "scope": "Inherited relative entries do not establish parity for supplemental meaning, scope or head identity."
+        }
+      ],
+      "code": [
+        "tests/test_nonrestrictive_relatives.py",
+        "docs/design/nonrestrictive-relatives.md",
+        "data/coverage/nonrestrictive-public-2026-10-07.json"
+      ],
+      "community_review": "pending",
+      "next_action": "Review quantified/definite hosts and supplemental projection; create an independent TTR identity/scope card."
+    },
+    {
+      "id": "ellipsis-reuse-versus-rerun",
+      "title": "Ellipsis: reusing a term versus rerunning contextual actions",
+      "topics": [
+        "C12.01",
+        "C12.02"
+      ],
+      "sources": [
+        {
+          "paper": "KE19",
+          "locator": "§§1.2–1.3, particularly physical PDF pp.13–16 on reuse.",
+          "version": "Draft dated 2016-10-04; published chapter metadata dated 2019."
+        },
+        {
+          "paper": "C25",
+          "locator": "§4.3, action contexts.",
+          "version": "Published 2025 article."
+        }
+      ],
+      "claim": "Contextual reuse has to distinguish preserving a previously constructed term from executing an action sequence in a new context. Rebinding and witness freshness are semantic obligations, not just tree completion checks.",
+      "mechanisms": [
+        "context_reuse",
+        "substitution"
+      ],
+      "language": "English",
+      "limits": "This card identifies an implementation requirement. It does not assert equivalence of the ellipsis chapter's semantics and the Constructive treatment, or a general ellipsis capability in the app.",
+      "examples": [],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "partial_infrastructure",
+          "scope": "Context and local repair exist; general typed predicate retrieval/rebinding is pending."
+        },
+        {
+          "backend": "constructive",
+          "status": "partial_infrastructure",
+          "scope": "Need dependent witness accessibility and freshness tests."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_audited",
+          "scope": "Published implementation reports need an independent audit of this port."
+        }
+      ],
+      "code": [
+        "docs/design/dialogue.md",
+        "tests/test_dialogue_workbench.py"
+      ],
+      "community_review": "pending",
+      "next_action": "Extract exact strict/sloppy contrasts with context and source example numbers; agree expected meanings before implementing retrieval."
+    },
+    {
+      "id": "induction-evaluation-boundaries",
+      "title": "Keep the two 2013 induction studies and their evaluation units distinct",
+      "topics": [
+        "C17.01",
+        "C17.04"
+      ],
+      "sources": [
+        {
+          "paper": "EPH13",
+          "locator": "§3 semantic trees; §5, Table 2 and stated generated-data/unseen-word conditions.",
+          "version": "IWCS 2013 paper."
+        },
+        {
+          "paper": "ECH13",
+          "locator": "Abstract and §4 for DS–TTR identification only; evaluation not audited here.",
+          "version": "2013 CMCL paper, pp.94–103."
+        }
+      ],
+      "claim": "EPH13 learns action programs from structured predicate–argument trees; ECH13 develops learning using TTR record-type meanings and child-directed utterances. The earlier generated-data evaluation is not an unrestricted-text accuracy result.",
+      "mechanisms": [
+        "lexical_learning",
+        "search",
+        "record_update"
+      ],
+      "language": "English",
+      "limits": "No numerical result from ECH13 has been extracted or independently reproduced. An LLM proposing a lexical template is a different procedure from either induction algorithm.",
+      "examples": [],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "not_audited",
+          "scope": "No replication of the published learning/evaluation protocol established."
+        },
+        {
+          "backend": "constructive",
+          "status": "not_implemented",
+          "scope": "No Constructive adaptation of these learning protocols is claimed."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_audited",
+          "scope": "Inherited induction modules do not by themselves establish protocol replication."
+        }
+      ],
+      "code": [
+        "docs/research/ds-theoretical-coverage.md",
+        "src/dylan/lexical_expansion.py"
+      ],
+      "community_review": "pending",
+      "next_action": "Inspect ECH13 evaluation in full; record dataset, split, exclusions and metrics in its own replication card."
+    },
+    {
+      "id": "ttr-content-versus-ttr-parsing",
+      "title": "DS–TTR and TTR-DS: semantic content versus representing parsing in TTR",
+      "topics": [
+        "C01.02",
+        "C18.02"
+      ],
+      "sources": [
+        {
+          "paper": "CL25",
+          "locator": "§1, p.2; §§2.2–3, p.5; §4.5, pp.17–18; §§4.8–5, pp.20–21.",
+          "version": "Published 22-page 2025 article; fingerprint in the paper record."
+        },
+        {
+          "paper": "PEH11",
+          "locator": "§2 for DS–TTR/event semantics and §3 for DyLan.",
+          "version": "Published IWCS 2011 paper, pp.365–369."
+        },
+        {
+          "paper": "E15",
+          "locator": "§§2–3 for record updates and dialogue context.",
+          "version": "Published IWCS 2015 paper, pp.261–271."
+        }
+      ],
+      "claim": "Earlier DS–TTR uses TTR content in DS processing. Cooper and Larsson explicitly call their recasting TTR-DS: DS tree descriptions, parse states and action rules are represented in TTR. The latter is an additional architectural proposal, not an interchangeable name for a record-semantic backend.",
+      "mechanisms": [
+        "tree_growth",
+        "requirements",
+        "record_update"
+      ],
+      "language": "English worked examples",
+      "limits": "CL25 recasts parts of DS and concentrates on classical e/t contents. §4.8 leaves further semantic integrations open; §5 describes a detailed implemented grammar as future work. Selected sections were inspected, not every formal rule. No new parser implementation or parity result is claimed by this card.",
+      "examples": [],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "not_implemented",
+          "scope": "The app’s Python executor and native Classical semantics have not been recast as CL25 TTR action rules."
+        },
+        {
+          "backend": "constructive",
+          "status": "not_implemented",
+          "scope": "The existing dependent-type compiler is distinct from the CL25 recasting."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_implemented",
+          "scope": "The app has record-semantic types and DS tree/action execution; this does not implement the proposed TTR encoding of parsing itself."
+        }
+      ],
+      "code": [
+        "docs/design/native-semantics.md",
+        "src/dylan/tree/tree.py",
+        "src/dylan/formula/ttr_record_type.py",
+        "src/dylan/action/atomic/if_then_else.py"
+      ],
+      "community_review": "pending",
+      "next_action": "Review §§3–4 rule by rule; specify a separate experimental TTR-DS parse-state/action prototype and its tests before any integration into the workbench."
+    },
+    {
+      "id": "spanish-clitic-placement-diachrony",
+      "title": "Spanish clitic placement: from pragmatically regulated to mood-determined (Medieval → Modern)",
+      "topics": [
+        "C16.03",
+        "C09.01"
+      ],
+      "sources": [
+        {
+          "paper": "B08b",
+          "locator": "§1 Introduction, printed pp.221–222 (PDF pp.2–3), including footnote 1 on the doctoral source.",
+          "version": "41-page repository copy fingerprinted in the paper record."
+        },
+        {
+          "paper": "B08",
+          "locator": "Thesis not inspected; cited as the fuller study in B08b footnote 1 and in KC16 draft references (PDF p.52).",
+          "version": "No inspected version."
+        }
+      ],
+      "claim": "Bouzouita's DS account treats clitic position relative to the finite verb in Medieval (13th–14th c.), Renaissance (16th c.) and Modern (20th c.) Spanish as synchronic stages, with Medieval placement driven by how left-peripheral content is constructed and Modern placement determined by verbal mood (author's account, introduction level).",
+      "mechanisms": [
+        "underspecification",
+        "unfixed",
+        "context_reuse"
+      ],
+      "language": "Spanish (Medieval, Renaissance, Modern)",
+      "limits": "Only the introduction was inspected; the stage-specific lexical actions and the routinisation argument were not audited. No Spanish grammar exists in the workbench.",
+      "examples": [
+        {
+          "text": "(none quoted) — stage data not extracted in this pass",
+          "origin": "Not extracted; introduction-level inspection only",
+          "expected": "Extract dated examples with stage labels before implementation."
+        }
+      ],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "not_implemented",
+          "scope": "No Spanish grammar family."
+        },
+        {
+          "backend": "constructive",
+          "status": "not_implemented",
+          "scope": "No Spanish grammar family."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_implemented",
+          "scope": "No Spanish grammar family."
+        }
+      ],
+      "code": [
+        "docs/design/greek-clitics.md",
+        "docs/design/thesis-clitic-system.md"
+      ],
+      "community_review": "pending",
+      "next_action": "Read B08b §§2–4 and the thesis; compare the Medieval left-periphery mechanism with the SMG clitic templates before considering a shared clitic-placement module."
+    },
+    {
+      "id": "greek-clitic-diachrony-routinisation",
+      "title": "Greek clitic systems: Koine → Medieval → SMG/Cypriot/Pontic via routinisation and parsing mismatches",
+      "topics": [
+        "C16.02",
+        "C16.01",
+        "C09.05"
+      ],
+      "sources": [
+        {
+          "paper": "C20",
+          "locator": "Abstract, printed p.277 (PDF p.1).",
+          "version": "28-page OA article fingerprinted in the paper record."
+        },
+        {
+          "paper": "C10",
+          "locator": "Synchronic dialect clitic chapters already catalogued; diachronic chapter not re-inspected in this pass.",
+          "version": "396-page thesis PDF identified in the paper record."
+        }
+      ],
+      "claim": "The transition from Koine to the Medieval varieties and from Medieval to the modern varieties is explained by routinisation (Pickering and Garrod 2004) and parsing/hearer asymmetries: an encoded clitic system emerges from a freer, pragmatically regulated one (author's account, abstract level).",
+      "mechanisms": [
+        "underspecification",
+        "context_reuse",
+        "unfixed",
+        "case_filters"
+      ],
+      "language": "Koine, Medieval, Standard Modern, Cypriot and Pontic Greek",
+      "limits": "Abstract-level inspection. The workbench's synchronic SMG/Cypriot/Pontic/Grico clitic fragments are not a diachronic model; a successful synchronic parse establishes nothing about the historical argument.",
+      "examples": [
+        {
+          "text": "(none quoted) — stage data not extracted in this pass",
+          "origin": "Not extracted; abstract-level inspection",
+          "expected": "Extract Koine/Medieval examples with sources before any modelling."
+        }
+      ],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "partial_infrastructure",
+          "scope": "Synchronic SMG/Cypriot/Pontic/Grico clitic templates exist; no diachronic stages or routinisation modelling."
+        },
+        {
+          "backend": "constructive",
+          "status": "partial_infrastructure",
+          "scope": "Same synchronic fragments via the native Constructive compiler; our adaptation; no diachronic modelling."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_implemented",
+          "scope": "No Greek TTR grammar."
+        }
+      ],
+      "code": [
+        "docs/design/greek-clitics.md",
+        "docs/design/thesis-clitic-system.md",
+        "tests/test_clitic_restrictions.py",
+        "tests/test_greek_workbench.py"
+      ],
+      "community_review": "pending",
+      "next_action": "Read C20 §§2–5; align each historical stage with the synchronic templates and record which SMG constraints are claimed to be routinised strategies."
+    },
+    {
+      "id": "ds-vector-semantics-tensor-contraction",
+      "title": "Vector-space semantics for DS: composition as tensor contraction (proposal lineage SPHK18 → PSHK21)",
+      "topics": [
+        "C18.04",
+        "C17.02"
+      ],
+      "sources": [
+        {
+          "paper": "SPHK18",
+          "locator": "Abstract, PDF p.1.",
+          "version": "10-page SemDial PDF fingerprinted in the paper record."
+        },
+        {
+          "paper": "PSHK21",
+          "locator": "Crossref-deposited abstract.",
+          "version": "No inspected PDF (subscription)."
+        },
+        {
+          "paper": "KV19",
+          "locator": "Local two-page contribution and public one-paragraph abstract already catalogued.",
+          "version": "As recorded in the paper record."
+        }
+      ],
+      "claim": "DS tree nodes can be decorated with vectors, tensors and sums thereof, with the DS composition operation realised as tensor contraction; sums model underspecified elements during incremental processing, and the 2021 article extends this to incremental disambiguation (authors' proposal, abstract level).",
+      "mechanisms": [
+        "tree_growth",
+        "underspecification"
+      ],
+      "language": "English (illustrative)",
+      "limits": "Abstract-level inspection; no evaluation numbers extracted. This lineage is a semantic architecture proposal and is unrelated to the workbench's Jev lexical preferences or OpenRouter vocabulary proposals, which do not compose meanings.",
+      "examples": [
+        {
+          "text": "(none quoted)",
+          "origin": "Not extracted; abstract-level inspection",
+          "expected": "Extract the worked plausibility-tensor example with its disambiguation judgement."
+        }
+      ],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "not_implemented",
+          "scope": "No vector decorations; terms only."
+        },
+        {
+          "backend": "constructive",
+          "status": "not_implemented",
+          "scope": "No vector decorations."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_implemented",
+          "scope": "Record types only; no distributional fields."
+        }
+      ],
+      "code": [
+        "docs/design/jev-lexical-selection.md",
+        "docs/design/native-semantics.md"
+      ],
+      "community_review": "pending",
+      "next_action": "Read SPHK18 §§2–4 and obtain PSHK21; decide whether a distributional decoration is a research card only or a candidate fourth semantic backend."
+    }
+  ]
+}

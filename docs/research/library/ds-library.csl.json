@@ -1,0 +1,1611 @@
+[
+  {
+    "id": "CKM05",
+    "type": "book",
+    "title": "The Dynamics of Language: An Introduction",
+    "author": [
+      {
+        "family": "Cann",
+        "given": "Ronnie"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Marten",
+        "given": "Lutz"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2005
+        ]
+      ]
+    },
+    "publisher": "Elsevier",
+    "keyword": "DS:categories:C01, DS:categories:C02, DS:categories:C03, DS:categories:C04, DS:categories:C05, DS:categories:C07, DS:categories:C08, DS:categories:C10, DS:categories:C12, DS:categories:C14, DS:categories:C15, DS:frameworks:classical, DS:mechanisms:tree_growth, DS:mechanisms:requirements, DS:mechanisms:link, DS:mechanisms:unfixed, DS:mechanisms:merge, DS:mechanisms:substitution, DS:mechanisms:quantification, DS:mechanisms:context_reuse",
+    "note": "Review: selected_passages. Contents and selected chs.2–9; printed pp.74–80 = PDF84–90"
+  },
+  {
+    "id": "HG21",
+    "type": "article-journal",
+    "title": "Dynamic Syntax: The Dynamics of Incremental Processing: Constraints on Underspecification",
+    "author": [
+      {
+        "family": "Howes",
+        "given": "Christine"
+      },
+      {
+        "family": "Gibson",
+        "given": "Hannah"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "container-title": "Journal of Logic, Language and Information",
+    "page": "263–276",
+    "URL": "https://doi.org/10.1007/s10849-021-09334-x",
+    "DOI": "10.1007/s10849-021-09334-x",
+    "volume": "30",
+    "keyword": "DS:categories:C01, DS:categories:C04, DS:categories:C05, DS:categories:C08, DS:categories:C11, DS:categories:C14, DS:categories:C15, DS:categories:C16, DS:categories:C18, DS:frameworks:general, DS:mechanisms:tree_growth, DS:mechanisms:requirements, DS:mechanisms:link, DS:mechanisms:unfixed, DS:mechanisms:merge, DS:mechanisms:underspecification",
+    "note": "Review: overview_read. Full overview; §3 supplies secondary pointers, not direct review of those papers"
+  },
+  {
+    "id": "C10",
+    "type": "thesis",
+    "title": "Clitics in Four Dialects of Modern Greek: A Dynamic Account",
+    "author": [
+      {
+        "family": "Chatzikyriakidis",
+        "given": "Stergios"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2010
+        ]
+      ]
+    },
+    "publisher": "King’s College London",
+    "keyword": "DS:categories:C09, DS:categories:C10, DS:categories:C11, DS:categories:C16, DS:frameworks:classical, DS:mechanisms:unfixed, DS:mechanisms:merge, DS:mechanisms:case_filters, DS:mechanisms:substitution, DS:mechanisms:link",
+    "note": "Review: selected_passages. Contents; §2.2.2; selected clitic/PCC material; §3.4.3.2 pp.143–146"
+  },
+  {
+    "id": "CK11",
+    "type": "article-journal",
+    "title": "Standard Modern and Pontic Greek Person Restrictions: A Feature-Free Dynamic Account",
+    "author": [
+      {
+        "family": "Chatzikyriakidis",
+        "given": "Stergios"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "container-title": "Journal of Greek Linguistics",
+    "page": "127–166",
+    "URL": "https://doi.org/10.1163/156658411X599983",
+    "DOI": "10.1163/156658411X599983",
+    "volume": "11",
+    "keyword": "DS:categories:C09, DS:frameworks:classical, DS:mechanisms:unfixed, DS:mechanisms:merge, DS:mechanisms:case_filters, DS:mechanisms:substitution",
+    "note": "Review: selected_passages. Structural/case analysis, particularly pp.144–145"
+  },
+  {
+    "id": "KC16",
+    "type": "article-journal",
+    "title": "Language as Mechanisms for Interaction",
+    "author": [
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Cann",
+        "given": "Ronnie"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Chatzikyriakidis",
+        "given": "Stergios"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "container-title": "Theoretical Linguistics",
+    "page": "203–275",
+    "URL": "https://doi.org/10.1515/tl-2016-0011",
+    "DOI": "10.1515/tl-2016-0011",
+    "volume": "42",
+    "issue": "3–4",
+    "keyword": "DS:categories:C10, DS:categories:C13, DS:frameworks:general, DS:mechanisms:tree_growth, DS:mechanisms:context_reuse, DS:mechanisms:repair, DS:mechanisms:generation",
+    "note": "Review: selected_passages. Selected sections on growth, context and interaction; references"
+  },
+  {
+    "id": "KE19",
+    "type": "chapter",
+    "title": "Ellipsis in Dynamic Syntax",
+    "author": [
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "container-title": "The Oxford Handbook of Ellipsis",
+    "URL": "https://doi.org/10.1093/oxfordhb/9780198712398.013.9",
+    "DOI": "10.1093/oxfordhb/9780198712398.013.9",
+    "keyword": "DS:categories:C07, DS:categories:C11, DS:categories:C12, DS:categories:C13, DS:frameworks:general, DS:mechanisms:context_reuse, DS:mechanisms:substitution, DS:mechanisms:repair",
+    "note": "Review: selected_passages. §§1.2–1.3, especially PDF13–21 Publication 2019; some citations use 2018; inspected draft explicitly dated 2016-10-04."
+  },
+  {
+    "id": "PEH11",
+    "type": "paper-conference",
+    "title": "Incremental Semantic Construction in a Dialogue System",
+    "author": [
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "container-title": "IWCS 2011",
+    "page": "365–369",
+    "URL": "https://aclanthology.org/W11-0144/",
+    "keyword": "DS:categories:C06, DS:categories:C12, DS:categories:C17, DS:categories:C18, DS:frameworks:ttr, DS:mechanisms:tree_growth, DS:mechanisms:record_update, DS:mechanisms:situation_structure, DS:mechanisms:generation, DS:ttr_integration:ds_ttr",
+    "note": "Review: paper_read. Full paper; DS-TTR, event semantics, implementation and limits"
+  },
+  {
+    "id": "E15",
+    "type": "paper-conference",
+    "title": "Feedback in Conversation as Incremental Semantic Update",
+    "author": [
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Howes",
+        "given": "Christine"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "container-title": "IWCS 2015",
+    "page": "261–271",
+    "URL": "https://aclanthology.org/W15-0130/",
+    "keyword": "DS:categories:C13, DS:categories:C17, DS:categories:C18, DS:frameworks:ttr, DS:mechanisms:record_update, DS:mechanisms:context_reuse, DS:mechanisms:repair, DS:ttr_integration:ds_ttr",
+    "note": "Review: selected_passages. §§2–3: record dependencies, DAGs, coordination and clarification"
+  },
+  {
+    "id": "EPH13",
+    "type": "paper-conference",
+    "title": "Probabilistic Induction for an Incremental Semantic Grammar",
+    "author": [
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "container-title": "IWCS 2013",
+    "URL": "https://aclanthology.org/W13-0110/",
+    "keyword": "DS:categories:C17, DS:frameworks:classical, DS:mechanisms:lexical_learning, DS:mechanisms:search, DS:mechanisms:tree_growth, DS:mechanisms:substitution",
+    "note": "Review: selected_passages. Abstract, §§4.4–4.6 and §5; generated data and unseen-word exclusion"
+  },
+  {
+    "id": "ECH13",
+    "type": "paper-conference",
+    "title": "Incremental Grammar Induction from Child-Directed Dialogue Utterances",
+    "author": [
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "container-title": "Workshop on Cognitive Modeling and Computational Linguistics",
+    "page": "94–103",
+    "URL": "https://aclanthology.org/W13-2611/",
+    "keyword": "DS:categories:C17, DS:frameworks:ttr, DS:mechanisms:lexical_learning, DS:mechanisms:record_update, DS:ttr_integration:ds_ttr",
+    "note": "Review: abstract_read. Title, abstract and bibliographic identification; no accuracy claim extracted"
+  },
+  {
+    "id": "C17",
+    "type": "paper-conference",
+    "title": "Modification in Dynamic Syntax",
+    "author": [
+      {
+        "family": "Chatzikyriakidis",
+        "given": "Stergios"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "container-title": "Conference abstract",
+    "URL": "https://www.researchgate.net/publication/313634514",
+    "keyword": "DS:categories:C06, DS:frameworks:general, DS:mechanisms:link, DS:mechanisms:underspecification",
+    "note": "Review: abstract_read. Full abstract; alternatives and unresolved questions"
+  },
+  {
+    "id": "C25",
+    "type": "article-journal",
+    "title": "Constructive Dynamic Syntax",
+    "author": [
+      {
+        "family": "Chatzikyriakidis",
+        "given": "Stergios"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "container-title": "Languages",
+    "URL": "https://doi.org/10.3390/languages10110269",
+    "DOI": "10.3390/languages10110269",
+    "volume": "10",
+    "issue": "11",
+    "keyword": "DS:categories:C02, DS:categories:C06, DS:categories:C12, DS:categories:C18, DS:frameworks:constructive, DS:mechanisms:quantification, DS:mechanisms:context_reuse, DS:mechanisms:requirements, DS:mechanisms:link",
+    "note": "Review: selected_passages. Selected §§3–4 and conclusion; nominal types, quantification, action contexts, modifiers"
+  },
+  {
+    "id": "KV19",
+    "type": "paper-conference",
+    "title": "Why Natural Language Models Must Be Partial and Shifting: A Dynamic Syntax with Vector Space Semantics Perspective",
+    "author": [
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      },
+      {
+        "family": "Howes",
+        "given": "Christine"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Healey",
+        "given": "Patrick G. T."
+      },
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the IWCS Workshop Vector Semantics for Discourse and Dialogue",
+    "genre": "Contributed presentation abstract",
+    "page": "3",
+    "URL": "https://aclanthology.org/W19-09.pdf#page=3",
+    "keyword": "DS:categories:C18, DS:frameworks:distributional, DS:mechanisms:tree_growth, DS:mechanisms:context_reuse",
+    "note": "Review: abstract_read. Proposal scope inspected. Exact title and all seven authors verified in the official IWCS 2019 workshop document, p. 3, contributed presentation 5. The public document contains a one-paragraph abstract; the separately held local two-page contribution is not reproduced there."
+  },
+  {
+    "id": "OH26",
+    "type": "chapter",
+    "title": "Dynamic Syntax",
+    "author": [
+      {
+        "family": "Cann",
+        "given": "Ronnie"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Howes",
+        "given": "Christine"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "container-title": "The Oxford Handbook of Philosophy of Linguistics",
+    "page": "386–407",
+    "URL": "https://doi.org/10.1093/oso/9780198879640.003.0020",
+    "DOI": "10.1093/oso/9780198879640.003.0020",
+    "keyword": "DS:categories:C01, DS:categories:C18, DS:frameworks:unclassified",
+    "note": "Review: metadata_only. No chapter content reviewed"
+  },
+  {
+    "id": "KMW01",
+    "type": "book",
+    "title": "Dynamic Syntax: The Flow of Language Understanding",
+    "author": [
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Meyer-Viol",
+        "given": "Wilfried"
+      },
+      {
+        "family": "Gabbay",
+        "given": "Dov"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2001
+        ]
+      ]
+    },
+    "publisher": "Blackwell",
+    "keyword": "DS:categories:C01, DS:categories:C18, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "M02",
+    "type": "book",
+    "title": "At the Syntax-Pragmatics Interface: Verbal Underspecification and Concept Formation in Dynamic Syntax",
+    "author": [
+      {
+        "family": "Marten",
+        "given": "Lutz"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2002
+        ]
+      ]
+    },
+    "publisher": "Oxford University Press",
+    "DOI": "10.1093/acprof:oso/9780199250639.001.0001",
+    "URL": "https://doi.org/10.1093/acprof:oso/9780199250639.001.0001",
+    "keyword": "DS:categories:C03, DS:categories:C06, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "CA11",
+    "type": "chapter",
+    "title": "Towards an Account of the English Auxiliary System: Building Interpretations Incrementally",
+    "author": [
+      {
+        "family": "Cann",
+        "given": "Ronnie"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "container-title": "The Dynamics of Lexical Interfaces",
+    "page": "279–317",
+    "keyword": "DS:categories:C10, DS:categories:C03, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "G06",
+    "type": "thesis",
+    "title": "Conditionals: A Dynamic Syntax Account",
+    "author": [
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "publisher": "King’s College London",
+    "keyword": "DS:categories:C11, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "B08",
+    "type": "thesis",
+    "title": "The Diachronic Development of Spanish Clitic Placement",
+    "author": [
+      {
+        "family": "Bouzouita",
+        "given": "Miriam"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "publisher": "King’s College London",
+    "keyword": "DS:categories:C09, DS:categories:C16, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed. Distinct from the 2008 chapter B08b (Language in Flux), which reports preliminary results of this doctoral research."
+  },
+  {
+    "id": "KK10",
+    "type": "article-journal",
+    "title": "Multiple Long-Distance Scrambling: Syntax as Reflections of Processing",
+    "author": [
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Kiaer",
+        "given": "Jieun"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2010
+        ]
+      ]
+    },
+    "container-title": "Journal of Linguistics",
+    "DOI": "10.1017/s0022226709990211",
+    "URL": "https://doi.org/10.1017/s0022226709990211",
+    "volume": "46",
+    "issue": "1",
+    "page": "127–192",
+    "keyword": "DS:categories:C04, DS:categories:C05, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed. Journal issue/citation year 2010; Crossref online publication date 2009-09-29."
+  },
+  {
+    "id": "GI16",
+    "type": "article-journal",
+    "title": "A Unified Dynamic Account of Auxiliary Placement in Rangi",
+    "author": [
+      {
+        "family": "Gibson",
+        "given": "Hannah"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "container-title": "Lingua",
+    "volume": "184",
+    "page": "79–103",
+    "DOI": "10.1016/j.lingua.2016.06.003",
+    "URL": "https://doi.org/10.1016/j.lingua.2016.06.003",
+    "keyword": "DS:categories:C10, DS:categories:C14, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "SG16",
+    "type": "article-journal",
+    "title": "A Dynamic Syntax Modelling of Japanese and Rangi Clefts: Parsing Incrementality and the Growth of Interpretation",
+    "author": [
+      {
+        "family": "Seraku",
+        "given": "Tohru"
+      },
+      {
+        "family": "Gibson",
+        "given": "Hannah"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "container-title": "Language Sciences",
+    "DOI": "10.1016/j.langsci.2016.03.003",
+    "URL": "https://doi.org/10.1016/j.langsci.2016.03.003",
+    "volume": "56",
+    "page": "45–67",
+    "keyword": "DS:categories:C14, DS:categories:C04, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "GK16",
+    "type": "chapter",
+    "title": "Joint Utterances and the (Split-)Turn Taking Puzzle",
+    "author": [
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "container-title": "Interdisciplinary Studies in Pragmatics, Culture and Society",
+    "DOI": "10.1007/978-3-319-12616-6_28",
+    "URL": "https://doi.org/10.1007/978-3-319-12616-6_28",
+    "page": "703–743",
+    "keyword": "DS:categories:C13, DS:categories:C18, DS:frameworks:ttr, DS:ttr_integration:ds_ttr",
+    "note": "Review: abstract_read. First-page title, authors, publication/citation dates and abstract inspected; chapter derivations not audited. Local cover gives citation year 2016; copyright and Crossref online publication are 2015. Both dates retained, not treated as different works."
+  },
+  {
+    "id": "CKP07",
+    "type": "article-journal",
+    "title": "Context and Well-Formedness: The Dynamics of Ellipsis",
+    "author": [
+      {
+        "family": "Cann",
+        "given": "Ronnie"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2007
+        ]
+      ]
+    },
+    "container-title": "Research on Language and Computation",
+    "volume": "5",
+    "issue": "3",
+    "page": "333–358",
+    "keyword": "DS:categories:C08, DS:categories:C12, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "GI12",
+    "type": "thesis",
+    "title": "Auxiliary Placement in Rangi: A Dynamic Syntax Perspective",
+    "author": [
+      {
+        "family": "Gibson",
+        "given": "H. C."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2012
+        ]
+      ]
+    },
+    "publisher": "SOAS, University of London",
+    "DOI": "10.25501/SOAS.00016637",
+    "URL": "https://doi.org/10.25501/SOAS.00016637",
+    "keyword": "DS:categories:C10, DS:categories:C14, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "H14",
+    "type": "thesis",
+    "title": "Modelling Incremental Self-Repair Processing in Dialogue",
+    "author": [
+      {
+        "family": "Hough",
+        "given": "Julian"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "publisher": "Queen Mary University of London",
+    "URL": "https://qmro.qmul.ac.uk/xmlui/handle/123456789/9094",
+    "keyword": "DS:categories:C13, DS:categories:C17, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "HE17",
+    "type": "paper-conference",
+    "title": "Feedback Relevance Spaces: The Organisation of Increments in Conversation",
+    "author": [
+      {
+        "family": "Howes",
+        "given": "Christine"
+      },
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 12th International Conference on Computational Semantics (IWCS 2017), Short papers",
+    "URL": "https://aclanthology.org/W17-6913/",
+    "keyword": "DS:categories:C13, DS:frameworks:unclassified",
+    "note": "Review: abstract_read. Abstract inspected in the ACL Anthology PDF (W17-6913): low-level semantic processing model of where feedback is licensed (feedback relevance spaces) and how non-FRS feedback is integrated. Body not audited."
+  },
+  {
+    "id": "PGMC10",
+    "type": "paper-conference",
+    "title": "Splitting the ‘I’s and Crossing the ‘You’s: Context, Speech Acts and Grammar",
+    "author": [
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Meyer-Viol",
+        "given": "Wilfried"
+      },
+      {
+        "family": "Cann",
+        "given": "Ronnie"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2010
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 14th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2010, PozDial)",
+    "page": "43–50",
+    "URL": "https://semdial.org/anthology/papers/Z/Z10/Z10-3010",
+    "keyword": "DS:categories:C08, DS:categories:C13, DS:frameworks:unclassified",
+    "note": "Review: abstract_read. First page (title, authors, affiliations, abstract and opening example (1) on indexical shift across a speaker transition) inspected in the SemDial anthology PDF; derivations not audited."
+  },
+  {
+    "id": "SPHK18",
+    "type": "paper-conference",
+    "title": "Exploring Semantic Incrementality with Dynamic Syntax and Vector Space Semantics",
+    "author": [
+      {
+        "family": "Sadrzadeh",
+        "given": "M."
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 22nd Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2018, AixDial)",
+    "page": "122–132",
+    "URL": "https://semdial.org/anthology/papers/Z/Z18/Z18-3016",
+    "keyword": "DS:categories:C18, DS:categories:C17, DS:frameworks:distributional",
+    "note": "Review: abstract_read. Abstract inspected: DS composition is modelled as tensor contraction; nodes carry vectors/tensors/sums for underspecified elements; worked example with plausibility tensors. Body and evaluation not audited."
+  },
+  {
+    "id": "SE13",
+    "type": "article-journal",
+    "title": "Multiple Foci in Japanese Clefts Revisited: A Semantic Incrementality Account",
+    "author": [
+      {
+        "family": "Seraku",
+        "given": "Tohru"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "container-title": "Lingua",
+    "volume": "137",
+    "page": "145–171",
+    "keyword": "DS:categories:C14, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "BMV94",
+    "type": "article-journal",
+    "title": "Linguistics, Logic and Finite Trees",
+    "author": [
+      {
+        "family": "Blackburn",
+        "given": "Patrick"
+      },
+      {
+        "family": "Meyer-Viol",
+        "given": "Wilfried"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1994
+        ]
+      ]
+    },
+    "container-title": "Logic Journal of the Interest Group in Pure and Applied Logics",
+    "volume": "2",
+    "issue": "1",
+    "page": "3–29",
+    "keyword": "DS:categories:C01, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Bibliographic reference inspected; underlying source analysis not reviewed."
+  },
+  {
+    "id": "NC21",
+    "type": "article-journal",
+    "title": "Differential Object Marking in Kazakh: The Dynamic Syntax Approach",
+    "author": [
+      {
+        "given": "Nadezda",
+        "family": "Christopher"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          6
+        ]
+      ]
+    },
+    "container-title": "Journal of Logic, Language and Information",
+    "DOI": "10.1007/s10849-021-09332-z",
+    "URL": "https://doi.org/10.1007/s10849-021-09332-z",
+    "volume": "30",
+    "issue": "2",
+    "page": "305-329",
+    "keyword": "DS:categories:C04, DS:categories:C15, DS:frameworks:unclassified, DS:mechanisms:unfixed, DS:mechanisms:case_filters",
+    "note": "Review: abstract_read. Metadata and deposited abstract inspected via Crossref; relevance and phenomenon also corroborated by HG21 §3, printed p.274. No derivations independently inspected."
+  },
+  {
+    "id": "SE21",
+    "type": "article-journal",
+    "title": "A “Maximal Exclusion” Approach to Structural Underspecification in Dynamic Syntax",
+    "author": [
+      {
+        "given": "Tohru",
+        "family": "Seraku"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          6
+        ]
+      ]
+    },
+    "container-title": "Journal of Logic, Language and Information",
+    "DOI": "10.1007/s10849-019-09308-0",
+    "URL": "https://doi.org/10.1007/s10849-019-09308-0",
+    "volume": "30",
+    "issue": "2",
+    "page": "407-428",
+    "keyword": "DS:categories:C04, DS:categories:C15, DS:frameworks:unclassified",
+    "note": "Review: citation_only. Crossref bibliographic record and HG21 §3, printed p.274. HG21 explicitly describes the maximal-exclusion account; the underlying source has not been read here. Journal issue dated June 2021; online publication 2019-12-03. This is one work with distinct publication dates."
+  },
+  {
+    "id": "HE21",
+    "type": "article-journal",
+    "title": "Feedback Relevance Spaces: Interactional Constraints on Processing Contexts in Dynamic Syntax",
+    "author": [
+      {
+        "given": "Christine",
+        "family": "Howes"
+      },
+      {
+        "given": "Arash",
+        "family": "Eshghi"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          6
+        ]
+      ]
+    },
+    "container-title": "Journal of Logic, Language and Information",
+    "DOI": "10.1007/s10849-020-09328-1",
+    "URL": "https://doi.org/10.1007/s10849-020-09328-1",
+    "volume": "30",
+    "issue": "2",
+    "page": "331-362",
+    "keyword": "DS:categories:C13, DS:categories:C18, DS:frameworks:ttr, DS:mechanisms:context_reuse, DS:ttr_integration:ds_ttr",
+    "note": "Review: abstract_read. Crossref deposited abstract and HG21 §3, printed p.274. Corpus/model scope inspected; numerical results have not been reproduced."
+  },
+  {
+    "id": "CL25",
+    "type": "article-journal",
+    "title": "Dynamic Syntax in a Theory of Types with Records",
+    "author": [
+      {
+        "given": "Robin",
+        "family": "Cooper"
+      },
+      {
+        "given": "Staffan",
+        "family": "Larsson"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2025,
+          12,
+          10
+        ]
+      ]
+    },
+    "container-title": "Languages",
+    "volume": "10",
+    "issue": "12",
+    "DOI": "10.3390/languages10120300",
+    "URL": "https://doi.org/10.3390/languages10120300",
+    "keyword": "DS:categories:C01, DS:categories:C18, DS:frameworks:ttr, DS:mechanisms:tree_growth, DS:mechanisms:requirements, DS:mechanisms:record_update, DS:ttr_integration:ttr_ds",
+    "note": "Review: selected_passages. Published PDF abstract, §§1–2, opening of §3, §§4.5 and 4.8–5 inspected. Not every formal rule independently checked."
+  },
+  {
+    "id": "PSHK21",
+    "type": "article-journal",
+    "title": "Incremental Composition in Distributional Semantics",
+    "author": [
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Sadrzadeh",
+        "given": "Mehrnoosh"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Wijnholds",
+        "given": "Gijs"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          6
+        ]
+      ]
+    },
+    "container-title": "Journal of Logic, Language and Information",
+    "volume": "30",
+    "issue": "2",
+    "page": "379–406",
+    "DOI": "10.1007/s10849-021-09337-8",
+    "URL": "https://doi.org/10.1007/s10849-021-09337-8",
+    "keyword": "DS:categories:C18, DS:categories:C17, DS:frameworks:distributional, DS:mechanisms:tree_growth, DS:mechanisms:underspecification",
+    "note": "Review: abstract_read. Crossref-deposited abstract: assigns DS a compositional distributional semantics for incremental disambiguation; argues predicate-logic grounding is ill-suited to context-relative word meaning. Body not inspected (subscription PDF)."
+  },
+  {
+    "id": "K20",
+    "type": "article-journal",
+    "title": "Left-to-Right Asymmetry and Early Association in Korean",
+    "author": [
+      {
+        "family": "Kiaer",
+        "given": "Jieun"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          7
+        ]
+      ]
+    },
+    "container-title": "Journal of Logic, Language and Information",
+    "volume": "30",
+    "issue": "2",
+    "page": "363–378",
+    "DOI": "10.1007/s10849-020-09318-3",
+    "URL": "https://doi.org/10.1007/s10849-020-09318-3",
+    "keyword": "DS:categories:C15, DS:categories:C04, DS:categories:C01, DS:frameworks:unclassified, DS:mechanisms:tree_growth, DS:mechanisms:unfixed, DS:mechanisms:case_filters, DS:mechanisms:context_reuse",
+    "note": "Review: abstract_read. First page/abstract of the published OA PDF: left–right asymmetry, pre-verbal structure building and early association in Korean; roles of constructive particles, prosody and structural routines; DS adopted for formalisation. Body not audited. Published online 2020; printed in JoLLI 30(2), 2021."
+  },
+  {
+    "id": "C20",
+    "type": "article-journal",
+    "title": "Underspecification, Parsing Mismatches and Routinisation: The Historical Development of the Clitic Systems of Greek Dialects",
+    "author": [
+      {
+        "family": "Chatzikyriakidis",
+        "given": "Stergios"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          8,
+          20
+        ]
+      ]
+    },
+    "container-title": "Journal of Logic, Language and Information",
+    "volume": "30",
+    "issue": "2",
+    "page": "277–304",
+    "DOI": "10.1007/s10849-020-09319-2",
+    "URL": "https://doi.org/10.1007/s10849-020-09319-2",
+    "keyword": "DS:categories:C16, DS:categories:C09, DS:categories:C04, DS:frameworks:classical, DS:mechanisms:underspecification, DS:mechanisms:context_reuse, DS:mechanisms:unfixed, DS:mechanisms:case_filters",
+    "note": "Review: abstract_read. First page/abstract of the published OA PDF: Koine → Medieval → Standard Modern/Cypriot/Pontic clitic systems explained by routinisation (Pickering and Garrod 2004) and parsing/hearer asymmetries; emergence of encoded syntactic constraints from a pragmatically regulated system. Body not audited in this pass. Published online 2020; printed in JoLLI 30(2), 2021."
+  },
+  {
+    "id": "YW21",
+    "type": "article-journal",
+    "title": "A Dynamic Analysis of Minimizers in Chinese lian…dou Construction",
+    "author": [
+      {
+        "family": "Yang",
+        "given": "Xiaolong"
+      },
+      {
+        "family": "Wu",
+        "given": "Yicheng"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          6
+        ]
+      ]
+    },
+    "container-title": "Journal of Logic, Language and Information",
+    "volume": "30",
+    "issue": "2",
+    "page": "429–449",
+    "DOI": "10.1007/s10849-021-09335-w",
+    "URL": "https://doi.org/10.1007/s10849-021-09335-w",
+    "keyword": "DS:categories:C15, DS:categories:C14, DS:frameworks:unclassified, DS:mechanisms:tree_growth",
+    "note": "Review: metadata_only. Crossref record only (no deposited abstract); Springer PDF request returned HTML (subscription). Placement in the DS special issue and the existing topic C15.06 are the relevance basis."
+  },
+  {
+    "id": "B08b",
+    "type": "chapter",
+    "title": "At the Syntax-Pragmatics Interface: Clitics in the History of Spanish",
+    "author": [
+      {
+        "family": "Bouzouita",
+        "given": "Miriam"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "container-title": "Language in Flux: Dialogue Coordination, Language Variation, Change and Evolution",
+    "publisher": "College Publications",
+    "page": "221–263",
+    "editor": [
+      {
+        "family": "Cooper",
+        "given": "Robin"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      }
+    ],
+    "keyword": "DS:categories:C16, DS:categories:C09, DS:categories:C04, DS:frameworks:classical, DS:mechanisms:underspecification, DS:mechanisms:unfixed, DS:mechanisms:context_reuse",
+    "note": "Review: abstract_read. Printed pp.221–222 (PDF pp.2–3) inspected: DS account of clitic placement relative to the finite verb in Medieval (13th–14th c.), Renaissance (16th c.) and Modern Spanish; shift from a pragmatically based system to one determined by verbal mood; footnote 1 states these are preliminary doctoral results. Analyses not audited. Distinct from the 2008 KCL thesis B08; the chapter reports preliminary results of that research (its footnote 1)."
+  },
+  {
+    "id": "MK06",
+    "type": "chapter",
+    "title": "Dynamic Syntax",
+    "author": [
+      {
+        "family": "Marten",
+        "given": "Lutz"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "container-title": "Encyclopedia of Language & Linguistics (2nd ed.)",
+    "publisher": "Elsevier",
+    "page": "33–37",
+    "DOI": "10.1016/b0-08-044854-2/05274-3",
+    "URL": "https://doi.org/10.1016/b0-08-044854-2/05274-3",
+    "keyword": "DS:categories:C01, DS:frameworks:general, DS:mechanisms:tree_growth",
+    "note": "Review: metadata_only. Crossref record only. Authorship by two framework founders establishes that this is the linguistic framework; content not inspected."
+  },
+  {
+    "id": "W17",
+    "type": "article-journal",
+    "title": "Dynamic Syntax and Proof Theory",
+    "author": [
+      {
+        "family": "White",
+        "given": "Graham"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          6,
+          1
+        ]
+      ]
+    },
+    "container-title": "Theoretical Linguistics",
+    "volume": "43",
+    "issue": "1-2",
+    "page": "135–140",
+    "DOI": "10.1515/tl-2017-0011",
+    "URL": "https://doi.org/10.1515/tl-2017-0011",
+    "keyword": "DS:categories:C18, DS:categories:C01, DS:frameworks:general, DS:mechanisms:requirements",
+    "note": "Review: metadata_only. Crossref record only: six-page Theoretical Linguistics piece in the issue following KC16's target article; presumed commentary on KC16, which is not confirmed by inspection."
+  },
+  {
+    "id": "G16",
+    "type": "chapter",
+    "title": "Deferred pronouns: A sketch based on Relevance Theory and Dynamic Syntax",
+    "author": [
+      {
+        "family": "Galery",
+        "given": "Thiago N."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          4,
+          11
+        ]
+      ]
+    },
+    "container-title": "The Impact of Pronominal Form on Interpretation",
+    "publisher": "De Gruyter",
+    "page": "287–316",
+    "DOI": "10.1515/9781614517016-011",
+    "URL": "https://doi.org/10.1515/9781614517016-011",
+    "keyword": "DS:categories:C08, DS:frameworks:unclassified, DS:mechanisms:substitution",
+    "note": "Review: metadata_only. Crossref record only; the title names DS as the framework. No abstract deposited; chapter not inspected."
+  },
+  {
+    "id": "N09",
+    "type": "chapter",
+    "title": "Multiple Subject Constructions in Japanese: A Dynamic Syntax Account",
+    "author": [
+      {
+        "family": "Nakamura",
+        "given": "Hiroaki"
+      },
+      {
+        "family": "Yoshimoto",
+        "given": "Kei"
+      },
+      {
+        "family": "Mori",
+        "given": "Yoshiki"
+      },
+      {
+        "family": "Kobayashi",
+        "given": "Masahiro"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "container-title": "New Frontiers in Artificial Intelligence (Lecture Notes in Computer Science)",
+    "publisher": "Springer",
+    "page": "103–118",
+    "DOI": "10.1007/978-3-642-00609-8_11",
+    "URL": "https://doi.org/10.1007/978-3-642-00609-8_11",
+    "keyword": "DS:categories:C15, DS:categories:C04, DS:categories:C14, DS:frameworks:unclassified, DS:mechanisms:unfixed, DS:mechanisms:case_filters",
+    "note": "Review: metadata_only. Crossref record only; the title names DS as the framework and Japanese multiple-subject constructions as the phenomenon. Chapter not inspected."
+  },
+  {
+    "id": "E15b",
+    "type": "paper-conference",
+    "title": "DS-TTR: An incremental, semantic, contextual parser for dialogue",
+    "author": [
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 19th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2015, goDIAL)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z15/Z15-4028",
+    "keyword": "DS:categories:C17, DS:categories:C13, DS:categories:C18, DS:frameworks:ttr, DS:mechanisms:tree_growth, DS:mechanisms:record_update, DS:mechanisms:context_reuse, DS:ttr_integration:ds_ttr",
+    "note": "Review: abstract_read. Two-page demo description of the DS-TTR dialogue parser: semantic context updated in real time while dialogues are parsed incrementally; stated goal of a wide-coverage, domain-general parser/generator."
+  },
+  {
+    "id": "HP12",
+    "type": "paper-conference",
+    "title": "Processing Self-Repairs in an Incremental Type-Theoretic Dialogue System",
+    "author": [
+      {
+        "family": "Hough",
+        "given": "Julian"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2012
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 16th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2012, SeineDial)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z12/Z12-3018",
+    "keyword": "DS:categories:C13, DS:categories:C17, DS:categories:C18, DS:frameworks:ttr, DS:mechanisms:repair, DS:mechanisms:record_update, DS:mechanisms:generation, DS:ttr_integration:ds_ttr",
+    "note": "Review: abstract_read. Abstract/first page: incremental modelling of first-position self-repairs (reparandum, interregnum, repair) using DS parsing to build TTR record types in parsing and generation. Distinct from and earlier than the H14 thesis."
+  },
+  {
+    "id": "KGG07",
+    "type": "paper-conference",
+    "title": "Clarification Requests: An Incremental Account",
+    "author": [
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Gargett",
+        "given": "Andrew"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2007
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 11th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2007, DECALOG)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z07/Z07-3013",
+    "keyword": "DS:categories:C13, DS:categories:C12, DS:frameworks:classical, DS:mechanisms:context_reuse, DS:mechanisms:substitution, DS:mechanisms:tree_growth",
+    "note": "Review: abstract_read. Abstract/first page: fragment clarification requests handled incrementally without lifting fragments to sentence level; contrasts Ginzburg and Cooper (2004) clausal/constituent readings. The anthology index lists this entry as 'Incremental Fragment Construal'; the PDF's printed title is used here. Printed pp.65–72."
+  },
+  {
+    "id": "GGHS08",
+    "type": "paper-conference",
+    "title": "Dialogue-Grammar Correspondence in Dynamic Syntax",
+    "author": [
+      {
+        "family": "Gargett",
+        "given": "Andrew"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Howes",
+        "given": "Christine"
+      },
+      {
+        "family": "Sato",
+        "given": "Yo"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 12th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2008, LonDial)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z08/Z08-3010",
+    "keyword": "DS:categories:C12, DS:categories:C13, DS:frameworks:classical, DS:mechanisms:context_reuse, DS:mechanisms:repair, DS:mechanisms:tree_growth",
+    "note": "Review: abstract_read. Abstract/first page: argues against dialogue-specific ellipsis subtypes; extends Kempson et al. (2007) to reformulations, fragment requests and corrections."
+  },
+  {
+    "id": "KGP09",
+    "type": "paper-conference",
+    "title": "How mechanistic can accounts of interaction be?",
+    "author": [
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Mills",
+        "given": "Gregory"
+      },
+      {
+        "family": "Gargett",
+        "given": "Andrew"
+      },
+      {
+        "family": "Howes",
+        "given": "Christine"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 13th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2009, DiaHolmia)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z09/Z09-3015",
+    "keyword": "DS:categories:C13, DS:frameworks:general, DS:mechanisms:tree_growth, DS:mechanisms:context_reuse",
+    "note": "Review: abstract_read. Abstract/first page: questions whether full higher-order intention recognition is needed for dialogue modelling; positions DS tree growth as a mechanistic alternative. Author given names expanded from the PDF's 'Matt'/'Greg'/'Chris'."
+  },
+  {
+    "id": "KCC15",
+    "type": "paper-conference",
+    "title": "The interactive building of names",
+    "author": [
+      {
+        "family": "Chatzikyriakidis",
+        "given": "Stergios"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Cann",
+        "given": "Ronnie"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 19th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2015, goDIAL)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z15/Z15-4035",
+    "keyword": "DS:categories:C13, DS:categories:C02, DS:frameworks:classical, DS:mechanisms:tree_growth, DS:mechanisms:context_reuse",
+    "note": "Review: abstract_read. Two-page poster abstract: interactive construction of names/content in dialogue over transitions between partial trees. The anthology lists Kempson first; the PDF byline order is Chatzikyriakidis, Kempson, Cann. Byline order from the PDF is used here."
+  },
+  {
+    "id": "G20",
+    "type": "paper-conference",
+    "title": "Affordance competition in dialogue: the case of syntactic universals",
+    "author": [
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Chatzikyriakidis",
+        "given": "Stergios"
+      },
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      },
+      {
+        "family": "Howes",
+        "given": "Christine"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Kiaer",
+        "given": "Jieun"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Sadrzadeh",
+        "given": "Mehrnoosh"
+      },
+      {
+        "family": "White",
+        "given": "Graham"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 24th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2020, WatchDial)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z20/Z20-3022",
+    "keyword": "DS:categories:C13, DS:categories:C15, DS:categories:C01, DS:frameworks:general, DS:mechanisms:tree_growth, DS:mechanisms:context_reuse",
+    "note": "Review: abstract_read. First page inspected: ten-author position paper recasting syntactic universals as affordance competition in interaction; 16 PDF pages. Body not audited."
+  },
+  {
+    "id": "G19",
+    "type": "paper-conference",
+    "title": "Normativity, Meaning Plasticity, and the Significance of Vector Space Semantics",
+    "author": [
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      },
+      {
+        "family": "Howes",
+        "given": "Christine"
+      },
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      },
+      {
+        "family": "Hough",
+        "given": "Julian"
+      },
+      {
+        "family": "Sadrzadeh",
+        "given": "Mehrnoosh"
+      },
+      {
+        "family": "Purver",
+        "given": "Matthew"
+      },
+      {
+        "family": "Wijnholds",
+        "given": "Gijs"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 23rd Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2019, LondonLogue)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z19/Z19-4025",
+    "keyword": "DS:categories:C18, DS:categories:C13, DS:frameworks:distributional, DS:frameworks:ttr, DS:mechanisms:tree_growth, DS:ttr_integration:ds_ttr",
+    "note": "Review: abstract_read. Three-page position abstract continuing a discussion with Lücking et al. (2019) on vector space semantics as a model for NL; mentions DS-TTR implementations (Eshghi et al. 2017; Kalatzis et al. 2016)."
+  },
+  {
+    "id": "K21",
+    "type": "paper-conference",
+    "title": "How to Escape the Encodingism Stranglehold: Dynamic Syntax, Process and Interaction",
+    "author": [
+      {
+        "family": "Kempson",
+        "given": "Ruth"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 25th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2021, PotsDial)",
+    "URL": "https://semdial.org/anthology/papers/Z/Z21/Z21-2002",
+    "keyword": "DS:categories:C13, DS:categories:C18, DS:frameworks:general, DS:frameworks:ttr, DS:mechanisms:tree_growth, DS:ttr_integration:ds_ttr",
+    "note": "Review: abstract_read. Two-page invited-talk abstract (byline 'Ruth Kempson with Ronnie Cann & Eleni Gregoromichelaki'): responds to Bickhard's encodingism challenge; positions a composite DS-TTR framework as process-based. Anthology lists Kempson as sole author; that is followed here."
+  }
+]

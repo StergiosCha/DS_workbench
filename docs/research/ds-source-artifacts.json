@@ -1,0 +1,123 @@
+{
+  "recorded": "2026-10-07",
+  "note": "Fingerprints identify the actually inspected versions. A DOI may resolve to a final publication while the inspected local artifact is an earlier draft. Full texts are not bundled. Metadata-only OH26 has no inspected artifact.",
+  "artifacts": [
+    {
+      "source_id": "CKM05",
+      "inspected_filename": "cann-et-al-dec12 (1).pdf",
+      "sha256": "b98cbb313eb2a26b882f0bd54a1b972864be7dc730b3d27b47daba6dd4f2a68a",
+      "bytes": 2781725,
+      "pdf_pages": 386,
+      "public_location": null,
+      "acquisition": "existing local academic archive"
+    },
+    {
+      "source_id": "C10",
+      "inspected_filename": "chatzikyriakidis-phdthesis.pdf",
+      "sha256": "b0e53caa9e4a8e13ec4f999562a142fa4d2a6b1254a9ff0e88e2320885e842be",
+      "bytes": 1622925,
+      "pdf_pages": 396,
+      "public_location": null,
+      "acquisition": "existing local academic archive"
+    },
+    {
+      "source_id": "CK11",
+      "inspected_filename": "jgl-article-p127_3.pdf",
+      "sha256": "c81f0c603a985c78bacf6904e3588c14e6cbb881529bd91ccfd87a1e76699039",
+      "bytes": 844905,
+      "pdf_pages": 40,
+      "public_location": "https://doi.org/10.1163/156658411X599983",
+      "acquisition": "existing local academic archive"
+    },
+    {
+      "source_id": "KC16",
+      "inspected_filename": "tling-draft.pdf",
+      "sha256": "1ac9d683ac94e8cfa23b46ef8c751f2eb7bbec65de3394d95f81244deabc8753",
+      "bytes": 437820,
+      "pdf_pages": 52,
+      "public_location": "https://doi.org/10.1515/tl-2016-0011",
+      "acquisition": "existing local academic archive"
+    },
+    {
+      "source_id": "KE19",
+      "inspected_filename": "KempsonEtAl18Ellipsis_preprint.pdf",
+      "sha256": "5a08bd953dad4e8a642fb7832056c3f08abee0c0089ab14d65b4589ff6c121d3",
+      "bytes": 323502,
+      "pdf_pages": 24,
+      "public_location": "https://doi.org/10.1093/oxfordhb/9780198712398.013.9",
+      "acquisition": "existing local academic archive"
+    },
+    {
+      "source_id": "C17",
+      "inspected_filename": "SOAS_DS_cha.pdf",
+      "sha256": "cdd8e6fa8515005a93a936915feeec42c92f2e8ba296daf28f0faeb9beb0bf8f",
+      "bytes": 66787,
+      "pdf_pages": 3,
+      "public_location": "https://www.researchgate.net/publication/313634514",
+      "acquisition": "existing local academic archive"
+    },
+    {
+      "source_id": "KV19",
+      "inspected_filename": "kempson.etal_IWCS_19.pdf",
+      "sha256": "3c5f21f32e3319bc313f9d8897597bb4bc4435aecb694d472509b6e1fd58e327",
+      "bytes": 41136,
+      "pdf_pages": 2,
+      "public_location": null,
+      "acquisition": "existing local academic archive"
+    },
+    {
+      "source_id": "HG21",
+      "inspected_filename": "ds-review2021.pdf",
+      "sha256": "d0c83e098063c109638d49cba167fbb485b8ad16befb12fcfd462835fee8de9f",
+      "bytes": 547447,
+      "pdf_pages": 14,
+      "public_location": "https://link.springer.com/content/pdf/10.1007/s10849-021-09334-x.pdf",
+      "acquisition": "publisher/ACL download"
+    },
+    {
+      "source_id": "C25",
+      "inspected_filename": "ds-constructive2025-full.pdf",
+      "sha256": "a962073a5a4e68951b2f6a49dafc8f6a38d3a257c2661f0e798ba2d4159fc339",
+      "bytes": 575406,
+      "pdf_pages": 19,
+      "public_location": "https://mdpi-res.com/d_attachment/languages/languages-10-00269/article_deploy/languages-10-00269.pdf",
+      "acquisition": "publisher/ACL download"
+    },
+    {
+      "source_id": "PEH11",
+      "inspected_filename": "ds-W11-0144.pdf",
+      "sha256": "35a5d4613f65ec31deb7039c89c448f3c074dd546c5810ee1433d069aa23cf69",
+      "bytes": 74022,
+      "pdf_pages": 5,
+      "public_location": "https://aclanthology.org/W11-0144.pdf",
+      "acquisition": "publisher/ACL download"
+    },
+    {
+      "source_id": "E15",
+      "inspected_filename": "ds-W15-0130.pdf",
+      "sha256": "4de033c7f1147f67a9673055de17e84b7e804d477e9c6f637e537c16afc87ee1",
+      "bytes": 207358,
+      "pdf_pages": 11,
+      "public_location": "https://aclanthology.org/W15-0130.pdf",
+      "acquisition": "publisher/ACL download"
+    },
+    {
+      "source_id": "EPH13",
+      "inspected_filename": "ds-W13-0110.pdf",
+      "sha256": "52238beb71df2e32a6eeb58e0b6673d7188257f5680c0f1c18db69ae4ec8552e",
+      "bytes": 145404,
+      "pdf_pages": 11,
+      "public_location": "https://aclanthology.org/W13-0110.pdf",
+      "acquisition": "publisher/ACL download"
+    },
+    {
+      "source_id": "ECH13",
+      "inspected_filename": "research_report_ref_D13_Eshghi_2013.pdf",
+      "sha256": "7670fcfd41797c6115c74bb721306e8804b31a24b79062ab2a76c2fac6c645a3",
+      "bytes": 269710,
+      "pdf_pages": 10,
+      "public_location": "https://aclanthology.org/W13-2611.pdf",
+      "acquisition": "existing local academic archive"
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <title>DS Workbench — Syntax as the growth of transparent semantic representations</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <script src="openrouter.js" defer></script>
+  <script src="research.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="/" aria-label="DS Workbench home">
+      <span class="brand-mark" aria-hidden="true">λ</span>
+      <span>DS <strong>Workbench</strong><span class="brand-sub">DYNAMIC SYNTAX LABORATORY</span></span>
+    </a>
+    <div class="header-right">
+      <span id="connection" class="connection"><span class="status-dot"></span>Connecting to engine</span>
+      <button id="help-open" class="text-button">A quick guide <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">FROM WORDS TO STRUCTURE</p><h1>Syntax as the growth of transparent semantic representations</h1></div>
+      <p class="intro-note">One word at a time. Explore how a sentence<br class="desktop-break"> builds a tree—and a meaning.</p>
+    </section>
+
+    <section class="composer" aria-label="Parse a sentence">
+      <div class="input-mode segmented" aria-label="Input mode"><button type="button" data-input-mode="sentence" class="active" aria-pressed="true">Sentence</button><button type="button" data-input-mode="paragraph" aria-pressed="false">Paragraph</button><button type="button" data-input-mode="dialogue" aria-pressed="false">Dialogue</button></div>
+      <form id="parse-form">
+        <div class="system-field"><label for="system">SEMANTIC SYSTEM</label><select id="system" disabled><option>Loading systems…</option></select></div>
+        <div class="grammar-field"><label for="grammar">GRAMMAR</label><select id="grammar" disabled><option>Loading grammars…</option></select></div>
+        <div class="sentence-field"><label for="sentence">YOUR SENTENCE</label><input id="sentence" value="a man walks." maxlength="500" placeholder="Enter a sentence…" autocomplete="off" spellcheck="false" required></div>
+        <button type="submit" id="parse-button" class="primary" disabled><span id="parse-label">Build derivation</span><span aria-hidden="true">↗</span></button>
+      </form>
+      <div id="dialogue-editor" hidden>
+        <p class="dialogue-intro">A change of speaker continues the same tree. <strong>Yes/No</strong> after a complete English polar question starts an answer tree automatically. Choose <strong>New tree</strong> for another proposition. Use <strong>sorry</strong> before a local replacement. Leave unfinished turns without a full stop.</p>
+        <div id="dialogue-rows"></div>
+        <div class="dialogue-editor-tools"><button id="add-turn" type="button" class="text-button">+ Add turn</button><span id="dialogue-limits">Up to 12 turns · 80 tokens</span></div>
+        <div id="dialogue-examples" class="dialogue-examples" aria-label="Dialogue examples"></div>
+        <details class="dialogue-coverage"><summary>Dialogue coverage</summary><p id="dialogue-coverage-text"></p><p>Greek examples share a tree across speakers, but their pronoun referents and pro-drop subjects still use the fixed demo context. They do not yet perform conversational anaphora resolution.</p></details>
+      </div>
+      <div id="paragraph-editor" hidden>
+        <label for="paragraph">YOUR PARAGRAPH · ENGLISH OR STANDARD MODERN GREEK</label>
+        <textarea id="paragraph" rows="5" maxlength="6000" placeholder="Paste a paragraph in the language of your selected grammar…" spellcheck="false"></textarea>
+        <p class="paragraph-note">Up to 400 tokens · 24 sentences. Every sentence is checked by DS. Grammar coverage is incomplete; unsupported sentences remain visible as failures.</p>
+        <p id="paragraph-baseline" class="paragraph-note"></p>
+        <p id="paragraph-assisted-probe" class="paragraph-note"></p>
+      </div>
+      <section id="ai-controls" class="method-overview" aria-labelledby="method-title">
+        <div class="assistance-heading"><strong id="method-title">Choose AI assistance</strong><span class="badge">DS parser · always on</span></div>
+        <p>Tick the models you want to use for your next parse. DS builds and checks every derivation.</p>
+        <div class="assistance-switches">
+          <label class="assistance-card" for="llm-enabled">
+            <input id="llm-enabled" type="checkbox" disabled aria-labelledby="llm-label" aria-describedby="llm-help llm-model">
+            <span class="assistance-card-body"><span class="assistance-card-heading"><strong id="llm-label">Use analysis LLM</strong><span id="llm-state" class="assistance-state">OFF</span></span><span id="llm-help">Proposes vocabulary and supported constructions when needed.</span><span id="llm-model" class="assistance-model">Connect a model to enable.</span></span>
+          </label>
+          <label class="assistance-card" for="jev-enabled">
+            <input id="jev-enabled" type="checkbox" disabled aria-labelledby="jev-label" aria-describedby="jev-help jev-model">
+            <span class="assistance-card-body"><span class="assistance-card-heading"><strong id="jev-label">Use Jev</strong><span id="jev-state" class="assistance-state">OFF</span></span><span id="jev-help">Ranks alternative word meanings as context arrives.</span><span id="jev-model" class="assistance-model">Connect Jev to enable.</span></span>
+          </label>
+        </div>
+        <p id="method-mode" role="status">You can parse with the grammar and dictionaries without connecting a model.</p>
+        <div class="method-actions"><button id="model-settings-button" type="button" class="text-button">Connect / choose models ↗</button><button id="use-dictionaries" type="button" class="text-button" disabled>Turn off all AI</button><button id="jev-demo-button" type="button" class="text-button">See Jev in action ↗</button><button id="method-help" type="button" class="text-button">How it works ↗</button><button id="pp-help" type="button" class="text-button">PP arguments & modifiers ↗</button></div>
+      </section>
+      <div class="scope-control"><label for="scope">Existential scope</label><select id="scope"><option value="narrow">Inside universal · ΠΣ</option><option value="wide">Outside universal · ΣΠ</option></select><span id="coverage">English fragment: names, determiners, verbs, adjectives and VP modifiers.</span></div>
+      <div class="analysis-settings"><label for="n-best">Complete analyses</label><select id="n-best"><option value="1">First analysis</option><option value="3">Up to 3 analyses</option><option value="8">Up to 8 analyses</option></select><span>Explore alternative trees and meanings using the grammar.</span></div>
+      <div class="examples"><span>Try an example</span><div id="examples"></div><a class="lab-link" href="#research">Corpus & dictionary ↓</a><a class="lab-link" href="#greek-lab">Greek clitics · dialects & history ↓</a></div>
+      <p id="greek-context" class="fragment-context" hidden></p>
+      <details id="jev-demo" class="jev-demo">
+        <summary>Jev in action · compare word meanings</summary>
+        <p>Watch Jev choose between dictionary senses as words arrive. Compare two actual DS runs with identical lexical candidates: normal order, then Jev preferences. DS checks both derivations.</p>
+        <div id="jev-examples" class="jev-examples"></div>
+        <label class="source-toggle"><input type="checkbox" id="compare-jev" checked> Include the comparison when using Jev on an English sentence</label>
+        <div class="method-actions"><button id="jev-run" type="button" class="primary" disabled>Compare this sentence</button><span id="jev-demo-status" role="status">Connect OpenRouter to run Jev. These examples use native English Classical or Constructive DS.</span></div>
+        <p>A different sense is not automatically a better interpretation. Ambiguous context, unchanged results and unavailable model answers remain visible. Model calls use your OpenRouter account; the selected vocabulary model does not replace the pinned Jev model.</p>
+      </details>
+      <details id="lexical-settings" class="lexical-settings">
+        <summary>Models, vocabulary & advanced settings <span id="lexical-mode-badge" class="badge muted">Bundled vocabulary</span></summary>
+        <section id="openrouter-panel" class="openrouter-panel" aria-labelledby="openrouter-title" hidden>
+          <div class="openrouter-heading"><h3 id="openrouter-title">Use your OpenRouter key</h3><span id="openrouter-badge" class="badge muted">Not connected</span></div>
+          <p>Your key stays in this tab until you disconnect or refresh. It passes through the DS server for your requests and is not saved by this app. Model calls are billed to your OpenRouter account.</p>
+          <form id="openrouter-form" class="openrouter-form" autocomplete="off">
+            <label for="openrouter-key">OpenRouter API key<input id="openrouter-key" type="password" autocomplete="off" spellcheck="false" maxlength="512" placeholder="Paste your key" aria-describedby="openrouter-status"></label>
+            <button id="openrouter-connect" class="primary" type="submit">Connect</button>
+            <button id="openrouter-disconnect" class="text-button" type="button" hidden>Disconnect</button>
+            <a href="https://openrouter.ai/settings/keys" class="text-button" target="_blank" rel="noopener noreferrer">Get a key ↗</a>
+          </form>
+          <p id="openrouter-status" role="status" aria-live="polite">Connecting checks access and loads models. Use the checkboxes above to turn assistance on.</p>
+          <div id="openrouter-model-controls" hidden>
+            <div class="openrouter-models"><label for="openrouter-filter">Find a model<input id="openrouter-filter" type="search" placeholder="Name or provider…" autocomplete="off"></label><label for="openrouter-model">Analysis model<select id="openrouter-model"></select></label></div>
+            <p id="openrouter-price"></p><p id="openrouter-jev"></p>
+            <p>Choosing a model does not turn it on. The <strong>Use analysis LLM</strong> checkbox controls whether the parser may call it.</p>
+          </div>
+        </section>
+        <details id="advanced-settings" class="advanced-settings"><summary>Advanced · vocabulary strategy & search order</summary>
+        <p>The checkboxes above set these options for you. Changing a strategy here also updates the checkboxes.</p>
+        <div class="lexical-controls"><label for="lexical-mode">Vocabulary strategy</label><select id="lexical-mode"><option value="off">Original lexicon · no analysis LLM</option><option value="bundled" selected>Bundled vocabulary · no analysis LLM</option><option value="dictionary">WordNet dictionary · no analysis LLM</option><option value="corpus">Greek corpus vocabulary · no analysis LLM</option><option value="assisted">Open text · analysis LLM when needed</option><option value="model">Missing words only · analysis LLM</option><option value="jev">Dictionary + Jev word meanings</option></select><span id="lexical-provider"></span></div>
+        <section id="greek-source-controls" class="greek-source-controls" hidden aria-label="Live Greek lexical evidence">
+          <label class="source-toggle"><input id="live-greek-sources" type="checkbox"> Use Svarna + Triantafyllidis during parsing</label>
+          <label for="greek-source-corpus">Svarna evidence corpus</label>
+          <select id="greek-source-corpus"><option value="ud_ud_greek-gud">UD Greek GUD · mixed / written</option><option value="ud_ud_greek-gdt">UD Greek GDT · split not supplied</option></select>
+          <p id="greek-source-help">Choose Open text assistance and connect a model to enable this option.</p>
+          <p>When a lexical model request is needed, send up to four words and their candidate lemmas to these sources. Your model receives the excerpts alongside your input. Source use is optional; examples may be irrelevant and dictionary senses may be ambiguous. These corpora supply Standard Greek evidence. Svarna does not supply train/test split IDs: do not count analyses using this retrieval as held-out GDT/GUD results. Dialect and TTR assistance are not included.</p>
+        </section>
+        <p id="lexical-selection-description" hidden></p>
+        <div class="lexical-controls"><label for="decision-mode">Search ordering</label><select id="decision-mode"><option value="off">Normal DS order</option><option value="stub">Record choices locally</option><option value="jev">Jev preferences</option></select><span id="decision-status"></span></div>
+        <p id="decision-description">Jev uses the observed prefix, lexical candidates and tree through the configured provider. Alternatives remain available for backtracking.</p>
+        <p id="lexical-coverage"></p><div id="lexical-examples" class="dialogue-examples"></div>
+        <p>Open text mode can propose vocabulary and finite-clause constructions. The model selects a declared relation—cause, time, condition, concession or contrast—and DS instantiates the corresponding grammar template. Ambiguous connectives such as “since” and “ενώ” retain alternatives; new connective hypotheses must fit the same templates. DS builds the tree and checks its requirements. A model’s interpretation can still be wrong. These clause relations preserve meaning distinctions but do not supply full temporal or causal reasoning. Your input goes to your selected provider. Classical and Constructive compile separately; TTR assistance is not available.</p>
+        </details>
+      </details>
+    </section>
+
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+    <p id="research-provenance" class="fragment-context" hidden></p>
+    <section id="method-result" class="method-result" aria-label="How this result was produced" hidden><div class="method-usage" id="method-usage" aria-label="Model usage for this result"></div><strong id="method-result-title"></strong><p id="method-result-detail"></p></section>
+    <section id="jev-impact" class="jev-impact" aria-labelledby="jev-impact-title" hidden>
+      <h2 id="jev-impact-title">What did Jev change?</h2><p id="jev-impact-summary"></p>
+      <div class="jev-comparison-grid"><section><h3>DS without Jev preferences</h3><div id="jev-baseline"></div></section><section><h3>DS with Jev preferences</h3><div id="jev-preferred"></div></section></div>
+      <div id="jev-impact-changes"></div><p id="jev-impact-note" class="source-note"></p>
+      <h3>As the words arrived</h3><ol id="jev-journey"></ol>
+      <a class="text-button" href="#lexical-selection">Inspect decisions and probabilities ↓</a>
+    </section>
+    <section id="diagnostics" class="diagnostics" aria-label="Parse evidence and coverage" hidden>
+      <div><span class="evidence-label">PARSER RESULT</span><strong id="diagnosis-title"></strong><p id="diagnosis-detail"></p></div>
+      <div><span class="evidence-label">LEXICAL COVERAGE</span><strong id="lexicon-summary"></strong><details><summary>Inspect every token</summary><div id="vocabulary-report"></div></details></div>
+      <div><span class="evidence-label">LINGUISTIC EVIDENCE</span><strong id="judgment-title"></strong><p id="judgment-detail"></p></div>
+    </section>
+
+    <section id="construction-report" class="lexical-report" aria-label="Clause construction analysis" hidden>
+      <h3>How the clauses were connected</h3>
+      <p id="construction-summary"></p><div id="construction-proposals"></div><div id="construction-used"></div>
+      <p>Relations take main and subordinate contents in that order. DS checks structure and types. Temporal, conditional and discourse relations remain explicit, opaque predicates: a complete tree does not establish temporal facts, causal truth or the correctness of a model’s reading.</p>
+    </section>
+    <section id="lexical-report" class="lexical-report" aria-label="Lexical expansion" hidden>
+      <div class="lexical-report-heading"><strong id="lexical-summary"></strong><span id="lexical-status" class="badge muted"></span></div>
+      <section id="live-source-report" hidden aria-label="Why these lexical analyses"><h3>Why this analysis?</h3><p id="live-source-summary"></p><div id="live-source-words"></div></section>
+      <p id="lexical-notices"></p><section id="lexical-selection" hidden aria-label="Jev lexical preferences"><strong>Jev lexical preferences</strong><p id="lexical-selection-summary"></p><div id="lexical-selection-decisions"></div><p id="lexical-selection-used"></p><div id="lexical-path-updates"></div><details id="lexical-reconsiderations" hidden><summary>Reconsidered senses</summary><div id="lexical-revision-decisions"></div></details></section><div id="lexical-entries"></div>
+    </section>
+    <details id="decision-report" class="lexical-report" hidden><summary>Search decisions <span id="decision-summary"></span></summary><div id="decision-entries"></div></details>
+
+    <section id="paragraph-results" class="paragraph-results" aria-label="Paragraph coverage" hidden>
+      <h2 id="paragraph-summary"></h2>
+      <p id="paragraph-context" class="paragraph-note"></p>
+      <ol id="paragraph-sentences"></ol>
+    </section>
+    <section class="workbench" aria-label="Derivation explorer" aria-busy="false">
+      <div class="bench-header">
+        <div class="section-title"><span class="section-number">01</span><h2>Derivation</h2><span id="result-status" class="badge">Ready to explore</span></div>
+        <div class="bench-actions"><span id="elapsed"></span><button id="export" class="text-button" disabled>Export JSON ↓</button></div>
+      </div>
+      <div id="readings-panel" class="readings-panel" hidden>
+        <label for="reading">Play analysis</label><select id="reading"></select>
+        <p id="readings-summary" role="status"></p>
+      </div>
+      <div id="playback-status" class="playback-status" hidden><p id="playback-status-text" role="status"></p><button id="show-final" type="button" class="text-button">Show final result ↗</button></div>
+      <div id="dialogue-playback" class="dialogue-playback" hidden>
+        <div class="dialogue-playback-heading"><strong id="dialogue-now"></strong><span>Contributions stay visible when repaired.</span></div>
+        <div id="dialogue-transcript" aria-label="Dialogue transcript"></div>
+      </div>
+
+      <div class="explorer">
+        <div class="tree-column">
+          <div class="tree-toolbar">
+            <div class="segmented" aria-label="Playback detail"><button class="active" data-mode="operations" aria-pressed="true">Operations</button><button data-mode="actions" aria-pressed="false">Rules</button><button data-mode="words" aria-pressed="false">Words</button></div>
+            <span id="frame-label">The tree starts with a requirement.</span>
+            <div class="zoom-controls"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><button id="fit" title="Fit tree to view">Fit</button><button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button></div>
+          </div>
+          <div id="operation-detail" class="operation-detail" hidden><div class="operation-heading"><span id="operation-rule"></span><code id="operation-code"></code><span id="pointer-transition"></span></div><p id="operation-change"></p></div>
+          <div class="tree-stage" id="tree-stage">
+            <svg id="tree" role="group" aria-label="Dynamic Syntax derivation tree" viewBox="0 0 900 460"><defs><marker id="pointer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#275a43"/></marker></defs><g id="tree-edges"></g><g id="tree-pointer-motion"></g><g id="tree-nodes"></g></svg>
+            <div id="empty-state" class="empty-state"><span class="empty-symbol">?Ty(Prop)</span><p>A sentence begins with an open possibility.</p><span>Build a derivation to follow its growth.</span></div>
+            <div id="loading-state" class="loading-state" hidden><span class="spinner"></span><p>Building the derivation…</p><span>The Python engine is reading your sentence.</span></div>
+            <div class="tree-legend"><span><i class="legend-pointer"></i>Pointer</span><span><i class="legend-new"></i>Changed node</span><span><i class="legend-unfixed"></i>Unfixed edge</span></div>
+          </div>
+          <div class="playback">
+            <div class="transport"><button id="first" aria-label="Go to axiom" title="Go to axiom (Home)">↤</button><button id="previous" aria-label="Previous step" title="Previous step (←)">‹</button><button id="play" aria-label="Play derivation" title="Play / pause (Space)">▶</button><button id="next" aria-label="Next step" title="Next step (→)">›</button><label for="speed" class="sr-only">Playback speed</label><select id="speed" aria-label="Playback speed"><option value="1600">0.5×</option><option value="800" selected>1×</option><option value="400">2×</option><option value="200">4×</option></select><span id="step-count">0 / 0</span><label class="sr-only" for="timeline">Derivation step</label><input id="timeline" type="range" min="0" max="0" value="0" disabled></div>
+            <div id="word-tokens" class="word-tokens" aria-label="Sentence timeline"></div>
+          </div>
+        </div>
+
+        <aside class="inspector" aria-label="Node and action inspector">
+          <div class="inspector-tabs" role="tablist" aria-label="Inspect"><button id="node-tab" role="tab" aria-selected="true" aria-controls="node-panel">Node inspector</button><button id="trace-tab" role="tab" aria-selected="false" aria-controls="trace-panel">Action trace</button></div>
+          <div id="node-panel" role="tabpanel" aria-labelledby="node-tab"><div class="inspector-empty">Select a node to see its type, formula, and outstanding requirements.</div></div>
+          <div id="trace-panel" role="tabpanel" aria-labelledby="trace-tab" hidden><p class="trace-note">Operations execute inside the selected rule. IF checks select THEN or ELSE. Word boundaries show the recorded parser state.</p><div id="operation-program" hidden></div><ol id="action-list"></ol></div>
+        </aside>
+      </div>
+
+      <div class="semantics-panel">
+        <div class="semantics-heading"><div class="section-title"><span class="section-number">02</span><h2>Meaning at this step</h2><span id="semantic-system" class="badge muted">Σ / Π</span></div><button id="coq" class="text-button" disabled hidden>Export Coq ↓</button><button id="copy" class="text-button" disabled>Copy formula</button></div>
+        <div class="semantics-body"><pre id="semantics">The formula will develop alongside the tree.</pre><div class="semantics-note"><p id="speech-act" hidden></p><p id="reflexive-binding" hidden></p><p id="normalized" hidden></p><span id="semantic-status">INCREMENTAL INTERPRETATION</span><p id="semantic-note">Move through the derivation to see how each word contributes.</p></div></div>
+      </div>
+      <div id="dialogue-history" class="dialogue-history" hidden>
+        <section><h3>Repairs</h3><div id="repair-history"></div></section>
+        <section><h3>Earlier trees</h3><div id="context-history"></div></section>
+      </div>
+    </section>
+    <section id="research" class="research" aria-labelledby="research-title">
+      <div class="lab-heading"><div class="section-title"><span class="section-number">03</span><h2 id="research-title">Corpus & dictionary</h2></div><a id="corpus-home" class="text-button" href="https://greek-corpus-workbench.wonderfulhill-e1c9f1a0.westeurope.azurecontainerapps.io/" target="_blank" rel="noopener noreferrer">Open Svarna ↗</a></div>
+      <p class="lab-intro">Find attested English or Greek, inspect a word’s dictionary entry, and try an example in DS. Keep the source text beside your analysis.</p>
+      <div class="research-language"><label for="research-language">Language</label><select id="research-language"><option value="el">Greek · Svarna + Triantafyllidis</option><option value="en">English · Brown / Gutenberg + WordNet</option></select><span id="research-language-note">Live Greek and dialectal sources.</span></div>
+      <div class="research-columns">
+        <div class="research-corpus">
+          <form id="corpus-form" class="research-form">
+            <div class="research-filters">
+              <label>Database<select id="corpus-db"><option value="dialectal">Greek varieties</option><option value="corpus">General Greek</option><option value="literature">Literature</option></select></label>
+              <label><span id="corpus-filter-label">Corpus / variety</span><select id="corpus-filter"><option value="">All corpora / varieties</option></select></label>
+              <label><span id="corpus-register-label">Register</span><select id="corpus-register"><option value="">All registers</option></select></label>
+              <label>Mode<select id="corpus-mode"><option value="">All modes</option></select></label>
+            </div>
+            <div class="research-query"><label>Search<input id="corpus-query" value="ατό" maxlength="160" required spellcheck="false" placeholder="A word or phrase…"></label><label>Search type<select id="corpus-kind"><option value="words">Words / phrase</option><option value="regex">Regular expression</option></select></label><button class="primary" id="corpus-search" type="submit">Search Svarna</button></div>
+            <p id="corpus-search-help" class="source-note">Words and phrases use Svarna’s word index. Inflected forms are searched separately.</p>
+          </form>
+          <p id="corpus-catalog-status" class="source-note" role="status"></p><button id="corpus-reload" type="button" class="text-button" hidden>Retry corpus list</button>
+          <div class="research-results-heading"><p id="corpus-status" role="status" aria-live="polite">Search to find examples in context.</p><button id="corpus-export" type="button" class="text-button" disabled>Export results ↓</button></div>
+          <div id="corpus-results" class="corpus-results" aria-label="Corpus search results"></div>
+          <div class="research-pagination"><button id="corpus-previous" type="button" class="text-button" disabled>← Previous</button><span id="corpus-page"></span><button id="corpus-next" type="button" class="text-button" disabled>Next →</button></div>
+        </div>
+        <aside class="research-dictionary" aria-labelledby="dictionary-title">
+          <h3 id="dictionary-title">Triantafyllidis dictionary</h3>
+          <p id="dictionary-description" class="source-note">Standard Modern Greek senses, forms, and examples. Dialect words may have no entry.</p>
+          <form id="dictionary-form" class="research-form"><label>Word or lemma<input id="dictionary-query" value="δίνω" maxlength="160" required spellcheck="false"></label><div class="research-query"><label>Look in<select id="dictionary-scope"><option value="headword">Headwords</option><option value="entry">Whole entries</option></select></label><button id="dictionary-search" type="submit" class="primary">Look up</button></div></form>
+          <p id="dictionary-status" role="status" aria-live="polite">Look up a lemma, or select a word in a corpus example.</p>
+          <div id="dictionary-results"></div>
+          <a id="dictionary-source" class="text-button" href="https://www.greek-language.gr/greekLang/modern_greek/tools/lexica/triantafyllides/" target="_blank" rel="noopener noreferrer">Open dictionary ↗</a>
+        </aside>
+      </div>
+      <section id="research-selection" class="research-selection" hidden aria-labelledby="research-selection-title">
+        <h3 id="research-selection-title">Analyse a corpus example</h3>
+        <p id="selected-corpus-meta" class="source-note"></p>
+        <details><summary>Original source text and metadata</summary><blockquote id="selected-corpus-original" lang="el"></blockquote><pre id="selected-corpus-details"></pre></details>
+        <label for="selected-corpus-text">Text to analyse · select a short excerpt or edit explicitly</label><textarea id="selected-corpus-text" rows="3" spellcheck="false"></textarea>
+        <div class="research-selection-controls"><label>Comparison grammar<select id="selected-corpus-grammar"><option value="">Choose a Greek grammar…</option><option value="smg">Standard Modern Greek</option><option value="cypriot">Cypriot Greek</option><option value="pontic">Pontic Greek</option><option value="grico">Grico (Salentino Greek)</option></select></label><label>Semantics<select id="selected-corpus-system"><option value="mltt">Constructive · Σ / Π</option><option value="classical">Classical · λ / ε / τ</option></select></label><button id="selected-corpus-analyse" class="primary" type="button" disabled>Analyse with DS ↗</button><button id="selected-corpus-reset" class="text-button" type="button">Restore original</button></div>
+        <p id="selected-corpus-note" class="source-note" role="status"></p>
+        <p class="source-note">These grammars cover limited fragments. A failed parse identifies a limit of the selected grammar; it does not establish that an attested example is ungrammatical.</p>
+      </section>
+    </section>
+    <section id="greek-lab" class="greek-lab" aria-labelledby="greek-title">
+      <div class="lab-heading"><div class="section-title"><span class="section-number">04</span><h2 id="greek-title">Greek clitics</h2></div><span class="badge muted">Four small executable fragments</span></div>
+      <p class="lab-intro">The same kind of pronoun, different conditions for tree growth. Choose an environment, then build a dialect’s example or test its reverse order.</p>
+      <div id="clitic-environments" class="lab-tabs" aria-label="Clitic environment"></div>
+      <div id="dialect-cards" class="dialect-cards"></div>
+      <details class="lab-details"><summary>Coverage, context and other dialects</summary><p id="greek-coverage"></p><p id="other-dialects"></p><p>The clitic supplies a contextually identified object. The demo fixes <code>him</code> and <code>theme</code>, along with <code>speaker</code>, <code>hearer</code> and the pro-drop subject <code>pro</code>. It does not resolve discourse antecedents. Negation is interpreted; <code>na</code> contributes an uninterpreted potentiality operator. Tense, aspect and imperative speech acts are outside this semantic fragment.</p></details>
+      <div class="history-heading"><h3>From Koine to the modern systems</h3><span class="badge muted">Historical evidence & a DS proposal</span></div>
+      <p class="lab-intro">A branching history, with different medieval trajectories. These panels explain an account of change; they are not executable grammars of the historical stages.</p>
+      <div id="history-tabs" class="lab-tabs history-tabs" aria-label="Historical trajectory"></div>
+      <article id="history-detail" class="history-detail" aria-live="polite"></article>
+      <p id="greek-source" class="source-note"></p>
+    </section>
+    <footer><span>Dynamic Syntax · Language understood through tree growth</span><span>Python engine <span aria-hidden="true">/</span> Classical · Constructive · TTR</span></footer>
+  </main>
+
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <button id="help-close" class="dialog-close" aria-label="Close guide">×</button><p class="eyebrow">A QUICK GUIDE</p><h2 id="help-title">How this workbench works.</h2>
+    <p class="guide-lead">Words trigger grammar actions that grow a tree and compose its meaning. The DS engine checks those actions and their requirements in the semantic system you select.</p>
+    <div class="guide-roles">
+      <section><h3>Without an LLM</h3><p>The engine uses the grammar’s lexicon and, when enabled, bundled entries plus English WordNet or the Standard Greek corpus lexicon. It tries licensed analyses and backtracks when one fails. No model key or model billing is needed.</p></section>
+      <section><h3>Your selected LLM</h3><p>In Open text mode, the model can propose vocabulary and finite-clause constructions. For example, it can recognize an unfamiliar conditional connective or prefer causal rather than temporal “since.” It selects typed templates; DS builds the actual tree and composes the meaning. Expand <strong>How the clauses were connected</strong> to see its proposal and the relation DS used. A single missing-word request can return both vocabulary and construction hypotheses. New structural primitives still require grammar implementation.</p><p>For Standard Greek, you can enable Svarna + Triantafyllidis evidence during parsing. Before a needed lexical proposal, the app retrieves a few corpus examples and dictionary excerpts. Expand <strong>Why this analysis?</strong> to compare observations with the model’s inferred frame and citations. Sources supply lexical evidence; DS supplies the derivation. A citation does not prove that the model chose the right sense.</p></section>
+      <section><h3>Jev preferences</h3><p>Jev is a separate, pinned model. In its vocabulary mode it ranks candidate senses and can reconsider an earlier choice as words arrive; the analysis LLM can help with missing vocabulary only when its checkbox is also on. Open <strong>See Jev in action</strong> and try <em>John lends a book to Mary.</em> The comparison runs DS with and without Jev on identical candidates, shows both meanings and exposes each probability distribution. A changed meaning is not automatically correct. The separate search-order option operates only where calibrated. DS still checks the resulting path and retains alternatives for backtracking.</p></section>
+    </div>
+    <p><strong>What “complete” verifies:</strong> the derivation satisfies the implemented grammar and its type requirements, given its lexical and context assumptions. A dictionary or model can still supply the wrong sense. Completion does not establish the intended reading, truth or an independent grammaticality judgment. Missing rules, missing vocabulary and search limits remain visible as failures.</p>
+    <p>Connecting OpenRouter checks your key and lists models. Model requests send text and relevant parser context to that provider and are billed to your account. The checkboxes control your next parse; the result reports the requests actually made. With both boxes ticked, Jev ranks word meanings and the analysis LLM supplies missing words; full open text construction assistance is available when Jev is off. <strong>Turn off all AI</strong> unticks both models and turns off Jev search ordering for subsequent parses; a connected key can stay in this tab unused.</p>
+    <details class="guide-section" id="guide-semantics"><summary>Why Classical, Constructive and TTR differ</summary>
+      <dl><dt>Classical DS</dt><dd>Composes entity and proposition meanings using λ terms, ε/τ choice terms and logical operators. Distributive “all” introduces ∀.</dd><dt>Constructive DS</dt><dd>Composes typed witnesses and dependent Σ/Π meanings: roughly, “a man walks” requires a man together with evidence of walking; “all people enter” requires the property for each person. Complete supported meanings can be exported to Coq.</dd><dt>DS–TTR</dt><dd>Uses record types in its own grammar. The wide-vocabulary assistance compiler currently supports Classical and Constructive English and Standard Greek only. Selecting TTR does not translate one of their results into a verified TTR derivation.</dd></dl>
+      <p>The semantic system determines composition and checking. An LLM proposes lexical information under that system’s available templates; it does not choose a replacement semantic theory or write the final tree.</p>
+    </details>
+    <details class="guide-section" id="guide-pps"><summary>Prepositional phrases: arguments, modifiers and predicates</summary>
+      <p>A preposition’s role comes from the construction. These examples run without an LLM in the native Classical and Constructive grammars:</p>
+      <div class="guide-table-wrap"><table class="guide-table"><thead><tr><th scope="col">Example</th><th scope="col">What DS does</th></tr></thead><tbody>
+        <tr><th scope="row">John relies <strong>on Mary</strong>.<br><button type="button" class="text-button" data-guide-example="john relies on mary.">Try without AI ↗</button></th><td><strong>Selected argument.</strong> The verb opens an ordinary argument slot requiring <em>on</em> and its complement. Mary becomes an argument of <code>rely(john, mary)</code>. “John relies” and “John relies in a park” cannot complete this frame.</td></tr>
+        <tr><th scope="row">John gives a book <strong>to Mary</strong>.<br><button type="button" class="text-button" data-guide-example="john gives a book to mary.">Try without AI ↗</button></th><td><strong>Recipient argument.</strong> This give frame requires a theme and a <em>to</em>-recipient. An optional location PP cannot fill the missing recipient slot.</td></tr>
+        <tr><th scope="row">John walks <strong>in a park</strong>.<br><button type="button" class="text-button" data-guide-example="john walks in a park.">Try without AI ↗</button></th><td><strong>Modifier via LINK.</strong> DS uses LINK to grow a separate modifier tree. It parses the PP’s own noun phrase, then composes the modifier with the proposition. The fragment uses operators such as <code>in_location(place, walk(john))</code>; it has no event or spatial inference model. Postverbal <em>at</em> and companion <em>with</em> are also supported.</td></tr>
+        <tr><th scope="row">A man is <strong>in a park</strong>.<br><button type="button" class="text-button" data-guide-example="a man is in a park.">Try without AI ↗</button></th><td><strong>Copular predicate.</strong> The location PP supplies the predicate after <em>is</em>. Standard Greek also has copular location rules for <em>σε</em> and forms such as <em>στο</em> and <em>στην</em>.</td></tr>
+        <tr><th scope="row">Ο Γιώργος μπήκε <strong>στην πίστα</strong>.<br><button type="button" class="text-button" data-guide-example="Ο Γιώργος μπήκε στην πίστα." data-guide-language="smg">Try Greek without AI ↗</button></th><td><strong>Destination argument.</strong> The selected motion frame requires <em>σε</em> and an accusative destination. Contracted <em>στο/στον/στη/στην</em> also supply the definite article and check gender. The destination becomes an argument of <code>enter_goal</code>. English selected <em>to/into</em> frames are also available.</td></tr>
+        <tr><th scope="row">George walks <strong>onto the stage like a wild peacock</strong>.<br><button type="button" class="text-button" data-guide-example="George walks onto the stage like a wild peacock.">Try English without AI ↗</button><br>Ο Γιώργος μπήκε στην πίστα <strong>σαν άγριο παγώνι</strong>.<br><button type="button" class="text-button" data-guide-example="Ο Γιώργος μπήκε στην πίστα σαν άγριο παγώνι." data-guide-language="smg">Try Greek without AI ↗</button></th><td><strong>Modifiers via LINK.</strong> English <em>into/onto/toward</em> can introduce path modifiers; Greek <em>σε</em> and its contracted articles can introduce location modifiers. A nominal simile builds a separate LINK using <code>manner_like(description, proposition)</code>. English <em>like a/an…</em> and Greek <em>σαν [ένα/μια/έναν]…</em> accept singular noun descriptions with attributive adjectives. The Greek description checks accusative agreement.</td></tr>
+      </tbody></table></div>
+      <p><strong>What the LLM can add:</strong> for an unfamiliar verb it can propose a supported frame, including Greek <code>prepositional-se</code>, English <code>prepositional-to/into/on</code>, or <code>dative-to</code> for a recipient. It can propose the nouns and adjectives inside a comparison. DS builds the argument or LINK structure and enforces the template’s requirements. The proposal can still select the wrong sense or frame; arbitrary new constructions require grammar work.</p>
+      <p><strong>Meaning and attachment:</strong> Classical PP noun phrases compose with entity/choice terms; Constructive ones retain typed witnesses and dependent quantification. A simile takes a nominal description: a Classical restrictor or a Constructive nominal type, refined by adjectives. It asserts no actual peacock’s existence and does not identify the subject as a peacock. Resemblance, event and spatial inference are not supplied. Some English matrix/embedded attachments are available as separate analyses. NP attachment, instrumental <em>with</em>, referential or clausal comparisons, plural similes and general preposition polysemy remain outside these rules. TTR coverage is unchanged.</p>
+      <button type="button" class="text-button" data-guide-example="john thinks mary walks in a park." data-guide-readings="3">Try matrix / embedded attachment without AI ↗</button>
+    </details>
+    <details class="guide-section"><summary>Read the growing tree</summary>
+      <p>Build a sentence, then pause, change speed or step by operation, rule or word.</p>
+      <dl><dt>?Ty(t) / ?Ty(Prop)</dt><dd>A requirement still to be satisfied. Other labels starting with ? are also outstanding requirements.</dd><dt>Fo(…)</dt><dd>The formula decorating a node. Use Expand formula below an abbreviated expression to read it in full inside the tree; Collapse formula restores the preview. Selecting a node also shows its full formula in the inspector.</dd><dt>The green pointer</dt><dd>The node the parser is working on. Changed nodes have a pale green fill.</dd><dt>Operations / Rules / Words</dt><dd>Operations show executed instructions; Rules group lexical and computational programs; Words show recorded token boundaries. Open text and paragraph results currently show word states and the selected derivation. The formula develops through composition as the tree grows.</dd></dl>
+      <p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> Step &nbsp; <kbd>Space</kbd> Play / pause &nbsp; <kbd>Home</kbd> Axiom &nbsp; <kbd>End</kbd> Last step</p>
+    </details>
+    <details class="guide-section"><summary>Paragraphs, dialogue and coverage</summary>
+      <p>Every paragraph sentence counts. Only complete sentences supply context to later sentences; failures remain as context gaps. Basic named-antecedent pronouns are supported, but general discourse inference is not.</p>
+      <p>Dialogue mode preserves the tree across speaker changes. Choose New tree to start a proposition. Local repair rolls back the last ungrounded lexical contribution; the transcript retains the old words, and Repairs links to rollback and replacement. Rebuilding reconstructs the transcript in a fresh parser context. Open text model assistance is currently for sentences and paragraphs.</p>
+      <p><strong>Try Question &amp; answer:</strong> A: “Did you burn” / B: “myself?” / A: “No”. A’s <em>you</em> denotes B; B’s <em>myself</em> binds to that same local subject. The question’s content is burn(B, B). No starts a new tree with its negation, while Earlier trees keeps the question available for inspection. Yes retains the positive content. These are interpretations of the contributions; the app does not decide whether the answer is true or mutually accepted.</p>
+      <p>This works without an LLM in native English Classical and Constructive DS. The grammar supplies polar do/does/did, a typed reflexive action and contextual Yes/No. Classical composition uses e/t; Constructive composition preserves nominal types and dependent quantifiers. Reflexives are currently restricted to the local subject and final object slot. Speaker/addressee forms, known gender features and plural subjects constrain binding; unknown gender remains unspecified. General ellipsis, wh-questions, group speaker reference, tense semantics and full auxiliary agreement remain outside this fragment.</p>
+      <p>English <strong>thinks</strong> and <strong>says</strong> select finite clauses with optional <strong>that</strong>. Classical complements have type t; Constructive closure binds witnesses inside each complement and produces Content, exported to Coq as Type. Scope stays within each clause. These predicates have no world semantics or de re readings.</p>
+      <p>English <strong>because</strong> and Standard Greek <strong>επειδή / διότι</strong> introduce finite reasons. A postposed reason grows a LINK; a preposed reason requires a comma and a main clause. <code>because(main, reason)</code> preserves both clause meanings with local quantifier closure. It is an opaque causal relation, with no causal inference axioms. Temporal words such as <strong>later / αργότερα</strong> retain distinct operators; their reference times and full tense/aspect meanings remain unresolved.</p>
+      <p><button type="button" class="text-button" data-guide-example="George opened the door because he came later.">Try the English causal example without AI ↗</button><br><button type="button" class="text-button" data-guide-language="smg" data-guide-example="Ο Γιώργος περπατάει επειδή η Μαρία περπατάει αργότερα.">Try the Greek causal example without AI ↗</button></p>
+      <p>The Greek lab describes the small Standard, Cypriot, Pontic and Grico fragments and their limits. Corpus search finds attested text; it does not make that text parseable. The displayed development checks are small engineering samples, not general accuracy estimates.</p>
+    </details>
+  </dialog>
+</body>
+</html>

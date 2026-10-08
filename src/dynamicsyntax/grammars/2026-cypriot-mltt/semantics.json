@@ -1,0 +1,35 @@
+{
+  "backend": "mltt",
+  "axiom": "mltt:Prop",
+  "subtyping": {
+    "human": [
+      "object"
+    ]
+  },
+  "constants": {
+    "speaker": "human",
+    "hearer": "human",
+    "pro": "human",
+    "him": "human",
+    "theme": "object"
+  },
+  "predicates": {
+    "know": [
+      "object",
+      "object"
+    ],
+    "love": [
+      "object",
+      "object"
+    ],
+    "write": [
+      "object",
+      "object"
+    ],
+    "potential": [
+      "Prop"
+    ]
+  },
+  "fragment": "greek-clitics",
+  "dialect": "cypriot"
+}

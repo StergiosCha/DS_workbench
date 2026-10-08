@@ -1,0 +1,774 @@
+// Hand-maintained SMG thesis fragment. Entries (3.64), imperative and gerund gates.
+
+*clitic(REF,PERSON,CASE)
+IF ?Ty(mltt:Prop)
+   ([\/1+]?Ty(x) || Mood(Imp) || Mood(Ger))
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(mltt:arrow(object,Prop)))
+   make(\/0)
+   go(\/0)
+   IF ¬Ex.Fo(x)
+   THEN put(Ty(mltt:object))
+      put(Fo(U_REF))
+      put(?Ex.Fo(x))
+      put(Case(CASE))
+      put(Person(PERSON))
+      delete(?Ty(mltt:object))
+      gofirst(?Ty(mltt:Prop))
+   ELSE abort
+ELSE abort
+
+verb-finite(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-transitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-dependent(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   ([+NA] || [+FUT])
+THEN put([+VERB])
+   put(Mood(Subj))
+   build-potential-transitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-imperative(PRED)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NEG]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Imp))
+   put([+VERB])
+   build-transitive(PRED,hearer,2,sg)
+ELSE abort
+
+gerund(PRED)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Ger))
+   put([+VERB])
+   build-transitive(PRED,pro,3,sg)
+ELSE abort
+
+den(UNUSED)
+IF ?Ty(mltt:Prop)
+   ¬<\/+>Ex.x
+   ¬[+NEG]
+THEN put([+NEG])
+ELSE abort
+
+min(UNUSED)
+IF ?Ty(mltt:Prop)
+   ¬<\/+>Ex.x
+   ¬[+NEG]
+THEN put([+NEG])
+   put([+PROHIB])
+ELSE abort
+
+subjunctive(UNUSED)
+IF ?Ty(mltt:Prop)
+   ¬<\/+>Ex.x
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+NA])
+ELSE abort
+
+future(UNUSED)
+IF ?Ty(mltt:Prop)
+   ¬<\/+>Ex.x
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+FUT])
+ELSE abort
+
+punctuation(UNUSED)
+IF Ty(mltt:Prop)
+   complete
+THEN do_nothing
+ELSE abort
+
+// Genitives build the locally unfixed non-subject node, (3.100), (3.102).
+*clitic-gen(REF,PERSON)
+IF ?Ty(mltt:Prop)
+   Tn(a)
+   ([\/+]?Ex.Tn(x) || Mood(Imp))
+THEN make(\/P)
+   go(\/P)
+   put(?Ex.Tn(x))
+   put(</\0></\1+>Tn(a))
+   put(Ty(mltt:object))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Case(gen))
+   put(Person(PERSON))
+   gofirst(?Ty(mltt:Prop))
+ELSE abort
+
+verb-ditransitive(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-ditransitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-ditransitive-imperative(PRED)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NEG]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Imp))
+   put([+VERB])
+   build-ditransitive(PRED,hearer,2,sg)
+ELSE abort
+
+// First/second-person accusatives, (6.49). Clitic chunks suppress left adjustment.
+*clitic-acc12(REF,PERSON)
+IF ?Ty(mltt:Prop)
+   Tn(a)
+   ([\/1+]?Ty(x) || Mood(Imp) || Mood(Ger))
+THEN make(\/P)
+   go(\/P)
+   put(?Ex.Tn(x))
+   put(</\0></\1+>Tn(a))
+   put(Ty(mltt:object))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Case(acc))
+   put(Person(PERSON))
+   put(?</\0>Ty(mltt:arrow(object,Prop)))
+   gofirst(?Ty(mltt:Prop))
+ELSE abort
+
+
+// Case-marked proper-name NPs, thesis (2.50)-(2.52).
+// Here the article supplies case/gender and awaits a name. Common-noun
+// determiners require the distinct CN structure and are not this template.
+article-name(CASE,GENDER)
+IF ?Ty(mltt:object)
+   ¬Ex.Fo(x)
+   ¬?[+HEAD]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Case(CASE))
+   put(Gender(GENDER))
+   put(?[+HEAD])
+ELSE abort
+
+proper-name-nom(NAME,GENDER)
+IF ?Ty(mltt:object)
+   ?[+HEAD]
+   Case(nom)
+   Gender(GENDER)
+THEN delete(?[+HEAD])
+   put(Ty(mltt:object))
+   put(Fo(mltt:NAME))
+   put([+FULL-DP])
+   put(Person(3))
+   put(Number(sg))
+ELSE abort
+IF [+TOPIC]
+   THEN semantic-thin
+      put(!)
+      go(\/L)
+      put(?SharedFo(mltt:NAME))
+   ELSE put(?</\0>Ty(mltt:Prop))
+      gofirst((?Ty(mltt:Prop) || Ty(mltt:Prop)))
+
+proper-name-acc(NAME,GENDER)
+IF ?Ty(mltt:object)
+   ¬[+TOPIC]
+   ?[+HEAD]
+   Case(acc)
+   Gender(GENDER)
+THEN delete(?[+HEAD])
+   put(Ty(mltt:object))
+   put(Fo(mltt:NAME))
+   put([+FULL-DP])
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(mltt:arrow(object,Prop)))
+   gofirst((?Ty(mltt:Prop) || Ty(mltt:Prop)))
+ELSE abort
+
+// Common-noun indefinite DP. Source structure: thesis (2.70)-(2.77).
+// Greek accusative forms: Appendix B, (B.4). Classical and constructive
+// backends have distinct internal nominal structures.
+indefinite-acc(GENDER)
+IF ?Ty(mltt:object)
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+INDEF])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(mltt:arrow(object,Prop)))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,sigma(x,A,top))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+// Reduce this DP and return to the clause so a following clitic can begin
+// its no-left-adjustment chunk. Address and case requirements stay open.
+noun-acc(NAME,GENDER)
+IF ?Ty(mltt:CN)
+   </\0>Case(acc)
+   </\0>Gender(GENDER)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:CN))
+   put(Fo(mltt:NAME))
+   put(!)
+   semantic-thin
+   go(/\0)
+   beta-reduce
+   semantic-thin
+   gofirst((?Ty(mltt:Prop) || Ty(mltt:Prop)))
+ELSE abort
+
+
+// Written topic boundary as in (2.95); not an analysis of prosody.
+topic-boundary(UNUSED)
+IF Tn(0)
+   ?Ty(mltt:Prop)
+   </\L>([+TOPIC] & Ty(mltt:object) & Ex.Fo(x))
+   ¬<\/+>Ex.x
+   ¬[+TOPIC-BOUNDARY]
+THEN put([+TOPIC-BOUNDARY])
+ELSE abort
+
+// Everyday construction extensions. Generated by scripts/build_everyday_extensions.py.
+
+copula(SUBJ,PERSON)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   make(\/0)
+   go(\/0)
+   put(Ty(mltt:object))
+   put(Fo(U_SUBJ))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   put(Number(sg))
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(mltt:arrow(object,Prop)))
+   put([+COPULA])
+   gofirst(?Ty(mltt:Prop))
+ELSE abort
+
+nominal-predicate(NAME)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:arrow(object,Prop)))
+   put(Fo(mltt:lam(x,object,predication(NAME,x))))
+ELSE abort
+
+copular-article(UNUSED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬[+ARTICLE]
+THEN put([+ARTICLE])
+ELSE abort
+
+degree(PRED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(arrow(object,Prop),arrow(object,Prop))))
+   put(Fo(mltt:lam(P,arrow(object,Prop),lam(x,object,PRED(P(x))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:arrow(object,Prop)))
+   put([+COPULA])
+ELSE abort
+
+predicative-adjective(PRED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:arrow(object,Prop)))
+   put(Fo(mltt:lam(x,object,PRED(x))))
+ELSE abort
+
+verb-intransitive(PRED,SUBJ,PERSON)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   make(\/0)
+   go(\/0)
+   put(Ty(mltt:object))
+   put(Fo(U_SUBJ))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   put(Number(sg))
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(object,Prop)))
+   put(Fo(mltt:lam(x,object,PRED(x))))
+   gofirst(?Ty(mltt:Prop))
+ELSE abort
+
+pronoun-nom(REF,PERSON)
+IF ?Ty(mltt:object)
+   ¬Ex.Fo(x)
+   ¬[+TOPIC]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:object))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   put(Number(sg))
+   put(Case(nom))
+   put(?</\0>Ty(mltt:Prop))
+   gofirst(?Ty(mltt:Prop))
+ELSE abort
+
+definite-acc(GENDER)
+IF ?Ty(mltt:object)
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(mltt:arrow(object,Prop)))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,definite(A))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+definite-nom(GENDER)
+IF ?Ty(mltt:object)
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(nom))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(mltt:Prop))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,definite(A))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+indefinite-nom(GENDER)
+IF ?Ty(mltt:object)
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+INDEF])
+   put(Case(nom))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(mltt:Prop))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,sigma(x,A,top))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+common-noun(NAME,CASE,GENDER)
+IF ?Ty(mltt:CN)
+   (Case(CASE) || </\0>Case(CASE))
+   (Gender(GENDER) || </\0>Gender(GENDER))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:CN))
+   put(Fo(mltt:NAME))
+   put(!)
+   semantic-thin
+ELSE abort
+IF </\+>[+PP]
+THEN do_nothing
+ELSE go(/\0)
+   beta-reduce
+   semantic-thin
+   gofirst((?Ty(mltt:Prop) || Ty(mltt:Prop)))
+
+
+copular-location(PRED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(object,arrow(object,Prop))))
+   put(Fo(mltt:lam(y,object,lam(x,object,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+ELSE abort
+
+locative(PRED)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(mltt:arrow(object,Prop)))
+   put(Fo(mltt:lam(x,object,PRED(x))))
+ELSE abort
+
+clause-and(UNUSED)
+IF Ty(mltt:Prop)
+   complete
+THEN semantic-coordinate
+ELSE abort
+
+clause-comma(UNUSED)
+IF Ty(mltt:Prop)
+   complete
+THEN do_nothing
+ELSE abort
+
+copular-location-article(PRED,GENDER)
+IF ?Ty(mltt:arrow(object,Prop))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(object,arrow(object,Prop))))
+   put(Fo(mltt:lam(y,object,lam(x,object,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:object))
+   put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(mltt:arrow(object,Prop)))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,definite(A))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+common-adjective(PRED,CASE,GENDER)
+IF ?Ty(mltt:CN)
+   (Case(CASE) || </\0>Case(CASE))
+   (Gender(GENDER) || </\0>Gender(GENDER))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,CN)))
+   put(Fo(mltt:lam(A,CN,refine(A,PRED))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+   put(Case(CASE))
+   put(Gender(GENDER))
+ELSE abort
+
+
+postverbal-pp(PRED)
+IF Ty(mltt:Prop)
+   complete
+   ¬<\/1>[+SELECTS-SE]
+THEN go(\/1)
+   semantic-pp(PRED)
+   put([+PP-COMPLEMENT])
+ELSE abort
+
+pp-definite(GENDER)
+IF ?Ty(mltt:object)
+   [+PP-COMPLEMENT]
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,definite(A))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+pp-indefinite(GENDER)
+IF ?Ty(mltt:object)
+   [+PP-COMPLEMENT]
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+INDEF])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,sigma(x,A,top))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+postverbal-pp-article(PRED,GENDER)
+IF Ty(mltt:Prop)
+   complete
+   ¬<\/1>[+SELECTS-SE]
+THEN go(\/1)
+   semantic-pp(PRED)
+   put([+PP-COMPLEMENT])
+   put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,definite(A))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+verb-prepositional-se(PRED,SUBJ,PERSON)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-transitive(PRED,SUBJ,PERSON,sg)
+   go(\/1)
+   go(\/0)
+   put(?[+SE-GOAL])
+   gofirst(?Ty(mltt:Prop))
+ELSE abort
+
+verb-optional-se(PRED,SUBJ,PERSON)
+IF ?Ty(mltt:Prop)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   make(\/0)
+   go(\/0)
+   put(Ty(mltt:object))
+   put(Fo(U_SUBJ))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   put(Number(sg))
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(object,Prop)))
+   put(Fo(mltt:lam(x,object,PRED(x))))
+   put([+SELECTS-SE])
+   gofirst(?Ty(mltt:Prop))
+ELSE abort
+
+se-goal(UNUSED)
+IF ?Ty(mltt:object)
+   ?[+SE-GOAL]
+   ¬Ex.Fo(x)
+THEN delete(?[+SE-GOAL])
+   put([+SE-GOAL])
+ELSE abort
+
+se-goal-article(GENDER)
+IF ?Ty(mltt:object)
+   ?[+SE-GOAL]
+   ¬Ex.Fo(x)
+THEN delete(?[+SE-GOAL])
+   put([+SE-GOAL])
+   put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(mltt:arrow(object,Prop)))
+   make(\/1)
+   go(\/1)
+   put(Ty(mltt:arrow(CN,object)))
+   put(Fo(mltt:lam(A,CN,definite(A))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(mltt:CN))
+ELSE abort
+
+nominal-simile(GENDER)
+IF Ty(mltt:Prop)
+   complete
+THEN go(\/1)
+   semantic-comparison(manner_like)
+   put(Case(acc))
+   put(Gender(GENDER))
+ELSE abort
+
+simile-article(GENDER)
+IF ?Ty(mltt:CN)
+   [+COMPARISON]
+   Gender(GENDER)
+   ¬[+ARTICLE]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+ARTICLE])
+ELSE abort
+
+// Finite causal clauses. Generated by scripts/build_causal_extensions.py.
+
+causal-post(UNUSED)
+IF Ty(mltt:Prop)
+THEN causal-post
+ELSE abort
+
+causal-front(UNUSED)
+IF ?Ty(mltt:Prop)
+THEN causal-front
+ELSE abort
+
+causal-boundary(UNUSED)
+IF Tn(a)
+THEN causal-boundary
+ELSE abort
+
+causal-post-content(UNUSED)
+IF Ty(mltt:Content)
+   [+CLAUSE]
+THEN causal-post
+ELSE abort
+
+clause-post(REL)
+IF Ty(mltt:Prop)
+THEN causal-post(REL)
+ELSE abort
+
+clause-front(REL)
+IF ?Ty(mltt:Prop)
+THEN causal-front(REL)
+ELSE abort
+
+clause-post-content(REL)
+IF Ty(mltt:Content)
+   [+CLAUSE]
+THEN causal-post(REL)
+ELSE abort
+
+temporal-adverb(PRED)
+IF Ty(mltt:Prop)
+   ¬Ex.?x
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+temporal-embedded(PRED)
+IF Ty(mltt:Prop)
+   ¬Ex.?x
+   <Y>([+CLAUSE] & [+CLOSED])
+THEN go(Y)
+   go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+temporal-local-content(PRED)
+IF [+CLAUSE]
+   [+CLOSED]
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort

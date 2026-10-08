@@ -38,6 +38,14 @@ env/
 
 # Local secrets (e.g. PyPI token for publishing)
 .env
+.env.*
+!.env.example
+.ds-workbench/
+.vercel/
+.claude/
+.codex/
+.agents/
+HANDOVER.md
 
 # Testing / coverage
 .pytest_cache/

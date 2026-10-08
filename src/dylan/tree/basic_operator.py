@@ -10,11 +10,16 @@ ARROW_DOWN = "\\/"
 
 PATH_UNFIXED = "*"
 PATH_LOCAL_UNFIXED = "U"
+PATH_LOCAL_UNFIXED_PLUS = "P"
 PATH_0 = "0"
 PATH_1 = "1"
 PATH_LINK = "L"
 
-OP_PATTERN = re.compile(r"(/\\|\\/)([01L\*UC]*)")
+# A path is either a literal char sequence over {0,1,L,*,U,P,C} or a Kleene-plus
+# closure ``0+``/``1+``/``+`` (one-or-more steps; bare ``+`` ranges over any
+# non-LINK daughter relation).  Closures are only meaningful in trigger
+# modalities, never in navigation (make/go).
+OP_PATTERN = re.compile(r"(/\\|\\/)((?:[01]\+)|\+|[01L\*UPC]*)")
 
 
 @dataclass(frozen=True, slots=True)
@@ -53,8 +58,11 @@ class BasicOperator:
         return self.path == "L"
 
     def is_fixed(self) -> bool:
-        """True unless path is Kleene star or local unfixed (Java ``BasicOperator.isFixed``)."""
-        return self.path not in (PATH_UNFIXED, PATH_LOCAL_UNFIXED)
+        """True unless path is Kleene star, local unfixed(+), or a ``+`` closure (Java ``BasicOperator.isFixed``)."""
+        return (
+            self.path not in (PATH_UNFIXED, PATH_LOCAL_UNFIXED, PATH_LOCAL_UNFIXED_PLUS)
+            and not self.is_plus()
+        )
 
     def is_star(self) -> bool:
         """Return true for an unfixed-star operator."""
@@ -63,6 +71,14 @@ class BasicOperator:
     def is_u(self) -> bool:
         """Return true for a local-unfixed operator."""
         return self.path == PATH_LOCAL_UNFIXED
+
+    def is_u_plus(self) -> bool:
+        """Return true for a local-unfixed-plus operator (thesis ``<up0><up1+>``)."""
+        return self.path == PATH_LOCAL_UNFIXED_PLUS
+
+    def is_plus(self) -> bool:
+        """Return true for a Kleene-plus closure operator (``0+``, ``1+``, or bare ``+``)."""
+        return self.path.endswith("+")
 
     def inverse(self) -> BasicOperator:
         """Swap up/down while keeping the path suffix (Java ``BasicOperator.inverse``)."""
@@ -79,11 +95,13 @@ DOWN_1 = BasicOperator(ARROW_DOWN, PATH_1)
 DOWN_LINK = BasicOperator(ARROW_DOWN, PATH_LINK)
 DOWN_STAR = BasicOperator(ARROW_DOWN, PATH_UNFIXED)
 DOWN_LOCAL_UNFIXED = BasicOperator(ARROW_DOWN, PATH_LOCAL_UNFIXED)
+DOWN_LOCAL_UNFIXED_PLUS = BasicOperator(ARROW_DOWN, PATH_LOCAL_UNFIXED_PLUS)
 UP_0 = BasicOperator(ARROW_UP, PATH_0)
 UP_1 = BasicOperator(ARROW_UP, PATH_1)
 UP_LINK = BasicOperator(ARROW_UP, PATH_LINK)
 UP_STAR = BasicOperator(ARROW_UP, PATH_UNFIXED)
 UP_LOCAL_UNFIXED = BasicOperator(ARROW_UP, PATH_LOCAL_UNFIXED)
+UP_LOCAL_UNFIXED_PLUS = BasicOperator(ARROW_UP, PATH_LOCAL_UNFIXED_PLUS)
 UP_PARENT = BasicOperator(ARROW_UP, "")
 
 BasicOperator.isDown = BasicOperator.is_down  # type: ignore[attr-defined]

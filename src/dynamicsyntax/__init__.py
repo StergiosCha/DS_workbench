@@ -32,6 +32,7 @@ def icp(
     *,
     repairing: bool = False,
     top_n: int | tuple[str, ...] = 3,
+    strict: bool = False,
     participants: tuple[str, ...] = (DEFAULT_NAME,),
     log_level: LogLevel = "off",
     log_output: LogOutput = "terminal",
@@ -42,11 +43,14 @@ def icp(
     With no *grammar*, returns an unloaded parser; call :meth:`~dylan.parser.interactive_context_parser.InteractiveContextParser.set_grammar`
     before :meth:`~dylan.parser.interactive_context_parser.InteractiveContextParser.parse`.
     Parser logging options match :class:`~dylan.parser.interactive_context_parser.InteractiveContextParser`.
+    *top_n* limits entries per word (default 3, 0 keeps all). With *strict*,
+    lexicon and grammar validation problems raise ``ValueError`` when loading resources.
     """
     return InteractiveContextParser(
         grammar,
         repairing=repairing,
         top_n=top_n,
+        strict=strict,
         participants=participants,
         log_level=log_level,
         log_output=log_output,

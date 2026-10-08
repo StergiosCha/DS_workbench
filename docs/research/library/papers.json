@@ -1,0 +1,3697 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "scope": "53 selected works: original inspection ledger, cited follow-ups, discovery admissions and the 7 October evening expansion (JoLLI 30(2) special issue, SemDial anthology, repository copies). Not an exhaustive DS bibliography.",
+  "papers": [
+    {
+      "id": "CKM05",
+      "bibliographic": {
+        "type": "book",
+        "title": "The Dynamics of Language: An Introduction",
+        "author": [
+          {
+            "family": "Cann",
+            "given": "Ronnie"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Marten",
+            "given": "Lutz"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2005
+            ]
+          ]
+        },
+        "publisher": "Elsevier"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "Contents and selected chs.2–9; printed pp.74–80 = PDF84–90",
+        "evidence_level": "worked_analysis",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "C05",
+          "C07",
+          "C08",
+          "C10",
+          "C12",
+          "C14",
+          "C15"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "requirements",
+          "link",
+          "unfixed",
+          "merge",
+          "substitution",
+          "quantification",
+          "context_reuse"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "foundation"
+        ],
+        "languages": [
+          "English",
+          "Japanese",
+          "Swahili"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "CKM05",
+          "inspected_filename": "cann-et-al-dec12 (1).pdf",
+          "sha256": "b98cbb313eb2a26b882f0bd54a1b972864be7dc730b3d27b47daba6dd4f2a68a",
+          "bytes": 2781725,
+          "pdf_pages": 386,
+          "public_location": null,
+          "acquisition": "existing local academic archive",
+          "description": "Final draft dated 2004-12-12; 386 PDF pages"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "HG21",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Dynamic Syntax: The Dynamics of Incremental Processing: Constraints on Underspecification",
+        "author": [
+          {
+            "family": "Howes",
+            "given": "Christine"
+          },
+          {
+            "family": "Gibson",
+            "given": "Hannah"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2021
+            ]
+          ]
+        },
+        "container-title": "Journal of Logic, Language and Information",
+        "page": "263–276",
+        "URL": "https://doi.org/10.1007/s10849-021-09334-x",
+        "DOI": "10.1007/s10849-021-09334-x",
+        "volume": "30"
+      },
+      "review": {
+        "status": "overview_read",
+        "scope": "Full overview; §3 supplies secondary pointers, not direct review of those papers",
+        "evidence_level": "worked_analysis",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C01",
+          "C04",
+          "C05",
+          "C08",
+          "C11",
+          "C14",
+          "C15",
+          "C16",
+          "C18"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "requirements",
+          "link",
+          "unfixed",
+          "merge",
+          "underspecification"
+        ],
+        "frameworks": [
+          "general"
+        ],
+        "roles": [
+          "overview"
+        ],
+        "languages": [
+          "Cross-linguistic"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9",
+        "2026-10-07 evening expansion pass (Cowork session): confirmed as part of JoLLI 30(2) (2021), the Dynamic Syntax special issue; full issue table of contents retrieved from Crossref (eight articles)."
+      ],
+      "versions": [
+        {
+          "source_id": "HG21",
+          "inspected_filename": "ds-review2021.pdf",
+          "sha256": "d0c83e098063c109638d49cba167fbb485b8ad16befb12fcfd462835fee8de9f",
+          "bytes": 547447,
+          "pdf_pages": 14,
+          "public_location": "https://link.springer.com/content/pdf/10.1007/s10849-021-09334-x.pdf",
+          "acquisition": "publisher/ACL download",
+          "description": "Published article; pp.263–276"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "C10",
+      "bibliographic": {
+        "type": "thesis",
+        "title": "Clitics in Four Dialects of Modern Greek: A Dynamic Account",
+        "author": [
+          {
+            "family": "Chatzikyriakidis",
+            "given": "Stergios"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2010
+            ]
+          ]
+        },
+        "publisher": "King’s College London"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "Contents; §2.2.2; selected clitic/PCC material; §3.4.3.2 pp.143–146",
+        "evidence_level": "worked_analysis",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C09",
+          "C10",
+          "C11",
+          "C16"
+        ],
+        "mechanisms": [
+          "unfixed",
+          "merge",
+          "case_filters",
+          "substitution",
+          "link"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Standard Modern Greek",
+          "Cypriot Greek",
+          "Pontic Greek",
+          "Grico"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "C10",
+          "inspected_filename": "chatzikyriakidis-phdthesis.pdf",
+          "sha256": "b0e53caa9e4a8e13ec4f999562a142fa4d2a6b1254a9ff0e88e2320885e842be",
+          "bytes": 1622925,
+          "pdf_pages": 396,
+          "public_location": null,
+          "acquisition": "existing local academic archive",
+          "description": "PhD thesis; 396 PDF pages"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "CK11",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Standard Modern and Pontic Greek Person Restrictions: A Feature-Free Dynamic Account",
+        "author": [
+          {
+            "family": "Chatzikyriakidis",
+            "given": "Stergios"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2011
+            ]
+          ]
+        },
+        "container-title": "Journal of Greek Linguistics",
+        "page": "127–166",
+        "URL": "https://doi.org/10.1163/156658411X599983",
+        "DOI": "10.1163/156658411X599983",
+        "volume": "11"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "Structural/case analysis, particularly pp.144–145",
+        "evidence_level": "worked_analysis",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C09"
+        ],
+        "mechanisms": [
+          "unfixed",
+          "merge",
+          "case_filters",
+          "substitution"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Standard Modern Greek",
+          "Pontic Greek"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "CK11",
+          "inspected_filename": "jgl-article-p127_3.pdf",
+          "sha256": "c81f0c603a985c78bacf6904e3588c14e6cbb881529bd91ccfd87a1e76699039",
+          "bytes": 844905,
+          "pdf_pages": 40,
+          "public_location": "https://doi.org/10.1163/156658411X599983",
+          "acquisition": "existing local academic archive",
+          "description": "Published article; pp.127–166"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "KC16",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Language as Mechanisms for Interaction",
+        "author": [
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Cann",
+            "given": "Ronnie"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Chatzikyriakidis",
+            "given": "Stergios"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2016
+            ]
+          ]
+        },
+        "container-title": "Theoretical Linguistics",
+        "page": "203–275",
+        "URL": "https://doi.org/10.1515/tl-2016-0011",
+        "DOI": "10.1515/tl-2016-0011",
+        "volume": "42",
+        "issue": "3–4"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "Selected sections on growth, context and interaction; references",
+        "evidence_level": "worked_analysis",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C10",
+          "C13"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "context_reuse",
+          "repair",
+          "generation"
+        ],
+        "frameworks": [
+          "general"
+        ],
+        "roles": [
+          "overview"
+        ],
+        "languages": [
+          "Cross-linguistic"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "KC16",
+          "inspected_filename": "tling-draft.pdf",
+          "sha256": "1ac9d683ac94e8cfa23b46ef8c751f2eb7bbec65de3394d95f81244deabc8753",
+          "bytes": 437820,
+          "pdf_pages": 52,
+          "public_location": "https://doi.org/10.1515/tl-2016-0011",
+          "acquisition": "existing local academic archive",
+          "description": "Draft dated 2016-04-21; 52 PDF pages; published pagination 203–275"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "KE19",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "Ellipsis in Dynamic Syntax",
+        "author": [
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2019
+            ]
+          ]
+        },
+        "container-title": "The Oxford Handbook of Ellipsis",
+        "URL": "https://doi.org/10.1093/oxfordhb/9780198712398.013.9",
+        "DOI": "10.1093/oxfordhb/9780198712398.013.9"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "§§1.2–1.3, especially PDF13–21",
+        "evidence_level": "worked_analysis",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C07",
+          "C11",
+          "C12",
+          "C13"
+        ],
+        "mechanisms": [
+          "context_reuse",
+          "substitution",
+          "repair"
+        ],
+        "frameworks": [
+          "general"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "KE19",
+          "inspected_filename": "KempsonEtAl18Ellipsis_preprint.pdf",
+          "sha256": "5a08bd953dad4e8a642fb7832056c3f08abee0c0089ab14d65b4589ff6c121d3",
+          "bytes": 323502,
+          "pdf_pages": 24,
+          "public_location": "https://doi.org/10.1093/oxfordhb/9780198712398.013.9",
+          "acquisition": "existing local academic archive",
+          "description": "Draft dated 2016-10-04; 24 PDF pages; some references use 2018"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar.",
+      "date_note": "Publication 2019; some citations use 2018; inspected draft explicitly dated 2016-10-04."
+    },
+    {
+      "id": "PEH11",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Incremental Semantic Construction in a Dialogue System",
+        "author": [
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2011
+            ]
+          ]
+        },
+        "container-title": "IWCS 2011",
+        "page": "365–369",
+        "URL": "https://aclanthology.org/W11-0144/"
+      },
+      "review": {
+        "status": "paper_read",
+        "scope": "Full paper; DS-TTR, event semantics, implementation and limits",
+        "evidence_level": "implemented_study",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C06",
+          "C12",
+          "C17",
+          "C18"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "record_update",
+          "situation_structure",
+          "generation"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "implementation"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "PEH11",
+          "inspected_filename": "ds-W11-0144.pdf",
+          "sha256": "35a5d4613f65ec31deb7039c89c448f3c074dd546c5810ee1433d069aa23cf69",
+          "bytes": 74022,
+          "pdf_pages": 5,
+          "public_location": "https://aclanthology.org/W11-0144.pdf",
+          "acquisition": "publisher/ACL download",
+          "description": "Published paper pp.365–369"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "E15",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Feedback in Conversation as Incremental Semantic Update",
+        "author": [
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Howes",
+            "given": "Christine"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2015
+            ]
+          ]
+        },
+        "container-title": "IWCS 2015",
+        "page": "261–271",
+        "URL": "https://aclanthology.org/W15-0130/"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "§§2–3: record dependencies, DAGs, coordination and clarification",
+        "evidence_level": "implemented_study",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C17",
+          "C18"
+        ],
+        "mechanisms": [
+          "record_update",
+          "context_reuse",
+          "repair"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "implementation"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "E15",
+          "inspected_filename": "ds-W15-0130.pdf",
+          "sha256": "4de033c7f1147f67a9673055de17e84b7e804d477e9c6f637e537c16afc87ee1",
+          "bytes": 207358,
+          "pdf_pages": 11,
+          "public_location": "https://aclanthology.org/W15-0130.pdf",
+          "acquisition": "publisher/ACL download",
+          "description": "Published paper pp.261–271"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "EPH13",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Probabilistic Induction for an Incremental Semantic Grammar",
+        "author": [
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2013
+            ]
+          ]
+        },
+        "container-title": "IWCS 2013",
+        "URL": "https://aclanthology.org/W13-0110/"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "Abstract, §§4.4–4.6 and §5; generated data and unseen-word exclusion",
+        "evidence_level": "implemented_study",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C17"
+        ],
+        "mechanisms": [
+          "lexical_learning",
+          "search",
+          "tree_growth",
+          "substitution"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "implementation"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "§3 predicate–argument trees and lambda terms; TTR is mentioned as future work in the conclusion. Do not merge this method with ECH13.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "EPH13",
+          "inspected_filename": "ds-W13-0110.pdf",
+          "sha256": "52238beb71df2e32a6eeb58e0b6673d7188257f5680c0f1c18db69ae4ec8552e",
+          "bytes": 145404,
+          "pdf_pages": 11,
+          "public_location": "https://aclanthology.org/W13-0110.pdf",
+          "acquisition": "publisher/ACL download",
+          "description": "Published paper; 11 PDF pages"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "ECH13",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Incremental Grammar Induction from Child-Directed Dialogue Utterances",
+        "author": [
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2013
+            ]
+          ]
+        },
+        "container-title": "Workshop on Cognitive Modeling and Computational Linguistics",
+        "page": "94–103",
+        "URL": "https://aclanthology.org/W13-2611/"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Title, abstract and bibliographic identification; no accuracy claim extracted",
+        "evidence_level": "secondary_pointer",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C17"
+        ],
+        "mechanisms": [
+          "lexical_learning",
+          "record_update"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "implementation"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Title/abstract plus §4 checked for DS–TTR identification; derivations and evaluation not audited.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9",
+        "Local source first page inspected 2026-10-07 for complete author order."
+      ],
+      "versions": [
+        {
+          "source_id": "ECH13",
+          "inspected_filename": "research_report_ref_D13_Eshghi_2013.pdf",
+          "sha256": "7670fcfd41797c6115c74bb721306e8804b31a24b79062ab2a76c2fac6c645a3",
+          "bytes": 269710,
+          "pdf_pages": 10,
+          "public_location": "https://aclanthology.org/W13-2611.pdf",
+          "acquisition": "existing local academic archive",
+          "description": "Published paper pp.94–103"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "C17",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Modification in Dynamic Syntax",
+        "author": [
+          {
+            "family": "Chatzikyriakidis",
+            "given": "Stergios"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2017
+            ]
+          ]
+        },
+        "container-title": "Conference abstract",
+        "URL": "https://www.researchgate.net/publication/313634514"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Full abstract; alternatives and unresolved questions",
+        "evidence_level": "proposal",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C06"
+        ],
+        "mechanisms": [
+          "link",
+          "underspecification"
+        ],
+        "frameworks": [
+          "general"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "C17",
+          "inspected_filename": "SOAS_DS_cha.pdf",
+          "sha256": "cdd8e6fa8515005a93a936915feeec42c92f2e8ba296daf28f0faeb9beb0bf8f",
+          "bytes": 66787,
+          "pdf_pages": 3,
+          "public_location": "https://www.researchgate.net/publication/313634514",
+          "acquisition": "existing local academic archive",
+          "description": "Two-page conference abstract plus repository cover"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "C25",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Constructive Dynamic Syntax",
+        "author": [
+          {
+            "family": "Chatzikyriakidis",
+            "given": "Stergios"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2025
+            ]
+          ]
+        },
+        "container-title": "Languages",
+        "URL": "https://doi.org/10.3390/languages10110269",
+        "DOI": "10.3390/languages10110269",
+        "volume": "10",
+        "issue": "11"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "Selected §§3–4 and conclusion; nominal types, quantification, action contexts, modifiers",
+        "evidence_level": "worked_analysis",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C02",
+          "C06",
+          "C12",
+          "C18"
+        ],
+        "mechanisms": [
+          "quantification",
+          "context_reuse",
+          "requirements",
+          "link"
+        ],
+        "frameworks": [
+          "constructive"
+        ],
+        "roles": [
+          "foundation"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9"
+      ],
+      "versions": [
+        {
+          "source_id": "C25",
+          "inspected_filename": "ds-constructive2025-full.pdf",
+          "sha256": "a962073a5a4e68951b2f6a49dafc8f6a38d3a257c2661f0e798ba2d4159fc339",
+          "bytes": 575406,
+          "pdf_pages": 19,
+          "public_location": "https://mdpi-res.com/d_attachment/languages/languages-10-00269/article_deploy/languages-10-00269.pdf",
+          "acquisition": "publisher/ACL download",
+          "description": "Published Languages 10(11):269; 19 PDF pages"
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "KV19",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Why Natural Language Models Must Be Partial and Shifting: A Dynamic Syntax with Vector Space Semantics Perspective",
+        "author": [
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          },
+          {
+            "family": "Howes",
+            "given": "Christine"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Healey",
+            "given": "Patrick G. T."
+          },
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2019
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the IWCS Workshop Vector Semantics for Discourse and Dialogue",
+        "genre": "Contributed presentation abstract",
+        "page": "3",
+        "URL": "https://aclanthology.org/W19-09.pdf#page=3"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Proposal scope inspected. Exact title and all seven authors verified in the official IWCS 2019 workshop document, p. 3, contributed presentation 5. The public document contains a one-paragraph abstract; the separately held local two-page contribution is not reproduced there.",
+        "evidence_level": "proposal",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C18"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "context_reuse"
+        ],
+        "frameworks": [
+          "distributional"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Selected passages and source links in the 2026-10-07 coverage ledger. Tags are retrieval aids, not claims that every tagged topic has a complete analysis.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9",
+        "Local source first page inspected 2026-10-07 for complete author order.",
+        "2026-10-07: https://aclanthology.org/W19-09.pdf, p. 3, contributed presentation 5; exact title, author order and workshop confirmed. Public record: https://aclanthology.org/W19-0900/."
+      ],
+      "versions": [
+        {
+          "source_id": "KV19",
+          "inspected_filename": "kempson.etal_IWCS_19.pdf",
+          "sha256": "3c5f21f32e3319bc313f9d8897597bb4bc4435aecb694d472509b6e1fd58e327",
+          "bytes": 41136,
+          "pdf_pages": 2,
+          "public_location": null,
+          "acquisition": "existing local academic archive",
+          "description": "Local two-page contribution matching the title and authors of IWCS 2019 workshop presentation 5; distinct from the one-paragraph abstract in the public workshop document."
+        }
+      ],
+      "next_action": "Extract or extend a bounded analysis card with exact source locators before extending the grammar."
+    },
+    {
+      "id": "OH26",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "Dynamic Syntax",
+        "author": [
+          {
+            "family": "Cann",
+            "given": "Ronnie"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Howes",
+            "given": "Christine"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2026
+            ]
+          ]
+        },
+        "container-title": "The Oxford Handbook of Philosophy of Linguistics",
+        "page": "386–407",
+        "URL": "https://doi.org/10.1093/oso/9780198879640.003.0020",
+        "DOI": "10.1093/oso/9780198879640.003.0020"
+      },
+      "review": {
+        "status": "metadata_only",
+        "scope": "No chapter content reviewed",
+        "evidence_level": "metadata_only",
+        "origin": "Imported targeted inspection ledger, 6–7 October 2026; not a claim of complete reading or community adjudication.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C01",
+          "C18"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "overview"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Title and handbook identity only; framework and chapter contents remain unchecked.",
+      "metadata_provenance": [
+        "../ds-theoretical-coverage.md, §9",
+        "Crossref DOI record retrieved 2026-10-07"
+      ],
+      "versions": [],
+      "next_action": "Locate and inspect the chapter; do not infer its analysis from its title."
+    },
+    {
+      "id": "KMW01",
+      "bibliographic": {
+        "type": "book",
+        "title": "Dynamic Syntax: The Flow of Language Understanding",
+        "author": [
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Meyer-Viol",
+            "given": "Wilfried"
+          },
+          {
+            "family": "Gabbay",
+            "given": "Dov"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2001
+            ]
+          ]
+        },
+        "publisher": "Blackwell"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.276",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C01",
+          "C18"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "foundation"
+        ],
+        "languages": [
+          "Cross-linguistic"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276"
+      ],
+      "versions": [],
+      "next_action": "Acquire the foundational book and identify rule definitions; distinguish it from the 2005 Cann/Kempson/Marten book."
+    },
+    {
+      "id": "M02",
+      "bibliographic": {
+        "type": "book",
+        "title": "At the Syntax-Pragmatics Interface: Verbal Underspecification and Concept Formation in Dynamic Syntax",
+        "author": [
+          {
+            "family": "Marten",
+            "given": "Lutz"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2002
+            ]
+          ]
+        },
+        "publisher": "Oxford University Press",
+        "DOI": "10.1093/acprof:oso/9780199250639.001.0001",
+        "URL": "https://doi.org/10.1093/acprof:oso/9780199250639.001.0001"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "C17 references; Crossref book DOI verified 2026-10-07",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C03",
+          "C06"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "C17 references; Crossref book DOI verified 2026-10-07"
+      ],
+      "versions": [],
+      "next_action": "Review optional arguments versus modifiers and the lexical/semantic status of adjuncts."
+    },
+    {
+      "id": "CA11",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "Towards an Account of the English Auxiliary System: Building Interpretations Incrementally",
+        "author": [
+          {
+            "family": "Cann",
+            "given": "Ronnie"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2011
+            ]
+          ]
+        },
+        "container-title": "The Dynamics of Lexical Interfaces",
+        "page": "279–317"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "KE19 inspected draft references, PDF p.23; KC16 references",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C10",
+          "C03"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "KE19 inspected draft references, PDF p.23; KC16 references"
+      ],
+      "versions": [],
+      "next_action": "Inspect auxiliary and situation-node programs before implementing tense/aspect/voice."
+    },
+    {
+      "id": "G06",
+      "bibliographic": {
+        "type": "thesis",
+        "title": "Conditionals: A Dynamic Syntax Account",
+        "author": [
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2006
+            ]
+          ]
+        },
+        "publisher": "King’s College London"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.276; KE19 references",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C11"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276; KE19 references"
+      ],
+      "versions": [],
+      "next_action": "Extract conditional scope, context and composition conditions; compare with the app’s current opaque clause relations."
+    },
+    {
+      "id": "B08",
+      "bibliographic": {
+        "type": "thesis",
+        "title": "The Diachronic Development of Spanish Clitic Placement",
+        "author": [
+          {
+            "family": "Bouzouita",
+            "given": "Miriam"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2008
+            ]
+          ]
+        },
+        "publisher": "King’s College London"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "KC16 inspected draft references",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C09",
+          "C16"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Spanish"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "KC16 inspected draft references",
+        "2026-10-07 evening expansion pass (Cowork session): thesis title confirmed as cited in KC16 draft references (PDF p.52). Not to be merged with the Language in Flux chapter."
+      ],
+      "versions": [],
+      "next_action": "Review historical stages and routinisation evidence separately from modern Greek clitic rules.",
+      "date_note": "Distinct from the 2008 chapter B08b (Language in Flux), which reports preliminary results of this doctoral research."
+    },
+    {
+      "id": "KK10",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Multiple Long-Distance Scrambling: Syntax as Reflections of Processing",
+        "author": [
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Kiaer",
+            "given": "Jieun"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2010
+            ]
+          ]
+        },
+        "container-title": "Journal of Linguistics",
+        "DOI": "10.1017/s0022226709990211",
+        "URL": "https://doi.org/10.1017/s0022226709990211",
+        "volume": "46",
+        "issue": "1",
+        "page": "127–192"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.276; Crossref DOI verified 2026-10-07",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C04",
+          "C05"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276; Crossref DOI verified 2026-10-07"
+      ],
+      "versions": [],
+      "next_action": "Extract language-specific locality and ordering examples before importing a scrambling mechanism.",
+      "date_note": "Journal issue/citation year 2010; Crossref online publication date 2009-09-29."
+    },
+    {
+      "id": "GI16",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "A Unified Dynamic Account of Auxiliary Placement in Rangi",
+        "author": [
+          {
+            "family": "Gibson",
+            "given": "Hannah"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2016
+            ]
+          ]
+        },
+        "container-title": "Lingua",
+        "volume": "184",
+        "page": "79–103",
+        "DOI": "10.1016/j.lingua.2016.06.003",
+        "URL": "https://doi.org/10.1016/j.lingua.2016.06.003"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.275",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C10",
+          "C14"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Rangi"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.275",
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record (Lingua 184:79–103) verified. A SOAS repository copy was located by Semantic Scholar but the repository returned HTTP 403."
+      ],
+      "versions": [],
+      "next_action": "Inspect auxiliary placement and information-structure conditions."
+    },
+    {
+      "id": "SG16",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "A Dynamic Syntax Modelling of Japanese and Rangi Clefts: Parsing Incrementality and the Growth of Interpretation",
+        "author": [
+          {
+            "family": "Seraku",
+            "given": "Tohru"
+          },
+          {
+            "family": "Gibson",
+            "given": "Hannah"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2016
+            ]
+          ]
+        },
+        "container-title": "Language Sciences",
+        "DOI": "10.1016/j.langsci.2016.03.003",
+        "URL": "https://doi.org/10.1016/j.langsci.2016.03.003",
+        "volume": "56",
+        "page": "45–67"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.276; Crossref DOI verified 2026-10-07",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C14",
+          "C04"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Japanese",
+          "Rangi"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276; Crossref DOI verified 2026-10-07"
+      ],
+      "versions": [],
+      "next_action": "Separate the two language analyses; extract construction-specific programs and focus assumptions."
+    },
+    {
+      "id": "GK16",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "Joint Utterances and the (Split-)Turn Taking Puzzle",
+        "author": [
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2016
+            ]
+          ]
+        },
+        "container-title": "Interdisciplinary Studies in Pragmatics, Culture and Society",
+        "DOI": "10.1007/978-3-319-12616-6_28",
+        "URL": "https://doi.org/10.1007/978-3-319-12616-6_28",
+        "page": "703–743"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "First-page title, authors, publication/citation dates and abstract inspected; chapter derivations not audited.",
+        "evidence_level": "proposal",
+        "origin": "Local PDF first page/abstract; Crossref DOI retrieved 2026-10-07",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C18"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "The abstract explicitly identifies DS augmented with TTR and the split-utterance / turn-taking problem.",
+      "metadata_provenance": [
+        "Local PDF first page/abstract; Crossref DOI retrieved 2026-10-07"
+      ],
+      "versions": [
+        {
+          "source_id": "GK16",
+          "inspected_filename": "GregoromichelakiKempsonFinal.pdf",
+          "sha256": "11ac24fb831bd7482ba2fc251484a9963554faa5da99dbd192c334380ab614e1",
+          "bytes": 1046714,
+          "pdf_pages": 41,
+          "public_location": "https://doi.org/10.1007/978-3-319-12616-6_28",
+          "acquisition": "existing local academic archive",
+          "description": "Local chapter PDF; abstract and bibliographic first page inspected 2026-10-07."
+        }
+      ],
+      "next_action": "Read worked split-turn/indexical analyses before expanding participant-context handling.",
+      "date_note": "Local cover gives citation year 2016; copyright and Crossref online publication are 2015. Both dates retained, not treated as different works.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "CKP07",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Context and Well-Formedness: The Dynamics of Ellipsis",
+        "author": [
+          {
+            "family": "Cann",
+            "given": "Ronnie"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2007
+            ]
+          ]
+        },
+        "container-title": "Research on Language and Computation",
+        "volume": "5",
+        "issue": "3",
+        "page": "333–358"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.275; KE19 draft references",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C08",
+          "C12"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.275; KE19 draft references"
+      ],
+      "versions": [],
+      "next_action": "Extract strict/sloppy context-reuse conditions and contrasting derivations."
+    },
+    {
+      "id": "GI12",
+      "bibliographic": {
+        "type": "thesis",
+        "title": "Auxiliary Placement in Rangi: A Dynamic Syntax Perspective",
+        "author": [
+          {
+            "family": "Gibson",
+            "given": "H. C."
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2012
+            ]
+          ]
+        },
+        "publisher": "SOAS, University of London",
+        "DOI": "10.25501/SOAS.00016637",
+        "URL": "https://doi.org/10.25501/SOAS.00016637"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.275",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C10",
+          "C14"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Rangi"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.275",
+        "2026-10-07 evening expansion pass (Cowork session): SOAS Research Online author listing gives DOI 10.25501/SOAS.00016637 (PhD thesis, SOAS 2012); the Worktribe repository record returned HTTP 403, so no PDF was inspected."
+      ],
+      "versions": [],
+      "next_action": "Review thesis detail alongside GI16; do not merge thesis and article as duplicate versions."
+    },
+    {
+      "id": "H14",
+      "bibliographic": {
+        "type": "thesis",
+        "title": "Modelling Incremental Self-Repair Processing in Dialogue",
+        "author": [
+          {
+            "family": "Hough",
+            "given": "Julian"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2014
+            ]
+          ]
+        },
+        "publisher": "Queen Mary University of London",
+        "URL": "https://qmro.qmul.ac.uk/xmlui/handle/123456789/9094"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.276",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C17"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276",
+        "2026-10-07 evening expansion pass (Cowork session): QMRO record 123456789/9094 confirms title, author and 2014 thesis status; the record lists no downloadable file. Direct requests returned 403/empty replies."
+      ],
+      "versions": [],
+      "next_action": "Extract repair algorithms, data and evaluation conditions."
+    },
+    {
+      "id": "HE17",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Feedback Relevance Spaces: The Organisation of Increments in Conversation",
+        "author": [
+          {
+            "family": "Howes",
+            "given": "Christine"
+          },
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2017
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 12th International Conference on Computational Semantics (IWCS 2017), Short papers",
+        "URL": "https://aclanthology.org/W17-6913/"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Abstract inspected in the ACL Anthology PDF (W17-6913): low-level semantic processing model of where feedback is licensed (feedback relevance spaces) and how non-FRS feedback is integrated. Body not audited.",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); ACL Anthology PDF.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276",
+        "2026-10-07 evening expansion pass (Cowork session): ACL Anthology BibTeX for W17-6913 (editors Gardent and Retoré)."
+      ],
+      "versions": [
+        {
+          "source_id": "HE17",
+          "inspected_filename": "HE17.pdf",
+          "sha256": "7fde9363fd7f5f9b765a473dd1154a1bb782bef3489de7846b870fb9b7e0c17e",
+          "bytes": 98701,
+          "pdf_pages": 8,
+          "public_location": "https://aclanthology.org/W17-6913.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "Published short paper; 8 PDF pages; ACL Anthology ID W17-6913 (BibTeX gives no page range)."
+        }
+      ],
+      "next_action": "Compare grounding updates with E15 and identify participant-state requirements."
+    },
+    {
+      "id": "PGMC10",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Splitting the ‘I’s and Crossing the ‘You’s: Context, Speech Acts and Grammar",
+        "author": [
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Meyer-Viol",
+            "given": "Wilfried"
+          },
+          {
+            "family": "Cann",
+            "given": "Ronnie"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2010
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 14th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2010, PozDial)",
+        "page": "43–50",
+        "URL": "https://semdial.org/anthology/papers/Z/Z10/Z10-3010"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "First page (title, authors, affiliations, abstract and opening example (1) on indexical shift across a speaker transition) inspected in the SemDial anthology PDF; derivations not audited.",
+        "evidence_level": "worked_analysis",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C08",
+          "C13"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276",
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author page (Ronnie Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "PGMC10",
+          "inspected_filename": "PGMC10.pdf",
+          "sha256": "4741868595bf06b0f08452149f4fe80380970b9d888e90df2364280029d500a3",
+          "bytes": 146885,
+          "pdf_pages": 8,
+          "public_location": "http://semdial.org/anthology/Z10-Purver_semdial_0010.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "Published workshop paper; 8 PDF pages (pp.43–50)."
+        }
+      ],
+      "next_action": "Extract speaker-sensitive indexical/reflexive examples and participant-role transitions."
+    },
+    {
+      "id": "SPHK18",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Exploring Semantic Incrementality with Dynamic Syntax and Vector Space Semantics",
+        "author": [
+          {
+            "family": "Sadrzadeh",
+            "given": "M."
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2018
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 22nd Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2018, AixDial)",
+        "page": "122–132",
+        "URL": "https://semdial.org/anthology/papers/Z/Z18/Z18-3016"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Abstract inspected: DS composition is modelled as tensor contraction; nodes carry vectors/tensors/sums for underspecified elements; worked example with plausibility tensors. Body and evaluation not audited.",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C18",
+          "C17"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "distributional"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "Unspecified"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276",
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author page and PDF first page; arXiv 1811.00614 located via search, not inspected."
+      ],
+      "versions": [
+        {
+          "source_id": "SPHK18",
+          "inspected_filename": "SPHK18.pdf",
+          "sha256": "1eb4069bbf41a7036a7bf38b970a072600099176b42c2aec1f7d8f6774bcbde7",
+          "bytes": 138065,
+          "pdf_pages": 10,
+          "public_location": "http://semdial.org/anthology/Z18-Sadrzadeh_semdial_0016.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "Published workshop paper; 10 PDF pages. An arXiv version (1811.00614) also exists and was not inspected."
+        }
+      ],
+      "next_action": "Inspect the vector interface and evaluation; keep it separate from Jev/LLM assistance."
+    },
+    {
+      "id": "SE13",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Multiple Foci in Japanese Clefts Revisited: A Semantic Incrementality Account",
+        "author": [
+          {
+            "family": "Seraku",
+            "given": "Tohru"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2013
+            ]
+          ]
+        },
+        "container-title": "Lingua",
+        "volume": "137",
+        "page": "145–171"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "HG21 references, printed p.276",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C14"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Japanese"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "HG21 references, printed p.276"
+      ],
+      "versions": [],
+      "next_action": "Extract focus and cleft contrasts; compare with SG16."
+    },
+    {
+      "id": "BMV94",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Linguistics, Logic and Finite Trees",
+        "author": [
+          {
+            "family": "Blackburn",
+            "given": "Patrick"
+          },
+          {
+            "family": "Meyer-Viol",
+            "given": "Wilfried"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              1994
+            ]
+          ]
+        },
+        "container-title": "Logic Journal of the Interest Group in Pure and Applied Logics",
+        "volume": "2",
+        "issue": "1",
+        "page": "3–29"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Bibliographic reference inspected; underlying source analysis not reviewed.",
+        "evidence_level": "secondary_pointer",
+        "origin": "KE19 inspected draft references, PDF p.23",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C01"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "background",
+          "foundation"
+        ],
+        "languages": [
+          "Framework-general"
+        ]
+      },
+      "classification_basis": "Provisional routing from the cited title and review discussion. Detailed mechanisms/frameworks await source inspection.",
+      "metadata_provenance": [
+        "KE19 inspected draft references, PDF p.23"
+      ],
+      "versions": [],
+      "next_action": "Review the modal tree logic supporting later DS operations."
+    },
+    {
+      "id": "NC21",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Differential Object Marking in Kazakh: The Dynamic Syntax Approach",
+        "author": [
+          {
+            "given": "Nadezda",
+            "family": "Christopher"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2021,
+              6
+            ]
+          ]
+        },
+        "container-title": "Journal of Logic, Language and Information",
+        "DOI": "10.1007/s10849-021-09332-z",
+        "URL": "https://doi.org/10.1007/s10849-021-09332-z",
+        "volume": "30",
+        "issue": "2",
+        "page": "305-329"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Metadata and deposited abstract inspected via Crossref; relevance and phenomenon also corroborated by HG21 §3, printed p.274. No derivations independently inspected.",
+        "evidence_level": "secondary_pointer",
+        "origin": "Discovery screening and source inspection, 2026-10-07",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C04",
+          "C15"
+        ],
+        "mechanisms": [
+          "unfixed",
+          "case_filters"
+        ],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Kazakh"
+        ]
+      },
+      "classification_basis": "Metadata and deposited abstract inspected via Crossref; relevance and phenomenon also corroborated by HG21 §3, printed p.274. No derivations independently inspected.",
+      "metadata_provenance": [
+        "https://doi.org/10.1007/s10849-021-09332-z",
+        "Crossref DOI record retrieved 2026-10-07",
+        "HG21 §3, printed p.274",
+        "2026-10-07 evening expansion pass (Cowork session): confirmed as part of JoLLI 30(2) (2021), the Dynamic Syntax special issue; full issue table of contents retrieved from Crossref (eight articles)."
+      ],
+      "versions": [],
+      "next_action": "Read the complete Kazakh analysis, keeping marked/unmarked object interpretation and position constraints separate."
+    },
+    {
+      "id": "SE21",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "A “Maximal Exclusion” Approach to Structural Underspecification in Dynamic Syntax",
+        "author": [
+          {
+            "given": "Tohru",
+            "family": "Seraku"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2021,
+              6
+            ]
+          ]
+        },
+        "container-title": "Journal of Logic, Language and Information",
+        "DOI": "10.1007/s10849-019-09308-0",
+        "URL": "https://doi.org/10.1007/s10849-019-09308-0",
+        "volume": "30",
+        "issue": "2",
+        "page": "407-428"
+      },
+      "review": {
+        "status": "citation_only",
+        "scope": "Crossref bibliographic record and HG21 §3, printed p.274. HG21 explicitly describes the maximal-exclusion account; the underlying source has not been read here.",
+        "evidence_level": "secondary_pointer",
+        "origin": "Discovery screening and source inspection, 2026-10-07",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C04",
+          "C15"
+        ],
+        "mechanisms": [],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Japanese"
+        ]
+      },
+      "classification_basis": "Crossref bibliographic record and HG21 §3, printed p.274. HG21 explicitly describes the maximal-exclusion account; the underlying source has not been read here.",
+      "metadata_provenance": [
+        "https://doi.org/10.1007/s10849-019-09308-0",
+        "Crossref DOI record retrieved 2026-10-07",
+        "HG21 §3, printed p.274",
+        "2026-10-07 evening expansion pass (Cowork session): Springer article page shows subscription access; PDF request returned HTML. Journal issue placement confirmed via Crossref: JoLLI 30(2), pp.407–428, in the DS special issue."
+      ],
+      "versions": [],
+      "next_action": "Extract case-filter and landing-site constraints and distinguish them from a unique subject-position assignment.",
+      "date_note": "Journal issue dated June 2021; online publication 2019-12-03. This is one work with distinct publication dates."
+    },
+    {
+      "id": "HE21",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Feedback Relevance Spaces: Interactional Constraints on Processing Contexts in Dynamic Syntax",
+        "author": [
+          {
+            "given": "Christine",
+            "family": "Howes"
+          },
+          {
+            "given": "Arash",
+            "family": "Eshghi"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2021,
+              6
+            ]
+          ]
+        },
+        "container-title": "Journal of Logic, Language and Information",
+        "DOI": "10.1007/s10849-020-09328-1",
+        "URL": "https://doi.org/10.1007/s10849-020-09328-1",
+        "volume": "30",
+        "issue": "2",
+        "page": "331-362"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Crossref deposited abstract and HG21 §3, printed p.274. Corpus/model scope inspected; numerical results have not been reproduced.",
+        "evidence_level": "secondary_pointer",
+        "origin": "Discovery screening and source inspection, 2026-10-07",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C18"
+        ],
+        "mechanisms": [
+          "context_reuse"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "British English"
+        ]
+      },
+      "classification_basis": "Crossref deposited abstract and HG21 §3, printed p.274. Corpus/model scope inspected; numerical results have not been reproduced.",
+      "metadata_provenance": [
+        "https://doi.org/10.1007/s10849-020-09328-1",
+        "Crossref DOI record retrieved 2026-10-07",
+        "HG21 §3, printed p.274",
+        "2026-10-07 evening expansion pass (Cowork session): confirmed as part of JoLLI 30(2) (2021), the Dynamic Syntax special issue; full issue table of contents retrieved from Crossref (eight articles)."
+      ],
+      "versions": [],
+      "next_action": "Read the journal study and compare its corpus and model with HE17; retain them as separate publications.",
+      "ttr_integration": "ds_ttr",
+      "related_works": [
+        {
+          "id": "HE17",
+          "relation": "earlier contribution on feedback relevance spaces; not a duplicate version"
+        }
+      ]
+    },
+    {
+      "id": "CL25",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Dynamic Syntax in a Theory of Types with Records",
+        "author": [
+          {
+            "given": "Robin",
+            "family": "Cooper"
+          },
+          {
+            "given": "Staffan",
+            "family": "Larsson"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2025,
+              12,
+              10
+            ]
+          ]
+        },
+        "container-title": "Languages",
+        "volume": "10",
+        "issue": "12",
+        "DOI": "10.3390/languages10120300",
+        "URL": "https://doi.org/10.3390/languages10120300"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "Published PDF abstract, §§1–2, opening of §3, §§4.5 and 4.8–5 inspected. Not every formal rule independently checked.",
+        "evidence_level": "worked_analysis",
+        "origin": "Publisher PDF inspected 2026-10-07",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C01",
+          "C18"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "requirements",
+          "record_update"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "foundation",
+          "analysis"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "ttr_integration": "ttr_ds",
+      "classification_basis": "The authors explicitly distinguish TTR-DS (encoding DS parsing in TTR) from earlier DS–TTR (using TTR content). §3 concentrates on classical e/t contents; §§4.8–5 state further semantic and implementation work.",
+      "metadata_provenance": [
+        "Published PDF first page, Languages 10(12), article 300; DOI verified against discovery record."
+      ],
+      "versions": [
+        {
+          "source_id": "CL25",
+          "inspected_filename": "languages-10-00300.pdf",
+          "sha256": "b9ece508de0f1a0b8bec3df71600ae0b7fa5ef8498dd72c227faca8f52848565",
+          "bytes": 461653,
+          "pdf_pages": 22,
+          "public_location": "https://mdpi-res.com/d_attachment/languages/languages-10-00300/article_deploy/languages-10-00300.pdf",
+          "acquisition": "publisher download, 2026-10-07",
+          "description": "Published article, 10 December 2025; CC BY 4.0 stated in PDF. Selected sections inspected."
+        }
+      ],
+      "next_action": "Audit TTR-DS parsing-state/action obligations separately from the app’s existing record-semantic backend; examine formal rules in §§3–4 before planning a prototype."
+    },
+    {
+      "id": "PSHK21",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Incremental Composition in Distributional Semantics",
+        "author": [
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Sadrzadeh",
+            "given": "Mehrnoosh"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Wijnholds",
+            "given": "Gijs"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2021,
+              6
+            ]
+          ]
+        },
+        "container-title": "Journal of Logic, Language and Information",
+        "volume": "30",
+        "issue": "2",
+        "page": "379–406",
+        "DOI": "10.1007/s10849-021-09337-8",
+        "URL": "https://doi.org/10.1007/s10849-021-09337-8"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Crossref-deposited abstract: assigns DS a compositional distributional semantics for incremental disambiguation; argues predicate-logic grounding is ill-suited to context-relative word meaning. Body not inspected (subscription PDF).",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C18",
+          "C17"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "underspecification"
+        ],
+        "frameworks": [
+          "distributional"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Abstract and JoLLI special-issue placement; successor to SPHK18. Tags provisional until the body is read.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record with abstract; JoLLI 30(2) table of contents.",
+        "Semantic Scholar/QMRO located an accepted-manuscript copy; UCL Discovery and Springer PDF requests returned 403/HTML."
+      ],
+      "versions": [],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators."
+    },
+    {
+      "id": "K20",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Left-to-Right Asymmetry and Early Association in Korean",
+        "author": [
+          {
+            "family": "Kiaer",
+            "given": "Jieun"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2020,
+              10,
+              7
+            ]
+          ]
+        },
+        "container-title": "Journal of Logic, Language and Information",
+        "volume": "30",
+        "issue": "2",
+        "page": "363–378",
+        "DOI": "10.1007/s10849-020-09318-3",
+        "URL": "https://doi.org/10.1007/s10849-020-09318-3"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "First page/abstract of the published OA PDF: left–right asymmetry, pre-verbal structure building and early association in Korean; roles of constructive particles, prosody and structural routines; DS adopted for formalisation. Body not audited.",
+        "evidence_level": "worked_analysis",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C15",
+          "C04",
+          "C01"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "unfixed",
+          "case_filters",
+          "context_reuse"
+        ],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Korean"
+        ]
+      },
+      "classification_basis": "Abstract only; mechanism tags inferred from the abstract's mention of constructive particles and routines, provisional.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record; Springer OA PDF (© The Author(s) 2020) first page inspected."
+      ],
+      "versions": [
+        {
+          "source_id": "K20",
+          "inspected_filename": "K20.pdf",
+          "sha256": "cb2b780c60dc9d14c8db13e17f995cd0a588a8a78309b0f1663730f17fcb9b61",
+          "bytes": 1093056,
+          "pdf_pages": 16,
+          "public_location": "https://link.springer.com/content/pdf/10.1007/s10849-020-09318-3.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "Published article, pp.363–378; 16 PDF pages; published online 7 October 2020; issue dated 2021."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators.",
+      "date_note": "Published online 2020; printed in JoLLI 30(2), 2021."
+    },
+    {
+      "id": "C20",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Underspecification, Parsing Mismatches and Routinisation: The Historical Development of the Clitic Systems of Greek Dialects",
+        "author": [
+          {
+            "family": "Chatzikyriakidis",
+            "given": "Stergios"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2020,
+              8,
+              20
+            ]
+          ]
+        },
+        "container-title": "Journal of Logic, Language and Information",
+        "volume": "30",
+        "issue": "2",
+        "page": "277–304",
+        "DOI": "10.1007/s10849-020-09319-2",
+        "URL": "https://doi.org/10.1007/s10849-020-09319-2"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "First page/abstract of the published OA PDF: Koine → Medieval → Standard Modern/Cypriot/Pontic clitic systems explained by routinisation (Pickering and Garrod 2004) and parsing/hearer asymmetries; emergence of encoded syntactic constraints from a pragmatically regulated system. Body not audited in this pass.",
+        "evidence_level": "worked_analysis",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C16",
+          "C09",
+          "C04"
+        ],
+        "mechanisms": [
+          "underspecification",
+          "context_reuse",
+          "unfixed",
+          "case_filters"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Koine Greek",
+          "Medieval Greek",
+          "Standard Modern Greek",
+          "Cypriot Greek",
+          "Pontic Greek"
+        ]
+      },
+      "classification_basis": "Abstract and author's related thesis (C10); framework tag from the thesis lineage, provisional until the body is read.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record; Springer OA PDF (CC BY 4.0 statement located in the PDF) first page inspected."
+      ],
+      "versions": [
+        {
+          "source_id": "C20",
+          "inspected_filename": "C20.pdf",
+          "sha256": "428180f3ef908075eb9f94c09c05b0836ed31a303bdc37defe0edbbad99b8050",
+          "bytes": 386956,
+          "pdf_pages": 28,
+          "public_location": "https://link.springer.com/content/pdf/10.1007/s10849-020-09319-2.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "Published article, pp.277–304; 28 PDF pages; published online 20 August 2020; issue dated 2021."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators.",
+      "date_note": "Published online 2020; printed in JoLLI 30(2), 2021."
+    },
+    {
+      "id": "YW21",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "A Dynamic Analysis of Minimizers in Chinese lian…dou Construction",
+        "author": [
+          {
+            "family": "Yang",
+            "given": "Xiaolong"
+          },
+          {
+            "family": "Wu",
+            "given": "Yicheng"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2021,
+              6
+            ]
+          ]
+        },
+        "container-title": "Journal of Logic, Language and Information",
+        "volume": "30",
+        "issue": "2",
+        "page": "429–449",
+        "DOI": "10.1007/s10849-021-09335-w",
+        "URL": "https://doi.org/10.1007/s10849-021-09335-w"
+      },
+      "review": {
+        "status": "metadata_only",
+        "scope": "Crossref record only (no deposited abstract); Springer PDF request returned HTML (subscription). Placement in the DS special issue and the existing topic C15.06 are the relevance basis.",
+        "evidence_level": "metadata_only",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C15",
+          "C14"
+        ],
+        "mechanisms": [
+          "tree_growth"
+        ],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Mandarin Chinese"
+        ]
+      },
+      "classification_basis": "Title and special-issue placement only; author names (with ORCIDs) verified in the Crossref record.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record; JoLLI 30(2) table of contents."
+      ],
+      "versions": [],
+      "next_action": "Obtain the article; identify the minimizer/focus mechanism before tagging mechanisms."
+    },
+    {
+      "id": "B08b",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "At the Syntax-Pragmatics Interface: Clitics in the History of Spanish",
+        "author": [
+          {
+            "family": "Bouzouita",
+            "given": "Miriam"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2008
+            ]
+          ]
+        },
+        "container-title": "Language in Flux: Dialogue Coordination, Language Variation, Change and Evolution",
+        "publisher": "College Publications",
+        "page": "221–263",
+        "editor": [
+          {
+            "family": "Cooper",
+            "given": "Robin"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          }
+        ]
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Printed pp.221–222 (PDF pp.2–3) inspected: DS account of clitic placement relative to the finite verb in Medieval (13th–14th c.), Renaissance (16th c.) and Modern Spanish; shift from a pragmatically based system to one determined by verbal mood; footnote 1 states these are preliminary doctoral results. Analyses not audited.",
+        "evidence_level": "worked_analysis",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C16",
+          "C09",
+          "C04"
+        ],
+        "mechanisms": [
+          "underspecification",
+          "unfixed",
+          "context_reuse"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Medieval Spanish",
+          "Renaissance Spanish",
+          "Modern Spanish"
+        ]
+      },
+      "classification_basis": "Introduction inspected; mechanism tags from the introduction's description of left-peripheral content construction, provisional.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Ghent University repository copy (biblio.ugent.be download 3008201/4242053) with the citation header printed on its cover page; Semantic Scholar title match."
+      ],
+      "versions": [
+        {
+          "source_id": "B08b",
+          "inspected_filename": "B08.pdf",
+          "sha256": "0809bb7c6648478c0c234a248c3daa4643b85fc06e230489ebfc0e41d3086edf",
+          "bytes": 1048214,
+          "pdf_pages": 41,
+          "public_location": "https://backoffice.biblio.ugent.be/download/3008201/4242053",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "Author/repository copy with citation cover page; 41 PDF pages; printed pp.221–263."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators.",
+      "date_note": "Distinct from the 2008 KCL thesis B08; the chapter reports preliminary results of that research (its footnote 1)."
+    },
+    {
+      "id": "MK06",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "Dynamic Syntax",
+        "author": [
+          {
+            "family": "Marten",
+            "given": "Lutz"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2006
+            ]
+          ]
+        },
+        "container-title": "Encyclopedia of Language & Linguistics (2nd ed.)",
+        "publisher": "Elsevier",
+        "page": "33–37",
+        "DOI": "10.1016/b0-08-044854-2/05274-3",
+        "URL": "https://doi.org/10.1016/b0-08-044854-2/05274-3"
+      },
+      "review": {
+        "status": "metadata_only",
+        "scope": "Crossref record only. Authorship by two framework founders establishes that this is the linguistic framework; content not inspected.",
+        "evidence_level": "metadata_only",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C01"
+        ],
+        "mechanisms": [
+          "tree_growth"
+        ],
+        "frameworks": [
+          "general"
+        ],
+        "roles": [
+          "overview"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Encyclopedia overview; language tag is a placeholder for the framework's primary exposition language, not an analysed language.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record (Elsevier, pp.33–37); admitted from the discovery ledger."
+      ],
+      "versions": [],
+      "next_action": "Inspect the entry as a compact teaching reference; do not treat it as a source of analyses."
+    },
+    {
+      "id": "W17",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Dynamic Syntax and Proof Theory",
+        "author": [
+          {
+            "family": "White",
+            "given": "Graham"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2017,
+              6,
+              1
+            ]
+          ]
+        },
+        "container-title": "Theoretical Linguistics",
+        "volume": "43",
+        "issue": "1-2",
+        "page": "135–140",
+        "DOI": "10.1515/tl-2017-0011",
+        "URL": "https://doi.org/10.1515/tl-2017-0011"
+      },
+      "review": {
+        "status": "metadata_only",
+        "scope": "Crossref record only: six-page Theoretical Linguistics piece in the issue following KC16's target article; presumed commentary on KC16, which is not confirmed by inspection.",
+        "evidence_level": "metadata_only",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C18",
+          "C01"
+        ],
+        "mechanisms": [
+          "requirements"
+        ],
+        "frameworks": [
+          "general"
+        ],
+        "roles": [
+          "background"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Title, venue, author and pagination only. White is a co-author of G20, which supports DS relevance; the proof-theoretic content is unread.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record; admitted from the discovery ledger as a formal-background reference."
+      ],
+      "versions": [],
+      "next_action": "Read the commentary and the KC16 authors' reply (if any) before linking it to the formal architecture notes."
+    },
+    {
+      "id": "G16",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "Deferred pronouns: A sketch based on Relevance Theory and Dynamic Syntax",
+        "author": [
+          {
+            "family": "Galery",
+            "given": "Thiago N."
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2016,
+              4,
+              11
+            ]
+          ]
+        },
+        "container-title": "The Impact of Pronominal Form on Interpretation",
+        "publisher": "De Gruyter",
+        "page": "287–316",
+        "DOI": "10.1515/9781614517016-011",
+        "URL": "https://doi.org/10.1515/9781614517016-011"
+      },
+      "review": {
+        "status": "metadata_only",
+        "scope": "Crossref record only; the title names DS as the framework. No abstract deposited; chapter not inspected.",
+        "evidence_level": "metadata_only",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C08"
+        ],
+        "mechanisms": [
+          "substitution"
+        ],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "Title-level classification (deferred reference of pronouns; anaphora), provisional.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record; admitted from the discovery ledger."
+      ],
+      "versions": [],
+      "next_action": "Read the chapter; record how deferred reference is handled via metavariable substitution before citing it for C08."
+    },
+    {
+      "id": "N09",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "Multiple Subject Constructions in Japanese: A Dynamic Syntax Account",
+        "author": [
+          {
+            "family": "Nakamura",
+            "given": "Hiroaki"
+          },
+          {
+            "family": "Yoshimoto",
+            "given": "Kei"
+          },
+          {
+            "family": "Mori",
+            "given": "Yoshiki"
+          },
+          {
+            "family": "Kobayashi",
+            "given": "Masahiro"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2009
+            ]
+          ]
+        },
+        "container-title": "New Frontiers in Artificial Intelligence (Lecture Notes in Computer Science)",
+        "publisher": "Springer",
+        "page": "103–118",
+        "DOI": "10.1007/978-3-642-00609-8_11",
+        "URL": "https://doi.org/10.1007/978-3-642-00609-8_11"
+      },
+      "review": {
+        "status": "metadata_only",
+        "scope": "Crossref record only; the title names DS as the framework and Japanese multiple-subject constructions as the phenomenon. Chapter not inspected.",
+        "evidence_level": "metadata_only",
+        "origin": "2026-10-07 evening expansion pass (Cowork session)",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C15",
+          "C04",
+          "C14"
+        ],
+        "mechanisms": [
+          "unfixed",
+          "case_filters"
+        ],
+        "frameworks": [
+          "unclassified"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "Japanese"
+        ]
+      },
+      "classification_basis": "Title-level classification; mechanism tags are the usual DS treatment of Japanese case/ordering and are provisional.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): Crossref DOI record; admitted from the discovery ledger."
+      ],
+      "versions": [],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators."
+    },
+    {
+      "id": "E15b",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "DS-TTR: An incremental, semantic, contextual parser for dialogue",
+        "author": [
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2015
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 19th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2015, goDIAL)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z15/Z15-4028"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Two-page demo description of the DS-TTR dialogue parser: semantic context updated in real time while dialogues are parsed incrementally; stated goal of a wide-coverage, domain-general parser/generator.",
+        "evidence_level": "implemented_study",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C17",
+          "C13",
+          "C18"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "record_update",
+          "context_reuse"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "implementation"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "E15b",
+          "inspected_filename": "E15b-DSTTR.pdf",
+          "sha256": "89db6bc50175055c8e0c6b4ed17261421307b27f2e6cab0907dbf5bbc0205842",
+          "bytes": 146267,
+          "pdf_pages": 2,
+          "public_location": "http://semdial.org/anthology/Z15-Eshghi_semdial_0028.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 2 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "HP12",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Processing Self-Repairs in an Incremental Type-Theoretic Dialogue System",
+        "author": [
+          {
+            "family": "Hough",
+            "given": "Julian"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2012
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 16th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2012, SeineDial)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z12/Z12-3018"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Abstract/first page: incremental modelling of first-position self-repairs (reparandum, interregnum, repair) using DS parsing to build TTR record types in parsing and generation. Distinct from and earlier than the H14 thesis.",
+        "evidence_level": "implemented_study",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C17",
+          "C18"
+        ],
+        "mechanisms": [
+          "repair",
+          "record_update",
+          "generation"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "implementation"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "HP12",
+          "inspected_filename": "HP12.pdf",
+          "sha256": "677bc3a76d18455d86b463067cdc85beef32188e8b9764de4b7fd2d0d9f53ed9",
+          "bytes": 535421,
+          "pdf_pages": 9,
+          "public_location": "http://semdial.org/anthology/Z12-Hough_semdial_0018.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 9 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "KGG07",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Clarification Requests: An Incremental Account",
+        "author": [
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Gargett",
+            "given": "Andrew"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2007
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 11th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2007, DECALOG)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z07/Z07-3013"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Abstract/first page: fragment clarification requests handled incrementally without lifting fragments to sentence level; contrasts Ginzburg and Cooper (2004) clausal/constituent readings. The anthology index lists this entry as 'Incremental Fragment Construal'; the PDF's printed title is used here. Printed pp.65–72.",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C12"
+        ],
+        "mechanisms": [
+          "context_reuse",
+          "substitution",
+          "tree_growth"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "KGG07",
+          "inspected_filename": "KGG07.pdf",
+          "sha256": "c300913f2070d092d3de3325a458248abc1e84e26e4bdb3d47450d2fb5b69211",
+          "bytes": 488655,
+          "pdf_pages": 8,
+          "public_location": "http://semdial.org/anthology/Z07-Ruth_semdial_0013.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 8 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators."
+    },
+    {
+      "id": "GGHS08",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Dialogue-Grammar Correspondence in Dynamic Syntax",
+        "author": [
+          {
+            "family": "Gargett",
+            "given": "Andrew"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Howes",
+            "given": "Christine"
+          },
+          {
+            "family": "Sato",
+            "given": "Yo"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2008
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 12th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2008, LonDial)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z08/Z08-3010"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Abstract/first page: argues against dialogue-specific ellipsis subtypes; extends Kempson et al. (2007) to reformulations, fragment requests and corrections.",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C12",
+          "C13"
+        ],
+        "mechanisms": [
+          "context_reuse",
+          "repair",
+          "tree_growth"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "GGHS08",
+          "inspected_filename": "GGHS08.pdf",
+          "sha256": "cfeafb134cc94a83383dfdef1a019e0e6062a6a111d21cfcddfdc611e4230289",
+          "bytes": 460741,
+          "pdf_pages": 8,
+          "public_location": "http://semdial.org/anthology/Z08-Gargett_semdial_0010.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 8 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators."
+    },
+    {
+      "id": "KGP09",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "How mechanistic can accounts of interaction be?",
+        "author": [
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Mills",
+            "given": "Gregory"
+          },
+          {
+            "family": "Gargett",
+            "given": "Andrew"
+          },
+          {
+            "family": "Howes",
+            "given": "Christine"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2009
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 13th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2009, DiaHolmia)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z09/Z09-3015"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Abstract/first page: questions whether full higher-order intention recognition is needed for dialogue modelling; positions DS tree growth as a mechanistic alternative. Author given names expanded from the PDF's 'Matt'/'Greg'/'Chris'.",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "context_reuse"
+        ],
+        "frameworks": [
+          "general"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "KGP09",
+          "inspected_filename": "KGP09.pdf",
+          "sha256": "ad4f81babf82ab10fddf7ac27c0489f38b400e1b515961c7ecb91e0993131e76",
+          "bytes": 115601,
+          "pdf_pages": 8,
+          "public_location": "http://semdial.org/anthology/Z09-Kempson_semdial_0015.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 8 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators."
+    },
+    {
+      "id": "KCC15",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "The interactive building of names",
+        "author": [
+          {
+            "family": "Chatzikyriakidis",
+            "given": "Stergios"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Cann",
+            "given": "Ronnie"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2015
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 19th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2015, goDIAL)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z15/Z15-4035"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Two-page poster abstract: interactive construction of names/content in dialogue over transitions between partial trees. The anthology lists Kempson first; the PDF byline order is Chatzikyriakidis, Kempson, Cann. Byline order from the PDF is used here.",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C02"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "context_reuse"
+        ],
+        "frameworks": [
+          "classical"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page.",
+        "2026-10-08: Independently retrieved the SemDial PDF; its fingerprint matches the recorded version. Corrected canonical author order to the printed byline: Chatzikyriakidis, Kempson, Cann."
+      ],
+      "versions": [
+        {
+          "source_id": "KCC15",
+          "inspected_filename": "KCC15.pdf",
+          "sha256": "4d9e8de95ac2ebaf08bc23924b923b5386f6f86b8426b53fdcae0a3bfc053be6",
+          "bytes": 32127,
+          "pdf_pages": 2,
+          "public_location": "http://semdial.org/anthology/Z15-Kempson_semdial_0035.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 2 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators."
+    },
+    {
+      "id": "G20",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Affordance competition in dialogue: the case of syntactic universals",
+        "author": [
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Chatzikyriakidis",
+            "given": "Stergios"
+          },
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          },
+          {
+            "family": "Howes",
+            "given": "Christine"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Kiaer",
+            "given": "Jieun"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Sadrzadeh",
+            "given": "Mehrnoosh"
+          },
+          {
+            "family": "White",
+            "given": "Graham"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2020
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 24th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2020, WatchDial)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z20/Z20-3022"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "First page inspected: ten-author position paper recasting syntactic universals as affordance competition in interaction; 16 PDF pages. Body not audited.",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C15",
+          "C01"
+        ],
+        "mechanisms": [
+          "tree_growth",
+          "context_reuse"
+        ],
+        "frameworks": [
+          "general"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "G20",
+          "inspected_filename": "G20.pdf",
+          "sha256": "52ac55737741a0a8a3ea87b74ac170f3f9b908a11696042392809fda5ae3eac4",
+          "bytes": 277748,
+          "pdf_pages": 16,
+          "public_location": "http://semdial.org/anthology/Z20-Gregoromichelaki_semdial_0022.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 16 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators."
+    },
+    {
+      "id": "G19",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "Normativity, Meaning Plasticity, and the Significance of Vector Space Semantics",
+        "author": [
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          },
+          {
+            "family": "Howes",
+            "given": "Christine"
+          },
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          },
+          {
+            "family": "Hough",
+            "given": "Julian"
+          },
+          {
+            "family": "Sadrzadeh",
+            "given": "Mehrnoosh"
+          },
+          {
+            "family": "Purver",
+            "given": "Matthew"
+          },
+          {
+            "family": "Wijnholds",
+            "given": "Gijs"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2019
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 23rd Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2019, LondonLogue)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z19/Z19-4025"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Three-page position abstract continuing a discussion with Lücking et al. (2019) on vector space semantics as a model for NL; mentions DS-TTR implementations (Eshghi et al. 2017; Kalatzis et al. 2016).",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C18",
+          "C13"
+        ],
+        "mechanisms": [
+          "tree_growth"
+        ],
+        "frameworks": [
+          "distributional",
+          "ttr"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "G19",
+          "inspected_filename": "G19.pdf",
+          "sha256": "237d679678c148d7b8a82c13424f2aff0f4c535395e7765a80cfe27aa8935186",
+          "bytes": 93443,
+          "pdf_pages": 3,
+          "public_location": "http://semdial.org/anthology/Z19-Gregoromichelaki_semdial_0025.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 3 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "K21",
+      "bibliographic": {
+        "type": "paper-conference",
+        "title": "How to Escape the Encodingism Stranglehold: Dynamic Syntax, Process and Interaction",
+        "author": [
+          {
+            "family": "Kempson",
+            "given": "Ruth"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2021
+            ]
+          ]
+        },
+        "container-title": "Proceedings of the 25th Workshop on the Semantics and Pragmatics of Dialogue (SemDial 2021, PotsDial)",
+        "URL": "https://semdial.org/anthology/papers/Z/Z21/Z21-2002"
+      },
+      "review": {
+        "status": "abstract_read",
+        "scope": "Two-page invited-talk abstract (byline 'Ruth Kempson with Ronnie Cann & Eleni Gregoromichelaki'): responds to Bickhard's encodingism challenge; positions a composite DS-TTR framework as process-based. Anthology lists Kempson as sole author; that is followed here.",
+        "evidence_level": "proposal",
+        "origin": "2026-10-07 evening expansion pass (Cowork session); SemDial anthology PDF first page.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C18"
+        ],
+        "mechanisms": [
+          "tree_growth"
+        ],
+        "frameworks": [
+          "general",
+          "ttr"
+        ],
+        "roles": [
+          "proposal"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "First page/abstract of the SemDial anthology PDF; mechanism and framework tags are provisional retrieval aids.",
+      "metadata_provenance": [
+        "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Gregoromichelaki, Eshghi, Purver, Cann) and PDF first page."
+      ],
+      "versions": [
+        {
+          "source_id": "K21",
+          "inspected_filename": "K21.pdf",
+          "sha256": "d6263d9261edb4b9c46f6511e3c5c4bfd46e3a1296fecadaddf66ff16b88eb2a",
+          "bytes": 72085,
+          "pdf_pages": 2,
+          "public_location": "http://semdial.org/anthology/Z21-Kempson_semdial_0002.pdf",
+          "acquisition": "downloaded open-access copy in this session; not redistributed",
+          "description": "SemDial anthology PDF; 2 PDF pages."
+        }
+      ],
+      "next_action": "Read the full text and extract bounded analysis cards with exact locators.",
+      "ttr_integration": "ds_ttr"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import overload
 
-from dylan.formula.ttr_record_type import TTRRecordType
+from dylan.formula.formula import Formula
 from dylan.dag.dag_tuple import DAGTuple
 from dylan.dag.groundable_edge import GroundableEdge
 from dylan.nlp.types import DEFAULT_SPEAKER, utterance_from_text
@@ -37,8 +37,24 @@ def _active_path_edges(parser: InteractiveContextParser) -> list[GroundableEdge]
     return edges
 
 
-def _steps_from_edge(parser: InteractiveContextParser, edge: GroundableEdge) -> list[ParseActionStep]:
+def _steps_from_edge(
+    parser: InteractiveContextParser, edge: GroundableEdge, *, operations: bool = False
+) -> list[ParseActionStep]:
     """Replay one active edge into action-level tree transitions."""
+    stack = parser.get_state().word_stack_ref()
+    saved = list(stack)
+    if edge.word is not None:
+        stack.append(edge.word)
+    try:
+        return _replay_steps_from_edge(parser, edge, operations=operations)
+    finally:
+        stack[:] = saved
+
+
+def _replay_steps_from_edge(
+    parser: InteractiveContextParser, edge: GroundableEdge, *, operations: bool = False
+) -> list[ParseActionStep]:
+    """Replay with the edge's original speaker/addressee, including after completion."""
     if not isinstance(edge.src, DAGTuple) or not isinstance(edge.dst, DAGTuple):
         return []
     word = edge.word.word if edge.word is not None else None
@@ -57,7 +73,11 @@ def _steps_from_edge(parser: InteractiveContextParser, edge: GroundableEdge) -> 
     cur = edge.src.get_tree().clone()
     for action in actions:
         before = cur.clone()
-        after = parser.apply_actions(cur, [action])
+        from contextlib import nullcontext
+        from dylan.action.execution_trace import capture_effects
+
+        with capture_effects() if operations else nullcontext([]) as effects:
+            after = parser.apply_actions(cur, [action])
         if after is None:
             return [
                 ParseActionStep(
@@ -75,10 +95,24 @@ def _steps_from_edge(parser: InteractiveContextParser, edge: GroundableEdge) -> 
                 before_tree=before,
                 after_tree=after.clone(),
                 edge_id=edge.edge_id,
+                operations=tuple(effects),
             ),
         )
         cur = after
     return steps
+
+
+def _complete_native_parse(parser: InteractiveContextParser) -> Tree:
+    """Select the completion edge so result semantics and action playback agree."""
+    completed = parser.complete()
+    if parser.last_cap_hit is None:
+        dag = parser.get_state()
+        edge = dag.get_parent_edge(completed)
+        assert edge is not None
+        edge.traverse(dag)
+        dag.stats.traversed += 1
+        dag.update_last_n()
+    return parser.get_best_tuple().get_tree()
 
 
 def _run_parse_core(
@@ -95,25 +129,40 @@ def _run_parse_core(
     if not trace:
         ok = parser.parse_utterance(utt)
         tree = parser.get_best_tuple().get_tree()
-        semantics: TTRRecordType | None = parser.get_final_semantics() if ok else None
-        return ParseResult(ok=ok, semantics=semantics, tree=tree, sentence=stripped, parser=parser)
+        if tree.semantic_profile and parser.last_cap_hit is None:
+            tree = _complete_native_parse(parser)
+            ok = ok and tree.is_complete()
+        ok = ok and parser.last_cap_hit is None
+        semantics: Formula | None = parser.get_final_semantics() if ok else None
+        return ParseResult(
+            ok=ok,
+            semantics=semantics,
+            tree=tree,
+            sentence=stripped,
+            parser=parser,
+            cap_hit=parser.last_cap_hit,
+            stats=parser.stats.snapshot(),
+        )
     trace_list: list[Tree] = [parser.get_best_tuple().get_tree().clone()]
     labels: list[str] = []
-    action_steps: list[ParseActionStep] = []
-    seen_edge_ids: set[int] = set()
     ok = True
     for uw in utt.words:
         labels.append(uw.word)
         if parser.parse_word(uw) is None:
             ok = False
-        for edge in _active_path_edges(parser):
-            if edge.edge_id in seen_edge_ids:
-                continue
-            action_steps.extend(_steps_from_edge(parser, edge))
-            seen_edge_ids.add(edge.edge_id)
         trace_list.append(parser.get_best_tuple().get_tree().clone())
+        if parser.last_cap_hit is not None:
+            break
     tree = parser.get_best_tuple().get_tree()
+    if tree.semantic_profile and parser.last_cap_hit is None:
+        tree = _complete_native_parse(parser)
+        ok = ok and tree.is_complete()
+    ok = ok and parser.last_cap_hit is None
     semantics = parser.get_final_semantics() if ok else None
+    # Prefix snapshots record what was known at each word. The derivation must
+    # instead follow the final active path after any later backtracking.
+    action_steps = [step for edge in _active_path_edges(parser)
+                    for step in _steps_from_edge(parser, edge)]
     return ParseResult(
         ok=ok,
         semantics=semantics,
@@ -123,6 +172,8 @@ def _run_parse_core(
         trace_step_labels=tuple(labels),
         action_steps=tuple(action_steps),
         parser=parser,
+        cap_hit=parser.last_cap_hit,
+        stats=parser.stats.snapshot(),
     )
 
 
@@ -146,6 +197,8 @@ def _parse_at_path(
     *,
     speaker: str,
     trace: bool,
+    top_n: int = 3,
+    strict: bool = False,
     log_level: LogLevel = "off",
     log_output: LogOutput = "terminal",
     log_dir: Path | None = None,
@@ -153,6 +206,8 @@ def _parse_at_path(
     """Run parse at *grammar_path* and build a :class:`ParseResult`."""
     parser = InteractiveContextParser(
         grammar_path,
+        top_n=top_n,
+        strict=strict,
         log_level=log_level,
         log_output=log_output,
         log_dir=log_dir,
@@ -174,6 +229,8 @@ def parse(
     *,
     speaker: str = ...,
     trace: bool = ...,
+    top_n: int = ...,
+    strict: bool = ...,
     log_level: LogLevel = ...,
     log_output: LogOutput = ...,
     log_dir: Path | None = ...,
@@ -188,6 +245,8 @@ def parse(
     *,
     speaker: str = ...,
     trace: bool = ...,
+    top_n: int = ...,
+    strict: bool = ...,
     log_level: LogLevel = ...,
     log_output: LogOutput = ...,
     log_dir: Path | None = ...,
@@ -201,6 +260,8 @@ def parse(
     *,
     speaker: str = DEFAULT_SPEAKER,
     trace: bool = False,
+    top_n: int = 3,
+    strict: bool = False,
     log_level: LogLevel = "off",
     log_output: LogOutput = "terminal",
     log_dir: Path | None = None,
@@ -216,6 +277,8 @@ def parse(
     :param speaker: Dialogue participant id passed to the parser (default matches ``dylan``).
     :param trace: If ``True``, record one DS tree after ``new_sentence`` and after each word
         (for :meth:`~dynamicsyntax.parse_result.ParseResult.to_latex` ``incremental``).
+    :param top_n: Maximum lexical entries per word (default 3); 0 keeps all entries.
+    :param strict: Raise ``ValueError`` on lexicon or grammar validation problems (default False).
     :param log_level: Per-parser log verbosity passed to :class:`~dylan.parser.interactive_context_parser.InteractiveContextParser`.
     :param log_output: Where parser-bound logs go (terminal, file, or both).
     :param log_dir: Directory for parser log files when *log_output* includes file output.
@@ -224,7 +287,8 @@ def parse(
         Each result may include ``parser`` (the
         :class:`~dylan.parser.interactive_context_parser.InteractiveContextParser` used), except when
         the facade returns early for whitespace-only single-string input without a parse.
-    :raises ValueError: If *grammar* is omitted or ``None`` while any non-blank input would require parsing.
+    :raises ValueError: If *grammar* is omitted or ``None`` while any non-blank input would require parsing,
+        or resource validation fails with *strict* enabled.
     :raises FileNotFoundError: If *grammar* is unknown or not a directory.
 
     Packaged grammars: ``dynamicsyntax/grammars/`` in the library, and the project
@@ -246,6 +310,8 @@ def parse(
         with resolved_grammar_path(grammar) as grammar_path:
             parser = InteractiveContextParser(
                 grammar_path,
+                top_n=top_n,
+                strict=strict,
                 log_level=log_level,
                 log_output=log_output,
                 log_dir=log_dir,
@@ -266,6 +332,8 @@ def parse(
             stripped,
             speaker=speaker,
             trace=trace,
+            top_n=top_n,
+            strict=strict,
             log_level=log_level,
             log_output=log_output,
             log_dir=log_dir,

@@ -8,13 +8,14 @@ from typing import TYPE_CHECKING, Any
 from dylan.formula.variable import Variable
 
 if TYPE_CHECKING:
+    from dylan.formula.formula import Formula
     from dylan.formula.ttr_formula import TTRFormula
     from dylan.formula.ttr_record_type import TTRRecordType
 from dylan.tree.basic_operator import BasicOperator
 from dylan.tree.label.labels import FeatureLabel, FormulaLabel, Label, Requirement, TypeLabel
 from dylan.tree.modality import Modality
 from dylan.tree.node import Node
-from dylan.tree.node_address import PATH_LOCAL_UNFIXED, PATH_UNFIXED, NodeAddress
+from dylan.tree.node_address import PATH_LOCAL_UNFIXED, PATH_LOCAL_UNFIXED_PLUS, PATH_UNFIXED, NodeAddress
 from dylan.tree.underspecified_type_map import get_static_type_map
 from dylan.type.dstype import DSType
 
@@ -46,6 +47,7 @@ class Tree(dict[NodeAddress, Node]):
     def __init__(self, other: Tree | NodeAddress | None = None) -> None:
         """Create a fresh tree, copy *other*, or root a tree at the given address."""
         super().__init__()
+        self.semantic_profile = dict(getattr(other, "semantic_profile", {}))
         if other is None:
             self.root_addr = NodeAddress()
             self.pointer = self.root_addr
@@ -148,6 +150,13 @@ class Tree(dict[NodeAddress, Node]):
         """Deep copy nodes, pointer, and variable pools (Java ``Tree.clone`` sketch)."""
         return Tree(self)
 
+    def restore_from(self, checkpoint: Tree) -> None:
+        """Restore a tree checkpoint in place, using the same copy contract as clone."""
+        if checkpoint is self:
+            return
+        self.clear()
+        Tree.__init__(self, checkpoint)
+
     def vis(self) -> None:
         """Print this tree in address order (same plain-text view as :meth:`~dynamicsyntax.parse_result.ParseResult.vis`)."""
         from dylan.gui.formatting import format_ds_tree
@@ -214,6 +223,7 @@ class Tree(dict[NodeAddress, Node]):
                 addr.down_link(),
                 addr.down_star(),
                 addr.down_local_unfixed(),
+                addr.down_local_unfixed_plus(),
             ]
         else:
             for ch in order:
@@ -230,11 +240,13 @@ class Tree(dict[NodeAddress, Node]):
         out: list[Node] = []
         for n in self.values():
             a = n.address.address
-            if a.endswith(PATH_UNFIXED) or a.endswith(PATH_LOCAL_UNFIXED):
+            if a.endswith((PATH_UNFIXED, PATH_LOCAL_UNFIXED, PATH_LOCAL_UNFIXED_PLUS)):
                 out.append(n)
         return out
 
-    def _move_daughters(self, dtrs: list[Node], from_addr: NodeAddress, to_addr: NodeAddress) -> None:
+    def _move_daughters(
+        self, dtrs: list[Node], from_addr: NodeAddress, to_addr: NodeAddress
+    ) -> None:
         """Re-home subtrees under *to_addr* (Java ``moveDaughters``)."""
         from_s = from_addr.address
         to_s = to_addr.address
@@ -492,9 +504,7 @@ class Tree(dict[NodeAddress, Node]):
                 )
             elif unfixed_reduced is not None:
                 root_reduced = (
-                    unfixed_reduced
-                    if unfixed_functor
-                    else root_reduced.conjoin(unfixed_reduced)
+                    unfixed_reduced if unfixed_functor else root_reduced.conjoin(unfixed_reduced)
                 )
             elif local_unfixed_reduced is not None:
                 root_reduced = (
@@ -521,10 +531,24 @@ class Tree(dict[NodeAddress, Node]):
         context: Any = None,
         *,
         induction_mode: bool = False,
-    ) -> "TTRFormula":
-        """Compute maximal TTR semantics (Java ``getMaximalSemantics(Context)``)."""
+    ) -> "Formula":
+        """Compute native or maximal TTR semantics (Java ``getMaximalSemantics(Context)``)."""
         from dylan.formula.disjunctive_type import DisjunctiveType
         from dylan.formula.ttr_formula import TTRFormula
+
+        if self.semantic_profile:
+            from dylan.formula.mltt.semantics import SemanticFormula
+
+            formula = self.get_root_node().get_formula()
+            if not isinstance(formula, SemanticFormula):
+                from dylan.formula.mltt.terms import name
+
+                return SemanticFormula(
+                    name("pending"), self.semantic_profile["backend"], theory=self.semantic_profile
+                )
+            formula = formula.clone()
+            formula.theory = self.semantic_profile
+            return formula.close_witnesses(self.semantic_profile.get("scope", "narrow"))
 
         logger.debug("Merging unfixed if possible; before: %s", self)
         work = self.clone()
@@ -561,14 +585,14 @@ class Tree(dict[NodeAddress, Node]):
             eb if isinstance(eb, TTRFormula) else b,
         )
 
-    def get_maximal_semantics_with_context(self, context: Any) -> "TTRFormula":
+    def get_maximal_semantics_with_context(self, context: Any) -> "Formula":
         return self.get_maximal_semantics(context)
 
     # ── tree-modifying operations (Java Tree.make / go / put / delete) ──
 
     def make(self, op: BasicOperator) -> None:
-        """Create a new daughter node below the pointed node (Java ``Tree.make``)."""
-        if not op.is_down():
+        """Create a daughter or an inverse-LINK predecessor of the pointed node."""
+        if not op.is_down() and not op.is_link():
             raise RuntimeError(f"Can't make non-daughter node {op}")
         addr = self.pointer.go_op(op)
         if addr is not None and addr not in self:

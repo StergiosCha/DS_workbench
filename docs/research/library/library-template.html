@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DS Research Library</title>
+<style>
+:root { color-scheme: light; --ink:#183d32; --muted:#53675e; --line:#d5dfd5; --paper:#fbfaf6; --accent:#e9f0e7; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 system-ui,sans-serif; }
+a { color:#176441; text-underline-offset:3px; overflow-wrap:anywhere; }
+button,input,select { font:inherit; color:inherit; }
+button { cursor:pointer; background:var(--accent); border:1px solid var(--line); border-radius:6px; padding:8px 14px; }
+button:hover { background:#dce9d8; }
+:focus-visible { outline:3px solid #42795a; outline-offset:3px; }
+header, .layout, footer { max-width:1380px; margin:auto; padding:28px; }
+header { padding-top:44px; border-bottom:1px solid var(--line); }
+.eyebrow { font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+h1 { font:500 clamp(32px,5vw,56px)/1.1 Georgia,serif; margin:10px 0 18px; }
+header p { max-width:850px; margin:12px 0; }
+nav { display:flex; gap:12px 22px; flex-wrap:wrap; margin-top:18px; }
+.stats { display:flex; flex-wrap:wrap; gap:12px 30px; margin-top:22px; font-size:14px; }
+.stats strong { font-size:24px; display:block; }
+.layout { display:grid; grid-template-columns:285px minmax(0,1fr); gap:30px; align-items:start; }
+aside { position:sticky; top:16px; max-height:calc(100vh - 32px); overflow:auto; padding:2px 8px 12px 2px; }
+label { display:block; font-size:13px; font-weight:650; margin:12px 0 5px; }
+input,select { width:100%; min-height:44px; padding:8px; border:1px solid #aebfb0; border-radius:5px; background:white; }
+.muted { color:var(--muted); font-size:14px; }
+.results-heading { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; }
+h2 { font-size:20px; margin:0 0 14px; }
+article { background:white; border:1px solid var(--line); border-radius:9px; padding:23px; margin:0 0 18px; overflow-wrap:anywhere; }
+article h3 { font:500 24px/1.3 Georgia,serif; margin:6px 0 10px; }
+article p { margin:8px 0; }
+.record-key { font:13px ui-monospace,monospace; color:var(--muted); }
+.tags { display:flex; gap:6px; flex-wrap:wrap; margin:12px 0; }
+.tag { font-size:12px; padding:3px 9px; border:1px solid var(--line); border-radius:20px; background:#f5f8f3; }
+.review { font-size:13px; font-weight:650; margin-top:13px; }
+details { border-top:1px solid var(--line); padding-top:10px; margin-top:14px; }
+summary { cursor:pointer; font-size:14px; font-weight:650; }
+.analysis { border-left:3px solid #91ad95; padding:0 0 0 16px; margin:18px 0; }
+.analysis h4 { margin:6px 0; font-size:16px; }
+ul { padding-left:22px; }
+li { margin:7px 0; }
+code { font-size:12px; overflow-wrap:anywhere; }
+.discovery { padding:24px; border:1px solid var(--line); border-radius:8px; margin-top:28px; }
+.discovery h2 { margin-top:12px; }
+.discovery li { border-bottom:1px solid var(--line); padding-bottom:12px; }
+footer { border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+[hidden] { display:none !important; }
+@media(max-width:760px) { header,.layout,footer { padding:22px 16px; } .layout { grid-template-columns:minmax(0,1fr); gap:24px; } aside { position:static; max-height:none; } article { padding:18px; } h1 { font-size:38px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Dynamic Syntax · Community research resource</div>
+  <h1>DS Research Library</h1>
+  <p>Find a work, identify the analysis, follow it into the grammar. Papers can belong to several topics; source versions, review depth and implementation evidence stay visible.</p>
+  <p class="muted">A selected bibliography and reading queue, dated <span id="date"></span>. Search covers metadata, tags and analysis notes. Full texts are not indexed here.</p>
+  <nav aria-label="Library resources">
+    <a href="ds-library.bib" download>Download BibTeX</a>
+    <a href="ds-library.csl.json" download>Download CSL JSON · Zotero</a>
+    <a href="README.md">Classification & contribution guide</a>
+    <a href="../ds-theoretical-coverage.pdf">Theory-to-implementation report</a>
+  </nav>
+  <div class="stats" id="stats"></div>
+</header>
+<div class="layout">
+<aside aria-label="Filter the selected library">
+  <label for="search">Search title, author, claim or ID</label>
+  <input id="search" type="search" placeholder="PCC, LINK, ellipsis, Kempson…">
+  <label for="collection">Collection</label><select id="collection"><option value="">All collections</option></select>
+  <label for="category">Linguistic topic</label><select id="category"><option value="">All topics</option></select>
+  <label for="framework">Semantic framework in the source</label><select id="framework"><option value="">All frameworks</option></select>
+  <label for="language">Language or variety</label><select id="language"><option value="">All languages</option></select>
+  <details><summary>TTR integration & further filters</summary>
+    <label for="integration">How TTR is integrated</label><select id="integration"><option value="">All / unclassified integrations</option></select>
+    <label for="mechanism">DS mechanism</label><select id="mechanism"><option value="">All mechanisms</option></select>
+    <label for="review">Reading status</label><select id="review"><option value="">All reading statuses</option></select>
+    <label for="role">Contribution</label><select id="role"><option value="">All contributions</option></select>
+  </details>
+  <p><button id="clear" type="button">Clear filters</button></p>
+  <p class="muted">Language tags name indexed examples or the stated study scope, not an exhaustive language inventory. Provisional tags are identified in each record.</p>
+  <p class="muted">A source discussing TTR does not establish TTR support in this app. Related analysis cards show each backend separately.</p>
+</aside>
+<main>
+  <div class="results-heading"><h2 id="result-count" aria-live="polite"></h2><span class="muted">Newest publication year first</span></div>
+  <div id="papers"></div>
+  <p id="empty" hidden>No selected works match these filters. Try a broader topic or clear the filters.</p>
+  <section class="discovery" aria-label="Separate discovery queue">
+    <h2>Discovery queue</h2>
+    <p id="discovery-count"></p>
+    <p class="muted">A bounded Crossref title search, separate from the selected library above. A matching phrase does not establish relevance to this linguistic framework. Screening exclusions remain recorded. These items are not included in the citation exports.</p>
+    <details><summary>Inspect candidates and screening decisions</summary><ul id="discovery"></ul></details>
+    <p><a href="discovery.json" download>Download discovery ledger</a></p>
+  </section>
+</main>
+</div>
+<footer>Built from editable JSON records using <code>scripts/build_ds_library.py</code>. No external scripts, tracking, model calls or server are required. Full source texts remain with their repositories or local owners. Community review is a separate field from prior source inspection.</footer>
+<noscript><p>Please enable JavaScript to filter the catalogue, or open the BibTeX/CSL files linked above.</p></noscript>
+<script id="library-data" type="application/json">__LIBRARY_DATA__</script>
+<script>
+"use strict";
+const data = JSON.parse(document.getElementById("library-data").textContent);
+const $ = id => document.getElementById(id);
+const t = data.taxonomy;
+const categories = Object.fromEntries(data.categories.map(c => [c.id,c.title]));
+const topics = Object.fromEntries(data.categories.flatMap(c => c.phenomena.map(p => [p.id,p.title])));
+const byPaper = Object.fromEntries(data.papers.map(p => [p.id,data.analyses.filter(a => a.sources.some(s => s.paper === p.id))]));
+const labelMaps = {categories,frameworks:t.frameworks,mechanisms:t.mechanisms,roles:t.roles};
+function el(tag,text,cls) { const node=document.createElement(tag); if(text !== undefined) node.textContent=text; if(cls) node.className=cls; return node; }
+function link(label,href) { const node=el("a",label); node.href=href; return node; }
+function options(id,entries) { for(const [value,label] of entries) { const node=el("option",label); node.value=value; $(id).append(node); } }
+function authors(p) { return p.bibliographic.author.map(a=>a.literal || [a.given,a.family].filter(Boolean).join(" ")).join(", "); }
+function list(parent,items,renderItem) { const ul=el("ul"); for(const item of items) { const li=el("li"); if(renderItem) renderItem(li,item); else li.textContent=item; ul.append(li); } parent.append(ul); }
+function textField(parent,label,value) { if(!value) return; const p=el("p"); p.append(el("strong",label+" "),document.createTextNode(value)); parent.append(p); }
+function analysisCard(a) {
+  const node=el("section",undefined,"analysis"); node.dataset.analysis=a.id;
+  node.append(el("h4",a.title),el("p",a.claim));
+  textField(node,"Limits:",a.limits);
+  list(node,a.sources,(li,s)=>{ li.textContent=s.paper+" · "+s.locator+" Version: "+s.version; });
+  if(a.examples.length) list(node,a.examples,(li,e)=>{ li.textContent=e.text+" — "+e.expected+" ["+e.origin+"]"; });
+  list(node,a.implementations,(li,i)=>{ li.append(el("strong",t.frameworks[i.backend]+" · "+t.implementation_statuses[i.status]+". "),document.createTextNode(i.scope)); });
+  const evidence=el("p","Code and verification: ");
+  a.code.forEach((path,i)=>{ if(i) evidence.append(document.createTextNode(" · ")); evidence.append(link(path,"../../../"+path)); });
+  node.append(evidence);
+  textField(node,"Next:",a.next_action);
+  textField(node,"Community review:",a.community_review);
+  return node;
+}
+function paperCard(p) {
+  const b=p.bibliographic, node=el("article"); node.id=p.id; node.dataset.paper=p.id;
+  node.append(el("div",p.id+" · "+b.issued["date-parts"][0][0]+" · "+b.type,"record-key"));
+  const heading=el("h3"); heading.append(b.URL?link(b.title,b.URL):document.createTextNode(b.title)); node.append(heading);
+  node.append(el("p",authors(p)),el("p",[b["container-title"] || b.publisher,b.volume,b.issue?"issue "+b.issue:null,b.page?"pp. "+b.page:null].filter(Boolean).join(" · "),"muted"));
+  const tags=el("div",undefined,"tags");
+  for(const kind of ["frameworks","categories"]) for(const value of p.tags[kind]) tags.append(el("span",labelMaps[kind][value],"tag"));
+  if(p.ttr_integration) tags.append(el("span",t.ttr_integrations[p.ttr_integration],"tag"));
+  p.tags.languages.forEach(value=>tags.append(el("span",value,"tag"))); node.append(tags);
+  node.append(el("div",t.review_statuses[p.review.status],"review"),el("p",p.review.scope,"muted"));
+  const details=el("details"); details.append(el("summary","Evidence, version & next reading step"));
+  textField(details,"Evidence:",t.evidence_levels[p.review.evidence_level]);
+  textField(details,"Classification basis:",p.classification_basis);
+  textField(details,"Mechanisms:",p.tags.mechanisms.map(m=>t.mechanisms[m]).join("; ") || "Not yet indexed from the source.");
+  textField(details,"Metadata checked against:",p.metadata_provenance.join("; "));
+  textField(details,"Dates:",p.date_note);
+  textField(details,"Next:",p.next_action);
+  textField(details,"Community review:",p.review.community_review);
+  if(!p.versions.length) details.append(el("p","No inspected PDF fingerprint recorded."));
+  for(const v of p.versions) {
+    details.append(el("p",v.description+" · "+v.pdf_pages+" physical PDF pages"));
+    details.append(el("p",v.inspected_filename,"muted"),el("code","SHA-256 "+v.sha256));
+    if(v.public_location) { const loc=el("p"); loc.append(link("Source / version location",v.public_location)); details.append(loc); }
+  }
+  node.append(details);
+  const cards=byPaper[p.id];
+  if(cards.length) {
+    const related=el("details"); related.className="related";
+    related.append(el("summary","Related implementation / research cards ("+cards.length+")"));
+    related.append(el("p","These statuses apply to the bounded analyses below, not the entire publication.","muted"));
+    cards.forEach(a=>related.append(analysisCard(a))); node.append(related);
+  }
+  return node;
+}
+options("collection",t.collections.map(c=>[c.id,c.label]));
+options("category",Object.entries(categories));
+for(const [id,map] of [["framework",t.frameworks],["integration",t.ttr_integrations],["mechanism",t.mechanisms],["review",t.review_statuses],["role",t.roles]]) options(id,Object.entries(map));
+options("language",[...new Set(data.papers.flatMap(p=>p.tags.languages))].sort().map(x=>[x,x]));
+$("date").textContent=data.date;
+for(const [count,label] of [[data.papers.length,"selected works"],[data.papers.reduce((n,p)=>n+p.versions.length,0),"fingerprinted source versions"],[data.analyses.length,"research cards"],[data.categories.length,"topic categories"]]) { const metric=el("div"); metric.append(el("strong",count),document.createTextNode(label)); $("stats").append(metric); }
+const controls=["search","collection","category","framework","integration","language","mechanism","review","role"];
+function render() {
+  const q=$("search").value.trim().toLocaleLowerCase();
+  const exactId=data.papers.find(p=>p.id.toLocaleLowerCase()===q)?.id;
+  const collection=t.collections.find(c=>c.id===$("collection").value);
+  const filtered=data.papers.filter(p=>{
+    for(const [id,kind] of [["category","categories"],["framework","frameworks"],["language","languages"],["mechanism","mechanisms"],["role","roles"]]) if($(id).value && !p.tags[kind].includes($(id).value)) return false;
+    if($("review").value && p.review.status !== $("review").value) return false;
+    if($("integration").value && p.ttr_integration !== $("integration").value) return false;
+    if(collection && !p.tags.categories.some(c=>collection.categories.includes(c))) return false;
+    const searchable=[p.id,p.bibliographic.title,authors(p),p.bibliographic["container-title"],p.bibliographic.publisher,p.review.scope,p.next_action,t.ttr_integrations[p.ttr_integration],...p.tags.languages,...Object.entries(labelMaps).flatMap(([kind,map])=>p.tags[kind].map(k=>map[k])),...byPaper[p.id].map(a=>[a.id,a.title,a.claim,...a.topics.map(id=>topics[id])].join(" "))].join(" ").toLocaleLowerCase();
+    return exactId ? p.id===exactId : !q || searchable.includes(q);
+  }).sort((a,b)=>b.bibliographic.issued["date-parts"][0][0]-a.bibliographic.issued["date-parts"][0][0] || a.id.localeCompare(b.id));
+  $("papers").replaceChildren(...filtered.map(paperCard));
+  $("result-count").textContent=filtered.length+" / "+data.papers.length+" selected works";
+  $("empty").hidden=filtered.length!==0;
+}
+controls.forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));
+$("clear").addEventListener("click",()=>{ controls.forEach(id=>$(id).value=""); render(); });
+const candidates=data.discovery.candidates;
+const counts=candidates.reduce((acc,c)=>{ acc[c.screening]=(acc[c.screening]||0)+1; return acc; },{});
+$("discovery-count").textContent=candidates.length+" title matches from "+data.discovery.returned+" returned results: "+(counts.needs_screening||0)+" need screening, "+(counts.already_catalogued||0)+" already selected, "+(counts.excluded||0)+" excluded.";
+for(const c of candidates) { const li=el("li"); li.append(link(c.title,c.url),el("p",c.screening.replaceAll("_"," ")+" · "+c.reason,"muted")); if(c.screening_note) li.append(el("p",c.screening_note,"muted")); $("discovery").append(li); }
+render();
+</script>
+</body>
+</html>

@@ -22,6 +22,9 @@ jobs:
       - name: Build
         run: uv build
 
+      - name: Check release contents
+        run: python3 scripts/check_release_contents.py dist
+
       - name: Generate changelog
         uses: orhun/git-cliff-action@v4
         id: cliff
@@ -34,9 +37,10 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: "TTR induction/learning algorithm fully working"
+          name: ${{ github.ref_name }}
           body_path: CHANGES.md
           files: dist/*
 
       - name: Publish to PyPI
+        if: vars.ENABLE_PYPI_PUBLISH == 'true'
         uses: pypa/gh-action-pypi-publish@release/v1

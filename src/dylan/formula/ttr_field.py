@@ -65,6 +65,9 @@ class TTRField(Formula):
             if label is None:
                 return None
             manifest = Formula.create(type_s)
+            if manifest is None:
+                logger.debug("Unparseable manifest in TTR field: %s", s)
+                return None
             ds_type = DSType.parse(ds_type_s)
             if ds_type is None:
                 logger.debug("dsType is null")
@@ -285,6 +288,10 @@ class TTRField(Formula):
             return f"{self.label}{mid} {TTR_LABEL_SEPARATOR} {self.ds_type}"
         rhs = "" if self.manifest_type is None else str(self.manifest_type)
         return f"{self.label} {TTR_LABEL_SEPARATOR} {rhs}"
+
+    def __hash__(self) -> int:
+        """String-based hash consistent with dataclass ``__eq__`` (equal fields ⇒ equal str)."""
+        return hash((TTRField, str(self)))
 
     def java_hash_code(self) -> int:
         """Java ``TTRField.hashCode``: fold ``dsType``, ``label``, manifest ``type`` with prime 31."""

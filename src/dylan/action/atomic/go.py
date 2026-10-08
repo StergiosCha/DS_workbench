@@ -35,7 +35,12 @@ class Go(Effect):
             return None
 
     def exec_tuple_context(self, tree: Tree, context: Any) -> Tree | None:
-        addr = tree.pointer.go_modality(self.modality)
+        from dylan.action.meta.meta_modality import MetaModality
+
+        modality = self.modality.instantiate()
+        if isinstance(modality, MetaModality):
+            return None
+        addr = tree.pointer.go_modality(modality)
         if addr is None or addr not in tree:
             logger.debug("go: cannot reach node via %s from %s", self.modality, tree.pointer)
             return None
@@ -43,7 +48,7 @@ class Go(Effect):
         return tree
 
     def instantiate(self) -> Effect:
-        return Go(self.modality)
+        return Go(self.modality.instantiate())
 
     def __str__(self) -> str:
         return f"go({self.modality})"

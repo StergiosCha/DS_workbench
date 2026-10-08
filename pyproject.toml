@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=75", "setuptools-scm>=8", "wheel"]
+requires = ["setuptools>=77", "setuptools-scm>=8", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,7 +8,8 @@ dynamic = ["version"]
 description = "DyLan, the Dynamic Syntax parser in Python"
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "BSD-3-Clause (see DyLan upstream LICENSE.txt)" }
+# No blanket SPDX claim while the inherited licence mismatch remains unresolved.
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "licenses/*.txt"]
 authors = [{ name = "Arash Ashrafzadeh" }]
 keywords = ["computational-linguistics", "computational-semantics", "semantic-parsing", "natural-language-processing", "parser", "ttr", "dialogue"]
 classifiers = [
@@ -22,6 +23,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
+    "certifi>=2024.2.2",
     "loguru>=0.7",
     "pyyaml>=6.0.3",
     "rich>=14.3.3",
@@ -30,10 +32,13 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/incrementaliser/DynamicSyntax"
-Repository = "https://github.com/incrementaliser/DynamicSyntax"
+Homepage = "https://ds-workbench.vercel.app/"
+Repository = "https://github.com/StergiosCha/DS_workbench"
+Issues = "https://github.com/StergiosCha/DS_workbench/issues"
+Upstream = "https://github.com/incrementaliser/DynamicSyntax"
 
 [project.optional-dependencies]
+hosting = ["fastapi==0.135.1", "uvicorn==0.41.0"]
 gui = ["flet>=0.24.0"]
 nlp = ["nltk>=3.9", "spacy>=3.8"]
 viz = ["plotly>=5", "pandas>=2"]
@@ -47,6 +52,7 @@ dev = [
     "ruff>=0.9",
     "rich>=13",
     "pytest-timeout>=2.4.0",
+    "httpx>=0.28,<1",
 ]
 
 [project.scripts]
@@ -54,6 +60,7 @@ dylan-gui = "dylan.gui.app:main"
 dynamicsyntax-gui = "dylan.gui.app:main"
 dylan-serve-web = "dylan.web_dev:main"
 dynamicsyntax-serve-web = "dylan.web_dev:main"
+ds-workbench = "dylan.workbench_server:main"
 dsttr-induction = "dylan.induction.pipeline.cli:main"
 
 [tool.setuptools_scm]
@@ -61,11 +68,17 @@ dsttr-induction = "dylan.induction.pipeline.cli:main"
 [tool.setuptools.package-data]
 dynamicsyntax = ["grammars/**/*"]
 "dynamicsyntax.resources" = ["**/*.txt", "**/__init__.py"]
+"dynamicsyntax.workbench_assets" = ["*.html", "*.js", "*.css", "*.svg"]
+"dynamicsyntax.workbench_data" = ["greek-lexicon/gdt-train.json", "greek-lexicon/README.md", "greek-clitics/corpus.jsonl", "coverage/paragraph-baseline.json", "coverage/open-text-results.json"]
 "dylan.formula.latex" = ["*.sty", "*.txt"]
+
+[tool.setuptools]
+# Only explicit runtime assets enter wheels; research data remains in the source distribution.
+include-package-data = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 # ProcessPoolExecutor uses fork on Linux; pytest's threaded parent triggers this harmless warning.
 filterwarnings = ["ignore::DeprecationWarning:multiprocessing.popen_fork"]
 

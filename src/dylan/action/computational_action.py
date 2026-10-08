@@ -21,6 +21,8 @@ class ComputationalAction(Action):
         lines_or_effect: list[str] | Effect,
         always_good: bool = False,
         backtrack_on_success: bool = False,
+        *,
+        completion: bool = False,
     ) -> None:
         """Construct from source *lines* or a ready *Effect* (Java constructor overloads)."""
         if isinstance(lines_or_effect, Effect):
@@ -31,6 +33,7 @@ class ComputationalAction(Action):
             eff = EffectFactory.create_lines(self._source_lines)
         super().__init__(name, eff, backtrack_on_success)
         self.always_good = always_good
+        self.completion = completion
 
     def is_always_good(self) -> bool:
         """Return whether this action belongs to the non-optional star grammar."""
@@ -49,9 +52,9 @@ class ComputationalAction(Action):
         assert self.effect is not None
         if self.name.startswith(self.HYP_ADJUNCTION_PREFIX) or self.name.startswith("link"):
             # Java: ``new ComputationalAction(name, this.action)`` — flags default false.
-            return ComputationalAction(self.name, self.effect)
+            return ComputationalAction(self.name, self.effect, completion=self.completion)
         # Java: ``new ComputationalAction(name, this.action.instantiate())``.
-        return ComputationalAction(self.name, self.effect.instantiate())
+        return ComputationalAction(self.name, self.effect.instantiate(), completion=self.completion)
 
     def exec_exhaustively(
         self,
@@ -74,6 +77,7 @@ class ComputationalAction(Action):
                 ite,
                 self.always_good,
                 self.backtrack_on_success,
+                completion=self.completion,
             )
             results.append((rebuilt, t))
         return results

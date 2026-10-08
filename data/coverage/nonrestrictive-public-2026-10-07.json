@@ -1,0 +1,59 @@
+{
+  "url": "https://ds-workbench.vercel.app",
+  "checks": [
+    {
+      "backend": "classical",
+      "sentence": "John, who Mary knows, walks.",
+      "complete": true,
+      "meaning": "(walk(john) ∧ know(mary, john))"
+    },
+    {
+      "backend": "classical",
+      "sentence": "John, who walks quickly, arrives.",
+      "complete": true,
+      "meaning": "(arrive(john) ∧ quickly(walk(john)))"
+    },
+    {
+      "backend": "classical",
+      "sentence": "Mary knows John, who walks.",
+      "complete": true,
+      "meaning": "(know(mary, john) ∧ walk(john))"
+    },
+    {
+      "backend": "classical",
+      "sentence": "John, who Mary walks, arrives.",
+      "complete": false,
+      "meaning": null
+    },
+    {
+      "backend": "mltt",
+      "sentence": "John, who Mary knows, walks.",
+      "complete": true,
+      "meaning": "(walk(john) ∧ know(mary, john))"
+    },
+    {
+      "backend": "mltt",
+      "sentence": "John, who walks quickly, arrives.",
+      "complete": true,
+      "meaning": "(arrive(john) ∧ quickly(walk(john)))"
+    },
+    {
+      "backend": "mltt",
+      "sentence": "Mary knows John, who walks.",
+      "complete": true,
+      "meaning": "(know(mary, john) ∧ walk(john))"
+    },
+    {
+      "backend": "mltt",
+      "sentence": "John, who Mary walks, arrives.",
+      "complete": false,
+      "meaning": null
+    }
+  ],
+  "browser_errors": [],
+  "date": "2026-10-07",
+  "deployment": "dpl_8uf3JUa8tkh5jvVD3XB1FwkqDC9C",
+  "kind": "authored construction browser smoke checks",
+  "interpretation": "Six positive derivations and two expected incomplete cases; not an unseen-text coverage estimate.",
+  "models_used": false
+}

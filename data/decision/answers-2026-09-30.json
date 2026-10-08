@@ -1,0 +1,2599 @@
+{
+  "309e9355042373053df148d69682c6cf69b3e511af7627230bbf5fa79712e988": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "other_or_none": 0,
+          "e0": 1,
+          "e1": 0
+        },
+        "confidence": 1
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "3dda28a55d07199fb308a4a38efda863b1c3e2b1e3d944ac4cff70ef6195cfce",
+    "cache_key": "309e9355042373053df148d69682c6cf69b3e511af7627230bbf5fa79712e988",
+    "stub": false,
+    "latency_ms": 882.815,
+    "input_tokens": 959,
+    "cost_usd": 4.0278e-05
+  },
+  "1f3d16147bc6d4601d877defd344d16aebddb1340e8b3e26fdb0905adc2ef728": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0,
+          "other_or_none": 0,
+          "e0": 1
+        },
+        "confidence": 1
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "4f85e7ce7c8ddc3e43ebf1bdcc72c1d305e7db57241296eb9a2c0df7d2219d9c",
+    "cache_key": "1f3d16147bc6d4601d877defd344d16aebddb1340e8b3e26fdb0905adc2ef728",
+    "stub": false,
+    "latency_ms": 1060.042,
+    "input_tokens": 785,
+    "cost_usd": 3.297e-05
+  },
+  "355ccdf3dc0ea2ea5635aa4cd817a3bd977ac92322df98d168406892c1d649aa": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e0": 0.11,
+          "other_or_none": 0.06,
+          "e1": 0.83
+        },
+        "confidence": 0.74
+      }
+    },
+    "question_set_hash": "96d24cda97f8c352989b73d97f22326e7eee4bd70888aaa48c16ffaba78fe5e0",
+    "chunk_id": "d6426168fbf0fa7977b73ec33e07d6760b50a3641674a329a1f9c9bbbab82abe",
+    "cache_key": "355ccdf3dc0ea2ea5635aa4cd817a3bd977ac92322df98d168406892c1d649aa",
+    "stub": false,
+    "latency_ms": 1086.533,
+    "input_tokens": 734,
+    "cost_usd": 3.0828e-05
+  },
+  "2d9bc75b31bcefe3b4699be4740611b9d0ecf51134465a6995f696b479a9ac8d": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "other_or_none": 0.01,
+          "e1": 0,
+          "e0": 0.99
+        },
+        "confidence": 0.98
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "0e708e25d80af69117c2117474641fee73d4d76391278d535c05eaefefb449d9",
+    "cache_key": "2d9bc75b31bcefe3b4699be4740611b9d0ecf51134465a6995f696b479a9ac8d",
+    "stub": false,
+    "latency_ms": 1239.246,
+    "input_tokens": 956,
+    "cost_usd": 4.0152e-05
+  },
+  "3e2480beced1b02eb6a499a910986a18abe33bc3fe1b5ea47ff5aa947d2ad202": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.83,
+          "other_or_none": 0.04,
+          "e0": 0.13
+        },
+        "confidence": 0.76
+      }
+    },
+    "question_set_hash": "96d24cda97f8c352989b73d97f22326e7eee4bd70888aaa48c16ffaba78fe5e0",
+    "chunk_id": "f3f5804623b8276dfebb29a2556300a872efb8a1d3cebf7c2092f3e7c7b8a05d",
+    "cache_key": "3e2480beced1b02eb6a499a910986a18abe33bc3fe1b5ea47ff5aa947d2ad202",
+    "stub": false,
+    "latency_ms": 655.935,
+    "input_tokens": 908,
+    "cost_usd": 3.8136e-05
+  },
+  "6cedd350fcecc99c1e5cd1f1a4a69ffba68772a2ef28368ea2b0601ee2d5647a": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.88,
+          "other_or_none": 0.05,
+          "e0": 0.07
+        },
+        "confidence": 0.82
+      }
+    },
+    "question_set_hash": "96d24cda97f8c352989b73d97f22326e7eee4bd70888aaa48c16ffaba78fe5e0",
+    "chunk_id": "22fedaca4dee0644864fa656de5775676e699d0d77e13dc49efc6d73f29834f6",
+    "cache_key": "6cedd350fcecc99c1e5cd1f1a4a69ffba68772a2ef28368ea2b0601ee2d5647a",
+    "stub": false,
+    "latency_ms": 568.616,
+    "input_tokens": 901,
+    "cost_usd": 3.7842e-05
+  },
+  "9ae0c96e8f29e41351d648ccabd9c7109e0affde51b8a878ddd8a4212d5bc66a": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0,
+          "e0": 0.99,
+          "other_or_none": 0.01
+        },
+        "confidence": 0.99
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "5fef14d1cc65296e873cbe4b5bc4a10a8720ca8f5820da4f6104f8057aaa9f5c",
+    "cache_key": "9ae0c96e8f29e41351d648ccabd9c7109e0affde51b8a878ddd8a4212d5bc66a",
+    "stub": false,
+    "latency_ms": 725.405,
+    "input_tokens": 803,
+    "cost_usd": 3.3726e-05
+  },
+  "dfc1b33066b12342ef94f11d3b6e138b4dc8bfb4472d485bc111f2beeb10e5a1": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e0": 1,
+          "other_or_none": 0,
+          "e1": 0
+        },
+        "confidence": 0.99
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "b089f94460a76a120d83edb42ac2ea213b383b598a174bcdbfc76e3683a94529",
+    "cache_key": "dfc1b33066b12342ef94f11d3b6e138b4dc8bfb4472d485bc111f2beeb10e5a1",
+    "stub": false,
+    "latency_ms": 619.919,
+    "input_tokens": 785,
+    "cost_usd": 3.297e-05
+  },
+  "eae78223439a8a3ba9c342470347936452db484b44d2e043ecd941e4465f0ba4": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e0": 0.18,
+          "e1": 0.69,
+          "other_or_none": 0.13
+        },
+        "confidence": 0.54
+      }
+    },
+    "question_set_hash": "63b024c1499180c1010fc04aca62bb5b398a0dcd3961aaba41ef70866303e632",
+    "chunk_id": "929d45d76ea90d1454b78475fed2db613468292c380edd245a5b473c0e48ba42",
+    "cache_key": "eae78223439a8a3ba9c342470347936452db484b44d2e043ecd941e4465f0ba4",
+    "stub": false,
+    "latency_ms": 586.337,
+    "input_tokens": 734,
+    "cost_usd": 3.0828e-05
+  },
+  "ec0f4f60641f8b8db1961f30fc0591e90cad2222b8b0b225aca6b71c127a1da4": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "other_or_none": 0.01,
+          "e1": 0,
+          "e0": 0.99
+        },
+        "confidence": 0.98
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "7f4ca913060362f916f8f8c5cdcb3b6d7bf2d7b75522c8c05920b77ad478348d",
+    "cache_key": "ec0f4f60641f8b8db1961f30fc0591e90cad2222b8b0b225aca6b71c127a1da4",
+    "stub": false,
+    "latency_ms": 606.631,
+    "input_tokens": 956,
+    "cost_usd": 4.0152e-05
+  },
+  "9d10b6e63a9c2526b3987b90f5916d853255917e634f7572222a410c329a68e1": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c2": 0,
+          "c0": 0.05,
+          "uncertain": 0.95,
+          "c3": 0,
+          "c1": 0
+        },
+        "confidence": 0.92
+      }
+    },
+    "question_set_hash": "06d9488958d029630e679d5fb038b75155a3bee6a36075773b0670208fbab7be",
+    "chunk_id": "d52443152689abab305d31e6d4e1a95c94229a74d9e9dc4eb18d51bcee51af39",
+    "cache_key": "9d10b6e63a9c2526b3987b90f5916d853255917e634f7572222a410c329a68e1",
+    "stub": false,
+    "latency_ms": 541.883,
+    "input_tokens": 2123,
+    "cost_usd": 8.9166e-05
+  },
+  "f44d330ac0e7bffdbac0cf14e1cb66627163276cc4c538f38c689dccf3ced94c": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "other_or_none": 0.05,
+          "e1": 0.83,
+          "e0": 0.12
+        },
+        "confidence": 0.74
+      }
+    },
+    "question_set_hash": "96d24cda97f8c352989b73d97f22326e7eee4bd70888aaa48c16ffaba78fe5e0",
+    "chunk_id": "f0d4052f8feb27d6fd8fde15764e8aabacb6d5f8d327b43d79dcda042e27b72d",
+    "cache_key": "f44d330ac0e7bffdbac0cf14e1cb66627163276cc4c538f38c689dccf3ced94c",
+    "stub": false,
+    "latency_ms": 650.921,
+    "input_tokens": 1026,
+    "cost_usd": 4.3092e-05
+  },
+  "a93459dc4b5a035a0a2931508996c9f70defcd911ac9151c9e487f076119a730": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "uncertain": 0.9400000000000001,
+          "c2": 0,
+          "c0": 0.06,
+          "c3": 0,
+          "c1": 0
+        },
+        "confidence": 0.91
+      }
+    },
+    "question_set_hash": "06d9488958d029630e679d5fb038b75155a3bee6a36075773b0670208fbab7be",
+    "chunk_id": "2c1be6e1aa21b339b3ea3f37e7cc90904415094d7306ace238d9832a0951867d",
+    "cache_key": "a93459dc4b5a035a0a2931508996c9f70defcd911ac9151c9e487f076119a730",
+    "stub": false,
+    "latency_ms": 523.119,
+    "input_tokens": 2123,
+    "cost_usd": 8.9166e-05
+  },
+  "03bb688f609d9cc418bcfaa306a879d1186f0a88e7399892fcc8462991ec9ab3": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "other_or_none": 0,
+          "e0": 1,
+          "e1": 0
+        },
+        "confidence": 0.99
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "5fad66f9521c1df2990b262442339815159dbd10d8ff5438e9d97cbed79a746c",
+    "cache_key": "03bb688f609d9cc418bcfaa306a879d1186f0a88e7399892fcc8462991ec9ab3",
+    "stub": false,
+    "latency_ms": 550.592,
+    "input_tokens": 791,
+    "cost_usd": 3.3222e-05
+  },
+  "286edcc1ec91ed25e3d2cdb84c770b5b4c4eec629766c5e65cf6258b2d816be8": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "other_or_none": 0.1,
+          "e1": 0.66,
+          "e0": 0.24
+        },
+        "confidence": 0.49
+      }
+    },
+    "question_set_hash": "63b024c1499180c1010fc04aca62bb5b398a0dcd3961aaba41ef70866303e632",
+    "chunk_id": "f9e4b481ab1dd5e650a82ba4f363fcfd5ba710d39cda0df4a57bf889cead059a",
+    "cache_key": "286edcc1ec91ed25e3d2cdb84c770b5b4c4eec629766c5e65cf6258b2d816be8",
+    "stub": false,
+    "latency_ms": 514.218,
+    "input_tokens": 736,
+    "cost_usd": 3.0912e-05
+  },
+  "28f23f7ebf3b4f8210d842207587263ef5007052d0e5536ab9747784fe8b1282": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0,
+          "other_or_none": 0,
+          "e0": 1
+        },
+        "confidence": 0.99
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "640063aee68e46afcf8d1d284455e95fd64bbac74168768e50d46b2357aad0e8",
+    "cache_key": "28f23f7ebf3b4f8210d842207587263ef5007052d0e5536ab9747784fe8b1282",
+    "stub": false,
+    "latency_ms": 625.774,
+    "input_tokens": 791,
+    "cost_usd": 3.3222e-05
+  },
+  "2c60c649eb320bfd79b581e470d061ad7378ef7393f052cc26912f13f9fe73ff": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e0": 0.99,
+          "other_or_none": 0.01,
+          "e1": 0
+        },
+        "confidence": 0.98
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "12ac47046bc00f3ae546243f832f36e740f19d1b5876b58f2c103124ea7cd2f5",
+    "cache_key": "2c60c649eb320bfd79b581e470d061ad7378ef7393f052cc26912f13f9fe73ff",
+    "stub": false,
+    "latency_ms": 487.786,
+    "input_tokens": 967,
+    "cost_usd": 4.0614e-05
+  },
+  "b8dc6d661a06bc2fd1cc056a27233daa1498187196b96010d19ddbae85430467": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0,
+          "e0": 0.99,
+          "other_or_none": 0.01
+        },
+        "confidence": 0.99
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "6b4a3e8e901641ea9156fa3886ae5917f59e818b443d6fb67cd5f35b8fdc2905",
+    "cache_key": "b8dc6d661a06bc2fd1cc056a27233daa1498187196b96010d19ddbae85430467",
+    "stub": false,
+    "latency_ms": 499.354,
+    "input_tokens": 809,
+    "cost_usd": 3.3978e-05
+  },
+  "867a8577aef66eb855e6f3d9da60fbe289ee98bc4e66b2ca58992ad27cd10210": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.73,
+          "e0": 0.23,
+          "other_or_none": 0.04
+        },
+        "confidence": 0.6
+      }
+    },
+    "question_set_hash": "96d24cda97f8c352989b73d97f22326e7eee4bd70888aaa48c16ffaba78fe5e0",
+    "chunk_id": "96b202fbae75520a8fd16a19947074456e3ee773376c62c099e76b360261fb24",
+    "cache_key": "867a8577aef66eb855e6f3d9da60fbe289ee98bc4e66b2ca58992ad27cd10210",
+    "stub": false,
+    "latency_ms": 701.347,
+    "input_tokens": 736,
+    "cost_usd": 3.0912e-05
+  },
+  "c32e9e4fdccac0d87850ed714cc6d2cc5e537b0f29306c2d345f5994ad45b958": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "other_or_none": 0.06,
+          "e0": 0.13,
+          "e1": 0.8099999999999999
+        },
+        "confidence": 0.72
+      }
+    },
+    "question_set_hash": "96d24cda97f8c352989b73d97f22326e7eee4bd70888aaa48c16ffaba78fe5e0",
+    "chunk_id": "93650b7138b98b3279503923d71427b8dc5904e7fa7c4fbcc80f25c081453ab7",
+    "cache_key": "c32e9e4fdccac0d87850ed714cc6d2cc5e537b0f29306c2d345f5994ad45b958",
+    "stub": false,
+    "latency_ms": 633.218,
+    "input_tokens": 908,
+    "cost_usd": 3.8136e-05
+  },
+  "c47fe023eb28efebc84bd1a26703c1dd5b5b8aa4429ab1272c44a96633c5e745": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0,
+          "other_or_none": 0.01,
+          "e0": 0.99
+        },
+        "confidence": 0.99
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "af6379858b57bb6e4d7463493f0a773f667b1a818a0d9a8dfcdfe42bb82ae88a",
+    "cache_key": "c47fe023eb28efebc84bd1a26703c1dd5b5b8aa4429ab1272c44a96633c5e745",
+    "stub": false,
+    "latency_ms": 716.594,
+    "input_tokens": 879,
+    "cost_usd": 3.6918e-05
+  },
+  "c7ee1ea484b1065f8d73d75e4287c58d59a430c7a7107d82c182e990451943e2": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.78,
+          "other_or_none": 0.04,
+          "e0": 0.18
+        },
+        "confidence": 0.67
+      }
+    },
+    "question_set_hash": "96d24cda97f8c352989b73d97f22326e7eee4bd70888aaa48c16ffaba78fe5e0",
+    "chunk_id": "7a4a3100d0bfd456cd679684f6604a03e769db506de97a8e6bd68a0e15945ad2",
+    "cache_key": "c7ee1ea484b1065f8d73d75e4287c58d59a430c7a7107d82c182e990451943e2",
+    "stub": false,
+    "latency_ms": 555.795,
+    "input_tokens": 939,
+    "cost_usd": 3.9438e-05
+  },
+  "ccaeee80b05758c7e099a6723e791e74034a19e5a73e0ddc6f9e6d7fe039e5c4": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e0": 0.99,
+          "e1": 0,
+          "other_or_none": 0.01
+        },
+        "confidence": 0.99
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "ebd1d07ad98e93b3a1039d315f1514871b9e4ab85f7d880ffb2dbfedbc37acc8",
+    "cache_key": "ccaeee80b05758c7e099a6723e791e74034a19e5a73e0ddc6f9e6d7fe039e5c4",
+    "stub": false,
+    "latency_ms": 494.743,
+    "input_tokens": 967,
+    "cost_usd": 4.0614e-05
+  },
+  "d19f5f4f848aa39e557103ae4084e8de344ff98c7e057aa2d42ecffa81bb99f0": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "other_or_none": 0.07,
+          "e0": 0.18,
+          "e1": 0.75
+        },
+        "confidence": 0.62
+      }
+    },
+    "question_set_hash": "96d24cda97f8c352989b73d97f22326e7eee4bd70888aaa48c16ffaba78fe5e0",
+    "chunk_id": "e890ce52a0ceb43d881b993c46d61e3bed0124a3ba2e51c0a81b2be692b24630",
+    "cache_key": "d19f5f4f848aa39e557103ae4084e8de344ff98c7e057aa2d42ecffa81bb99f0",
+    "stub": false,
+    "latency_ms": 615.928,
+    "input_tokens": 824,
+    "cost_usd": 3.4608e-05
+  },
+  "e4347c12873f22a4a4eae657ff50734cae752fa60f4795895a06afbba9f0593d": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "uncertain": 0.94,
+          "c0": 0.05,
+          "c1": 0.01
+        },
+        "confidence": 0.91
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "568655efe0da8962b1957209a663cfd12718ff0fba5f6084fee3138907fc9ea6",
+    "cache_key": "e4347c12873f22a4a4eae657ff50734cae752fa60f4795895a06afbba9f0593d",
+    "stub": false,
+    "latency_ms": 495.795,
+    "input_tokens": 1451,
+    "cost_usd": 6.0942e-05
+  },
+  "f591b1650098c62cdf7852ffd2b34b796355eab5ca6279cf689905fd6c3852a0": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c1": 0.01,
+          "uncertain": 0.95,
+          "c0": 0.04
+        },
+        "confidence": 0.92
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "dc3562680bf9bfa3593dfb3efc195cb5c230c73f863954246862748a9d2f83cd",
+    "cache_key": "f591b1650098c62cdf7852ffd2b34b796355eab5ca6279cf689905fd6c3852a0",
+    "stub": false,
+    "latency_ms": 526.809,
+    "input_tokens": 1451,
+    "cost_usd": 6.0942e-05
+  },
+  "d74201400be119542778c0007d8bca56684289fd344b72cc0d95cb4828298b85": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.88,
+          "e0": 0.09,
+          "other_or_none": 0.03
+        },
+        "confidence": 0.82
+      }
+    },
+    "question_set_hash": "caebf35338d614fb34e78a6a3caf4f641f3ef53ec70eee93aade1de3e61023b3",
+    "chunk_id": "1a35c9da0ce571457676cf5745de94e4c827b1290344d0683ad9adcfc0be4ed4",
+    "cache_key": "d74201400be119542778c0007d8bca56684289fd344b72cc0d95cb4828298b85",
+    "stub": false,
+    "latency_ms": 758.506,
+    "input_tokens": 773,
+    "cost_usd": 3.2466e-05
+  },
+  "0b11904523785cb159a4421715cd428ec629e2aff956558232461cd5c578dbbc": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "other_or_none": 0.05,
+          "e0": 0.65,
+          "e1": 0.3
+        },
+        "confidence": 0.48
+      }
+    },
+    "question_set_hash": "a99ccc96fb36f7cbcc182b74e1b93adc3d0c452e30ffca9ce29fc679e32fc464",
+    "chunk_id": "61576f640851a142f0b3de830ab818aa7f956e59669df71815238bad06a0ad56",
+    "cache_key": "0b11904523785cb159a4421715cd428ec629e2aff956558232461cd5c578dbbc",
+    "stub": false,
+    "latency_ms": 507.121,
+    "input_tokens": 868,
+    "cost_usd": 3.6456e-05
+  },
+  "165c6c10b7367587b0965a2b6a1ea315649f32ab871336eaee5870c4111bdc20": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e0": 0.67,
+          "other_or_none": 0.03,
+          "e1": 0.3
+        },
+        "confidence": 0.51
+      }
+    },
+    "question_set_hash": "ba53557bd405826b8ab87c42731a9e6976c60ca647146dbe86c7ea9f6dcb4a05",
+    "chunk_id": "89090f7fdbe009beb7b1267a649c3bc53a3a1fa5c49b0177a9748d527da71bcf",
+    "cache_key": "165c6c10b7367587b0965a2b6a1ea315649f32ab871336eaee5870c4111bdc20",
+    "stub": false,
+    "latency_ms": 536.822,
+    "input_tokens": 761,
+    "cost_usd": 3.1962e-05
+  },
+  "46e9587510bcd7fb28f8d649abb840384d265cb0908a71e030f5f0d141325f95": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "e1": 0.14,
+          "other_or_none": 0.53,
+          "e0": 0.33
+        },
+        "confidence": 0.29
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "d4eeac2f44687faad9d4163725353de186308f126d4508c5518538cbe2427623",
+    "cache_key": "46e9587510bcd7fb28f8d649abb840384d265cb0908a71e030f5f0d141325f95",
+    "stub": false,
+    "latency_ms": 509.434,
+    "input_tokens": 817,
+    "cost_usd": 3.4314e-05
+  },
+  "2153ff6def21bec25ad04955a8a51ceb450b3b90b48965b3ece4750233a7d59f": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e0": 0.34,
+          "e1": 0.45,
+          "other_or_none": 0.21
+        },
+        "confidence": 0.17
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "a9e1badf799f1fa6858c952d7177b9f4645aba4c993d5783792ce536a8df896e",
+    "cache_key": "2153ff6def21bec25ad04955a8a51ceb450b3b90b48965b3ece4750233a7d59f",
+    "stub": false,
+    "latency_ms": 656.357,
+    "input_tokens": 729,
+    "cost_usd": 3.0618e-05
+  },
+  "697e484b143212011bea2042caf28ed8395e77583e09bae54d85abe43b65f81d": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "other_or_none": 0.16,
+          "e0": 0.09,
+          "e1": 0.75
+        },
+        "confidence": 0.62
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "e5c5d9878ade614f535c39ea4e511c0be01e2bd8ce929be1c16cf9b0acb300ba",
+    "cache_key": "697e484b143212011bea2042caf28ed8395e77583e09bae54d85abe43b65f81d",
+    "stub": false,
+    "latency_ms": 548.266,
+    "input_tokens": 655,
+    "cost_usd": 2.751e-05
+  },
+  "6b8893afb7d8c4e5dabec5ba6b3c425b6bceef3db36017bddde11b18579acd13": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.73,
+          "other_or_none": 0.05,
+          "e0": 0.22
+        },
+        "confidence": 0.59
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "9ad85defd4c0328f5df2318f0825351d0126b0415545fd68195e6e648f9967fc",
+    "cache_key": "6b8893afb7d8c4e5dabec5ba6b3c425b6bceef3db36017bddde11b18579acd13",
+    "stub": false,
+    "latency_ms": 622.935,
+    "input_tokens": 647,
+    "cost_usd": 2.7174e-05
+  },
+  "6c2b7cdf0a73cd04607916a6e08c1af380302eca91a2e9969ad71ac6027da366": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0.25,
+          "e0": 0.61,
+          "other_or_none": 0.14
+        },
+        "confidence": 0.42
+      }
+    },
+    "question_set_hash": "0ec2370ac684b89ab344481ac0ccc26fc482fe5d9c9c2bfcafa8d5bda8a3d974",
+    "chunk_id": "db1e8a13526b9a7c5291b354a44395747b22fb235a44c3ad3c6220f89786a87d",
+    "cache_key": "6c2b7cdf0a73cd04607916a6e08c1af380302eca91a2e9969ad71ac6027da366",
+    "stub": false,
+    "latency_ms": 508.57,
+    "input_tokens": 758,
+    "cost_usd": 3.1836e-05
+  },
+  "7c1f490f097929f030133797fc66bed22befa1b6173797356502154070697a02": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "e1": 0.17,
+          "other_or_none": 0.49,
+          "e0": 0.34
+        },
+        "confidence": 0.23
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "60507521319ab69a723861397d005f57dc9cbaf3f55b4e00aaf286bc7050b9ad",
+    "cache_key": "7c1f490f097929f030133797fc66bed22befa1b6173797356502154070697a02",
+    "stub": false,
+    "latency_ms": 503.753,
+    "input_tokens": 965,
+    "cost_usd": 4.053e-05
+  },
+  "9d13c9ae71f1f65a8095c572b6967f4350e8bf0e6d760b4b2a01f054731787aa": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "e1": 0.24,
+          "e0": 0.2,
+          "other_or_none": 0.56
+        },
+        "confidence": 0.34
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "1cab5d67a913d3fac3e82ab10127ff8c0bdd36422e25edb0f4fa049d84a210d9",
+    "cache_key": "9d13c9ae71f1f65a8095c572b6967f4350e8bf0e6d760b4b2a01f054731787aa",
+    "stub": false,
+    "latency_ms": 496.321,
+    "input_tokens": 655,
+    "cost_usd": 2.751e-05
+  },
+  "a4879a336609560b93f3fad103a073abada633e26205e349406766b5c7dc548e": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e0": 0.06,
+          "e1": 0.9,
+          "other_or_none": 0.04
+        },
+        "confidence": 0.85
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "f8cf3a5d85ae3fd32a75f06b50c20c2bbf963cfb84966cef067cee32846ce521",
+    "cache_key": "a4879a336609560b93f3fad103a073abada633e26205e349406766b5c7dc548e",
+    "stub": false,
+    "latency_ms": 526.867,
+    "input_tokens": 756,
+    "cost_usd": 3.1752e-05
+  },
+  "a711919b9493c3cd7319f4335acd7d62c6cb0530d0b029386d6f5fdab4e2c869": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0.36,
+          "other_or_none": 0.03,
+          "e0": 0.61
+        },
+        "confidence": 0.41
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "ebf57562cad9a6f8d507b3d46f84d033533e9590740a31b64098f30056a37a6b",
+    "cache_key": "a711919b9493c3cd7319f4335acd7d62c6cb0530d0b029386d6f5fdab4e2c869",
+    "stub": false,
+    "latency_ms": 526.493,
+    "input_tokens": 657,
+    "cost_usd": 2.7594e-05
+  },
+  "d4bdc11af55c82507009f0890d2c99a58492a7a684ce24e1236cfd943d2eeb28": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e0": 0.76,
+          "other_or_none": 0.03,
+          "e1": 0.21
+        },
+        "confidence": 0.63
+      }
+    },
+    "question_set_hash": "a99ccc96fb36f7cbcc182b74e1b93adc3d0c452e30ffca9ce29fc679e32fc464",
+    "chunk_id": "8fb79139287c1586dc2eaceab69b1eff680c9a90ecc5b583898b2c509396e26c",
+    "cache_key": "d4bdc11af55c82507009f0890d2c99a58492a7a684ce24e1236cfd943d2eeb28",
+    "stub": false,
+    "latency_ms": 549.566,
+    "input_tokens": 771,
+    "cost_usd": 3.2382e-05
+  },
+  "d755a679dce9f5d015ac7c28b3deddf1cf24118a3a8ad2f8159d01f2bebf41dc": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "e1": 0.16,
+          "other_or_none": 0.66,
+          "e0": 0.18
+        },
+        "confidence": 0.49
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "63e27a168d90f26ffbcc1568bc064859e47637a55d3b4b0ffb67ecb2278e366e",
+    "cache_key": "d755a679dce9f5d015ac7c28b3deddf1cf24118a3a8ad2f8159d01f2bebf41dc",
+    "stub": false,
+    "latency_ms": 493.925,
+    "input_tokens": 818,
+    "cost_usd": 3.4356e-05
+  },
+  "e954f8611b83a5be4409c7f67ae2f740c5f0abbc8f31ded1b2b10e0e6abfe8d7": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "other_or_none": 0.39,
+          "e1": 0.42,
+          "e0": 0.19
+        },
+        "confidence": 0.14
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "51c4cedf088ccb818cf0e134b8eeb6b92e609aa6e183248a4fac27a0bd801011",
+    "cache_key": "e954f8611b83a5be4409c7f67ae2f740c5f0abbc8f31ded1b2b10e0e6abfe8d7",
+    "stub": false,
+    "latency_ms": 534.428,
+    "input_tokens": 647,
+    "cost_usd": 2.7174e-05
+  },
+  "e42db37ca17bfd4f30036f7c18539e3fc36d16dd7166970f65cb0aa0c4b6027a": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "e0": 0.29,
+          "e1": 0.12,
+          "other_or_none": 0.59
+        },
+        "confidence": 0.39
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "66c75c9efa8eca0ab192d052419375e71d7afc032e773f1060ec6a7b49718673",
+    "cache_key": "e42db37ca17bfd4f30036f7c18539e3fc36d16dd7166970f65cb0aa0c4b6027a",
+    "stub": false,
+    "latency_ms": 566.963,
+    "input_tokens": 881,
+    "cost_usd": 3.7002e-05
+  },
+  "e9998044d66567f7fa3cbe64d68d3f244d633e2ce2a01faf7b190aa1561dc6ce": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "other_or_none": 0.28,
+          "e0": 0.4,
+          "e1": 0.32
+        },
+        "confidence": 0.1
+      }
+    },
+    "question_set_hash": "a99ccc96fb36f7cbcc182b74e1b93adc3d0c452e30ffca9ce29fc679e32fc464",
+    "chunk_id": "00a342b83fa241b4766366eccccb2889057cf96f4c9ef41c5b05c619bf3e28ca",
+    "cache_key": "e9998044d66567f7fa3cbe64d68d3f244d633e2ce2a01faf7b190aa1561dc6ce",
+    "stub": false,
+    "latency_ms": 747.819,
+    "input_tokens": 767,
+    "cost_usd": 3.2214e-05
+  },
+  "f2b66254c79993558ddfdd1e8ecb8e3d9ab0945d06a212723fee708c45af67da": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0.36,
+          "other_or_none": 0.03,
+          "e0": 0.61
+        },
+        "confidence": 0.42
+      }
+    },
+    "question_set_hash": "0ec2370ac684b89ab344481ac0ccc26fc482fe5d9c9c2bfcafa8d5bda8a3d974",
+    "chunk_id": "f5d882b635a8667448fd8e178898a394ae834f9302a8b261da1502631227729f",
+    "cache_key": "f2b66254c79993558ddfdd1e8ecb8e3d9ab0945d06a212723fee708c45af67da",
+    "stub": false,
+    "latency_ms": 602.282,
+    "input_tokens": 761,
+    "cost_usd": 3.1962e-05
+  },
+  "1801e3b8e5d1688b2b26c1e62785e67b5f342ed0bffea613f9c93bd0c6189c92": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.37,
+          "c1": 0.22,
+          "c0": 0.41
+        },
+        "confidence": 0.12
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "cc20740b0938bf738c3ba91570fbc11c7fcc8fc3d72cea5d70ddbe1a65a4ce1b",
+    "cache_key": "1801e3b8e5d1688b2b26c1e62785e67b5f342ed0bffea613f9c93bd0c6189c92",
+    "stub": false,
+    "latency_ms": 514.423,
+    "input_tokens": 1281,
+    "cost_usd": 5.3802e-05
+  },
+  "224b5bec411428717366e18562d5d7fe0a50bfd2c104f7da6680f4cdcf9a4e95": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c0": 0.42,
+          "uncertain": 0.27,
+          "c1": 0.31
+        },
+        "confidence": 0.13
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "e6f929fe29a6592f7e0e95a3a9bed9d8835a312d72b15ac352489744a2c6f51e",
+    "cache_key": "224b5bec411428717366e18562d5d7fe0a50bfd2c104f7da6680f4cdcf9a4e95",
+    "stub": false,
+    "latency_ms": 527.411,
+    "input_tokens": 1328,
+    "cost_usd": 5.5776e-05
+  },
+  "2f59b9a5f101cf41b180149eb3b92a8ec23877ffdcae265d6a4ca2cf477028dc": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c0": 0.84,
+          "c1": 0.08,
+          "c3": 0.01,
+          "uncertain": 0.04,
+          "c6": 0,
+          "c5": 0,
+          "c4": 0,
+          "c2": 0.03
+        },
+        "confidence": 0.81
+      }
+    },
+    "question_set_hash": "34be38d88ca0f00c7a55fda172522a26f24a0086e4230eeab95a18e8455b30e6",
+    "chunk_id": "f42814872bd97bec2bd821ddbfe9ca3d821acc4756772fd19247db0e0047f396",
+    "cache_key": "2f59b9a5f101cf41b180149eb3b92a8ec23877ffdcae265d6a4ca2cf477028dc",
+    "stub": false,
+    "latency_ms": 537.139,
+    "input_tokens": 2751,
+    "cost_usd": 0.000115542
+  },
+  "280f5e8d169e5f2f7cfe3d28c58c7de4158f714e56fabe2ff7bc0f65edce0a4d": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.3,
+          "uncertain": 0.26,
+          "c0": 0.44
+        },
+        "confidence": 0.16
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "8d993293d76d6c8a14097af96c6dbfac817f1102c0d8a649af2a2d8d1e767512",
+    "cache_key": "280f5e8d169e5f2f7cfe3d28c58c7de4158f714e56fabe2ff7bc0f65edce0a4d",
+    "stub": false,
+    "latency_ms": 753.476,
+    "input_tokens": 1332,
+    "cost_usd": 5.5944e-05
+  },
+  "314ba9dd2eee5c9ad11bf97fca10792fc36ddcc705d82fabf9f2f98770d291a1": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c1": 0.24,
+          "c3": 0.04,
+          "uncertain": 0.47,
+          "c0": 0.19,
+          "c2": 0.04,
+          "c4": 0.02
+        },
+        "confidence": 0.36
+      }
+    },
+    "question_set_hash": "09e757ee4cbaa6a666e0aef3903987128b55b21090abd220371f9ca7df4f620c",
+    "chunk_id": "1346ed62a4eecead086b2c69c5205b2e1b559a6698f028dc26c140cc5fcfe984",
+    "cache_key": "314ba9dd2eee5c9ad11bf97fca10792fc36ddcc705d82fabf9f2f98770d291a1",
+    "stub": false,
+    "latency_ms": 526.577,
+    "input_tokens": 2652,
+    "cost_usd": 0.000111384
+  },
+  "3b7af2a97da74504d09f06cda42f085fde657462b2346b5d74cf2163147a52dd": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c1",
+        "probabilities": {
+          "c0": 0.38,
+          "c1": 0.44,
+          "uncertain": 0.18
+        },
+        "confidence": 0.15
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "e6ea142d33a35e090e09afca423167031d997bd02a10b216f26b6a95ff926d64",
+    "cache_key": "3b7af2a97da74504d09f06cda42f085fde657462b2346b5d74cf2163147a52dd",
+    "stub": false,
+    "latency_ms": 522.139,
+    "input_tokens": 1306,
+    "cost_usd": 5.4852e-05
+  },
+  "404d75481527716bc8f145e5da2d76ef9efe024ef4185f9e493ffdf375d72d7d": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c0": 0.5,
+          "c1": 0.2,
+          "uncertain": 0.3
+        },
+        "confidence": 0.24
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "132a7838f4461139e9c6bd19cc0547ca6c1f4e6b525096602254e688acfee20a",
+    "cache_key": "404d75481527716bc8f145e5da2d76ef9efe024ef4185f9e493ffdf375d72d7d",
+    "stub": false,
+    "latency_ms": 700.725,
+    "input_tokens": 1329,
+    "cost_usd": 5.5818e-05
+  },
+  "6174759e6382b2ce36ff9f6658dffbcb5ed42638d11a56beb9ba18895da8e129": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.08,
+          "c4": 0,
+          "c0": 0.87,
+          "c6": 0,
+          "uncertain": 0.02,
+          "c3": 0.01,
+          "c5": 0,
+          "c2": 0.02
+        },
+        "confidence": 0.84
+      }
+    },
+    "question_set_hash": "34be38d88ca0f00c7a55fda172522a26f24a0086e4230eeab95a18e8455b30e6",
+    "chunk_id": "f13b5d82ad567f6c74335f7014308bf60108dfc2f19ed8bf06868e9309d491e4",
+    "cache_key": "6174759e6382b2ce36ff9f6658dffbcb5ed42638d11a56beb9ba18895da8e129",
+    "stub": false,
+    "latency_ms": 522.228,
+    "input_tokens": 2745,
+    "cost_usd": 0.00011529
+  },
+  "600a5c54498714e9917589b6878808af429e4e0a01a863f05063ff44ba8144ac": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.15,
+          "c1": 0.11,
+          "c0": 0.74
+        },
+        "confidence": 0.61
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "8066cefdd996be92bbedde8c4c9b58263fd702bee3a7a9d842cbaf8e24863455",
+    "cache_key": "600a5c54498714e9917589b6878808af429e4e0a01a863f05063ff44ba8144ac",
+    "stub": false,
+    "latency_ms": 625.922,
+    "input_tokens": 1211,
+    "cost_usd": 5.0862e-05
+  },
+  "703f9773b0ac209274ef250f5a917cd3b8bcb39925bc21281b829c14fcdd3cd7": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c0": 0.4,
+          "c2": 0.01,
+          "uncertain": 0.31,
+          "c1": 0.28
+        },
+        "confidence": 0.2
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "90cdd8715cb6bff8c0c38d665d8fd3a825101982670eb41f6beeece8965978c5",
+    "cache_key": "703f9773b0ac209274ef250f5a917cd3b8bcb39925bc21281b829c14fcdd3cd7",
+    "stub": false,
+    "latency_ms": 722.815,
+    "input_tokens": 1112,
+    "cost_usd": 4.6704e-05
+  },
+  "753be68509022a300ea0fd5279a5056a614a22c24a9fbf9281d93a5321817c08": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.23,
+          "c2": 0.01,
+          "c1": 0.23,
+          "c0": 0.53
+        },
+        "confidence": 0.38
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "4c3fb4f3e853d72ee6798ba48855927ea5bb8c089d4130395ce2fc7abf00144d",
+    "cache_key": "753be68509022a300ea0fd5279a5056a614a22c24a9fbf9281d93a5321817c08",
+    "stub": false,
+    "latency_ms": 593.85,
+    "input_tokens": 1115,
+    "cost_usd": 4.683e-05
+  },
+  "8090295047ca6c36bbe3a0e8c75f0a016a7aeb93e66d690e6c550ff58f0791b6": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.05,
+          "c5": 0,
+          "uncertain": 0.05,
+          "c4": 0,
+          "c8": 0,
+          "c6": 0,
+          "c0": 0.87,
+          "c3": 0.01,
+          "c7": 0,
+          "c2": 0.02
+        },
+        "confidence": 0.85
+      }
+    },
+    "question_set_hash": "8a02c6b9afaa253a34978fdf8c0b10da6925fcb73de3190650253463765c81a1",
+    "chunk_id": "7f939cb6b8c8b9b9af065f81e863942653b5f92f97cf3c7b8fc18e0dbc79e978",
+    "cache_key": "8090295047ca6c36bbe3a0e8c75f0a016a7aeb93e66d690e6c550ff58f0791b6",
+    "stub": false,
+    "latency_ms": 567.216,
+    "input_tokens": 4054,
+    "cost_usd": 0.000170268
+  },
+  "9e53b523d8ffa64c62b58b70715dd345051f4dc6242a3e35b897fb78a092fa85": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c0": 0.43,
+          "uncertain": 0.3,
+          "c1": 0.27
+        },
+        "confidence": 0.14
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "ba0b0c8d68d0e12345f81affcdbcc684644dbcfa3ebbd9c2b7dd39762322ab5d",
+    "cache_key": "9e53b523d8ffa64c62b58b70715dd345051f4dc6242a3e35b897fb78a092fa85",
+    "stub": false,
+    "latency_ms": 518.889,
+    "input_tokens": 1303,
+    "cost_usd": 5.4726e-05
+  },
+  "b721e841f2dad74572c513ea761e7fcbae58769d3f2f0c9c322b6ced5c683e2f": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.2,
+          "c0": 0.47,
+          "uncertain": 0.33
+        },
+        "confidence": 0.2
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "e21468c5632f11eef45bf475f066cf28553d54440e8d027ac6ebd3cb65c0f9b2",
+    "cache_key": "b721e841f2dad74572c513ea761e7fcbae58769d3f2f0c9c322b6ced5c683e2f",
+    "stub": false,
+    "latency_ms": 509.017,
+    "input_tokens": 1326,
+    "cost_usd": 5.5692e-05
+  },
+  "b7da9deada266d055a308ef554496de713a8d384a29c45a48cba119ceccff831": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "uncertain": 0.48,
+          "c0": 0.28,
+          "c2": 0.01,
+          "c1": 0.23
+        },
+        "confidence": 0.3
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "ff7b75d395097181ef688c347afeeaa94a654003ba99b24a1c3d7ad520f543c3",
+    "cache_key": "b7da9deada266d055a308ef554496de713a8d384a29c45a48cba119ceccff831",
+    "stub": false,
+    "latency_ms": 513.442,
+    "input_tokens": 1090,
+    "cost_usd": 4.578e-05
+  },
+  "bc291f136e7511e5aa21757993c15eecb3e7a12916a173732ac37e61f442e752": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c3": 0,
+          "c2": 0.03,
+          "uncertain": 0.05,
+          "c1": 0.05,
+          "c5": 0,
+          "c4": 0,
+          "c0": 0.87
+        },
+        "confidence": 0.84
+      }
+    },
+    "question_set_hash": "c0f1b5161cf8595f746ffc0ca9d5711c24772b506bd162d1d82986a531a5da6b",
+    "chunk_id": "e016c7bc4ce4a40b93f5796b5076a0cf49f1f6a5d7aa3b8c6fd37cdef90f3447",
+    "cache_key": "bc291f136e7511e5aa21757993c15eecb3e7a12916a173732ac37e61f442e752",
+    "stub": false,
+    "latency_ms": 507.748,
+    "input_tokens": 2404,
+    "cost_usd": 0.000100968
+  },
+  "bc025e5dd98d1c27577705720b6ab09a0f77467e93788546d23f92d545ec9b4a": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.29,
+          "c1": 0.28,
+          "c0": 0.43
+        },
+        "confidence": 0.14
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "7bb43d356ee7bbf5f12d6c7b9f0b89a0774edcc79125c4e78dd63d5e02be2a97",
+    "cache_key": "bc025e5dd98d1c27577705720b6ab09a0f77467e93788546d23f92d545ec9b4a",
+    "stub": false,
+    "latency_ms": 558.143,
+    "input_tokens": 1304,
+    "cost_usd": 5.4768e-05
+  },
+  "bd2c39540cc02cc8ca3fc9e7ceaf480aaf8dd1a2280d6960750abadef1bee2ac": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c11": 0,
+          "c5": 0,
+          "c3": 0,
+          "c12": 0,
+          "c1": 0.02,
+          "c4": 0.01,
+          "uncertain": 0.02,
+          "c2": 0,
+          "c8": 0,
+          "c7": 0,
+          "c14": 0,
+          "c6": 0,
+          "c16": 0,
+          "c15": 0,
+          "c0": 0.95,
+          "c10": 0,
+          "c9": 0,
+          "c13": 0
+        },
+        "confidence": 0.95
+      }
+    },
+    "question_set_hash": "ef33071bd915b5afae24bd7c43944797710152ec125242c6a01f884bbe03bd1f",
+    "chunk_id": "2eb1b7e3eca091dce2bb4585aa8a41256697f9864ff9db7a6f16353ebf838e73",
+    "cache_key": "bd2c39540cc02cc8ca3fc9e7ceaf480aaf8dd1a2280d6960750abadef1bee2ac",
+    "stub": false,
+    "latency_ms": 758.09,
+    "input_tokens": 8076,
+    "cost_usd": 0.000339192
+  },
+  "cd468e77a5be6115f7846a0b1bb7ab47f922227933f0c6b1c87721b380a87532": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "uncertain": 0.36,
+          "c1": 0.32,
+          "c0": 0.32
+        },
+        "confidence": 0.04
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "6261ef747ff614642049baec32210f3f786951ecbac77c6bb35305a31d521e91",
+    "cache_key": "cd468e77a5be6115f7846a0b1bb7ab47f922227933f0c6b1c87721b380a87532",
+    "stub": false,
+    "latency_ms": 566.82,
+    "input_tokens": 1285,
+    "cost_usd": 5.397e-05
+  },
+  "d48dee503e221f9bf8af6831b4ef85ffb693b550dbca6f2005f122a1f46c753e": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c0": 0.4,
+          "c1": 0.02,
+          "uncertain": 0.58
+        },
+        "confidence": 0.37
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "6de68224c1a4f9139a979b1c7c5b26e035128fcf874de14d58897d7f49bd6e6e",
+    "cache_key": "d48dee503e221f9bf8af6831b4ef85ffb693b550dbca6f2005f122a1f46c753e",
+    "stub": false,
+    "latency_ms": 597.679,
+    "input_tokens": 866,
+    "cost_usd": 3.6372e-05
+  },
+  "d26c2f91e201109640b606d45caeb5039ad47f69e4b6895c1f64cbdfa933ef30": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c0": 0.35,
+          "uncertain": 0.4,
+          "c1": 0.25
+        },
+        "confidence": 0.1
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "0f846f5d69d8fe1214be1138e2ce9f0e010bb6ae5b79ed55cdcd21ef88970381",
+    "cache_key": "d26c2f91e201109640b606d45caeb5039ad47f69e4b6895c1f64cbdfa933ef30",
+    "stub": false,
+    "latency_ms": 680.031,
+    "input_tokens": 1282,
+    "cost_usd": 5.3844e-05
+  },
+  "da6527b065360d6d4d7d46207743c72c4af2e7c8567905be65cadd6592b79bef": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c1": 0.26,
+          "c2": 0.04,
+          "c3": 0.05,
+          "c0": 0.18,
+          "c4": 0.02,
+          "uncertain": 0.45
+        },
+        "confidence": 0.35
+      }
+    },
+    "question_set_hash": "09e757ee4cbaa6a666e0aef3903987128b55b21090abd220371f9ca7df4f620c",
+    "chunk_id": "1b86cbcdb0861e8e4c39b740c1a6f9f00d8147ee9ed0806c75d812f97a712bc8",
+    "cache_key": "da6527b065360d6d4d7d46207743c72c4af2e7c8567905be65cadd6592b79bef",
+    "stub": false,
+    "latency_ms": 518.676,
+    "input_tokens": 2652,
+    "cost_usd": 0.000111384
+  },
+  "dd6368513690f907423269cc7acb4a79c2065c8ef68c621e02c66666c5ba4291": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c1",
+        "probabilities": {
+          "c1": 0.51,
+          "uncertain": 0.23,
+          "c2": 0.01,
+          "c0": 0.25
+        },
+        "confidence": 0.34
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "bf5d97727c0707e8f06426fc1972f48fae8228173fa9a07abac64749aaf12f88",
+    "cache_key": "dd6368513690f907423269cc7acb4a79c2065c8ef68c621e02c66666c5ba4291",
+    "stub": false,
+    "latency_ms": 525.974,
+    "input_tokens": 1113,
+    "cost_usd": 4.6746e-05
+  },
+  "1873096eb070f689356b7e9b56a06af6577033bcc317efac2114c9c5c3402336": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e0": 0.62,
+          "e1": 0.34,
+          "other_or_none": 0.04
+        },
+        "confidence": 0.42
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "0b213e00d2a106725bdcd130bfd701df01e2950c72dbe484c36286ec9f42eb86",
+    "cache_key": "1873096eb070f689356b7e9b56a06af6577033bcc317efac2114c9c5c3402336",
+    "stub": false,
+    "latency_ms": 513.118,
+    "input_tokens": 658,
+    "cost_usd": 2.7636e-05
+  },
+  "dd58c8bf895421e59c35fc9d655728a80a2fd4ff5dc716b24924cea1f55c6434": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c1": 0.22,
+          "c2": 0.01,
+          "uncertain": 0.46,
+          "c0": 0.31
+        },
+        "confidence": 0.28
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "4215541ecad7019ff46caa9b81355aacfa7a6a1020250a71ece4d64470ad8e57",
+    "cache_key": "dd58c8bf895421e59c35fc9d655728a80a2fd4ff5dc716b24924cea1f55c6434",
+    "stub": false,
+    "latency_ms": 676.755,
+    "input_tokens": 1090,
+    "cost_usd": 4.578e-05
+  },
+  "4098c1a617af1eb81c2134baebec141595249f879ae422271239df042f4bd172": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e0": 0.06,
+          "e1": 0.91,
+          "other_or_none": 0.03
+        },
+        "confidence": 0.87
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "7328eddc70b0dc8d18d182eb27f2ad8d77f50fc1973bf98cb462abcdb92dc3b7",
+    "cache_key": "4098c1a617af1eb81c2134baebec141595249f879ae422271239df042f4bd172",
+    "stub": false,
+    "latency_ms": 492.607,
+    "input_tokens": 757,
+    "cost_usd": 3.1794e-05
+  },
+  "20f96949b1162a36021b7567add6f3becfa487ae0d691059cee92bafb1da8e5a": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e0": 0.74,
+          "other_or_none": 0.06,
+          "e1": 0.2
+        },
+        "confidence": 0.61
+      }
+    },
+    "question_set_hash": "a99ccc96fb36f7cbcc182b74e1b93adc3d0c452e30ffca9ce29fc679e32fc464",
+    "chunk_id": "0d3ef82d882dd50f29e624a9d000deb14aad4adaaf6952baa8b39cb6a709c9c6",
+    "cache_key": "20f96949b1162a36021b7567add6f3becfa487ae0d691059cee92bafb1da8e5a",
+    "stub": false,
+    "latency_ms": 738.213,
+    "input_tokens": 869,
+    "cost_usd": 3.6498e-05
+  },
+  "4ede415694cb585fb1a30268577b21ca69cae03577689620f18f0124183b724f": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "e0": 0.16,
+          "e1": 0.17,
+          "other_or_none": 0.67
+        },
+        "confidence": 0.52
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "95ad61120c61f2c0143e86bd35492f17daabb56945cfe7f6730d5efb8c845173",
+    "cache_key": "4ede415694cb585fb1a30268577b21ca69cae03577689620f18f0124183b724f",
+    "stub": false,
+    "latency_ms": 495.837,
+    "input_tokens": 656,
+    "cost_usd": 2.7552e-05
+  },
+  "43fac7466692a16d6c7870161a66e4c83abf7e5927dd3fbc9b77fef6abdd3bff": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "other_or_none": 0.53,
+          "e1": 0.17,
+          "e0": 0.3
+        },
+        "confidence": 0.29
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "8bc21841ddd9b113526c57939437f3af20a978d090c562f47c6972faf3278195",
+    "cache_key": "43fac7466692a16d6c7870161a66e4c83abf7e5927dd3fbc9b77fef6abdd3bff",
+    "stub": false,
+    "latency_ms": 582.427,
+    "input_tokens": 822,
+    "cost_usd": 3.4524e-05
+  },
+  "554adcf5102a42eace3b7c3e5d994c37ffbaeec848b74fa281c07b52af0db650": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.71,
+          "other_or_none": 0.06,
+          "e0": 0.23
+        },
+        "confidence": 0.57
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "1f5d218b4c9ee36fae3fb717fcd204c75eb2883dbf39d9aba7fdf9134db9d303",
+    "cache_key": "554adcf5102a42eace3b7c3e5d994c37ffbaeec848b74fa281c07b52af0db650",
+    "stub": false,
+    "latency_ms": 552.3,
+    "input_tokens": 648,
+    "cost_usd": 2.7216e-05
+  },
+  "737cae8700f9b4793dc80041812313c25d449ca718d698a3805e07b353d6320a": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.38,
+          "other_or_none": 0.26,
+          "e0": 0.36
+        },
+        "confidence": 0.07
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "59d9e23942c264264d2db37c9f94e187b4fdd3b66280f4ccfc39220a6a70714a",
+    "cache_key": "737cae8700f9b4793dc80041812313c25d449ca718d698a3805e07b353d6320a",
+    "stub": false,
+    "latency_ms": 525.735,
+    "input_tokens": 730,
+    "cost_usd": 3.066e-05
+  },
+  "5ef7b60d9aaf713ab045736a840223863c9e14ae3009a5d888dc5de114ec68ec": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0.27,
+          "e0": 0.69,
+          "other_or_none": 0.04
+        },
+        "confidence": 0.54
+      }
+    },
+    "question_set_hash": "a99ccc96fb36f7cbcc182b74e1b93adc3d0c452e30ffca9ce29fc679e32fc464",
+    "chunk_id": "4c0e7b6a70215759d55b25d38e73d0cfb8562c08258c00fd25518583b9bf508a",
+    "cache_key": "5ef7b60d9aaf713ab045736a840223863c9e14ae3009a5d888dc5de114ec68ec",
+    "stub": false,
+    "latency_ms": 618.727,
+    "input_tokens": 772,
+    "cost_usd": 3.2424e-05
+  },
+  "7d07cfa79f818959eb11b63c4e685fc94cdeb5c0ffc1016da477c9667e962811": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e0": 0.73,
+          "e1": 0.25,
+          "other_or_none": 0.02
+        },
+        "confidence": 0.59
+      }
+    },
+    "question_set_hash": "0ec2370ac684b89ab344481ac0ccc26fc482fe5d9c9c2bfcafa8d5bda8a3d974",
+    "chunk_id": "43ccf828929ea34ddcaf6ee1977d7c6b6c1c4731723e4fbb854bfc35ddd7f246",
+    "cache_key": "7d07cfa79f818959eb11b63c4e685fc94cdeb5c0ffc1016da477c9667e962811",
+    "stub": false,
+    "latency_ms": 654.793,
+    "input_tokens": 762,
+    "cost_usd": 3.2004e-05
+  },
+  "9442b2bc2f10b6bed4b6fed1608dbc5a077579c2dc3ca7af8e58ad0dd668cb82": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "e1": 0.25,
+          "e0": 0.72,
+          "other_or_none": 0.03
+        },
+        "confidence": 0.59
+      }
+    },
+    "question_set_hash": "ba53557bd405826b8ab87c42731a9e6976c60ca647146dbe86c7ea9f6dcb4a05",
+    "chunk_id": "5002d92eee78493890cffe40a157c61af439d06359feef86d3233e834bca174b",
+    "cache_key": "9442b2bc2f10b6bed4b6fed1608dbc5a077579c2dc3ca7af8e58ad0dd668cb82",
+    "stub": false,
+    "latency_ms": 523.091,
+    "input_tokens": 762,
+    "cost_usd": 3.2004e-05
+  },
+  "9d23cc838d2d576d3fc4c7b7e509293e401f13090d7e8b082e3d08a1c3807a65": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e1": 0.34,
+          "e0": 0.32,
+          "other_or_none": 0.34
+        },
+        "confidence": 0.01
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "ab6edc1f65900391be152e49c40d2fbdd58f18829755fc83532004b8f6cfd2e4",
+    "cache_key": "9d23cc838d2d576d3fc4c7b7e509293e401f13090d7e8b082e3d08a1c3807a65",
+    "stub": false,
+    "latency_ms": 503.506,
+    "input_tokens": 648,
+    "cost_usd": 2.7216e-05
+  },
+  "91adb8bedadd98d0ee3d513107e31f4f17831712f8ba8ee426cc62f88b09f675": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e1",
+        "probabilities": {
+          "e0": 0.15,
+          "other_or_none": 0.26,
+          "e1": 0.59
+        },
+        "confidence": 0.39
+      }
+    },
+    "question_set_hash": "ec291a14f9e359cc6be445a71c0e99bc5b8c33e36cddda143557d26eced86686",
+    "chunk_id": "6cd5be8aa962703c0ab67acb65d1f805712e84b0a298bdf595285856966103d5",
+    "cache_key": "91adb8bedadd98d0ee3d513107e31f4f17831712f8ba8ee426cc62f88b09f675",
+    "stub": false,
+    "latency_ms": 746.909,
+    "input_tokens": 656,
+    "cost_usd": 2.7552e-05
+  },
+  "a98248eda8ec7ca5f3b7c916c14f2fd8b202beaa26eda13845ec2cc834c7b6b6": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "e0": 0.3,
+          "other_or_none": 0.55,
+          "e1": 0.15
+        },
+        "confidence": 0.32
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "ec74423fcd0377c1e960a3f1500e8898f35a1c805e96744786a66790f741f46f",
+    "cache_key": "a98248eda8ec7ca5f3b7c916c14f2fd8b202beaa26eda13845ec2cc834c7b6b6",
+    "stub": false,
+    "latency_ms": 527.171,
+    "input_tokens": 888,
+    "cost_usd": 3.7296e-05
+  },
+  "ae477dd8d822915f71e48dc5b274eac43e8f92c7d266bcb80397bc0e9dd3cda7": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "e0": 0.2,
+          "e1": 0.16,
+          "other_or_none": 0.64
+        },
+        "confidence": 0.46
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "eb4243b70d0c151fa18f1236b00507a869661acf74ff7d7bddc1e24f444c786c",
+    "cache_key": "ae477dd8d822915f71e48dc5b274eac43e8f92c7d266bcb80397bc0e9dd3cda7",
+    "stub": false,
+    "latency_ms": 566.383,
+    "input_tokens": 823,
+    "cost_usd": 3.4566e-05
+  },
+  "aeacd4fe7e393c8787b9bbff8a920d947de6b4541f1f90f39081351dda52126f": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "other_or_none": 0.36,
+          "e0": 0.29,
+          "e1": 0.35
+        },
+        "confidence": 0.04
+      }
+    },
+    "question_set_hash": "a99ccc96fb36f7cbcc182b74e1b93adc3d0c452e30ffca9ce29fc679e32fc464",
+    "chunk_id": "27735698cb43402418438be4dd3da000dc0d1dfe5ebb1d50b8f2605acbe126ec",
+    "cache_key": "aeacd4fe7e393c8787b9bbff8a920d947de6b4541f1f90f39081351dda52126f",
+    "stub": false,
+    "latency_ms": 553.149,
+    "input_tokens": 768,
+    "cost_usd": 3.2256e-05
+  },
+  "afbdf54e73374f4f77e5846111016734a164a1ff2b51e485c73e066badc40eb9": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "e0",
+        "probabilities": {
+          "other_or_none": 0.1,
+          "e0": 0.58,
+          "e1": 0.32
+        },
+        "confidence": 0.38
+      }
+    },
+    "question_set_hash": "0ec2370ac684b89ab344481ac0ccc26fc482fe5d9c9c2bfcafa8d5bda8a3d974",
+    "chunk_id": "5039560b18ddf2bd19ce23b70278f562ed31e33f4a93a555341d18ee150b897d",
+    "cache_key": "afbdf54e73374f4f77e5846111016734a164a1ff2b51e485c73e066badc40eb9",
+    "stub": false,
+    "latency_ms": 522.883,
+    "input_tokens": 759,
+    "cost_usd": 3.1878e-05
+  },
+  "cd6196b16ec95bb7a368f8e26cf6c6b5ea94a25934069b173ea4226d11971543": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "entry": {
+        "type": "choice",
+        "choice": "other_or_none",
+        "probabilities": {
+          "other_or_none": 0.53,
+          "e1": 0.15,
+          "e0": 0.32
+        },
+        "confidence": 0.28
+      }
+    },
+    "question_set_hash": "28a786073efb7e004bef3988e2908bc3b2a7282811ec5e577b3b369fba9c8cf6",
+    "chunk_id": "98e5bc7441c2358d4fff2c163d1c6692818326b0aa0518b8e5fbc6c5e6879898",
+    "cache_key": "cd6196b16ec95bb7a368f8e26cf6c6b5ea94a25934069b173ea4226d11971543",
+    "stub": false,
+    "latency_ms": 844.753,
+    "input_tokens": 972,
+    "cost_usd": 4.0824e-05
+  },
+  "1a17aea3ef233a883290f5dd81c44f9733786af83cec9bbb955a40680868dbd1": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.14,
+          "uncertain": 0.2,
+          "c0": 0.65,
+          "c2": 0.01
+        },
+        "confidence": 0.53
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "2bfbca1477499871c2c418cbd6f50f5610690166f23f8cc184785a7ee4844181",
+    "cache_key": "1a17aea3ef233a883290f5dd81c44f9733786af83cec9bbb955a40680868dbd1",
+    "stub": false,
+    "latency_ms": 523.569,
+    "input_tokens": 1119,
+    "cost_usd": 4.6998e-05
+  },
+  "3e5614238f2fde8fd81037695cf22b9774a86457861117fe0b20b0ce85a019a3": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c1",
+        "probabilities": {
+          "uncertain": 0.29,
+          "c1": 0.4,
+          "c0": 0.31
+        },
+        "confidence": 0.1
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "1ecead8b2fe346a6e1023c3009fe7b36efba71c0c1838817859b28b3b539c1d6",
+    "cache_key": "3e5614238f2fde8fd81037695cf22b9774a86457861117fe0b20b0ce85a019a3",
+    "stub": false,
+    "latency_ms": 518.374,
+    "input_tokens": 1300,
+    "cost_usd": 5.46e-05
+  },
+  "3fc9f148f51f216119689207d6b2d9f4358eef82b97f415e88f3ccc7e12a8586": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "uncertain": 0.5,
+          "c1": 0.27,
+          "c2": 0.01,
+          "c0": 0.22
+        },
+        "confidence": 0.34
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "a1d9a6905dd4a108ddbeedbebe4e06262df96a34b40cca4eb8faedfe9388fa2c",
+    "cache_key": "3fc9f148f51f216119689207d6b2d9f4358eef82b97f415e88f3ccc7e12a8586",
+    "stub": false,
+    "latency_ms": 485.356,
+    "input_tokens": 1094,
+    "cost_usd": 4.5948e-05
+  },
+  "425aee71ebdfd1a8ddcda01142575b9629740d53d2409129a8109b05051b7b96": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.27,
+          "c0": 0.49,
+          "c1": 0.24
+        },
+        "confidence": 0.24
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "060c29d8e2437f039aef6284319de6fb4dd4e0e999fafe3271c70d41e7454ab8",
+    "cache_key": "425aee71ebdfd1a8ddcda01142575b9629740d53d2409129a8109b05051b7b96",
+    "stub": false,
+    "latency_ms": 577.574,
+    "input_tokens": 1343,
+    "cost_usd": 5.6406e-05
+  },
+  "5524aafa3a40c76a52615023568964b585c03720c161095649daaf91f6a57b1d": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.27,
+          "uncertain": 0.31,
+          "c0": 0.42
+        },
+        "confidence": 0.13
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "346fc39107c3ee8bd66b5761f0bc5824e738598dbc6d698176cb8cb87b3288b9",
+    "cache_key": "5524aafa3a40c76a52615023568964b585c03720c161095649daaf91f6a57b1d",
+    "stub": false,
+    "latency_ms": 558.506,
+    "input_tokens": 1318,
+    "cost_usd": 5.5356e-05
+  },
+  "5fb196686c9c87ae48d426e9746b2e6c9e473830658ce12bb9ed486055b9ebe8": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c1": 0.02,
+          "uncertain": 0.56,
+          "c0": 0.42
+        },
+        "confidence": 0.34
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "649dd236ea93d2882073b11cb6f1865d951870c6d7332562406385f1347e76cc",
+    "cache_key": "5fb196686c9c87ae48d426e9746b2e6c9e473830658ce12bb9ed486055b9ebe8",
+    "stub": false,
+    "latency_ms": 523.093,
+    "input_tokens": 869,
+    "cost_usd": 3.6498e-05
+  },
+  "32a6b3775222eccb0aee3e86ec42ae5786f64cd5dbcac117350e8042ca7e5f37": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c2": 0.04,
+          "c4": 0,
+          "c1": 0.08,
+          "uncertain": 0.05,
+          "c3": 0,
+          "c0": 0.83
+        },
+        "confidence": 0.79
+      }
+    },
+    "question_set_hash": "09e757ee4cbaa6a666e0aef3903987128b55b21090abd220371f9ca7df4f620c",
+    "chunk_id": "ee83eb440963b9ba60efad1cbda85b5114caa5a5c7980ee83c456e5acdde4fe8",
+    "cache_key": "32a6b3775222eccb0aee3e86ec42ae5786f64cd5dbcac117350e8042ca7e5f37",
+    "stub": false,
+    "latency_ms": 1614.467,
+    "input_tokens": 2157,
+    "cost_usd": 9.0594e-05
+  },
+  "79109b6d2c1730adbad3a548c09b3d8164dfd56de024fd297900fb03eac1f7b0": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.15,
+          "c1": 0.24,
+          "c0": 0.61
+        },
+        "confidence": 0.41
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "0a2a68b7cf98ed2dcd1fee0315f2aa3883666f960673e22b5dbf7d4003803b6f",
+    "cache_key": "79109b6d2c1730adbad3a548c09b3d8164dfd56de024fd297900fb03eac1f7b0",
+    "stub": false,
+    "latency_ms": 487.207,
+    "input_tokens": 1214,
+    "cost_usd": 5.0988e-05
+  },
+  "6abc290ae5c75f23a6027a0f331ce281c4572ab6dfaefd994e018306537ba205": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c1",
+        "probabilities": {
+          "c1": 0.35,
+          "uncertain": 0.31,
+          "c0": 0.34
+        },
+        "confidence": 0.02
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "5a17fa4ebe73d771eb33c52c4fe04257e7bb560c3f5c5fdf24e232e21867e075",
+    "cache_key": "6abc290ae5c75f23a6027a0f331ce281c4572ab6dfaefd994e018306537ba205",
+    "stub": false,
+    "latency_ms": 612.456,
+    "input_tokens": 1344,
+    "cost_usd": 5.6448e-05
+  },
+  "856f5089687dd262325c1140af395881832b06f040d5e633f3731e51467ce26b": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "uncertain": 0.44,
+          "c3": 0.05,
+          "c4": 0.02,
+          "c2": 0.03,
+          "c0": 0.2,
+          "c1": 0.26
+        },
+        "confidence": 0.34
+      }
+    },
+    "question_set_hash": "09e757ee4cbaa6a666e0aef3903987128b55b21090abd220371f9ca7df4f620c",
+    "chunk_id": "8197496608e967717ee2af7cc3ac5b53509a317b8728380d32503a671bf755d4",
+    "cache_key": "856f5089687dd262325c1140af395881832b06f040d5e633f3731e51467ce26b",
+    "stub": false,
+    "latency_ms": 514.272,
+    "input_tokens": 2688,
+    "cost_usd": 0.000112896
+  },
+  "9f37b9b53810d24cd411a33b983539fc36ff4a5542b3d7bbeceb2d88f9773663": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c1",
+        "probabilities": {
+          "uncertain": 0.25,
+          "c0": 0.29,
+          "c1": 0.45,
+          "c2": 0.01
+        },
+        "confidence": 0.26
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "46dc9521695f78dc53ff143dd501feb09a1a6ab8b6e3d3c8685cf341aefe967e",
+    "cache_key": "9f37b9b53810d24cd411a33b983539fc36ff4a5542b3d7bbeceb2d88f9773663",
+    "stub": false,
+    "latency_ms": 534.659,
+    "input_tokens": 1117,
+    "cost_usd": 4.6914e-05
+  },
+  "91979c0d6c0f144b950a0aeb47ed0d0500f9d122cb8eb2ce337586da3e3774cf": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c8": 0,
+          "c4": 0.01,
+          "uncertain": 0.01,
+          "c9": 0,
+          "c11": 0,
+          "c5": 0,
+          "c3": 0,
+          "c10": 0,
+          "c0": 0.96,
+          "c12": 0,
+          "c1": 0.02,
+          "c7": 0,
+          "c6": 0,
+          "c2": 0
+        },
+        "confidence": 0.95
+      }
+    },
+    "question_set_hash": "39926df2a8917392bdd2a2173d2d7e98afb0b6f4a86e8365028c4194c5ad72ca",
+    "chunk_id": "dfb284d950ad88efd19858cbce8304cc79147fa0b4cbf0068953f49a2ce4fed6",
+    "cache_key": "91979c0d6c0f144b950a0aeb47ed0d0500f9d122cb8eb2ce337586da3e3774cf",
+    "stub": false,
+    "latency_ms": 563.724,
+    "input_tokens": 6466,
+    "cost_usd": 0.000271572
+  },
+  "8040fdaef27882326c6d2dbfef28e55643664e0edd86f10f43e4fb74123f46e1": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c1",
+        "probabilities": {
+          "c1": 0.53,
+          "uncertain": 0.16,
+          "c0": 0.31
+        },
+        "confidence": 0.3
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "83f4edb7910d514726a417238aae31834614c06c02130ae67faab8bf10d12728",
+    "cache_key": "8040fdaef27882326c6d2dbfef28e55643664e0edd86f10f43e4fb74123f46e1",
+    "stub": false,
+    "latency_ms": 806.022,
+    "input_tokens": 1321,
+    "cost_usd": 5.5482e-05
+  },
+  "9f6e55f122dd917f6179584b87ac5f9812385a353583b539f8ee2e1af92dcc65": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "uncertain": 0.47,
+          "c3": 0.04,
+          "c4": 0.02,
+          "c2": 0.03,
+          "c0": 0.17,
+          "c1": 0.27
+        },
+        "confidence": 0.37
+      }
+    },
+    "question_set_hash": "09e757ee4cbaa6a666e0aef3903987128b55b21090abd220371f9ca7df4f620c",
+    "chunk_id": "376e9c37fd8bb0610c7bbd4a864f8fad3f4336a4561a201e9898ca3ea28f38a3",
+    "cache_key": "9f6e55f122dd917f6179584b87ac5f9812385a353583b539f8ee2e1af92dcc65",
+    "stub": false,
+    "latency_ms": 641.45,
+    "input_tokens": 2688,
+    "cost_usd": 0.000112896
+  },
+  "a6248c04c2e1d81d93ce23aeb73ad577c14063ed8b25daf4f189b24337962855": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.22,
+          "c1": 0.36,
+          "c0": 0.42
+        },
+        "confidence": 0.13
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "9dc7cf870cb5386fe996783299cf52ca736c3e035c3a1355f72201c3df1829aa",
+    "cache_key": "a6248c04c2e1d81d93ce23aeb73ad577c14063ed8b25daf4f189b24337962855",
+    "stub": false,
+    "latency_ms": 553.829,
+    "input_tokens": 1319,
+    "cost_usd": 5.5398e-05
+  },
+  "b94c2a921cf6e87ef5be9780f2c2be5dad5ed96e6ae04b6ec81355e4e6a32003": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.36,
+          "c0": 0.4,
+          "c1": 0.24
+        },
+        "confidence": 0.1
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "00287eb9e3fa839e4e913b6414cd8ede09e54d737ee90059d910d13a8e285f3c",
+    "cache_key": "b94c2a921cf6e87ef5be9780f2c2be5dad5ed96e6ae04b6ec81355e4e6a32003",
+    "stub": false,
+    "latency_ms": 516.46,
+    "input_tokens": 1296,
+    "cost_usd": 5.4432e-05
+  },
+  "b0ccd3c33bacc9d4c35a179e8d782ae0057eab6b0ccae7da346e89598102aeb2": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c2": 0.01,
+          "c1": 0.03,
+          "uncertain": 0.03,
+          "c0": 0.92,
+          "c4": 0,
+          "c7": 0,
+          "c3": 0.01,
+          "c5": 0,
+          "c6": 0
+        },
+        "confidence": 0.91
+      }
+    },
+    "question_set_hash": "303ef9a7080422c272822c3afb182935a211c015041c427dc6fc172b61c308e0",
+    "chunk_id": "c724d704533287e70e5070035de0fe30575b159a232c8a58c6700963cf0ef4cf",
+    "cache_key": "b0ccd3c33bacc9d4c35a179e8d782ae0057eab6b0ccae7da346e89598102aeb2",
+    "stub": false,
+    "latency_ms": 562.516,
+    "input_tokens": 3760,
+    "cost_usd": 0.00015792
+  },
+  "c9d82a73030d809ddbd73fc6353d37261c98e29d4060fbf75078752f05f4bd6c": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.3,
+          "c0": 0.38,
+          "uncertain": 0.32
+        },
+        "confidence": 0.07
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "37271444072a287882c710d3b7e0acb65f49c19e63c12f16419aa1f733509614",
+    "cache_key": "c9d82a73030d809ddbd73fc6353d37261c98e29d4060fbf75078752f05f4bd6c",
+    "stub": false,
+    "latency_ms": 526.667,
+    "input_tokens": 1341,
+    "cost_usd": 5.6322e-05
+  },
+  "d3dd4a09b28ea0223c90d89e2ca390efe025e09eca71dc69dd10a2cb4b5f2870": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.07,
+          "c5": 0,
+          "c3": 0.01,
+          "c2": 0.02,
+          "c4": 0,
+          "c0": 0.84,
+          "uncertain": 0.06
+        },
+        "confidence": 0.82
+      }
+    },
+    "question_set_hash": "c0f1b5161cf8595f746ffc0ca9d5711c24772b506bd162d1d82986a531a5da6b",
+    "chunk_id": "d5e69600834baf9a5a3e157a2fe423433b44050713c9f0e4dfef86e83e9d9989",
+    "cache_key": "d3dd4a09b28ea0223c90d89e2ca390efe025e09eca71dc69dd10a2cb4b5f2870",
+    "stub": false,
+    "latency_ms": 503.549,
+    "input_tokens": 2503,
+    "cost_usd": 0.000105126
+  },
+  "bc0d7a3ec400f61fcdbd325afbd387c2e977c0293698d7a319934544fe90fa90": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.07,
+          "c5": 0,
+          "c0": 0.83,
+          "c2": 0.02,
+          "c4": 0,
+          "c3": 0.01,
+          "c1": 0.07
+        },
+        "confidence": 0.8
+      }
+    },
+    "question_set_hash": "c0f1b5161cf8595f746ffc0ca9d5711c24772b506bd162d1d82986a531a5da6b",
+    "chunk_id": "e386bbdff21a99d914ec2f7a2bc5cc01dedd30cb5344e443cb679fe80cdfc876",
+    "cache_key": "bc0d7a3ec400f61fcdbd325afbd387c2e977c0293698d7a319934544fe90fa90",
+    "stub": false,
+    "latency_ms": 566.994,
+    "input_tokens": 2508,
+    "cost_usd": 0.000105336
+  },
+  "d1aabc88db204c9e6cd993ef8f72a274f1f20f199542c54812e910815b18be44": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c0": 0.27,
+          "uncertain": 0.47,
+          "c2": 0.02,
+          "c1": 0.24
+        },
+        "confidence": 0.3
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "26d1c54c34d513d6d6ba455ac0dde357df0b48944bda70536f5466f0a6f9f0b3",
+    "cache_key": "d1aabc88db204c9e6cd993ef8f72a274f1f20f199542c54812e910815b18be44",
+    "stub": false,
+    "latency_ms": 694.074,
+    "input_tokens": 1094,
+    "cost_usd": 4.5948e-05
+  },
+  "da296de8b7d2426cda568c639d8cbc4667302c1624dd2ad102b4d675fd6fd2c1": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "uncertain",
+        "probabilities": {
+          "c0": 0.34,
+          "c1": 0.22,
+          "uncertain": 0.43,
+          "c2": 0.01
+        },
+        "confidence": 0.25
+      }
+    },
+    "question_set_hash": "a76289ce761a6c609283a7cebe6c97aa3cb57275ea793345fa7ddffa18934c7e",
+    "chunk_id": "26cbb61f42783cfe7b9505fa3a79961a7d436d42f2e49457bc1a452fd3ad12a2",
+    "cache_key": "da296de8b7d2426cda568c639d8cbc4667302c1624dd2ad102b4d675fd6fd2c1",
+    "stub": false,
+    "latency_ms": 548.727,
+    "input_tokens": 1116,
+    "cost_usd": 4.6872e-05
+  },
+  "f43122281f9a57c2c635ea292bdd3653605886854647a10de6e2a9864b6915ee": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "c1": 0.29,
+          "c0": 0.44,
+          "uncertain": 0.27
+        },
+        "confidence": 0.17
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "be2b60f8bac2e09322f265df6117d406562fb314da319ec72a7b57129fe0998d",
+    "cache_key": "f43122281f9a57c2c635ea292bdd3653605886854647a10de6e2a9864b6915ee",
+    "stub": false,
+    "latency_ms": 546.464,
+    "input_tokens": 1347,
+    "cost_usd": 5.6574e-05
+  },
+  "ec8266291e4f3f3456afcbcdbdb1f2f800159a82de5a34285aa5d71d0c6cf68b": {
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "answers": {
+      "continuation": {
+        "type": "choice",
+        "choice": "c0",
+        "probabilities": {
+          "uncertain": 0.37,
+          "c1": 0.25,
+          "c0": 0.38
+        },
+        "confidence": 0.07
+      }
+    },
+    "question_set_hash": "deab52d7249f93e2814f46655fbee035b7e0af1b991e8d35247c2fa8883ffccd",
+    "chunk_id": "7db6166d58977d18656590577d8bdb1030cb5ab9357ce349e350788549eb244f",
+    "cache_key": "ec8266291e4f3f3456afcbcdbdb1f2f800159a82de5a34285aa5d71d0c6cf68b",
+    "stub": false,
+    "latency_ms": 692.107,
+    "input_tokens": 1297,
+    "cost_usd": 5.4474e-05
+  }
+}

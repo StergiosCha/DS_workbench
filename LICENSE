@@ -1,1 +1,18 @@
-Ported code follows the license of the DyLan Java project. Refer to the upstream repository’s LICENSE.txt (qmul.ds).
+Ported code follows the license of the DyLan Java project.
+
+The upstream LICENSE.txt at Dynamics-of-Language/DyLan, commit
+ac70d021e5dc0eab24f185e5a34bbca19c0fc772, is the GNU Lesser General
+Public License, version 3. A verbatim copy is included in
+licenses/DyLan-LGPL-3.0.txt, together with the incorporated GNU GPL v3
+in licenses/GPL-3.0.txt.
+
+The former Python package metadata described the license as BSD-3-Clause.
+That description conflicts with the referenced upstream license and has
+been removed. This notice records the inherited terms; it does not assert
+new relicensing permissions or resolve the licensing of every later
+contribution. Establish the workbench contributors' licensing position
+before a public source/package release.
+
+Data and third-party material retain their own terms. In particular, the
+bundled Greek GDT training-derived index is CC BY-NC-SA 3.0. See
+THIRD_PARTY_NOTICES.md and data/greek-lexicon/README.md.

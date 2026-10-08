@@ -385,7 +385,7 @@ class TTRRecordType(TTRFormula):
         from dylan.tree.tree import Tree
 
         if not isinstance(tree, Tree):
-            return self.clone()
+            raise TypeError("TTR record freshening requires the receiving Tree")
         t: Tree = tree
         fresh: TTRRecordType = self.clone()
         for f in self._fields:
@@ -586,24 +586,6 @@ class TTRRecordType(TTRFormula):
     def to_unique_int(self) -> int:
         """Return a stable-ish integer derived from the printed record."""
         return hash(str(self))
-
-    def __eq__(self, other: object) -> bool:
-        """Order-insensitive record equality (Java ``equals`` compares the label→field map)."""
-        if self is other:
-            return True
-        if not isinstance(other, TTRRecordType) or type(other) is not type(self):
-            return False
-        if len(self._fields) != len(other._fields):
-            return False
-        for f in self._fields:
-            other_f = other.get_field(f.label)
-            if other_f is None or other_f != f:
-                return False
-        return True
-
-    def __hash__(self) -> int:
-        """Order-insensitive hash consistent with ``__eq__`` (Java ``record.hashCode()``)."""
-        return hash(frozenset((str(f.label), str(f)) for f in self._fields))
 
     def java_hash_code(self) -> int:
         """Java ``TTRRecordType.hashCode`` → ``LinkedHashMap`` entry-hash sum."""
@@ -1675,4 +1657,3 @@ TTRRecordType.str2listPreds = TTRRecordType.str2list_preds  # type: ignore[attr-
 TTRRecordType.str2listTargets = TTRRecordType.str2list_targets  # type: ignore[attr-defined]
 TTRRecordType.isIsomorphicTo = TTRRecordType.is_isomorphic_to  # type: ignore[attr-defined]
 TTRRecordType.isIn = TTRRecordType.is_in  # type: ignore[attr-defined]
-

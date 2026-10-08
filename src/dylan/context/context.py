@@ -9,6 +9,7 @@ from dylan.action.speech_act_inference_grammar import SpeechActInferenceGrammar
 from dylan.dag.dag_edge import DAGEdge
 from dylan.dag.dag_tuple import DAGTuple
 from dylan.dag.word_level_context_dag import WordLevelContextDAG
+from dylan.context.referent import Referent
 
 T = TypeVar("T", bound=DAGTuple)
 E = TypeVar("E", bound=DAGEdge)
@@ -32,6 +33,65 @@ class Context(Generic[T, E]):
         self.sa_inf_grammar = sa_grammar or SpeechActInferenceGrammar(Path("."))
         self._dialogue_words: list[Any] = []
         self._grounded_content: list[DAGTuple] = []
+        self._seed_referents: list[Referent] = []
+        self.last_reference_failure: dict | None = None
+
+    def seed_referents(self, profile: dict) -> None:
+        """Seed declared constants; optional metadata supplies gender and number."""
+        metadata = profile.get("referents", {})
+        self._seed_referents = [r for r in self._seed_referents if r.source != "grammar"]
+        for symbol, sort in profile.get("constants", {}).items():
+            features = metadata.get(symbol, {})
+            self._seed_referents.append(Referent(
+                symbol, sort, features.get("person", {"speaker": 1, "hearer": 2}.get(symbol, 3)),
+                features.get("gender"), features.get("number"), "grammar",
+            ))
+        self.last_reference_failure = None
+
+    @property
+    def referents(self) -> list[Referent]:
+        """Newest active-path names first, then the explicit context and grammar seeds.
+
+        Deriving names from the active path makes failed alternatives and repairs
+        disappear automatically; speculative actions never mutate discourse state.
+        """
+        from dylan.action.lexical_action import LexicalAction
+        from dylan.formula.mltt.semantics import SemanticFormula, SemanticType
+        from dylan.tree.label.labels import UnaryPredicateLabel
+
+        result, seen = [], set()
+        current = self._dag.get_current_tuple()
+        while current is not None:
+            edge = self._dag.get_parent_edge(current)
+            if edge is None:
+                break
+            if any(isinstance(a, LexicalAction) and a.action_type.startswith("proper")
+                   for a in edge.get_actions()):
+                for address, node in edge.dst.tree.items():
+                    formula, typ = node.get_formula(), node.get_type()
+                    previous = edge.src.tree.get(address)
+                    if (isinstance(formula, SemanticFormula) and formula.term.kind == "name"
+                            and isinstance(typ, SemanticType)
+                            and (previous is None or previous.get_formula() != formula)):
+                        symbol = formula.term.name
+                        if symbol not in seen:
+                            known = next((r for r in self._seed_referents if r.symbol == symbol), None)
+                            features = {lab.predicate.lower(): lab.arg for lab in node.labels
+                                        if isinstance(lab, UnaryPredicateLabel)}
+                            gender = features.get("gender", known.gender if known else None)
+                            gender = {"m": "masc", "f": "fem", "n": "neut"}.get(gender, gender)
+                            result.append(Referent(
+                                symbol, known.sort if known else str(typ.term),
+                                int(features.get("person", known.person if known else 3)),
+                                gender, features.get("number", known.number if known else None),
+                            ))
+                            seen.add(symbol)
+            current = edge.src
+        return result + [r for r in self._seed_referents if r.symbol not in seen]
+
+    @referents.setter
+    def referents(self, values: list[Referent]) -> None:
+        self._seed_referents = list(values)
 
     def get_name(self) -> str:
         """Return the default agent name for this context."""
@@ -123,6 +183,8 @@ class Context(Generic[T, E]):
         self._dag.set_context(self)
         self._dialogue_words.clear()
         self._grounded_content.clear()
+        self._seed_referents.clear()
+        self.last_reference_failure = None
         self.who_has_floor = None
 
     def init_participants(self, participants: list[str]) -> None:

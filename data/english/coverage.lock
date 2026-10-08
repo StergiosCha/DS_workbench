@@ -1,0 +1,572 @@
+{
+  "2015-english-ttr-robot:adjective": {
+    "rows": 73,
+    "vocabulary": [
+      0,
+      71
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr-robot:all": {
+    "rows": 107,
+    "vocabulary": [
+      0,
+      100
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr-robot:definite": {
+    "rows": 53,
+    "vocabulary": [
+      0,
+      53
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr-robot:imperative": {
+    "rows": 100,
+    "vocabulary": [
+      0,
+      100
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr-robot:indefinite": {
+    "rows": 47,
+    "vocabulary": [
+      0,
+      47
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr-robot:name": {
+    "rows": 5,
+    "vocabulary": [
+      0,
+      0
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:adjective": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      0
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:adverb": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      0
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:all": {
+    "rows": 28,
+    "vocabulary": [
+      4,
+      4
+    ],
+    "agreement": [
+      4,
+      4
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:indefinite": {
+    "rows": 12,
+    "vocabulary": [
+      3,
+      3
+    ],
+    "agreement": [
+      3,
+      3
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:name": {
+    "rows": 18,
+    "vocabulary": [
+      1,
+      1
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:negation": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      0
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:relative_obj": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      0
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:relative_subj": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      0
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:universal_subj": {
+    "rows": 1,
+    "vocabulary": [
+      0,
+      0
+    ],
+    "agreement": [
+      0,
+      0
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2015-english-ttr:yes_no": {
+    "rows": 4,
+    "vocabulary": [
+      1,
+      1
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      0,
+      0
+    ]
+  },
+  "2026-english-classical:adjective": {
+    "rows": 6,
+    "vocabulary": [
+      2,
+      2
+    ],
+    "agreement": [
+      2,
+      2
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-english-classical:adverb": {
+    "rows": 2,
+    "vocabulary": [
+      1,
+      1
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      1,
+      1
+    ]
+  },
+  "2026-english-classical:all": {
+    "rows": 80,
+    "vocabulary": [
+      31,
+      31
+    ],
+    "agreement": [
+      31,
+      31
+    ],
+    "semantic": [
+      31,
+      31
+    ]
+  },
+  "2026-english-classical:complement": {
+    "rows": 23,
+    "vocabulary": [
+      11,
+      11
+    ],
+    "agreement": [
+      11,
+      11
+    ],
+    "semantic": [
+      11,
+      11
+    ]
+  },
+  "2026-english-classical:indefinite": {
+    "rows": 45,
+    "vocabulary": [
+      18,
+      18
+    ],
+    "agreement": [
+      18,
+      18
+    ],
+    "semantic": [
+      18,
+      18
+    ]
+  },
+  "2026-english-classical:name": {
+    "rows": 50,
+    "vocabulary": [
+      18,
+      18
+    ],
+    "agreement": [
+      18,
+      18
+    ],
+    "semantic": [
+      18,
+      18
+    ]
+  },
+  "2026-english-classical:negation": {
+    "rows": 9,
+    "vocabulary": [
+      5,
+      5
+    ],
+    "agreement": [
+      5,
+      5
+    ],
+    "semantic": [
+      5,
+      5
+    ]
+  },
+  "2026-english-classical:relative_obj": {
+    "rows": 6,
+    "vocabulary": [
+      2,
+      2
+    ],
+    "agreement": [
+      2,
+      2
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-english-classical:relative_subj": {
+    "rows": 17,
+    "vocabulary": [
+      11,
+      11
+    ],
+    "agreement": [
+      11,
+      11
+    ],
+    "semantic": [
+      11,
+      11
+    ]
+  },
+  "2026-english-classical:universal_obj": {
+    "rows": 8,
+    "vocabulary": [
+      2,
+      2
+    ],
+    "agreement": [
+      2,
+      2
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-english-classical:universal_subj": {
+    "rows": 7,
+    "vocabulary": [
+      3,
+      3
+    ],
+    "agreement": [
+      3,
+      3
+    ],
+    "semantic": [
+      3,
+      3
+    ]
+  },
+  "2026-english-mltt:adjective": {
+    "rows": 6,
+    "vocabulary": [
+      2,
+      2
+    ],
+    "agreement": [
+      2,
+      2
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-english-mltt:adverb": {
+    "rows": 2,
+    "vocabulary": [
+      1,
+      1
+    ],
+    "agreement": [
+      1,
+      1
+    ],
+    "semantic": [
+      1,
+      1
+    ]
+  },
+  "2026-english-mltt:all": {
+    "rows": 80,
+    "vocabulary": [
+      31,
+      31
+    ],
+    "agreement": [
+      31,
+      31
+    ],
+    "semantic": [
+      31,
+      31
+    ]
+  },
+  "2026-english-mltt:complement": {
+    "rows": 23,
+    "vocabulary": [
+      11,
+      11
+    ],
+    "agreement": [
+      11,
+      11
+    ],
+    "semantic": [
+      11,
+      11
+    ]
+  },
+  "2026-english-mltt:indefinite": {
+    "rows": 45,
+    "vocabulary": [
+      18,
+      18
+    ],
+    "agreement": [
+      18,
+      18
+    ],
+    "semantic": [
+      18,
+      18
+    ]
+  },
+  "2026-english-mltt:name": {
+    "rows": 50,
+    "vocabulary": [
+      18,
+      18
+    ],
+    "agreement": [
+      18,
+      18
+    ],
+    "semantic": [
+      18,
+      18
+    ]
+  },
+  "2026-english-mltt:negation": {
+    "rows": 9,
+    "vocabulary": [
+      5,
+      5
+    ],
+    "agreement": [
+      5,
+      5
+    ],
+    "semantic": [
+      5,
+      5
+    ]
+  },
+  "2026-english-mltt:relative_obj": {
+    "rows": 6,
+    "vocabulary": [
+      2,
+      2
+    ],
+    "agreement": [
+      2,
+      2
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-english-mltt:relative_subj": {
+    "rows": 17,
+    "vocabulary": [
+      11,
+      11
+    ],
+    "agreement": [
+      11,
+      11
+    ],
+    "semantic": [
+      11,
+      11
+    ]
+  },
+  "2026-english-mltt:universal_obj": {
+    "rows": 8,
+    "vocabulary": [
+      2,
+      2
+    ],
+    "agreement": [
+      2,
+      2
+    ],
+    "semantic": [
+      2,
+      2
+    ]
+  },
+  "2026-english-mltt:universal_subj": {
+    "rows": 7,
+    "vocabulary": [
+      3,
+      3
+    ],
+    "agreement": [
+      3,
+      3
+    ],
+    "semantic": [
+      3,
+      3
+    ]
+  }
+}

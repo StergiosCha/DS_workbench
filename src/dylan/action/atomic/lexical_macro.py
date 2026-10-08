@@ -26,7 +26,9 @@ class LexicalMacro(Effect):
         for eff in self.actions:
             if cur is None:
                 return None
-            cur = eff.exec_tuple_context(cur, context)
+            from dylan.action.execution_trace import execute_effect
+
+            cur = execute_effect(eff, cur, context, tuple_context=True)
         return cur
 
     def instantiate(self) -> Effect:

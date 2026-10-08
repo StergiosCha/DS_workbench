@@ -1,0 +1,22 @@
+include README.md LICENSE THIRD_PARTY_NOTICES.md CONTRIBUTING.md pyproject.toml setup.py uv.lock
+recursive-include licenses *.md *.txt
+graft src
+graft resources
+graft workbench
+graft scripts
+graft tests
+graft examples
+graft docs
+graft data
+graft deploy
+graft .github
+prune .claude
+prune .codex
+prune .cursor
+prune .agents
+prune .ds-workbench
+prune .vercel
+prune build
+prune dist
+exclude HANDOVER.md
+global-exclude __pycache__ *.py[cod] .DS_Store .env .env.* *.sqlite3 *.sqlite3-* *.log

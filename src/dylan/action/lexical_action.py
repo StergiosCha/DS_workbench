@@ -22,12 +22,17 @@ class LexicalAction(Action):
         lines: list[str],
         action_type: str | None,
         no_left_adjustment: bool = False,
+        *,
+        parameters: tuple[str, ...] = (),
+        metadata: dict | None = None,
     ) -> None:
         super().__init__(word, None)
         self.word = word
         self._source_lines = list(lines)
         self.action_type = action_type
         self.no_left_adjustment = no_left_adjustment
+        self.parameters = tuple(parameters)
+        self.metadata = dict(metadata or {})
         ifs = EffectFactory.get_if_indices(lines)
         self.effects: list[Effect] = EffectFactory.create_multiple(lines, ifs)
 
@@ -70,7 +75,9 @@ class LexicalAction(Action):
         cur: Tree | None = tree
         for eff in self.effects:
             assert cur is not None
-            cur = eff.exec(cur, context)
+            from dylan.action.execution_trace import execute_effect
+
+            cur = execute_effect(eff, cur, context)
             if cur is None:
                 return None
         return cur
@@ -80,7 +87,9 @@ class LexicalAction(Action):
         cur: Tree | None = tree
         for eff in self.effects:
             assert cur is not None
-            cur = eff.exec_tuple_context(cur, context)
+            from dylan.action.execution_trace import execute_effect
+
+            cur = execute_effect(eff, cur, context, tuple_context=True)
             if cur is None:
                 return None
         return cur
@@ -92,6 +101,8 @@ class LexicalAction(Action):
             list(self._source_lines),
             self.action_type,
             self.no_left_adjustment,
+            parameters=self.parameters,
+            metadata=self.metadata,
         )
 
 

@@ -78,5 +78,9 @@ class MetaTTRRecordType(TTRRecordType):
             return self._meta == other.get_value()
         return self._meta == other
 
+    def __hash__(self) -> int:
+        """Hash by meta name (binding via ``__eq__`` must not change the hash), like ``MetaFormula``."""
+        return hash((MetaTTRRecordType, self._meta.name))
+
     def __str__(self) -> str:
         return repr(self._meta)

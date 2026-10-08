@@ -1,0 +1,4 @@
+*noop(NAME)
+IF ?Ty(t)
+THEN do_nothing
+ELSE abort

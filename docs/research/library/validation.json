@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-07",
+  "scope": "Offline library and portable bibliography; no public app deployment or Zotero group creation.",
+  "counts": {
+    "selected_works": 35,
+    "fingerprinted_pdf_versions": 15,
+    "analysis_cards": 5,
+    "categories": 18,
+    "topics": 91,
+    "discovery_records": 25,
+    "discovery_needing_source_or_relevance_review": 13
+  },
+  "checks": [
+    "All selected works load from a local file without a server",
+    "PCC search exposes precise source cards and separate backend/example status",
+    "Topic, semantic framework and variety filters combine",
+    "Source-framework filters distinguish Constructive and the two induction studies",
+    "TTR-DS recasting stays distinct from DS–TTR meanings and current app capabilities",
+    "Mechanism and reading-status filters preserve unknown/unread distinctions",
+    "Exact IDs, clear and empty search behave consistently",
+    "Discovery candidates and exclusions remain outside selected-work counts",
+    "Both citation-export links reference generated files",
+    "Mobile record and expanded analysis fit without horizontal overflow",
+    "No browser errors, tracking or external network requests"
+  ],
+  "citation_export_check": "Pandoc parsed CSL JSON and round-tripped all 35 BibTeX records; IDs, titles including capitalization, author order and full citation dates matched.",
+  "structural_check": "build_ds_library.py --check passed: taxonomy, source and code links, original artifact fingerprints, DOI uniqueness and reproducible outputs.",
+  "lint": "Ruff and git diff --check passed.",
+  "sha256": {
+    "papers.json": "a1bdb30fe81861c397e7836a4d9d9642a3d36495d93d8fd878428acf0b813f1b",
+    "analyses.json": "83e276982997a5eb918411942bbee814fde885407a2173c4d58737a6708ebdbe",
+    "taxonomy.json": "f69e516488a1cb4835e53ecfc351f9687398e1e89f9a6fb7d12abbf7a4cd97d9",
+    "discovery.json": "cad14bb590694088c4946491775561171d8182ef1cc13b0c5d8eb2e9d8151a4e",
+    "library-template.html": "29278587948adecae2164d491142bfa73ec0537f7043d84b699bebd7bfb74fc6",
+    "index.html": "ab4903bf80f4dcf48950a3f8a08690fadc5a26a885506cc69a0768ccabf21362",
+    "ds-library.bib": "714c0bffa5d9569009babf614771d61b966e418e33a5c7bc1fc5ea1939bb44f6",
+    "ds-library.csl.json": "108a73ac84a078a6e5a038963f80f4c43bcc5fe3c1786f7b7743cf40f096a67d"
+  },
+  "metadata_followup": {
+    "date": "2026-10-07",
+    "scope": "KV19 publication verification: the exact contribution is listed on p. 3 of the official IWCS workshop document. Clarified abstract status and distinction from the local two-page contribution. The earlier browser checks above refer to their original hashes; frontend code is unchanged.",
+    "checks": [
+      "build_ds_library.py --check passed",
+      "All 35 BibTeX records round-tripped through Pandoc with IDs, title capitalization, authors and issued dates preserved",
+      "KV19 abstract-status note and page locator preserved in citation export"
+    ],
+    "sha256": {
+      "papers.json": "fc047ba475d50e24509dbf7affa3274f143f4943be1334330024403dab5cb6b6",
+      "analyses.json": "83e276982997a5eb918411942bbee814fde885407a2173c4d58737a6708ebdbe",
+      "taxonomy.json": "f69e516488a1cb4835e53ecfc351f9687398e1e89f9a6fb7d12abbf7a4cd97d9",
+      "discovery.json": "cad14bb590694088c4946491775561171d8182ef1cc13b0c5d8eb2e9d8151a4e",
+      "library-template.html": "29278587948adecae2164d491142bfa73ec0537f7043d84b699bebd7bfb74fc6",
+      "index.html": "5e6eefd44ceea4589c4dd689102601cb2e4a947572741843d13160904fd5602f",
+      "ds-library.bib": "1bac170c7e511a84f28f1ae16274289e83a7ef9683d622a5f96d667e50e778aa",
+      "ds-library.csl.json": "56480aa2a4d5c696fddaa9e452346b5439e5812f211137e582d43e8e75da51d7"
+    }
+  },
+  "expansion_followup": {
+    "date": "2026-10-07",
+    "scope": "Evening expansion pass (Cowork session, Fable 5.1): 18 works admitted, 15 new fingerprinted versions, three abstract-level analysis cards, 13-item discovery queue resolved to 4 admitted / 4 excluded / 5 still needing screening. No browser re-check was run (Playwright not installed in the Linux scratch environment); frontend template unchanged, so the 11 earlier browser checks refer to the previous data payload.",
+    "counts": {
+      "selected_works": 53,
+      "fingerprinted_pdf_versions": 30,
+      "analysis_cards": 8,
+      "categories": 18,
+      "topics": 91,
+      "discovery_records": 25,
+      "discovery_needing_source_or_relevance_review": 5,
+      "discovery_excluded": 8,
+      "non_doi_leads": 6
+    },
+    "checks": [
+      "build_ds_library.py and --check passed in a scratch Python 3.12 environment on the Mac (uv sync --locked --no-install-project into $HOME/dsenv; the repository's own macOS .venv was not touched)",
+      "Pandoc 3.1.3 (-f bibtex -t csljson) round-tripped all 53 BibTeX records; IDs, titles, author family-name order and issued dates matched the CSL JSON export",
+      "git diff --check passed",
+      "Browser checks: not re-run in this pass"
+    ],
+    "sha256": {
+      "papers.json": "897a8048774c20f8d5aeb822c95517925d20ec7492832ed130aebaf40bc7464f",
+      "analyses.json": "591e2764dea0e90ce0f14c81c07a69e33cddd5826860b3ea153d5260da112c39",
+      "taxonomy.json": "f69e516488a1cb4835e53ecfc351f9687398e1e89f9a6fb7d12abbf7a4cd97d9",
+      "discovery.json": "3e558dc4ec0a8f346bb3d2a601ea9a9bc4ff9b32585f20793055fa724d6225c2",
+      "library-template.html": "29278587948adecae2164d491142bfa73ec0537f7043d84b699bebd7bfb74fc6",
+      "index.html": "8f9ecb3ad1778e0e1ced2e70990f543b84d83ef4db6eb95b925693d8ab8f07c2",
+      "ds-library.bib": "fc282e346db005a6dbc48296f3855734fcb9fffd14250a38d1d4880281127653",
+      "ds-library.csl.json": "ba5dfe7a70cf322867096259c39d090117e78cbf6446648365145ab43061f59f"
+    }
+  },
+  "publication_followup": {
+    "date": "2026-10-08",
+    "scope": "Corrected KCC15 byline order, used a neutral research-card count label, and updated browser selectors for multiple cards and an expanded catalogue. Earlier records retain their historical hashes.",
+    "counts": {
+      "selected_works": 53,
+      "fingerprinted_pdf_versions": 30,
+      "research_cards": 8
+    },
+    "checks": [
+      "All 11 offline library browser checks pass on the corrected data and template",
+      "All 53 BibTeX records round-trip with titles, author arrays and issued dates matching CSL; KCC15 matches the printed byline",
+      "build_ds_library.py --check passes"
+    ],
+    "sha256": {
+      "papers.json": "320bf651ec5e98612d4f69be32ee5d37a1586a92a06437304cead815485edb4d",
+      "analyses.json": "591e2764dea0e90ce0f14c81c07a69e33cddd5826860b3ea153d5260da112c39",
+      "taxonomy.json": "f69e516488a1cb4835e53ecfc351f9687398e1e89f9a6fb7d12abbf7a4cd97d9",
+      "discovery.json": "3e558dc4ec0a8f346bb3d2a601ea9a9bc4ff9b32585f20793055fa724d6225c2",
+      "library-template.html": "803b6e528bd33f7315c9e6b5ef236456d85b637c4bed6ed146c854e50abf1888",
+      "index.html": "bb108cfe33ca67c15ab53ed718ad7188611b27ce5cb8ddfeebf468e134eced53",
+      "ds-library.bib": "64e04fde4cfcd8bb458bc62351ae45b0515a90ff01c0adcd41e42f315808ba60",
+      "ds-library.csl.json": "be6da7b428bc7750514770c7a5560030c4e6d5cf70060b4c9a500c2c5127cec2"
+    }
+  }
+}

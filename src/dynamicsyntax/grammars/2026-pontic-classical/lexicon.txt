@@ -1,0 +1,33 @@
+// Greek spelling and ASCII transliteration aliases; finite vocabulary.
+ατον clitic him 3
+aton clitic him 3
+ατο clitic theme 3
+ato clitic theme 3
+εξέρ verb-finite know speaker 1 sg
+ekser verb-finite know speaker 1 sg
+ξέρ verb-finite know speaker 1 sg
+kser verb-finite know speaker 1 sg
+κι negative x
+ci negative x
+. punctuation x
+! punctuation x
+? punctuation x
+; punctuation x
+; punctuation x
+me clitic speaker 1
+se clitic hearer 2
+m pontic-cluster speaker 1 hearer 2
+m pontic-cluster speaker 1 theme 3
+ese cluster-tail hearer
+esen cluster-tail hearer
+a cluster-tail theme
+edikse verb-ditransitive show pro 3 sg
+eδikse verb-ditransitive show pro 3 sg
+edeknise verb-ditransitive show pro 3 sg
+eδeknise verb-ditransitive show pro 3 sg
+edeke verb-ditransitive give pro 3 sg
+eδeke verb-ditransitive give pro 3 sg
+dos verb-ditransitive-imperative give
+δos verb-ditransitive-imperative give
+∆os verb-ditransitive-imperative give
+ki negative x

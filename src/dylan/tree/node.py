@@ -120,7 +120,7 @@ class Node:
 
     def is_unifiable(self, other: Node) -> bool:
         """Address-compatible merge target for an unfixed node (Java ``Node.isUnifiable``)."""
-        if not other.address.subsumes(self.address):
+        if not self.address.subsumes(other.address):
             return False
         t = self.get_type() or self.get_required_type()
         if t is not None:

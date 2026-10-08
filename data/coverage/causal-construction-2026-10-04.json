@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-04",
+  "deployment": "dpl_6YjXhXYJ1R7vW7WBeMR4dtvrPLEq",
+  "url": "https://ds-workbench.vercel.app/",
+  "purpose": "Public construction and integration checks; not an open-text accuracy estimate.",
+  "runs": [
+    {
+      "grammar": "2026-english-classical",
+      "sentence": "George opened the door because he came later",
+      "complete": true,
+      "elapsed_ms": 1080,
+      "mode": "dictionary",
+      "meaning": "because(open_vho01346003(george, ι x0:e. door_n03221720(x0)), later(come_vo01849221(george)))",
+      "context_assumptions": [
+        "him interpreted as george: the most recent compatible named antecedent; this is a contextual resolution assumption."
+      ]
+    },
+    {
+      "grammar": "2026-english-mltt",
+      "sentence": "George opened the door because he came later",
+      "complete": true,
+      "elapsed_ms": 839,
+      "mode": "dictionary",
+      "meaning": "because(open_vho01346003(george, definite_010), later(come_vo01849221(george)))",
+      "context_assumptions": [
+        "definite_010: a contextually identified referent of type door_n03221720; its identification is assumed.",
+        "him interpreted as george: the most recent compatible named antecedent; this is a contextual resolution assumption."
+      ]
+    },
+    {
+      "grammar": "2026-english-mltt",
+      "sentence": "George opened the door because he came later",
+      "complete": true,
+      "elapsed_ms": 2845,
+      "mode": "jev",
+      "meaning": "because(open_vho01346003(george, definite_010), later(come_vo01849221(george)))",
+      "context_assumptions": [
+        "definite_010: a contextually identified referent of type door_n03221720; its identification is assumed.",
+        "him interpreted as george: the most recent compatible named antecedent; this is a contextual resolution assumption."
+      ],
+      "comparison": {
+        "status": "same",
+        "same_inventory": true,
+        "inventory_hash": "9f9cceb941cc483e6f2ac6c2c906a5e7ee9f1efde25fe87572065f9ec3456e5b",
+        "live_calls": 6,
+        "valid_decisions": 6
+      },
+      "baseline_meaning": "because(open_vho01346003(george, definite_010), later(come_vo01849221(george)))"
+    }
+  ]
+}

@@ -50,12 +50,14 @@ def _split_top_level_commas(s: str) -> list[str]:
 
 
 REC_METAVARIABLE_PATTERN = re.compile(r"^REC\d*$", re.IGNORECASE)
-FORMULA_METAVARIABLE_PATTERN = re.compile(r"^U[1-9]*$")
+FORMULA_METAVARIABLE_PATTERN = re.compile(r"^(?:U[1-9]*|[UV][0-9]*_[A-Za-z][A-Za-z0-9_']*)$")
 _FRESHPUT_META_FORMULA = re.compile(r"^[S-U]$")
 _REC_BINDER_PATTERN = re.compile(r"^R\d*$", re.IGNORECASE)
 # Java ``LabelFactory.METAVARIABLE_PATTERN``: rule metavariables ``V``–``Z`` and ``META``.
 _LEXICAL_FORMULA_METAVARIABLE = re.compile(r"^(?:[V-Z][0-9]*|META)$")
-_ATOMIC_FORMULA_PATTERN = re.compile(r"^[a-z]+[a-z_0-9]*$")
+# Participant constants such as A, Alice and speaker_B must survive reading a
+# displayed record back in. Reserved variables/metavariables are handled first.
+_ATOMIC_FORMULA_PATTERN = re.compile(r"^[A-Za-z]+[A-Za-z_0-9]*$")
 
 
 class Formula(ABC):
@@ -141,6 +143,10 @@ class Formula(ABC):
         from dylan.formula.variable import Variable
 
         s = string.strip()
+        if s.startswith(("mltt:", "classical:")):
+            from dylan.formula.mltt.semantics import parse_semantic_formula
+
+            return parse_semantic_formula(s)
         inner_paren = _strip_matching_outer_parens(s)
         if inner_paren is not None:
             inner_f = Formula.create(inner_paren, in_ex_conj)

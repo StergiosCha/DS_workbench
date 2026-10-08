@@ -1,0 +1,2456 @@
+{
+  "sample": "data/coverage/unseen-passages.json",
+  "seed": 20261001,
+  "summary": {
+    "en-classical": {
+      "complete_passages": 0,
+      "passages": 6,
+      "complete_sentences": 0,
+      "sentences": 19,
+      "failure_kinds": {
+        "lexicon_gap": 14,
+        "unresolved_parse_failure": 4,
+        "input_limit": 1
+      }
+    },
+    "en-mltt": {
+      "complete_passages": 0,
+      "passages": 6,
+      "complete_sentences": 0,
+      "sentences": 19,
+      "failure_kinds": {
+        "lexicon_gap": 14,
+        "unresolved_parse_failure": 4,
+        "input_limit": 1
+      }
+    },
+    "el-classical": {
+      "complete_passages": 0,
+      "passages": 6,
+      "complete_sentences": 0,
+      "sentences": 18,
+      "failure_kinds": {
+        "lexicon_gap": 17,
+        "unresolved_parse_failure": 1
+      }
+    },
+    "el-mltt": {
+      "complete_passages": 0,
+      "passages": 6,
+      "complete_sentences": 0,
+      "sentences": 18,
+      "failure_kinds": {
+        "lexicon_gap": 17,
+        "unresolved_parse_failure": 1
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "en-1",
+      "language": "en",
+      "grammar": "2026-english-classical",
+      "text_sha256": "ae929ad66686bbd6fe99327ceeee90584276deeeaff173794fcf2f94104386e2",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 4,
+        "failed": 4,
+        "all_complete": false
+      },
+      "elapsed_ms": 87,
+      "sentences": [
+        {
+          "text": "5:6 Your glorying is not good.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "5:6",
+            "index": 0,
+            "message": "“5:6” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "5:6",
+            "your",
+            "glorying"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Know ye not that a little leaven\nleaveneth the whole lump?",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "know",
+            "index": 0,
+            "message": "The grammar could not continue at “know”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "ye",
+            "leaveneth",
+            "?"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "5:7 Purge out therefore the old leaven,\nthat ye may be a new lump, as ye are unleavened.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "5:7",
+            "index": 0,
+            "message": "“5:7” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "5:7",
+            "out",
+            "therefore",
+            ",",
+            "ye",
+            "may",
+            "be",
+            ",",
+            "as",
+            "ye"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "For even Christ our\npassover is sacrificed for us: 5:8 Therefore let us keep the feast,\nnot with old leaven, neither with the leaven of malice and wickedness;\nbut with the unleavened bread of sincerity and truth.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "for",
+            "index": 0,
+            "message": "“for” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1,
+            2
+          ],
+          "missing": [
+            "for",
+            "even",
+            "our",
+            "passover",
+            "for",
+            "us:",
+            "5:8",
+            "therefore",
+            ",",
+            ",",
+            "neither",
+            "of",
+            "and",
+            ";",
+            "but",
+            "of",
+            "and"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-1",
+      "language": "en",
+      "grammar": "2026-english-mltt",
+      "text_sha256": "ae929ad66686bbd6fe99327ceeee90584276deeeaff173794fcf2f94104386e2",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 4,
+        "failed": 4,
+        "all_complete": false
+      },
+      "elapsed_ms": 87,
+      "sentences": [
+        {
+          "text": "5:6 Your glorying is not good.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "5:6",
+            "index": 0,
+            "message": "“5:6” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "5:6",
+            "your",
+            "glorying"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Know ye not that a little leaven\nleaveneth the whole lump?",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "know",
+            "index": 0,
+            "message": "The grammar could not continue at “know”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "ye",
+            "leaveneth",
+            "?"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "5:7 Purge out therefore the old leaven,\nthat ye may be a new lump, as ye are unleavened.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "5:7",
+            "index": 0,
+            "message": "“5:7” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "5:7",
+            "out",
+            "therefore",
+            ",",
+            "ye",
+            "may",
+            "be",
+            ",",
+            "as",
+            "ye"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "For even Christ our\npassover is sacrificed for us: 5:8 Therefore let us keep the feast,\nnot with old leaven, neither with the leaven of malice and wickedness;\nbut with the unleavened bread of sincerity and truth.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "for",
+            "index": 0,
+            "message": "“for” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1,
+            2
+          ],
+          "missing": [
+            "for",
+            "even",
+            "our",
+            "passover",
+            "for",
+            "us:",
+            "5:8",
+            "therefore",
+            ",",
+            ",",
+            "neither",
+            "of",
+            "and",
+            ";",
+            "but",
+            "of",
+            "and"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-2",
+      "language": "en",
+      "grammar": "2026-english-classical",
+      "text_sha256": "c5a48bd89cc373f2afa821d933338a3e50bbd8f5f5c08b7d991368b67709b96a",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 4,
+        "failed": 4,
+        "all_complete": false
+      },
+      "elapsed_ms": 116,
+      "sentences": [
+        {
+          "text": "\"You mustn't be too hard on them,\" said Father Brown gently.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "\"you",
+            "index": 0,
+            "message": "“\"you” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "\"you",
+            "must",
+            "be",
+            "too",
+            "them,\"",
+            "gently"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "\"It's not entirely their fault; but they have no instincts.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "\"it's",
+            "index": 0,
+            "message": "“\"it's” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "\"it's",
+            "entirely",
+            "their",
+            ";",
+            "but",
+            "have",
+            "no",
+            "instincts"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "I mean those things that make a woman refuse to dance with a man\nor a man to touch an investment.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "those",
+            "index": 2,
+            "message": "“those” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "those",
+            "or"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "They've been taught that\nit's all a matter of degree.\"",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "they've",
+            "index": 0,
+            "message": "“they've” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1,
+            2
+          ],
+          "missing": [
+            "they've",
+            "been",
+            "it's",
+            "all",
+            "of",
+            "degree.\""
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-2",
+      "language": "en",
+      "grammar": "2026-english-mltt",
+      "text_sha256": "c5a48bd89cc373f2afa821d933338a3e50bbd8f5f5c08b7d991368b67709b96a",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 4,
+        "failed": 4,
+        "all_complete": false
+      },
+      "elapsed_ms": 117,
+      "sentences": [
+        {
+          "text": "\"You mustn't be too hard on them,\" said Father Brown gently.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "\"you",
+            "index": 0,
+            "message": "“\"you” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "\"you",
+            "must",
+            "be",
+            "too",
+            "them,\"",
+            "gently"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "\"It's not entirely their fault; but they have no instincts.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "\"it's",
+            "index": 0,
+            "message": "“\"it's” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "\"it's",
+            "entirely",
+            "their",
+            ";",
+            "but",
+            "have",
+            "no",
+            "instincts"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "I mean those things that make a woman refuse to dance with a man\nor a man to touch an investment.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "those",
+            "index": 2,
+            "message": "“those” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "those",
+            "or"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "They've been taught that\nit's all a matter of degree.\"",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "they've",
+            "index": 0,
+            "message": "“they've” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1,
+            2
+          ],
+          "missing": [
+            "they've",
+            "been",
+            "it's",
+            "all",
+            "of",
+            "degree.\""
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-3",
+      "language": "en",
+      "grammar": "2026-english-classical",
+      "text_sha256": "cf709bfcce0ef5ee7e81d73b62cd798384684123d1484c93903a2507124da87a",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 2,
+        "failed": 2,
+        "all_complete": false
+      },
+      "elapsed_ms": 69,
+      "sentences": [
+        {
+          "text": "\"My master asks me to say,\" said the attendant, that there is a\nfancy dress ball tonight, and that he desires you to put on the\ncostume that I have laid out.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "\"my",
+            "index": 0,
+            "message": "“\"my” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "\"my",
+            "say,\"",
+            ",",
+            "there",
+            ",",
+            "and",
+            "have",
+            "out"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Meanwhile, sir, there is a bottle\nof Burgundy and some cold pheasant, which he hopes you will not\nrefuse, as it is some hours before supper.\"",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "meanwhile",
+            "index": 0,
+            "message": "The grammar could not continue at “meanwhile”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            ",",
+            ",",
+            "there",
+            "of",
+            "and",
+            ",",
+            "will",
+            ",",
+            "as",
+            "before",
+            "supper.\""
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-3",
+      "language": "en",
+      "grammar": "2026-english-mltt",
+      "text_sha256": "cf709bfcce0ef5ee7e81d73b62cd798384684123d1484c93903a2507124da87a",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 2,
+        "failed": 2,
+        "all_complete": false
+      },
+      "elapsed_ms": 69,
+      "sentences": [
+        {
+          "text": "\"My master asks me to say,\" said the attendant, that there is a\nfancy dress ball tonight, and that he desires you to put on the\ncostume that I have laid out.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "\"my",
+            "index": 0,
+            "message": "“\"my” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "\"my",
+            "say,\"",
+            ",",
+            "there",
+            ",",
+            "and",
+            "have",
+            "out"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Meanwhile, sir, there is a bottle\nof Burgundy and some cold pheasant, which he hopes you will not\nrefuse, as it is some hours before supper.\"",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "meanwhile",
+            "index": 0,
+            "message": "The grammar could not continue at “meanwhile”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            ",",
+            ",",
+            "there",
+            "of",
+            "and",
+            ",",
+            "will",
+            ",",
+            "as",
+            "before",
+            "supper.\""
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-4",
+      "language": "en",
+      "grammar": "2026-english-classical",
+      "text_sha256": "f3335dc87b1740e398f35fc31cc5559583c6ecc5ee112f5727bbe85c2c082e7e",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 2,
+        "failed": 2,
+        "all_complete": false
+      },
+      "elapsed_ms": 36,
+      "sentences": [
+        {
+          "text": "1\nSauntering the pavement or riding the country by-road, faces!",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "1",
+            "index": 0,
+            "message": "“1” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "1",
+            "sauntering",
+            "or",
+            "by-road",
+            ",",
+            "!"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Faces of friendship, precision, caution, suavity, ideality,\nThe spiritual-prescient face, the always welcome common benevolent face,\nThe face of the singing of music, the grand faces of natural lawyers\n    and judges broad at the back-top,\nThe faces of hunters and fishers bulged at the brows, the shaved\n    blanch'd faces of orthodox citizens,\nThe pure, extravagant, yearning, questioning artist's face,\nThe ugly face of some beautiful soul, the handsome detested or\n    despised face,\nThe sacred faces of infants, the illuminated face of the mother of\n    many children,\nThe face of an amour, the face of veneration,\nThe face as of a dream, the face of an immobile rock,\nThe face withdrawn of its good and bad, a castrated face,\nA wild hawk, his wings clipp'd by the clipper,\nA stallion that yielded at last to the thongs and knife of the gelder.",
+          "status": "input_limit",
+          "complete": false,
+          "failure": {
+            "kind": "input_limit",
+            "message": "This sentence exceeds 2000 characters or 160 tokens."
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-4",
+      "language": "en",
+      "grammar": "2026-english-mltt",
+      "text_sha256": "f3335dc87b1740e398f35fc31cc5559583c6ecc5ee112f5727bbe85c2c082e7e",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 2,
+        "failed": 2,
+        "all_complete": false
+      },
+      "elapsed_ms": 36,
+      "sentences": [
+        {
+          "text": "1\nSauntering the pavement or riding the country by-road, faces!",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "1",
+            "index": 0,
+            "message": "“1” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "1",
+            "sauntering",
+            "or",
+            "by-road",
+            ",",
+            "!"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Faces of friendship, precision, caution, suavity, ideality,\nThe spiritual-prescient face, the always welcome common benevolent face,\nThe face of the singing of music, the grand faces of natural lawyers\n    and judges broad at the back-top,\nThe faces of hunters and fishers bulged at the brows, the shaved\n    blanch'd faces of orthodox citizens,\nThe pure, extravagant, yearning, questioning artist's face,\nThe ugly face of some beautiful soul, the handsome detested or\n    despised face,\nThe sacred faces of infants, the illuminated face of the mother of\n    many children,\nThe face of an amour, the face of veneration,\nThe face as of a dream, the face of an immobile rock,\nThe face withdrawn of its good and bad, a castrated face,\nA wild hawk, his wings clipp'd by the clipper,\nA stallion that yielded at last to the thongs and knife of the gelder.",
+          "status": "input_limit",
+          "complete": false,
+          "failure": {
+            "kind": "input_limit",
+            "message": "This sentence exceeds 2000 characters or 160 tokens."
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-5",
+      "language": "en",
+      "grammar": "2026-english-classical",
+      "text_sha256": "74d2572f50c38b1f6c02e2503c62dce906072db9d82b3455763bb73ab2f19973",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 5,
+        "failed": 5,
+        "all_complete": false
+      },
+      "elapsed_ms": 77,
+      "sentences": [
+        {
+          "text": "Lord J. (follows).",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "lord",
+            "index": 0,
+            "message": "The grammar could not continue at “lord”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [],
+          "missing": [
+            "(follows)"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "But what can have become of Talbot?",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "but",
+            "index": 0,
+            "message": "“but” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "but",
+            "what",
+            "can",
+            "have",
+            "of",
+            "talbot",
+            "?"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "I have been too\r\nhasty for once in my life.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "have",
+            "index": 1,
+            "message": "“have” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "have",
+            "been",
+            "too",
+            "for",
+            "once",
+            "my"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Well, I shall suffer for it more than anybody\r\nelse; for I love Talbot, since he did not make the song, of which I hate\r\nto think.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "well",
+            "index": 0,
+            "message": "The grammar could not continue at “well”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [
+            0,
+            1,
+            2
+          ],
+          "missing": [
+            ",",
+            "shall",
+            "for",
+            "more",
+            "than",
+            "anybody",
+            "else",
+            ";",
+            "for",
+            "talbot",
+            ",",
+            "since",
+            ",",
+            "of"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "(Exit.)",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "(exit.)",
+            "index": 0,
+            "message": "“(exit.)” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "missing": [
+            "(exit.)"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-5",
+      "language": "en",
+      "grammar": "2026-english-mltt",
+      "text_sha256": "74d2572f50c38b1f6c02e2503c62dce906072db9d82b3455763bb73ab2f19973",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 5,
+        "failed": 5,
+        "all_complete": false
+      },
+      "elapsed_ms": 76,
+      "sentences": [
+        {
+          "text": "Lord J. (follows).",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "lord",
+            "index": 0,
+            "message": "The grammar could not continue at “lord”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [],
+          "missing": [
+            "(follows)"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "But what can have become of Talbot?",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "but",
+            "index": 0,
+            "message": "“but” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "but",
+            "what",
+            "can",
+            "have",
+            "of",
+            "talbot",
+            "?"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "I have been too\r\nhasty for once in my life.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "have",
+            "index": 1,
+            "message": "“have” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "have",
+            "been",
+            "too",
+            "for",
+            "once",
+            "my"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Well, I shall suffer for it more than anybody\r\nelse; for I love Talbot, since he did not make the song, of which I hate\r\nto think.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "well",
+            "index": 0,
+            "message": "The grammar could not continue at “well”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [
+            0,
+            1,
+            2
+          ],
+          "missing": [
+            ",",
+            "shall",
+            "for",
+            "more",
+            "than",
+            "anybody",
+            "else",
+            ";",
+            "for",
+            "talbot",
+            ",",
+            "since",
+            ",",
+            "of"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "(Exit.)",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "(exit.)",
+            "index": 0,
+            "message": "“(exit.)” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "missing": [
+            "(exit.)"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-6",
+      "language": "en",
+      "grammar": "2026-english-classical",
+      "text_sha256": "698c7c226369deb751afe842601933793c8837cdeb3a7429342549e1d81ffffb",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 2,
+        "failed": 2,
+        "all_complete": false
+      },
+      "elapsed_ms": 61,
+      "sentences": [
+        {
+          "text": "15:8 And he said, LORD God, whereby shall I know that I shall inherit\nit?",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "15:8",
+            "index": 0,
+            "message": "“15:8” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "15:8",
+            "and",
+            ",",
+            ",",
+            "whereby",
+            "shall",
+            "shall",
+            "?"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "15:9 And he said unto him, Take me an heifer of three years old,\nand a she goat of three years old, and a ram of three years old, and a\nturtledove, and a young pigeon.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "15:9",
+            "index": 0,
+            "message": "“15:9” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "15:9",
+            "and",
+            "unto",
+            ",",
+            "of",
+            ",",
+            "and",
+            "of",
+            ",",
+            "and",
+            "of",
+            ",",
+            "and",
+            ",",
+            "and"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "en-6",
+      "language": "en",
+      "grammar": "2026-english-mltt",
+      "text_sha256": "698c7c226369deb751afe842601933793c8837cdeb3a7429342549e1d81ffffb",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 2,
+        "failed": 2,
+        "all_complete": false
+      },
+      "elapsed_ms": 61,
+      "sentences": [
+        {
+          "text": "15:8 And he said, LORD God, whereby shall I know that I shall inherit\nit?",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "15:8",
+            "index": 0,
+            "message": "“15:8” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "15:8",
+            "and",
+            ",",
+            ",",
+            "whereby",
+            "shall",
+            "shall",
+            "?"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "15:9 And he said unto him, Take me an heifer of three years old,\nand a she goat of three years old, and a ram of three years old, and a\nturtledove, and a young pigeon.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "15:9",
+            "index": 0,
+            "message": "“15:9” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "15:9",
+            "and",
+            "unto",
+            ",",
+            "of",
+            ",",
+            "and",
+            "of",
+            ",",
+            "and",
+            "of",
+            ",",
+            "and",
+            ",",
+            "and"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-7",
+      "language": "el",
+      "grammar": "2026-smg-classical",
+      "text_sha256": "b764859f9c716f2c3832ec80b48507d97946d59776ccbed0315d4b653f5873d4",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 67,
+      "sentences": [
+        {
+          "text": "«Μέχρι τώρα εξετάζουμε πολλές επιλογές.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "«μέχρι",
+            "index": 0,
+            "message": "“«μέχρι” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "«μέχρι",
+            "τώρα",
+            "εξετάζουμε",
+            "πολλές",
+            "επιλογές"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Η αναχαίτιση του - πυραύλου φορέα δορυφόρου είναι μια απ' αυτές τις επιλογές», δήλωσε ο Υπουργός Αμύνης της Ιαπωνίας, Ναόκι Τανάκα.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "αναχαίτιση",
+            "index": 1,
+            "message": "“αναχαίτιση” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "αναχαίτιση",
+            "-",
+            "πυραύλου",
+            "δορυφόρου",
+            "απ'",
+            "αυτές",
+            "επιλογές»",
+            "δήλωσε",
+            "αμύνης",
+            "ιαπωνίας",
+            "ναόκι",
+            "τανάκα"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Οι Αρχές της Ιαπωνίας δηλώνουν ότι «η εκτόξευση πυραύλου από τη Βόρεια Κορέα θα παραβιάσει τη συμφωνία με τον ΟΗΕ».",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "οι",
+            "index": 0,
+            "message": "“οι” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "οι",
+            "αρχές",
+            "ιαπωνίας",
+            "δηλώνουν",
+            "ότι",
+            "«η",
+            "εκτόξευση",
+            "πυραύλου",
+            "από",
+            "κορέα",
+            "παραβιάσει",
+            "οηε»"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-7",
+      "language": "el",
+      "grammar": "2026-smg-mltt",
+      "text_sha256": "b764859f9c716f2c3832ec80b48507d97946d59776ccbed0315d4b653f5873d4",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 65,
+      "sentences": [
+        {
+          "text": "«Μέχρι τώρα εξετάζουμε πολλές επιλογές.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "«μέχρι",
+            "index": 0,
+            "message": "“«μέχρι” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "«μέχρι",
+            "τώρα",
+            "εξετάζουμε",
+            "πολλές",
+            "επιλογές"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Η αναχαίτιση του - πυραύλου φορέα δορυφόρου είναι μια απ' αυτές τις επιλογές», δήλωσε ο Υπουργός Αμύνης της Ιαπωνίας, Ναόκι Τανάκα.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "αναχαίτιση",
+            "index": 1,
+            "message": "“αναχαίτιση” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "αναχαίτιση",
+            "-",
+            "πυραύλου",
+            "δορυφόρου",
+            "απ'",
+            "αυτές",
+            "επιλογές»",
+            "δήλωσε",
+            "αμύνης",
+            "ιαπωνίας",
+            "ναόκι",
+            "τανάκα"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Οι Αρχές της Ιαπωνίας δηλώνουν ότι «η εκτόξευση πυραύλου από τη Βόρεια Κορέα θα παραβιάσει τη συμφωνία με τον ΟΗΕ».",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "οι",
+            "index": 0,
+            "message": "“οι” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "οι",
+            "αρχές",
+            "ιαπωνίας",
+            "δηλώνουν",
+            "ότι",
+            "«η",
+            "εκτόξευση",
+            "πυραύλου",
+            "από",
+            "κορέα",
+            "παραβιάσει",
+            "οηε»"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-8",
+      "language": "el",
+      "grammar": "2026-smg-classical",
+      "text_sha256": "0e7106fdb9a354dfbb60f53450654963ac2d26e4e154b35c9136aa211b5bea20",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 70,
+      "sentences": [
+        {
+          "text": "Το ντοκιμαντέρ με τίτλο «Ανατομία μιας διαδήλωσης» αναφέρει ότι «ορισμένοι από τους συμμετέχοντες στις διαδηλώσεις είχαν πληρωθεί για να βρίσκονται εκεί».",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "ντοκιμαντέρ",
+            "index": 1,
+            "message": "“ντοκιμαντέρ” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "ντοκιμαντέρ",
+            "τίτλο",
+            "«ανατομία",
+            "μιας",
+            "διαδήλωσης»",
+            "ότι",
+            "«ορισμένοι",
+            "από",
+            "συμμετέχοντες",
+            "στις",
+            "διαδηλώσεις",
+            "είχαν",
+            "πληρωθεί",
+            "για",
+            "βρίσκονται",
+            "εκεί»"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Υπαινίσσεται επίσης ότι το κίνημα της Αντιπολίτευσης χρηματοδοτείται από δυτικές χώρες.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "υπαινίσσεται",
+            "index": 0,
+            "message": "“υπαινίσσεται” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "υπαινίσσεται",
+            "επίσης",
+            "ότι",
+            "αντιπολίτευσης",
+            "χρηματοδοτείται",
+            "από",
+            "δυτικές",
+            "χώρες"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Το τηλεοπτικό δίκτυο NTV ήταν κάποτε ανεξάρτητο, αλλά βρέθηκε υπό τον έλεγχο της κυβέρνησης μετά την πρώτη εκλογή του Βλαντιμίρ Πούτιν στο προεδρικό αξίωμα το 2000.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "τηλεοπτικό",
+            "index": 1,
+            "message": "“τηλεοπτικό” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "τηλεοπτικό",
+            "ntv",
+            "ήταν",
+            "κάποτε",
+            "ανεξάρτητο",
+            "αλλά",
+            "βρέθηκε",
+            "υπό",
+            "κυβέρνησης",
+            "μετά",
+            "βλαντιμίρ",
+            "πούτιν",
+            "στο",
+            "προεδρικό",
+            "αξίωμα",
+            "2000"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-8",
+      "language": "el",
+      "grammar": "2026-smg-mltt",
+      "text_sha256": "0e7106fdb9a354dfbb60f53450654963ac2d26e4e154b35c9136aa211b5bea20",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 68,
+      "sentences": [
+        {
+          "text": "Το ντοκιμαντέρ με τίτλο «Ανατομία μιας διαδήλωσης» αναφέρει ότι «ορισμένοι από τους συμμετέχοντες στις διαδηλώσεις είχαν πληρωθεί για να βρίσκονται εκεί».",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "ντοκιμαντέρ",
+            "index": 1,
+            "message": "“ντοκιμαντέρ” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "ντοκιμαντέρ",
+            "τίτλο",
+            "«ανατομία",
+            "μιας",
+            "διαδήλωσης»",
+            "ότι",
+            "«ορισμένοι",
+            "από",
+            "συμμετέχοντες",
+            "στις",
+            "διαδηλώσεις",
+            "είχαν",
+            "πληρωθεί",
+            "για",
+            "βρίσκονται",
+            "εκεί»"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Υπαινίσσεται επίσης ότι το κίνημα της Αντιπολίτευσης χρηματοδοτείται από δυτικές χώρες.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "υπαινίσσεται",
+            "index": 0,
+            "message": "“υπαινίσσεται” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "υπαινίσσεται",
+            "επίσης",
+            "ότι",
+            "αντιπολίτευσης",
+            "χρηματοδοτείται",
+            "από",
+            "δυτικές",
+            "χώρες"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Το τηλεοπτικό δίκτυο NTV ήταν κάποτε ανεξάρτητο, αλλά βρέθηκε υπό τον έλεγχο της κυβέρνησης μετά την πρώτη εκλογή του Βλαντιμίρ Πούτιν στο προεδρικό αξίωμα το 2000.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "τηλεοπτικό",
+            "index": 1,
+            "message": "“τηλεοπτικό” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "τηλεοπτικό",
+            "ntv",
+            "ήταν",
+            "κάποτε",
+            "ανεξάρτητο",
+            "αλλά",
+            "βρέθηκε",
+            "υπό",
+            "κυβέρνησης",
+            "μετά",
+            "βλαντιμίρ",
+            "πούτιν",
+            "στο",
+            "προεδρικό",
+            "αξίωμα",
+            "2000"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-9",
+      "language": "el",
+      "grammar": "2026-smg-classical",
+      "text_sha256": "9e9e37c27379c151fec3b7a19b92862966b6e07973b403cba8f44d366b1e9e8c",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 73,
+      "sentences": [
+        {
+          "text": "Μόνο το 15% φτάνει στο επίπεδο των υπουργών, οι οποίοι τότε διαβάζουν χειρόγραφα που έχουν εκπονήσει δημόσιοι υπάλληλοι.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "μόνο",
+            "index": 0,
+            "message": "The grammar could not continue at “μόνο”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [],
+          "missing": [
+            "15%",
+            "στο",
+            "των",
+            "υπουργών",
+            "οι",
+            "οποίοι",
+            "τότε",
+            "διαβάζουν",
+            "χειρόγραφα",
+            "που",
+            "έχουν",
+            "εκπονήσει",
+            "δημόσιοι",
+            "υπάλληλοι"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Η δημοκρατία γεννήθηκε στην Ευρώπη και θάφτηκε στην Επιτροπή και το Συμβούλιο.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "γεννήθηκε",
+            "index": 2,
+            "message": "“γεννήθηκε” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "γεννήθηκε",
+            "στην",
+            "ευρώπη",
+            "και",
+            "θάφτηκε",
+            "στην",
+            "και"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Ο επόμενος Πρόεδρός μας θα πρέπει να επανεδραιώσει τη δημοκρατία.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "επόμενος",
+            "index": 1,
+            "message": "“επόμενος” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "επόμενος",
+            "πρόεδρός",
+            "πρέπει",
+            "επανεδραιώσει"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-9",
+      "language": "el",
+      "grammar": "2026-smg-mltt",
+      "text_sha256": "9e9e37c27379c151fec3b7a19b92862966b6e07973b403cba8f44d366b1e9e8c",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 70,
+      "sentences": [
+        {
+          "text": "Μόνο το 15% φτάνει στο επίπεδο των υπουργών, οι οποίοι τότε διαβάζουν χειρόγραφα που έχουν εκπονήσει δημόσιοι υπάλληλοι.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "μόνο",
+            "index": 0,
+            "message": "The grammar could not continue at “μόνο”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "context_gaps": [],
+          "missing": [
+            "15%",
+            "στο",
+            "των",
+            "υπουργών",
+            "οι",
+            "οποίοι",
+            "τότε",
+            "διαβάζουν",
+            "χειρόγραφα",
+            "που",
+            "έχουν",
+            "εκπονήσει",
+            "δημόσιοι",
+            "υπάλληλοι"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Η δημοκρατία γεννήθηκε στην Ευρώπη και θάφτηκε στην Επιτροπή και το Συμβούλιο.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "γεννήθηκε",
+            "index": 2,
+            "message": "“γεννήθηκε” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "γεννήθηκε",
+            "στην",
+            "ευρώπη",
+            "και",
+            "θάφτηκε",
+            "στην",
+            "και"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Ο επόμενος Πρόεδρός μας θα πρέπει να επανεδραιώσει τη δημοκρατία.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "επόμενος",
+            "index": 1,
+            "message": "“επόμενος” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "επόμενος",
+            "πρόεδρός",
+            "πρέπει",
+            "επανεδραιώσει"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-10",
+      "language": "el",
+      "grammar": "2026-smg-classical",
+      "text_sha256": "9e11c7a8e773346387ec83e31ce8582a09a5d582082035814102d4abaf8661b3",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 72,
+      "sentences": [
+        {
+          "text": "Οι εν λόγω φαρμακοβιομηχανίες έχουν ήδη ξοδέψει δισεκατομμύρια δολάρια τα τελευταία χρόνια σε έρευνες για νέα φάρμακα με στόχο την αύξηση των κερδών τους και τη διατήρηση της ανταγωνιστικότητάς τους έναντι άλλων φαρμακοβιομηχανιών.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "οι",
+            "index": 0,
+            "message": "“οι” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "οι",
+            "εν",
+            "λόγω",
+            "φαρμακοβιομηχανίες",
+            "έχουν",
+            "ήδη",
+            "ξοδέψει",
+            "δισεκατομμύρια",
+            "δολάρια",
+            "χρόνια",
+            "έρευνες",
+            "για",
+            "φάρμακα",
+            "των",
+            "κερδών",
+            "και",
+            "ανταγωνιστικότητάς",
+            "έναντι",
+            "άλλων",
+            "φαρμακοβιομηχανιών"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Αλλά ο επικεφαλής του Εθνικού Ινστιτούτου Υγείας, Φράνσις Κόλλινς, δήλωσε ότι η προσέγγιση της εταιρικής απομόνωσης που ακολουθούσαν μέχρι σήμερα οι φαρμακοβιομηχανίες έχει οδηγήσει σε υψηλά ποσοστά αποτυχίας για την ανάπτυξη νέων πρωτοποριακών θεραπειών.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "αλλά",
+            "index": 0,
+            "message": "“αλλά” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "αλλά",
+            "εθνικού",
+            "ινστιτούτου",
+            "υγείας",
+            "φράνσις",
+            "κόλλινς",
+            "δήλωσε",
+            "ότι",
+            "εταιρικής",
+            "απομόνωσης",
+            "που",
+            "ακολουθούσαν",
+            "μέχρι",
+            "σήμερα",
+            "οι",
+            "φαρμακοβιομηχανίες",
+            "οδηγήσει",
+            "υψηλά",
+            "ποσοστά",
+            "αποτυχίας",
+            "για",
+            "νέων",
+            "πρωτοποριακών",
+            "θεραπειών"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Μια φαρμακοβιομηχανία χρειάζεται 14 χρόνια για να αναπτύξει ένα νέο φάρμακο με κόστος 1 δισεκατομμύριο δολάρια κατά μέσο όρο, και το 99% των ερευνητικών προσπαθειών αποτυγχάνουν, επεσήμανε ο κ. Κόλλινς, προσθέτοντας:",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "φαρμακοβιομηχανία",
+            "index": 1,
+            "message": "“φαρμακοβιομηχανία” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "φαρμακοβιομηχανία",
+            "χρειάζεται",
+            "14",
+            "χρόνια",
+            "για",
+            "αναπτύξει",
+            "φάρμακο",
+            "1",
+            "δολάρια",
+            "κατά",
+            "και",
+            "99%",
+            "των",
+            "ερευνητικών",
+            "προσπαθειών",
+            "αποτυγχάνουν",
+            "κ",
+            "κόλλινς",
+            "προσθέτοντας:"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-10",
+      "language": "el",
+      "grammar": "2026-smg-mltt",
+      "text_sha256": "9e11c7a8e773346387ec83e31ce8582a09a5d582082035814102d4abaf8661b3",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 68,
+      "sentences": [
+        {
+          "text": "Οι εν λόγω φαρμακοβιομηχανίες έχουν ήδη ξοδέψει δισεκατομμύρια δολάρια τα τελευταία χρόνια σε έρευνες για νέα φάρμακα με στόχο την αύξηση των κερδών τους και τη διατήρηση της ανταγωνιστικότητάς τους έναντι άλλων φαρμακοβιομηχανιών.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "οι",
+            "index": 0,
+            "message": "“οι” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "οι",
+            "εν",
+            "λόγω",
+            "φαρμακοβιομηχανίες",
+            "έχουν",
+            "ήδη",
+            "ξοδέψει",
+            "δισεκατομμύρια",
+            "δολάρια",
+            "χρόνια",
+            "έρευνες",
+            "για",
+            "φάρμακα",
+            "των",
+            "κερδών",
+            "και",
+            "ανταγωνιστικότητάς",
+            "έναντι",
+            "άλλων",
+            "φαρμακοβιομηχανιών"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Αλλά ο επικεφαλής του Εθνικού Ινστιτούτου Υγείας, Φράνσις Κόλλινς, δήλωσε ότι η προσέγγιση της εταιρικής απομόνωσης που ακολουθούσαν μέχρι σήμερα οι φαρμακοβιομηχανίες έχει οδηγήσει σε υψηλά ποσοστά αποτυχίας για την ανάπτυξη νέων πρωτοποριακών θεραπειών.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "αλλά",
+            "index": 0,
+            "message": "“αλλά” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "αλλά",
+            "εθνικού",
+            "ινστιτούτου",
+            "υγείας",
+            "φράνσις",
+            "κόλλινς",
+            "δήλωσε",
+            "ότι",
+            "εταιρικής",
+            "απομόνωσης",
+            "που",
+            "ακολουθούσαν",
+            "μέχρι",
+            "σήμερα",
+            "οι",
+            "φαρμακοβιομηχανίες",
+            "οδηγήσει",
+            "υψηλά",
+            "ποσοστά",
+            "αποτυχίας",
+            "για",
+            "νέων",
+            "πρωτοποριακών",
+            "θεραπειών"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Μια φαρμακοβιομηχανία χρειάζεται 14 χρόνια για να αναπτύξει ένα νέο φάρμακο με κόστος 1 δισεκατομμύριο δολάρια κατά μέσο όρο, και το 99% των ερευνητικών προσπαθειών αποτυγχάνουν, επεσήμανε ο κ. Κόλλινς, προσθέτοντας:",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "φαρμακοβιομηχανία",
+            "index": 1,
+            "message": "“φαρμακοβιομηχανία” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "φαρμακοβιομηχανία",
+            "χρειάζεται",
+            "14",
+            "χρόνια",
+            "για",
+            "αναπτύξει",
+            "φάρμακο",
+            "1",
+            "δολάρια",
+            "κατά",
+            "και",
+            "99%",
+            "των",
+            "ερευνητικών",
+            "προσπαθειών",
+            "αποτυγχάνουν",
+            "κ",
+            "κόλλινς",
+            "προσθέτοντας:"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-11",
+      "language": "el",
+      "grammar": "2026-smg-classical",
+      "text_sha256": "cbf8f3bd7573c1b823050eb2ec7ca9393b5ff1c543ba9455005424c060650391",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 74,
+      "sentences": [
+        {
+          "text": "Επιπλέον, το ευρώ αποδεικνύει την ικανότητα των Ευρωπαίων να οργανώνουν τα κοινά τους στοιχεία προς δικό τους όφελος, προς όφελος όλων των ευρωπαϊκών κρατών.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "επιπλέον",
+            "index": 0,
+            "message": "“επιπλέον” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "επιπλέον",
+            "των",
+            "ευρωπαίων",
+            "οργανώνουν",
+            "κοινά",
+            "στοιχεία",
+            "προς",
+            "προς",
+            "όλων",
+            "των",
+            "ευρωπαϊκών",
+            "κρατών"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Το ευρώ είναι ταυτόχρονα συνδετικός κρίκος και λαβή για έριδες όσον αφορά περαιτέρω φιλόδοξα σχέδια για την Ευρώπη.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "ταυτόχρονα",
+            "index": 3,
+            "message": "“ταυτόχρονα” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "ταυτόχρονα",
+            "συνδετικός",
+            "κρίκος",
+            "και",
+            "λαβή",
+            "για",
+            "έριδες",
+            "όσον",
+            "περαιτέρω",
+            "φιλόδοξα",
+            "σχέδια",
+            "για",
+            "ευρώπη"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Ο Σαίξπηρ είχε επισημάνει δικαίως ότι: \"όπου προπορεύεται το χρήμα, ανοίγουν όλοι οι δρόμοι\".",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "σαίξπηρ",
+            "index": 1,
+            "message": "“σαίξπηρ” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "σαίξπηρ",
+            "επισημάνει",
+            "δικαίως",
+            "ότι:",
+            "\"όπου",
+            "προπορεύεται",
+            "ανοίγουν",
+            "όλοι",
+            "οι",
+            "δρόμοι\""
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-11",
+      "language": "el",
+      "grammar": "2026-smg-mltt",
+      "text_sha256": "cbf8f3bd7573c1b823050eb2ec7ca9393b5ff1c543ba9455005424c060650391",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 70,
+      "sentences": [
+        {
+          "text": "Επιπλέον, το ευρώ αποδεικνύει την ικανότητα των Ευρωπαίων να οργανώνουν τα κοινά τους στοιχεία προς δικό τους όφελος, προς όφελος όλων των ευρωπαϊκών κρατών.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "επιπλέον",
+            "index": 0,
+            "message": "“επιπλέον” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "επιπλέον",
+            "των",
+            "ευρωπαίων",
+            "οργανώνουν",
+            "κοινά",
+            "στοιχεία",
+            "προς",
+            "προς",
+            "όλων",
+            "των",
+            "ευρωπαϊκών",
+            "κρατών"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Το ευρώ είναι ταυτόχρονα συνδετικός κρίκος και λαβή για έριδες όσον αφορά περαιτέρω φιλόδοξα σχέδια για την Ευρώπη.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "ταυτόχρονα",
+            "index": 3,
+            "message": "“ταυτόχρονα” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "ταυτόχρονα",
+            "συνδετικός",
+            "κρίκος",
+            "και",
+            "λαβή",
+            "για",
+            "έριδες",
+            "όσον",
+            "περαιτέρω",
+            "φιλόδοξα",
+            "σχέδια",
+            "για",
+            "ευρώπη"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Ο Σαίξπηρ είχε επισημάνει δικαίως ότι: \"όπου προπορεύεται το χρήμα, ανοίγουν όλοι οι δρόμοι\".",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "σαίξπηρ",
+            "index": 1,
+            "message": "“σαίξπηρ” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "σαίξπηρ",
+            "επισημάνει",
+            "δικαίως",
+            "ότι:",
+            "\"όπου",
+            "προπορεύεται",
+            "ανοίγουν",
+            "όλοι",
+            "οι",
+            "δρόμοι\""
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-12",
+      "language": "el",
+      "grammar": "2026-smg-classical",
+      "text_sha256": "c5a9201053779404d8f446db9465d699df086d3f628e97011dd71f956f1c27e3",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 77,
+      "sentences": [
+        {
+          "text": "Ο αρμονικός συνδυασμός παρελθόντος και παρόντος είναι το κύριο χαρακτηριστικό της Καβάλας.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "αρμονικός",
+            "index": 1,
+            "message": "“αρμονικός” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "αρμονικός",
+            "συνδυασμός",
+            "παρελθόντος",
+            "και",
+            "παρόντος",
+            "καβάλας"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Ένας περίπατος στους δρόμους και τα σοκάκια της Παλιάς και Νέας Πόλης δίνει την ευκαιρία στον επισκέπτη να θαυμάσει μερικές εικόνες από το παρελθόν της πόλης.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "περίπατος",
+            "index": 1,
+            "message": "“περίπατος” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "περίπατος",
+            "στους",
+            "δρόμους",
+            "και",
+            "σοκάκια",
+            "παλιάς",
+            "και",
+            "νέας",
+            "πόλης",
+            "στον",
+            "θαυμάσει",
+            "μερικές",
+            "εικόνες",
+            "από",
+            "πόλης"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Το Φρούριο με τις παλιές φυλακές και πολεμίστρες και τη μαγευτική θέα, το Ιμαρέτ, ένα ισλαμικό κτίριο κτισμένο το 1817 που λειτουργεί πλέον ως καφενείο, το σπίτι του Μεχμέτ Αλή, ιδρυτή της τελευταίας αιγυπτιακής δυναστείας, ο Φάρος, οι Καμάρες, χτισμένες πάνω στα ερείπια του \"μακρού τείχους\" που είχε χτίσει ο αυτοκράτορας Ανδρόνικος Β' Παλαιολόγος, το Δημαρχείο κτίριο του 1900, η Μονή Λαζαριστών και η Καπναποθήκη είναι μερικά μόνο από τα σημαντικά μνημεία της Καβάλας.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "παλιές",
+            "index": 4,
+            "message": "“παλιές” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "παλιές",
+            "φυλακές",
+            "και",
+            "πολεμίστρες",
+            "και",
+            "μαγευτική",
+            "ιμαρέτ",
+            "ισλαμικό",
+            "κτίριο",
+            "κτισμένο",
+            "1817",
+            "που",
+            "πλέον",
+            "ως",
+            "καφενείο",
+            "μεχμέτ",
+            "αλή",
+            "ιδρυτή",
+            "τελευταίας",
+            "αιγυπτιακής",
+            "δυναστείας",
+            "οι",
+            "καμάρες",
+            "χτισμένες",
+            "πάνω",
+            "στα",
+            "ερείπια",
+            "\"μακρού",
+            "τείχους\"",
+            "που",
+            "χτίσει",
+            "αυτοκράτορας",
+            "ανδρόνικος",
+            "β'",
+            "παλαιολόγος",
+            "δημαρχείο",
+            "κτίριο",
+            "1900",
+            "λαζαριστών",
+            "και",
+            "καπναποθήκη",
+            "μερικά",
+            "από",
+            "σημαντικά",
+            "μνημεία",
+            "καβάλας"
+          ],
+          "meaning": null
+        }
+      ]
+    },
+    {
+      "id": "el-12",
+      "language": "el",
+      "grammar": "2026-smg-mltt",
+      "text_sha256": "c5a9201053779404d8f446db9465d699df086d3f628e97011dd71f956f1c27e3",
+      "complete": false,
+      "coverage": {
+        "complete": 0,
+        "total": 3,
+        "failed": 3,
+        "all_complete": false
+      },
+      "elapsed_ms": 74,
+      "sentences": [
+        {
+          "text": "Ο αρμονικός συνδυασμός παρελθόντος και παρόντος είναι το κύριο χαρακτηριστικό της Καβάλας.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "αρμονικός",
+            "index": 1,
+            "message": "“αρμονικός” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [],
+          "missing": [
+            "αρμονικός",
+            "συνδυασμός",
+            "παρελθόντος",
+            "και",
+            "παρόντος",
+            "καβάλας"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Ένας περίπατος στους δρόμους και τα σοκάκια της Παλιάς και Νέας Πόλης δίνει την ευκαιρία στον επισκέπτη να θαυμάσει μερικές εικόνες από το παρελθόν της πόλης.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "περίπατος",
+            "index": 1,
+            "message": "“περίπατος” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0
+          ],
+          "missing": [
+            "περίπατος",
+            "στους",
+            "δρόμους",
+            "και",
+            "σοκάκια",
+            "παλιάς",
+            "και",
+            "νέας",
+            "πόλης",
+            "στον",
+            "θαυμάσει",
+            "μερικές",
+            "εικόνες",
+            "από",
+            "πόλης"
+          ],
+          "meaning": null
+        },
+        {
+          "text": "Το Φρούριο με τις παλιές φυλακές και πολεμίστρες και τη μαγευτική θέα, το Ιμαρέτ, ένα ισλαμικό κτίριο κτισμένο το 1817 που λειτουργεί πλέον ως καφενείο, το σπίτι του Μεχμέτ Αλή, ιδρυτή της τελευταίας αιγυπτιακής δυναστείας, ο Φάρος, οι Καμάρες, χτισμένες πάνω στα ερείπια του \"μακρού τείχους\" που είχε χτίσει ο αυτοκράτορας Ανδρόνικος Β' Παλαιολόγος, το Δημαρχείο κτίριο του 1900, η Μονή Λαζαριστών και η Καπναποθήκη είναι μερικά μόνο από τα σημαντικά μνημεία της Καβάλας.",
+          "status": "failed",
+          "complete": false,
+          "failure": {
+            "token": "παλιές",
+            "index": 4,
+            "message": "“παλιές” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "context_gaps": [
+            0,
+            1
+          ],
+          "missing": [
+            "παλιές",
+            "φυλακές",
+            "και",
+            "πολεμίστρες",
+            "και",
+            "μαγευτική",
+            "ιμαρέτ",
+            "ισλαμικό",
+            "κτίριο",
+            "κτισμένο",
+            "1817",
+            "που",
+            "πλέον",
+            "ως",
+            "καφενείο",
+            "μεχμέτ",
+            "αλή",
+            "ιδρυτή",
+            "τελευταίας",
+            "αιγυπτιακής",
+            "δυναστείας",
+            "οι",
+            "καμάρες",
+            "χτισμένες",
+            "πάνω",
+            "στα",
+            "ερείπια",
+            "\"μακρού",
+            "τείχους\"",
+            "που",
+            "χτίσει",
+            "αυτοκράτορας",
+            "ανδρόνικος",
+            "β'",
+            "παλαιολόγος",
+            "δημαρχείο",
+            "κτίριο",
+            "1900",
+            "λαζαριστών",
+            "και",
+            "καπναποθήκη",
+            "μερικά",
+            "από",
+            "σημαντικά",
+            "μνημεία",
+            "καβάλας"
+          ],
+          "meaning": null
+        }
+      ]
+    }
+  ]
+}

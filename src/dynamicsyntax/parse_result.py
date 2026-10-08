@@ -16,25 +16,33 @@ from dylan.formula.manim.models import ManimBuildResult
 from dylan.formula.manim.render import render_manim_scene
 from dylan.formula.manim.template import build_manim_scene_code, scene_class_name
 from dylan.formula.manim.tree_scene import serialize_action_steps
-from dylan.formula.ttr_record_type import TTRRecordType
+from dylan.formula.formula import Formula
 from dylan.gui.formatting import format_ds_tree
 from dylan.parser.interactive_context_parser import InteractiveContextParser
+from dylan.parser.parse_stats import ParseStats
 from dylan.tree.tree import Tree
 from dynamicsyntax.parse_trace import ParseActionStep
 
 
 @dataclass(frozen=True)
 class ParseResult:
-    """Outcome of :func:`dynamicsyntax.parse` or :meth:`InteractiveContextParser.parse`: semantics, tree, trace, optional parser."""
+    """Outcome of :func:`dynamicsyntax.parse` or :meth:`InteractiveContextParser.parse`.
+
+    ``cap_hit`` records the search limit's name when a budget stopped parsing.
+    Such results have ``ok=False`` and no final semantics; the outcome is inconclusive.
+    The value is a snapshot and survives resets of the optional retained ``parser``.
+    """
 
     ok: bool
-    semantics: TTRRecordType | None
+    semantics: Formula | None
     tree: Tree | None
     sentence: str = ""
     trace_trees: tuple[Tree, ...] = field(default_factory=tuple)
     trace_step_labels: tuple[str, ...] = field(default_factory=tuple)
     action_steps: tuple[ParseActionStep, ...] = field(default_factory=tuple)
     parser: InteractiveContextParser | None = None  # set by parse() when a parser ran (not blank-only skips)
+    cap_hit: str | None = None
+    stats: ParseStats = field(default_factory=ParseStats)
 
     @property
     def address_order(self) -> str:
@@ -42,6 +50,14 @@ class ParseResult:
         if self.tree is None:
             return ""
         return format_ds_tree(self.tree)
+
+    def to_coq(self) -> str:
+        """Export a complete constructive meaning and its nominal declarations."""
+        from dylan.formula.mltt.semantics import SemanticFormula
+
+        if not self.ok or not isinstance(self.semantics, SemanticFormula):
+            raise ValueError("Coq export requires a successful constructive parse")
+        return self.semantics.to_coq()
 
     def vis(self) -> None:
         """Print the address-order parse tree (GUI ``address_order`` panel); no-op message if no tree."""
@@ -94,11 +110,17 @@ class ParseResult:
         :raises ValueError: When *kind* is incompatible with available data.
         :raises RuntimeError: When ``compile_tex=True`` but the toolchain fails.
         """
-        cap = title or f"dynamicsyntax — {kind}"
+        from dylan.formula.mltt.semantics import SemanticFormula
+
+        cap = title or f"dynamicsyntax: {kind}"
+        native_semantics = kind == "semantics" and isinstance(self.semantics, SemanticFormula)
         if kind == "semantics":
             if not self.ok or self.semantics is None:
                 raise ValueError("semantics export requires a successful parse with non-None semantics")
-            body = semantics_figure_tex(self.semantics)
+            body = (
+                r"\[" + self.semantics.term.to_tex() + r"\]"
+                if native_semantics else semantics_figure_tex(self.semantics)
+            )
         elif kind == "tree":
             if self.tree is None:
                 raise ValueError("tree export requires a non-None parse tree")
@@ -116,6 +138,7 @@ class ParseResult:
             raise ValueError(f"unknown kind {kind!r}")
         return run_latex_pipeline(
             body,
+            include_dsttr=not native_semantics,
             title=cap,
             write_tex=write_tex,
             do_compile=compile_tex,

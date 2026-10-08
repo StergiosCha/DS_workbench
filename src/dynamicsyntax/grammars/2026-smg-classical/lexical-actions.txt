@@ -1,0 +1,780 @@
+// Hand-maintained SMG thesis fragment. Entries (3.64), imperative and gerund gates.
+
+*clitic(REF,PERSON,CASE)
+IF ?Ty(classical:t)
+   ([\/1+]?Ty(x) || Mood(Imp) || Mood(Ger))
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,t)))
+   make(\/0)
+   go(\/0)
+   IF ¬Ex.Fo(x)
+   THEN put(Ty(classical:e))
+      put(Fo(U_REF))
+      put(?Ex.Fo(x))
+      put(Case(CASE))
+      put(Person(PERSON))
+      delete(?Ty(classical:e))
+      gofirst(?Ty(classical:t))
+   ELSE abort
+ELSE abort
+
+verb-finite(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-transitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-dependent(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ([+NA] || [+FUT])
+THEN put([+VERB])
+   put(Mood(Subj))
+   build-potential-transitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-imperative(PRED)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NEG]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Imp))
+   put([+VERB])
+   build-transitive(PRED,hearer,2,sg)
+ELSE abort
+
+gerund(PRED)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Ger))
+   put([+VERB])
+   build-transitive(PRED,pro,3,sg)
+ELSE abort
+
+den(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NEG]
+THEN put([+NEG])
+ELSE abort
+
+min(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NEG]
+THEN put([+NEG])
+   put([+PROHIB])
+ELSE abort
+
+subjunctive(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+NA])
+ELSE abort
+
+future(UNUSED)
+IF ?Ty(classical:t)
+   ¬<\/+>Ex.x
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+FUT])
+ELSE abort
+
+punctuation(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN do_nothing
+ELSE abort
+
+// Genitives build the locally unfixed non-subject node, (3.100), (3.102).
+*clitic-gen(REF,PERSON)
+IF ?Ty(classical:t)
+   Tn(a)
+   ([\/+]?Ex.Tn(x) || Mood(Imp))
+THEN make(\/P)
+   go(\/P)
+   put(?Ex.Tn(x))
+   put(</\0></\1+>Tn(a))
+   put(Ty(classical:e))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Case(gen))
+   put(Person(PERSON))
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+verb-ditransitive(PRED,SUBJ,PERSON,NUMBER)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-ditransitive(PRED,SUBJ,PERSON,NUMBER)
+ELSE abort
+
+verb-ditransitive-imperative(PRED)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   [\/+]?Ex.Tn(x)
+   ¬[+NEG]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put(Mood(Imp))
+   put([+VERB])
+   build-ditransitive(PRED,hearer,2,sg)
+ELSE abort
+
+// First/second-person accusatives, (6.49). Clitic chunks suppress left adjustment.
+*clitic-acc12(REF,PERSON)
+IF ?Ty(classical:t)
+   Tn(a)
+   ([\/1+]?Ty(x) || Mood(Imp) || Mood(Ger))
+THEN make(\/P)
+   go(\/P)
+   put(?Ex.Tn(x))
+   put(</\0></\1+>Tn(a))
+   put(Ty(classical:e))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Case(acc))
+   put(Person(PERSON))
+   put(?</\0>Ty(classical:arrow(e,t)))
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+
+// Case-marked proper-name NPs, thesis (2.50)-(2.52).
+// Here the article supplies case/gender and awaits a name. Common-noun
+// determiners require the distinct CN structure and are not this template.
+article-name(CASE,GENDER)
+IF ?Ty(classical:e)
+   ¬Ex.Fo(x)
+   ¬?[+HEAD]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Case(CASE))
+   put(Gender(GENDER))
+   put(?[+HEAD])
+ELSE abort
+
+proper-name-nom(NAME,GENDER)
+IF ?Ty(classical:e)
+   ?[+HEAD]
+   Case(nom)
+   Gender(GENDER)
+THEN delete(?[+HEAD])
+   put(Ty(classical:e))
+   put(Fo(classical:NAME))
+   put([+FULL-DP])
+   put(Person(3))
+   put(Number(sg))
+ELSE abort
+IF [+TOPIC]
+   THEN semantic-thin
+      put(!)
+      go(\/L)
+      put(?SharedFo(classical:NAME))
+   ELSE put(?</\0>Ty(classical:t))
+      gofirst((?Ty(classical:t) || Ty(classical:t)))
+
+proper-name-acc(NAME,GENDER)
+IF ?Ty(classical:e)
+   ¬[+TOPIC]
+   ?[+HEAD]
+   Case(acc)
+   Gender(GENDER)
+THEN delete(?[+HEAD])
+   put(Ty(classical:e))
+   put(Fo(classical:NAME))
+   put([+FULL-DP])
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(classical:arrow(e,t)))
+   gofirst((?Ty(classical:t) || Ty(classical:t)))
+ELSE abort
+
+// Classical five-node DP, thesis (2.70)-(2.77); noun builds its own daughters.
+indefinite-acc(GENDER)
+IF ?Ty(classical:e)
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+INDEF])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(classical:arrow(e,t)))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_eps(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+// Reduce this DP and return to the clause before a following clitic chunk.
+// These local applications preserve the pending address and case filters.
+noun-acc(NAME,GENDER)
+IF ?Ty(classical:cn)
+   </\0>Case(acc)
+   </\0>Gender(GENDER)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,cn)))
+   put(Fo(classical:lam(x,e,cn(x,NAME(x)))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   beta-reduce
+   semantic-thin
+   go(/\0)
+   beta-reduce
+   semantic-thin
+   gofirst((?Ty(classical:t) || Ty(classical:t)))
+ELSE abort
+
+
+// Written topic boundary as in (2.95); not an analysis of prosody.
+topic-boundary(UNUSED)
+IF Tn(0)
+   ?Ty(classical:t)
+   </\L>([+TOPIC] & Ty(classical:e) & Ex.Fo(x))
+   ¬<\/+>Ex.x
+   ¬[+TOPIC-BOUNDARY]
+THEN put([+TOPIC-BOUNDARY])
+ELSE abort
+
+// Everyday construction extensions. Generated by scripts/build_everyday_extensions.py.
+
+copula(SUBJ,PERSON)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   put(Fo(U_SUBJ))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   put(Number(sg))
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,t)))
+   put([+COPULA])
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+nominal-predicate(NAME)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,NAME(x))))
+ELSE abort
+
+copular-article(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬[+ARTICLE]
+THEN put([+ARTICLE])
+ELSE abort
+
+degree(PRED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(arrow(e,t),arrow(e,t))))
+   put(Fo(classical:lam(P,arrow(e,t),lam(x,e,PRED(P(x))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:arrow(e,t)))
+   put([+COPULA])
+ELSE abort
+
+predicative-adjective(PRED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,PRED(x))))
+ELSE abort
+
+verb-intransitive(PRED,SUBJ,PERSON)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   put(Fo(U_SUBJ))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   put(Number(sg))
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,PRED(x))))
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+pronoun-nom(REF,PERSON)
+IF ?Ty(classical:e)
+   ¬Ex.Fo(x)
+   ¬[+TOPIC]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:e))
+   put(Fo(U_REF))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   put(Number(sg))
+   put(Case(nom))
+   put(?</\0>Ty(classical:t))
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+definite-acc(GENDER)
+IF ?Ty(classical:e)
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(classical:arrow(e,t)))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_iota(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+definite-nom(GENDER)
+IF ?Ty(classical:e)
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(nom))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(classical:t))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_iota(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+indefinite-nom(GENDER)
+IF ?Ty(classical:e)
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+INDEF])
+   put(Case(nom))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(classical:t))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_eps(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+common-noun(NAME,CASE,GENDER)
+IF ?Ty(classical:cn)
+   (Case(CASE) || </\0>Case(CASE))
+   (Gender(GENDER) || </\0>Gender(GENDER))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,cn)))
+   put(Fo(classical:lam(x,e,cn(x,NAME(x)))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   beta-reduce
+   semantic-thin
+ELSE abort
+IF </\+>[+PP]
+THEN do_nothing
+ELSE go(/\0)
+   beta-reduce
+   semantic-thin
+   gofirst((?Ty(classical:t) || Ty(classical:t)))
+
+
+copular-location(PRED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+locative(PRED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,PRED(x))))
+ELSE abort
+
+clause-and(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN semantic-coordinate
+ELSE abort
+
+clause-comma(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN do_nothing
+ELSE abort
+
+copular-location-article(PRED,GENDER)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(classical:arrow(e,t)))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_iota(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+common-adjective(PRED,CASE,GENDER)
+IF ?Ty(classical:cn)
+   (Case(CASE) || </\0>Case(CASE))
+   (Gender(GENDER) || </\0>Gender(GENDER))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,cn)))
+   put(Fo(classical:lam(A,cn,cn(cn_var(A),and(cn_body(A),PRED(cn_var(A)))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+   put(Case(CASE))
+   put(Gender(GENDER))
+ELSE abort
+
+
+postverbal-pp(PRED)
+IF Ty(classical:t)
+   complete
+   ¬<\/1>[+SELECTS-SE]
+THEN go(\/1)
+   semantic-pp(PRED)
+   put([+PP-COMPLEMENT])
+ELSE abort
+
+pp-definite(GENDER)
+IF ?Ty(classical:e)
+   [+PP-COMPLEMENT]
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_iota(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+pp-indefinite(GENDER)
+IF ?Ty(classical:e)
+   [+PP-COMPLEMENT]
+   ¬[+TOPIC]
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+FULL-DP])
+   put([+INDEF])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_eps(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+postverbal-pp-article(PRED,GENDER)
+IF Ty(classical:t)
+   complete
+   ¬<\/1>[+SELECTS-SE]
+THEN go(\/1)
+   semantic-pp(PRED)
+   put([+PP-COMPLEMENT])
+   put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_iota(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+verb-prepositional-se(PRED,SUBJ,PERSON)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   build-transitive(PRED,SUBJ,PERSON,sg)
+   go(\/1)
+   go(\/0)
+   put(?[+SE-GOAL])
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+verb-optional-se(PRED,SUBJ,PERSON)
+IF ?Ty(classical:t)
+   ¬[+VERB]
+   ¬[+NA]
+   ¬[+FUT]
+THEN put([+VERB])
+   put(Mood(Ind))
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   put(Fo(U_SUBJ))
+   put(?Ex.Fo(x))
+   put(Person(PERSON))
+   put(Number(sg))
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,PRED(x))))
+   put([+SELECTS-SE])
+   gofirst(?Ty(classical:t))
+ELSE abort
+
+se-goal(UNUSED)
+IF ?Ty(classical:e)
+   ?[+SE-GOAL]
+   ¬Ex.Fo(x)
+THEN delete(?[+SE-GOAL])
+   put([+SE-GOAL])
+ELSE abort
+
+se-goal-article(GENDER)
+IF ?Ty(classical:e)
+   ?[+SE-GOAL]
+   ¬Ex.Fo(x)
+THEN delete(?[+SE-GOAL])
+   put([+SE-GOAL])
+   put([+FULL-DP])
+   put([+DEFINITE])
+   put(Case(acc))
+   put(Gender(GENDER))
+   put(Person(3))
+   put(Number(sg))
+   put(?</\0>Ty(classical:arrow(e,t)))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_iota(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+ELSE abort
+
+nominal-simile(GENDER)
+IF Ty(classical:t)
+   complete
+THEN go(\/1)
+   semantic-comparison(manner_like)
+   put(Case(acc))
+   put(Gender(GENDER))
+ELSE abort
+
+simile-article(GENDER)
+IF ?Ty(classical:cn)
+   [+COMPARISON]
+   Gender(GENDER)
+   ¬[+ARTICLE]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+ARTICLE])
+ELSE abort
+
+// Finite causal clauses. Generated by scripts/build_causal_extensions.py.
+
+causal-post(UNUSED)
+IF Ty(classical:t)
+THEN causal-post
+ELSE abort
+
+causal-front(UNUSED)
+IF ?Ty(classical:t)
+THEN causal-front
+ELSE abort
+
+causal-boundary(UNUSED)
+IF Tn(a)
+THEN causal-boundary
+ELSE abort
+
+clause-post(REL)
+IF Ty(classical:t)
+THEN causal-post(REL)
+ELSE abort
+
+clause-front(REL)
+IF ?Ty(classical:t)
+THEN causal-front(REL)
+ELSE abort
+
+temporal-adverb(PRED)
+IF Ty(classical:t)
+   ¬Ex.?x
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+temporal-embedded(PRED)
+IF Ty(classical:t)
+   ¬Ex.?x
+   <Y>([+CLAUSE] & [+CLOSED])
+THEN go(Y)
+   go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+temporal-local-content(PRED)
+IF [+CLAUSE]
+   [+CLOSED]
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort

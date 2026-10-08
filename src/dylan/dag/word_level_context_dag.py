@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING, Any
 from dylan.dag.dag_tuple import DAGTuple
 from dylan.dag.groundable_edge import (
     ActionReplayEdge,
+    AxiomEdge,
     BacktrackingEdge,
     CompletionEdge,
     GroundableEdge,
@@ -16,6 +17,7 @@ from dylan.dag.groundable_edge import (
 )
 from dylan.dag.uttered_word import UtteredWord
 from dylan.tree.tree import Tree
+from dylan.parser.parse_stats import ParseStats
 
 if TYPE_CHECKING:
     from dylan.action.action import Action
@@ -38,6 +40,10 @@ class WordLevelContextDAG:
     """DAG whose edges correspond to words (Eshghi et al. 2015 style)."""
 
     def __init__(self) -> None:
+        self.stats = ParseStats()
+        self.rank_hook = None
+        self.backtrack_floor = None
+        self.probe_allowed = None
         self.context: Any = None
         self.word_stack: list[UtteredWord] = []
         self.exhausted = False
@@ -111,18 +117,28 @@ class WordLevelContextDAG:
             return -1
         if "hyp-build-cn-e-0" in n1 and "hyp-build-cn-e-1" in n2:
             return 1
-        return 1
+        if o1.prior is not None and o2.prior is not None and o1.prior != o2.prior:
+            return -1 if o1.prior > o2.prior else 1
+        return (o1.edge_id - o2.edge_id) or 1
 
     def get_out_edges(self, n: DAGTuple | None = None) -> list[GroundableEdge]:
         """Return outgoing edges from *n* sorted by endpoint completeness (Java ``DAG.getOutEdges``)."""
         u = n if n is not None else self.cur
         raw = list(self._out.get(u, ()))
+        if self.probe_allowed is not None and u in self.probe_allowed:
+            raw = [edge for edge in raw if edge in self.probe_allowed[u]]
         return sorted(raw, key=cmp_to_key(self._compare_edges_by_endpoint_completeness))
 
     def get_out_edges_for_traversal(self, n: DAGTuple | None = None) -> list[GroundableEdge]:
         """Return out-edges for ``go_first``, resolving repair back-edges (Java ``getOutEdgesForTraversal``)."""
         u = n if n is not None else self.cur
         result: list[GroundableEdge] = []
+        candidates = self.get_out_edges(u)
+        if self.rank_hook is not None and len(candidates) > 1:
+            try:
+                self.rank_hook(u, candidates)
+            except (OSError, ValueError, TypeError, KeyError):
+                logger.debug("Decision ordering unavailable; existing order retained")
         for edge in self.get_out_edges(u):
             if isinstance(edge, BacktrackingEdge) and edge.overarching_repairing_edge is not None:
                 result.append(edge.overarching_repairing_edge)
@@ -213,6 +229,7 @@ class WordLevelContextDAG:
     def get_new_tuple(self, t: Tree) -> DAGTuple:
         """Create and register a tuple for tree *t*."""
         new_id = len(self.id_pool_nodes) + 1
+        self.stats.tuples += 1
         self.id_pool_nodes.append(new_id)
         dt = DAGTuple(t, new_id)
         self._register(dt)
@@ -220,13 +237,12 @@ class WordLevelContextDAG:
 
     def get_new_edge(self, actions: list[Any], word: UtteredWord | None) -> GroundableEdge:
         """Create a word edge."""
-        eid = len(self.id_pool_edges) + 1
-        self.id_pool_edges.append(eid)
-        return GroundableEdge(actions, word, eid)
+        return GroundableEdge(actions, word, self._next_edge_id())
 
     def _next_edge_id(self) -> int:
         """Allocate a fresh edge id."""
         eid = len(self.id_pool_edges) + 1
+        self.stats.edges += 1
         self.id_pool_edges.append(eid)
         return eid
 
@@ -333,12 +349,17 @@ class WordLevelContextDAG:
 
     def attempt_backtrack(self) -> bool:
         """Backtrack to the nearest tuple with stack-compatible unseen outgoing edges."""
+        self.stats.backtracks_called += 1
         while not self.has_viable_unseen_edges():
+            if self.cur is self.backtrack_floor:
+                return False
             if self.get_parent(self.cur) is None:
                 logger.info("cannot backtrack from %s", self.cur)
                 return False
             back = self.get_parent_edge(self.cur)
             assert back is not None
+            if isinstance(back, AxiomEdge):
+                return False
             if back.word is not None:
                 self.word_stack.append(back.word)
             gone = self.go_up_once()
@@ -346,6 +367,7 @@ class WordLevelContextDAG:
             gone.set_seen(True)
             gone.set_in_context(False)
         logger.debug("Backtrack succeeded")
+        self.stats.backtracks_ok += 1
         return True
 
     def go_first(self) -> GroundableEdge | None:
@@ -365,6 +387,7 @@ class WordLevelContextDAG:
             elif not isinstance(e, CompletionEdge) and e.word is not None and not self.word_stack:
                 continue
             e.traverse(self)
+            self.stats.traversed += 1
             self.update_last_n()
             for oe in self.get_out_edges(self.cur):
                 oe.set_seen(False)
@@ -383,6 +406,7 @@ class WordLevelContextDAG:
         self.exhausted = False
         self.id_pool_edges.clear()
         self.this_is_first_tuple_after_last_word()
+        self.stats = ParseStats(tuples=1)
 
     def this_is_first_tuple_after_last_word(self) -> None:
         """Mark the current tuple as the post-word anchor."""
@@ -419,8 +443,19 @@ class WordLevelContextDAG:
         return self.cur.get_depth()
 
     def add_axiom(self) -> None:
-        """Reset to a new sentence axiom."""
-        self.init()
+        """Start a new tree while retaining previous trees in the context DAG."""
+        if self.cur is self.root and not self._out[self.root]:
+            self.init()
+            return
+        child = self.get_new_tuple(Tree())
+        edge = AxiomEdge([], None, self._next_edge_id())
+        edge.set_repairable(False)
+        self.add_child(child, edge)
+        edge.traverse(self)
+        self.word_stack.clear()
+        self.exhausted = False
+        self.this_is_first_tuple_after_last_word()
+        self.update_last_n()
 
     def roll_back(self, n: int) -> bool:
         """Roll back up to *n* word edges along the active path."""

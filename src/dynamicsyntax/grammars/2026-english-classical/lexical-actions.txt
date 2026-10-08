@@ -1,0 +1,1022 @@
+// First-person nominative: interpretation comes from this word's speaker.
+pronoun-speaker(UNUSED)
+IF ?Ty(classical:e)
+   </\0>?Ty(classical:t)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-speaker
+ELSE abort
+
+// Apply the CN restrictor to the subject, rather than equating epsilon terms.
+copula(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,arrow(e,t))))
+   put(Fo(classical:lam(P,cn,lam(x,e,predication(P,x)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+   put(?[+PREDICATIVE-ARTICLE])
+ELSE abort
+
+predicative-article(UNUSED)
+IF ?[+PREDICATIVE-ARTICLE]
+   ?Ty(classical:cn)
+THEN delete(?[+PREDICATIVE-ARTICLE])
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,cn)))
+ELSE abort
+
+proper(NAME,SORT)
+IF ?Ty(classical:e)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:e))
+   put(Fo(classical:NAME))
+ELSE abort
+
+// Classical DS nominal structure: e -> [cn -> (e, e->cn), cn->e].
+// Restrictors carry their fresh variable and predicate together as (x, P(x)).
+noun(NAME)
+IF ?Ty(classical:arrow(e,cn))
+   ¬[+DISTRIBUTIVE-PLURAL]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:arrow(e,cn)))
+   put(Fo(classical:lam(x,e,cn(x,NAME(x)))))
+   put(!)
+ELSE abort
+
+indef(UNUSED)
+IF ?Ty(classical:e)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_eps(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,cn)))
+ELSE abort
+
+universal(UNUSED)
+IF ?Ty(classical:e)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_tau(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,cn)))
+ELSE abort
+
+intransitive(PRED,SORT)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,PRED(x))))
+ELSE abort
+
+transitive(PRED,SUBJ,OBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+adjective(PRED)
+IF ?Ty(classical:arrow(e,cn))
+   ¬[+DISTRIBUTIVE-PLURAL]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(arrow(e,cn),arrow(e,cn))))
+   put(Fo(classical:lam(P,arrow(e,cn),lam(x,e,cn(x,and(cn_body(P(x)),PRED(x)))))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:arrow(e,cn)))
+ELSE abort
+
+adverb(PRED)
+IF Ty(classical:t)
+   ¬Ex.?x
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+punctuation(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN do_nothing
+ELSE abort
+
+
+clausal(PRED,SUBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(t,arrow(e,t))))
+   put(Fo(classical:lam(c,t,lam(x,e,PRED(x,c)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:t))
+   put([+CLAUSE])
+   put(?[+COMP])
+   put(?[+CLOSED])
+ELSE abort
+
+complementizer(UNUSED)
+IF ?[+COMP]
+   ?Ty(classical:t)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN delete(?[+COMP])
+   put([+OVERT-COMP])
+ELSE abort
+
+// A second lexical action offers attachment inside a completed complement.
+adverb-embedded(PRED)
+IF Ty(classical:t)
+   ¬Ex.?x
+   <Y>([+CLAUSE] & [+CLOSED])
+THEN go(Y)
+   go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+
+// Do-support records a requirement for a bare predicate, without tense semantics.
+aux-do(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬[+DO]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put([+DO])
+   put(?[+BARE-VERB])
+ELSE abort
+
+negative(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ?[+BARE-VERB]
+   ¬[+MODAL]
+   ¬</\1>?[+NEG]
+THEN go(/\1)
+   put(?[+NEG])
+   go(\/1)
+ELSE abort
+
+
+intransitive-base(PRED,SORT)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,PRED(x))))
+ELSE abort
+
+transitive-base(PRED,SUBJ,OBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+clausal-base(PRED,SUBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(t,arrow(e,t))))
+   put(Fo(classical:lam(c,t,lam(x,e,PRED(x,c)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:t))
+   put([+CLAUSE])
+   put(?[+COMP])
+   put(?[+CLOSED])
+ELSE abort
+
+
+// Restrictive LINK below the determiner; the relativizer supplies a head copy.
+relativizer(UNUSED)
+IF Ty(classical:cn)
+   ¬Ex.?x
+THEN semantic-relative
+ELSE abort
+
+
+// Give-family frames: semantic argument order is giver, recipient, theme.
+ditransitive(PRED,AGENT,RECIPIENT,THEME)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,arrow(e,t))))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,arrow(e,t)))))
+   put(Fo(classical:lam(z,e,lam(y,e,lam(x,e,PRED(x,y,z))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   go(/\0)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+ditransitive-base(PRED,AGENT,RECIPIENT,THEME)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,arrow(e,t))))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,arrow(e,t)))))
+   put(Fo(classical:lam(z,e,lam(y,e,lam(x,e,PRED(x,y,z))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   go(/\0)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+dative-to(PRED,AGENT,RECIPIENT,THEME)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,arrow(e,t))))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,arrow(e,t)))))
+   put(Fo(classical:lam(z,e,lam(y,e,lam(x,e,PRED(x,z,y))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put(?[+TO-DATIVE])
+   go(/\0)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+dative-to-base(PRED,AGENT,RECIPIENT,THEME)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,arrow(e,t))))
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,arrow(e,t)))))
+   put(Fo(classical:lam(z,e,lam(y,e,lam(x,e,PRED(x,z,y))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put(?[+TO-DATIVE])
+   go(/\0)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+to-recipient(UNUSED)
+IF ?Ty(classical:e)
+   ?[+TO-DATIVE]
+   ¬Ex.Fo(x)
+THEN delete(?[+TO-DATIVE])
+   put([+TO-DATIVE])
+ELSE abort
+
+// Postverbal PP modifiers: their DP complements are built below the LINK tree.
+pp-modifier(PRED)
+IF Ty(classical:t)
+   ¬Ex.?x
+THEN go(\/1)
+   semantic-pp(PRED)
+ELSE abort
+
+pp-modifier-embedded(PRED)
+IF Ty(classical:t)
+   ¬Ex.?x
+   <Y>([+CLAUSE] & [+CLOSED])
+THEN go(Y)
+   go(\/1)
+   semantic-pp(PRED)
+ELSE abort
+
+// Selected on-complements remain incomplete until their preposition and DP arrive.
+prepositional-on(PRED,SUBJ,OBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put(?[+ON-COMPLEMENT])
+ELSE abort
+
+on-complement(UNUSED)
+IF ?Ty(classical:e)
+   ?[+ON-COMPLEMENT]
+   ¬Ex.Fo(x)
+THEN delete(?[+ON-COMPLEMENT])
+   put([+ON-COMPLEMENT])
+ELSE abort
+
+prepositional-on-base(PRED,SUBJ,OBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put(?[+ON-COMPLEMENT])
+ELSE abort
+
+// Everyday construction extensions. Generated by scripts/build_everyday_extensions.py.
+
+definite(UNUSED)
+IF ?Ty(classical:e)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_iota(P))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,cn)))
+ELSE abort
+
+copula-adjective(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+   ¬[+COPULA]
+THEN put([+COPULA])
+ELSE abort
+
+degree(PRED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(arrow(e,t),arrow(e,t))))
+   put(Fo(classical:lam(P,arrow(e,t),lam(x,e,PRED(P(x))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:arrow(e,t)))
+   put([+COPULA])
+ELSE abort
+
+predicative-adjective(PRED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,PRED(x))))
+ELSE abort
+
+copula-negative-nominal(UNUSED)
+IF ?Ty(classical:cn)
+   ?[+PREDICATIVE-ARTICLE]
+   ¬</\0></\1>?[+NEG]
+THEN go(/\0)
+   go(/\1)
+   put(?[+NEG])
+   go(\/1)
+   go(\/0)
+ELSE abort
+
+copula-negative-adjective(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   </\1>?Ty(classical:t)
+   ¬</\1>?[+NEG]
+THEN go(/\1)
+   put(?[+NEG])
+   go(\/1)
+ELSE abort
+
+pronoun-subject(REF,SORT)
+IF ?Ty(classical:e)
+   </\0>?Ty(classical:t)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-pronoun(REF,SORT)
+ELSE abort
+
+pronoun-object(REF,SORT)
+IF ?Ty(classical:e)
+   ¬</\0>?Ty(classical:t)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-pronoun(REF,SORT)
+ELSE abort
+
+pronoun-any(REF,SORT)
+IF ?Ty(classical:e)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-pronoun(REF,SORT)
+ELSE abort
+
+all-plural(UNUSED)
+IF ?Ty(classical:e)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,arrow(arrow(e,t),t))))
+   put(Fo(classical:lam(P,cn,lam(Q,arrow(e,t),forall(x,e,implies(predication(P,x),Q(x)))))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,cn)))
+   put([+DISTRIBUTIVE-PLURAL])
+ELSE abort
+
+all-contextual(UNUSED)
+IF ?Ty(classical:e)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(cn,arrow(arrow(e,t),t))))
+   put(Fo(classical:lam(P,cn,lam(Q,arrow(e,t),forall(x,e,implies(predication(P,x),Q(x)))))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:cn))
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,cn)))
+   put([+DISTRIBUTIVE-PLURAL])
+   put([+CONTEXT-ALL])
+   put(?[+ALL-ARTICLE])
+ELSE abort
+
+all-article(UNUSED)
+IF ?[+ALL-ARTICLE]
+   [+DISTRIBUTIVE-PLURAL]
+THEN delete(?[+ALL-ARTICLE])
+ELSE abort
+
+plural-noun(NAME)
+IF ?Ty(classical:arrow(e,cn))
+   [+DISTRIBUTIVE-PLURAL]
+   ¬[+CONTEXT-ALL]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:arrow(e,cn)))
+   put(Fo(classical:lam(x,e,cn(x,NAME(x)))))
+   put(!)
+ELSE abort
+
+contextual-plural-noun(NAME)
+IF ?Ty(classical:arrow(e,cn))
+   [+DISTRIBUTIVE-PLURAL]
+   [+CONTEXT-ALL]
+   ¬?[+ALL-ARTICLE]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:arrow(e,cn)))
+   put(Fo(classical:lam(x,e,cn(x,and(NAME(x),in_context(x))))))
+   put(!)
+ELSE abort
+
+plural-adjective(PRED)
+IF ?Ty(classical:arrow(e,cn))
+   [+DISTRIBUTIVE-PLURAL]
+   ¬[+CONTEXT-ALL]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(arrow(e,cn),arrow(e,cn))))
+   put(Fo(classical:lam(P,arrow(e,cn),lam(x,e,cn(x,and(cn_body(P(x)),PRED(x)))))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:arrow(e,cn)))
+   put([+DISTRIBUTIVE-PLURAL])
+ELSE abort
+
+contextual-plural-adjective(PRED)
+IF ?Ty(classical:arrow(e,cn))
+   [+DISTRIBUTIVE-PLURAL]
+   [+CONTEXT-ALL]
+   ¬?[+ALL-ARTICLE]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(arrow(e,cn),arrow(e,cn))))
+   put(Fo(classical:lam(P,arrow(e,cn),lam(x,e,cn(x,and(cn_body(P(x)),PRED(x)))))))
+   put(!)
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:arrow(e,cn)))
+   put([+DISTRIBUTIVE-PLURAL])
+   put([+CONTEXT-ALL])
+ELSE abort
+
+
+copular-location(PRED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+locative(PRED)
+IF ?Ty(classical:arrow(e,t))
+   [+COPULA]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:arrow(e,t)))
+   put(Fo(classical:lam(x,e,PRED(x))))
+ELSE abort
+
+clause-and(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN semantic-coordinate
+ELSE abort
+
+clause-comma(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN do_nothing
+ELSE abort
+
+vp-and(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN go(\/1)
+   semantic-vp-coordinate
+ELSE abort
+
+modal-possible(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-POSSIBLE])
+   go(\/1)
+ELSE abort
+
+modal-permitted(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-PERMITTED])
+   go(\/1)
+ELSE abort
+
+modal-necessary(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-NECESSARY])
+   go(\/1)
+ELSE abort
+
+modal-obligatory(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-OBLIGATORY])
+   go(\/1)
+ELSE abort
+
+modal-future(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-FUTURE])
+   go(\/1)
+ELSE abort
+
+modal-conditional(UNUSED)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬[+MODAL]
+   ¬?[+BARE-VERB]
+THEN put([+MODAL])
+   put(?[+BARE-VERB])
+   go(/\1)
+   put(?[+MODAL-CONDITIONAL])
+   go(\/1)
+ELSE abort
+
+
+postverbal-pp(PRED)
+IF Ty(classical:t)
+   complete
+THEN go(\/1)
+   semantic-pp(PRED)
+ELSE abort
+
+nominal-simile(UNUSED)
+IF Ty(classical:t)
+   complete
+THEN go(\/1)
+   semantic-comparison(manner_like)
+   put(?[+COMPARISON-ARTICLE])
+ELSE abort
+
+simile-article(UNUSED)
+IF ?Ty(classical:cn)
+   [+COMPARISON]
+   ?[+COMPARISON-ARTICLE]
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN delete(?[+COMPARISON-ARTICLE])
+   make(\/0)
+   go(\/0)
+   put(Ty(classical:e))
+   freshput(T,entity)
+   put(!)
+   go(/\0)
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,cn)))
+ELSE abort
+
+prepositional-to(PRED,SUBJ,OBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put(?[+TO-GOAL])
+ELSE abort
+
+prepositional-to-base(PRED,SUBJ,OBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put(?[+TO-GOAL])
+ELSE abort
+
+to-goal-complement(UNUSED)
+IF ?Ty(classical:e)
+   ?[+TO-GOAL]
+   ¬Ex.Fo(x)
+THEN delete(?[+TO-GOAL])
+   put([+TO-GOAL])
+ELSE abort
+
+prepositional-into(PRED,SUBJ,OBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+BARE-VERB]
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put(?[+INTO-GOAL])
+ELSE abort
+
+prepositional-into-base(PRED,SUBJ,OBJ)
+IF ?Ty(classical:arrow(e,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ?[+BARE-VERB]
+THEN delete(?[+BARE-VERB])
+   make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,t))))
+   put(Fo(classical:lam(y,e,lam(x,e,PRED(x,y)))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+   put(?[+INTO-GOAL])
+ELSE abort
+
+into-goal-complement(UNUSED)
+IF ?Ty(classical:e)
+   ?[+INTO-GOAL]
+   ¬Ex.Fo(x)
+THEN delete(?[+INTO-GOAL])
+   put([+INTO-GOAL])
+ELSE abort
+
+
+// Polar questions preserve their propositional content with an explicit act label.
+polar-do(UNUSED)
+IF Tn(0)
+   ?Ty(classical:t)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+   ¬?[+COMP]
+THEN put([+POLAR-QUESTION])
+   make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,t)))
+   put([+DO])
+   put(?[+BARE-VERB])
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+question-boundary(UNUSED)
+IF Tn(0)
+   Ty(classical:t)
+   [+POLAR-QUESTION]
+   ¬[+QUESTION-PUNCTUATED]
+   complete
+THEN put([+QUESTION-PUNCTUATED])
+ELSE abort
+
+local-reflexive(ROLE)
+IF ?Ty(classical:e)
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-reflexive(ROLE)
+ELSE abort
+
+polarity-answer(POLARITY)
+IF Tn(0)
+   ?Ty(classical:t)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN semantic-answer(POLARITY)
+ELSE abort
+
+// Finite causal clauses. Generated by scripts/build_causal_extensions.py.
+
+causal-post(UNUSED)
+IF Ty(classical:t)
+THEN causal-post
+ELSE abort
+
+causal-front(UNUSED)
+IF ?Ty(classical:t)
+THEN causal-front
+ELSE abort
+
+causal-boundary(UNUSED)
+IF Tn(a)
+THEN causal-boundary
+ELSE abort
+
+clause-post(REL)
+IF Ty(classical:t)
+THEN causal-post(REL)
+ELSE abort
+
+clause-front(REL)
+IF ?Ty(classical:t)
+THEN causal-front(REL)
+ELSE abort
+
+temporal-adverb(PRED)
+IF Ty(classical:t)
+   ¬Ex.?x
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+temporal-embedded(PRED)
+IF Ty(classical:t)
+   ¬Ex.?x
+   <Y>([+CLAUSE] & [+CLOSED])
+THEN go(Y)
+   go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+temporal-local-content(PRED)
+IF [+CLAUSE]
+   [+CLOSED]
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort
+
+// Nonrestrictive relatives. Generated by scripts/build_nonrestrictive_extensions.py.
+
+nonrestrictive-open(UNUSED)
+IF Tn(a)
+THEN nonrestrictive-open
+ELSE abort
+
+nonrestrictive-pronoun(UNUSED)
+IF Tn(a)
+THEN nonrestrictive-pronoun
+ELSE abort
+
+nonrestrictive-close(UNUSED)
+IF Tn(a)
+THEN nonrestrictive-close
+ELSE abort
+
+nonrestrictive-end(UNUSED)
+IF Tn(a)
+THEN nonrestrictive-end
+ELSE abort
+
+nonrestrictive-adverb(PRED)
+IF Ty(classical:t)
+   (?[+APPOS-CLOSED] || ?[+APPOS-EVAL])
+THEN go(\/1)
+   semantic-adverb(PRED)
+ELSE abort

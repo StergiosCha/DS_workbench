@@ -9,6 +9,8 @@ from pathlib import Path
 from textwrap import shorten
 from typing import Collection, Literal, TextIO
 
+from loguru import logger as loguru_logger
+
 from dylan.action.atomic.effect_factory import EffectFactory
 from dylan.action.lexical_action import LexicalAction
 
@@ -51,9 +53,7 @@ class NotebookMultilineText(str):
 
         plain = str(self)
         if len(plain) > NOTEBOOK_MULTILINE_HTML_MAX_CHARS:
-            notice = (
-                f"(Output is {len(plain)} characters; use print(...) or the text/plain MIME view for the full text.)"
-            )
+            notice = f"(Output is {len(plain)} characters; use print(...) or the text/plain MIME view for the full text.)"
             body = html.escape(notice)
             return (
                 '<pre style="white-space: pre-wrap; font-family: ui-monospace, Consolas, monospace; '
@@ -184,15 +184,23 @@ class Lexicon(dict[str, list[LexicalAction]]):
         resource_dir: str | Path | None = None,
         _top_n: int = 3,
         load_learnt_lexicon: bool = False,
+        *,
+        strict: bool = False,
     ) -> None:
         """Load a seed grammar directory, or a learnt IF/THEN lexicon when *load_learnt_lexicon* is set.
 
         Mirrors Java ``Lexicon(dir, topN, loadLearntLexicon)``: when *load_learnt_lexicon* is true,
         or when ``lexicon.txt`` is absent but a learnt top-N file exists, load via
         :meth:`load_learnt_lexicon_txt` instead of template-based ``lexicon.txt``.
+
+        With *strict*, lexicon rows naming a missing template or supplying the wrong
+        number of columns raise ``ValueError`` instead of a warning + skipped row.
         """
         super().__init__()
         self.top_n = _top_n
+        # (word, number of entries hidden by the top_n cut); appended by `lookup`, never silent.
+        self.cut_log: list[tuple[str, int]] = []
+        self._strict = strict
         self._templates: dict[str, _LexicalTemplate] = {}
         self._resource_dir: Path | None = None
         self._load_stats = LexiconLoadStats(0, 0, 0, 0, 0)
@@ -206,7 +214,9 @@ class Lexicon(dict[str, list[LexicalAction]]):
         use_learnt = load_learnt_lexicon or (not word_path.is_file() and learnt_path is not None)
         if use_learnt:
             EffectFactory.clear_macro_templates()
-            word_entries, word_failed, words_failed_names = self.load_learnt_lexicon_txt(root, _top_n)
+            word_entries, word_failed, words_failed_names = self.load_learnt_lexicon_txt(
+                root, _top_n
+            )
             self._load_stats = LexiconLoadStats(
                 word_entries_loaded=word_entries,
                 words_unique=len(self),
@@ -362,7 +372,14 @@ class Lexicon(dict[str, list[LexicalAction]]):
     def lookup(self, word: str) -> Collection[LexicalAction]:
         """Return lexical entries for `word`, or an empty sequence (Java `Lexicon.get`)."""
         entries = list(super().get(word, []))
-        return entries[: self.top_n] if self.top_n > 0 else entries
+        if 0 < self.top_n < len(entries):
+            self.cut_log.append((word, len(entries) - self.top_n))
+            return entries[: self.top_n]
+        return entries
+
+    def lookup_all(self, word: str) -> Collection[LexicalAction]:
+        """Return every lexical entry for `word`, ignoring the top_n cut."""
+        return list(super().get(word, []))
 
     def get(self, word: str, default: object = None) -> Collection[LexicalAction]:  # type: ignore[override]
         """Return lexical entries for *word* using Java ``get`` semantics."""
@@ -374,6 +391,21 @@ class Lexicon(dict[str, list[LexicalAction]]):
     def invalidate_vocab_cache(self) -> None:
         """Clear memoised `get_vocab` output (needed after mutating entries post-load)."""
         self._vocab_cache.clear()
+
+    def instantiate_template(
+        self, word: str, template: str, parameters: list[str]
+    ) -> LexicalAction:
+        """Build an entry from a loaded template, without changing this lexicon.
+
+        Callers accepting external proposals must validate the parameters first;
+        this method deliberately does not interpret arbitrary action programs.
+        """
+        if template not in self._templates:
+            raise ValueError(f"Unknown lexical template: {template}")
+        entry = self._templates[template]
+        if len(parameters) != entry.metavar_count:
+            raise ValueError(f"Wrong parameter count for lexical template: {template}")
+        return entry.create(word, parameters)
 
     @staticmethod
     def _export_lines_for_action(act: object) -> list[str]:
@@ -465,7 +497,10 @@ class Lexicon(dict[str, list[LexicalAction]]):
                 continue
             if not line and lines and name is not None:
                 self._templates[name] = _LexicalTemplate(
-                    name, metavars, list(lines), no_left_adjustment,
+                    name,
+                    metavars,
+                    list(lines),
+                    no_left_adjustment,
                 )
                 name = None
                 metavars = []
@@ -485,15 +520,30 @@ class Lexicon(dict[str, list[LexicalAction]]):
                 lines.append(line)
         if name is not None and lines:
             self._templates[name] = _LexicalTemplate(
-                name, metavars, list(lines), no_left_adjustment,
+                name,
+                metavars,
+                list(lines),
+                no_left_adjustment,
             )
         logger.info("Read %s lexical action templates", len(self._templates))
 
+    def _word_file_label(self) -> str:
+        """Return the ``lexicon.txt`` path for messages (bare file name if no resource dir)."""
+        if self._resource_dir is not None:
+            return str(self._resource_dir / self.WORD_FILE_NAME)
+        return self.WORD_FILE_NAME
+
     def _read_words(self, cleaned_lines: list[str | None]) -> tuple[int, int, tuple[str, ...]]:
-        """Parse lexicon word entries; returns entries loaded, failure count, and failed surface-word labels."""
+        """Parse lexicon word entries; returns entries loaded, failure count, and failed surface-word labels.
+
+        Rows naming a template absent from ``lexical-actions.txt`` (even after block-comment
+        recovery) or supplying the wrong column count are skipped with a loguru warning —
+        or raise ``ValueError`` when the lexicon was built with ``strict=True``.
+        """
         entries_ok = 0
         failed = 0
         failed_names: list[str] = []
+        missing_template_rows: dict[str, int] = {}
         for raw in cleaned_lines:
             if raw is None:
                 continue
@@ -509,19 +559,25 @@ class Lexicon(dict[str, list[LexicalAction]]):
             word, template = fields[0], fields[1]
             lt = self._templates.get(template)
             if lt is None:
+                if self._strict:
+                    raise ValueError(
+                        f"Lexicon {self._word_file_label()}: row for {word!r} names template "
+                        f"{template!r}, not found in {self.ACTION_FILE_NAME}",
+                    )
                 logger.debug("No template %s, skipping word %s", template, word)
+                missing_template_rows[template] = missing_template_rows.get(template, 0) + 1
                 failed += 1
                 failed_names.append(word)
                 continue
             metavals = fields[2:]
             if lt.metavar_count != len(metavals):
-                logger.warning(
-                    "Skipping lexicon line for %r template %r: expected %s metavar(s), found %s",
-                    word,
-                    template,
-                    lt.metavar_count,
-                    len(metavals),
+                msg = (
+                    f"Lexicon {self._word_file_label()}: row for {word!r} template {template!r} "
+                    f"expected {lt.metavar_count} metavar(s), found {len(metavals)} — row skipped"
                 )
+                if self._strict:
+                    raise ValueError(msg)
+                loguru_logger.warning(msg)
                 failed += 1
                 failed_names.append(word)
                 continue
@@ -529,7 +585,10 @@ class Lexicon(dict[str, list[LexicalAction]]):
                 action = lt.create(word, metavals)
             except (ValueError, RuntimeError) as ex:
                 logger.warning(
-                    "Could not instantiate lexical template %s for %s: %s", template, word, ex,
+                    "Could not instantiate lexical template %s for %s: %s",
+                    template,
+                    word,
+                    ex,
                 )
                 failed += 1
                 failed_names.append(word)
@@ -537,6 +596,14 @@ class Lexicon(dict[str, list[LexicalAction]]):
             entries_ok += 1
             logger.info('Created lexical action for "%s" with template "%s"', word, template)
             self.setdefault(word, []).append(action)
+        for template in sorted(missing_template_rows):
+            loguru_logger.warning(
+                "Lexicon {}: template {!r} not found in {}; skipped {} row(s)",
+                self._word_file_label(),
+                template,
+                self.ACTION_FILE_NAME,
+                missing_template_rows[template],
+            )
         logger.info("Read lexicon with %s words.", len(self))
         return entries_ok, failed, tuple(failed_names)
 
@@ -611,7 +678,11 @@ def _format_stats_header(lex: Lexicon) -> str:
     if st.words_failed != 0:
         lines.append("Failed words:")
         if st.words_failed_names:
-            lines.extend(_wrapped_comma_name_lines(st.words_failed_names, per_line=_FAILED_WORDS_PER_LINE, indent="  "))
+            lines.extend(
+                _wrapped_comma_name_lines(
+                    st.words_failed_names, per_line=_FAILED_WORDS_PER_LINE, indent="  "
+                )
+            )
         else:
             lines.append("  —")
         lines.append("")
@@ -753,7 +824,7 @@ class _LexicalTemplate:
             for i, mv in enumerate(self.metavars):
                 line = line.replace(mv, metavals[i])
             out_lines.append(line)
-        return LexicalAction(word, out_lines, self.name, self.no_left_adjustment)
+        return LexicalAction(word, out_lines, self.name, self.no_left_adjustment, parameters=tuple(metavals))
 
 
 def _recover_template_from_raw_lines(raw_lines: list[str], name: str) -> _LexicalTemplate | None:

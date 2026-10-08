@@ -1,0 +1,11 @@
+{
+  "source": "Authored executable DS probes with Princeton WordNet 3.0 sense references",
+  "review_status": "Draft references; pending independent linguistic review",
+  "scope": "Integration observations only. This small development set is not an independent accuracy benchmark. References are not sent to Jev.",
+  "cases": [
+    {"id": "lend-double-object", "sentence": "john lends mary a book.", "word": "lends", "reference_senses": ["v02324182"], "reference_frame": "ditransitive"},
+    {"id": "lend-to", "sentence": "john lends a book to mary.", "word": "lends", "reference_senses": ["v02324182"], "reference_frame": "dative-to"},
+    {"id": "crane-walking", "sentence": "a crane walks with mary.", "word": "crane", "reference_senses": ["n02012849"], "reference_frame": "noun"},
+    {"id": "bank-unresolved", "sentence": "john walks in a bank with mary.", "word": "bank", "reference_senses": ["uncertain"], "reference_frame": "noun"}
+  ]
+}

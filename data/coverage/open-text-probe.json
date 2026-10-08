@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-02",
+  "selection": "Six hand-written development passages, frozen before this model-assisted run. Includes harder passages with known unsupported construction families. Not a random corpus sample or an accuracy estimate.",
+  "passages": [
+    {"id": "en-archive", "language": "english", "text": "The archivist catalogues a manuscript. A visitor is downstairs and the curator is in the library. The curator can read the manuscript."},
+    {"id": "en-workshop", "language": "english", "text": "A mechanic repairs the bicycle. The customer is very happy. A child admires the bicycle and smiles."},
+    {"id": "en-complex", "language": "english", "text": "The researchers have collected several samples from the river. They will compare the results before publishing their report. Although the water looks clean, it may contain harmful bacteria."},
+    {"id": "el-museum", "language": "smg", "text": "Η αρχαιολόγος ανακαλύπτει ένα αγγείο. Ο επισκέπτης είναι στο μουσείο και η Μαρία είναι έξω. Ο συντηρητής καθαρίζει το αγγείο."},
+    {"id": "el-workshop", "language": "smg", "text": "Ο μηχανικός επισκευάζει το ποδήλατο. Η πελάτισσα είναι χαρούμενη. Το παιδί διαβάζει το βιβλίο και ο δάσκαλος είναι εδώ."},
+    {"id": "el-complex", "language": "smg", "text": "Οι ερευνητές συνέλεξαν αρκετά δείγματα από το ποτάμι. Θα συγκρίνουν τα αποτελέσματα πριν δημοσιεύσουν την έκθεσή τους. Αν και το νερό φαίνεται καθαρό, μπορεί να περιέχει επικίνδυνα βακτήρια."}
+  ]
+}

@@ -10,7 +10,7 @@ from dylan.formula.variable import Variable
 
 @dataclass
 class AtomicFormula(Formula):
-    """A lowercase atomic symbol such as ``you`` or ``john`` (Java ``AtomicFormula``)."""
+    """An atomic symbol such as ``you``, ``john`` or participant ``Alice``."""
 
     name: str
 

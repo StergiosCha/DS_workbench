@@ -1,0 +1,913 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "review": "Targeted citation-led research; not exhaustive. Theoretical evidence and implementation status are independent.",
+  "sources": [
+    {
+      "id": "CKM05",
+      "title": "The Dynamics of Language: An Introduction",
+      "year": 2005,
+      "url": null,
+      "inspected_version": "Final draft dated 2004-12-12; 386 PDF pages",
+      "review_scope": "Contents and selected chs.2–9; printed pp.74–80 = PDF84–90",
+      "evidence_level": "worked_analysis"
+    },
+    {
+      "id": "HG21",
+      "title": "Dynamic Syntax: The Dynamics of Incremental Processing: Constraints on Underspecification",
+      "year": 2021,
+      "url": "https://doi.org/10.1007/s10849-021-09334-x",
+      "inspected_version": "Published article; pp.263–276",
+      "review_scope": "Full overview; §3 supplies secondary pointers, not direct review of those papers",
+      "evidence_level": "worked_analysis"
+    },
+    {
+      "id": "C10",
+      "title": "Clitics in Four Dialects of Modern Greek: A Dynamic Account",
+      "year": 2010,
+      "url": null,
+      "inspected_version": "PhD thesis; 396 PDF pages",
+      "review_scope": "Contents; §2.2.2; selected clitic/PCC material; §3.4.3.2 pp.143–146",
+      "evidence_level": "worked_analysis"
+    },
+    {
+      "id": "CK11",
+      "title": "Standard Modern and Pontic Greek Person Restrictions: A Feature-Free Dynamic Account",
+      "year": 2011,
+      "url": "https://doi.org/10.1163/156658411X599983",
+      "inspected_version": "Published article; pp.127–166",
+      "review_scope": "Structural/case analysis, particularly pp.144–145",
+      "evidence_level": "worked_analysis"
+    },
+    {
+      "id": "KC16",
+      "title": "Language as Mechanisms for Interaction",
+      "year": 2016,
+      "url": null,
+      "inspected_version": "Draft dated 2016-04-21; 52 PDF pages; published pagination 203–275",
+      "review_scope": "Selected sections on growth, context and interaction; references",
+      "evidence_level": "worked_analysis"
+    },
+    {
+      "id": "KE19",
+      "title": "Ellipsis in Dynamic Syntax",
+      "year": 2019,
+      "url": "https://doi.org/10.1093/oxfordhb/9780198712398.013.9",
+      "inspected_version": "Draft dated 2016-10-04; 24 PDF pages; some references use 2018",
+      "review_scope": "§§1.2–1.3, especially PDF13–21",
+      "evidence_level": "worked_analysis"
+    },
+    {
+      "id": "PEH11",
+      "title": "Incremental Semantic Construction in a Dialogue System",
+      "year": 2011,
+      "url": "https://aclanthology.org/W11-0144/",
+      "inspected_version": "Published paper pp.365–369",
+      "review_scope": "Full paper; DS-TTR, event semantics, implementation and limits",
+      "evidence_level": "implemented_study"
+    },
+    {
+      "id": "E15",
+      "title": "Feedback in Conversation as Incremental Semantic Update",
+      "year": 2015,
+      "url": "https://aclanthology.org/W15-0130/",
+      "inspected_version": "Published paper pp.261–271",
+      "review_scope": "§§2–3: record dependencies, DAGs, coordination and clarification",
+      "evidence_level": "implemented_study"
+    },
+    {
+      "id": "EPH13",
+      "title": "Probabilistic Induction for an Incremental Semantic Grammar",
+      "year": 2013,
+      "url": "https://aclanthology.org/W13-0110/",
+      "inspected_version": "Published paper; 11 PDF pages",
+      "review_scope": "Abstract, §§4.4–4.6 and §5; generated data and unseen-word exclusion",
+      "evidence_level": "implemented_study"
+    },
+    {
+      "id": "ECH13",
+      "title": "Incremental Grammar Induction from Child-Directed Dialogue Utterances",
+      "year": 2013,
+      "url": "https://aclanthology.org/W13-2611/",
+      "inspected_version": "Published paper pp.94–103",
+      "review_scope": "Title, abstract and bibliographic identification; no accuracy claim extracted",
+      "evidence_level": "secondary_pointer"
+    },
+    {
+      "id": "C17",
+      "title": "Modification in Dynamic Syntax",
+      "year": 2017,
+      "url": "https://www.researchgate.net/publication/313634514",
+      "inspected_version": "Two-page conference abstract plus repository cover",
+      "review_scope": "Full abstract; alternatives and unresolved questions",
+      "evidence_level": "proposal"
+    },
+    {
+      "id": "C25",
+      "title": "Constructive Dynamic Syntax",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/languages10110269",
+      "inspected_version": "Published Languages 10(11):269; 19 PDF pages",
+      "review_scope": "Selected §§3–4 and conclusion; nominal types, quantification, action contexts, modifiers",
+      "evidence_level": "worked_analysis"
+    },
+    {
+      "id": "KV19",
+      "title": "Why Natural Language Models Must Be Partial and Shifting: A Dynamic Syntax with Vector Space Semantics Perspective",
+      "year": 2019,
+      "url": null,
+      "inspected_version": "Local two-page IWCS contribution",
+      "review_scope": "Title and proposal scope",
+      "evidence_level": "proposal"
+    },
+    {
+      "id": "OH26",
+      "title": "Dynamic Syntax",
+      "year": 2026,
+      "url": "https://doi.org/10.1093/oso/9780198879640.003.0020",
+      "inspected_version": "Crossref metadata only",
+      "review_scope": "No chapter content reviewed",
+      "evidence_level": "metadata_only"
+    }
+  ],
+  "categories": [
+    {
+      "id": "C01",
+      "title": "Core tree growth",
+      "phenomena": [
+        {
+          "id": "C01.01",
+          "title": "types and requirements"
+        },
+        {
+          "id": "C01.02",
+          "title": "lexical action programs"
+        },
+        {
+          "id": "C01.03",
+          "title": "incremental composition"
+        },
+        {
+          "id": "C01.04",
+          "title": "context DAG and search"
+        }
+      ],
+      "evidence": [
+        "CKM05 ch.2",
+        "HG21 §§2.1–2.3"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "Tested core; finite grammar/search bounds",
+      "backend_audit": {
+        "native": "Shared executor; backend-specific composition",
+        "ttr": "Shared executor; record-specific composition"
+      },
+      "code_evidence": [
+        "tests/test_native_semantics.py"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "C02",
+      "title": "Nominals and quantification",
+      "phenomena": [
+        {
+          "id": "C02.01",
+          "title": "names and definites"
+        },
+        {
+          "id": "C02.02",
+          "title": "indefinites and universals"
+        },
+        {
+          "id": "C02.03",
+          "title": "scope"
+        },
+        {
+          "id": "C02.04",
+          "title": "nominal restriction"
+        },
+        {
+          "id": "C02.05",
+          "title": "plural/group readings"
+        }
+      ],
+      "evidence": [
+        "CKM05 §§3.2–3.3",
+        "C25 §§3–4.2"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "English finite inventory; Greek smaller case-sensitive DP fragment; bare/collective plurals absent",
+      "backend_audit": {
+        "native": "Separate choice-term and dependent-type compilers",
+        "ttr": "Restrictor records/quantification require case-by-case audit"
+      },
+      "code_evidence": [
+        "tests/test_native_semantics.py",
+        "tests/test_plural_quantification.py"
+      ],
+      "priority": "P3"
+    },
+    {
+      "id": "C03",
+      "title": "Valency and copulas",
+      "phenomena": [
+        {
+          "id": "C03.01",
+          "title": "active valency"
+        },
+        {
+          "id": "C03.02",
+          "title": "predicative copula"
+        },
+        {
+          "id": "C03.03",
+          "title": "existential there"
+        },
+        {
+          "id": "C03.04",
+          "title": "equatives"
+        },
+        {
+          "id": "C03.05",
+          "title": "specificational copulas"
+        }
+      ],
+      "evidence": [
+        "CKM05 ch.8"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "Active frames and selected nominal/adjectival/location copulas; broader copular families absent",
+      "backend_audit": {
+        "native": "Tested active fragments; morphology not full tense/agreement",
+        "ttr": "Historical implementation claims not accepted as current parity"
+      },
+      "code_evidence": [
+        "tests/test_copular_predication.py",
+        "src/dylan/lexical_expansion.py"
+      ],
+      "priority": "P4"
+    },
+    {
+      "id": "C04",
+      "title": "Word order and case",
+      "phenomena": [
+        {
+          "id": "C04.01",
+          "title": "unfixed positions"
+        },
+        {
+          "id": "C04.02",
+          "title": "local scrambling"
+        },
+        {
+          "id": "C04.03",
+          "title": "long-distance scrambling"
+        },
+        {
+          "id": "C04.04",
+          "title": "constructive case"
+        },
+        {
+          "id": "C04.05",
+          "title": "MERGE locality"
+        }
+      ],
+      "evidence": [
+        "CKM05 §§2.4–2.5, ch.6",
+        "HG21 §2.4"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "Reviewed Greek case-marked orders; no unrestricted scrambling",
+      "backend_audit": {
+        "native": "Shared structural operations with distinct typing",
+        "ttr": "Unfixed infrastructure exists; language-specific outcomes unaudited"
+      },
+      "code_evidence": [
+        "docs/design/thesis-full-system.md"
+      ],
+      "priority": "P5"
+    },
+    {
+      "id": "C05",
+      "title": "Relatives and extraction",
+      "phenomena": [
+        {
+          "id": "C05.01",
+          "title": "restrictive relatives"
+        },
+        {
+          "id": "C05.02",
+          "title": "nonrestrictive relatives"
+        },
+        {
+          "id": "C05.03",
+          "title": "resumption"
+        },
+        {
+          "id": "C05.04",
+          "title": "crossover"
+        },
+        {
+          "id": "C05.05",
+          "title": "island constraints"
+        },
+        {
+          "id": "C05.06",
+          "title": "nonlocal extraction"
+        }
+      ],
+      "evidence": [
+        "CKM05 chs.3–4; §3.1 (3.6),(3.9),(3.13)",
+        "HG21 §2.5.1"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "English local restrictive gaps and NEW named-head nonrestrictives; Greek pu deferred",
+      "backend_audit": {
+        "native": "Both native English modes tested; Constructive adaptation explicitly identified",
+        "ttr": "Inherited pron_whrel exists; parity and referent-sharing audit pending"
+      },
+      "code_evidence": [
+        "tests/test_relatives.py",
+        "tests/test_nonrestrictive_relatives.py",
+        "docs/design/nonrestrictive-relatives.md"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "C06",
+      "title": "Modification",
+      "phenomena": [
+        {
+          "id": "C06.01",
+          "title": "intersective adjectives"
+        },
+        {
+          "id": "C06.02",
+          "title": "nonintersective adjectives"
+        },
+        {
+          "id": "C06.03",
+          "title": "VP adverbs"
+        },
+        {
+          "id": "C06.04",
+          "title": "sentence/event adverbs"
+        },
+        {
+          "id": "C06.05",
+          "title": "PP arguments versus adjuncts"
+        },
+        {
+          "id": "C06.06",
+          "title": "comparison"
+        }
+      ],
+      "evidence": [
+        "C17 full abstract",
+        "C25 §§4.4–4.5",
+        "PEH11 §2.1"
+      ],
+      "theory_status": "mixed_worked_and_proposal",
+      "current_scope": "Intersective and selected PP/adverb/comparison fragments; no general event calculus",
+      "backend_audit": {
+        "native": "Native refinements and LINK modifiers; local identity/scope checks",
+        "ttr": "Event/record extension literature; precise grammar coverage needs audit"
+      },
+      "code_evidence": [
+        "tests/test_pp_similes.py",
+        "docs/design/pp-and-revision.md"
+      ],
+      "priority": "P4"
+    },
+    {
+      "id": "C07",
+      "title": "Coordination",
+      "phenomena": [
+        {
+          "id": "C07.01",
+          "title": "clause coordination"
+        },
+        {
+          "id": "C07.02",
+          "title": "predicate coordination"
+        },
+        {
+          "id": "C07.03",
+          "title": "NP coordination"
+        },
+        {
+          "id": "C07.04",
+          "title": "right-node raising"
+        },
+        {
+          "id": "C07.05",
+          "title": "gapping/shared complements"
+        }
+      ],
+      "evidence": [
+        "CKM05 §§5.4,7.3–7.4",
+        "KE19 §1.3"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "Selected clause/VP conjunction; no full nominal/group/shared-argument family",
+      "backend_audit": {
+        "native": "Typed conjunction implemented for selected structures",
+        "ttr": "Record conjunction and sharing require separate tests"
+      },
+      "code_evidence": [
+        "tests/test_everyday_constructions.py"
+      ],
+      "priority": "P3"
+    },
+    {
+      "id": "C08",
+      "title": "Anaphora and binding",
+      "phenomena": [
+        {
+          "id": "C08.01",
+          "title": "pronoun substitution"
+        },
+        {
+          "id": "C08.02",
+          "title": "local reflexives"
+        },
+        {
+          "id": "C08.03",
+          "title": "speaker/hearer reference"
+        },
+        {
+          "id": "C08.04",
+          "title": "scope accessibility"
+        },
+        {
+          "id": "C08.05",
+          "title": "discourse antecedents"
+        }
+      ],
+      "evidence": [
+        "CKM05 §§2.5,3.1.3–3.1.4",
+        "HG21 §2.4.3"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "Basic named antecedents and local/speaker-sensitive fragment; general discourse absent",
+      "backend_audit": {
+        "native": "Binding/witness accessibility must be tested per family",
+        "ttr": "Path identity/freshening regression available; full binding unaudited"
+      },
+      "code_evidence": [
+        "tests/test_native_dialogue_questions.py",
+        "tests/test_ttr_referent_identity.py"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": "C09",
+      "title": "Clitic systems",
+      "phenomena": [
+        {
+          "id": "C09.01",
+          "title": "placement triggers"
+        },
+        {
+          "id": "C09.02",
+          "title": "clitic clusters"
+        },
+        {
+          "id": "C09.03",
+          "title": "PCC"
+        },
+        {
+          "id": "C09.04",
+          "title": "clitic doubling"
+        },
+        {
+          "id": "C09.05",
+          "title": "dialect contrasts"
+        }
+      ],
+      "evidence": [
+        "C10 chs.3–6",
+        "CK11 pp.144–145 and surrounding analysis"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "Four reviewed variety fragments; SMG/Grico more developed; not whole-thesis coverage",
+      "backend_audit": {
+        "native": "Separate native grammars; shared structural machinery",
+        "ttr": "No claim of an equivalent TTR Greek dialect suite"
+      },
+      "code_evidence": [
+        "docs/design/thesis-clitic-system.md",
+        "tests/test_greek_ditransitive_expansion.py"
+      ],
+      "priority": "P5"
+    },
+    {
+      "id": "C10",
+      "title": "Auxiliaries and situation structure",
+      "phenomena": [
+        {
+          "id": "C10.01",
+          "title": "tense/aspect"
+        },
+        {
+          "id": "C10.02",
+          "title": "passive/progressive/perfect"
+        },
+        {
+          "id": "C10.03",
+          "title": "restructuring"
+        },
+        {
+          "id": "C10.04",
+          "title": "clitic climbing"
+        },
+        {
+          "id": "C10.05",
+          "title": "control/raising distinctions"
+        }
+      ],
+      "evidence": [
+        "C10 §3.4.3.2 pp.143–146",
+        "KC16 references to Cann 2011",
+        "CKM05 ch.8 explicit passive/progressive exclusion"
+      ],
+      "theory_status": "mixed_worked_and_secondary",
+      "current_scope": "Selected do/modals/particles; full family absent; Cann 2011 direct review required",
+      "backend_audit": {
+        "native": "Event/situation and role-mapping layer required",
+        "ttr": "Historical event grammar not proof of current tested auxiliary coverage"
+      },
+      "code_evidence": [
+        "src/dylan/action/atomic/native_dialogue.py"
+      ],
+      "priority": "P4"
+    },
+    {
+      "id": "C11",
+      "title": "Clause linkage",
+      "phenomena": [
+        {
+          "id": "C11.01",
+          "title": "causal clauses"
+        },
+        {
+          "id": "C11.02",
+          "title": "temporal clauses"
+        },
+        {
+          "id": "C11.03",
+          "title": "conditionals"
+        },
+        {
+          "id": "C11.04",
+          "title": "concessives"
+        },
+        {
+          "id": "C11.05",
+          "title": "contrast and attachment"
+        }
+      ],
+      "evidence": [
+        "C10 §§4.6–4.7",
+        "HG21 references to Gregoromichelaki 2006",
+        "KE19 references"
+      ],
+      "theory_status": "mixed_worked_and_secondary",
+      "current_scope": "Bilingual reusable syntax with opaque relations; full conditional/temporal semantics absent",
+      "backend_audit": {
+        "native": "Local content closure tested; model-selected readings remain hypotheses",
+        "ttr": "New native construction compiler is not a TTR translation"
+      },
+      "code_evidence": [
+        "tests/test_clause_constructions.py",
+        "docs/design/construction-assistance.md"
+      ],
+      "priority": "P6"
+    },
+    {
+      "id": "C12",
+      "title": "Ellipsis",
+      "phenomena": [
+        {
+          "id": "C12.01",
+          "title": "strict VP ellipsis"
+        },
+        {
+          "id": "C12.02",
+          "title": "sloppy action rerun"
+        },
+        {
+          "id": "C12.03",
+          "title": "fragment answers"
+        },
+        {
+          "id": "C12.04",
+          "title": "sluicing"
+        },
+        {
+          "id": "C12.05",
+          "title": "contextual continuation"
+        }
+      ],
+      "evidence": [
+        "CKM05 §9.2",
+        "KE19 §§1.2–1.3",
+        "PEH11 §3.2",
+        "C25 §4.3"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "Continuation/local repair present; general typed predicate retrieval absent",
+      "backend_audit": {
+        "native": "Need scoped history, correct subject rebinding and witness freshness",
+        "ttr": "Historical literature implements reuse; current suite needs direct audit"
+      },
+      "code_evidence": [
+        "docs/design/dialogue.md"
+      ],
+      "priority": "P2"
+    },
+    {
+      "id": "C13",
+      "title": "Interaction",
+      "phenomena": [
+        {
+          "id": "C13.01",
+          "title": "split utterances"
+        },
+        {
+          "id": "C13.02",
+          "title": "polar and wh questions"
+        },
+        {
+          "id": "C13.03",
+          "title": "self/other repair"
+        },
+        {
+          "id": "C13.04",
+          "title": "clarification"
+        },
+        {
+          "id": "C13.05",
+          "title": "backchannels and grounding"
+        }
+      ],
+      "evidence": [
+        "KC16",
+        "KE19 §1.3",
+        "E15 §§2.3–3.2"
+      ],
+      "theory_status": "worked_analysis",
+      "current_scope": "Bounded shared-question/reflexive/answer and repair fragment; no full participant grounding model",
+      "backend_audit": {
+        "native": "Context history available; new grounding state needed",
+        "ttr": "Self/other coordination pointers are a literature feature, not advertised app behavior"
+      },
+      "code_evidence": [
+        "tests/test_native_dialogue_questions.py",
+        "tests/test_dialogue_workbench.py"
+      ],
+      "priority": "P5"
+    },
+    {
+      "id": "C14",
+      "title": "Information structure",
+      "phenomena": [
+        {
+          "id": "C14.01",
+          "title": "hanging topics"
+        },
+        {
+          "id": "C14.02",
+          "title": "focus"
+        },
+        {
+          "id": "C14.03",
+          "title": "right dislocation"
+        },
+        {
+          "id": "C14.04",
+          "title": "extraposition"
+        },
+        {
+          "id": "C14.05",
+          "title": "clefts"
+        },
+        {
+          "id": "C14.06",
+          "title": "afterthoughts"
+        }
+      ],
+      "evidence": [
+        "CKM05 §§4.2,5.1–5.3",
+        "HG21 cleft references"
+      ],
+      "theory_status": "mixed_worked_and_secondary",
+      "current_scope": "Small Greek named-topic fragment; broad discourse/prosody absent",
+      "backend_audit": {
+        "native": "Structural labels do not establish discourse felicity",
+        "ttr": "Language/construction-specific coverage unaudited"
+      },
+      "code_evidence": [
+        "docs/design/topic-link.md"
+      ],
+      "priority": "P7"
+    },
+    {
+      "id": "C15",
+      "title": "Agreement and typological stress tests",
+      "phenomena": [
+        {
+          "id": "C15.01",
+          "title": "full/partial agreement"
+        },
+        {
+          "id": "C15.02",
+          "title": "noun class"
+        },
+        {
+          "id": "C15.03",
+          "title": "Japanese case"
+        },
+        {
+          "id": "C15.04",
+          "title": "Korean ordering"
+        },
+        {
+          "id": "C15.05",
+          "title": "Kazakh DOM"
+        },
+        {
+          "id": "C15.06",
+          "title": "Mandarin minimizers"
+        },
+        {
+          "id": "C15.07",
+          "title": "Rangi auxiliary order"
+        }
+      ],
+      "evidence": [
+        "CKM05 ch.7",
+        "HG21 §§2.4,3"
+      ],
+      "theory_status": "mixed_worked_and_secondary",
+      "current_scope": "Selected Greek features and English distributive plurality; other named languages absent",
+      "backend_audit": {
+        "native": "Need number/group semantics and case-specific programs",
+        "ttr": "No automatic cross-language extension from generic record types"
+      },
+      "code_evidence": [
+        "tests/test_plural_quantification.py",
+        "docs/design/thesis-full-system.md"
+      ],
+      "priority": "P7"
+    },
+    {
+      "id": "C16",
+      "title": "Variation and historical development",
+      "phenomena": [
+        {
+          "id": "C16.01",
+          "title": "routinization"
+        },
+        {
+          "id": "C16.02",
+          "title": "Greek clitic change"
+        },
+        {
+          "id": "C16.03",
+          "title": "Spanish clitic change"
+        },
+        {
+          "id": "C16.04",
+          "title": "stage/register distinctions"
+        }
+      ],
+      "evidence": [
+        "C10 abstract and historical chapters",
+        "HG21 historical references"
+      ],
+      "theory_status": "mixed_worked_and_secondary",
+      "current_scope": "Historical panels explanatory; modern fragments executable",
+      "backend_audit": {
+        "native": "No general Koine/medieval grammar",
+        "ttr": "No historical TTR coverage claim"
+      },
+      "code_evidence": [
+        "src/dylan/greek_workbench.py"
+      ],
+      "priority": "P7"
+    },
+    {
+      "id": "C17",
+      "title": "Learning and search",
+      "phenomena": [
+        {
+          "id": "C17.01",
+          "title": "lexical grammar induction"
+        },
+        {
+          "id": "C17.02",
+          "title": "probabilistic ordering"
+        },
+        {
+          "id": "C17.03",
+          "title": "generation by parsing"
+        },
+        {
+          "id": "C17.04",
+          "title": "matched-inventory evaluation"
+        }
+      ],
+      "evidence": [
+        "EPH13 §§4–5",
+        "ECH13 abstract",
+        "PEH11 §§3–5",
+        "E15 §2.3"
+      ],
+      "theory_status": "implemented_study",
+      "current_scope": "Models propose entries; Jev ranks senses; not the cited induction algorithm",
+      "backend_audit": {
+        "native": "Reviewed compilers and bounded replay",
+        "ttr": "Original learning implementation not established as ported behavior"
+      },
+      "code_evidence": [
+        "src/dylan/lexical_selection.py",
+        "src/dylan/jev_comparison.py"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "C18",
+      "title": "Semantic architecture",
+      "phenomena": [
+        {
+          "id": "C18.01",
+          "title": "classical term operators"
+        },
+        {
+          "id": "C18.02",
+          "title": "TTR records and dependencies"
+        },
+        {
+          "id": "C18.03",
+          "title": "Constructive nominal types and coercions"
+        },
+        {
+          "id": "C18.04",
+          "title": "distributional alternatives"
+        }
+      ],
+      "evidence": [
+        "HG21 §2.1",
+        "PEH11 §2",
+        "E15 §2.2",
+        "C25 §§3–4",
+        "KV19"
+      ],
+      "theory_status": "mixed_worked_and_proposal",
+      "current_scope": "Three distinct app backends; distributional mode absent",
+      "backend_audit": {
+        "native": "Common execution does not imply common meaning",
+        "ttr": "Independent record algebra and compiler/grammar audit required"
+      },
+      "code_evidence": [
+        "docs/design/native-semantics.md",
+        "tests/test_ttr_referent_identity.py"
+      ],
+      "priority": "P0"
+    }
+  ],
+  "implementation_started": {
+    "id": "P1.nonrestrictive_named_heads",
+    "languages": [
+      "English"
+    ],
+    "backends": [
+      "classical",
+      "mltt"
+    ],
+    "source": "CKM05 §3.1, (3.6),(3.9),(3.13); HG21 §2.5.1",
+    "test_file": "tests/test_nonrestrictive_relatives.py",
+    "status": "implemented_and_tested",
+    "validation": {"construction_cases": 56, "broader_regression_cases": 565, "note": "Counts overlap. Final scope controls were checked in focused follow-up runs; this is not a single 621-case run."},
+    "no_llm_required": true,
+    "not_claimed": [
+      "Greek pu",
+      "TTR parity",
+      "quantified hosts",
+      "embedded projection",
+      "full relative grammar"
+    ]
+  },
+  "priority_order": [
+    "P0 evidence and semantic tests",
+    "P1 relatives and reference",
+    "P2 typed contextual reuse and ellipsis",
+    "P3 nominal coordination and possessives",
+    "P4 events, auxiliaries, voice and complements",
+    "P5 questions, answers and agreement",
+    "P6 clause semantics and discourse attachment",
+    "P7 wider typology and held-out evaluation"
+  ]
+}

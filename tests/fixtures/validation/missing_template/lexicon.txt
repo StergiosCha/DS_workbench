@@ -1,0 +1,3 @@
+test noop placeholder
+ghosta ghost_template x
+ghostb ghost_template y

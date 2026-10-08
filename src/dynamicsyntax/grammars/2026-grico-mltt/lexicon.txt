@@ -1,0 +1,27 @@
+// Sourced lexical candidates are staged for review before being merged.
+. punctuation x
+! punctuation x
+? punctuation x
+; punctuation x
+; punctuation x
+mu clitic-gen speaker 1
+tu clitic-gen him 3
+to clitic theme 3 acc
+ton clitic him 3 acc
+tin clitic her 3 acc
+do verb-ditransitive-imperative give
+doka verb-ditransitive give speaker 1 sg
+milo verb-finite talk speaker 1 sg
+me clitic-acc12 speaker 1
+se clitic-acc12 hearer 2
+ma clitic-acc12 we 1
+mas clitic-acc12 we 1
+ma clitic-gen we 1
+mas clitic-gen we 1
+sa clitic-acc12 you_group 2
+sas clitic-acc12 you_group 2
+sa clitic-gen you_group 2
+sas clitic-gen you_group 2
+su clitic-gen hearer 2
+gapa verb-finite love pro 3 sg
+edika verb-ditransitive give pro 3 sg

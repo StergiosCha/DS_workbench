@@ -34,17 +34,21 @@ class TTRFreshPut(Effect):
         f = Formula.create(inner)
         if isinstance(f, TTRFormula):
             return cls(f)
-        from dylan.formula.opaque_ttr_spec import OpaqueTTRSpec
-
-        return cls(OpaqueTTRSpec(inner))
+        raise ValueError(f"ttrput requires a supported TTR formula: {inner}")
 
     def exec_tuple_context(self, tree: Tree, context: Any) -> Tree | None:
-        """Execute on *tree* with freshening from gold or the parse tree (Java ``TTRFreshPut``)."""
+        """Freshen against the branch receiving the formula, then insert it.
+
+        The dialogue context need not be a tree. More importantly, its current
+        tuple may be the source of several speculative branches: allocating
+        names there would mutate sibling searches and make replay unstable.
+        The branch carries its own cloned variable pools.
+        """
         node = tree.pointed_node
         if node.get_formula_label() is not None:
             logger.warning("ttrput: node already has Fo; leaving tree")
             return tree
-        fresh = self.ttr.freshen_vars(context if context is not None else tree)
+        fresh = self.ttr.freshen_vars(tree)
         node.add_label(FormulaLabel(fresh.instantiate()))
         return tree
 

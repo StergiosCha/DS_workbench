@@ -1,0 +1,16 @@
+// duplicate computational-action name: the starred first block must win
+
+*dup-rule
+IF ?ty(t)
+THEN do_nothing
+ELSE abort
+
+dup-rule
+IF ty(t)
+THEN abort
+ELSE do_nothing
+
+unique-rule
+IF ?ty(t)
+THEN do_nothing
+ELSE abort

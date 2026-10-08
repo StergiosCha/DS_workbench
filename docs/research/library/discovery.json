@@ -1,0 +1,977 @@
+{
+  "schema_version": 1,
+  "retrieved": "2026-10-07",
+  "query_url": "https://api.crossref.org/works?query.title=dynamic%20syntax&rows=150&select=DOI,title,author,type,published,container-title,URL",
+  "provider": "Crossref",
+  "raw_response_sha256": "1c7f76c28d477ad85522e201788b4ff847a13a641b4e7577c17d8868734e5043",
+  "returned": 150,
+  "filter": "Case-insensitive literal phrase dynamic syntax in the title. No completeness or substantive relevance claim.",
+  "service_notes": [
+    "DS website returned HTTP 522. Crossref initially rate-limited some requests (429); this successful bounded query was retried later.",
+    "Search matches were not promoted automatically into the selected library.",
+    "2026-10-07 evening expansion pass (Cowork session): OpenAlex works API used for title/abstract phrase searches, author-name searches and forward/backward citation sweeps of 12 core DOIs (raw responses retained outside the repository; 2,033 unscreened candidate records; sweep stopped before completion; see the research report). Not promoted into the library.",
+    "2026-10-07 evening expansion pass (Cowork session): Semantic Scholar paper-search returned empty results for most title queries (likely rate limiting); one hit supplied the GI16 DOI. Crossref journal listing for JoLLI (ISSN 0925-8531) identified the complete eight-article DS special issue 30(2), 2021.",
+    "2026-10-07 evening expansion pass (Cowork session): Access failures: QMRO (Hough thesis) 403/empty reply and no file on record; SOAS Worktribe (Gibson thesis/article) 403; UCL Discovery 403; Springer PDFs for SE21, YW21 and PSHK21 returned HTML (subscription); older semdial.org file names (2004, 2006) 404.",
+    "2026-10-07 evening expansion pass (Cowork session): SemDial anthology author pages (Kempson, Cann, Gregoromichelaki, Eshghi, Purver) were used as a bibliography; nine SemDial works admitted with fingerprinted PDFs. Anthology index titles can differ from printed titles (Z07-3013)."
+  ],
+  "candidates": [
+    {
+      "doi": "10.1093/oso/9780198879640.003.0020",
+      "title": "Dynamic Syntax",
+      "authors": [
+        {
+          "given": "Ronnie",
+          "family": "Cann"
+        },
+        {
+          "given": "Ruth",
+          "family": "Kempson"
+        },
+        {
+          "given": "Eleni",
+          "family": "Gregoromichelaki"
+        },
+        {
+          "given": "Christine",
+          "family": "Howes"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2026,
+            5,
+            28
+          ]
+        ]
+      },
+      "venue": [
+        "The Oxford Handbook of Philosophy of Linguistics"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1093/oso/9780198879640.003.0020",
+      "screening": "already_catalogued",
+      "reason": "Matches an existing DOI.",
+      "catalogue_id": "OH26"
+    },
+    {
+      "doi": "10.1007/s10849-021-09334-x",
+      "title": "Dynamic Syntax",
+      "authors": [
+        {
+          "given": "Christine",
+          "family": "Howes"
+        },
+        {
+          "given": "Hannah",
+          "family": "Gibson"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2021,
+            5,
+            28
+          ]
+        ]
+      },
+      "venue": [
+        "Journal of Logic, Language and Information"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.1007/s10849-021-09334-x",
+      "screening": "already_catalogued",
+      "reason": "Matches an existing DOI.",
+      "catalogue_id": "HG21"
+    },
+    {
+      "doi": "10.1016/b0-08-044854-2/05274-3",
+      "title": "Dynamic Syntax",
+      "authors": [
+        {
+          "given": "L.",
+          "family": "Marten"
+        },
+        {
+          "given": "R.",
+          "family": "Kempson"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2006
+          ]
+        ]
+      },
+      "venue": [
+        "Encyclopedia of Language &amp; Linguistics"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1016/b0-08-044854-2/05274-3",
+      "screening": "already_catalogued",
+      "reason": "Admitted: Elsevier encyclopedia entry by Marten and Kempson, two framework founders; metadata only.",
+      "catalogue_id": "MK06",
+      "screening_note": "Plausible DS-framework source; locate the primary chapter/article to confirm scope and metadata before admission.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "already_catalogued",
+          "basis": "Crossref record; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.3390/languages10110269",
+      "title": "Constructive Dynamic Syntax",
+      "authors": [
+        {
+          "given": "Stergios",
+          "family": "Chatzikyriakidis"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            23
+          ]
+        ]
+      },
+      "venue": [
+        "Languages"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.3390/languages10110269",
+      "screening": "already_catalogued",
+      "reason": "Matches an existing DOI.",
+      "catalogue_id": "C25"
+    },
+    {
+      "doi": "10.1515/9783110320244.333",
+      "title": "Defining Linear Dynamic Syntax",
+      "authors": [
+        {
+          "given": "Agnieszka",
+          "family": "Kułacka"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2012,
+            12,
+            31
+          ]
+        ]
+      },
+      "venue": [
+        "Philosophical and Formal Approaches to Linguistic Analysis"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1515/9783110320244.333",
+      "screening": "needs_screening",
+      "reason": "Crossref gives title, pages 333–356 and De Gruyter volume only; no abstract. Establish whether 'Linear Dynamic Syntax' formalises Kempson et al.'s DS.",
+      "catalogue_id": null,
+      "screening_note": "Crossref metadata checked: no abstract or reference list supplied. Establish how Linear Dynamic Syntax relates to the DS framework from the chapter before admission.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "needs_screening",
+          "basis": "Crossref record with abstract; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/oxfordhb/9780198712398.013.9",
+      "title": "Ellipsis in Dynamic Syntax",
+      "authors": [
+        {
+          "given": "Ruth",
+          "family": "Kempson"
+        },
+        {
+          "given": "Eleni",
+          "family": "Gregoromichelaki"
+        },
+        {
+          "given": "Arash",
+          "family": "Eshghi"
+        },
+        {
+          "given": "Julian",
+          "family": "Hough"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2019,
+            1,
+            8
+          ]
+        ]
+      },
+      "venue": [
+        "The Oxford Handbook of Ellipsis"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1093/oxfordhb/9780198712398.013.9",
+      "screening": "already_catalogued",
+      "reason": "Matches an existing DOI.",
+      "catalogue_id": "KE19"
+    },
+    {
+      "doi": "10.1007/11846406_36",
+      "title": "Language Modelling with Dynamic Syntax",
+      "authors": [
+        {
+          "given": "David",
+          "family": "Tugwell"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2006
+          ]
+        ]
+      },
+      "venue": [
+        "Lecture Notes in Computer Science",
+        "Text, Speech and Dialogue"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1007/11846406_36",
+      "screening": "needs_screening",
+      "reason": "Same question as the 2000 Tugwell paper; screen together.",
+      "catalogue_id": null,
+      "screening_note": "Plausible DS-framework source; locate the primary chapter/article to confirm scope and metadata before admission.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "needs_screening",
+          "basis": "Crossref record; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.1515/tl-2017-0011",
+      "title": "Dynamic Syntax and Proof Theory",
+      "authors": [
+        {
+          "given": "Graham",
+          "family": "White"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2017,
+            6,
+            1
+          ]
+        ]
+      },
+      "venue": [
+        "Theoretical Linguistics"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.1515/tl-2017-0011",
+      "screening": "already_catalogued",
+      "reason": "Admitted as formal-background reference: Theoretical Linguistics 43(1–2):135–140, the issue following KC16's target article; content not inspected.",
+      "catalogue_id": "W17",
+      "screening_note": "Crossref metadata checked: journal title, author, pages and dates available; no abstract. Locate the proof-theoretic commentary before assigning substantive mechanisms.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "already_catalogued",
+          "basis": "Crossref record; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.1109/tse.1978.231465",
+      "title": "Dynamic Syntax Specification Using Grammar Forms",
+      "authors": [
+        {
+          "given": "S.",
+          "family": "Ginsburg"
+        },
+        {
+          "given": "E.M.",
+          "family": "Rounds"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            1978,
+            1
+          ]
+        ]
+      },
+      "venue": [
+        "IEEE Transactions on Software Engineering"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.1109/tse.1978.231465",
+      "screening": "excluded",
+      "reason": "Title concerns programming-language/source-code syntax, not the linguistic framework.",
+      "catalogue_id": null
+    },
+    {
+      "doi": "10.1075/la.66.10ano",
+      "title": "8. A note on dynamic syntax",
+      "authors": [],
+      "date": {
+        "date-parts": [
+          [
+            2003,
+            10,
+            31
+          ]
+        ]
+      },
+      "venue": [
+        "Linguistik Aktuell/Linguistics Today",
+        "Prolific Domains"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1075/la.66.10ano",
+      "screening": "excluded",
+      "reason": "Chapter 8 of Grohmann (2003) Prolific Domains (Benjamins, LA 66), a Minimalist monograph on Anti-Locality (Crossref parent-record abstract). 'Dynamic syntax' there is the author's derivational notion, not the Kempson et al. framework.",
+      "catalogue_id": null,
+      "screening_note": "Missing author in the discovery metadata; inspect the parent book/chapter and establish whether this is a discussion of the DS framework.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "excluded",
+          "basis": "Crossref record with abstract; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.1016/0066-4138(73)90003-7",
+      "title": "Dynamic syntax: A concept for the definition of the syntax of programming languages",
+      "authors": [
+        {
+          "given": "K.V.",
+          "family": "Hanford"
+        },
+        {
+          "given": "C.B.",
+          "family": "Jones"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            1973,
+            1
+          ]
+        ]
+      },
+      "venue": [
+        "Annual Review in Automatic Programming"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.1016/0066-4138(73)90003-7",
+      "screening": "excluded",
+      "reason": "Title concerns programming-language/source-code syntax, not the linguistic framework.",
+      "catalogue_id": null
+    },
+    {
+      "doi": "10.1016/b978-0-08-017806-6.50006-7",
+      "title": "Dynamic Syntax: A Concept for the Definition of the Syntax of Programming Languages",
+      "authors": [
+        {
+          "given": "K.V.",
+          "family": "HANFORD"
+        },
+        {
+          "given": "C.B.",
+          "family": "JONES"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            1974
+          ]
+        ]
+      },
+      "venue": [
+        "International Tracts in Computer Science and Technology and Their Application",
+        "Computer Science and Technology and their Application"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1016/b978-0-08-017806-6.50006-7",
+      "screening": "excluded",
+      "reason": "Title concerns programming-language/source-code syntax, not the linguistic framework.",
+      "catalogue_id": null
+    },
+    {
+      "doi": "10.29013/ejhss-21-5-57-60",
+      "title": "PARCELATION EVENT IN EXPRESSIVE AND DYNAMIC SYNTAX",
+      "authors": [
+        {
+          "given": "Leyla",
+          "family": "Piriyeva"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2021
+          ]
+        ]
+      },
+      "venue": [
+        "The European Journal of Humanities and Social Sciences"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.29013/ejhss-21-5-57-60",
+      "screening": "excluded",
+      "reason": "Title pairs 'dynamic syntax' with 'expressive syntax' and 'parcellation', terms of the Russian/Azerbaijani stylistic-syntax tradition; no abstract deposited and the article was not read. Provisional exclusion; reopen if a reader finds DS-framework content.",
+      "catalogue_id": null,
+      "screening_note": "Possible broader use of dynamic syntax in expressive syntax; relevance to the DS framework remains unverified.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "excluded",
+          "basis": "Crossref record with abstract; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.1007/3-540-45323-7_6",
+      "title": "Towards a Dynamic Syntax for Language Modelling",
+      "authors": [
+        {
+          "given": "David",
+          "family": "Tugwell"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2000
+          ]
+        ]
+      },
+      "venue": [
+        "Lecture Notes in Computer Science",
+        "Text, Speech and Dialogue"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1007/3-540-45323-7_6",
+      "screening": "needs_screening",
+      "reason": "Tugwell's 'Dynamic Syntax' may be a distinct, homonymous incremental formalism: an Edinburgh PhD thesis titled 'Dynamic syntax' by David Tugwell (1999, handle 1842/22703, no file) predates KMW01. The 2009 abstract calls DS a 'newly-emerging paradigm'. Read one Tugwell paper to decide whether it uses Kempson et al.'s framework.",
+      "catalogue_id": null,
+      "screening_note": "Plausible DS-framework source; locate the primary chapter/article to confirm scope and metadata before admission.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "needs_screening",
+          "basis": "Crossref record with abstract; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.21203/rs.3.rs-5406451/v1",
+      "title": "Dynamic Syntax Interaction Framework with Multi-Layer Syntax Engagement for Large Language Models",
+      "authors": [
+        {
+          "given": "Valentin",
+          "family": "Amizern"
+        },
+        {
+          "given": "Jonathan",
+          "family": "Greaves"
+        },
+        {
+          "given": "Christian",
+          "family": "Gauthier"
+        },
+        {
+          "given": "Emmanuel",
+          "family": "Stern"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2024,
+            11,
+            8
+          ]
+        ]
+      },
+      "venue": [],
+      "type": "posted-content",
+      "url": "https://doi.org/10.21203/rs.3.rs-5406451/v1",
+      "screening": "excluded",
+      "reason": "Crossref abstract: a multi-layer syntactic processing module for large language models; 'Dynamic Syntax' names the authors' LLM framework, not the linguistic theory.",
+      "catalogue_id": null,
+      "screening_note": "Preprint title alone does not establish a relation to the linguistic DS framework; inspect definitions and cited foundations before inclusion.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "excluded",
+          "basis": "Crossref record with abstract; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.15443/rl2507",
+      "title": "Dynamic Syntax: a Model of Syntactic-Semantic Processing",
+      "authors": [
+        {
+          "given": "Nicolás",
+          "family": "Saavedra"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2015,
+            6,
+            30
+          ]
+        ]
+      },
+      "venue": [
+        "Logos: Revista de Lingüística, Filosofía y Literatura"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.15443/rl2507",
+      "screening": "needs_screening",
+      "reason": "Crossref gives Logos 25(1):87–97 (Universidad de La Serena), no abstract. Likely an overview; language of publication unknown; read before admitting.",
+      "catalogue_id": null,
+      "screening_note": "Crossref metadata checked: no abstract or references supplied. Read the article to establish scope and framework details.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "needs_screening",
+          "basis": "Crossref record with abstract; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.20944/preprints202312.1108.v1",
+      "title": "Dynamic Syntax Tree Model for Enhanced Source Code Representation",
+      "authors": [
+        {
+          "given": "Jaden",
+          "family": "Roy"
+        },
+        {
+          "given": "Rodolfo",
+          "family": "Patel"
+        },
+        {
+          "given": "Pasir",
+          "family": "Nguyen"
+        },
+        {
+          "given": "Sartran",
+          "family": "Simon"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2023,
+            12,
+            14
+          ]
+        ]
+      },
+      "venue": [],
+      "type": "posted-content",
+      "url": "https://doi.org/10.20944/preprints202312.1108.v1",
+      "screening": "excluded",
+      "reason": "Title concerns programming-language/source-code syntax, not the linguistic framework.",
+      "catalogue_id": null
+    },
+    {
+      "doi": "10.1007/s10849-021-09332-z",
+      "title": "Differential Object Marking in Kazakh: The Dynamic Syntax Approach",
+      "authors": [
+        {
+          "given": "Nadezda",
+          "family": "Christopher"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2021,
+            4,
+            24
+          ]
+        ]
+      },
+      "venue": [
+        "Journal of Logic, Language and Information"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.1007/s10849-021-09332-z",
+      "screening": "already_catalogued",
+      "reason": "Admitted after checking the DOI record and corroborating DS-framework relevance in HG21 §3. Source review depth is recorded separately.",
+      "catalogue_id": "NC21",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "already_catalogued",
+          "basis": "Metadata and deposited abstract inspected via Crossref; relevance and phenomenon also corroborated by HG21 §3, printed p.274. No derivations independently inspected."
+        }
+      ]
+    },
+    {
+      "doi": "10.1007/978-3-642-00609-8_11",
+      "title": "Multiple Subject Constructions in Japanese: A Dynamic Syntax Account",
+      "authors": [
+        {
+          "given": "Hiroaki",
+          "family": "Nakamura"
+        },
+        {
+          "given": "Kei",
+          "family": "Yoshimoto"
+        },
+        {
+          "given": "Yoshiki",
+          "family": "Mori"
+        },
+        {
+          "given": "Masahiro",
+          "family": "Kobayashi"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2009
+          ]
+        ]
+      },
+      "venue": [
+        "Lecture Notes in Computer Science",
+        "New Frontiers in Artificial Intelligence"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1007/978-3-642-00609-8_11",
+      "screening": "already_catalogued",
+      "reason": "Admitted: DS account of Japanese multiple-subject constructions (LNCS, JSAI workshops); metadata only.",
+      "catalogue_id": "N09",
+      "screening_note": "Plausible DS-framework source; locate the primary chapter/article to confirm scope and metadata before admission.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "already_catalogued",
+          "basis": "Crossref record; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.3390/languages10120300",
+      "title": "Dynamic Syntax in a Theory of Types with Records",
+      "authors": [
+        {
+          "given": "Robin",
+          "family": "Cooper"
+        },
+        {
+          "given": "Staffan",
+          "family": "Larsson"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2025,
+            12,
+            10
+          ]
+        ]
+      },
+      "venue": [
+        "Languages"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.3390/languages10120300",
+      "screening": "already_catalogued",
+      "reason": "Admitted after direct inspection of selected sections of the published PDF; explicitly models the DS framework in TTR.",
+      "catalogue_id": "CL25",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "already_catalogued",
+          "basis": "Published PDF abstract, §§1–2, opening of §3, §§4.5 and 4.8–5 inspected. Not every formal rule independently checked."
+        }
+      ]
+    },
+    {
+      "doi": "10.1007/s10849-019-09308-0",
+      "title": "A “Maximal Exclusion” Approach to Structural Underspecification in Dynamic Syntax",
+      "authors": [
+        {
+          "given": "Tohru",
+          "family": "Seraku"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2019,
+            12,
+            3
+          ]
+        ]
+      },
+      "venue": [
+        "Journal of Logic, Language and Information"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.1007/s10849-019-09308-0",
+      "screening": "already_catalogued",
+      "reason": "Admitted after checking the DOI record and corroborating DS-framework relevance in HG21 §3. Source review depth is recorded separately.",
+      "catalogue_id": "SE21",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "already_catalogued",
+          "basis": "Crossref bibliographic record and HG21 §3, printed p.274. HG21 explicitly describes the maximal-exclusion account; the underlying source has not been read here."
+        }
+      ]
+    },
+    {
+      "doi": "10.3233/978-1-58603-954-7-153",
+      "title": "Practical Syntactic Processing of Flexible Word Order Languages with Dynamic Syntax",
+      "authors": [
+        {
+          "family": "Tugwell David"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2009
+          ]
+        ]
+      },
+      "venue": [
+        "NATO Science for Peace and Security Series - D: Information and Communication Security",
+        "Language Engineering for Lesser-Studied Languages"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.3233/978-1-58603-954-7-153",
+      "screening": "needs_screening",
+      "reason": "Crossref abstract retrieved (flexible word order processing with 'the newly-emerging paradigm of Dynamic Syntax'); author field is malformed ('Tugwell David'). Screen with the other Tugwell items.",
+      "catalogue_id": null,
+      "screening_note": "Likely computational DS lead; author is supplied as the unsplit string Tugwell David. Check the chapter title page before normalizing metadata and adding it.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "needs_screening",
+          "basis": "Crossref record with abstract; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.1007/s10849-020-09328-1",
+      "title": "Feedback Relevance Spaces: Interactional Constraints on Processing Contexts in Dynamic Syntax",
+      "authors": [
+        {
+          "given": "Christine",
+          "family": "Howes"
+        },
+        {
+          "given": "Arash",
+          "family": "Eshghi"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2021,
+            6
+          ]
+        ]
+      },
+      "venue": [
+        "Journal of Logic, Language and Information"
+      ],
+      "type": "journal-article",
+      "url": "https://doi.org/10.1007/s10849-020-09328-1",
+      "screening": "already_catalogued",
+      "reason": "Admitted after checking the DOI record and corroborating DS-framework relevance in HG21 §3. Source review depth is recorded separately.",
+      "catalogue_id": "HE21",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "already_catalogued",
+          "basis": "Crossref deposited abstract and HG21 §3, printed p.274. Corpus/model scope inspected; numerical results have not been reproduced."
+        }
+      ]
+    },
+    {
+      "doi": "10.36227/techrxiv.173203602.22698764/v1",
+      "title": "Dynamic Syntax Transfer in Large Language Models towards Context-Enhanced Generation",
+      "authors": [
+        {
+          "given": "Peter",
+          "family": "Aciar"
+        },
+        {
+          "given": "Quentin",
+          "family": "Lockwood"
+        },
+        {
+          "given": "Robert",
+          "family": "Williams"
+        },
+        {
+          "given": "Evander",
+          "family": "Somerset"
+        },
+        {
+          "given": "Sullivan",
+          "family": "Radcliffe"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2024,
+            11,
+            19
+          ]
+        ]
+      },
+      "venue": [],
+      "type": "posted-content",
+      "url": "https://doi.org/10.36227/techrxiv.173203602.22698764/v1",
+      "screening": "excluded",
+      "reason": "Crossref abstract: 'Dynamic Syntax Transfer' adjusts LLM output syntax to context; not the linguistic framework.",
+      "catalogue_id": null,
+      "screening_note": "Preprint title alone does not establish a relation to the linguistic DS framework; inspect definitions and cited foundations before inclusion.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "excluded",
+          "basis": "Crossref record with abstract; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    },
+    {
+      "doi": "10.1515/9781614517016-011",
+      "title": "Deferred pronouns: A sketch based on Relevance Theory and Dynamic Syntax",
+      "authors": [
+        {
+          "given": "Thiago N.",
+          "family": "Galery"
+        }
+      ],
+      "date": {
+        "date-parts": [
+          [
+            2016,
+            4,
+            11
+          ]
+        ]
+      },
+      "venue": [
+        "The Impact of Pronominal Form on Interpretation"
+      ],
+      "type": "book-chapter",
+      "url": "https://doi.org/10.1515/9781614517016-011",
+      "screening": "already_catalogued",
+      "reason": "Admitted: title names DS as framework for deferred pronouns (anaphora); metadata only.",
+      "catalogue_id": "G16",
+      "screening_note": "Plausible DS-framework source; locate the primary chapter/article to confirm scope and metadata before admission.",
+      "triage_date": "2026-10-07",
+      "history": [
+        {
+          "date": "2026-10-07",
+          "from": "needs_screening",
+          "to": "already_catalogued",
+          "basis": "Crossref record; 2026-10-07 evening expansion pass (Cowork session)"
+        }
+      ]
+    }
+  ],
+  "additional_queries": [
+    {
+      "retrieved": "2026-10-07",
+      "provider": "Crossref",
+      "query": "journals/0925-8531/works filtered 2019–2021, volume 30 issue 2",
+      "result": "Eight articles: HG21 (263–276), C20 (277–304), NC21 (305–329), HE21 (331–362), K20 (363–378), PSHK21 (379–406), SE21 (407–428), YW21 (429–449). All now catalogued."
+    }
+  ],
+  "leads": [
+    {
+      "lead": "Tugwell, David (1999). Dynamic syntax. PhD thesis, University of Edinburgh. http://hdl.handle.net/1842/22703",
+      "status": "needs_screening",
+      "reason": "Determines whether the three Tugwell discovery candidates belong to a distinct homonymous framework."
+    },
+    {
+      "lead": "Cooper, Robin and Ruth Kempson (eds) (2008). Language in Flux: Dialogue Coordination, Language Variation, Change and Evolution. London: College Publications.",
+      "status": "needs_screening",
+      "reason": "Edited volume containing B08b; other chapters are likely DS-relevant; table of contents not retrieved."
+    },
+    {
+      "lead": "Purver, Matthew and Ruth Kempson (2004). Incrementality, alignment and shared utterances. SemDial 2004 (Catalog), Z04-3015.",
+      "status": "needs_screening",
+      "reason": "Listed in the SemDial anthology; PDF file name on the server could not be resolved (404)."
+    },
+    {
+      "lead": "Kempson, Ruth and Ronnie Cann (2006). Dialogue pressures and syntactic change. SemDial 2006 (brandial), Z06-3025.",
+      "status": "needs_screening",
+      "reason": "Listed in the SemDial anthology; PDF request 404."
+    },
+    {
+      "lead": "Gregoromichelaki, Eleni et al. (2022). Language and Cognition as Distributed Process and Interactions. SemDial 2022, Z22-3018.",
+      "status": "needs_screening",
+      "reason": "Listed in the SemDial anthology; not downloaded in this pass."
+    },
+    {
+      "lead": "Eshghi, Arash and Arash Ashrafzadeh (2023). Learning to generate and corr- uh I mean repair language in real-time. SemDial 2023, Z23-3011; arXiv 2308.11683.",
+      "status": "needs_screening",
+      "reason": "Recent DS-TTR generation/repair work; not downloaded in this pass."
+    }
+  ]
+}

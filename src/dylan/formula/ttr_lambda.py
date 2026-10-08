@@ -112,6 +112,10 @@ class TTRLambdaAbstract(TTRFormula):
         """Render ``R^body`` in Java style."""
         return f"{self.variable}^{self.body}"
 
+    def __hash__(self) -> int:
+        """String-based hash consistent with dataclass ``__eq__`` (equal fields ⇒ equal str)."""
+        return hash((TTRLambdaAbstract, str(self)))
+
     def java_hash_code(self) -> int:
         """Java ``TTRLambdaAbstract.hashCode``: ``31``-fold of body then variable."""
         from dylan.tree.label.labels import _java_int_add

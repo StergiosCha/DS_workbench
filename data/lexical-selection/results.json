@@ -1,0 +1,770 @@
+{
+  "scope": "Lexical judgments only. These text prefixes are not claims of DS construction coverage. References frozen before the live run.",
+  "reference_source": "Princeton WordNet 3.0 synset definitions; authored contrasting-prefix development probes",
+  "benchmark_hash": "81e7caca59d0c85d10098b6723c66e4e431b0cd981fdcf789e70d887eab815c4",
+  "threshold": 0.5,
+  "models": [
+    "typesafe/jev-1.13-20260917"
+  ],
+  "cases": 32,
+  "failed": 1,
+  "metrics": {
+    "sense": {
+      "asked": 31,
+      "correct": 30,
+      "dictionary_first_correct": 10
+    },
+    "frame": {
+      "asked": 26,
+      "correct": 22,
+      "dictionary_first_correct": 24
+    }
+  },
+  "cost_usd": 0.00488754,
+  "median_latency_ms": 624.337,
+  "results": [
+    {
+      "id": "bank-river",
+      "word": "bank",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n09213565",
+        "targets": [
+          "n09213565"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "bank-finance",
+      "word": "bank",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n08420278",
+        "targets": [
+          "n08420278"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "bat-animal",
+      "word": "bat",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n02139199",
+        "targets": [
+          "n02139199"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "bat-baseball",
+      "word": "bat",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n02806379",
+        "targets": [
+          "n02806379"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "crane-bird",
+      "word": "crane",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n02012849",
+        "targets": [
+          "n02012849"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "crane-machine",
+      "word": "crane",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n03126707",
+        "targets": [
+          "n03126707"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "bass-fish",
+      "word": "bass",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n07777512",
+        "targets": [
+          "n02565573",
+          "n07777512"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": false,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "bass-singer",
+      "word": "bass",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n09842528",
+        "targets": [
+          "n09842528"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": false,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "seal-animal",
+      "word": "seal",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n02076196",
+        "targets": [
+          "n02076196"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "seal-closure",
+      "word": "seal",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n04159354",
+        "targets": [
+          "n04159354"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "port-wine",
+      "word": "port",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n07900825",
+        "targets": [
+          "n07900825"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "port-computer",
+      "word": "port",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n03578656",
+        "targets": [
+          "n03578656"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "club-association",
+      "word": "club",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n08227214",
+        "targets": [
+          "n08227214"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "club-golf",
+      "word": "club",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n03446070",
+        "targets": [
+          "n03446070"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "organ-body",
+      "word": "organ",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n05297523",
+        "targets": [
+          "n05297523"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": false,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "organ-pipes",
+      "word": "organ",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n03854065",
+        "targets": [
+          "n03854065"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": false,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "plant-living",
+      "word": "plant",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n00017222",
+        "targets": [
+          "n00017222"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "plant-factory",
+      "word": "plant",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n03956922",
+        "targets": [
+          "n03956922"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "date-fruit",
+      "word": "date",
+      "failed": true,
+      "sense": {
+        "asked": true,
+        "prediction": "unavailable",
+        "targets": [
+          "n07765073"
+        ],
+        "correct": false,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "unavailable",
+        "targets": [
+          "noun"
+        ],
+        "correct": false,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "date-calendar",
+      "word": "date",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n15159583",
+        "targets": [
+          "n15160579",
+          "n15159583"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "fan-device",
+      "word": "fan",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n03320046",
+        "targets": [
+          "n03320046"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "fan-sports",
+      "word": "fan",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n10639925",
+        "targets": [
+          "n10639925",
+          "n10077593"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "coach-sport",
+      "word": "coach",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n09931640",
+        "targets": [
+          "n09931640"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "coach-vehicle",
+      "word": "coach",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n02924116",
+        "targets": [
+          "n02924116"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "capital-letter",
+      "word": "capital",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n06824227",
+        "targets": [
+          "n06824227"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": false,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "capital-column",
+      "word": "capital",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n02956247",
+        "targets": [
+          "n02956247"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": false,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "spring-season",
+      "word": "spring",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n15237044",
+        "targets": [
+          "n15237044"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "spring-device",
+      "word": "spring",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "n04288272",
+        "targets": [
+          "n04288272"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "noun",
+        "targets": [
+          "noun"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "lend-loan",
+      "word": "lends",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "v02324182",
+        "targets": [
+          "v02324182"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "transitive",
+        "targets": [
+          "ditransitive",
+          "dative-to",
+          "uncertain"
+        ],
+        "correct": false,
+        "dictionary_first_correct": false
+      }
+    },
+    {
+      "id": "lend-quality",
+      "word": "lends",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "v02324478",
+        "targets": [
+          "v02324478"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "transitive",
+        "targets": [
+          "transitive",
+          "dative-to",
+          "uncertain"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "bank-uncertain",
+      "word": "bank",
+      "failed": false,
+      "sense": {
+        "asked": true,
+        "prediction": "uncertain",
+        "targets": [
+          "uncertain"
+        ],
+        "correct": true,
+        "dictionary_first_correct": false
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "uncertain",
+        "targets": [
+          "noun"
+        ],
+        "correct": false,
+        "dictionary_first_correct": true
+      }
+    },
+    {
+      "id": "whisper-frame-open",
+      "word": "whispers",
+      "failed": false,
+      "sense": {
+        "asked": false,
+        "prediction": "v00915830",
+        "targets": [
+          "v00915830"
+        ],
+        "correct": true,
+        "dictionary_first_correct": true
+      },
+      "frame": {
+        "asked": true,
+        "prediction": "intransitive",
+        "targets": [
+          "uncertain"
+        ],
+        "correct": false,
+        "dictionary_first_correct": false
+      }
+    }
+  ]
+}

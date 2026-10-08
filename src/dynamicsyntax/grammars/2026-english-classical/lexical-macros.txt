@@ -1,0 +1,1 @@
+// Native semantic actions use put and typed elimination.
