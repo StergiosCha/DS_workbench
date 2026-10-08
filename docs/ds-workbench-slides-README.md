@@ -5,7 +5,7 @@ snapshot [`1aff525`](https://github.com/StergiosCha/DS_workbench/tree/1aff525).
 It covers the public workspace, model controls, computational-rule playback,
 DS Research Library and community repository alongside the semantic backends
 and grammar extensions. Earlier evaluations retain their original dates.
-Designed for roughly 30–35 minutes, with 33 main slides and ten optional
+Designed for roughly 30–35 minutes, with 33 main slides and nine optional
 technical appendix slides. Allow another four to six minutes for the live
 demonstration. For a shorter talk, omit the worked-relative details (14–16)
 and use the appendix only for questions.
@@ -35,8 +35,8 @@ stated evaluations; updating the slides does not rerun those experiments.
 - An explicit distinction between the inherited DS–TTR semantic backend and
   Cooper and Larsson's TTR-DS recasting of states/actions, which is not implemented.
 - The SMG PCC control `του με έδωσε`, alongside the valid third-person cluster.
-- The public repository and current verification evidence; source publication
-  is complete, while a tagged workbench package and contributor terms remain pending.
+- The public repository and current verification evidence. The release checklist
+  stays in the maintainer guide; the appendix ends with the grammar-extension example.
 - Updated demo steps using the visible model switches and library tab.
 
 The 18-category/91-topic research map, worked nonrestrictive relative, PP
@@ -73,8 +73,8 @@ xelatex ds-workbench-slides.tex
    explicit switches, construction proposals, Jev and evidence sources.
 4. Slides 26–33: interaction, redesigned workspace, rule playback, coverage,
    limits, community use, roadmap and demo.
-5. Slides 34–43: optional TTR distinction, algorithms, program/Coq details,
-   verification, references, taxonomy, extension tutorial and source/release status.
+5. Slides 34–42: optional TTR distinction, algorithms, program/Coq details,
+   verification, references, taxonomy and the extension tutorial.
 
 The notes clarify schematic diagrams, source/draft pagination, readable naming
 of generated predicates, sample limitations and interpretation assumptions.
@@ -116,7 +116,7 @@ The preceding rule-playback commit had a successful full CI run. Counts overlap
 and should not be added together. Earlier dated coverage samples remain unchanged.
 
 Both presentation PDFs were rebuilt with two XeLaTeX passes on 8 October:
-43 pages each, zero overflowing boxes and zero missing characters. The slides
+42 pages each, zero overflowing boxes and zero missing characters. The slides
 were visually reviewed, including the new diagrams/tables and presenter notes;
 extracted text stayed inside the page bounds. The library builder's consistency
 check also passed for the counts shown in the deck.

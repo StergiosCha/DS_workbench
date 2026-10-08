@@ -935,29 +935,4 @@ print(result.semantics)
   \note{This is a lexical extension using existing syntax, not a new construction family. The script copies packaged resources and refuses to overwrite an existing destination. It checks two names, negation, the nonrestrictive and two incomplete/extra-argument contrasts in each backend. Run with --output pointing to a new directory. \code{top\_n=0} retains lexical alternatives; the inherited default of three can prune a necessary function-word/punctuation entry. Search caps still apply. Custom grammar folders load through Python; arbitrary uploads are not accepted by the public web interface.}
 \end{frame}
 
-% Slide 43
-\begin{frame}{Appendix: public source and the next release}
-  \color{Ink}
-  \tagline{\href{https://github.com/StergiosCha/DS_workbench}{github.com/StergiosCha/DS\_workbench}}
-  \begin{columns}[T,onlytextwidth]
-    \column{.48\textwidth}
-      \textbf{Available now}\medskip
-      \begin{itemize}\setlength\itemsep{6pt}
-        \item Public source, issues and pull requests.
-        \item UI, grammars, research library, slides and guides.
-        \item Reproducible install and independent grammar tutorial.
-      \end{itemize}
-    \column{.48\textwidth}
-      \textbf{Release work ahead}\medskip
-      \begin{itemize}\setlength\itemsep{6pt}
-        \item Agree maintainers and review responsibilities.
-        \item Resolve inherited licence and contributor terms.
-        \item Tag a workbench release with artifacts and citation metadata.
-      \end{itemize}
-  \end{columns}
-  \vspace{3mm}
-  \aside{Run from this source checkout; installing the upstream package by name does not reproduce the workbench.}
-  \note{Clone the public repository, run uv sync --locked --python 3.12, then uv run --no-sync ds-workbench --port 8000. No Node build, Azure account or model key is needed for bundled examples. No tagged workbench package release is claimed; old inherited tags are not workbench releases. The installed-package CI job now passes remotely. The old metadata claimed BSD while LICENSE deferred to DyLan; the referenced licence is LGPLv3. The unsupported BSD label was removed and source texts retained, but workbench contribution terms remain a release decision. GDT data separately carries CC BY-NC-SA 3.0; optional WordNet/Brown/Gutenberg indexes are not in the wheel. Community source publication and a cleared, versioned package release are distinct milestones.}
-\end{frame}
-
 \end{document}
