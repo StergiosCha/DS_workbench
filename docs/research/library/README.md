@@ -196,7 +196,10 @@ misses DS work without that phrase, so it cannot define the library's scope.
 The original DS website returned an upstream error during this pass; no claim
 of an exhaustive website bibliography is made.
 
-The next software milestone is a read-only library entry point in the public
-workbench, followed by a reviewed Zotero synchronization workflow. The current
-deliverable is the offline library and portable exports; the live parser has
-not been changed by this library build.
+The public workbench now includes a **DS Library** tab with text, topic and
+framework filters. Its static `workbench/library-data.js` asset is generated
+by the same builder from the authoritative records; review status and scope
+remain visible. The tab includes no local PDF paths or full-text redistribution,
+and selecting or filtering a record makes no model request. The offline library
+retains the fuller evidence/version view and portable exports. A reviewed Zotero
+synchronization workflow remains a future step.

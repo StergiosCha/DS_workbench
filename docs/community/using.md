@@ -8,12 +8,32 @@ Constructive. Leave **Use analysis LLM** and **Use Jev** unticked (the default).
 A key is not needed. To use only the original lexicon, open **Models, vocabulary
 & advanced settings → Advanced** and choose **Original lexicon**.
 
+The **Parse**, **Corpus & dictionary**, **Greek lab** and **DS Library** tabs
+keep these activities in separate views. Switching tabs preserves the current
+derivation and makes no parser/model request. Corpus and Greek lab examples
+return to Parse when you ask DS to analyse them. The library searches the
+curated bibliography by text, topic and framework; review labels distinguish
+metadata-only records from inspected sources.
+
+**Connect / models** opens model setup in a side drawer. Connecting does not
+enable either model: close the drawer and tick the desired switches. The
+**This result** bar records actual model use for the displayed result, separate
+from permissions for the next parse. Expand **What the models do** for details.
+**Parse options & coverage** contains scope and alternative-analysis settings;
+**All examples** opens the full example list. **Evidence & lexical analyses**
+below the tree contains diagnostics, source evidence and candidates grouped by
+word, with recorded selected entries first where that information is available.
+
 Try `John likes Mary.` and `John, who Mary knows, walks.`. Build the derivation
 and inspect Words, Rules and Operations. The pointer shows where growth takes
 place; outstanding requirements explain why a prefix is incomplete. Expand a
 node formula for its full lambda term. During playback, the current tree can
 be partial even if the final derivation completed: use Show final result or
 advance to the last step.
+
+Zooming or panning turns off **Auto-fit**, retaining your view as you step.
+Tick it again to fit the growing tree automatically. On mobile, meaning stays
+under the tree and **Inspect this step** opens the node/rule inspector.
 
 Playback starts in **Rules**: lexical rules and computational rules carry
 different labels and appear in execution order, with the active rule, pointer

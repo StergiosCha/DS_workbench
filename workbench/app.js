@@ -157,8 +157,9 @@ function receiveEvent(event) {
   }
 }
 
-async function parseSentence() {
+async function parseSentence(options = {}) {
   if (state.busy) return;
+  if (options.reveal !== false) window.workbenchLayout?.showPanel("parse");
   const sentence = $("sentence").value.trim();
   if (state.inputMode === "sentence" && !sentence) { message("Enter a sentence to begin."); $("sentence").focus(); return; }
   if (state.inputMode === "paragraph" && !$("paragraph").value.trim()) { message("Enter a paragraph to begin."); $("paragraph").focus(); return; }
@@ -386,7 +387,10 @@ function renderTree(frame) {
     content.append(formula);
     content.append(svgElement("circle", { cx: node.width / 2 - 18, cy: top + 15, r: 3, class: "pointer-mark" }));
     if (pointed) content.append(svgElement("text", { x: 0, y: top - 12, "text-anchor": "middle", class: "pointer-label" }, "POINTER"));
-    const choose = () => { state.selected = node.id; renderTree(frame); renderInspector(frame); };
+    const choose = () => {
+      stop(); state.selected = node.id; $("inspector-drawer").open = true;
+      selectTab("node"); renderTree(frame); renderInspector(frame);
+    };
     content.addEventListener("click", choose);
     content.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") { event.preventDefault(); event.stopPropagation(); choose(); }
@@ -478,7 +482,7 @@ function renderTrace() {
 
 function renderReadings() {
   const readings = state.result?.readings || [];
-  $("readings-panel").hidden = !readings.length;
+  $("readings-panel").hidden = readings.length < 2;
   const names = { fixed: "Fixed structure", "star-adjunction": "Unfixed node + MERGE", link: "LINK" };
   $("reading").replaceChildren(...readings.map((reading, index) => {
     const strategy = reading.strategies.map((name) => names[name] || name).join(" + ");
@@ -620,7 +624,7 @@ function setIndex(index, playing = false) {
   if (!playing) stop();
   state.index = Math.max(0, Math.min(frames().length - 1, index));
   state.selected = current().pointer;
-  state.view = null;
+  if ($("follow-tree").checked) state.view = null;
   render();
 }
 
@@ -664,6 +668,7 @@ function zoom(factor) {
   if (!state.view) return;
   const view = state.view;
   if (view.w * factor < 160 || view.w * factor > 7000) return;
+  $("follow-tree").checked = false;
   view.x += view.w * (1 - factor) / 2; view.y += view.h * (1 - factor) / 2;
   view.w *= factor; view.h *= factor; applyView();
 }
@@ -671,6 +676,7 @@ $("zoom-in").addEventListener("click", () => zoom(.8));
 $("zoom-out").addEventListener("click", () => zoom(1.25));
 $("tree").addEventListener("pointerdown", (event) => {
   if (!state.view || event.target.closest(".tree-node")) return;
+  $("follow-tree").checked = false;
   state.drag = { x: event.clientX, y: event.clientY, view: { ...state.view } };
   $("tree").setPointerCapture(event.pointerId);
 });
@@ -682,7 +688,8 @@ $("tree").addEventListener("pointermove", (event) => {
   applyView();
 });
 for (const event of ["pointerup", "pointercancel"]) $("tree").addEventListener(event, () => { state.drag = null; });
-new ResizeObserver(() => { if (current()) fitTree(layoutTree(current())); }).observe($("tree-stage"));
+new ResizeObserver(() => { if (current() && $("follow-tree").checked) fitTree(layoutTree(current())); }).observe($("tree-stage"));
+$("follow-tree").addEventListener("change", () => { if ($("follow-tree").checked && current()) fitTree(layoutTree(current())); });
 
 $("copy").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(current().semantics); $("copy").textContent = "Copied ✓"; }
@@ -974,13 +981,14 @@ function renderAssistanceControls() {
     ? "Ranks alternative word meanings as context arrives. DS checks the choices."
     : "Orders parser choices for this calibrated grammar. DS checks the choices.";
   $("llm-model").textContent = !lexicalSupported() ? "Unavailable for this grammar, including TTR."
-    : !config.provider.configured ? "Connect and choose a model below to enable."
+    : !config.provider.configured ? "Connect and choose a model to enable."
     : !available.llm ? "Unavailable for Greek dialogue; choose Sentence or Paragraph."
     : `Selected: ${config.provider.model}`;
   $("jev-model").textContent = !(available.senses || available.search)
     ? lexicalSupported() && !config.greek_corpus?.grammars.includes($("grammar").value) ? "Connect OpenRouter with Jev available to enable." : "Word-meaning assistance is available for native English only."
     : `Pinned model: ${available.senses ? config.selection.model : state.config.decision.model}`;
   for (const id of ["llm", "jev"]) $(id + "-enabled").closest(".assistance-card").classList.toggle("enabled", $(id + "-enabled").checked);
+  $("assistance-hint").textContent = !lexicalSupported() ? "AI unavailable for this grammar" : !config.provider.configured ? "Optional · connect to enable" : "DS checks every derivation";
 }
 
 function liveGreekSourcesActive() {
@@ -1205,14 +1213,15 @@ function renderLexicalReport(report) {
     const outcomes = { revised: "Preference accepted after DS replay", retained: "Current sense retained", uncertain: "No reliable sense preference", no_viable_preference: "Preferred sense did not yield a compatible DS continuation; current tree retained", search_limit: "Reconsideration reached a search limit; current tree retained", candidate_limit: "Reconsideration reached its candidate limit; current tree retained" };
     $("lexical-revision-decisions").replaceChildren(...(selection.revisions || []).map((revision) => element("p", "", `${revision.word}, after “${revision.observed_prefix.join(" ")}”: ${outcomes[revision.status] || revision.status}.`)));
   }
-  $("lexical-entries").replaceChildren(...report.entries.map((entry) => {
+  const entryViews = report.entries.map((entry) => {
     const details = element("details", "lexical-entry");
     details.append(element("summary", "", `${entry.surface} → ${entry.template} · ${entry.symbol}(${entry.domains.join(", ")}) · ${entry.source === "model" ? "model proposal" : entry.source === "dictionary" ? "WordNet candidate" : entry.source === "corpus" ? "GDT corpus hypothesis" : "bundled"}`));
     details.append(element("p", "", `Lemma: ${entry.lemma} · ${entry.morphology}. ${entry.evidence}`));
     if (entry.model) details.append(element("p", "", `${entry.provider} / ${entry.model} · ${entry.cached ? "cache reused" : "new proposal"} · ${entry.created_at}`));
     details.append(element("p", "", entry.validation), element("pre", "", entry.program.join("\n")));
     return details;
-  }));
+  });
+  window.workbenchLayout?.groupEntries(report, entryViews) ?? $("lexical-entries").replaceChildren(...entryViews);
 }
 
 function lexicalGloss(entry) {
@@ -1327,6 +1336,17 @@ function renderConstructionReport(result) {
 }
 
 function renderDiagnostics(result) {
+  if (result.failure) {
+    const inspect = element("button", "text-button", "Inspect failure ↗");
+    inspect.type = "button"; inspect.id = "inspect-failure";
+    inspect.addEventListener("click", () => {
+      $("result-evidence").open = true;
+      $("result-evidence").scrollIntoView({behavior: "smooth", block: "start"});
+      $("result-evidence").querySelector("summary").focus();
+    });
+    $("inspect-failure")?.remove();
+    if (!$("message").hidden) $("message").append(inspect);
+  }
   renderMethodResult(result);
   renderLexicalReport(result.lexical);
   const decision = result.decision;
@@ -1411,7 +1431,7 @@ function renderHistory(id) {
 
 function renderGreekLab() {
   const lab = state.config.greek;
-  $("greek-lab").hidden = !lab;
+  $("greek-lab").hidden = !lab || $("workspace-tab-greek-lab").getAttribute("aria-selected") !== "true";
   if (!lab) return;
   $("clitic-environments").replaceChildren(...[["finite", "Bare finite clause"], ["negation", "Negation"], ["imperative", "Imperative"], ["na", "Na clause"]].map(([id, label]) => {
     const button = element("button", "", label); button.type = "button"; button.dataset.environment = id;
@@ -1429,16 +1449,21 @@ function renderGreekLab() {
 
 function renderExamples() {
   const grammar = $("grammar").value;
+  if (state.exampleGrammar !== grammar) { state.exampleGrammar = grammar; state.showAllExamples = false; }
   const examples = greekGrammar()?.examples || (/-(mltt|classical)$/.test(grammar) ? state.config.native_examples
     : grammar === "2015-english-ttr" ? state.config.examples
     : grammar === "2026-english-ttr-test" ? [{ sentence: "a man knows you", label: "The small test grammar" }]
     : grammar === "2026-english-ttr" ? [{ sentence: "a man arrives", label: "An intransitive sentence" }] : []);
-  $("examples").replaceChildren(...examples.map((example) => {
+  $("examples").replaceChildren(...(state.showAllExamples ? examples : examples.slice(0, 3)).map((example) => {
     const button = element("button", "", example.sentence); button.type = "button"; button.title = example.label;
     button.addEventListener("click", () => { $("sentence").value = example.sentence; parseSentence(); }); return button;
   }));
   if (!examples.length) $("examples").append(element("span", "", "No preset examples for this grammar."));
+  $("all-examples").hidden = examples.length <= 3;
+  $("all-examples").textContent = state.showAllExamples ? "Fewer examples" : `All ${examples.length} examples`;
+  $("all-examples").setAttribute("aria-expanded", String(Boolean(state.showAllExamples)));
 }
+$("all-examples").addEventListener("click", () => { state.showAllExamples = !state.showAllExamples; renderExamples(); });
 $("grammar").addEventListener("change", () => {
   stop(); updateGrammar();
   if (state.inputMode === "dialogue") setDialogue(dialogueExamples()[0]?.turns || [{speaker:"A",text:""}]);
@@ -1451,7 +1476,7 @@ function selectSystem() {
   const previous = greekGrammar();
   const system = state.config.systems.find((item) => item.id === $("system").value);
   $("grammar").replaceChildren(...system.grammars.map((id) => {
-    const option = element("option", "", state.config.greek?.grammars[id]?.label || id.replace("2026-english-", "English · ").replace("2015-english-ttr", "English · TTR (2015)"));
+    const option = element("option", "", state.config.greek?.grammars[id]?.label || (/^2026-english-(mltt|classical)$/.test(id) ? "English" : id.replace("2026-english-", "English · ").replace("2015-english-ttr", "English · TTR (2015)")));
     option.value = id; return option;
   }));
   const paired = previous && `2026-${previous.dialect}-${system.id}`;
@@ -1471,7 +1496,8 @@ $("reading").addEventListener("change", () => {
 $("lexical-mode").addEventListener("change", renderLexicalSettings);
 $("llm-enabled").addEventListener("change", () => changeAssistance("llm"));
 $("jev-enabled").addEventListener("change", () => changeAssistance("jev"));
-$("model-settings-button").addEventListener("click", () => { $("lexical-settings").open = true; $("lexical-settings").scrollIntoView({behavior: "smooth", block: "start"}); });
+$("model-settings-button").addEventListener("click", () => { stop(); $("lexical-settings").open = true; $("models-dialog").showModal(); });
+$("models-close").addEventListener("click", () => $("models-dialog").close());
 $("compare-jev").addEventListener("change", renderLexicalSettings);
 $("jev-run").addEventListener("click", runJevComparison);
 $("show-final").addEventListener("click", () => setIndex(frames().length - 1));
@@ -1497,7 +1523,7 @@ async function boot() {
     window.openrouterControls?.init(config);
     if (config.lexical?.dictionary?.installed) $("lexical-mode").value = "dictionary";
     $("system").replaceChildren(...config.systems.map((system) => {
-      const option = element("option", "", system.label); option.value = system.id; return option;
+      const option = element("option", "", system.label.replace(" DS", "")); option.value = system.id; return option;
     }));
     selectSystem();
     renderGreekLab();
@@ -1505,7 +1531,7 @@ async function boot() {
     $("connection").replaceChildren(element("span", "status-dot"), document.createTextNode("Python engine connected"));
     $("connection").classList.add("connected");
     $("parse-button").disabled = false; $("grammar").disabled = false; $("system").disabled = false;
-    await parseSentence();
+    await parseSentence({reveal: false});
   } catch {
     $("connection").replaceChildren(element("span", "status-dot"), document.createTextNode("Engine unavailable"));
     message("The Python engine is unavailable. Start it with: python -m dylan.workbench_server", true);

@@ -60,6 +60,7 @@ def main():
         }))
         page.locator("#model-settings-button").click()
         connect(page, key)
+        page.locator("#models-close").click()
         page.locator("#llm-enabled").check()
         for backend in ("mltt", "classical"):
             page.locator("#system").select_option(backend)

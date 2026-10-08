@@ -41,6 +41,7 @@ def main():
                 assert result["words"][-1]["requirement_count"] == 0
                 assert all(n["fixed"] for n in result["words"][-1]["nodes"])
             else:
+                page.locator("#result-evidence").evaluate("element => element.open = true")
                 assert not result["ok"]
                 assert result["failure"]["kind"] == "pcc_violation"
                 assert result["failure"]["index"] == 1
@@ -78,6 +79,7 @@ def main():
         }))
         page.locator("#model-settings-button").click()
         connect(page, key)
+        page.locator("#models-close").click()
         page.locator("#llm-enabled").check()
         for backend in ("classical", "mltt"):
             page.locator("#system").select_option(backend)
