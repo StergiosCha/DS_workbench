@@ -1,0 +1,168 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash",
+  "cases": [
+    {
+      "sentence": "ο μεγάλος άνθρωπος περπατάει",
+      "backend": "mltt",
+      "kind": "overt",
+      "complete": true,
+      "meaning": "walk(π₁(definite_00))",
+      "context_assumptions": [
+        "definite_00: a contextually identified referent of type Σ x:person. big(x); its identification is assumed."
+      ],
+      "failure": null,
+      "llm_on": false,
+      "model_requests": 0,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off"
+    },
+    {
+      "sentence": "περπατάει",
+      "backend": "mltt",
+      "kind": "implicit",
+      "complete": true,
+      "meaning": "walk(pro)",
+      "context_assumptions": [],
+      "failure": null,
+      "llm_on": false,
+      "model_requests": 0,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off"
+    },
+    {
+      "sentence": "ο μεγάλος ο κόκκινος ο άνθρωπος περπατάει",
+      "backend": "mltt",
+      "kind": "polydefinite coverage gap",
+      "complete": false,
+      "meaning": null,
+      "context_assumptions": [],
+      "failure": {
+        "token": "ο",
+        "index": 2,
+        "message": "The grammar could not continue at “ο”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+        "kind": "unresolved_parse_failure"
+      },
+      "llm_on": false,
+      "model_requests": 0,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off"
+    },
+    {
+      "sentence": "του με έδωσε",
+      "backend": "mltt",
+      "kind": "PCC",
+      "complete": false,
+      "meaning": null,
+      "context_assumptions": [],
+      "failure": {
+        "token": "με",
+        "index": 1,
+        "message": "Person–Case Constraint (PCC), under the clitic reading: “του” is a genitive clitic and “με” is a first/second-person accusative clitic. In this grammar both target the same locally unfixed node, where their referent/case requirements clash. The cluster is blocked; the tree shown is only the prefix before the second clitic.",
+        "kind": "pcc_violation"
+      },
+      "llm_on": false,
+      "model_requests": 0,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off"
+    },
+    {
+      "sentence": "ο μεγάλος άνθρωπος ήρθε",
+      "backend": "mltt",
+      "kind": "overt",
+      "complete": true,
+      "meaning": "el_erchomai_83886340(π₁(definite_00))",
+      "context_assumptions": [
+        "definite_00: a contextually identified referent of type Σ x:person. big(x); its identification is assumed."
+      ],
+      "failure": null,
+      "llm_on": true,
+      "model_requests": 2,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off"
+    },
+    {
+      "sentence": "ο μεγάλος άνθρωπος περπατάει",
+      "backend": "classical",
+      "kind": "overt",
+      "complete": true,
+      "meaning": "walk(ι x0:e. (person(x0) ∧ big(x0)))",
+      "context_assumptions": [],
+      "failure": null,
+      "llm_on": false,
+      "model_requests": 0,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off"
+    },
+    {
+      "sentence": "περπατάει",
+      "backend": "classical",
+      "kind": "implicit",
+      "complete": true,
+      "meaning": "walk(pro)",
+      "context_assumptions": [],
+      "failure": null,
+      "llm_on": false,
+      "model_requests": 0,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off"
+    },
+    {
+      "sentence": "ο μεγάλος ο κόκκινος ο άνθρωπος περπατάει",
+      "backend": "classical",
+      "kind": "polydefinite coverage gap",
+      "complete": false,
+      "meaning": null,
+      "context_assumptions": [],
+      "failure": {
+        "token": "ο",
+        "index": 2,
+        "message": "The grammar could not continue at “ο”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+        "kind": "unresolved_parse_failure"
+      },
+      "llm_on": false,
+      "model_requests": 0,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off"
+    },
+    {
+      "sentence": "του με έδωσε",
+      "backend": "classical",
+      "kind": "PCC",
+      "complete": false,
+      "meaning": null,
+      "context_assumptions": [],
+      "failure": {
+        "token": "με",
+        "index": 1,
+        "message": "Person–Case Constraint (PCC), under the clitic reading: “του” is a genitive clitic and “με” is a first/second-person accusative clitic. In this grammar both target the same locally unfixed node, where their referent/case requirements clash. The cluster is blocked; the tree shown is only the prefix before the second clitic.",
+        "kind": "pcc_violation"
+      },
+      "llm_on": false,
+      "model_requests": 0,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off"
+    },
+    {
+      "sentence": "ο μεγάλος άνθρωπος ήρθε",
+      "backend": "classical",
+      "kind": "overt",
+      "complete": true,
+      "meaning": "el_erchomai_83886340(ι x0:e. (person(x0) ∧ big(x0)))",
+      "context_assumptions": [],
+      "failure": null,
+      "llm_on": true,
+      "model_requests": 1,
+      "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off"
+    }
+  ],
+  "browser_errors": [],
+  "date": "2026-10-16",
+  "source_commit": "4614d49",
+  "deployment": "dpl_KpeuFhQmu7ZutbdmupfGz2zHRm5V",
+  "url": "https://ds-workbench.vercel.app/",
+  "manifest_files": 357,
+  "runtime_files_changed": [
+    "src/dylan/action/atomic/merge.py"
+  ],
+  "validation": {
+    "full_pytest_passed": 2117,
+    "skipped": 4,
+    "targeted_passed": 286,
+    "corpus_runs": 810,
+    "corpus_floor_groups": 146,
+    "english_family_expectations_matched": 150,
+    "public_browser_checks": 10
+  },
+  "scope": "Authored checks of actual subject meaning, implicit subjects and known boundaries. Polydefinite failures record unsupported coverage, not ungrammaticality. Exact reported sentence used two live model requests in Constructive and one in Classical; both completed with the overt DP argument."
+}

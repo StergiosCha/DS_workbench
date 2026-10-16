@@ -10,6 +10,19 @@ these are `Dropbox/DS_workbench` and `Dropbox/DS_workbench_deploy`.
 Edit the source checkout; publish from the deployment folder after staging
 and checking the intended changes. Git pushes do not deploy this app.
 
+**16 October 2026 overt Greek subject correction:** Deployment
+`dpl_KpeuFhQmu7ZutbdmupfGz2zHRm5V` publishes source `4614d49`. Only the shared
+MERGE implementation changed in the runtime bundle; all 357 manifest hashes
+were verified. An unfinished nominal subtree must compose its own formula
+instead of inheriting the verb's subject placeholder. The full suite passed
+2,117 tests with four skips, and all 146 corpus groups met their existing floors.
+Ten public browser checks verified overt and implicit subjects, PCC rejection
+and the unsupported polydefinite boundary. With live DeepSeek assistance,
+`ο μεγάλος άνθρωπος ήρθε` completed in both backends with the overt DP as its
+argument (two requests in Constructive, one in Classical). Polydefinites remain
+unimplemented. See the [analysis](greek-subject-composition.md) and
+[public verification](../../data/coverage/greek-subject-public-2026-10-16.json).
+
 **16 October 2026 grammar workshop and adjective update:** Production deployment
 `dpl_49ZTZTUBc3DnUnaYtHSLTp5sy2tv` publishes source `4310d9c` from the visible
 deployment folder. Twelve files changed; all 357 manifest hashes were verified.
