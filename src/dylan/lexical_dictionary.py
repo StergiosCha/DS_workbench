@@ -146,6 +146,9 @@ def is_plural_of(surface, lemma):
     return False
 
 
+NOUN_RELATIVE_ADJECTIVES = frozenset("great good bad excellent skilled skillful talented successful competent experienced big small large little tall short important useful interesting beautiful ugly careful dangerous expensive cheap difficult easy".split())
+
+
 def candidates(surface):
     """Return all indexed senses/frames and the supported proposal subset."""
     from dylan.lexical_expansion import PROTECTED, SURFACE, proposal
@@ -180,12 +183,16 @@ def candidates(surface):
                     # and therefore are not returned by this exact-lemma query.
                     # Arbitrary dictionary adjectives are not assumed intersective.
                     mappings = [("predicative-adjective", ["object"])]
+                    if lemma in NOUN_RELATIVE_ADJECTIVES:
+                        mappings.append(("subsective-adjective", ["object"]))
                 elif pos == "v" and inflection in {"base", "present_3sg", "past"}:
                     mappings = [FRAMES[frame] for frame in frames if frame in FRAMES]
                 for template, domains in mappings:
                     # Different senses and valencies never redefine one predicate.
                     suffix = pos if pos in {"n", "a"} else "v" + "".join(d[0] for d in domains) + ("c" if template == "clausal" else "")
                     symbol = f"{lemma.replace('-', '_')}_{suffix}{row['synset']}"
+                    if template == "subsective-adjective":
+                        symbol += "_kind"
                     if len(symbol) > 40 or not re.fullmatch(r"[a-z][a-z0-9_]*", symbol):
                         continue
                     key = (template, symbol, tuple(domains))

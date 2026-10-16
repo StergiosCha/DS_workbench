@@ -61,11 +61,23 @@ configuration/example changes in `workbench_api.py` and possibly
 
 ## Implement a construction family
 
+For an existing experimental proposal, the browser's **Edit & keep rules**
+workflow supports corrections, positive/negative examples, local reuse and a
+downloadable contribution pack. `scripts/review_grammar_pack.py` checks the pack
+and can build a new standalone grammar directory. See the
+[grammar workshop](../design/grammar-workshop.md). A personal overlay is distinct
+from installing an arbitrary grammar folder or merging a maintained source change.
+
 Start from a topic in the [theory catalogue](../research/ds-theoretical-coverage.md)
 and fill the [design template](construction-template.md). A lexical LLM can
 instantiate permitted frames; it cannot supply an unimplemented binding,
 scope or LINK-composition rule. Implement the family with its applicability
 conditions, not a special case for one sentence.
+
+Add supported combinations to `scripts/audit_construction_families.py`, alongside
+semantic and contrast tests. CI retains the full matrix and exploratory failures;
+the [current family report](../design/construction-family-checks.md) documents its
+scope and next gaps.
 
 The nonrestrictive-relative extension provides a worked implementation trail:
 

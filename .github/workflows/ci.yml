@@ -53,6 +53,17 @@ jobs:
       - name: Research library consistency
         run: uv run python scripts/build_ds_library.py --check
 
+      - name: Construction family regression matrix
+        run: uv run python scripts/audit_construction_families.py --output construction-families.json
+
+      - name: Retain construction outcomes and exploratory failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: construction-families-python-${{ matrix.python-version }}
+          path: construction-families.json
+          if-no-files-found: warn
+
       - name: Pytest
         # Corpus semantic floors include compiled constructive exports.
         # Existing LaTeX smoke checks still skip when TeX is not installed.

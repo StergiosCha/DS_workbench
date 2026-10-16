@@ -145,7 +145,14 @@ DS retries. A success is explicitly labelled **Complete under experimental gramm
 DS satisfied its requirements assuming these unreviewed rules. That is not an
 independent validation of their linguistic analysis. The rules last for this
 request and are included in Export JSON. Review and test them before contributing
-them to the maintained grammar. See the [design and limits](../design/experimental-grammar.md).
+them to the maintained grammar. **Edit & keep rules** opens the grammar workshop:
+edit programs and declarations, add positive/negative examples and expected
+meanings, and check them with DS. Save a personal pack, then tick **Use my rules**
+to reuse it on new sentences without AI. **My grammars** reopens saved packs;
+download a contribution pack to back it up or share it. Personal results retain
+an explicit label; saving does not add rules to the shared grammar. See the
+[workshop workflow](../design/grammar-workshop.md) and
+[experimental limits](../design/experimental-grammar.md).
 
 ## Reproduce a result
 

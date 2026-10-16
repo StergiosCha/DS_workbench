@@ -19,7 +19,7 @@ import sqlite3
 from dylan import lexical_provider
 from dylan.clause_inventory import CONNECTIVES
 
-VERSION = 8
+VERSION = 9
 GRAMMARS = {"2026-english-classical", "2026-english-mltt"}
 TEMPLATES = {
     "proper": {"arity": 1, "morphology": "invariant", "description": "Name with a nominal sort"},
@@ -40,6 +40,10 @@ TEMPLATES = {
     "predicative-adjective": {
         "arity": 1, "morphology": "invariant",
         "description": "Predicative property on object; no attributive/intersective reading is licensed",
+    },
+    "subsective-adjective": {
+        "arity": 1, "morphology": "invariant",
+        "description": "Noun-relative attributive adjective, e.g. a great person, good doctor or skilled surgeon. domains [object]. Keeps the noun restrictor and adds a property relative to that restrictor, without inferring an absolute adjective property. Not former, alleged or fake; no degree/scale reasoning.",
     },
     "adverb": {
         "arity": 1, "morphology": "invariant",
@@ -179,7 +183,7 @@ def configuration() -> dict:
         "dictionary": dictionary_configuration(),
         "selection": selection_configuration(),
         "examples": ["a cat sleeps.", "every teacher greets a child.", "mary reads a book."],
-        "coverage": "English names, singular count nouns, distributive all + plural nouns (including all the), intersective adjectives, postverbal manner adverbs through LINK, and active verbs: intransitive, transitive, give frames, finite clauses or a selected on-complement. Plural restrictors denote individuals; bare plurals and collective readings remain unsupported. Morphology is recorded; tense, full agreement and a/an phonology are not enforced by this fragment.",
+        "coverage": "English names, singular count nouns, distributive all + plural nouns (including all the), intersective and noun-relative adjectives, postverbal manner adverbs through LINK, and active verbs: intransitive, transitive, give frames, finite clauses or a selected on-complement. Plural restrictors denote individuals; bare plurals and collective readings remain unsupported. Morphology is recorded; tense, full agreement and a/an phonology are not enforced by this fragment.",
     }
 
 
@@ -259,7 +263,7 @@ def validate_entries(
         # Preserve lexical identity: sharing an action frame is not synonym
         # replacement. Check the regular finite -s forms without claiming to
         # implement a complete English morphological analyser.
-        if template in {"proper", "noun", "adjective", "predicative-adjective", "adverb"} and lemma != word:
+        if template in {"proper", "noun", "adjective", "predicative-adjective", "subsective-adjective", "adverb"} and lemma != word:
             raise ValueError(
                 f"The supported invariant/singular entry must preserve the lemma of {word}."
             )
@@ -309,6 +313,19 @@ def validate_entries(
     compiled = []
     for entry in entries:
         symbol, domains, template = entry["symbol"], entry["domains"], entry["template"]
+        if template == "subsective-adjective":
+            if domains != ["object"]:
+                raise ValueError("Noun-relative adjectives require domains [object].")
+            if symbol in sorts or symbol in theory["constants"] or symbol in theory.get("modifiers", {}):
+                raise ValueError(f"Semantic symbol collision: {symbol}.")
+            signature = ["CN" if theory["backend"] == "mltt" else "arrow(e,t)", "object"]
+            if symbol in theory["predicates"] and theory["predicates"][symbol] != signature:
+                raise ValueError(f"Cannot redefine the noun-relative predicate {symbol}.")
+            theory["predicates"][symbol] = signature
+            for prefix in ("", "plural-", "contextual-plural-"):
+                action = lexicon.instantiate_template(entry["surface"], prefix+template, [symbol])
+                compiled.append((deepcopy(entry), action))
+            continue
         if template == "adverb":
             if domains != ["Prop"]:
                 raise ValueError("The adverb template requires exactly the Prop domain.")

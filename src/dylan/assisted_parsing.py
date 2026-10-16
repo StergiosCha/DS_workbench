@@ -46,8 +46,12 @@ Do not relabel plurals or mass nouns as singular count nouns. Verbs are
 finite active indicative (including English past forms); no participles, infinitive
 complements, passive, modal or perfect readings unless an explicit supplied
 template supports them. English lexical bare forms can also follow do-support.
-Prefer predicative-adjective for a copular property; use adjective attributively
-ONLY if intersective (red, wooden, tall, local); former/alleged are not intersective.
+Use predicative-adjective for a bare copular property (is great). Before a noun,
+use adjective for an intersective property (red, wooden), or English
+subsective-adjective for a noun-relative reading (a great person, a good doctor,
+a skilled surgeon). The latter keeps the head noun and does not infer an absolute
+adjective property. domains [object]; not former, alleged or fake. A predicative
+adjective alone cannot consume the following noun in 'is a great person'.
 English postverbal manner adverbs such as randomly, carefully or slowly use adverb,
 domains ["Prop"], number/verb_form/case/gender/person all "none", and the actual
 adverb lemma (not its adjective or a synonym). Prop is allowed ONLY for adverb.

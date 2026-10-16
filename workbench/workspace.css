@@ -37,6 +37,24 @@ h1 { font-size:clamp(23px,2vw,30px); letter-spacing:-.6px; }
 .experimental-report pre { white-space:pre-wrap; overflow-wrap:anywhere; font:12px/1.5 var(--mono); padding:12px; background:#fffdf5; max-height:360px; overflow:auto; }
 .experimental-attempt { margin-top:10px; }
 .experimental-attempt > summary { min-height:36px; padding:8px 0; color:#6d511e; }
+.personal-controls { display:flex; gap:8px 12px; align-items:center; flex-wrap:wrap; font-size:12px; }
+.personal-controls select { max-width:100%; min-height:36px; font-size:12px; }
+.personal-controls label { display:flex; gap:6px; align-items:center; }
+.personal-controls input { width:20px; height:20px; }
+.personal-controls > span { color:var(--sub); }
+.grammar-workshop { width:min(900px,94vw); max-width:94vw; max-height:90vh; overflow:auto; padding:24px; border:1px solid var(--line); border-radius:10px; background:var(--bg,#f7f8f4); }
+.grammar-workshop h2 { padding-right:40px; }
+.grammar-workshop p, .grammar-workshop summary { font-size:13px; line-height:1.55; }
+.grammar-workshop label { display:block; font-size:12px; margin:10px 0; }
+.grammar-workshop input, .grammar-workshop textarea, .grammar-workshop select { width:100%; min-height:36px; padding:8px; border:1px solid var(--line); background:white; border-radius:4px; font:13px/1.5 var(--mono); }
+.grammar-workshop textarea { resize:vertical; }
+.grammar-workshop details { margin:14px 0; }
+.grammar-workshop summary { padding:8px 0; }
+.pack-card { min-width:0; border:1px solid var(--line); padding:12px; margin:12px 0; }
+.pack-card legend { padding:0 5px; font-size:13px; }
+.workshop-actions { display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+.grammar-workshop .primary { padding:12px; }
+.grammar-workshop pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:12px; }
 #assistance-info { font-size:12px; }
 #assistance-info[open] { flex-basis:100%; }
 .assistance-explanation { padding:8px 0; max-width:100ch; }

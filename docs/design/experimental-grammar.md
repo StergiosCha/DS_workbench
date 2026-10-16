@@ -54,6 +54,10 @@ tokens must be consumed and all requirements satisfied. An incomplete parse or
 validation error is sent back once, with the preceding proposal, for a second
 attempt. A proposal does not alter grammar files, subsequent requests or the
 shared vocabulary cache. The browser retains the result until replaced/refreshed.
+To keep and revise a proposal, choose **Edit & keep rules** in its result panel.
+The [grammar workshop](grammar-workshop.md) checks edits and examples, saves a
+personal pack locally, and reuses it without new model calls. This is an explicit
+user action and does not promote the proposal into the shared grammar.
 
 Limits are two model requests, six rules, twelve declarations, ten conditions
 and 48 effects per rule. Effects are single lines of at most 600 characters.

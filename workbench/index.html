@@ -13,6 +13,7 @@
   <script src="research.js" defer></script>
   <script src="library-data.js" defer></script>
   <script src="workspace.js" defer></script>
+  <script src="grammar-workshop.js" defer></script>
 </head>
 <body>
   <header class="header">
@@ -82,6 +83,7 @@
       <div class="scope-control"><label for="scope">Existential scope</label><select id="scope"><option value="narrow">Inside universal · ΠΣ</option><option value="wide">Outside universal · ΣΠ</option></select><span id="coverage">English fragment: names, determiners, verbs, adjectives and VP modifiers.</span></div>
       <div class="analysis-settings"><label for="n-best">Complete analyses</label><select id="n-best"><option value="1">First analysis</option><option value="3">Up to 3 analyses</option><option value="8">Up to 8 analyses</option></select><span>Explore alternative trees and meanings using the grammar.</span></div>
       </details>
+      <div id="personal-controls" class="personal-controls"><button id="grammar-workshop-open" type="button" class="text-button">My grammars · edit & review rules ↗</button><select id="personal-pack" aria-label="Saved personal grammar"><option value="">Choose a saved grammar…</option></select><label><input id="personal-enabled" type="checkbox" disabled> Use my rules</label><span id="personal-state">Saved rules run without AI.</span></div>
       <div class="examples"><span>Try an example</span><div id="examples"></div><button id="all-examples" type="button" class="text-button" aria-expanded="false">All examples</button></div>
       <p id="greek-context" class="fragment-context" hidden></p>
 
@@ -105,6 +107,7 @@
         <label id="focus-paragraph" hidden>Sentence <select id="focus-sentence-select"></select></label>
         <p id="focus-usage"></p><p id="focus-outcome" hidden></p><p id="focus-notice" role="status" hidden></p>
       </div>
+      <section id="personal-report" class="experimental-report" aria-label="Personal grammar" hidden></section>
       <section id="experimental-report" class="experimental-report" aria-label="Experimental grammar proposals" hidden><h3 id="experimental-title"></h3><p id="experimental-summary"></p><p id="experimental-notice"></p><div id="experimental-attempts"></div></section>
       <div id="readings-panel" class="readings-panel" hidden>
         <label for="reading">View analysis</label><select id="reading"></select>

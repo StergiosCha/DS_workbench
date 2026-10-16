@@ -1,0 +1,149 @@
+{
+  "scope": "Twelve source-browser runs using live DeepSeek/OpenRouter and Jev where enabled. Not an accuracy estimate. Unknown Mitsotakis is expected to fail with AI off; no private input or credentials retained.",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "cases": [
+    {
+      "sentence": "mitsotakis is a great person",
+      "backend": "mltt",
+      "llm_on": false,
+      "jev_on": false,
+      "complete": false,
+      "failure": {
+        "token": "mitsotakis",
+        "index": 0,
+        "message": "“mitsotakis” is not in this grammar’s lexicon.",
+        "kind": "lexicon_gap"
+      },
+      "meaning": null,
+      "model_requests": 0,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "mitsotakis is a great person",
+      "backend": "mltt",
+      "llm_on": true,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(mitsotakis_41a6f3 ∈ Σ x:person_n00007846. great_a01386883_kind(person_n00007846, x))",
+      "model_requests": 1,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "mitsotakis is a great person",
+      "backend": "mltt",
+      "llm_on": true,
+      "jev_on": true,
+      "complete": true,
+      "failure": null,
+      "meaning": "(mitsotakis ∈ Σ x:person_n00007846. great_a01278818_kind(person_n00007846, x))",
+      "model_requests": 1,
+      "jev_requests": 3
+    },
+    {
+      "sentence": "george is a great person",
+      "backend": "mltt",
+      "llm_on": false,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(george ∈ Σ x:person_n00007846. great_a01386883_kind(person_n00007846, x))",
+      "model_requests": 0,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "george is a great person",
+      "backend": "mltt",
+      "llm_on": true,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(george ∈ Σ x:person_n00007846. great_a01386883_kind(person_n00007846, x))",
+      "model_requests": 0,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "george is a great person",
+      "backend": "mltt",
+      "llm_on": true,
+      "jev_on": true,
+      "complete": true,
+      "failure": null,
+      "meaning": "(george ∈ Σ x:person_n00007846. great_a01278818_kind(person_n00007846, x))",
+      "model_requests": 0,
+      "jev_requests": 3
+    },
+    {
+      "sentence": "mitsotakis is a great person",
+      "backend": "classical",
+      "llm_on": false,
+      "jev_on": false,
+      "complete": false,
+      "failure": {
+        "token": "mitsotakis",
+        "index": 0,
+        "message": "“mitsotakis” is not in this grammar’s lexicon.",
+        "kind": "lexicon_gap"
+      },
+      "meaning": null,
+      "model_requests": 0,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "mitsotakis is a great person",
+      "backend": "classical",
+      "llm_on": true,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(person_n00007846(mitsotakis_41a6f3) ∧ great_a01386883_kind(λ z:e. person_n00007846(z), mitsotakis_41a6f3))",
+      "model_requests": 1,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "mitsotakis is a great person",
+      "backend": "classical",
+      "llm_on": true,
+      "jev_on": true,
+      "complete": true,
+      "failure": null,
+      "meaning": "(person_n00007846(mitsotakis) ∧ great_a01386883_kind(λ z:e. person_n00007846(z), mitsotakis))",
+      "model_requests": 1,
+      "jev_requests": 3
+    },
+    {
+      "sentence": "george is a great person",
+      "backend": "classical",
+      "llm_on": false,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(person_n00007846(george) ∧ great_a01386883_kind(λ z:e. person_n00007846(z), george))",
+      "model_requests": 0,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "george is a great person",
+      "backend": "classical",
+      "llm_on": true,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(person_n00007846(george) ∧ great_a01386883_kind(λ z:e. person_n00007846(z), george))",
+      "model_requests": 0,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "george is a great person",
+      "backend": "classical",
+      "llm_on": true,
+      "jev_on": true,
+      "complete": true,
+      "failure": null,
+      "meaning": "(person_n00007846(george) ∧ great_a01278818_kind(λ z:e. person_n00007846(z), george))",
+      "model_requests": 0,
+      "jev_requests": 3
+    }
+  ],
+  "browser_errors": []
+}
