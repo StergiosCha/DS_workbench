@@ -1432,5 +1432,1520 @@
     "Classical Jev+DeepSeek adverb check returned no lexical proposal; the UI reports that model omission.",
     "Experimental mode currently supports native English/Standard Greek sentences only, not TTR, paragraphs or dialogue.",
     "Model calls are nondeterministic and may fail or time out."
-  ]
+  ],
+  "deployment": {
+    "id": "dpl_Cg2xLZdr1AUzkBGZ7fd9gMQy1QLY",
+    "url": "https://ds-workbench.vercel.app/",
+    "source_commit": "503042a",
+    "bundle": "DS_workbench_deploy",
+    "manifest_files": 355,
+    "changed_files": 9,
+    "public_assets": {
+      "app.js": "96aa976bde3c0cc4cc7b76fd5f9d809116ca80c0c8359298b80633a1d4615dd1",
+      "workspace.css": "e2e1cafcb64495cdeaa967e8500b71c03adf697c75021f5ed4b581d0ce5ae2fa",
+      "index.html": "d7b9fe46e75e0d769d38098146e51a3e44bca10018299894d8748696cac6e858"
+    },
+    "experimental_browser_checks": {
+      "checks": [
+        "Separate opt-in, LLM enablement, Jev combination, experimental completion label, programs and JSON export",
+        "Focus preserves experimental provenance without a new request",
+        "Visible desktop/mobile controls without horizontal overflow",
+        "All-off and LLM-off disable proposals; paragraphs and TTR disable the control; toggles make no request"
+      ],
+      "errors": []
+    },
+    "pcc_rejection_preserved": true,
+    "live_model": {
+      "model": "openai/gpt-6-astra",
+      "cases": [
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "payload": {
+            "mode": "assisted",
+            "llm_allowed": true,
+            "has_auth": true,
+            "experimental": true
+          },
+          "complete": true,
+          "failure": null,
+          "meaning": "Σ x:glasses_n04272054. Σ x1:person_n00007846. with_instrument(x, enter_vho02016523(x1, definite_010))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off",
+          "model_requests": 1,
+          "attempts": [],
+          "notices": [],
+          "entries": [
+            {
+              "surface": "person",
+              "lemma": "person",
+              "template": "noun",
+              "symbol": "person_n00007846",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "person",
+              "lemma": "person",
+              "template": "noun",
+              "symbol": "person_n05217688",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "person",
+              "lemma": "person",
+              "template": "noun",
+              "symbol": "person_n06326797",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vo02016523",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh02016523",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vho02016523",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_voo02016523",
+              "domains": [
+                "object",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh01082606",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vho01082606",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh02471327",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vhh02471327",
+              "domains": [
+                "human",
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vho01000214",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vhh01000214",
+              "domains": [
+                "human",
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_voh01000214",
+              "domains": [
+                "object",
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_voo01000214",
+              "domains": [
+                "object",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "clausal",
+              "symbol": "enter_vhc01000214",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh01720660",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh02381397",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vho01421622",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "room",
+              "lemma": "room",
+              "template": "noun",
+              "symbol": "room_n04105893",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "room",
+              "lemma": "room",
+              "template": "noun",
+              "symbol": "room_n13777764",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "room",
+              "lemma": "room",
+              "template": "noun",
+              "symbol": "room_n14485436",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "room",
+              "lemma": "room",
+              "template": "noun",
+              "symbol": "room_n07985948",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glasses",
+              "template": "noun",
+              "symbol": "glasses_n04272054",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n14881303",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n14881303",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03438257",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03438257",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n13767239",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n13767239",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03333129",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03333129",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03754295",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03754295",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03688832",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03688832",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03438661",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03438661",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "transitive",
+              "symbol": "glass_vho02335363",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "transitive",
+              "symbol": "glass_vho02152690",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "transitive",
+              "symbol": "glass_vho01587575",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "transitive",
+              "symbol": "glass_vho00188580",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "intransitive",
+              "symbol": "glass_vo00125447",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "with",
+              "lemma": "with",
+              "template": "experimental-rule",
+              "symbol": "with_instrument_vp_link",
+              "domains": [],
+              "source": "experimental",
+              "model": "openai/gpt-6-astra"
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glasses",
+              "template": "experimental-rule",
+              "symbol": "glasses_bare_existential_dp",
+              "domains": [],
+              "source": "experimental",
+              "model": "openai/gpt-6-astra"
+            }
+          ],
+          "jev_requests": 0,
+          "experimental_grammar": {
+            "enabled": true,
+            "used": true,
+            "rules": [
+              {
+                "surface": "with",
+                "lemma": "with",
+                "template": "experimental-rule",
+                "symbol": "with_instrument_vp_link",
+                "domains": [],
+                "morphology": "Model-proposed; inspect conditions and explanation",
+                "evidence": "Adds an instrument/equipment alternative to human-valued with_companion; filling the current slot alone would leave that sense mismatch. The PP helper preserves the unmodified VP in LINK. This assumes equipment associated with the entering, not specifically wearing, possession, or noun attachment.",
+                "source": "experimental",
+                "program": [
+                  "IF Ty(mltt:Prop)",
+                  "   ¬Ex.?x",
+                  "THEN go(\\/1)",
+                  "   semantic-pp(with_instrument)",
+                  "ELSE abort"
+                ],
+                "rule_id": "with_instrument_vp_link",
+                "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+              },
+              {
+                "surface": "glasses",
+                "lemma": "glasses",
+                "template": "experimental-rule",
+                "symbol": "glasses_bare_existential_dp",
+                "domains": [],
+                "morphology": "Model-proposed; inspect conditions and explanation",
+                "evidence": "The failure presents an object DP slot, but existing glasses actions require CN. This combines indefinite structure with the existing eyewear sort, introducing existential eyewear rather than drinking vessels. It applies only to an empty object slot; general plural cardinality, distributivity and generic readings are not supplied.",
+                "source": "experimental",
+                "program": [
+                  "IF ?Ty(mltt:object)",
+                  "   ¬<\\/0>Ex.x",
+                  "   ¬<\\/1>Ex.x",
+                  "THEN make(\\/1)",
+                  "   go(\\/1)",
+                  "   put(Ty(mltt:arrow(CN,object)))",
+                  "   put(Fo(mltt:lam(A,CN,sigma(x,A,top))))",
+                  "   go(/\\1)",
+                  "   make(\\/0)",
+                  "   go(\\/0)",
+                  "   put(?Ty(mltt:CN))",
+                  "   put(Ty(mltt:CN))",
+                  "   put(Fo(mltt:glasses_n04272054))",
+                  "ELSE abort"
+                ],
+                "rule_id": "glasses_bare_existential_dp",
+                "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+              }
+            ],
+            "attempts": [
+              {
+                "number": 1,
+                "status": "complete",
+                "trigger": {
+                  "token": "glasses",
+                  "index": 6,
+                  "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                  "kind": "unresolved_parse_failure"
+                },
+                "proposal": {
+                  "declarations": [
+                    {
+                      "name": "with_instrument",
+                      "kind": "predicate",
+                      "domains": [
+                        "object",
+                        "Prop"
+                      ]
+                    }
+                  ],
+                  "rules": [
+                    {
+                      "surface": "with",
+                      "name": "with_instrument_vp_link",
+                      "explanation": "Adds an instrument/equipment alternative to human-valued with_companion; filling the current slot alone would leave that sense mismatch. The PP helper preserves the unmodified VP in LINK. This assumes equipment associated with the entering, not specifically wearing, possession, or noun attachment.",
+                      "when": [
+                        "Ty(mltt:Prop)",
+                        "¬Ex.?x"
+                      ],
+                      "then": [
+                        "go(\\/1)",
+                        "semantic-pp(with_instrument)"
+                      ]
+                    },
+                    {
+                      "surface": "glasses",
+                      "name": "glasses_bare_existential_dp",
+                      "explanation": "The failure presents an object DP slot, but existing glasses actions require CN. This combines indefinite structure with the existing eyewear sort, introducing existential eyewear rather than drinking vessels. It applies only to an empty object slot; general plural cardinality, distributivity and generic readings are not supplied.",
+                      "when": [
+                        "?Ty(mltt:object)",
+                        "¬<\\/0>Ex.x",
+                        "¬<\\/1>Ex.x"
+                      ],
+                      "then": [
+                        "make(\\/1)",
+                        "go(\\/1)",
+                        "put(Ty(mltt:arrow(CN,object)))",
+                        "put(Fo(mltt:lam(A,CN,sigma(x,A,top))))",
+                        "go(/\\1)",
+                        "make(\\/0)",
+                        "go(\\/0)",
+                        "put(?Ty(mltt:CN))",
+                        "put(Ty(mltt:CN))",
+                        "put(Fo(mltt:glasses_n04272054))"
+                      ]
+                    }
+                  ]
+                },
+                "provider": "OpenRouter",
+                "model": "openai/gpt-6-astra",
+                "failure": null,
+                "rules": [
+                  {
+                    "surface": "with",
+                    "lemma": "with",
+                    "template": "experimental-rule",
+                    "symbol": "with_instrument_vp_link",
+                    "domains": [],
+                    "morphology": "Model-proposed; inspect conditions and explanation",
+                    "evidence": "Adds an instrument/equipment alternative to human-valued with_companion; filling the current slot alone would leave that sense mismatch. The PP helper preserves the unmodified VP in LINK. This assumes equipment associated with the entering, not specifically wearing, possession, or noun attachment.",
+                    "source": "experimental",
+                    "program": [
+                      "IF Ty(mltt:Prop)",
+                      "   ¬Ex.?x",
+                      "THEN go(\\/1)",
+                      "   semantic-pp(with_instrument)",
+                      "ELSE abort"
+                    ],
+                    "rule_id": "with_instrument_vp_link",
+                    "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+                  },
+                  {
+                    "surface": "glasses",
+                    "lemma": "glasses",
+                    "template": "experimental-rule",
+                    "symbol": "glasses_bare_existential_dp",
+                    "domains": [],
+                    "morphology": "Model-proposed; inspect conditions and explanation",
+                    "evidence": "The failure presents an object DP slot, but existing glasses actions require CN. This combines indefinite structure with the existing eyewear sort, introducing existential eyewear rather than drinking vessels. It applies only to an empty object slot; general plural cardinality, distributivity and generic readings are not supplied.",
+                    "source": "experimental",
+                    "program": [
+                      "IF ?Ty(mltt:object)",
+                      "   ¬<\\/0>Ex.x",
+                      "   ¬<\\/1>Ex.x",
+                      "THEN make(\\/1)",
+                      "   go(\\/1)",
+                      "   put(Ty(mltt:arrow(CN,object)))",
+                      "   put(Fo(mltt:lam(A,CN,sigma(x,A,top))))",
+                      "   go(/\\1)",
+                      "   make(\\/0)",
+                      "   go(\\/0)",
+                      "   put(?Ty(mltt:CN))",
+                      "   put(Ty(mltt:CN))",
+                      "   put(Fo(mltt:glasses_n04272054))",
+                      "ELSE abort"
+                    ],
+                    "rule_id": "glasses_bare_existential_dp",
+                    "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+                  }
+                ],
+                "selected_rule_ids": [
+                  "with_instrument_vp_link",
+                  "glasses_bare_existential_dp"
+                ]
+              }
+            ],
+            "declarations": [
+              {
+                "name": "with_instrument",
+                "kind": "predicate",
+                "domains": [
+                  "object",
+                  "Prop"
+                ]
+              }
+            ],
+            "selected_rule_ids": [
+              "with_instrument_vp_link",
+              "glasses_bare_existential_dp"
+            ],
+            "baseline": {
+              "complete": false,
+              "failure": {
+                "token": "glasses",
+                "index": 6,
+                "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure"
+              },
+              "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)"
+            },
+            "blocked_by_reviewed_constraint": false,
+            "notice": "DS requirements are checked under model-proposed lexical rules. These rules and their linguistic analysis have not been reviewed; completion is not established coverage of the original grammar.",
+            "grammar_hash": "eb40bf00b3e880dcb460b9e434edf3e37f41e2ab2a665569c8ffe60bde9711a5",
+            "proposal_hash": "458a61ff9c79f62e638a9f5e3417ab04657cbd998a79119b0b60d56b3e8f5168",
+            "created_at": "2026-10-16T12:40:04.951777+00:00"
+          }
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "payload": {
+            "mode": "assisted",
+            "llm_allowed": true,
+            "has_auth": true,
+            "experimental": true
+          },
+          "complete": true,
+          "failure": null,
+          "meaning": "with_instrument(ε x2:e. glasses_n04272054(x2), enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1)))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off",
+          "model_requests": 1,
+          "attempts": [],
+          "notices": [],
+          "entries": [
+            {
+              "surface": "person",
+              "lemma": "person",
+              "template": "noun",
+              "symbol": "person_n00007846",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "person",
+              "lemma": "person",
+              "template": "noun",
+              "symbol": "person_n05217688",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "person",
+              "lemma": "person",
+              "template": "noun",
+              "symbol": "person_n06326797",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vo02016523",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh02016523",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vho02016523",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_voo02016523",
+              "domains": [
+                "object",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh01082606",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vho01082606",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh02471327",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vhh02471327",
+              "domains": [
+                "human",
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vho01000214",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vhh01000214",
+              "domains": [
+                "human",
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_voh01000214",
+              "domains": [
+                "object",
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_voo01000214",
+              "domains": [
+                "object",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "clausal",
+              "symbol": "enter_vhc01000214",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh01720660",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "intransitive",
+              "symbol": "enter_vh02381397",
+              "domains": [
+                "human"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "entered",
+              "lemma": "enter",
+              "template": "transitive",
+              "symbol": "enter_vho01421622",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "room",
+              "lemma": "room",
+              "template": "noun",
+              "symbol": "room_n04105893",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "room",
+              "lemma": "room",
+              "template": "noun",
+              "symbol": "room_n13777764",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "room",
+              "lemma": "room",
+              "template": "noun",
+              "symbol": "room_n14485436",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "room",
+              "lemma": "room",
+              "template": "noun",
+              "symbol": "room_n07985948",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glasses",
+              "template": "noun",
+              "symbol": "glasses_n04272054",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n14881303",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n14881303",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03438257",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03438257",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n13767239",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n13767239",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03333129",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03333129",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03754295",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03754295",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03688832",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03688832",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03438661",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "plural-noun",
+              "symbol": "glass_n03438661",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "transitive",
+              "symbol": "glass_vho02335363",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "transitive",
+              "symbol": "glass_vho02152690",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "transitive",
+              "symbol": "glass_vho01587575",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "transitive",
+              "symbol": "glass_vho00188580",
+              "domains": [
+                "human",
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glass",
+              "template": "intransitive",
+              "symbol": "glass_vo00125447",
+              "domains": [
+                "object"
+              ],
+              "source": "dictionary",
+              "model": null
+            },
+            {
+              "surface": "with",
+              "lemma": "with",
+              "template": "experimental-rule",
+              "symbol": "with_instrument_vp_link",
+              "domains": [],
+              "source": "experimental",
+              "model": "openai/gpt-6-astra"
+            },
+            {
+              "surface": "glasses",
+              "lemma": "glasses",
+              "template": "experimental-rule",
+              "symbol": "glasses_bare_existential_pp",
+              "domains": [],
+              "source": "experimental",
+              "model": "openai/gpt-6-astra"
+            }
+          ],
+          "jev_requests": 0,
+          "experimental_grammar": {
+            "enabled": true,
+            "used": true,
+            "rules": [
+              {
+                "surface": "with",
+                "lemma": "with",
+                "template": "experimental-rule",
+                "symbol": "with_instrument_vp_link",
+                "domains": [],
+                "morphology": "Model-proposed; inspect conditions and explanation",
+                "evidence": "Adds an experimental instrumental alternative to human-only with_companion. semantic-pp preserves the original VP in LINK and opens an object argument. Intended reading: entry with eyewear as an instrument; wearing, possession and instrumental inference are not entailed. Requires reparsing from 'with'.",
+                "source": "experimental",
+                "program": [
+                  "IF Ty(classical:t)",
+                  "   ¬Ex.?x",
+                  "THEN go(\\/1)",
+                  "   semantic-pp(with_instrument)",
+                  "ELSE abort"
+                ],
+                "rule_id": "with_instrument_vp_link",
+                "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+              },
+              {
+                "surface": "glasses",
+                "lemma": "glasses",
+                "template": "experimental-rule",
+                "symbol": "glasses_bare_existential_pp",
+                "domains": [],
+                "morphology": "Model-proposed; inspect conditions and explanation",
+                "evidence": "The failure is an open entity slot where existing glasses rules require a determiner-introduced noun slot. This experimental PP-only action combines indefinite structure with the existing eyewear restrictor. It supplies an existential choice, not drinking vessels, generic reference, plural cardinality or distributivity.",
+                "source": "experimental",
+                "program": [
+                  "IF ?Ty(classical:e)",
+                  "   ¬<\\/0>Ex.x",
+                  "   ¬<\\/1>Ex.x",
+                  "   </\\0>[+PP]",
+                  "THEN make(\\/1)",
+                  "   go(\\/1)",
+                  "   put(Ty(classical:arrow(cn,e)))",
+                  "   put(Fo(classical:lam(P,cn,choice_eps(P))))",
+                  "   put(!)",
+                  "   go(/\\1)",
+                  "   make(\\/0)",
+                  "   go(\\/0)",
+                  "   put(?Ty(classical:cn))",
+                  "   make(\\/0)",
+                  "   go(\\/0)",
+                  "   put(Ty(classical:e))",
+                  "   freshput(T,entity)",
+                  "   put(!)",
+                  "   go(/\\0)",
+                  "   make(\\/1)",
+                  "   go(\\/1)",
+                  "   put(?Ty(classical:arrow(e,cn)))",
+                  "   put(Ty(classical:arrow(e,cn)))",
+                  "   put(Fo(classical:lam(x,e,cn(x,glasses_n04272054(x)))))",
+                  "   put(!)",
+                  "ELSE abort"
+                ],
+                "rule_id": "glasses_bare_existential_pp",
+                "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+              }
+            ],
+            "attempts": [
+              {
+                "number": 1,
+                "status": "complete",
+                "trigger": {
+                  "token": "glasses",
+                  "index": 6,
+                  "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                  "kind": "unresolved_parse_failure"
+                },
+                "proposal": {
+                  "declarations": [
+                    {
+                      "name": "with_instrument",
+                      "kind": "predicate",
+                      "domains": [
+                        "object",
+                        "Prop"
+                      ]
+                    }
+                  ],
+                  "rules": [
+                    {
+                      "surface": "with",
+                      "name": "with_instrument_vp_link",
+                      "explanation": "Adds an experimental instrumental alternative to human-only with_companion. semantic-pp preserves the original VP in LINK and opens an object argument. Intended reading: entry with eyewear as an instrument; wearing, possession and instrumental inference are not entailed. Requires reparsing from 'with'.",
+                      "when": [
+                        "Ty(classical:t)",
+                        "¬Ex.?x"
+                      ],
+                      "then": [
+                        "go(\\/1)",
+                        "semantic-pp(with_instrument)"
+                      ]
+                    },
+                    {
+                      "surface": "glasses",
+                      "name": "glasses_bare_existential_pp",
+                      "explanation": "The failure is an open entity slot where existing glasses rules require a determiner-introduced noun slot. This experimental PP-only action combines indefinite structure with the existing eyewear restrictor. It supplies an existential choice, not drinking vessels, generic reference, plural cardinality or distributivity.",
+                      "when": [
+                        "?Ty(classical:e)",
+                        "¬<\\/0>Ex.x",
+                        "¬<\\/1>Ex.x",
+                        "</\\0>[+PP]"
+                      ],
+                      "then": [
+                        "make(\\/1)",
+                        "go(\\/1)",
+                        "put(Ty(classical:arrow(cn,e)))",
+                        "put(Fo(classical:lam(P,cn,choice_eps(P))))",
+                        "put(!)",
+                        "go(/\\1)",
+                        "make(\\/0)",
+                        "go(\\/0)",
+                        "put(?Ty(classical:cn))",
+                        "make(\\/0)",
+                        "go(\\/0)",
+                        "put(Ty(classical:e))",
+                        "freshput(T,entity)",
+                        "put(!)",
+                        "go(/\\0)",
+                        "make(\\/1)",
+                        "go(\\/1)",
+                        "put(?Ty(classical:arrow(e,cn)))",
+                        "put(Ty(classical:arrow(e,cn)))",
+                        "put(Fo(classical:lam(x,e,cn(x,glasses_n04272054(x)))))",
+                        "put(!)"
+                      ]
+                    }
+                  ]
+                },
+                "provider": "OpenRouter",
+                "model": "openai/gpt-6-astra",
+                "failure": null,
+                "rules": [
+                  {
+                    "surface": "with",
+                    "lemma": "with",
+                    "template": "experimental-rule",
+                    "symbol": "with_instrument_vp_link",
+                    "domains": [],
+                    "morphology": "Model-proposed; inspect conditions and explanation",
+                    "evidence": "Adds an experimental instrumental alternative to human-only with_companion. semantic-pp preserves the original VP in LINK and opens an object argument. Intended reading: entry with eyewear as an instrument; wearing, possession and instrumental inference are not entailed. Requires reparsing from 'with'.",
+                    "source": "experimental",
+                    "program": [
+                      "IF Ty(classical:t)",
+                      "   ¬Ex.?x",
+                      "THEN go(\\/1)",
+                      "   semantic-pp(with_instrument)",
+                      "ELSE abort"
+                    ],
+                    "rule_id": "with_instrument_vp_link",
+                    "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+                  },
+                  {
+                    "surface": "glasses",
+                    "lemma": "glasses",
+                    "template": "experimental-rule",
+                    "symbol": "glasses_bare_existential_pp",
+                    "domains": [],
+                    "morphology": "Model-proposed; inspect conditions and explanation",
+                    "evidence": "The failure is an open entity slot where existing glasses rules require a determiner-introduced noun slot. This experimental PP-only action combines indefinite structure with the existing eyewear restrictor. It supplies an existential choice, not drinking vessels, generic reference, plural cardinality or distributivity.",
+                    "source": "experimental",
+                    "program": [
+                      "IF ?Ty(classical:e)",
+                      "   ¬<\\/0>Ex.x",
+                      "   ¬<\\/1>Ex.x",
+                      "   </\\0>[+PP]",
+                      "THEN make(\\/1)",
+                      "   go(\\/1)",
+                      "   put(Ty(classical:arrow(cn,e)))",
+                      "   put(Fo(classical:lam(P,cn,choice_eps(P))))",
+                      "   put(!)",
+                      "   go(/\\1)",
+                      "   make(\\/0)",
+                      "   go(\\/0)",
+                      "   put(?Ty(classical:cn))",
+                      "   make(\\/0)",
+                      "   go(\\/0)",
+                      "   put(Ty(classical:e))",
+                      "   freshput(T,entity)",
+                      "   put(!)",
+                      "   go(/\\0)",
+                      "   make(\\/1)",
+                      "   go(\\/1)",
+                      "   put(?Ty(classical:arrow(e,cn)))",
+                      "   put(Ty(classical:arrow(e,cn)))",
+                      "   put(Fo(classical:lam(x,e,cn(x,glasses_n04272054(x)))))",
+                      "   put(!)",
+                      "ELSE abort"
+                    ],
+                    "rule_id": "glasses_bare_existential_pp",
+                    "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+                  }
+                ],
+                "selected_rule_ids": [
+                  "with_instrument_vp_link",
+                  "glasses_bare_existential_pp"
+                ]
+              }
+            ],
+            "declarations": [
+              {
+                "name": "with_instrument",
+                "kind": "predicate",
+                "domains": [
+                  "object",
+                  "Prop"
+                ]
+              }
+            ],
+            "selected_rule_ids": [
+              "with_instrument_vp_link",
+              "glasses_bare_existential_pp"
+            ],
+            "baseline": {
+              "complete": false,
+              "failure": {
+                "token": "glasses",
+                "index": 6,
+                "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure"
+              },
+              "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))"
+            },
+            "blocked_by_reviewed_constraint": false,
+            "notice": "DS requirements are checked under model-proposed lexical rules. These rules and their linguistic analysis have not been reviewed; completion is not established coverage of the original grammar.",
+            "grammar_hash": "0416cacffc8b8e8f96d1f9a6769f0225ae2321ee99168d333b855124fefec5ce",
+            "proposal_hash": "d0a4e2ead0bbf70b251542279858e67e1ad288120986670ca6ef0a5e600e7e18",
+            "created_at": "2026-10-16T12:40:26.615317+00:00"
+          }
+        }
+      ],
+      "browser_errors": []
+    }
+  }
 }

@@ -10,6 +10,19 @@ these are `Dropbox/DS_workbench` and `Dropbox/DS_workbench_deploy`.
 Edit the source checkout; publish from the deployment folder after staging
 and checking the intended changes. Git pushes do not deploy this app.
 
+**16 October 2026 experimental grammar update:** Production deployment
+`dpl_Cg2xLZdr1AUzkBGZ7fd9gMQy1QLY` publishes source commit `503042a` from
+`DS_workbench_deploy`. Nine runtime/frontend files changed, including the new
+experimental-rule compiler; all 355 manifest entries were verified. The relevant
+suite passed 281 tests, with 11 workspace checks, four experimental-control
+checks and six rule-playback cases. Public assets match source. Public browser
+checks passed, and Astra generated new rules completing `A person entered the
+room with glasses` in both native backends, with one model request each.
+The result is explicitly experimental, and the ordinary Greek PCC rejection
+remains intact. Earlier failed model attempts and timeout outcomes are retained
+in the [verification record](../../data/coverage/experimental-grammar-2026-10-16.json);
+these checks are not an accuracy benchmark.
+
 **16 October 2026 focused derivation update:** Production deployment
 `dpl_9vXvuyXRDNtKqz4DCd7R9i25GWZn` was published from the visible deployment
 folder, using frontend source commit `e2668fb`. It adds Focus on derivation,
