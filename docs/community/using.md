@@ -24,18 +24,35 @@ from permissions for the next parse. Expand **What the models do** for details.
 below the tree contains diagnostics, source evidence and candidates grouped by
 word, with recorded selected entries first where that information is available.
 
-Try `John likes Mary.` and `John, who Mary knows, walks.`. Build the derivation
-and inspect Words, Rules and Operations. The pointer shows where growth takes
-place; outstanding requirements explain why a prefix is incomplete. Expand a
-node formula for its full lambda term. During playback, the current tree can
-be partial even if the final derivation completed: use Show final result or
-advance to the last step.
+Try `John likes Mary.` and `John, who Mary knows, walks.`. The sentence field
+wraps and grows as you type, up to a few lines. **Enter** builds the derivation;
+**Shift+Enter** inserts a line break within the same sentence. Use Paragraph
+mode for multiple sentences; Sentence mode retains its existing input limits.
+
+After parsing, the tree opens at the **final result**, including the stopping
+point of an incomplete derivation. **Replay from start** shows how it grew;
+**Show final result** returns to the endpoint. Choosing another analysis or
+paragraph sentence also opens its endpoint. Inspect Words, Rules and Operations.
+The pointer shows where growth takes place; outstanding requirements explain
+why a prefix is incomplete. Expand a node formula for its full lambda term.
+During replay, the current tree can be partial even if the final derivation
+completed; the meaning heading and status distinguish these states.
+
+**Focus on derivation** fills the app window with the tree, meaning and rule
+inspector. Its context strip shows the input and grammar of the displayed
+result, its actual model usage and any failure explanation. Paragraph results
+have a sentence selector in this view. Playback controls remain reachable while
+scrolling. **Fullscreen** uses the browser's fullscreen mode where supported;
+**Back to editing** (or Escape outside fullscreen) restores the editing view.
+Entering focus pauses playback and preserves the step, selected node and manual
+zoom. Switching views makes no parser or model request and does not change model
+permissions.
 
 Zooming or panning turns off **Auto-fit**, retaining your view as you step.
 Tick it again to fit the growing tree automatically. On mobile, meaning stays
 under the tree and **Inspect this step** opens the node/rule inspector.
 
-Playback starts in **Rules**: lexical rules and computational rules carry
+Playback defaults to **Rules**: lexical rules and computational rules carry
 different labels and appear in execution order, with the active rule, pointer
 movement and changed decorations above the tree. This includes assisted
 sentences and individual sentences in a paragraph. Pause and use Next to

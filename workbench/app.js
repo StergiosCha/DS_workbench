@@ -66,9 +66,20 @@ function updateControls() {
   $("coq").disabled = state.busy || !selectedCoq();
   $("reading").disabled = state.busy;
   $("show-final").disabled = unavailable || state.busy || state.index >= frames().length - 1;
+  $("replay-start").disabled = unavailable || state.busy || frames().length < 2;
   $("copy").disabled = unavailable || !current()?.semantics;
   for (const button of document.querySelectorAll("[data-mode]")) button.disabled = unavailable || !playback()?.[button.dataset.mode]?.length;
   for (const id of ["zoom-in", "zoom-out", "fit"]) $(id).disabled = unavailable;
+  window.workbenchLayout?.updateFocus();
+}
+
+// A received result rests at its endpoint. Replay is an explicit view action.
+function settleOnResult() {
+  stop();
+  if (!frames().length) state.mode = ["actions", "words", "operations"].find(mode => playback()?.[mode]?.length) || "words";
+  state.index = Math.max(0, frames().length - 1);
+  state.selected = current()?.pointer || "0";
+  if ($("follow-tree").checked) state.view = null;
 }
 
 function setBusy(busy) {
@@ -153,6 +164,7 @@ function receiveEvent(event) {
     else if (!result.complete) message("A tree still has outstanding requirements. Inspect the open nodes or extend the input.");
     renderDiagnostics(result);
     renderReadings();
+    settleOnResult();
     renderTrace(); render();
   }
 }
@@ -160,6 +172,7 @@ function receiveEvent(event) {
 async function parseSentence(options = {}) {
   if (state.busy) return;
   if (options.reveal !== false) window.workbenchLayout?.showPanel("parse");
+  window.workbenchLayout?.resizeSentence();
   const sentence = $("sentence").value.trim();
   if (state.inputMode === "sentence" && !sentence) { message("Enter a sentence to begin."); $("sentence").focus(); return; }
   if (state.inputMode === "paragraph" && !$("paragraph").value.trim()) { message("Enter a paragraph to begin."); $("paragraph").focus(); return; }
@@ -594,6 +607,7 @@ function render() {
   const finished = typeof state.result?.complete === "boolean";
   const finalComplete = Boolean(selectedReading() || state.result?.complete);
   const atEnd = state.index === frames().length - 1;
+  $("meaning-title").textContent = finished && atEnd ? (finalComplete ? "Final meaning" : "Meaning at the stopping point") : "Meaning at this step";
   $("playback-status").hidden = !finished;
   const inputLabel = state.paragraph ? "This sentence" : "The whole input";
   $("playback-status-text").textContent = `${inputLabel} ${finalComplete ? "has a complete derivation." : "is incomplete."} ${atEnd ? "Showing the final recorded tree." : `Viewing an earlier tree: step ${state.index} of ${frames().length - 1}.`}`;
@@ -780,6 +794,7 @@ function setInputMode(mode) {
   $("parse-label").textContent = mode === "dialogue" ? "Build dialogue" : mode === "paragraph" ? "Parse paragraph" : "Build derivation";
   renderDialogueExamples();
   renderLexicalSettings();
+  window.workbenchLayout?.resizeSentence();
 }
 
 function renderParagraph() {
@@ -814,12 +829,13 @@ function showParagraphSentence(index) {
   $("result-status").className = "badge" + (row.complete ? "" : " warn");
   $("elapsed").textContent = `${state.paragraph.elapsed_ms} ms · ${state.paragraph.sentences.length} sentences`;
   message(row.failure?.message || (row.context_gaps.length ? "This sentence was parsed with gaps in the preceding context." : ""), !row.complete);
-  if (row.result) { renderDiagnostics(row.result); selectTab("trace"); renderTrace(); render(); }
+  if (row.result) { settleOnResult(); renderDiagnostics(row.result); selectTab("trace"); renderTrace(); render(); }
   else {
     $("playback-status").hidden = true;
     $("tree").replaceChildren(); $("diagnostics").hidden = true; $("lexical-report").hidden = true; $("method-result").hidden = true;
     $("action-list").replaceChildren();
     $("semantics").textContent = "No completed analysis is available for this sentence.";
+    $("meaning-title").textContent = "No recorded derivation";
     $("semantic-status").textContent = "UNVERIFIED";
     $("semantic-note").textContent = row.failure?.message || "";
     $("normalized").hidden = true;
@@ -828,7 +844,6 @@ function showParagraphSentence(index) {
     $("operation-detail").hidden = true;
   }
   renderParagraph(); updateControls();
-  if (row.result) play();
 }
 
 for (const button of document.querySelectorAll("[data-input-mode]")) button.addEventListener("click", () => setInputMode(button.dataset.inputMode));
@@ -1490,8 +1505,8 @@ $("scope").addEventListener("change", parseSentence);
 $("n-best").addEventListener("change", parseSentence);
 $("reading").addEventListener("change", () => {
   stop(); state.readingIndex = Number($("reading").value); state.expandedFormulas = [];
-  state.index = 0; state.selected = "0"; state.view = null;
-  renderTrace(); render(); play();
+  state.view = null; settleOnResult();
+  renderTrace(); render();
 });
 $("lexical-mode").addEventListener("change", renderLexicalSettings);
 $("llm-enabled").addEventListener("change", () => changeAssistance("llm"));
@@ -1501,6 +1516,7 @@ $("models-close").addEventListener("click", () => $("models-dialog").close());
 $("compare-jev").addEventListener("change", renderLexicalSettings);
 $("jev-run").addEventListener("click", runJevComparison);
 $("show-final").addEventListener("click", () => setIndex(frames().length - 1));
+$("replay-start").addEventListener("click", () => { if (!state.busy) { setIndex(0); play(); } });
 $("jev-demo-button").addEventListener("click", () => { $("jev-demo").open = true; $("jev-demo").scrollIntoView({behavior: "smooth", block: "center"}); });
 $("live-greek-sources").addEventListener("change", renderLexicalSettings);
 $("greek-source-corpus").addEventListener("change", renderMethodMode);

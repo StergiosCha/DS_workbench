@@ -36,6 +36,7 @@ def main():
             page.locator("#sentence").fill(text)
             page.locator("#parse-button").click()
             expect(page.locator("#parse-button")).to_be_enabled()
+            endpoint()
             pause()
             return page.evaluate("state.result")
 
@@ -43,7 +44,62 @@ def main():
             page.locator(f'[data-workspace="{name}"]').click()
             expect(page.locator(f'[data-workspace="{name}"]')).to_have_attribute("aria-selected", "true")
 
-        pause()
+        def endpoint():
+            assert page.evaluate("state.timer === null && state.index === frames().length - 1")
+            expect(page.locator("#playback-status-text")).to_contain_text("Showing the final recorded tree")
+            expected = page.evaluate("current().semantics")
+            if expected:
+                expect(page.locator("#semantics")).to_have_text(expected)
+
+        def focus_check(label):
+            endpoint()
+            page.locator("#first").click()
+            page.locator("#next").click()
+            page.locator("#zoom-in").click()
+            snapshot = page.evaluate("({index: state.index, selected: state.selected, view: state.view})")
+            count = len(requests)
+            view = page.locator("#tree").get_attribute("viewBox")
+            usage = page.locator("#method-usage").inner_text()
+            page.locator("#focus-derivation").click()
+            expect(page.locator("#focus-derivation")).to_have_text("Back to editing")
+            expect(page.locator(".composer")).to_be_hidden()
+            expect(page.locator(".workspace-tabs")).to_be_hidden()
+            assert page.locator("#focus-sentence").inner_text() == page.evaluate("state.result.sentence")
+            assert page.evaluate("({index: state.index, selected: state.selected, view: state.view})") == snapshot
+            assert page.locator("#tree").get_attribute("viewBox") == view
+            expect(page.locator("#focus-usage")).to_contain_text("Analysis LLM")
+            assert page.evaluate("document.querySelector('#derivation').scrollWidth <= innerWidth + 1")
+            if label == "desktop" and page.locator("#fullscreen-derivation").is_visible():
+                page.locator("#fullscreen-derivation").click()
+                page.wait_for_function("document.fullscreenElement?.id === 'derivation'")
+                page.locator("#fullscreen-derivation").click()
+                page.wait_for_function("!document.fullscreenElement")
+                assert page.locator("#tree").get_attribute("viewBox") == view
+            page.locator("#show-final").click()
+            page.locator("#follow-tree").check()
+            page.locator("#derivation").evaluate("node => node.scrollTop = 0")
+            page.screenshot(path=str(args.output / f"{label}-focus.png"))
+            # Controls remain reachable while the result scrolls; no hidden
+            # composer/tab controls participate in keyboard navigation.
+            page.locator("#semantics").scroll_into_view_if_needed()
+            box = page.locator("#play").bounding_box()
+            assert 0 <= box["y"] and box["y"] + box["height"] <= page.viewport_size["height"]
+            page.locator("#focus-derivation").focus()
+            page.keyboard.press("Escape")
+            expect(page.locator("#focus-derivation")).to_be_focused()
+            expect(page.locator(".composer")).to_be_visible()
+            assert page.locator("#method-usage").inner_text() == usage
+            assert len(requests) == count
+            page.locator("#replay-start").click()
+            assert page.evaluate("state.timer !== null && state.index < frames().length - 1")
+            expect(page.locator("#meaning-title")).to_have_text("Meaning at this step")
+            page.locator("#show-final").click()
+            endpoint()
+            checks.append(f"{label}: focused view, explicit replay, zoom/state preservation and reachable transport")
+
+        endpoint()
+        expect(page.locator("#meaning-title")).to_have_text("Final meaning")
+        focus_check("desktop")
         metrics["desktop_derivation_y"] = page.locator(".workbench").bounding_box()["y"] + page.evaluate("scrollY")
         assert metrics["desktop_derivation_y"] < 850
         expect(page.locator("#research")).to_be_hidden()
@@ -87,6 +143,31 @@ def main():
         assert page.evaluate("state.result.words.at(-1).semantics") == meaning
         checks.append("Tabs and library filters preserve the parse and make no parse/model requests")
 
+        # Newlines remain whitespace inside Sentence mode; Enter submits and
+        # Shift+Enter grows the field without issuing a request.
+        page.locator("#sentence").fill("John")
+        count = len(requests)
+        page.locator("#sentence").press("Shift+Enter")
+        page.locator("#sentence").press_sequentially("walks.")
+        assert "\n" in page.locator("#sentence").input_value()
+        assert len(requests) == count
+        page.locator("#sentence").press("Enter")
+        expect(page.locator("#parse-button")).to_be_enabled()
+        endpoint()
+        assert page.evaluate("state.result.complete")
+        page.set_viewport_size({"width": 390, "height": 844})
+        page.locator("#sentence").fill("John walks.")
+        small = page.locator("#sentence").bounding_box()["height"]
+        page.locator("#sentence").fill("George opened the door because he came later and Mary walked into the room when John arrived.")
+        assert page.locator("#sentence").bounding_box()["height"] > small
+        assert page.locator("#sentence").evaluate("node => node.scrollWidth <= node.clientWidth + 1")
+        page.screenshot(path=str(args.output / "mobile-sentence-entry.png"))
+        page.locator("#examples button").first.click()
+        expect(page.locator("#parse-button")).to_be_enabled()
+        assert page.locator("#sentence").bounding_box()["height"] <= small + 2
+        page.set_viewport_size({"width": 1440, "height": 1000})
+        checks.append("Sentence wraps and grows on mobile; keyboard submission and programmatic examples resize correctly")
+
         tab("greek-lab")
         page.locator('[data-greek-example="smg-finite"]').click()
         expect(page.locator("#parse-button")).to_be_enabled()
@@ -97,6 +178,22 @@ def main():
         expect(page.locator("#parse-button")).to_be_enabled()
         result = parse("John opens the door.")
         assert result["complete"]
+        page.locator(".parse-options > summary").click()
+        page.locator("#sentence").fill("john thinks that mary walks quickly.")
+        page.locator("#n-best").select_option("3")
+        expect(page.locator("#parse-button")).to_be_enabled()
+        endpoint()
+        assert page.locator("#reading option").count() >= 2
+        first_meaning = page.locator("#semantics").inner_text()
+        page.locator("#reading").select_option("1")
+        endpoint()
+        assert page.locator("#semantics").inner_text() != first_meaning
+        assert page.locator("#semantics").inner_text() == page.evaluate("selectedReading().semantics")
+        page.locator("#n-best").select_option("1")
+        expect(page.locator("#parse-button")).to_be_enabled()
+        page.locator(".parse-options > summary").click()
+        checks.append("Alternative attachment analyses open at their own completed meanings without autoplay")
+        result = parse("John opens the door.")
         page.locator("#result-evidence > summary").click()
         assert page.locator(".lexical-word-group").count() > 0
         assert page.locator(".lexical-word-group").count() < len(result["lexical"]["entries"])
@@ -107,6 +204,10 @@ def main():
         page.locator("#result-evidence > summary").click()
         result = parse("John glorped the door.")
         assert not result["complete"] and result["failure"]["kind"] == "lexicon_gap"
+        expect(page.locator("#meaning-title")).to_have_text("Meaning at the stopping point")
+        page.locator("#focus-derivation").click()
+        expect(page.locator("#focus-outcome")).to_have_text(result["failure"]["message"])
+        page.locator("#focus-derivation").click()
         page.locator("#inspect-failure").click()
         expect(page.locator("#diagnostics")).to_be_visible()
         expect(page.locator("#diagnosis-title")).to_have_text("Missing lexical entry")
@@ -169,12 +270,20 @@ def main():
         page.locator("#parse-button").click()
         expect(page.locator("#parse-button")).to_be_enabled()
         assert page.evaluate("state.paragraph.coverage.complete") == 3
+        endpoint()
+        page.locator("#focus-derivation").click()
+        page.locator("#focus-sentence-select").select_option("1")
+        endpoint()
+        expect(page.locator("#focus-sentence")).to_have_text("He knows Mary.")
+        page.locator("#focus-derivation").click()
         page.locator('[data-sentence-index="1"]').click()
+        endpoint()
         expect(page.locator('[data-mode="actions"]')).to_have_attribute("aria-pressed", "true")
         page.locator('[data-input-mode="dialogue"]').click()
         page.locator("#parse-button").click()
         expect(page.locator("#parse-button")).to_be_enabled()
         assert page.evaluate("state.result.complete")
+        endpoint()
         checks.append("Paragraph sentence playback and shared dialogue examples still complete")
 
         page.locator('[data-input-mode="sentence"]').click()
@@ -202,6 +311,7 @@ def main():
         page.evaluate("scrollTo(0,0)")
         page.screenshot(path=str(args.output / "mobile.png"))
         page.locator(".explorer").screenshot(path=str(args.output / "mobile-explorer.png"))
+        focus_check("mobile")
         assert_private(page, key)
         assert not errors, errors
         checks.append("Mobile playback targets, timeline bounds, formula placement and inspector disclosure checked")

@@ -3,7 +3,24 @@
 Reviewed the public app at 1440×1000 and 390×1000, including the initial parse,
 expanded examples, model drawer and a missing-word failure. Production was
 `dpl_BDJW8eMirph6seGykH92HRzoyC3Y`. This is a usability review and proposal,
-not a new frontend implementation or a linguistic-coverage evaluation.
+not a linguistic-coverage evaluation. The observations below describe that
+deployment; implementation progress is recorded separately here.
+
+## Implementation follow-up
+
+Implemented the first increment: **Focus on derivation** with optional browser
+fullscreen, a result context strip and reachable playback controls; final
+completed/stopped trees as the resting result; explicit **Replay from start**;
+and a wrapping, automatically growing sentence field. Paragraph selection and
+alternative analyses also open at their endpoints. Focus retains the selected
+step/node and manual zoom, pauses playback, and leaves model permissions intact.
+The user guide documents the controls and keyboard behaviour.
+
+Grouped examples, explanatory rule glosses, result reporting, saved-analysis
+import and backend comparison remain proposals. This increment adds no grammar
+coverage. The browser regression script covers real DS responses, the focused
+view, fullscreen, desktop/mobile input, endpoint/replay, alternative meanings,
+paragraph/dialogue state and model controls without billed model calls.
 
 The workspace tabs, explicit LLM/Jev switches, grouped evidence and model drawer
 are useful foundations. No horizontal page overflow appeared in these checks.

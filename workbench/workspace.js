@@ -5,10 +5,101 @@ window.workbenchLayout = (() => {
   const panels = {parse: "parse-workspace", research: "research", "greek-lab": "greek-lab", library: "library"};
   const tabs = [...document.querySelectorAll("[data-workspace]")];
   let area = "parse";
+  let focused = false, returnScroll = 0;
+  const derivation = $("derivation");
+  const focusButton = $("focus-derivation");
+  const fullscreenButton = $("fullscreen-derivation");
+
+  function updateFocus() {
+    focusButton.disabled = !focused && !state.result;
+    if (!focused) return;
+    const row = state.paragraph?.sentences[state.paragraphIndex];
+    const result = state.result;
+    $("focus-sentence").textContent = result?.dialogue
+      ? result.dialogue.map(turn => `${turn.speaker}: ${turn.text}`).join(" · ")
+      : row?.text || result?.sentence || result?.tokens?.join(" ") || "No recorded derivation";
+    const backend = {mltt: "Constructive · Σ / Π", classical: "Classical · λ / ε / τ", ttr: "TTR"}[result?.backend] || "";
+    $("focus-grammar").textContent = [backend, result?.grammar].filter(Boolean).join(" · ");
+    $("focus-usage").textContent = state.busy ? "Parsing… model usage is reported when the result arrives."
+      : $("method-result").hidden ? "" : [...$("method-usage").children].map(item => item.textContent).join(" · ");
+    const failure = row?.failure?.message || result?.failure?.message;
+    $("focus-outcome").textContent = failure || "";
+    $("focus-outcome").hidden = !failure;
+    $("focus-paragraph").hidden = !state.paragraph;
+    const rows = state.paragraph?.sentences || [];
+    const selector = $("focus-sentence-select");
+    const labels = rows.map((item, index) => `${index + 1} · ${item.complete ? "Complete" : item.status?.replaceAll("_", " ") || "Incomplete"}`);
+    if (selector.dataset.labels !== JSON.stringify(labels)) {
+      selector.replaceChildren(...labels.map((label, index) => {
+        const option = element("option", "", label); option.value = index; return option;
+      }));
+      selector.dataset.labels = JSON.stringify(labels);
+    }
+    selector.value = state.paragraphIndex;
+    selector.disabled = state.busy || !state.paragraph?.coverage;
+  }
+
+  function setFocused(value) {
+    if (focused === value) return;
+    if (value) { returnScroll = window.scrollY; stop(); }
+    focused = value;
+    document.body.classList.toggle("derivation-focused", value);
+    focusButton.textContent = value ? "Back to editing" : "Focus on derivation";
+    focusButton.setAttribute("aria-pressed", String(value));
+    focusButton.title = value ? "Back to editing (Escape)" : "Show the tree, meaning and rule trace in a focused view";
+    $("focus-context").hidden = !value;
+    fullscreenButton.hidden = !value || !document.fullscreenEnabled;
+    $("focus-notice").hidden = true;
+    if (!value && document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    updateFocus();
+    if (current()) render();
+    if (!value) window.scrollTo(0, returnScroll);
+    focusButton.focus({preventScroll: true});
+  }
+  focusButton.addEventListener("click", () => setFocused(!focused));
+  fullscreenButton.addEventListener("click", async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await derivation.requestFullscreen();
+    } catch (_) {
+      $("focus-notice").textContent = "Fullscreen is unavailable in this browser. You can continue in the focused view.";
+      $("focus-notice").hidden = false;
+    }
+  });
+  document.addEventListener("fullscreenchange", () => {
+    fullscreenButton.textContent = document.fullscreenElement ? "Exit fullscreen" : "Fullscreen";
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && focused && !document.fullscreenElement && !document.querySelector("dialog[open]")) {
+      event.preventDefault(); setFocused(false);
+    }
+  });
+  $("focus-sentence-select").addEventListener("change", event => showParagraphSentence(Number(event.target.value)));
+
+  const sentence = $("sentence");
+  let sentenceWidth = 0;
+  function resizeSentence() {
+    if (!sentence.offsetWidth) return;
+    sentence.style.height = "auto";
+    const height = Math.min(sentence.scrollHeight + 2, 180);
+    sentence.style.height = `${height}px`;
+    sentence.style.overflowY = sentence.scrollHeight > height ? "auto" : "hidden";
+  }
+  sentence.addEventListener("input", resizeSentence);
+  sentence.addEventListener("keydown", event => {
+    if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
+      event.preventDefault(); $("parse-form").requestSubmit();
+    }
+  });
+  new ResizeObserver(entries => {
+    const width = entries[0].contentRect.width;
+    if (width !== sentenceWidth) { sentenceWidth = width; resizeSentence(); }
+  }).observe(sentence);
+  document.fonts.ready.then(resizeSentence);
 
   function showPanel(name, {focus = false, history = true} = {}) {
     if (!panels[name]) return;
-    if (name !== "parse") stop();
+    if (name !== "parse") { stop(); setFocused(false); }
     area = name;
     for (const tab of tabs) {
       const selected = tab.dataset.workspace === name;
@@ -120,5 +211,5 @@ window.workbenchLayout = (() => {
     renderLibrary();
   }
   showPanel(location.hash.slice(1) || "parse", {history: false});
-  return {showPanel, groupEntries, get area() { return area; }};
+  return {showPanel, groupEntries, updateFocus, resizeSentence, get area() { return area; }};
 })();

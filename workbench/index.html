@@ -44,7 +44,7 @@
       <form id="parse-form">
         <div class="system-field"><label for="system">SEMANTIC SYSTEM</label><select id="system" disabled><option>Loading systems…</option></select></div>
         <div class="grammar-field"><label for="grammar">GRAMMAR</label><select id="grammar" disabled><option>Loading grammars…</option></select></div>
-        <div class="sentence-field"><label for="sentence">YOUR SENTENCE</label><input id="sentence" value="a man walks." maxlength="500" placeholder="Enter a sentence…" autocomplete="off" spellcheck="false" required></div>
+        <div class="sentence-field"><label for="sentence">YOUR SENTENCE</label><textarea id="sentence" rows="1" maxlength="500" placeholder="Enter a sentence…" autocomplete="off" spellcheck="false" aria-describedby="sentence-hint" required>a man walks.</textarea><span id="sentence-hint">Enter to build · Shift+Enter for a new line</span></div>
         <button type="submit" id="parse-button" class="primary" disabled><span id="parse-label">Build derivation</span><span aria-hidden="true">↗</span></button>
       </form>
       <div id="dialogue-editor" hidden>
@@ -93,16 +93,21 @@
       <p id="paragraph-context" class="paragraph-note"></p>
       <ol id="paragraph-sentences"></ol>
     </section>
-    <section class="workbench" aria-label="Derivation explorer" aria-busy="false">
+    <section id="derivation" class="workbench" aria-label="Derivation explorer" aria-busy="false">
       <div class="bench-header">
         <div class="section-title"><span class="section-number">01</span><h2>Derivation</h2><span id="result-status" class="badge">Ready to explore</span></div>
-        <div class="bench-actions"><span id="elapsed"></span><button id="export" class="text-button" disabled>Export JSON ↓</button></div>
+        <div class="bench-actions"><span id="elapsed"></span><button id="focus-derivation" type="button" class="view-button" aria-pressed="false" disabled>Focus on derivation</button><button id="fullscreen-derivation" type="button" class="text-button" hidden>Fullscreen</button><button id="export" class="text-button" disabled>Export JSON ↓</button></div>
+      </div>
+      <div id="focus-context" class="focus-context" hidden>
+        <p id="focus-sentence"></p><p id="focus-grammar"></p>
+        <label id="focus-paragraph" hidden>Sentence <select id="focus-sentence-select"></select></label>
+        <p id="focus-usage"></p><p id="focus-outcome" hidden></p><p id="focus-notice" role="status" hidden></p>
       </div>
       <div id="readings-panel" class="readings-panel" hidden>
-        <label for="reading">Play analysis</label><select id="reading"></select>
+        <label for="reading">View analysis</label><select id="reading"></select>
         <p id="readings-summary" role="status"></p>
       </div>
-      <div id="playback-status" class="playback-status" hidden><p id="playback-status-text" role="status"></p><button id="show-final" type="button" class="text-button">Show final result ↗</button></div>
+      <div id="playback-status" class="playback-status" hidden><p id="playback-status-text" role="status"></p><div class="replay-actions"><button id="replay-start" type="button" class="view-button">Replay from start</button><button id="show-final" type="button" class="text-button">Show final result ↗</button></div></div>
       <div id="dialogue-playback" class="dialogue-playback" hidden>
         <div class="dialogue-playback-heading"><strong id="dialogue-now"></strong><span>Contributions stay visible when repaired.</span></div>
         <div id="dialogue-transcript" aria-label="Dialogue transcript"></div>
@@ -128,7 +133,7 @@
             <div id="word-tokens" class="word-tokens" aria-label="Sentence timeline"></div>
           </div>
       <div class="semantics-panel">
-        <div class="semantics-heading"><div class="section-title"><span class="section-number">02</span><h2>Meaning at this step</h2><span id="semantic-system" class="badge muted">Σ / Π</span></div><button id="coq" class="text-button" disabled hidden>Export Coq ↓</button><button id="copy" class="text-button" disabled>Copy formula</button></div>
+        <div class="semantics-heading"><div class="section-title"><span class="section-number">02</span><h2 id="meaning-title">Meaning at this step</h2><span id="semantic-system" class="badge muted">Σ / Π</span></div><button id="coq" class="text-button" disabled hidden>Export Coq ↓</button><button id="copy" class="text-button" disabled>Copy formula</button></div>
         <div class="semantics-body"><pre id="semantics">The formula will develop alongside the tree.</pre><div class="semantics-note"><p id="speech-act" hidden></p><p id="reflexive-binding" hidden></p><p id="normalized" hidden></p><span id="semantic-status">INCREMENTAL INTERPRETATION</span><p id="semantic-note">Move through the derivation to see how each word contributes.</p></div></div>
       </div>
         </div>
