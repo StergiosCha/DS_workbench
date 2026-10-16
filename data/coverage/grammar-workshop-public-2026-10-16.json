@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-16",
+  "source_commit": "4310d9ca80430fdda4bdf1bd375ccfc94b54348e",
+  "url": "https://ds-workbench.vercel.app/",
+  "deployment": "dpl_49ZTZTUBc3DnUnaYtHSLTp5sy2tv",
+  "bundle": "DS_workbench_deploy",
+  "manifest_files": 357,
+  "staged_files": 12,
+  "scope": "Noun-relative English adjective families; editable personal grammar packs. Authored engineering checks, not general accuracy.",
+  "tests": {
+    "full_suite": {
+      "passed": 2075,
+      "skipped": 4,
+      "initial_failure": "One HTTP test was blocked by sandbox socket permissions.",
+      "rerun": "That test passed outside the sandbox (1 passed)."
+    },
+    "supplemental_workshop_and_assistance": 104,
+    "supplemental_adjective_and_semantic_tests": 125,
+    "corpus_runs": 810,
+    "corpus_floor_groups": 146,
+    "lint": "passed",
+    "generator_idempotence": "passed",
+    "legacy_ttr_mirrors": "matched"
+  },
+  "construction_matrix": {
+    "cases": 162,
+    "maintained_expectations_matched": 150,
+    "exploratory_cases": 12,
+    "exploratory_complete": 2,
+    "exploratory_failures": 10,
+    "report": "construction-families-2026-10-16.json"
+  },
+  "browser_checks": {
+    "workspace": 11,
+    "experimental": 4,
+    "workshop_source": 9,
+    "workshop_staged": 9,
+    "workshop_public": {
+      "checks": [
+        "edit rules and declarations",
+        "positive/negative checks with real DS",
+        "persist and reuse after refresh",
+        "reuse on another sentence without a model",
+        "disable restores original grammar",
+        "export contribution with evidence",
+        "changed expectations invalidate a passing report",
+        "remove saved copy",
+        "mobile layout"
+      ],
+      "errors": []
+    },
+    "workshop_asset": "Published bytes match source."
+  },
+  "public_live_model": "deepseek/deepseek-v4.1-flash",
+  "public_live_cases": [
+    {
+      "sentence": "mitsotakis is a great person",
+      "backend": "mltt",
+      "llm_on": true,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(mitsotakis_41a6f3 ∈ Σ x:person_n00007846. great_a01386883_kind(person_n00007846, x))",
+      "model_requests": 1,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "george is a great person",
+      "backend": "mltt",
+      "llm_on": true,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(george ∈ Σ x:person_n00007846. great_a01386883_kind(person_n00007846, x))",
+      "model_requests": 0,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "mitsotakis is a great person",
+      "backend": "classical",
+      "llm_on": true,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(person_n00007846(mitsotakis_41a6f3) ∧ great_a01386883_kind(λ z:e. person_n00007846(z), mitsotakis_41a6f3))",
+      "model_requests": 1,
+      "jev_requests": 0
+    },
+    {
+      "sentence": "george is a great person",
+      "backend": "classical",
+      "llm_on": true,
+      "jev_on": false,
+      "complete": true,
+      "failure": null,
+      "meaning": "(person_n00007846(george) ∧ great_a01386883_kind(λ z:e. person_n00007846(z), george))",
+      "model_requests": 0,
+      "jev_requests": 0
+    }
+  ],
+  "public_browser_errors": [],
+  "ci_run": "https://github.com/StergiosCha/DS_workbench/actions/runs/38905482888",
+  "limits": [
+    "Saved packs are personal/unreviewed, not shared grammar installation.",
+    "TTR, paragraph and dialogue packs unsupported.",
+    "Subsective adjective frames do not implement degree or comparison-class reasoning.",
+    "Ten exploratory failures remain in the family report."
+  ]
+}

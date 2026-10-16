@@ -10,6 +10,22 @@ these are `Dropbox/DS_workbench` and `Dropbox/DS_workbench_deploy`.
 Edit the source checkout; publish from the deployment folder after staging
 and checking the intended changes. Git pushes do not deploy this app.
 
+**16 October 2026 grammar workshop and adjective update:** Production deployment
+`dpl_49ZTZTUBc3DnUnaYtHSLTp5sy2tv` publishes source `4310d9c` from the visible
+deployment folder. Twelve files changed; all 357 manifest hashes were verified.
+`George is a great person` and `Mitsotakis is a great person` completed on the
+public app in both native backends. The latter used one lexical-model call for
+the unknown name; the former needed none. Nine public workshop checks verified
+editing, checking, saving, exporting, reusing and disabling personal rules without
+model calls. The full local suite had 2,075 passes and four skips; its one
+sandbox-blocked HTTP test passed when rerun with socket access. Supplemental
+tests cover the final edits, and all 146 existing corpus coverage groups met
+their floors. The new CI construction matrix has 150 passing maintained
+expectations and retains ten exploratory failures. See the
+[verification record](../../data/coverage/grammar-workshop-public-2026-10-16.json),
+[family analysis](construction-family-checks.md) and
+[grammar workshop instructions](grammar-workshop.md).
+
 **16 October 2026 experimental grammar update:** Production deployment
 `dpl_Cg2xLZdr1AUzkBGZ7fd9gMQy1QLY` publishes source commit `503042a` from
 `DS_workbench_deploy`. Nine runtime/frontend files changed, including the new
