@@ -1,0 +1,1436 @@
+{
+  "date": "2026-10-16",
+  "scope": "Engineering checks on supplied failure examples, not an accuracy benchmark. Earlier failures and provider timeouts retained. The final bundle uses clearer source-language instructions and up to 24 seconds per experimental provider request.",
+  "tests": {
+    "pytest_passed": 281,
+    "workspace_checks": 11,
+    "experimental_browser_checks": 4,
+    "rule_playback_cases": 6
+  },
+  "runs": [
+    {
+      "label": "initial ordinary assistance",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "cases": [
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "mltt",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "randomly",
+            "index": 5,
+            "message": "“randomly” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": true,
+          "failure": null,
+          "meaning": "randomly_798b93(enter_vho02016523(definite_00, definite_010))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 1
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": true,
+          "failure": null,
+          "meaning": "randomly(enter_vho02016523(definite_00, definite_010))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · 6 requests",
+          "jev_requests": 6,
+          "notices": [],
+          "model_requests": 1
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 3 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [
+            "glasses: plural or unspecified number is outside this nominal/Greek template."
+          ],
+          "model_requests": 3
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · no request made\nJev · 8 requests",
+          "jev_requests": 8,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "classical",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "randomly",
+            "index": 5,
+            "message": "“randomly” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": true,
+          "failure": null,
+          "meaning": "randomly_798b93(enter_vho02016523(ι x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1)))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 1
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": false,
+          "failure": {
+            "token": "randomly",
+            "index": 5,
+            "message": "“randomly” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · 5 requests",
+          "jev_requests": 5,
+          "notices": [],
+          "model_requests": 1
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 3 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [
+            "The plural glasses does not match the singular lemma glasses."
+          ],
+          "model_requests": 3
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · no request made\nJev · 8 requests",
+          "jev_requests": 8,
+          "notices": [],
+          "model_requests": 0
+        }
+      ],
+      "browser_errors": []
+    },
+    {
+      "label": "initial experimental DeepSeek",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "cases": [
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Semantic namespace collision for eyewear_n04272054.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "rejected",
+              "message": "Semantic namespace collision for eyewear_n04272054.",
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · 8 requests",
+          "jev_requests": 8,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Semantic namespace collision for eyewear_n04272054.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "rejected",
+              "message": "Semantic namespace collision for eyewear_n04272054.",
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Type labels must use the selected native semantic backend.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "rejected",
+              "message": "Invalid semantic expression: 'choice_eps(classical:lam(x,e,eyewear_n04272054(x)))'",
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · 8 requests",
+          "jev_requests": 8,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "incomplete",
+              "message": null,
+              "failure": {
+                "token": "glasses",
+                "index": 6,
+                "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure"
+              },
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "rejected",
+              "message": "Unsupported label: Ty(classical:(e → t) → e → t)",
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        }
+      ],
+      "browser_errors": []
+    },
+    {
+      "label": "experimental GPT-4o",
+      "model": "openai/gpt-4o",
+      "cases": [
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Semantic namespace collision for glasses.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "rejected",
+              "message": "Unsupported label: Ty((human → Prop) → human → Prop)",
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · 8 requests",
+          "jev_requests": 8,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "incomplete",
+              "message": null,
+              "failure": {
+                "kind": "semantic_type_mismatch",
+                "token": "glasses",
+                "index": 6,
+                "message": "Cannot apply a predicate of human to object"
+              },
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "incomplete",
+              "message": null,
+              "failure": {
+                "token": "glasses",
+                "index": 6,
+                "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure"
+              },
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "incomplete",
+              "message": null,
+              "failure": {
+                "token": "glasses",
+                "index": 6,
+                "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure"
+              },
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "incomplete",
+              "message": null,
+              "failure": {
+                "token": "glasses",
+                "index": 6,
+                "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure"
+              },
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · 8 requests",
+          "jev_requests": 8,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Unsupported label: <01L10>?Ty(classical:e)",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "rejected",
+              "message": "Unsupported label: Ty(e → (e → t) → e → t)",
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        }
+      ],
+      "browser_errors": []
+    },
+    {
+      "label": "experimental Astra first check",
+      "model": "openai/gpt-6-astra",
+      "cases": [
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": true,
+          "failure": null,
+          "meaning": "Σ x:glasses_n04272054. Σ x1:person_n00007846. with_instrument(x, enter_vho02016523(x1, definite_010))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "complete",
+              "message": null,
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": true,
+          "failure": null,
+          "meaning": "with_instrument(ε x2:e. glasses_n04272054(x2), enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1)))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "complete",
+              "message": null,
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        }
+      ],
+      "browser_errors": []
+    },
+    {
+      "label": "experimental toggle check before timeout adjustment",
+      "model": "openai/gpt-6-astra",
+      "cases": [
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit.",
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": true,
+          "failure": null,
+          "meaning": "Σ x:glasses_n04272054. Σ x1:person_n00007846. with_instrument(x, enter_vho02016523(x1, definite_010))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · 8 requests",
+          "jev_requests": 8,
+          "notices": [],
+          "model_requests": 1,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "complete",
+              "message": null,
+              "failure": null,
+              "selected_rule_ids": [
+                "with_instrument_vp_link",
+                "glasses_bare_existential_eyewear"
+              ]
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "glasses",
+            "index": 6,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit.",
+              "failure": null,
+              "selected_rule_ids": null
+            }
+          ]
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": true,
+          "failure": null,
+          "meaning": "with_instrument(ε x2:e. glasses_n04272054(x2), enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1)))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 2 requests\nJev · 8 requests",
+          "jev_requests": 8,
+          "notices": [],
+          "model_requests": 2,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "rejected",
+              "message": "Lexical provider could not be reached within its time limit.",
+              "failure": null,
+              "selected_rule_ids": null
+            },
+            {
+              "number": 2,
+              "status": "complete",
+              "message": null,
+              "failure": null,
+              "selected_rule_ids": [
+                "with_instrument_vp_link",
+                "glasses_bare_existential_dp"
+              ]
+            }
+          ]
+        }
+      ],
+      "browser_errors": []
+    },
+    {
+      "label": "ordinary adverb final check",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "cases": [
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "mltt",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "randomly",
+            "index": 5,
+            "message": "“randomly” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": true,
+          "failure": null,
+          "meaning": "randomly_798b93(enter_vho02016523(definite_00, definite_010))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 1
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": true,
+          "failure": null,
+          "meaning": "randomly(enter_vho02016523(definite_00, definite_010))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · 6 requests",
+          "jev_requests": 6,
+          "notices": [],
+          "model_requests": 1
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "classical",
+          "llm_on": false,
+          "jev_on": false,
+          "complete": false,
+          "failure": {
+            "token": "randomly",
+            "index": 5,
+            "message": "“randomly” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · off\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 0
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": true,
+          "failure": null,
+          "meaning": "randomly_798b93(enter_vho02016523(ι x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1)))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 1
+        },
+        {
+          "sentence": "the person entered the room randomly",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": true,
+          "complete": false,
+          "failure": {
+            "token": "randomly",
+            "index": 5,
+            "message": "“randomly” is not in this grammar’s lexicon.",
+            "kind": "lexicon_gap"
+          },
+          "meaning": null,
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · 5 requests",
+          "jev_requests": 5,
+          "notices": [
+            "The analysis LLM returned no supported lexical analysis for randomly; the word remains missing."
+          ],
+          "model_requests": 1
+        }
+      ],
+      "browser_errors": []
+    },
+    {
+      "label": "final deployment bundle Astra",
+      "model": "openai/gpt-6-astra",
+      "cases": [
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "mltt",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": true,
+          "failure": null,
+          "meaning": "Σ x:glasses_n04272054. Σ x1:person_n00007846. with_instrument(x, enter_vho02016523(x1, definite_010))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 1,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "complete",
+              "message": null,
+              "failure": null,
+              "selected_rule_ids": [
+                "with_instrument_vp_link",
+                "glasses_bare_existential_eyewear"
+              ]
+            }
+          ],
+          "experimental_grammar": {
+            "enabled": true,
+            "used": true,
+            "rules": [
+              {
+                "surface": "with",
+                "lemma": "with",
+                "template": "experimental-rule",
+                "symbol": "with_instrument_vp_link",
+                "domains": [],
+                "morphology": "Model-proposed; inspect conditions and explanation",
+                "evidence": "Assumed instrumental alternative: the existing companion frame requires human, incompatible with eyewear. Replay from 'with', using an object-valued instrument argument and preserving the unmodified VP in LINK. The relation is opaque; wearing, possession, noun attachment and causal efficacy are not inferred.",
+                "source": "experimental",
+                "program": [
+                  "IF Ty(mltt:Prop)",
+                  "   ¬Ex.?x",
+                  "THEN go(\\/1)",
+                  "   semantic-pp(with_instrument)",
+                  "ELSE abort"
+                ],
+                "rule_id": "with_instrument_vp_link",
+                "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+              },
+              {
+                "surface": "glasses",
+                "lemma": "glasses",
+                "template": "experimental-rule",
+                "symbol": "glasses_bare_existential_eyewear",
+                "domains": [],
+                "morphology": "Model-proposed; inspect conditions and explanation",
+                "evidence": "The failure exposes an open object slot, but existing 'glasses' actions require CN. This assumed bare existential combines indefinite DP structure with the existing eyewear sort. It denotes existential eyewear, not drinking vessels; pair cardinality, distributivity, generic readings and agreement are not implemented.",
+                "source": "experimental",
+                "program": [
+                  "IF ?Ty(mltt:object)",
+                  "   ¬<\\/0>Ex.x",
+                  "   ¬<\\/1>Ex.x",
+                  "THEN make(\\/1)",
+                  "   go(\\/1)",
+                  "   put(Ty(mltt:arrow(CN,object)))",
+                  "   put(Fo(mltt:lam(A,CN,sigma(x,A,top))))",
+                  "   go(/\\1)",
+                  "   make(\\/0)",
+                  "   go(\\/0)",
+                  "   put(?Ty(mltt:CN))",
+                  "   put(Ty(mltt:CN))",
+                  "   put(Fo(mltt:glasses_n04272054))",
+                  "ELSE abort"
+                ],
+                "rule_id": "glasses_bare_existential_eyewear",
+                "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+              }
+            ],
+            "attempts": [
+              {
+                "number": 1,
+                "status": "complete",
+                "trigger": {
+                  "token": "glasses",
+                  "index": 6,
+                  "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                  "kind": "unresolved_parse_failure"
+                },
+                "proposal": {
+                  "declarations": [
+                    {
+                      "name": "with_instrument",
+                      "kind": "predicate",
+                      "domains": [
+                        "object",
+                        "Prop"
+                      ]
+                    }
+                  ],
+                  "rules": [
+                    {
+                      "surface": "with",
+                      "name": "with_instrument_vp_link",
+                      "explanation": "Assumed instrumental alternative: the existing companion frame requires human, incompatible with eyewear. Replay from 'with', using an object-valued instrument argument and preserving the unmodified VP in LINK. The relation is opaque; wearing, possession, noun attachment and causal efficacy are not inferred.",
+                      "when": [
+                        "Ty(mltt:Prop)",
+                        "¬Ex.?x"
+                      ],
+                      "then": [
+                        "go(\\/1)",
+                        "semantic-pp(with_instrument)"
+                      ]
+                    },
+                    {
+                      "surface": "glasses",
+                      "name": "glasses_bare_existential_eyewear",
+                      "explanation": "The failure exposes an open object slot, but existing 'glasses' actions require CN. This assumed bare existential combines indefinite DP structure with the existing eyewear sort. It denotes existential eyewear, not drinking vessels; pair cardinality, distributivity, generic readings and agreement are not implemented.",
+                      "when": [
+                        "?Ty(mltt:object)",
+                        "¬<\\/0>Ex.x",
+                        "¬<\\/1>Ex.x"
+                      ],
+                      "then": [
+                        "make(\\/1)",
+                        "go(\\/1)",
+                        "put(Ty(mltt:arrow(CN,object)))",
+                        "put(Fo(mltt:lam(A,CN,sigma(x,A,top))))",
+                        "go(/\\1)",
+                        "make(\\/0)",
+                        "go(\\/0)",
+                        "put(?Ty(mltt:CN))",
+                        "put(Ty(mltt:CN))",
+                        "put(Fo(mltt:glasses_n04272054))"
+                      ]
+                    }
+                  ]
+                },
+                "provider": "OpenRouter",
+                "model": "openai/gpt-6-astra",
+                "failure": null,
+                "rules": [
+                  {
+                    "surface": "with",
+                    "lemma": "with",
+                    "template": "experimental-rule",
+                    "symbol": "with_instrument_vp_link",
+                    "domains": [],
+                    "morphology": "Model-proposed; inspect conditions and explanation",
+                    "evidence": "Assumed instrumental alternative: the existing companion frame requires human, incompatible with eyewear. Replay from 'with', using an object-valued instrument argument and preserving the unmodified VP in LINK. The relation is opaque; wearing, possession, noun attachment and causal efficacy are not inferred.",
+                    "source": "experimental",
+                    "program": [
+                      "IF Ty(mltt:Prop)",
+                      "   ¬Ex.?x",
+                      "THEN go(\\/1)",
+                      "   semantic-pp(with_instrument)",
+                      "ELSE abort"
+                    ],
+                    "rule_id": "with_instrument_vp_link",
+                    "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+                  },
+                  {
+                    "surface": "glasses",
+                    "lemma": "glasses",
+                    "template": "experimental-rule",
+                    "symbol": "glasses_bare_existential_eyewear",
+                    "domains": [],
+                    "morphology": "Model-proposed; inspect conditions and explanation",
+                    "evidence": "The failure exposes an open object slot, but existing 'glasses' actions require CN. This assumed bare existential combines indefinite DP structure with the existing eyewear sort. It denotes existential eyewear, not drinking vessels; pair cardinality, distributivity, generic readings and agreement are not implemented.",
+                    "source": "experimental",
+                    "program": [
+                      "IF ?Ty(mltt:object)",
+                      "   ¬<\\/0>Ex.x",
+                      "   ¬<\\/1>Ex.x",
+                      "THEN make(\\/1)",
+                      "   go(\\/1)",
+                      "   put(Ty(mltt:arrow(CN,object)))",
+                      "   put(Fo(mltt:lam(A,CN,sigma(x,A,top))))",
+                      "   go(/\\1)",
+                      "   make(\\/0)",
+                      "   go(\\/0)",
+                      "   put(?Ty(mltt:CN))",
+                      "   put(Ty(mltt:CN))",
+                      "   put(Fo(mltt:glasses_n04272054))",
+                      "ELSE abort"
+                    ],
+                    "rule_id": "glasses_bare_existential_eyewear",
+                    "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+                  }
+                ],
+                "selected_rule_ids": [
+                  "with_instrument_vp_link",
+                  "glasses_bare_existential_eyewear"
+                ]
+              }
+            ],
+            "declarations": [
+              {
+                "name": "with_instrument",
+                "kind": "predicate",
+                "domains": [
+                  "object",
+                  "Prop"
+                ]
+              }
+            ],
+            "selected_rule_ids": [
+              "with_instrument_vp_link",
+              "glasses_bare_existential_eyewear"
+            ],
+            "baseline": {
+              "complete": false,
+              "failure": {
+                "token": "glasses",
+                "index": 6,
+                "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure"
+              },
+              "meaning": "Σ x:person_n00007846. enter_vho02016523(x, definite_010)"
+            },
+            "blocked_by_reviewed_constraint": false,
+            "notice": "DS requirements are checked under model-proposed lexical rules. These rules and their linguistic analysis have not been reviewed; completion is not established coverage of the original grammar.",
+            "grammar_hash": "eb40bf00b3e880dcb460b9e434edf3e37f41e2ab2a665569c8ffe60bde9711a5",
+            "proposal_hash": "01fff4cdd7d9b58e46e552b6502ed66e63289ba8d9cacc5027c978f260de4f83",
+            "created_at": "2026-10-16T12:37:25.799998+00:00"
+          }
+        },
+        {
+          "sentence": "A person entered the room with glasses",
+          "backend": "classical",
+          "llm_on": true,
+          "jev_on": false,
+          "complete": true,
+          "failure": null,
+          "meaning": "with_instrument(ε x2:e. glasses_n04272054(x2), enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1)))",
+          "usage": "THIS RESULT\nDS parser · ran\nAnalysis LLM · 1 request\nJev · off",
+          "jev_requests": 0,
+          "notices": [],
+          "model_requests": 1,
+          "attempts": [
+            {
+              "number": 1,
+              "status": "complete",
+              "message": null,
+              "failure": null,
+              "selected_rule_ids": [
+                "with_instrument_vp_link",
+                "glasses_bare_existential_dp"
+              ]
+            }
+          ],
+          "experimental_grammar": {
+            "enabled": true,
+            "used": true,
+            "rules": [
+              {
+                "surface": "with",
+                "lemma": "with",
+                "template": "experimental-rule",
+                "symbol": "with_instrument_vp_link",
+                "domains": [],
+                "morphology": "Model-proposed; inspect conditions and explanation",
+                "evidence": "Adds an instrument alternative to human-only with_companion; parsing must branch again at 'with', not repair its completed meaning at 'glasses'. semantic-pp preserves the unmodified VP in LINK. This assumes an opaque instrument relation, not a wearing entailment, and covers only the local completed-clause attachment.",
+                "source": "experimental",
+                "program": [
+                  "IF Ty(classical:t)",
+                  "   ¬Ex.?x",
+                  "THEN go(\\/1)",
+                  "   semantic-pp(with_instrument)",
+                  "ELSE abort"
+                ],
+                "rule_id": "with_instrument_vp_link",
+                "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+              },
+              {
+                "surface": "glasses",
+                "lemma": "glasses",
+                "template": "experimental-rule",
+                "symbol": "glasses_bare_existential_dp",
+                "domains": [],
+                "morphology": "Model-proposed; inspect conditions and explanation",
+                "evidence": "The stopped slot requires e, whereas existing glasses actions require arrow(e,cn). This action combines indefinite DP structure with the existing eyewear restrictor, yielding an existential choice of eyewear rather than glass material or a human companion. It assumes an existential reading; cardinality, distributivity and generics remain unsupported.",
+                "source": "experimental",
+                "program": [
+                  "IF ?Ty(classical:e)",
+                  "   ¬<\\/0>Ex.x",
+                  "   ¬<\\/1>Ex.x",
+                  "THEN make(\\/1)",
+                  "   go(\\/1)",
+                  "   put(Ty(classical:arrow(cn,e)))",
+                  "   put(Fo(classical:lam(P,cn,choice_eps(P))))",
+                  "   put(!)",
+                  "   go(/\\1)",
+                  "   make(\\/0)",
+                  "   go(\\/0)",
+                  "   put(?Ty(classical:cn))",
+                  "   make(\\/0)",
+                  "   go(\\/0)",
+                  "   put(Ty(classical:e))",
+                  "   freshput(T,entity)",
+                  "   put(!)",
+                  "   go(/\\0)",
+                  "   make(\\/1)",
+                  "   go(\\/1)",
+                  "   put(?Ty(classical:arrow(e,cn)))",
+                  "   put(Ty(classical:arrow(e,cn)))",
+                  "   put(Fo(classical:lam(x,e,cn(x,glasses_n04272054(x)))))",
+                  "   put(!)",
+                  "ELSE abort"
+                ],
+                "rule_id": "glasses_bare_existential_dp",
+                "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+              }
+            ],
+            "attempts": [
+              {
+                "number": 1,
+                "status": "complete",
+                "trigger": {
+                  "token": "glasses",
+                  "index": 6,
+                  "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                  "kind": "unresolved_parse_failure"
+                },
+                "proposal": {
+                  "declarations": [
+                    {
+                      "name": "with_instrument",
+                      "kind": "predicate",
+                      "domains": [
+                        "object",
+                        "Prop"
+                      ]
+                    }
+                  ],
+                  "rules": [
+                    {
+                      "surface": "with",
+                      "name": "with_instrument_vp_link",
+                      "explanation": "Adds an instrument alternative to human-only with_companion; parsing must branch again at 'with', not repair its completed meaning at 'glasses'. semantic-pp preserves the unmodified VP in LINK. This assumes an opaque instrument relation, not a wearing entailment, and covers only the local completed-clause attachment.",
+                      "when": [
+                        "Ty(classical:t)",
+                        "¬Ex.?x"
+                      ],
+                      "then": [
+                        "go(\\/1)",
+                        "semantic-pp(with_instrument)"
+                      ]
+                    },
+                    {
+                      "surface": "glasses",
+                      "name": "glasses_bare_existential_dp",
+                      "explanation": "The stopped slot requires e, whereas existing glasses actions require arrow(e,cn). This action combines indefinite DP structure with the existing eyewear restrictor, yielding an existential choice of eyewear rather than glass material or a human companion. It assumes an existential reading; cardinality, distributivity and generics remain unsupported.",
+                      "when": [
+                        "?Ty(classical:e)",
+                        "¬<\\/0>Ex.x",
+                        "¬<\\/1>Ex.x"
+                      ],
+                      "then": [
+                        "make(\\/1)",
+                        "go(\\/1)",
+                        "put(Ty(classical:arrow(cn,e)))",
+                        "put(Fo(classical:lam(P,cn,choice_eps(P))))",
+                        "put(!)",
+                        "go(/\\1)",
+                        "make(\\/0)",
+                        "go(\\/0)",
+                        "put(?Ty(classical:cn))",
+                        "make(\\/0)",
+                        "go(\\/0)",
+                        "put(Ty(classical:e))",
+                        "freshput(T,entity)",
+                        "put(!)",
+                        "go(/\\0)",
+                        "make(\\/1)",
+                        "go(\\/1)",
+                        "put(?Ty(classical:arrow(e,cn)))",
+                        "put(Ty(classical:arrow(e,cn)))",
+                        "put(Fo(classical:lam(x,e,cn(x,glasses_n04272054(x)))))",
+                        "put(!)"
+                      ]
+                    }
+                  ]
+                },
+                "provider": "OpenRouter",
+                "model": "openai/gpt-6-astra",
+                "failure": null,
+                "rules": [
+                  {
+                    "surface": "with",
+                    "lemma": "with",
+                    "template": "experimental-rule",
+                    "symbol": "with_instrument_vp_link",
+                    "domains": [],
+                    "morphology": "Model-proposed; inspect conditions and explanation",
+                    "evidence": "Adds an instrument alternative to human-only with_companion; parsing must branch again at 'with', not repair its completed meaning at 'glasses'. semantic-pp preserves the unmodified VP in LINK. This assumes an opaque instrument relation, not a wearing entailment, and covers only the local completed-clause attachment.",
+                    "source": "experimental",
+                    "program": [
+                      "IF Ty(classical:t)",
+                      "   ¬Ex.?x",
+                      "THEN go(\\/1)",
+                      "   semantic-pp(with_instrument)",
+                      "ELSE abort"
+                    ],
+                    "rule_id": "with_instrument_vp_link",
+                    "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+                  },
+                  {
+                    "surface": "glasses",
+                    "lemma": "glasses",
+                    "template": "experimental-rule",
+                    "symbol": "glasses_bare_existential_dp",
+                    "domains": [],
+                    "morphology": "Model-proposed; inspect conditions and explanation",
+                    "evidence": "The stopped slot requires e, whereas existing glasses actions require arrow(e,cn). This action combines indefinite DP structure with the existing eyewear restrictor, yielding an existential choice of eyewear rather than glass material or a human companion. It assumes an existential reading; cardinality, distributivity and generics remain unsupported.",
+                    "source": "experimental",
+                    "program": [
+                      "IF ?Ty(classical:e)",
+                      "   ¬<\\/0>Ex.x",
+                      "   ¬<\\/1>Ex.x",
+                      "THEN make(\\/1)",
+                      "   go(\\/1)",
+                      "   put(Ty(classical:arrow(cn,e)))",
+                      "   put(Fo(classical:lam(P,cn,choice_eps(P))))",
+                      "   put(!)",
+                      "   go(/\\1)",
+                      "   make(\\/0)",
+                      "   go(\\/0)",
+                      "   put(?Ty(classical:cn))",
+                      "   make(\\/0)",
+                      "   go(\\/0)",
+                      "   put(Ty(classical:e))",
+                      "   freshput(T,entity)",
+                      "   put(!)",
+                      "   go(/\\0)",
+                      "   make(\\/1)",
+                      "   go(\\/1)",
+                      "   put(?Ty(classical:arrow(e,cn)))",
+                      "   put(Ty(classical:arrow(e,cn)))",
+                      "   put(Fo(classical:lam(x,e,cn(x,glasses_n04272054(x)))))",
+                      "   put(!)",
+                      "ELSE abort"
+                    ],
+                    "rule_id": "glasses_bare_existential_dp",
+                    "validation": "Bounded DS program compiled; linguistic analysis unreviewed"
+                  }
+                ],
+                "selected_rule_ids": [
+                  "with_instrument_vp_link",
+                  "glasses_bare_existential_dp"
+                ]
+              }
+            ],
+            "declarations": [
+              {
+                "name": "with_instrument",
+                "kind": "predicate",
+                "domains": [
+                  "object",
+                  "Prop"
+                ]
+              }
+            ],
+            "selected_rule_ids": [
+              "with_instrument_vp_link",
+              "glasses_bare_existential_dp"
+            ],
+            "baseline": {
+              "complete": false,
+              "failure": {
+                "token": "glasses",
+                "index": 6,
+                "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+                "kind": "unresolved_parse_failure"
+              },
+              "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. room_n04105893(x1))"
+            },
+            "blocked_by_reviewed_constraint": false,
+            "notice": "DS requirements are checked under model-proposed lexical rules. These rules and their linguistic analysis have not been reviewed; completion is not established coverage of the original grammar.",
+            "grammar_hash": "0416cacffc8b8e8f96d1f9a6769f0225ae2321ee99168d333b855124fefec5ce",
+            "proposal_hash": "e991ad8919af19b28260048981f1b33def37e72de227cf31fd097eb9405ab06d",
+            "created_at": "2026-10-16T12:37:42.167697+00:00"
+          }
+        }
+      ],
+      "browser_errors": []
+    }
+  ],
+  "limitations": [
+    "Raw lexical programs remain unreviewed even after DS completion.",
+    "Classical Jev+DeepSeek adverb check returned no lexical proposal; the UI reports that model omission.",
+    "Experimental mode currently supports native English/Standard Greek sentences only, not TTR, paragraphs or dialogue.",
+    "Model calls are nondeterministic and may fail or time out."
+  ]
+}

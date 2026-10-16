@@ -12,7 +12,7 @@ import time
 
 from dylan import lexical_provider
 from dylan.action.meta.element import snapshot_meta_bindings, restore_meta_bindings
-from dylan.lexical_expansion import PROTECTED, TEMPLATES, expand, proposal, validate_entries, _install
+from dylan.lexical_expansion import PROTECTED, TEMPLATES, allowed_domains, expand, proposal, validate_entries, _install
 from dylan.nlp.types import utterance_from_text
 from dylan.clause_inventory import CONNECTIVES, RELATIONS
 
@@ -48,6 +48,11 @@ complements, passive, modal or perfect readings unless an explicit supplied
 template supports them. English lexical bare forms can also follow do-support.
 Prefer predicative-adjective for a copular property; use adjective attributively
 ONLY if intersective (red, wooden, tall, local); former/alleged are not intersective.
+English postverbal manner adverbs such as randomly, carefully or slowly use adverb,
+domains ["Prop"], number/verb_form/case/gender/person all "none", and the actual
+adverb lemma (not its adjective or a synonym). Prop is allowed ONLY for adverb.
+This reuses a reviewed LINK modifier on propositions, not event, degree, frequency,
+negation or temporal reasoning. Preverbal position is not licensed by this template.
 Use exact allowed_domains; choose the narrowest defensible existing parent sort,
 never weaken an animate verb to object just to force completion. Existing signatures
 cannot be changed. ADJECTIVE EXCEPTION in BOTH languages: adjective and
@@ -86,7 +91,7 @@ def schema(language, profile):
     fields["template"]["enum"] = templates
     for key, vals in (("case", ["none", "nom", "acc"]), ("gender", ["none", "m", "f", "neut"]), ("person", ["none", "1", "2", "3"])):
         fields[key]["enum"] = ["none"] if language == "en" else vals
-    fields["domains"] = {"type": "array", "items": {"type": "string", "enum": sorted({"object", *profile["subtyping"]})}}
+    fields["domains"] = {"type": "array", "items": {"type": "string", "enum": allowed_domains(profile) if language == "en" else sorted({"object", *profile["subtyping"]})}}
     return {"type": "object", "properties": {"entries": {"type": "array", "items": {"type": "object", "properties": fields, "required": list(fields), "additionalProperties": False}}}, "required": ["entries"], "additionalProperties": False}
 
 
@@ -126,7 +131,8 @@ def compile_entries(parser, raw, requested, language, *, citations=None):
             raise ValueError("At most three analyses per word.")
         domains = item["domains"]
         arity = TEMPLATES[template]["arity"] if language == "en" else GREEK_ARITIES[template]
-        if not isinstance(domains, list) or len(domains) != arity or any(not isinstance(d, str) or d not in {"object", *theory["subtyping"]} for d in domains):
+        permitted = {"Prop"} if language == "en" and template == "adverb" else {"object", *theory["subtyping"]}
+        if not isinstance(domains, list) or len(domains) != arity or any(not isinstance(d, str) or d not in permitted for d in domains):
             raise ValueError(f"{word}: {template} requires exactly {arity} allowed domain(s); got {domains}.")
         finite = template in {"intransitive", "transitive", "clausal", "ditransitive", "dative-to", "prepositional-on", "prepositional-to", "prepositional-into", "prepositional-se"}
         if item["verb_form"] != ("finite" if finite else "none"):
@@ -135,6 +141,8 @@ def compile_entries(parser, raw, requested, language, *, citations=None):
             raise ValueError(f"{word}: plural or unspecified number is outside this nominal/Greek template.")
         if template == "plural-noun" and item["number"] != "pl":
             raise ValueError(f"{word}: plural-noun requires plural morphology.")
+        if template == "adverb" and item["number"] != "none":
+            raise ValueError(f"{word}: adverb requires invariant number (none).")
         if language == "en":
             if any(item[k] != "none" for k in ("case", "gender", "person")):
                 raise ValueError("English templates do not consume Greek features.")
@@ -275,7 +283,7 @@ class Assistance:
         context = {"language": self.language, "backend": profile["backend"], "grammar": self.grammar,
                    "tokens": tokens, "requested": requested, "failure": failure,
                    "templates": TEMPLATES if self.language == "en" else {k: {"arity": GREEK_ARITIES[k], "description": v} for k, v in GREEK_TEMPLATES.items()},
-                   "allowed_domains": sorted({"object", *profile["subtyping"]}),
+                   "allowed_domains": allowed_domains(profile) if self.language == "en" else sorted({"object", *profile["subtyping"]}),
                    "semantic_contract": "Classical e/t with choice" if profile["backend"] == "classical" else "Constructive typed witnesses, no choice axiom",
                    "existing_analyses": [{k: e[k] for k in ("surface", "lemma", "template", "domains", "morphology")} for e in self.entries if e["surface"] in requested][-60:]}
         attempt = {"kind": "vocabulary", "requested": requested, "backend": profile["backend"], "trigger": failure, "status": "pending"}

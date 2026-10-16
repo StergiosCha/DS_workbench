@@ -89,7 +89,7 @@ def test_large_bundled_vocabulary_is_not_limited_as_model_output():
 def test_model_schema_constrains_domains_to_declared_types():
     constrained = schema({"subtyping": {"animal": ["object"], "cat": ["animal"]}})
     domain_schema = constrained["properties"]["entries"]["items"]["properties"]["domains"]["items"]
-    assert set(domain_schema["enum"]) == {"object", "animal", "cat"}
+    assert set(domain_schema["enum"]) == {"object", "animal", "cat", "Prop"}
 
 
 @pytest.mark.parametrize(

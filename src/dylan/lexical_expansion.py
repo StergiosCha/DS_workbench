@@ -19,7 +19,7 @@ import sqlite3
 from dylan import lexical_provider
 from dylan.clause_inventory import CONNECTIVES
 
-VERSION = 7
+VERSION = 8
 GRAMMARS = {"2026-english-classical", "2026-english-mltt"}
 TEMPLATES = {
     "proper": {"arity": 1, "morphology": "invariant", "description": "Name with a nominal sort"},
@@ -40,6 +40,10 @@ TEMPLATES = {
     "predicative-adjective": {
         "arity": 1, "morphology": "invariant",
         "description": "Predicative property on object; no attributive/intersective reading is licensed",
+    },
+    "adverb": {
+        "arity": 1, "morphology": "invariant",
+        "description": "Postverbal manner adverb, e.g. randomly, carefully or slowly. domains MUST be [Prop]. Reuses the reviewed VP LINK modifier and its embedded/nonrestrictive attachment alternatives. The semantic operator maps a proposition to a proposition; no event variable, degree, frequency, negation or temporal reasoning is supplied.",
     },
     "intransitive": {
         "arity": 1,
@@ -175,7 +179,7 @@ def configuration() -> dict:
         "dictionary": dictionary_configuration(),
         "selection": selection_configuration(),
         "examples": ["a cat sleeps.", "every teacher greets a child.", "mary reads a book."],
-        "coverage": "English names, singular count nouns, distributive all + plural nouns (including all the), intersective adjectives and active verbs: intransitive, transitive, give frames, finite clauses or a selected on-complement. Plural restrictors denote individuals; bare plurals and collective readings remain unsupported. Morphology is recorded; tense, full agreement and a/an phonology are not enforced by this fragment.",
+        "coverage": "English names, singular count nouns, distributive all + plural nouns (including all the), intersective adjectives, postverbal manner adverbs through LINK, and active verbs: intransitive, transitive, give frames, finite clauses or a selected on-complement. Plural restrictors denote individuals; bare plurals and collective readings remain unsupported. Morphology is recorded; tense, full agreement and a/an phonology are not enforced by this fragment.",
     }
 
 
@@ -188,13 +192,18 @@ def validate_options(payload: dict) -> None:
         raise ValueError("Choose off, bundled, dictionary, corpus, model, assisted or jev lexical expansion.")
 
 
+def allowed_domains(profile: dict) -> list[str]:
+    """Prop is available only to the adverb template; other domains stay nominal."""
+    return sorted({"Prop", "object", *profile["subtyping"]})
+
+
 def schema(profile: dict | None = None) -> dict:
     fields = {key: {"type": "string"} for key in FIELDS - {"domains"}}
     fields["template"]["enum"] = list(TEMPLATES)
     fields["morphology"]["enum"] = ["finite", "singular", "plural", "invariant"]
     fields["domains"] = {"type": "array", "items": {"type": "string"}}
     if profile is not None:
-        fields["domains"]["items"]["enum"] = sorted({"object", *profile["subtyping"]})
+        fields["domains"]["items"]["enum"] = allowed_domains(profile)
     return {
         "type": "object",
         "properties": {
@@ -250,7 +259,7 @@ def validate_entries(
         # Preserve lexical identity: sharing an action frame is not synonym
         # replacement. Check the regular finite -s forms without claiming to
         # implement a complete English morphological analyser.
-        if template in {"proper", "noun", "adjective", "predicative-adjective"} and lemma != word:
+        if template in {"proper", "noun", "adjective", "predicative-adjective", "adverb"} and lemma != word:
             raise ValueError(
                 f"The supported invariant/singular entry must preserve the lemma of {word}."
             )
@@ -269,7 +278,7 @@ def validate_entries(
         if (
             not isinstance(domains, list)
             or len(domains) != spec["arity"]
-            or any(not isinstance(d, str) or not SYMBOL.fullmatch(d) for d in domains)
+            or any(not isinstance(d, str) or not (SYMBOL.fullmatch(d) or d == "Prop") for d in domains)
         ):
             raise ValueError(f"Invalid argument domains for {word}.")
         if entry["morphology"] != spec["morphology"] or not _identifier(entry["symbol"]):
@@ -290,7 +299,7 @@ def validate_entries(
         symbol, parents = entry["symbol"], entry["domains"]
         if parents[0] not in base_sorts or symbol == parents[0]:
             raise ValueError("New noun sorts need an existing, distinct parent sort.")
-        if symbol in theory["constants"] or symbol in theory["predicates"]:
+        if any(symbol in theory.get(namespace, {}) for namespace in ("constants", "predicates", "modifiers")):
             raise ValueError(f"Semantic symbol collision: {symbol}.")
         previous = theory["subtyping"].get(symbol)
         if previous is not None and previous != parents:
@@ -300,6 +309,19 @@ def validate_entries(
     compiled = []
     for entry in entries:
         symbol, domains, template = entry["symbol"], entry["domains"], entry["template"]
+        if template == "adverb":
+            if domains != ["Prop"]:
+                raise ValueError("The adverb template requires exactly the Prop domain.")
+            if symbol in sorts or symbol in theory["constants"] or symbol in theory["predicates"]:
+                raise ValueError(f"Semantic symbol collision: {symbol}.")
+            modifiers = theory.setdefault("modifiers", {})
+            if symbol in modifiers and modifiers[symbol] != ["Prop"]:
+                raise ValueError(f"Cannot redefine the modifier signature of {symbol}.")
+            modifiers[symbol] = ["Prop"]
+            for program in ("adverb", "adverb-embedded", "nonrestrictive-adverb"):
+                action = lexicon.instantiate_template(entry["surface"], program, [symbol])
+                compiled.append((deepcopy(entry), action))
+            continue
         if any(domain not in sorts for domain in domains):
             raise ValueError(f"Undeclared argument sort for {entry['surface']}.")
         if template not in {"noun", "plural-noun"}:
@@ -308,7 +330,7 @@ def validate_entries(
             value = domains[0] if template == "proper" else domains
             if template == "clausal":
                 value = [*domains, "Content"]
-            if symbol in sorts or symbol in theory[other]:
+            if symbol in sorts or symbol in theory[other] or symbol in theory.get("modifiers", {}):
                 raise ValueError(f"Semantic symbol collision: {symbol}.")
             if symbol in theory[namespace] and theory[namespace][symbol] != value:
                 raise ValueError(f"Cannot redefine the signature of {symbol}.")
@@ -469,7 +491,7 @@ def expand(
         "tokens": tokens,
         "unknown": candidates,
         "templates": TEMPLATES,
-        "allowed_domains": sorted({"object", *parser.semantic_profile["subtyping"]}),
+        "allowed_domains": allowed_domains(parser.semantic_profile),
         "theory": parser.semantic_profile,
     }
     key = hashlib.sha256(

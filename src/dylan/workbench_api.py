@@ -146,6 +146,8 @@ def validate_request(payload: Any, *, sentence_limits=(500, 40)) -> tuple[str, s
     from dylan.lexical_expansion import validate_options
 
     validate_options(payload)
+    from dylan.experimental_grammar import validate_options as validate_experimental
+    validate_experimental(payload)
     return sentence.strip(), grammar
 
 
@@ -280,6 +282,9 @@ def parse_request(payload: Any, on_event=None, *, _parser=None, _trace=True, _se
         validate_request(payload)
         return parse_paragraph(payload, on_event)
     sentence, grammar = validate_request(payload, sentence_limits=(2000, 160) if _parser else (500, 40))
+    if payload.get("experimental_rules"):
+        from dylan.experimental_grammar import parse_experimental
+        return parse_experimental(payload, on_event)
     if payload.get("compare_jev"):
         from dylan.jev_comparison import compare
         return compare(payload, on_event, trace=_trace)

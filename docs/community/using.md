@@ -131,6 +131,22 @@ builds the derivation. Unsupported syntax remains incomplete. Jev's pinned
 model can reconsider senses; its comparison shows two actual DS runs with
 the same candidates. This differs from the separate calibrated search ordering.
 
+## Experimental grammar proposals
+
+The separate **Experimental grammar proposals** checkbox enables the analysis
+LLM to write new DS lexical action programs after a failure, including constructions
+beyond the ordinary templates. It also works with Jev enabled. Choose a native
+English or Standard Greek sentence in Classical or Constructive DS; paragraphs,
+dialogue and TTR are not supported by this experiment. Turning off the analysis
+LLM or **Turn off all AI** also disables experimental proposals.
+
+Inspect the experimental result panel for the proposed rules, declarations and
+DS retries. A success is explicitly labelled **Complete under experimental grammar**:
+DS satisfied its requirements assuming these unreviewed rules. That is not an
+independent validation of their linguistic analysis. The rules last for this
+request and are included in Export JSON. Review and test them before contributing
+them to the maintained grammar. See the [design and limits](../design/experimental-grammar.md).
+
 ## Reproduce a result
 
 Export JSON and record source version (release or commit), grammar/backend,

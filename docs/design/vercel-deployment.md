@@ -103,7 +103,7 @@ available. The **Missing words only · analysis LLM** strategy remains available
 under Advanced for native English missing-vocabulary proposals.
 
 The composer explains the effective settings for the next parse. **Turn off all
-AI** unticks both controls and disables vocabulary
+AI** unticks all assistance controls and disables vocabulary
 AI and Jev search ordering; a connected key is not sent for those requests.
 The guide explains LINK modifiers, selected PP arguments, and each semantic
 system. Result summaries report actual assistance provenance and model requests.
@@ -118,6 +118,15 @@ construction assistance is available with the analysis LLM on and Jev off.
 Search-order preferences keep their existing
 per-grammar calibration gates. Connecting does not bypass these gates.
 
+**Experimental grammar proposals** is a separate opt-in for native English and
+Standard Greek sentences. It enables the selected analysis LLM to propose new
+DS lexical action programs after a dictionary/corpus baseline fails. Compiled
+programs are tried locally to that request, with up to two model attempts.
+It can run with Jev's dictionary sense preferences; it disables the two-run Jev
+comparison and multiple-reading controls. The result exposes proposals, errors,
+selected experimental rules and the DS replay. Completion is labelled as using
+unreviewed grammar. See [the contract and limits](experimental-grammar.md).
+
 The key lives in a JavaScript closure in the current tab. Successful connection
 clears the password input. Disconnect, navigation and refresh clear it; it is not
 written to browser storage, cookies, URLs, parser data or exports. Requests send
@@ -131,11 +140,12 @@ Inference is billed by OpenRouter to the supplied key. Prices are the catalog's
 base input/output rates, not a total estimate. A connection check cannot promise
 that every model/provider will successfully answer every request; unsupported
 responses, rate limits and timeouts produce explicit lexical notices. Model
-calls retain a 15-second provider limit inside the 30-second parser deadline.
+calls have individual provider limits: ordinary vocabulary calls use 15 seconds;
+experimental rule calls use up to 24 seconds within their total request budget.
 
 `src/dylan/workbench_asgi.py` adapts the existing endpoints to ASGI. Parser
 requests run in separate Python processes so mutable parser state is isolated.
-Workers retain a 30-second limit. Streaming uses NDJSON, with a complete final
+Workers retain a 55-second limit. Streaming uses NDJSON, with a complete final
 error frame on timeout or excessive output. A 4 MiB output limit keeps responses
 within the host's payload allowance. Two parse slots and four source slots apply
 per function instance; Vercel can create additional instances.

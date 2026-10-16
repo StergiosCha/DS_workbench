@@ -213,6 +213,7 @@ def prepare(parser, grammar, tokens, unknown, report, controls, *, allow_model_f
     """Validate the inventory before Jev sees it; model fallback uses only left context."""
     from dylan.lexical_dictionary import candidates, configuration as dictionary_configuration
     from dylan.decision.gates import grammar_hash
+    from dylan.lexical_expansion import allowed_domains
 
     report.update(status="jev", dictionary=dictionary_configuration(), morphology={},
                   allow_model_fallback=allow_model_fallback, model_requests=0)
@@ -234,7 +235,7 @@ def prepare(parser, grammar, tokens, unknown, report, controls, *, allow_model_f
             if not proposals and not analyses and allow_model_fallback and lexical_provider.configuration()["configured"]:
                 config = lexical_provider.settings()
                 context = {"tokens": tokens[:tokens.index(word) + 1], "unknown": [word], "templates": TEMPLATES,
-                           "allowed_domains": sorted({"object", *parser.semantic_profile["subtyping"]}),
+                           "allowed_domains": allowed_domains(parser.semantic_profile),
                            "theory": parser.semantic_profile}
                 key = "jev-fallback:" + content_hash([VERSION, grammar_hash(grammar), context, config["url"], config["model"]])
                 try:
@@ -250,6 +251,8 @@ def prepare(parser, grammar, tokens, unknown, report, controls, *, allow_model_f
                     # Validate the raw object before caching or selecting any entry.
                     validate_entries(raw, [word], parser.lexicon, parser.semantic_profile, controls)
                     proposals = raw["entries"]
+                    if not proposals:
+                        report["notices"].append(f"The analysis LLM returned no supported lexical analysis for {word}; the word remains missing.")
                     provenance = {"source": "model", **provider, "created_at": datetime.now(timezone.utc).isoformat()}
                     try:
                         _cache(key, {"entries": proposals, "provenance": provenance})

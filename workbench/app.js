@@ -156,7 +156,7 @@ function receiveEvent(event) {
       selectTab("trace");
     }
     if (typeof research !== "undefined" && research.pendingSource) state.result.research_source = research.pendingSource;
-    $("result-status").textContent = result.complete ? "Complete derivation" : result.ok ? "Partial derivation" : "Stopped at a word";
+    $("result-status").textContent = result.complete ? (result.experimental_grammar?.used ? "Complete · experimental grammar" : "Complete derivation") : result.ok ? "Partial derivation" : "Stopped at a word";
     $("result-status").className = "badge" + (result.complete ? "" : " warn");
     $("elapsed").textContent = `${result.elapsed_ms} ms · ${result.tokens.length} tokens`;
     if (result.failure) message(result.failure.message, true);
@@ -186,6 +186,7 @@ async function parseSentence(options = {}) {
   payload.reading_traces = payload.n_best > 1;
   payload.lexical_mode = lexicalSupported() ? $("lexical-mode").value : "off";
   payload.allow_model_fallback = $("llm-enabled").checked;
+  payload.experimental_rules = $("experimental-enabled").checked;
   if (liveGreekSourcesActive()) {
     payload.live_greek_sources = true;
     payload.greek_source_corpus = $("greek-source-corpus").value;
@@ -197,6 +198,7 @@ async function parseSentence(options = {}) {
   else payload.sentence = sentence;
   state.paragraph = null; state.expandedFormulas = []; $("paragraph-results").hidden = true;
   stop(); message(""); $("diagnostics").hidden = true; $("lexical-report").hidden = true; $("method-result").hidden = true; $("jev-impact").hidden = true; $("playback-status").hidden = true; setBusy(true);
+  $("experimental-report").hidden = true;
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 60000);
   let finished = false;
@@ -613,6 +615,10 @@ function render() {
   $("playback-status-text").textContent = `${inputLabel} ${finalComplete ? "has a complete derivation." : "is incomplete."} ${atEnd ? "Showing the final recorded tree." : `Viewing an earlier tree: step ${state.index} of ${frames().length - 1}.`}`;
   $("semantic-status").textContent = frame.complete ? "COMPLETE TREE AT THIS STEP" : finished && finalComplete ? "EARLIER TREE · FINAL DERIVATION COMPLETE" : "INCOMPLETE TREE AT THIS STEP";
   if (finished && finalComplete && atEnd && frame.complete) $("semantic-status").textContent = "COMPLETE TREE";
+  if (state.result.experimental_grammar?.used) {
+    $("meaning-title").textContent += " · experimental grammar";
+    $("semantic-status").textContent = frame.complete ? "EXPERIMENTAL GRAMMAR · REQUIREMENTS SATISFIED" : "EXPERIMENTAL GRAMMAR · OPEN REQUIREMENTS";
+  }
   $("semantic-note").textContent = frame.semantic_error || (frame.complete ? "All requirements are satisfied. This formula was composed by the selected semantic backend." : `${frame.requirement_count} outstanding requirement${frame.requirement_count === 1 ? "" : "s"}. Node formulas and types develop as the pointer moves through the tree.`);
   if (finished && !atEnd) $("semantic-note").textContent += finalComplete ? " These are requirements at this earlier playback step; the final derivation completed. Use Show final result to inspect it." : " This is an earlier playback step; the whole input did not complete.";
   if (finished && !finalComplete && atEnd && frame.complete) $("semantic-note").textContent += " This tree covers the accepted prefix; the whole input did not complete.";
@@ -935,6 +941,7 @@ function useDictionariesOnly() {
   $("lexical-mode").value = !lexicalSupported() ? "off" : greek ? (config.greek_corpus.installed ? "corpus" : "off") : config.dictionary?.installed ? "dictionary" : "bundled";
   $("decision-mode").value = "off";
   $("llm-enabled").checked = false;
+  $("experimental-enabled").checked = false;
   renderLexicalSettings();
 }
 
@@ -984,11 +991,21 @@ function renderAssistanceControls() {
   $("llm-enabled").checked = llm;
   $("jev-enabled").checked = jev;
   $("llm-enabled").disabled = state.busy || !available.llm;
+  const experimentalAvailable = available.llm && state.inputMode === "sentence";
+  if (!experimentalAvailable || !llm) $("experimental-enabled").checked = false;
+  $("experimental-enabled").disabled = state.busy || !experimentalAvailable;
+  $("experimental-state").textContent = $("experimental-enabled").checked ? "ON · unreviewed rules" : "OFF";
+  $("experimental-control").classList.toggle("enabled", $("experimental-enabled").checked);
+  $("experimental-help").textContent = experimentalAvailable
+    ? "New DS lexical programs after a failure. Inspect rules and retries; their linguistic analysis is unreviewed."
+    : "Requires a connected model and an English/Standard Greek sentence in Classical or Constructive DS.";
   $("jev-enabled").disabled = state.busy || !(available.senses || available.search);
   $("model-settings-button").disabled = state.busy;
   $("llm-state").textContent = llm ? "ON · when needed" : "OFF";
   $("jev-state").textContent = jev ? "ON" : "OFF";
-  $("llm-help").textContent = mode === "jev"
+  $("llm-help").textContent = $("experimental-enabled").checked
+    ? "Proposes new DS lexical programs after a failure, including when Jev is on. Inspect the experimental rules below the result."
+    : mode === "jev"
     ? "With Jev: proposes missing words only. Open text construction assistance resumes when Jev is off."
     : state.inputMode === "dialogue" ? "Proposes missing vocabulary for dialogue. DS builds the shared tree."
     : "Proposes vocabulary and supported constructions when needed. It may make no request if DS can proceed.";
@@ -1013,7 +1030,7 @@ function liveGreekSourcesActive() {
 
 function jevComparisonActive() {
   return Boolean(state.config?.lexical?.selection?.comparison?.grammars.includes($("grammar").value)
-    && state.inputMode === "sentence" && $("lexical-mode").value === "jev" && $("compare-jev").checked);
+    && !$("experimental-enabled").checked && state.inputMode === "sentence" && $("lexical-mode").value === "jev" && $("compare-jev").checked);
 }
 
 function prepareJevExample(sentence) {
@@ -1036,6 +1053,7 @@ function runJevComparison() {
     return;
   }
   $("lexical-mode").value = "jev";
+  $("experimental-enabled").checked = false;
   $("compare-jev").checked = true;
   $("decision-mode").value = "off";
   $("n-best").value = "1";
@@ -1045,8 +1063,8 @@ function runJevComparison() {
 function renderJevControls() {
   const selection = state.config?.lexical?.selection;
   const supported = selection?.comparison?.grammars.includes($("grammar").value) && state.inputMode === "sentence";
-  $("compare-jev").disabled = state.busy;
-  $("jev-run").disabled = state.busy || !supported || !selection?.configured;
+  $("compare-jev").disabled = state.busy || $("experimental-enabled").checked;
+  $("jev-run").disabled = state.busy || !supported || !selection?.configured || $("experimental-enabled").checked;
   $("jev-demo-button").disabled = state.busy;
   $("jev-demo-status").textContent = !selection?.configured ? "Connect OpenRouter to run Jev. The examples use native English Classical or Constructive DS." : !supported ? "Choose an English Classical or Constructive sentence, or one of the examples above." : "Ready · same candidates, two DS runs · up to eight fresh Jev requests.";
   $("jev-examples").replaceChildren(...(selection?.comparison?.examples || []).map(example => {
@@ -1056,7 +1074,7 @@ function renderJevControls() {
     return button;
   }));
   if (jevComparisonActive()) { $("n-best").value = "1"; $("decision-mode").value = "off"; }
-  $("n-best").disabled = state.busy || state.inputMode !== "sentence" || jevComparisonActive();
+  $("n-best").disabled = state.busy || state.inputMode !== "sentence" || jevComparisonActive() || $("experimental-enabled").checked;
 }
 
 function renderMethodMode() {
@@ -1072,6 +1090,7 @@ function renderMethodMode() {
   };
   const ordering = $("decision-mode").value === "jev" ? " Jev may also order parser choices." : "";
   $("method-mode").textContent = descriptions[mode] + ordering;
+  if ($("experimental-enabled").checked) $("method-mode").textContent = "Next parse: DS with dictionary/corpus candidates first, then up to two requests for experimental DS lexical programs if needed. The programs are compiled and tried in a fresh parser; they are not added to the reviewed grammar. Jev, when enabled, still ranks dictionary senses.";
   if (liveGreekSourcesActive()) $("method-mode").textContent += " Needed lexical proposals will receive Svarna examples and Triantafyllidis excerpts, within the retrieval limit.";
   if (jevComparisonActive()) $("method-mode").textContent += " A second DS run without Jev will show whether the same candidates lead to a different meaning.";
   $("use-dictionaries").disabled = state.busy;
@@ -1286,14 +1305,43 @@ function renderJevComparison(result) {
   $("jev-impact-note").textContent = `${comparison.same_inventory ? "Identical lexical programs were verified in both runs." : "Lexical inventories differ; comparison is not controlled."} The tree below shows the Jev run. The baseline has a four-second search allowance. This single comparison is not an accuracy or speed benchmark.${comparison.shared_model_candidates ? ` ${comparison.shared_model_candidates} lexical-model candidates were shared by both runs.` : " No generative lexical-model candidates were needed."}`;
 }
 
+function renderExperimental(result) {
+  const experiment = result.experimental_grammar;
+  $("experimental-report").hidden = !experiment;
+  if (!experiment) return;
+  $("experimental-title").textContent = experiment.used ? (result.complete ? "Complete under experimental grammar" : "Experimental grammar · derivation incomplete") : "Experimental grammar proposals";
+  $("experimental-summary").textContent = experiment.baseline.complete
+    ? "The original grammar completed this sentence. No experimental model request was needed."
+    : experiment.blocked_by_reviewed_constraint ? "The original grammar diagnosed a constraint violation. No experimental override was attempted."
+    : `Original grammar: incomplete. ${experiment.attempts.length} model request${experiment.attempts.length === 1 ? "" : "s"}; ${experiment.rules.length} proposed rule${experiment.rules.length === 1 ? "" : "s"} in the displayed attempt. ${result.complete ? "DS completed the sentence with those rules." : "No complete interpretation was obtained."}`;
+  $("experimental-notice").textContent = experiment.notice;
+  $("experimental-attempts").replaceChildren(...experiment.attempts.map(attempt => {
+    const details = element("details", "experimental-attempt");
+    details.append(element("summary", "", `Model attempt ${attempt.number} · ${attempt.status.replaceAll("_", " ")}${attempt.model ? " · " + attempt.model : ""}`));
+    if (attempt.message) details.append(element("p", "", attempt.message));
+    if (attempt.failure) details.append(element("p", "", attempt.failure.message));
+    for (const rule of attempt.rules || []) {
+      const selected = attempt.selected_rule_ids?.includes(rule.rule_id) ? " · selected by DS" : " · candidate";
+      details.append(element("h4", "", `${rule.surface} · ${rule.rule_id}${selected}`), element("p", "", rule.evidence), element("pre", "", rule.program.join("\n")));
+    }
+    if (attempt.proposal) {
+      const raw = element("details");
+      raw.append(element("summary", "", "Complete proposal · declarations and rules"), element("pre", "", JSON.stringify(attempt.proposal, null, 2)));
+      details.append(raw);
+    }
+    return details;
+  }));
+}
+
 function renderMethodResult(result) {
+  renderExperimental(result);
   renderJevComparison(result);
   renderConstructionReport(result);
   const report = result.lexical, mode = report?.mode || "off";
   const selection = report?.selection, decision = result.decision;
   const modelEntries = (report?.entries || []).filter(entry => entry.source === "model");
-  const modelRequests = mode === "assisted" ? report.attempts?.length || 0 : report?.model_requests || 0;
-  const modelAllowed = ["assisted", "model"].includes(mode) || (mode === "jev" && report.allow_model_fallback !== false);
+  const modelRequests = result.experimental_grammar ? result.experimental_grammar.attempts.length : mode === "assisted" ? report.attempts?.length || 0 : report?.model_requests || 0;
+  const modelAllowed = Boolean(result.experimental_grammar) || ["assisted", "model"].includes(mode) || (mode === "jev" && report.allow_model_fallback !== false);
   const jevRequests = (selection?.live_calls || 0) + (decision?.mode === "jev" ? decision.live_calls || 0 : 0);
   const cachedJev = [...(selection?.decisions || []), ...(decision?.decisions || [])].some(item => item.cached);
   const modelUsage = modelRequests ? `${modelRequests} request${modelRequests === 1 ? "" : "s"}` : modelEntries.length ? "earlier proposals" : modelAllowed ? "no request made" : "off";
@@ -1301,7 +1349,11 @@ function renderMethodResult(result) {
   $("method-usage").replaceChildren(element("span", "usage-label", "This result"), element("span", "badge", "DS parser · ran"), element("span", "badge muted", `Analysis LLM · ${modelUsage}`), element("span", "badge muted", `Jev · ${jevUsage}`));
   const notes = [];
   let title = "No LLM used";
-  if (mode === "assisted") {
+  if (result.experimental_grammar) {
+    title = result.experimental_grammar.used ? "Experimental grammar · model-proposed DS rules" : "Experimental grammar mode";
+    notes.push(result.experimental_grammar.notice);
+    notes.push(`${modelRequests} experimental rule request(s). Jev ${jevRequests ? `made ${jevRequests} request(s) for dictionary senses.` : "made no live sense requests."}`);
+  } else if (mode === "assisted") {
     const count = report.attempts?.length || 0;
     title = count ? `LLM assistance · ${count} model request${count === 1 ? "" : "s"}` : "No model request made";
     const constructionCalls = report.attempts?.filter(a => a.kind === "construction").length || 0;
@@ -1380,6 +1432,10 @@ function renderDiagnostics(result) {
   const titles = { search_limit: "Search limit reached", lexicon_gap: "Missing lexical entry", construction_gap: "Construction outside fragment", constraint_violation: "Grammar constraint violated", pcc_violation: "Person–Case Constraint (PCC)", semantic_type_mismatch: "Semantic type mismatch", unresolved_parse_failure: "No derivation · cause unassessed", missing_context: "Missing repair context", repair_unavailable: "Local repair unavailable", context_boundary: "Tree boundary needed" };
   $("diagnosis-title").textContent = result.failure ? titles[result.failure.kind] || "Parse stopped" : result.complete ? "Complete derivation" : "Incomplete derivation";
   $("diagnosis-detail").textContent = result.failure ? `Stopped at token ${result.failure.index + 1}: “${result.failure.token}”. The accepted prefix remains available in the tree.` : result.pending_repair ? "The repair marker is waiting for replacement words." : result.complete ? "All tree requirements are satisfied in this grammar." : "The input was accepted, but a current or earlier tree has open requirements.";
+  if (result.experimental_grammar?.used && result.complete) {
+    $("diagnosis-title").textContent = "Complete under experimental grammar";
+    $("diagnosis-detail").textContent = "DS requirements are satisfied under the displayed model-proposed lexical rules. Their linguistic analysis has not been reviewed.";
+  }
   if (result.failure?.kind === "search_limit") $("diagnosis-detail").textContent = result.failure.message;
   if (report.grammar_constraint) $("diagnosis-detail").textContent = report.grammar_constraint.explanation + " Basis: " + report.grammar_constraint.source;
   const missing = report.lexical_coverage.filter((word) => !word.known);
@@ -1510,6 +1566,15 @@ $("reading").addEventListener("change", () => {
 });
 $("lexical-mode").addEventListener("change", renderLexicalSettings);
 $("llm-enabled").addEventListener("change", () => changeAssistance("llm"));
+$("experimental-enabled").addEventListener("change", () => {
+  if ($("experimental-enabled").checked) {
+    $("llm-enabled").checked = true;
+    $("compare-jev").checked = false;
+    $("n-best").value = "1";
+    if ($("lexical-mode").value !== "jev") $("lexical-mode").value = analysisMode();
+  }
+  renderLexicalSettings();
+});
 $("jev-enabled").addEventListener("change", () => changeAssistance("jev"));
 $("model-settings-button").addEventListener("click", () => { stop(); $("lexical-settings").open = true; $("models-dialog").showModal(); });
 $("models-close").addEventListener("click", () => $("models-dialog").close());

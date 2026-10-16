@@ -1,5 +1,17 @@
 # Template-based lexical expansion
 
+For current browser controls and BYOK setup, use the [user guide](../community/using.md).
+AI defaults **off**, even when a provider is connected. The browser can supply
+an OpenRouter key for isolated requests. The server-only setup below describes
+the original local interface, not the current public connection flow.
+
+The ordinary proposal contract now includes postverbal **adverb**, with invariant
+morphology and exactly `[Prop]` as its domain. It declares a modifier and instantiates
+the maintained main-clause, embedded-clause and nonrestrictive-relative LINK actions.
+It does not supply arbitrary adverb placement or degree/frequency/time semantics.
+For model-written action programs beyond these templates, see the separately
+enabled [experimental grammar mode](experimental-grammar.md).
+
 The workbench can extend the two native English lexicons before parsing. A new
 surface form selects an existing lexical action template and supplies its semantic
 symbol and argument sorts. The parser executes that template's actual make/go/put
