@@ -10,8 +10,19 @@ these are `Dropbox/DS_workbench` and `Dropbox/DS_workbench_deploy`.
 Edit the source checkout; publish from the deployment folder after staging
 and checking the intended changes. Git pushes do not deploy this app.
 
+**16 October 2026 focused derivation update:** Production deployment
+`dpl_9vXvuyXRDNtKqz4DCd7R9i25GWZn` was published from the visible deployment
+folder, using frontend source commit `e2668fb`. It adds Focus on derivation,
+browser fullscreen, explicit replay from a completed/stopped endpoint, and
+automatically growing sentence entry. Only four frontend assets changed in the
+354-file runtime bundle. All manifest hashes were verified before publication.
+The bundle passed 11 workspace checks and six rule-playback cases. Public
+verification matched all four assets to source, exercised completion/replay and
+the Greek PCC failure view, and confirmed the memorial remains present.
+See [the verification record](../../data/coverage/frontend-focus-2026-10-16.json).
+
 On 16 October the live bundle was moved out of hidden staging without changing
-any of its 354 manifest entries or its Vercel project link. It matches production
+any of its 354 manifest entries or its Vercel project link. At that point it matched production
 deployment `dpl_BDJW8eMirph6seGykH92HRzoyC3Y`, including the Ronnie Cann dedication
 and dates. The dated hidden folders mentioned below are historical snapshots,
 not the current deployment working folder. Moving the folder did not redeploy

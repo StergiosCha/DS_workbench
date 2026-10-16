@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-16",
+  "scope": "Frontend interaction and deployment verification; not a linguistic coverage evaluation",
+  "source_commit": "e2668fb",
+  "deployment_id": "dpl_9vXvuyXRDNtKqz4DCd7R9i25GWZn",
+  "deployment_url": "https://ds-workbench-el4ujas03-stergios-projects3.vercel.app",
+  "deployment_folder": "DS_workbench_deploy",
+  "manifest_files_verified": 354,
+  "changed_assets": [
+    "workbench/index.html",
+    "workbench/app.js",
+    "workbench/workspace.js",
+    "workbench/workspace.css"
+  ],
+  "workspace": {
+    "checks": [
+      "desktop: focused view, explicit replay, zoom/state preservation and reachable transport",
+      "Tabs and library filters preserve the parse and make no parse/model requests",
+      "Sentence wraps and grows on mobile; keyboard submission and programmatic examples resize correctly",
+      "Greek lab examples return to Parse and complete through DS",
+      "Alternative attachment analyses open at their own completed meanings without autoplay",
+      "Candidates grouped by word; evidence and action programs remain inspectable",
+      "Manual zoom persists between steps; Auto-fit restores following the tree",
+      "Model drawer and all LLM/Jev switch combinations preserve explicit permissions and usage counts",
+      "Paragraph sentence playback and shared dialogue examples still complete",
+      "mobile: focused view, explicit replay, zoom/state preservation and reachable transport",
+      "Mobile playback targets, timeline bounds, formula placement and inspector disclosure checked"
+    ],
+    "metrics": {
+      "desktop_derivation_y": 617.3125,
+      "mobile_derivation_y": 1048.765625
+    }
+  },
+  "rule_playback": {
+    "passed_cases": 6,
+    "also_checked": [
+      "Operation inspection",
+      "Mobile layout"
+    ],
+    "command": "python scripts/check_rule_playback_browser.py --url <local-bundle-url>"
+  },
+  "live": {
+    "url": "https://ds-workbench.vercel.app",
+    "matching_assets": {
+      "index.html": "de4dc5c58e0aea79324c18e60d0cb6f59132c58d7d9fb95859c5090627ef5d9c",
+      "app.js": "a3c1e04547702f23837e8f805106d08d661e593c37152e60c63b5c2aa4c68fd7",
+      "workspace.js": "52fbd5adcc456a6be1bde0ed16e50605e3679b60838b7fa78efcacdd74662f90",
+      "workspace.css": "bf0bf8454c42691436b5929bfad233fb95860fd078158907c88a46c2a9b2e3f9"
+    },
+    "english_complete": true,
+    "greek_failure": {
+      "token": "με",
+      "index": 1,
+      "message": "Person–Case Constraint (PCC), under the clitic reading: “του” is a genitive clitic and “με” is a first/second-person accusative clitic. In this grammar both target the same locally unfixed node, where their referent/case requirements clash. The cluster is blocked; the tree shown is only the prefix before the second clitic.",
+      "kind": "pcc_violation"
+    },
+    "browser_errors": []
+  },
+  "models": "No real keys or billed model requests used. Workspace tests use a fixture connection and real DS derivations."
+}
