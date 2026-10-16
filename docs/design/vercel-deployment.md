@@ -2,6 +2,34 @@
 
 Public demo: **https://ds-workbench.vercel.app/**
 
+## Current working folders
+
+The active source checkout is the visible `DS_workbench` folder. Its deployment
+bundle is the visible sibling **`DS_workbench_deploy`**. In the current workspace
+these are `Dropbox/DS_workbench` and `Dropbox/DS_workbench_deploy`.
+Edit the source checkout; publish from the deployment folder after staging
+and checking the intended changes. Git pushes do not deploy this app.
+
+On 16 October the live bundle was moved out of hidden staging without changing
+any of its 354 manifest entries or its Vercel project link. It matches production
+deployment `dpl_BDJW8eMirph6seGykH92HRzoyC3Y`, including the Ronnie Cann dedication
+and dates. The dated hidden folders mentioned below are historical snapshots,
+not the current deployment working folder. Moving the folder did not redeploy
+or change the public site.
+
+From the current deployment folder, the publication command is:
+
+```sh
+vercel deploy --prod --yes --scope stergios-projects3
+```
+
+The builder now defaults to a visible sibling named `<source-folder>_deploy`;
+an explicit `--output` still overrides it. A full rebuild requires the original
+WordNet/Brown/Gutenberg indexes under the source checkout's `.ds-workbench`
+data paths. The current deployment bundle already contains those runtime
+indexes, but a moved source checkout does not automatically acquire builder
+inputs from it. Prepare the data inputs before rebuilding the whole bundle.
+
 **7 October 2026 PCC correction:** Deployment
 `dpl_3Y1wYaPPk27C9syVhDyhZca6Zt8A` restores failed conditional effects before
 trying another metavariable binding. `του με έδωσε` stops at the second clitic
@@ -119,13 +147,13 @@ uv sync --extra hosting
 # Requires the English/WordNet indexes to have been built already.
 .venv/bin/python scripts/prepare_vercel.py
 
-# From the generated .ds-workbench/vercel directory:
+# From the generated ../DS_workbench_deploy directory:
 vercel deploy --dry --format json
 vercel deploy --prod --yes --scope stergios-projects3
 ```
 
-The staging script copies an explicit set of runtime files into the ignored
-`.ds-workbench/vercel/` directory and records a hash manifest. It also installs
+The staging script copies an explicit set of runtime files into the visible
+sibling deployment directory and records a hash manifest. It also installs
 the repository's `resources/` folder under `src/dynamicsyntax/resources/`, as
 `setup.py` normally does. The package contains about 75 MiB before dependencies,
 well below Vercel's standard Python bundle limit. Runtime NLTK is unnecessary.

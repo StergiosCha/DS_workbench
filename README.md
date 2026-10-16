@@ -48,6 +48,10 @@ Use `uv sync --locked --extra hosting` for the optional ASGI server.
 The development server binds to `127.0.0.1`; public hosting uses
 `dylan.workbench_asgi:app`, as explained in the maintainer guide.
 
+The current deployment bundle lives beside this source checkout in the visible
+`DS_workbench_deploy` folder. Edit code here; stage and publish from that folder.
+See [deployment instructions](docs/design/vercel-deployment.md#current-working-folders).
+
 ## Use the Python API
 
 ```python

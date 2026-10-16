@@ -82,5 +82,8 @@ def prepare(target):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=ROOT / ".ds-workbench/vercel")
+    parser.add_argument(
+        "--output", type=Path, default=ROOT.with_name(ROOT.name + "_deploy"),
+        help="Deployment folder; defaults to a visible sibling of the source checkout (%(default)s).",
+    )
     prepare(parser.parse_args().output.resolve())
