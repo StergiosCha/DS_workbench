@@ -132,6 +132,20 @@ class Merge(Effect):
             if combined is None:
                 logger.debug("merge: incompatible descendant at %s", destination)
                 return None
+            if (child.get_formula() is None and target.get_formula() is not None
+                    and (address.down0() in tree or address.down1() in tree)):
+                # The incoming subtree must compose its own formula. Keeping
+                # the target's reference placeholder would let SUBSTITUTION
+                # bypass ELIMINATION and discard the overt DP's restrictor.
+                # An already resolved target must wait for a compatible source
+                # formula; it cannot justify an unfinished nominal analysis.
+                if not isinstance(target.get_formula(), FormulaMetavariable):
+                    logger.debug("merge: source composition must precede concrete reference unification")
+                    return None
+                combined.remove_formula_label()
+                combined.add_label(label_factory_create("?Ex.Fo(x)"))
+                if target.get_type() is not None:
+                    combined.add_label(Requirement(TypeLabel(target.get_type())))
             planned[destination] = combined
         remaining = (set(tree) - {address for address, _ in source_nodes}) | set(planned)
         for address, combined in planned.items():

@@ -20,26 +20,38 @@ def sample(specs):
     return tree, Merge(Modality.relating(tree.pointer, NodeAddress("0*")))
 
 
-@pytest.mark.parametrize("target,source", [
-    (["Fo(mltt:john)"], ["Fo(mltt:mary)"]),
-    (["Ty(mltt:CN)"], ["Ty(mltt:Prop)"]),
-    (["Case(nom)"], ["Case(acc)"]),
-])
+@pytest.mark.parametrize(
+    "target,source",
+    [
+        (["Fo(mltt:john)"], ["Fo(mltt:mary)"]),
+        (["Ty(mltt:CN)"], ["Ty(mltt:Prop)"]),
+        (["Case(nom)"], ["Case(acc)"]),
+    ],
+)
 def test_descendant_conflict_leaves_entire_tree_unchanged(target, source):
-    tree, effect = sample({"00": ["?Ty(mltt:object)"],
-                           "0*": ["Ty(mltt:object)", "?Ex.Tn(x)"],
-                           "000": target, "0*0": source,
-                           "0*1": ["Ty(mltt:CN)"]})
+    tree, effect = sample(
+        {
+            "00": ["?Ty(mltt:object)"],
+            "0*": ["Ty(mltt:object)", "?Ex.Tn(x)"],
+            "000": target,
+            "0*0": source,
+            "0*1": ["Ty(mltt:CN)"],
+        }
+    )
     before = tree.clone()
     assert effect.exec_tuple_context(tree, None) is None
     assert tree == before
 
 
 def test_descendant_union_preserves_destination_requirements_and_more_specific_values():
-    tree, effect = sample({"00": ["?Ty(mltt:object)"],
-                           "0*": ["Ty(mltt:object)", "?Ex.Tn(x)"],
-                           "000": ["Ty(mltt:human)", "Fo(mltt:john)", "?[+CHECK]"],
-                           "0*0": ["Ty(mltt:object)", "Fo(U_x)", "?Ex.Fo(x)"]})
+    tree, effect = sample(
+        {
+            "00": ["?Ty(mltt:object)"],
+            "0*": ["Ty(mltt:object)", "?Ex.Tn(x)"],
+            "000": ["Ty(mltt:human)", "Fo(mltt:john)", "?[+CHECK]"],
+            "0*0": ["Ty(mltt:object)", "Fo(U_x)", "?Ex.Fo(x)"],
+        }
+    )
     assert effect.exec_tuple_context(tree, None) is tree
     node = tree[NodeAddress("000")]
     assert str(node.get_type()) == "human" and str(node.get_formula()) == "john"
@@ -48,13 +60,17 @@ def test_descendant_union_preserves_destination_requirements_and_more_specific_v
 
 
 def test_moves_cn_link_and_locally_unfixed_plus_descendants():
-    tree, effect = sample({"00": ["?Ty(mltt:object)"],
-                           "0*": ["Ty(mltt:object)", "?Ex.Tn(x)"],
-                           "0*0": ["Ty(mltt:CN)"],
-                           "0*00": ["Fo(mltt:man)"],
-                           "0*L": ["?Ty(mltt:Prop)"],
-                           "0*P": ["Ty(mltt:object)", "?Ex.Tn(x)"],
-                           "0*P0": ["?Ex.Fo(x)"]})
+    tree, effect = sample(
+        {
+            "00": ["?Ty(mltt:object)"],
+            "0*": ["Ty(mltt:object)", "?Ex.Tn(x)"],
+            "0*0": ["Ty(mltt:CN)"],
+            "0*00": ["Fo(mltt:man)"],
+            "0*L": ["?Ty(mltt:Prop)"],
+            "0*P": ["Ty(mltt:object)", "?Ex.Tn(x)"],
+            "0*P0": ["?Ex.Fo(x)"],
+        }
+    )
     assert NodeAddress("0*P") in {n.address for n in tree.get_unfixed_nodes()}
     assert NodeAddress("0*P") in {n.address for n in tree.get_daughters(tree[NodeAddress("0*")])}
     assert effect.exec_tuple_context(tree, None) is tree
@@ -76,7 +92,39 @@ def test_terminal_restriction_blocks_dp_daughters_in_either_direction(terminal, 
 
 
 def test_terminal_restriction_still_allows_link_daughter():
-    tree, effect = sample({"00": ["Ty(mltt:object)", "!"],
-                           "0*": ["Ty(mltt:object)"], "0*L": ["?Ty(mltt:Prop)"]})
+    tree, effect = sample(
+        {"00": ["Ty(mltt:object)", "!"], "0*": ["Ty(mltt:object)"], "0*L": ["?Ty(mltt:Prop)"]}
+    )
     assert effect.exec_tuple_context(tree, None) is tree
     assert NodeAddress("00L") in tree
+
+
+def test_uncomposed_dp_cannot_inherit_a_reference_placeholder():
+    tree, effect = sample(
+        {
+            "00": ["Ty(mltt:object)", "Fo(U_pro)", "?Ex.Fo(x)"],
+            "0*": ["?Ty(mltt:object)", "?Ex.Tn(x)"],
+            "0*0": ["Ty(mltt:CN)", "Fo(mltt:person)"],
+            "0*1": ["Ty(mltt:arrow(CN,object))", "Fo(mltt:lam(A,CN,definite(A)))"],
+        }
+    )
+    assert effect.exec_tuple_context(tree, None) is tree
+    subject = tree[NodeAddress("00")]
+    assert subject.get_formula() is None
+    assert subject.contains(label_factory_create("?Ex.Fo(x)"))
+    assert subject.contains(label_factory_create("?Ty(mltt:object)"))
+    assert not subject.is_complete()
+    assert NodeAddress("001") in tree
+
+
+def test_uncomposed_dp_does_not_merge_with_an_already_resolved_reference():
+    tree, effect = sample(
+        {
+            "00": ["Ty(mltt:object)", "Fo(mltt:pro)"],
+            "0*": ["?Ty(mltt:object)", "?Ex.Tn(x)"],
+            "0*0": ["Ty(mltt:CN)", "Fo(mltt:person)"],
+        }
+    )
+    before = tree.clone()
+    assert effect.exec_tuple_context(tree, None) is None
+    assert tree == before
