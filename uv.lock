@@ -437,6 +437,10 @@ nlp = [
     { name = "nltk" },
     { name = "spacy" },
 ]
+research = [
+    { name = "numpy" },
+    { name = "scipy" },
+]
 rich = [
     { name = "rich" },
 ]
@@ -466,17 +470,19 @@ requires-dist = [
     { name = "loguru", specifier = ">=0.7" },
     { name = "manim", marker = "extra == 'video'", specifier = ">=0.20" },
     { name = "nltk", marker = "extra == 'nlp'", specifier = ">=3.9" },
+    { name = "numpy", marker = "extra == 'research'", specifier = ">=2" },
     { name = "pandas", marker = "extra == 'viz'", specifier = ">=2" },
     { name = "plotly", marker = "extra == 'viz'", specifier = ">=5" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "rich", specifier = ">=14.3.3" },
     { name = "rich", marker = "extra == 'rich'", specifier = ">=13" },
+    { name = "scipy", marker = "extra == 'research'", specifier = ">=1.14" },
     { name = "spacy", marker = "extra == 'nlp'", specifier = ">=3.8" },
     { name = "textual", specifier = ">=8.2.8" },
     { name = "tqdm", specifier = ">=4.67" },
     { name = "uvicorn", marker = "extra == 'hosting'", specifier = "==0.41.0" },
 ]
-provides-extras = ["hosting", "gui", "nlp", "viz", "video", "rich"]
+provides-extras = ["hosting", "gui", "nlp", "viz", "research", "video", "rich"]
 
 [package.metadata.requires-dev]
 dev = [

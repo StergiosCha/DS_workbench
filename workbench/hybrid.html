@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed"><title>Hybrid syntax lab · DS Workbench</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="hybrid.css"><script src="hybrid.js" defer></script>
+</head>
+<body>
+<header><a href="/" class="brand">λ <strong>DS Workbench</strong></a><span>RESEARCH BRANCH</span><a href="/">← Workbench</a></header>
+<main>
+  <div class="intro"><p class="eyebrow">FORMAL MACHINERY, INSPECTABLE ASSUMPTIONS</p><h1>Hybrid syntax lab</h1><p class="lead">Let different grammatical tools do precise jobs. Follow a derivation, inspect the interfaces, and test predictions against evidence.</p></div>
+  <p class="scope">Executable fragments of DS, feature constraints, LFG, CCG and a Minimalist Grammar. Their correspondence is partial; the controls below expose what each fragment actually derives.</p>
+  <nav role="tablist" aria-label="Research areas"><button role="tab" id="tab-analysis" aria-controls="analysis" aria-selected="true">Analyses</button><button role="tab" id="tab-evidence" aria-controls="evidence" aria-selected="false" tabindex="-1">Evidence</button><button role="tab" id="tab-assistance" aria-controls="assistance" aria-selected="false" tabindex="-1">Lexical assistance</button></nav>
+  <p id="connection" role="status">Connecting to the research worker…</p>
+  <section id="analysis" role="tabpanel" aria-labelledby="tab-analysis">
+    <form id="analysis-form" class="panel">
+      <label class="wide">EXAMPLE<select id="example"></select></label>
+      <label>GRAMMAR<select id="grammar"><option value="2026-english-classical">English · Classical</option><option value="2026-smg-classical">Modern Greek · Classical</option></select></label>
+      <label>CONFIGURATION<select id="framework"><option value="hybrid">DS + constraints + LFG</option><option value="ds">Native DS</option><option value="ccg">CCG fragment</option><option value="minimalist">Minimalist Grammar fragment</option><option value="compare">Compare declared fragments</option></select></label>
+      <label class="wide">WORDS<textarea id="text" rows="2" maxlength="1000" required>John likes Mary</textarea></label>
+      <label>LEFT CONTEXT · DS<input id="left-context" maxlength="500" placeholder="Optional observed words"></label>
+      <label class="check"><input type="checkbox" id="complete" checked> Require a completed DS interpretation</label>
+      <div class="wide controls"><button class="primary" id="build" type="submit">Build analysis →</button><span id="analysis-status" role="status"></span></div>
+    </form>
+    <div id="analysis-result" aria-live="polite"></div>
+  </section>
+  <section id="evidence" role="tabpanel" aria-labelledby="tab-evidence" hidden>
+    <div id="evidence-intro"></div>
+    <article class="panel block"><h2>Reproduce the reported effects</h2><p>Original preprocessing and contrasts recomputed from archived posterior draws. These intervals belong to the authors’ fitted model.</p><div id="posterior-table" class="table-wrap"></div></article>
+    <article class="panel block"><h2>Check coverage before comparison</h2><div id="coverage-table" class="table-wrap"></div><p id="coverage-note" class="note"></p></article>
+    <article class="panel block"><h2>Inspect the matched prime–target families</h2><p>Every experimental alternative in these two families has a DS analysis in the fixed context bank. Human means below are raw retained-trial descriptives, separate from posterior contrasts and held-out predictions.</p><div id="matched-table" class="table-wrap"></div><div id="matched-features"></div></article>
+    <article class="panel block"><h2>Ask which features improve prediction</h2><p>M0: lexical controls. M1: POS sequences. M2: bounded CFG fragments. M3: DS action/state projections. M4: POS + DS. The extra rows remove feature groups.</p><div class="controls"><label>COHORT<select id="cohort"><option value="all">All retained trials</option><option value="ds_matched">Fully supported DS families</option></select></label><label>HELD OUT<select id="regime"><option value="family">Lexical families · primary</option><option value="participant">Participants</option><option value="pattern">Target POS patterns</option></select></label></div><p id="comparison-note" class="note"></p><div id="comparison-table" class="table-wrap"></div></article>
+    <article class="panel block"><h2>What the evidence can establish</h2><ul id="limitations"></ul><div id="sources"></div></article>
+  </section>
+  <section id="assistance" role="tabpanel" aria-labelledby="tab-assistance" hidden>
+    <article class="panel block"><h2>A judgment beside the grammar</h2><p>Jev ranks an explicit inventory of lexical programs. An LLM can draft entries that compile against the declared schema. These are inspectable suggestions; compilation alone does not validate an analysis.</p>
+      <form id="assistance-form"><label>OBSERVED PREFIX<input id="assist-prefix" value="John walked to the" maxlength="500"></label><label>NEXT WORD<input id="assist-word" value="bank" maxlength="40" required pattern="[A-Za-z]+"></label><label class="check"><input type="checkbox" id="live-jev"> Use live Jev through the configured provider</label><p id="provider-status"></p><div class="controls"><button class="primary" id="rank" type="submit">Inspect candidate ranking →</button><button id="draft" type="button">Request live LLM draft</button><span id="assist-status" role="status"></span></div></form>
+      <p class="note">With live Jev off, the response is an explicitly labelled stub. A live request sends the prefix and candidate inventory to the configured model provider.</p>
+    </article><div id="assistance-result"></div>
+  </section>
+</main><footer>Experimental syntax, explicit limits. <a href="https://www.nature.com/articles/s41562-025-02387-z" target="_blank" rel="noopener noreferrer">Nielsen &amp; Christiansen · source article ↗</a></footer>
+</body></html>

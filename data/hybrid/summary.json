@@ -1,0 +1,2646 @@
+{
+  "schema": 1,
+  "date": "2026-10-28",
+  "status": "exploratory_research_snapshot",
+  "article": {
+    "authors": "Yngwie A. Nielsen & Morten H. Christiansen",
+    "title": "Evidence for the representation of non-hierarchical structures in language",
+    "doi": "10.1038/s41562-025-02387-z",
+    "url": "https://www.nature.com/articles/s41562-025-02387-z"
+  },
+  "sources": [
+    {
+      "name": "Authors' public project",
+      "url": "https://osf.io/ymndq/",
+      "license": "data CC BY 4.0; code MIT, per upstream license.txt"
+    },
+    {
+      "name": "UD English EWT r2.15 training corpus",
+      "url": "https://github.com/UniversalDependencies/UD_English-EWT/tree/r2.15",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "name": "Kolliakou (2004), Monadic definites and polydefinites",
+      "url": "https://doi.org/10.1017/S0022226704002531",
+      "scope": "theoretical reference, not a claim to reproduce the full analysis"
+    }
+  ],
+  "participants": 497,
+  "retained_trials": 26962,
+  "preprocessing": {
+    "schema": 1,
+    "studies": [
+      {
+        "study": 1,
+        "participants": 40,
+        "included_pairs": 2174,
+        "expected_participants": 40,
+        "expected_pairs": 2174,
+        "counts_match_publication": true,
+        "cutoff_seconds": 2.3408431879999996,
+        "preprocessing_mismatches": [],
+        "history_issues": [],
+        "observations": 14080,
+        "history_verified_pairs": 2816,
+        "exclusions": {
+          "slow": 133,
+          "include": 2174,
+          "incorrect": 252,
+          "quick": 1
+        },
+        "raw_descriptive_means_ms": {
+          "exp": {
+            "n": 1101,
+            "mean": 848.8317817938238,
+            "median": 769.5
+          },
+          "con": {
+            "n": 1073,
+            "mean": 880.6373725396086,
+            "median": 800.5
+          }
+        },
+        "interpretation": "Preprocessing reproduction and sample descriptives; not Bayesian posterior estimates."
+      },
+      {
+        "study": 2,
+        "participants": 57,
+        "included_pairs": 2739,
+        "expected_participants": 57,
+        "expected_pairs": 2739,
+        "counts_match_publication": true,
+        "cutoff_seconds": 3.1367999999999996,
+        "preprocessing_mismatches": [],
+        "history_issues": [],
+        "observations": 22720,
+        "history_verified_pairs": 4544,
+        "exclusions": {
+          "include": 2739,
+          "slow": 179,
+          "incorrect": 729,
+          "quick": 1
+        },
+        "raw_descriptive_means_ms": {
+          "control": {
+            "n": 953,
+            "mean": 1089.1895068205665,
+            "median": 985.6
+          },
+          "experimental": {
+            "n": 923,
+            "mean": 1057.5592632719392,
+            "median": 917.6
+          },
+          "reverse": {
+            "n": 863,
+            "mean": 1115.8857473928158,
+            "median": 995.9
+          }
+        },
+        "interpretation": "Preprocessing reproduction and sample descriptives; not Bayesian posterior estimates."
+      },
+      {
+        "study": 3,
+        "participants": 200,
+        "included_pairs": 11033,
+        "expected_participants": 200,
+        "expected_pairs": 11033,
+        "counts_match_publication": true,
+        "cutoff_seconds": 2.5931999999999995,
+        "preprocessing_mismatches": [],
+        "history_issues": [],
+        "observations": 65280,
+        "history_verified_pairs": 13056,
+        "exclusions": {
+          "include": 11033,
+          "incorrect": 1269,
+          "slow": 493,
+          "quick": 5
+        },
+        "raw_descriptive_means_ms": {
+          "control": {
+            "n": 5516,
+            "mean": 997.4948585930022,
+            "median": 902.0
+          },
+          "experimental": {
+            "n": 5517,
+            "mean": 965.8397571107486,
+            "median": 876.3
+          }
+        },
+        "interpretation": "Preprocessing reproduction and sample descriptives; not Bayesian posterior estimates."
+      },
+      {
+        "study": 4,
+        "participants": 200,
+        "included_pairs": 11016,
+        "expected_participants": 200,
+        "expected_pairs": 11016,
+        "counts_match_publication": true,
+        "cutoff_seconds": 3.3047749999999994,
+        "preprocessing_mismatches": [],
+        "history_issues": [],
+        "observations": 65920,
+        "history_verified_pairs": 13184,
+        "exclusions": {
+          "include": 11016,
+          "incorrect": 1221,
+          "slow": 536,
+          "quick": 27
+        },
+        "raw_descriptive_means_ms": {
+          "whole_part:experimental": {
+            "n": 1438,
+            "mean": 1106.0187774673157,
+            "median": 984.4
+          },
+          "part_part:experimental": {
+            "n": 1385,
+            "mean": 1080.843291701083,
+            "median": 937.9
+          },
+          "part_part:control": {
+            "n": 1315,
+            "mean": 1109.4356676760456,
+            "median": 968.1999999999999
+          },
+          "part_whole:control": {
+            "n": 1336,
+            "mean": 1192.6842245546407,
+            "median": 1052.55
+          },
+          "whole_part:control": {
+            "n": 1341,
+            "mean": 1131.2387472065623,
+            "median": 985.4000000000001
+          },
+          "part_whole:experimental": {
+            "n": 1406,
+            "mean": 1170.7677631664296,
+            "median": 1049.4
+          },
+          "whole_whole:experimental": {
+            "n": 1440,
+            "mean": 1152.3201729145833,
+            "median": 1020.75
+          },
+          "whole_whole:control": {
+            "n": 1355,
+            "mean": 1158.9659483350554,
+            "median": 1044.0
+          }
+        },
+        "interpretation": "Preprocessing reproduction and sample descriptives; not Bayesian posterior estimates."
+      }
+    ],
+    "source_manifest_sha256": "94cf98985cc2526417c270e875fd07529bff451158a37d65d520583efbf6b2ab"
+  },
+  "posterior": {
+    "schema": 1,
+    "studies": [
+      {
+        "study": 1,
+        "preprocessing_matches": true,
+        "posterior_draws": 6000,
+        "posterior_source": "archived fitted model; not a new fit",
+        "expectation": "ndt + exp(cell_coefficient + sigma^2/2); population level, random effects zero",
+        "conditions": {
+          "control": {
+            "estimate_ms": 854.078343919823,
+            "lower_ms": 799.485694486325,
+            "upper_ms": 915.596079050303,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "experimental": {
+            "estimate_ms": 821.384873840569,
+            "lower_ms": 766.676514673181,
+            "upper_ms": 885.188237609942,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          }
+        },
+        "contrasts": {
+          "experimental": {
+            "estimate_ms": -33.026322181721,
+            "lower_ms": -61.051110554691,
+            "upper_ms": -3.90597158471,
+            "probability_direction": 0.9861666666667,
+            "evidence_ratio": 71.289156626506
+          }
+        }
+      },
+      {
+        "study": 2,
+        "preprocessing_matches": true,
+        "posterior_draws": 6000,
+        "posterior_source": "archived fitted model; not a new fit",
+        "expectation": "ndt + exp(cell_coefficient + sigma^2/2); population level, random effects zero",
+        "conditions": {
+          "control": {
+            "estimate_ms": 1082.154889534866,
+            "lower_ms": 1031.053815690757,
+            "upper_ms": 1137.445721387672,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "experimental": {
+            "estimate_ms": 1042.996469729176,
+            "lower_ms": 985.088655494466,
+            "upper_ms": 1105.630434845232,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "reverse": {
+            "estimate_ms": 1106.727562454666,
+            "lower_ms": 1046.693807360017,
+            "upper_ms": 1172.688782367389,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          }
+        },
+        "contrasts": {
+          "experimental": {
+            "estimate_ms": -39.161883963065,
+            "lower_ms": -88.586427425919,
+            "upper_ms": 10.497740794758,
+            "probability_direction": 0.9411666666667,
+            "evidence_ratio": 15.99716713881
+          },
+          "experimental_vs_reverse": {
+            "estimate_ms": -63.771950977187,
+            "lower_ms": -119.181578305348,
+            "upper_ms": -8.399595021267,
+            "probability_direction": 0.987,
+            "evidence_ratio": 75.923076923077
+          },
+          "reverse_vs_control": {
+            "estimate_ms": 24.264978182769,
+            "lower_ms": -26.494970384708,
+            "upper_ms": 76.801977999521,
+            "probability_direction": 0.8286666666667,
+            "evidence_ratio": 4.836575875486
+          }
+        }
+      },
+      {
+        "study": 3,
+        "preprocessing_matches": true,
+        "posterior_draws": 6000,
+        "posterior_source": "archived fitted model; not a new fit",
+        "expectation": "ndt + exp(cell_coefficient + sigma^2/2); population level, random effects zero",
+        "conditions": {
+          "control:constituent": {
+            "estimate_ms": 911.334958903823,
+            "lower_ms": 871.778780082108,
+            "upper_ms": 949.926290684055,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "experimental:constituent": {
+            "estimate_ms": 890.407623339993,
+            "lower_ms": 848.197265102837,
+            "upper_ms": 933.055310020514,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "control:non-constituent": {
+            "estimate_ms": 1057.743260637016,
+            "lower_ms": 1009.452488056826,
+            "upper_ms": 1110.231368925589,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "experimental:non-constituent": {
+            "estimate_ms": 1020.94285500043,
+            "lower_ms": 970.535011133552,
+            "upper_ms": 1075.690982227033,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          }
+        },
+        "contrasts": {
+          "experimental:constituent": {
+            "estimate_ms": -20.546269113608,
+            "lower_ms": -38.946475180525,
+            "upper_ms": -1.827573041441,
+            "probability_direction": 0.9818333333333,
+            "evidence_ratio": 54.045871559633
+          },
+          "experimental:non-constituent": {
+            "estimate_ms": -36.469060309171,
+            "lower_ms": -59.971628327846,
+            "upper_ms": -13.162730368727,
+            "probability_direction": 0.9983333333333,
+            "evidence_ratio": 598.999999999986
+          },
+          "moderation": {
+            "estimate_ms": 15.978601579095,
+            "lower_ms": -13.49511012126,
+            "upper_ms": 45.8004412237,
+            "probability_direction": 0.861,
+            "evidence_ratio": 6.194244604317
+          }
+        }
+      },
+      {
+        "study": 4,
+        "preprocessing_matches": true,
+        "posterior_draws": 6000,
+        "posterior_source": "archived fitted model; not a new fit",
+        "expectation": "ndt + exp(cell_coefficient + sigma^2/2); population level, random effects zero",
+        "conditions": {
+          "control:part_part": {
+            "estimate_ms": 1077.631149872024,
+            "lower_ms": 1031.627085066172,
+            "upper_ms": 1127.714085394124,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "control:part_whole": {
+            "estimate_ms": 1164.224829459644,
+            "lower_ms": 1109.077122845797,
+            "upper_ms": 1220.506227332418,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "control:whole_part": {
+            "estimate_ms": 1096.292110135663,
+            "lower_ms": 1051.601325905285,
+            "upper_ms": 1142.869268213611,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "control:whole_whole": {
+            "estimate_ms": 1149.337931009397,
+            "lower_ms": 1098.44769674036,
+            "upper_ms": 1202.318279953337,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "experimental:part_part": {
+            "estimate_ms": 1047.006563635735,
+            "lower_ms": 1002.451961975189,
+            "upper_ms": 1092.192318721438,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "experimental:part_whole": {
+            "estimate_ms": 1139.25250542641,
+            "lower_ms": 1089.43634381498,
+            "upper_ms": 1189.482754324122,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "experimental:whole_part": {
+            "estimate_ms": 1074.532055104738,
+            "lower_ms": 1029.245713077369,
+            "upper_ms": 1121.662784716878,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          },
+          "experimental:whole_whole": {
+            "estimate_ms": 1111.805873868835,
+            "lower_ms": 1063.782542087158,
+            "upper_ms": 1160.585983373883,
+            "probability_direction": 1,
+            "evidence_ratio": {}
+          }
+        },
+        "contrasts": {
+          "experimental:part_part": {
+            "estimate_ms": -30.995332145252,
+            "lower_ms": -62.393231662315,
+            "upper_ms": -0.3122846727058,
+            "probability_direction": 0.9766666666667,
+            "evidence_ratio": 41.857142857143
+          },
+          "experimental:part_whole": {
+            "estimate_ms": -24.786305809355,
+            "lower_ms": -57.612806864298,
+            "upper_ms": 6.966123885572,
+            "probability_direction": 0.937,
+            "evidence_ratio": 14.873015873016
+          },
+          "experimental:whole_part": {
+            "estimate_ms": -21.455053219765,
+            "lower_ms": -52.757860356153,
+            "upper_ms": 10.322853797992,
+            "probability_direction": 0.9095,
+            "evidence_ratio": 10.049723756906
+          },
+          "experimental:whole_whole": {
+            "estimate_ms": -37.533473562368,
+            "lower_ms": -70.281217235019,
+            "upper_ms": -5.830765013435,
+            "probability_direction": 0.9893333333333,
+            "evidence_ratio": 92.75
+          }
+        }
+      }
+    ],
+    "R_version": "R version 4.4.0 (2024-04-24)"
+  },
+  "coverage": {
+    "original": {
+      "schema": 1,
+      "grammar": "2026-english-classical",
+      "grammar_sha256": "7b6ecea9be2e3949ef9ef8bf8df7962e47e0893d81f0050bf2cacec7db49ce89",
+      "context_bank_sha256": "797442bb500c18f565c89c85f76e14b1f020c2ce4dc1ec74681e42678ed14d7b",
+      "strings": 1021,
+      "statuses": {
+        "unsupported_lexicon": 976,
+        "no_analysis_in_context_bank": 35,
+        "recognized_fragment": 10
+      },
+      "families": 256,
+      "fully_supported_matched_families": [],
+      "included_trials_in_matched_families": 0,
+      "interpretation": "Coverage of a bounded grammar/context bank; no grammaticality or probability-of-English claim"
+    },
+    "dictionary": {
+      "schema": 1,
+      "grammar": "2026-english-classical",
+      "grammar_sha256": "7b6ecea9be2e3949ef9ef8bf8df7962e47e0893d81f0050bf2cacec7db49ce89",
+      "context_bank_sha256": "797442bb500c18f565c89c85f76e14b1f020c2ce4dc1ec74681e42678ed14d7b",
+      "strings": 1021,
+      "vocabulary": "dictionary",
+      "statuses": {
+        "unsupported_lexicon": 620,
+        "recognized_fragment": 171,
+        "no_analysis_in_context_bank": 230
+      },
+      "families": 256,
+      "fully_supported_matched_families": [
+        "s2:i53",
+        "s3:i6"
+      ],
+      "included_trials_in_matched_families": 233,
+      "interpretation": "Coverage of a bounded grammar/context bank; no grammaticality or probability-of-English claim"
+    }
+  },
+  "protocol": {
+    "schema": 2,
+    "seed": 20261028,
+    "folds": 3,
+    "memory_decay": 0.8,
+    "models": {
+      "M0": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition"
+      ],
+      "M1": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition",
+        "pos2_overlap",
+        "pos3_overlap",
+        "pos2_recency",
+        "pos3_recency",
+        "pos2_frequency",
+        "pos3_frequency"
+      ],
+      "M2": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition",
+        "tree_overlap",
+        "tree_recency"
+      ],
+      "M3": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition",
+        "action_overlap",
+        "action_recency",
+        "state_overlap",
+        "state_recency"
+      ],
+      "M4": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition",
+        "pos2_overlap",
+        "pos3_overlap",
+        "pos2_recency",
+        "pos3_recency",
+        "pos2_frequency",
+        "pos3_frequency",
+        "action_overlap",
+        "action_recency",
+        "state_overlap",
+        "state_recency"
+      ],
+      "M1-bigrams": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition",
+        "pos2_overlap",
+        "pos2_recency",
+        "pos2_frequency"
+      ],
+      "M1-trigrams": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition",
+        "pos3_overlap",
+        "pos3_recency",
+        "pos3_frequency"
+      ],
+      "M3-actions": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition",
+        "action_overlap",
+        "action_recency"
+      ],
+      "M3-states": [
+        "prime_string_frequency",
+        "prime_unigram_frequency",
+        "prime_bigram_frequency",
+        "target_string_frequency",
+        "target_unigram_frequency",
+        "target_bigram_frequency",
+        "prime_characters",
+        "target_characters",
+        "prime_words",
+        "target_words",
+        "semantic_similarity",
+        "trial_order",
+        "lexical_overlap",
+        "lexical_recency",
+        "constituent_condition",
+        "state_overlap",
+        "state_recency"
+      ]
+    },
+    "outcome": "log RT, marginal-ML Gaussian crossed participant/item intercepts",
+    "primary_metric": "held-out pointwise predictive log density",
+    "regimes": [
+      "family",
+      "participant",
+      "pattern"
+    ],
+    "status": "exploratory reanalysis of published data; not preregistered",
+    "frequency": "published raw lexical counts and independent EWT training POS counts, log1p; study intercepts absorb lexical corpus scaling constants",
+    "tree_baseline": "declared bounded POS CFG, completed and right-frontier fragments; not gold trees"
+  },
+  "comparisons": {
+    "all": {
+      "family": {
+        "status": "evaluated",
+        "n": 26962,
+        "groups": 253,
+        "singleton_subjects": 0,
+        "subject_count": 497,
+        "models": {
+          "M0": {
+            "mean_log_predictive_density": -0.09957002301407746,
+            "log_rt_rmse": 0.2673530743467805,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": 1.6740156529065189,
+              "s2:all": 7.714707815439169,
+              "s3:constituent": 1.2532548444578424,
+              "s3:non-constituent": -6.679483505776716,
+              "s4:whole_part": -1.408421294019945,
+              "s4:part_part": -12.795236238212738,
+              "s4:part_whole": -0.0510821861689692,
+              "s4:whole_whole": 17.724135811435644
+            },
+            "gain_over_M0": {
+              "mean": 0.0,
+              "group_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "M1": {
+            "mean_log_predictive_density": -0.09690421306961257,
+            "log_rt_rmse": 0.26664148349052375,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -26.43360279124613,
+              "s2:all": -28.170089635860904,
+              "s3:constituent": -28.094177124637326,
+              "s3:non-constituent": -40.83772814939266,
+              "s4:whole_part": -8.831162577767145,
+              "s4:part_part": -39.65827553332292,
+              "s4:part_whole": -12.689682543235222,
+              "s4:whole_whole": -15.469662470992262
+            },
+            "gain_over_M0": {
+              "mean": 0.002665809944464878,
+              "group_bootstrap_95": [
+                -0.0017948736463926124,
+                0.007084581097877999
+              ]
+            }
+          },
+          "M2": {
+            "mean_log_predictive_density": -0.09855200663984469,
+            "log_rt_rmse": 0.2670766741535672,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -26.240847945332803,
+              "s2:all": -24.824823926054023,
+              "s3:constituent": -28.074367617862322,
+              "s3:non-constituent": -39.59061505687691,
+              "s4:whole_part": -5.828708053995115,
+              "s4:part_part": -39.66998034615858,
+              "s4:part_whole": -2.4013899207441227,
+              "s4:whole_whole": -12.495199120967982
+            },
+            "gain_over_M0": {
+              "mean": 0.001018016374232774,
+              "group_bootstrap_95": [
+                -0.00029822823673293815,
+                0.002454808281210418
+              ]
+            }
+          },
+          "M1-bigrams": {
+            "mean_log_predictive_density": -0.09530929802100162,
+            "log_rt_rmse": 0.2662187566643818,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -25.74637606313047,
+              "s2:all": -26.739191951613975,
+              "s3:constituent": -27.334103318069765,
+              "s3:non-constituent": -40.26457655500076,
+              "s4:whole_part": -14.233592246397166,
+              "s4:part_part": -40.28539090720892,
+              "s4:part_whole": -18.891997637484792,
+              "s4:whole_whole": -13.371763739465223
+            },
+            "gain_over_M0": {
+              "mean": 0.004260724993075846,
+              "group_bootstrap_95": [
+                -0.00035365542992495737,
+                0.009081109420033954
+              ]
+            }
+          },
+          "M1-trigrams": {
+            "mean_log_predictive_density": -0.09681218449168393,
+            "log_rt_rmse": 0.2666166406316301,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -26.643016798013264,
+              "s2:all": -27.975724818334584,
+              "s3:constituent": -28.536525925868773,
+              "s3:non-constituent": -40.90642212966873,
+              "s4:whole_part": -7.702472164687606,
+              "s4:part_part": -38.75305635787913,
+              "s4:part_whole": -12.432870344459161,
+              "s4:whole_whole": -14.805268658930117
+            },
+            "gain_over_M0": {
+              "mean": 0.0027578385223935406,
+              "group_bootstrap_95": [
+                -0.0013383731654945429,
+                0.007357332507056194
+              ]
+            }
+          }
+        },
+        "diagnostics": {
+          "M0": [
+            {
+              "fold": 0,
+              "train": 17349,
+              "test": 9613,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06052840629100747,
+              "group_variances": [
+                0.04575985351741581,
+                0.00875626709125679
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 18552,
+              "test": 8410,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06054481304077551,
+              "group_variances": [
+                0.046186826432088636,
+                0.007941242997416536
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18023,
+              "test": 8939,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06031326204930079,
+              "group_variances": [
+                0.04717206762362854,
+                0.009112517526340194
+              ]
+            }
+          ],
+          "M1": [
+            {
+              "fold": 0,
+              "train": 17349,
+              "test": 9613,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06030914088266775,
+              "group_variances": [
+                0.04579993464051902,
+                0.007984170449276108
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 18552,
+              "test": 8410,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.060314528253464145,
+              "group_variances": [
+                0.04617956932670725,
+                0.007257080374843026
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18023,
+              "test": 8939,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06012808667305553,
+              "group_variances": [
+                0.047163484660047036,
+                0.008276047445721716
+              ]
+            }
+          ],
+          "M2": [
+            {
+              "fold": 0,
+              "train": 17349,
+              "test": 9613,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06030878919841673,
+              "group_variances": [
+                0.04579232369772866,
+                0.008602786592877623
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 18552,
+              "test": 8410,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06031747598770111,
+              "group_variances": [
+                0.04617301730958611,
+                0.007856517583344496
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18023,
+              "test": 8939,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.0601615679670504,
+              "group_variances": [
+                0.04717326040597694,
+                0.009026718432746161
+              ]
+            }
+          ],
+          "M1-bigrams": [
+            {
+              "fold": 0,
+              "train": 17349,
+              "test": 9613,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.060342478544702295,
+              "group_variances": [
+                0.045783129043608796,
+                0.007949064402940121
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 18552,
+              "test": 8410,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06031886233269154,
+              "group_variances": [
+                0.04616854556332596,
+                0.0072666129707963465
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18023,
+              "test": 8939,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06014822727343995,
+              "group_variances": [
+                0.04717567999560696,
+                0.008273832523911255
+              ]
+            }
+          ],
+          "M1-trigrams": [
+            {
+              "fold": 0,
+              "train": 17349,
+              "test": 9613,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.060312494130055634,
+              "group_variances": [
+                0.04579961118689402,
+                0.00797197631961192
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 18552,
+              "test": 8410,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06031543283926814,
+              "group_variances": [
+                0.04618422439831868,
+                0.007336101101186932
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18023,
+              "test": 8939,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.060129811463086776,
+              "group_variances": [
+                0.047164716286963254,
+                0.008280837146526422
+              ]
+            }
+          ]
+        },
+        "uncertainty": "500 held-out-group bootstrap resamples; fitted models fixed, not refitted per resample",
+        "accuracy": {
+          "status": "evaluated",
+          "n": 31808,
+          "model": "regularized fixed-effects logistic companion",
+          "models": {
+            "M0": {
+              "brier": 0.043211517944360456,
+              "mean_log_likelihood": -0.17819665426824283,
+              "converged_all_folds": true
+            },
+            "M1": {
+              "brier": 0.043020039349546735,
+              "mean_log_likelihood": -0.17757913376575626,
+              "converged_all_folds": true
+            },
+            "M2": {
+              "brier": 0.04313206224383848,
+              "mean_log_likelihood": -0.17780061090582147,
+              "converged_all_folds": true
+            },
+            "M1-bigrams": {
+              "brier": 0.0429308018424684,
+              "mean_log_likelihood": -0.1767767966408891,
+              "converged_all_folds": true
+            },
+            "M1-trigrams": {
+              "brier": 0.04291619777305846,
+              "mean_log_likelihood": -0.17673414420669994,
+              "converged_all_folds": true
+            }
+          }
+        }
+      },
+      "participant": {
+        "status": "evaluated",
+        "n": 26962,
+        "groups": 497,
+        "singleton_subjects": 0,
+        "subject_count": 497,
+        "models": {
+          "M0": {
+            "mean_log_predictive_density": -0.2873455568517364,
+            "log_rt_rmse": 0.3222596429163325,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": 2.604699773035577,
+              "s2:all": -5.167076386037479,
+              "s3:constituent": 1.783117668041882,
+              "s3:non-constituent": -11.025082556978987,
+              "s4:whole_part": -2.5992429573771005,
+              "s4:part_part": -12.154119670846285,
+              "s4:part_whole": -2.0496221088653783,
+              "s4:whole_whole": -4.265077413110248
+            },
+            "gain_over_M0": {
+              "mean": 0.0,
+              "group_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "M1": {
+            "mean_log_predictive_density": -0.2865479810124795,
+            "log_rt_rmse": 0.3220032862459899,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -25.014634670060218,
+              "s2:all": -39.57122399846935,
+              "s3:constituent": -28.698514566984386,
+              "s3:non-constituent": -44.272587058743284,
+              "s4:whole_part": -5.803694966641842,
+              "s4:part_part": -41.051089446586275,
+              "s4:part_whole": -14.752923092329638,
+              "s4:whole_whole": -37.8233138440562
+            },
+            "gain_over_M0": {
+              "mean": 0.0007975758392568693,
+              "group_bootstrap_95": [
+                0.00023385931145041732,
+                0.0013551053335841218
+              ]
+            }
+          },
+          "M2": {
+            "mean_log_predictive_density": -0.28655504501478746,
+            "log_rt_rmse": 0.32200842155109,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -24.45348720031211,
+              "s2:all": -38.59982508602843,
+              "s3:constituent": -28.167974279704936,
+              "s3:non-constituent": -43.9999997312932,
+              "s4:whole_part": -6.676802565377329,
+              "s4:part_part": -39.89233514891475,
+              "s4:part_whole": -4.277621164490938,
+              "s4:whole_whole": -35.35948442521044
+            },
+            "gain_over_M0": {
+              "mean": 0.0007905118369489402,
+              "group_bootstrap_95": [
+                0.00033196667607241875,
+                0.0012505088750455618
+              ]
+            }
+          },
+          "M1-bigrams": {
+            "mean_log_predictive_density": -0.28652176374732247,
+            "log_rt_rmse": 0.3219906463003802,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -24.465563168202493,
+              "s2:all": -38.90197036905943,
+              "s3:constituent": -27.68572658807227,
+              "s3:non-constituent": -43.519581837915666,
+              "s4:whole_part": -13.744457062165566,
+              "s4:part_part": -40.71190750500523,
+              "s4:part_whole": -21.093595549703196,
+              "s4:whole_whole": -36.69390946189105
+            },
+            "gain_over_M0": {
+              "mean": 0.000823793104413909,
+              "group_bootstrap_95": [
+                0.0002846921913569206,
+                0.0013529383827295197
+              ]
+            }
+          },
+          "M1-trigrams": {
+            "mean_log_predictive_density": -0.28649847782515064,
+            "log_rt_rmse": 0.3219861752343692,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -25.085325706291428,
+              "s2:all": -39.47109948424986,
+              "s3:constituent": -28.977365431111593,
+              "s3:non-constituent": -44.42852406752081,
+              "s4:whole_part": -5.190601633267988,
+              "s4:part_part": -40.62736243151858,
+              "s4:part_whole": -14.818342076765475,
+              "s4:whole_whole": -37.518799875362674
+            },
+            "gain_over_M0": {
+              "mean": 0.0008470790265857496,
+              "group_bootstrap_95": [
+                0.00032089112810704343,
+                0.0013393309596845464
+              ]
+            }
+          }
+        },
+        "diagnostics": {
+          "M0": [
+            {
+              "fold": 0,
+              "train": 17905,
+              "test": 9057,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05906469474961464,
+              "group_variances": [
+                0.04892694486710026,
+                0.008117925854729502
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 17992,
+              "test": 8970,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06199977649684609,
+              "group_variances": [
+                0.046518224172736364,
+                0.008592549212004556
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18027,
+              "test": 8935,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06048977367574004,
+              "group_variances": [
+                0.04407132869388181,
+                0.009126333427742911
+              ]
+            }
+          ],
+          "M1": [
+            {
+              "fold": 0,
+              "train": 17905,
+              "test": 9057,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05887821961602253,
+              "group_variances": [
+                0.04893328575543086,
+                0.007571424811272852
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 17992,
+              "test": 8970,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06176850163031038,
+              "group_variances": [
+                0.04653974602109925,
+                0.0077808265864636305
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18027,
+              "test": 8935,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06028158873212323,
+              "group_variances": [
+                0.04407575931749888,
+                0.008210842245649483
+              ]
+            }
+          ],
+          "M2": [
+            {
+              "fold": 0,
+              "train": 17905,
+              "test": 9057,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05887813625486828,
+              "group_variances": [
+                0.048933935302893555,
+                0.008093810243980705
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 17992,
+              "test": 8970,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06177509719209447,
+              "group_variances": [
+                0.04648802156124739,
+                0.008519646800398037
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18027,
+              "test": 8935,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06027735528163923,
+              "group_variances": [
+                0.04409859840827272,
+                0.009042746070300752
+              ]
+            }
+          ],
+          "M1-bigrams": [
+            {
+              "fold": 0,
+              "train": 17905,
+              "test": 9057,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.058884537672456244,
+              "group_variances": [
+                0.048935659519031054,
+                0.0075548029570412355
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 17992,
+              "test": 8970,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06179554237083475,
+              "group_variances": [
+                0.04652987589430919,
+                0.00779556374567624
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18027,
+              "test": 8935,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06029738826370026,
+              "group_variances": [
+                0.04403864458063717,
+                0.008223471566353566
+              ]
+            }
+          ],
+          "M1-trigrams": [
+            {
+              "fold": 0,
+              "train": 17905,
+              "test": 9057,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05887864891492295,
+              "group_variances": [
+                0.048929202563569474,
+                0.0076093454102523295
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 17992,
+              "test": 8970,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.061767944204975535,
+              "group_variances": [
+                0.0465414612363001,
+                0.007787061790226106
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 18027,
+              "test": 8935,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.060281755992779296,
+              "group_variances": [
+                0.04408806294447122,
+                0.008311559464363273
+              ]
+            }
+          ]
+        },
+        "uncertainty": "500 held-out-group bootstrap resamples; fitted models fixed, not refitted per resample",
+        "accuracy": {
+          "status": "evaluated",
+          "n": 31808,
+          "model": "regularized fixed-effects logistic companion",
+          "models": {
+            "M0": {
+              "brier": 0.04288875372357181,
+              "mean_log_likelihood": -0.17658192493809705,
+              "converged_all_folds": true
+            },
+            "M1": {
+              "brier": 0.04262159014727873,
+              "mean_log_likelihood": -0.17520327752748818,
+              "converged_all_folds": true
+            },
+            "M2": {
+              "brier": 0.04280940898110286,
+              "mean_log_likelihood": -0.17618946282372058,
+              "converged_all_folds": true
+            },
+            "M1-bigrams": {
+              "brier": 0.042630545847227426,
+              "mean_log_likelihood": -0.17520816670621361,
+              "converged_all_folds": true
+            },
+            "M1-trigrams": {
+              "brier": 0.04266088532416292,
+              "mean_log_likelihood": -0.17534055456086017,
+              "converged_all_folds": true
+            }
+          }
+        }
+      },
+      "pattern": {
+        "status": "evaluated",
+        "n": 26962,
+        "groups": 92,
+        "singleton_subjects": 0,
+        "subject_count": 497,
+        "models": {
+          "M0": {
+            "mean_log_predictive_density": -0.10355995392649307,
+            "log_rt_rmse": 0.2683095437223412,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -2.0762458074325423,
+              "s2:all": 9.677092606402539,
+              "s3:constituent": 1.459241238566051,
+              "s3:non-constituent": -5.262135666338963,
+              "s4:whole_part": 2.416135079607784,
+              "s4:part_part": -8.159101780692254,
+              "s4:part_whole": 7.977752607680259,
+              "s4:whole_whole": 19.217399108567633
+            },
+            "gain_over_M0": {
+              "mean": 0.0,
+              "group_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "M1": {
+            "mean_log_predictive_density": -0.09943401605560884,
+            "log_rt_rmse": 0.26730999769729324,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -27.49503580863427,
+              "s2:all": -26.729881926129337,
+              "s3:constituent": -27.245728665648357,
+              "s3:non-constituent": -35.16525420257608,
+              "s4:whole_part": 1.8056636670137323,
+              "s4:part_part": -36.67685432384155,
+              "s4:part_whole": -4.78008803310172,
+              "s4:whole_whole": -12.832147774035775
+            },
+            "gain_over_M0": {
+              "mean": 0.004125937870884224,
+              "group_bootstrap_95": [
+                -0.000816339745585034,
+                0.00923969463369854
+              ]
+            }
+          },
+          "M2": {
+            "mean_log_predictive_density": -0.10218475210800416,
+            "log_rt_rmse": 0.26794574025926354,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -27.47903506396449,
+              "s2:all": -23.97396423091982,
+              "s3:constituent": -28.004340805477568,
+              "s3:non-constituent": -35.59422825502793,
+              "s4:whole_part": -1.222348103277909,
+              "s4:part_part": -32.841481772500856,
+              "s4:part_whole": 5.359096683617736,
+              "s4:whole_whole": -8.04592421650068
+            },
+            "gain_over_M0": {
+              "mean": 0.0013752018184888925,
+              "group_bootstrap_95": [
+                3.430252077438444e-06,
+                0.002773409649562843
+              ]
+            }
+          },
+          "M1-bigrams": {
+            "mean_log_predictive_density": -0.09628101168391427,
+            "log_rt_rmse": 0.2664504804836299,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -26.528588776144943,
+              "s2:all": -25.27212438138031,
+              "s3:constituent": -26.24471963919632,
+              "s3:non-constituent": -34.88896394805488,
+              "s4:whole_part": -5.270569158652734,
+              "s4:part_part": -35.02231408527132,
+              "s4:part_whole": -11.651658247767045,
+              "s4:whole_whole": -9.934101568605001
+            },
+            "gain_over_M0": {
+              "mean": 0.007278942242578787,
+              "group_bootstrap_95": [
+                0.0022974686002632835,
+                0.011756717677698267
+              ]
+            }
+          },
+          "M1-trigrams": {
+            "mean_log_predictive_density": -0.10059950276488594,
+            "log_rt_rmse": 0.26761432559857934,
+            "converged_all_folds": true,
+            "rank_deficient": false,
+            "heldout_predicted_cell_differences_ms": {
+              "s1:all": -27.988011916175992,
+              "s2:all": -26.340587307802025,
+              "s3:constituent": -28.0563945397937,
+              "s3:non-constituent": -35.305975387650506,
+              "s4:whole_part": 2.975130103181982,
+              "s4:part_part": -35.56723359540888,
+              "s4:part_whole": -5.9802564812148375,
+              "s4:whole_whole": -12.143136369698595
+            },
+            "gain_over_M0": {
+              "mean": 0.002960451161607124,
+              "group_bootstrap_95": [
+                -0.0012565617846027825,
+                0.007178217686686216
+              ]
+            }
+          }
+        },
+        "diagnostics": {
+          "M0": [
+            {
+              "fold": 0,
+              "train": 20715,
+              "test": 6247,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06009660809412124,
+              "group_variances": [
+                0.04710804236071314,
+                0.00862769994642363
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 14035,
+              "test": 12927,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05975340045113209,
+              "group_variances": [
+                0.04614252616994239,
+                0.00687472838232343
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 19174,
+              "test": 7788,
+              "design_columns": 18,
+              "design_rank": 18,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06137208313032133,
+              "group_variances": [
+                0.04581459083861794,
+                0.009985529714035235
+              ]
+            }
+          ],
+          "M1": [
+            {
+              "fold": 0,
+              "train": 20715,
+              "test": 6247,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05985475842872666,
+              "group_variances": [
+                0.04712163184936567,
+                0.008154475091572013
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 14035,
+              "test": 12927,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05961963221054972,
+              "group_variances": [
+                0.04620119659622756,
+                0.006560572077168952
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 19174,
+              "test": 7788,
+              "design_columns": 24,
+              "design_rank": 24,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06112589167293741,
+              "group_variances": [
+                0.04582297485007422,
+                0.00859147814246099
+              ]
+            }
+          ],
+          "M2": [
+            {
+              "fold": 0,
+              "train": 20715,
+              "test": 6247,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05986952868235043,
+              "group_variances": [
+                0.0471151783029823,
+                0.008445250670868518
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 14035,
+              "test": 12927,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05962550459239612,
+              "group_variances": [
+                0.04618280001952633,
+                0.006901439788249914
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 19174,
+              "test": 7788,
+              "design_columns": 20,
+              "design_rank": 20,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06112069918853413,
+              "group_variances": [
+                0.0458202806366053,
+                0.010002758130370633
+              ]
+            }
+          ],
+          "M1-bigrams": [
+            {
+              "fold": 0,
+              "train": 20715,
+              "test": 6247,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.059887384102570884,
+              "group_variances": [
+                0.04710942979954432,
+                0.008071602833227262
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 14035,
+              "test": 12927,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05962609595088772,
+              "group_variances": [
+                0.04617694560786044,
+                0.006590365610090172
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 19174,
+              "test": 7788,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.06112976889114734,
+              "group_variances": [
+                0.04581733579901149,
+                0.008860961994472848
+              ]
+            }
+          ],
+          "M1-trigrams": [
+            {
+              "fold": 0,
+              "train": 20715,
+              "test": 6247,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05986484936519946,
+              "group_variances": [
+                0.04711794343234692,
+                0.00803900902402435
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 14035,
+              "test": 12927,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05962956028563056,
+              "group_variances": [
+                0.046197315743395605,
+                0.0066610484356868305
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 19174,
+              "test": 7788,
+              "design_columns": 21,
+              "design_rank": 21,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.061126998823560576,
+              "group_variances": [
+                0.045823459384167126,
+                0.0085814755010715
+              ]
+            }
+          ]
+        },
+        "uncertainty": "500 held-out-group bootstrap resamples; fitted models fixed, not refitted per resample",
+        "accuracy": {
+          "status": "evaluated",
+          "n": 31808,
+          "model": "regularized fixed-effects logistic companion",
+          "models": {
+            "M0": {
+              "brier": 0.043555411280366274,
+              "mean_log_likelihood": -0.18102760830815345,
+              "converged_all_folds": true
+            },
+            "M1": {
+              "brier": 0.043613595232136995,
+              "mean_log_likelihood": -0.18212434353152618,
+              "converged_all_folds": true
+            },
+            "M2": {
+              "brier": 0.043590049502835536,
+              "mean_log_likelihood": -0.18121546935911456,
+              "converged_all_folds": true
+            },
+            "M1-bigrams": {
+              "brier": 0.043410905828222726,
+              "mean_log_likelihood": -0.18089760255665757,
+              "converged_all_folds": true
+            },
+            "M1-trigrams": {
+              "brier": 0.043559811561031045,
+              "mean_log_likelihood": -0.18189057294007485,
+              "converged_all_folds": true
+            }
+          }
+        }
+      }
+    },
+    "ds_matched": {
+      "family": {
+        "status": "insufficient_independent_groups",
+        "groups": 2,
+        "accuracy": {
+          "status": "insufficient_groups"
+        }
+      },
+      "participant": {
+        "status": "evaluated",
+        "n": 233,
+        "groups": 233,
+        "singleton_subjects": 233,
+        "subject_count": 233,
+        "models": {
+          "M0": {
+            "mean_log_predictive_density": -0.19564126316218092,
+            "log_rt_rmse": 0.2831081208573362,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.21262497076134,
+              "s3:constituent": -22.351871557752247
+            },
+            "gain_over_M0": {
+              "mean": 0.0,
+              "group_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "M1": {
+            "mean_log_predictive_density": -0.19564142712799526,
+            "log_rt_rmse": 0.28310812085733633,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.21262486038256,
+              "s3:constituent": -22.351870699251776
+            },
+            "gain_over_M0": {
+              "mean": -1.6396581432453036e-07,
+              "group_bootstrap_95": [
+                -3.315354073871775e-07,
+                -1.300821984646647e-08
+              ]
+            }
+          },
+          "M2": {
+            "mean_log_predictive_density": -0.19564129579206513,
+            "log_rt_rmse": 0.28310812085733633,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.21262894930646,
+              "s3:constituent": -22.351870356615223
+            },
+            "gain_over_M0": {
+              "mean": -3.262988422508423e-08,
+              "group_bootstrap_95": [
+                -1.6914663228984693e-07,
+                9.623705757384968e-08
+              ]
+            }
+          },
+          "M3": {
+            "mean_log_predictive_density": -0.1956413825768562,
+            "log_rt_rmse": 0.2831081208573364,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.21262597804412,
+              "s3:constituent": -22.351870552169657
+            },
+            "gain_over_M0": {
+              "mean": -1.194146753366515e-07,
+              "group_bootstrap_95": [
+                -2.722813402198488e-07,
+                2.8255621279440275e-08
+              ]
+            }
+          },
+          "M4": {
+            "mean_log_predictive_density": -0.1956415358031397,
+            "log_rt_rmse": 0.28310812085733633,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.21262088423566,
+              "s3:constituent": -22.35187032231306
+            },
+            "gain_over_M0": {
+              "mean": -2.7264095878701634e-07,
+              "group_bootstrap_95": [
+                -5.526260409887269e-07,
+                -3.043065733249363e-08
+              ]
+            }
+          },
+          "M1-bigrams": {
+            "mean_log_predictive_density": -0.19564117750260754,
+            "log_rt_rmse": 0.28310812085733633,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.2126389736477,
+              "s3:constituent": -22.351869193826815
+            },
+            "gain_over_M0": {
+              "mean": 8.565957333043269e-08,
+              "group_bootstrap_95": [
+                -1.2756656359394622e-07,
+                2.6400350706155383e-07
+              ]
+            }
+          },
+          "M1-trigrams": {
+            "mean_log_predictive_density": -0.19564121536453286,
+            "log_rt_rmse": 0.28310812085733633,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.21262911693054,
+              "s3:constituent": -22.351870997128458
+            },
+            "gain_over_M0": {
+              "mean": 4.7797648053988506e-08,
+              "group_bootstrap_95": [
+                1.112983127170161e-08,
+                8.463933249430267e-08
+              ]
+            }
+          },
+          "M3-actions": {
+            "mean_log_predictive_density": -0.19564133038529277,
+            "log_rt_rmse": 0.2831081208573364,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.21263100477597,
+              "s3:constituent": -22.351869786148995
+            },
+            "gain_over_M0": {
+              "mean": -6.722311186576762e-08,
+              "group_bootstrap_95": [
+                -2.9672608360405944e-07,
+                1.1066971705211552e-07
+              ]
+            }
+          },
+          "M3-states": {
+            "mean_log_predictive_density": -0.19564182762921964,
+            "log_rt_rmse": 0.2831081208573364,
+            "converged_all_folds": true,
+            "rank_deficient": true,
+            "heldout_predicted_cell_differences_ms": {
+              "s2:all": 65.21261441754007,
+              "s3:constituent": -22.351869743851353
+            },
+            "gain_over_M0": {
+              "mean": -5.644670387053857e-07,
+              "group_bootstrap_95": [
+                -1.1278166785655385e-06,
+                -8.640824506514664e-08
+              ]
+            }
+          }
+        },
+        "diagnostics": {
+          "M0": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 15,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05170632280196695,
+              "group_variances": [
+                0.025331057018640614,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 15,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05679033789617382,
+              "group_variances": [
+                0.02863795233739509,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 15,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.03756074116488444,
+              "group_variances": [
+                0.019577687446362225,
+                6.14421235332821e-06
+              ]
+            }
+          ],
+          "M1": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 21,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05151335649847941,
+              "group_variances": [
+                0.025524060489805548,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 21,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.056642233687680336,
+              "group_variances": [
+                0.028786007620623145,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 21,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.03752701094299591,
+              "group_variances": [
+                0.01961134804448611,
+                6.14421235332821e-06
+              ]
+            }
+          ],
+          "M2": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05165103543373767,
+              "group_variances": [
+                0.02538632474299075,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.056716192246626426,
+              "group_variances": [
+                0.02871195479602342,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.03754944853885881,
+              "group_variances": [
+                0.01958892786104891,
+                6.14421235332821e-06
+              ]
+            }
+          ],
+          "M3": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 19,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "residual_variance": 0.051639626144777295,
+              "group_variances": [
+                0.025397759197449264,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 19,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "residual_variance": 0.05670199639726216,
+              "group_variances": [
+                0.028726207554258497,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 19,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.037569932049899606,
+              "group_variances": [
+                0.01956843027195378,
+                6.14421235332821e-06
+              ]
+            }
+          ],
+          "M4": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 25,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.051664321983945286,
+              "group_variances": [
+                0.025373030857569943,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 25,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05669401036984553,
+              "group_variances": [
+                0.028734212163552986,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 25,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.037526839210463514,
+              "group_variances": [
+                0.01961146923296521,
+                6.14421235332821e-06
+              ]
+            }
+          ],
+          "M1-bigrams": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 18,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "residual_variance": 0.0516499008757402,
+              "group_variances": [
+                0.025387475603066707,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 18,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05664764862590337,
+              "group_variances": [
+                0.0287803136265851,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 18,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.037569306180788076,
+              "group_variances": [
+                0.019569065166272097,
+                6.14421235332821e-06
+              ]
+            }
+          ],
+          "M1-trigrams": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 18,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "residual_variance": 0.051713478360952476,
+              "group_variances": [
+                0.025323898031802315,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 18,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "residual_variance": 0.05681249564162639,
+              "group_variances": [
+                0.028615707252290172,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 18,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.03753723851440793,
+              "group_variances": [
+                0.01960118373635442,
+                6.14421235332821e-06
+              ]
+            }
+          ],
+          "M3-actions": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05166211289911359,
+              "group_variances": [
+                0.025375261749373778,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05667967219049914,
+              "group_variances": [
+                0.0287484161141044,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.037567777112309235,
+              "group_variances": [
+                0.019570572177912585,
+                6.14421235332821e-06
+              ]
+            }
+          ],
+          "M3-states": [
+            {
+              "fold": 0,
+              "train": 155,
+              "test": 78,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "residual_variance": 0.05168021753691573,
+              "group_variances": [
+                0.025357149601898412,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 1,
+              "train": 155,
+              "test": 78,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.05676043815196143,
+              "group_variances": [
+                0.028667811106404067,
+                6.14421235332821e-06
+              ]
+            },
+            {
+              "fold": 2,
+              "train": 156,
+              "test": 77,
+              "design_columns": 17,
+              "design_rank": 5,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "residual_variance": 0.0375309215309813,
+              "group_variances": [
+                0.01960728889473829,
+                6.14421235332821e-06
+              ]
+            }
+          ]
+        },
+        "uncertainty": "500 held-out-group bootstrap resamples; fitted models fixed, not refitted per resample",
+        "accuracy": {
+          "status": "evaluated",
+          "n": 257,
+          "model": "regularized fixed-effects logistic companion",
+          "models": {
+            "M0": {
+              "brier": 0.051979962108793236,
+              "mean_log_likelihood": -0.21975049883131434,
+              "converged_all_folds": true
+            },
+            "M1": {
+              "brier": 0.05188805383888748,
+              "mean_log_likelihood": -0.22159965892481157,
+              "converged_all_folds": true
+            },
+            "M2": {
+              "brier": 0.05190079033381234,
+              "mean_log_likelihood": -0.2212343591768445,
+              "converged_all_folds": true
+            },
+            "M3": {
+              "brier": 0.05195654576798694,
+              "mean_log_likelihood": -0.22052918365087174,
+              "converged_all_folds": true
+            },
+            "M4": {
+              "brier": 0.051951566516078934,
+              "mean_log_likelihood": -0.2213543870125492,
+              "converged_all_folds": true
+            },
+            "M1-bigrams": {
+              "brier": 0.051897554558309064,
+              "mean_log_likelihood": -0.22121070745169663,
+              "converged_all_folds": true
+            },
+            "M1-trigrams": {
+              "brier": 0.0518975222259545,
+              "mean_log_likelihood": -0.22121202371286924,
+              "converged_all_folds": true
+            },
+            "M3-actions": {
+              "brier": 0.05194071952319482,
+              "mean_log_likelihood": -0.22030547273964288,
+              "converged_all_folds": true
+            },
+            "M3-states": {
+              "brier": 0.05196863252416257,
+              "mean_log_likelihood": -0.22054518103295723,
+              "converged_all_folds": true
+            }
+          }
+        }
+      },
+      "pattern": {
+        "status": "insufficient_independent_groups",
+        "groups": 2,
+        "accuracy": {
+          "status": "insufficient_groups"
+        }
+      }
+    }
+  },
+  "matched_examples": [
+    {
+      "family": "s2:i53",
+      "condition": "control",
+      "prime": "back with some",
+      "target": "asked her if",
+      "pos_prime": "ADV ADP DET",
+      "pos_target": "VERB PRON SCONJ",
+      "retained_trials": 17,
+      "human_mean_rt_ms": 919.8764705882353,
+      "mean_features": {
+        "pos2_overlap": 0.0,
+        "pos3_overlap": 0.0,
+        "tree_overlap": 0.0,
+        "action_overlap": 0.21839080459770116,
+        "state_overlap": 0.10526315789473684
+      }
+    },
+    {
+      "family": "s2:i53",
+      "condition": "experimental",
+      "prime": "see it because",
+      "target": "asked her if",
+      "pos_prime": "VERB PRON SCONJ",
+      "pos_target": "VERB PRON SCONJ",
+      "retained_trials": 17,
+      "human_mean_rt_ms": 1088.729411764706,
+      "mean_features": {
+        "pos2_overlap": 1.0,
+        "pos3_overlap": 1.0,
+        "tree_overlap": 1.0,
+        "action_overlap": 0.26865671641791045,
+        "state_overlap": 0.2857142857142857
+      }
+    },
+    {
+      "family": "s2:i53",
+      "condition": "reverse",
+      "prime": "because he got",
+      "target": "asked her if",
+      "pos_prime": "SCONJ PRON VERB",
+      "pos_target": "VERB PRON SCONJ",
+      "retained_trials": 18,
+      "human_mean_rt_ms": 906.4722222222224,
+      "mean_features": {
+        "pos2_overlap": 0.0,
+        "pos3_overlap": 0.0,
+        "tree_overlap": 0.06666666666666667,
+        "action_overlap": 0.11363636363636363,
+        "state_overlap": 0.05555555555555555
+      }
+    },
+    {
+      "family": "s3:i6",
+      "condition": "control",
+      "prime": "do not worry",
+      "target": "in the appendix",
+      "pos_prime": "AUX PART VERB",
+      "pos_target": "ADP DET NOUN",
+      "retained_trials": 89,
+      "human_mean_rt_ms": 1002.4168539325844,
+      "mean_features": {
+        "pos2_overlap": 0.0,
+        "pos3_overlap": 0.0,
+        "tree_overlap": 0.0,
+        "action_overlap": 0.25,
+        "state_overlap": 0.0
+      }
+    },
+    {
+      "family": "s3:i6",
+      "condition": "experimental",
+      "prime": "at all costs",
+      "target": "in the appendix",
+      "pos_prime": "ADP DET NOUN",
+      "pos_target": "ADP DET NOUN",
+      "retained_trials": 92,
+      "human_mean_rt_ms": 966.2019565217391,
+      "mean_features": {
+        "pos2_overlap": 1.0,
+        "pos3_overlap": 1.0,
+        "tree_overlap": 1.0,
+        "action_overlap": 0.46666666666666673,
+        "state_overlap": 1.0
+      }
+    }
+  ],
+  "assistance_checks": {
+    "jev": {
+      "status": "judged",
+      "provider": "openrouter",
+      "model": "typesafe/jev-1.13-20260917",
+      "artifact_sha256": "850f3d64f2d30d06457689ed587eddc441cdc2f6da8db8451172068f2b451062",
+      "scope": "one live integration check; not linguistic validation or calibration"
+    },
+    "llm": {
+      "status": "compiled_for_review",
+      "provider": "Azure OpenAI",
+      "model": "DeepSeek-V4-Flash",
+      "artifact_sha256": "6f8bc70ecb84a76393e5681c3a032a7e87a299c96bf6e93a0468f12156284a5d",
+      "scope": "one live integration check; not linguistic validation or calibration"
+    },
+    "jev_supported_prefix": {
+      "status": "judged",
+      "prefix": "John reads the",
+      "prefix_status": "recognized_fragment",
+      "model": "typesafe/jev-1.13-20260917",
+      "artifact_sha256": "4bf269de8c59f89c7a6ec9961b264174a334a8bbfa3f3f87a4d8c19720ae5e6d",
+      "scope": "integration check; not a calibrated improvement claim"
+    },
+    "parser_comparison": {
+      "artifact_sha256": "252feb9ae6089d68f1cee6f7357cb8189ff56abf9a8056df7b143f9ee5ff2eb3",
+      "runs": [
+        {
+          "grammar": "2026-english-classical",
+          "same_inventory": true,
+          "live_calls": 3,
+          "complete_without": true,
+          "complete_with": true,
+          "meaning_without": "lend_vhho02324478(john, mary, ε x0:e. book(x0))",
+          "meaning_with": "lend_vhho02324182(john, mary, ε x0:e. book(x0))",
+          "note": "Both runs use the same grammar, lexical programs, initial context, scope and entry limit. Baseline search has an extra four-second cap. Changed means a different selected predicate, not independently verified semantic improvement. Any lexical-model proposals are shared by both runs."
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "same_inventory": true,
+          "live_calls": 3,
+          "complete_without": true,
+          "complete_with": true,
+          "meaning_without": "Σ x:book. lend_vhho02324478(john, mary, x)",
+          "meaning_with": "Σ x:book. lend_vhho02324182(john, mary, x)",
+          "note": "Both runs use the same grammar, lexical programs, initial context, scope and entry limit. Baseline search has an extra four-second cap. Changed means a different selected predicate, not independently verified semantic improvement. Any lexical-model proposals are shared by both runs."
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "The original preprocessing is reproduced; posterior contrasts are recomputed from archived fitted draws, not newly fitted models.",
+    "Our held-out comparisons are exploratory Gaussian models of log RT, not the paper's Bayesian shifted-lognormal model.",
+    "The primary lexical-family comparison has uncertainty spanning zero for both full POS-sequence and CFG additions.",
+    "The dictionary-expanded DS audit supports only two complete families (233 retained trials). It cannot support held-out-family or pattern comparisons.",
+    "Every participant in that DS subset contributes one retained observation: participant and residual variances cannot be separately identified. Its fixed-effect designs are also rank deficient. Tiny score differences there are not evidence for an architecture.",
+    "A fixed bank of 24 corpus prefixes and first-success bounded parsing are coverage probes, not a probability model of arbitrary English contexts.",
+    "The CFG is a declared small POS grammar; DS action/state features are lossy projections. Neither is an exhaustive account of structural representation.",
+    "Unrecognized earlier inputs contribute lexical/POS history but no DS features. DS structural recency therefore has incomplete history coverage.",
+    "Bootstrap intervals resample held-out groups with fitted models fixed; they omit model-refitting and selection uncertainty.",
+    "The main article abstract, supplement and public analysis materials were accessible; this work does not claim access to the subscription-only full article."
+  ],
+  "artifact_sha256": {
+    "data/preprocessing-report.json": "95cc76bfa6c4701eaa74e1480293fdfdfba86dd43d56fe3ce4f0bf1454756b22",
+    "reproduction/posterior-reproduction.json": "7aea0fd120b1fdf1623fd47a385abccc5b0438bc344edebcff8806257376ad9f",
+    "audit/coverage-summary.json": "776e1a3198182f2cbe3cb1e3ee8518be2430dfd879afa6a0a72ef1f56d301ebf",
+    "audit-dictionary/coverage-summary.json": "6e7f6706b6055fc539c82dbc4f0ecca9c3432feb201ae42c0d2718d6ed8d6f80",
+    "comparison-final/comparison-report.json": "5c3e86822f7fb66a759c22c5cf173038c9b20ff7e071c709c156732c06dc834e",
+    "sources/manifest.json": "3c679d4672dbe797a7a2c2b56a9fdece820313f5774d9e1fcc7aafefbe452e38",
+    "data/contexts.json": "9acf0298d9061695da78969ecb2014353a98f17faf8e145452afb55f20a30ab8"
+  },
+  "context_protocol": {
+    "schema": 1,
+    "source": "UD English EWT r2.15, training split",
+    "source_url": "https://raw.githubusercontent.com/UniversalDependencies/UD_English-EWT/r2.15/en_ewt-ud-train.conllu",
+    "source_sha256": "a049fc40822e21593ff89ccd0a4b081443f09fae71b61f813c624aa598f6c566",
+    "policy": "first distinct POS/pending-requirement prefix in corpus order; no experimental outcomes used",
+    "grammar": "2026-english-classical",
+    "grammar_sha256": "7b6ecea9be2e3949ef9ef8bf8df7962e47e0893d81f0050bf2cacec7db49ce89",
+    "max_words": 6,
+    "prior": "uniform over this fixed finite bank; not a fitted natural-context distribution"
+  },
+  "code_sha256": {
+    "__init__.py": "1e14ccd744ff70ada7621fc527ddf89da067a63ce62ca603ab20e73c02e6bd7c",
+    "api.py": "27f6b7d059103869364d651bf4fc4defc0453110162121c57d7cdecad4ac175f",
+    "assistance.py": "76c2b10328dbbb4ffd2ab407b0f8b3be2081244ac5343b5f0c849be20ba295ba",
+    "ccg.py": "1dbb1d0b34693862a157d851772cee5b71b65b65ed6038dc25b5f38ffe97ec2d",
+    "comparison.py": "e7bc390a3ed84c167a6b7d5c6b69a2e28100f300a5ba04361f06ff5771fff4ca",
+    "constituency.py": "8a05c187a4c03435db9472e746120ef5dbdfd217e2620a2f131f32a0b9dc46b6",
+    "contexts.py": "838d21ddcd0d0fce72a859cd5cf8c5e590c699c3aa1571f5dfc8569ca776806f",
+    "correspondence.py": "7eead9ff885c932fc3bac1f5dcd5921bf905bd9669afd170c927903651b91293",
+    "coverage.py": "bf9381189e4649dcf92e329b336bdfedee555735093a3381eb2a92c5abac6b6a",
+    "dataset.py": "aaae9082c13cc0968fffdf63c37d877f372c0c3ffb591484fa7d93cdcb2a6075",
+    "features.py": "50a345a232861a36a7e5ddf7d40efcdfb782a808403a7cab5df41708ea8cb64d",
+    "lfg.py": "97bf047c04af198aeb1faf6879a8f8602d671dddc5598a219601ca45b633f82e",
+    "minimalist.py": "5ed8343ee9dff25327689748601e1e05a0bda257e83c1b786342c879ffdf443b",
+    "mixed_model.py": "d3ed776cbd24d80bf56d9071dbc76f37ab33954cce56fec914fcbd8b0b2954c9",
+    "polydefinites.py": "1bcee4f5e26480fefa1e79d60a353cfc453d96cb232594b21fe6124c83ad8488",
+    "predictors.py": "37b11f5762db4e6a10cf8f2e080433c8b36ab6949bd3dd563a81c7721f8aa7b5",
+    "report.py": "7a603a9d88e50a2f303347eee3ea74eb3bde4ec0cd13e5ad442207bc4e7b9da2",
+    "sources.py": "64c145ec357f6cbdc01ba8d2301db5736ada80c804f86bc5361e00226b7fa617",
+    "terms.py": "6042762f856599827bb4df3fb0dc51b2704a1d8e4e5bbea8e226f9d0c0398802",
+    "traces.py": "1410af0159a59555955daa5b10151a3f2a2e3e1ffbbb269721d328322a6e95b3"
+  }
+}

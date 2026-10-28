@@ -24,6 +24,13 @@ release is still pending. Installing `dynamicsyntax` by name from PyPI does not
 establish that you have these changes. Use this source checkout or a wheel built from it.
 Record a source version and settings for reproducible research.
 
+On `codex/hybrid-syntax-research`, the local **Hybrid syntax lab** at
+`/hybrid.html` adds feature constraints, LFG mappings, a Greek polydefinite
+experiment, and bounded MG/CCG comparisons. See the
+[implementation and reproducibility guide](docs/design/hybrid-syntax-implementation.md)
+and [evidence snapshot](data/hybrid/README.md). These experiments have not
+been deployed to the public site.
+
 ## Run locally
 
 Python 3.11–3.13; the current handover check uses Python 3.12 on macOS.

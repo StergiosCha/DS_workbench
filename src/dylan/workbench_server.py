@@ -43,7 +43,10 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
         self.wfile.write(data)
 
     def do_GET(self) -> None:
-        if urlsplit(self.path).path == "/api/config":
+        if urlsplit(self.path).path in {"/api/hybrid/config", "/api/hybrid/evidence"}:
+            from dylan.hybrid.api import configuration as hybrid_config, evidence
+            self.send_json(hybrid_config() if urlsplit(self.path).path.endswith("config") else evidence())
+        elif urlsplit(self.path).path == "/api/config":
             self.send_json({**configuration(), "openrouter": {"enabled": True}})
         elif urlsplit(self.path).path.startswith("/api/research/"):
             self.research_lookup()
@@ -80,6 +83,9 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self) -> None:
         endpoint = urlsplit(self.path).path
+        if endpoint == "/api/hybrid/analyse":
+            self.hybrid_experiment()
+            return
         if endpoint == "/api/openrouter/connect":
             self.connect_openrouter()
             return
@@ -136,6 +142,40 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
             )
         except (OSError, json.JSONDecodeError):
             self.send_json({"error": "The parser worker could not return a result."}, 500)
+        finally:
+            _WORKERS.release()
+
+    def hybrid_experiment(self) -> None:
+        from dylan.hybrid.api import validate
+
+        origin = self.headers.get("Origin")
+        if origin and urlsplit(origin).netloc != self.headers.get("Host"):
+            self.send_json({"error": "Use the workbench from this server’s address."}, 403)
+            return
+        try:
+            size = int(self.headers.get("Content-Length", "0"))
+            if not 0 < size <= 16384:
+                raise ValueError("Experiment request must be between 1 and 16384 bytes.")
+            payload = validate(json.loads(self.rfile.read(size)))
+        except (ValueError, UnicodeDecodeError) as exc:
+            self.send_json({"error": str(exc)}, 400)
+            return
+        if not _WORKERS.acquire(blocking=False):
+            self.send_json({"error": "Experiment workers are busy."}, 503)
+            return
+        try:
+            worker = subprocess.run([sys.executable, "-m", "dylan.hybrid.api"],
+                input=json.dumps(payload), text=True, capture_output=True, timeout=45,
+                cwd=WORKING_ROOT, check=False)
+            if worker.returncode:
+                self.send_json({"error": "Experiment worker stopped unexpectedly."}, 500)
+                return
+            result = json.loads(worker.stdout)
+            self.send_json(result, 422 if "error" in result else 200)
+        except subprocess.TimeoutExpired:
+            self.send_json({"error": "Experiment reached its 45-second bound."}, 408)
+        except (OSError, json.JSONDecodeError):
+            self.send_json({"error": "Experiment worker could not return a result."}, 500)
         finally:
             _WORKERS.release()
 

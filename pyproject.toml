@@ -42,6 +42,7 @@ hosting = ["fastapi==0.135.1", "uvicorn==0.41.0"]
 gui = ["flet>=0.24.0"]
 nlp = ["nltk>=3.9", "spacy>=3.8"]
 viz = ["plotly>=5", "pandas>=2"]
+research = ["numpy>=2", "scipy>=1.14"]
 video = ["manim>=0.20"]
 rich = ["rich>=13"]
 
@@ -69,7 +70,7 @@ dsttr-induction = "dylan.induction.pipeline.cli:main"
 dynamicsyntax = ["grammars/**/*"]
 "dynamicsyntax.resources" = ["**/*.txt", "**/__init__.py"]
 "dynamicsyntax.workbench_assets" = ["*.html", "*.js", "*.css", "*.svg"]
-"dynamicsyntax.workbench_data" = ["greek-lexicon/gdt-train.json", "greek-lexicon/README.md", "greek-clitics/corpus.jsonl", "coverage/paragraph-baseline.json", "coverage/open-text-results.json"]
+"dynamicsyntax.workbench_data" = ["greek-lexicon/gdt-train.json", "greek-lexicon/README.md", "greek-clitics/corpus.jsonl", "coverage/paragraph-baseline.json", "coverage/open-text-results.json", "hybrid/*.json", "hybrid/README.md"]
 "dylan.formula.latex" = ["*.sty", "*.txt"]
 
 [tool.setuptools]
