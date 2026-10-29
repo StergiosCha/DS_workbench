@@ -11,7 +11,9 @@ scientific limitations, verification and the next milestone.
   feature, construction and MG fragments retain their explicitly bounded roles.
 - The next milestone is integrating the selected published test battery, starting
   with versioned ingestion and coverage diagnostics. The literature selection
-  is documented; its benchmark runner is not implemented yet.
+  is documented and its hash-verified importer exists
+  (`dylan.experiments.literature`); task contracts, coverage audits and the
+  benchmark runner are not implemented yet.
 - Keep human observations, synthetic recovery, illustrative predictions and AI
   judgments distinguishable. Unknown vocabulary/search limits are not negative
   grammaticality judgments. Raw parser counters are not surprisal.

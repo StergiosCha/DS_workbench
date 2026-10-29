@@ -198,3 +198,37 @@ block plus a declared FraCaS subset**, with separate priming/context and human-R
 tracks. Add the curated dialogue block as its own experiment. This changes the
 workbench from a collection of compatible analyses into a platform that can
 expose differences in their empirical predictions.
+
+## Importing the pinned materials
+
+Implemented 2026-10-30 in `src/dylan/experiments/literature.py`:
+
+```sh
+.venv/bin/python -m dylan.experiments.literature            # add --fetch to download missing pinned files
+.venv/bin/pytest -q tests/test_experiment_literature.py
+```
+
+The importer reads only the ignored cache, refuses any file whose SHA-256
+differs from the manifest, and writes `build/experiments/battery-v1.json`.
+It covers the 10 SyntaxGym suites (253 item sets, 956 condition sentences,
+regions kept byte-for-byte, critical regions taken from the source formulas),
+the 346 Greek FraCaS records (labels and nonstandard flags as given; no scored
+denominator) and Fine et al. Experiment 2 (blocks, groups and declared
+presentation order). `fgd_hierarchy` stays quarantined. `--fetch` covers
+entries with a direct URL; the Greek FraCaS file must be placed in the cache by hand.
+
+Two Appendix S2 anomalies are reported, not repaired: block 1 item 1 lists the
+unreduced relative first despite the declared `{ambiguous, unambiguous}` order,
+and block 2 contains an unbolded relative-clause sentence without an alternation
+(*The sunburned boys who were fed…*), leaving 9 marked items there. An
+independent review also noted that block 3 item 22 (`{warned, told}`) uses
+*told*, which still allows the reduced-relative reading the control should
+exclude; that is a linguistic judgment, so the importer does not flag it.
+Check all three against the paper before scoring. The FraCaS import reports
+three records with text outside the expected fields (015 nests a premise IPA
+line in its transliteration, 146 has a period after `</ipa>`, 247 a stray `>`),
+and keeps the 57 unclassed upstream comments with the problem that follows them.
+SyntaxGym `meta.comment` is kept: six suites record the authors' alternative
+prediction criteria there. Davis & van Schijndel, Natural Stories,
+dialogue and BLiMP are not imported: they lack pinned file hashes or retrieved
+materials. Task contracts, engine coverage audits and scoring are the next steps.
