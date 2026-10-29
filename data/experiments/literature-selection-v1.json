@@ -1,0 +1,331 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "status": "literature_selection_for_review_not_an_installed_benchmark",
+  "purpose": "Replace authored pilot stimuli as the scientific target, with distinct syntax, processing, adaptation, discourse and inference measurements",
+  "core": {
+    "paper": "Hu, Gauthier, Qian, Wilcox & Levy (2020), A Systematic Assessment of Syntactic Generalization in Neural Language Models",
+    "paper_url": "https://aclanthology.org/2020.acl-main.158/",
+    "repository": "https://github.com/cpllab/syntactic-generalization",
+    "commit": "43f1f86b746254406dafc89bd17b9d4976607ef6",
+    "upstream_license": "MIT",
+    "families": 253,
+    "condition_sentences": 956,
+    "suites": [
+      {
+        "id": "npz_ambig",
+        "phenomenon": "garden_path_transitivity_by_comma",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/npz_ambig.json",
+        "sha256": "2b46dd51f5985e62527e59e7f536656e28f462e33de9e3459cd635f73d5ca5e3",
+        "families": 24,
+        "condition_sentences": 96,
+        "region_metadata": {
+          "1": "Start",
+          "2": "Transitive Verb",
+          "3": "Comma",
+          "4": "NP/Z",
+          "5": "Verb",
+          "6": "Continuation"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[(5;%ambig_nocomma%) > (5;%ambig_comma%) ] &  [(5;%ambig_nocomma%) > (5;%unambig_nocomma%) ]  & [[(5;%ambig_nocomma%) - (5;%ambig_comma%) ] > [(5;%unambig_nocomma%) - (5;%unambig_comma%) ]]"
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "npz_obj",
+        "phenomenon": "garden_path_object_saturation_by_comma",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/npz_obj.json",
+        "sha256": "6852eddee888fce984dbe7734f90bfccd185e8b4d11affb8141434d5362b5cb6",
+        "families": 24,
+        "condition_sentences": 96,
+        "region_metadata": {
+          "1": "Start",
+          "2": "Transitive Verb",
+          "3": "Comma",
+          "4": "NP/Z",
+          "5": "Verb",
+          "6": "Continuation"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[(5;%no-obj_no-comma%) > (5;%no-obj_comma%) ] &  [(5;%no-obj_no-comma%) > (5;%obj_no-comma%) ] & [[(5;%no-obj_no-comma%) - (5;%no-obj_comma%) ] > [(5;%obj_no-comma%) - (5;%obj_comma%) ]]"
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "mvrr",
+        "phenomenon": "main_verb_reduced_relative",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/mvrr.json",
+        "sha256": "5201adc7f9019caffc0bc54ca2d71db601f187d5a0dce55df0e90fd5592b2581",
+        "families": 28,
+        "condition_sentences": 112,
+        "region_metadata": {
+          "1": "Start",
+          "2": "Noun",
+          "3": "Ambiguous verb",
+          "4": "RC contents",
+          "5": "Disambiguator",
+          "6": "End"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[(5;%reduced_ambig%) > (5;%unreduced_ambig%)] & [(5;%reduced_ambig%) > (5;%reduced_unambig%)] & [[(5;%reduced_ambig%) - (5;%unreduced_ambig%)] > [(5;%reduced_unambig%) - (5;%unreduced_unambig%)]]"
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "subordination",
+        "phenomenon": "pending_main_clause",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/subordination.json",
+        "sha256": "065fc960d7346cd96f152c389c36816bf330b415661319e7dc6022ff610855b4",
+        "families": 23,
+        "condition_sentences": 92,
+        "region_metadata": {
+          "1": "Subordinate clause 1",
+          "2": "Subordinate clause 2",
+          "3": "Main clause"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[(3;%sub_no-matrix%) > (3;%no-sub_no-matrix%) ] & [(3;%sub_matrix%) < (3;%no-sub_matrix%) ]"
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "center_embed",
+        "phenomenon": "nested_predicate_argument_compatibility",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/center_embed.json",
+        "sha256": "cc8b60e34eff4ec723a295d0378af07cceaf9bdccddd5a9508a1284e40d3390c",
+        "families": 28,
+        "condition_sentences": 56,
+        "region_metadata": {
+          "1": "intro",
+          "2": "np_1",
+          "3": "that",
+          "4": "det_2",
+          "5": "np_2",
+          "6": "verb1",
+          "7": "verb2"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[ (6;%plaus%) + (7;%plaus%) ] < [ (6;%implaus%) + (7;%implaus%) ]"
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "fgd_object",
+        "phenomenon": "object_filler_gap",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/fgd_object.json",
+        "sha256": "64045162cd8158f07bcf9efc9b2ba9ad60324009f71bae8d58bb9a841e72eee5",
+        "families": 24,
+        "condition_sentences": 96,
+        "region_metadata": {
+          "1": "prefix",
+          "2": "comp",
+          "3": "np1",
+          "4": "verb",
+          "5": "np2",
+          "6": "prep",
+          "7": "np3",
+          "8": "end"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[(5;%what_nogap%) > (5;%that_nogap%) ] & [(6;%what_gap%) < (6;%that_gap%) ] "
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "fgd_subject",
+        "phenomenon": "subject_filler_gap",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/fgd_subject.json",
+        "sha256": "bb641e69be1e4ad4d4077ceeb5fd86c87fcd1df69795b8654702bf7746386746",
+        "families": 24,
+        "condition_sentences": 96,
+        "region_metadata": {
+          "1": "prefix",
+          "2": "comp",
+          "3": "np1",
+          "4": "verb",
+          "5": "np2",
+          "6": "prep",
+          "7": "np3",
+          "8": "end"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[(3;%what_nogap%) > (3;%that_nogap%) ] & [(4;%what_gap%) < (4;%that_gap%) ] "
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "number_prep",
+        "phenomenon": "agreement_across_distractor",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/number_prep.json",
+        "sha256": "5c6a54fa244df2962b0700a2a6d6e03b8c0db8a1482cccfe64d16d01f8b3eeca",
+        "families": 19,
+        "condition_sentences": 76,
+        "region_metadata": {
+          "1": "intro",
+          "2": "np_sing",
+          "3": "prep",
+          "4": "the",
+          "5": "prep_np",
+          "6": "matrix_v",
+          "7": "continuation"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[(6;%match_sing%) < (6;%mismatch_sing%)] & [(6;%match_plural%) < (6;%mismatch_plural%)]"
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "reflexive_prep_masc",
+        "phenomenon": "reflexive_antecedent_across_distractor",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/reflexive_prep_masc.json",
+        "sha256": "81934e17431b72a553ab3a501471cb0b0eaa101ca7f78799abc48905a21f16ca",
+        "families": 19,
+        "condition_sentences": 76,
+        "region_metadata": {
+          "1": "intro",
+          "2": "np_sing",
+          "3": "prep",
+          "4": "the",
+          "5": "prep_np",
+          "6": "matrix_v",
+          "7": "reflexive"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[ (7;%match_sing%) < (7;%mismatch_sing%) ] & [ (7;%match_plural%) < (7;%mismatch_plural%) ]"
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      },
+      {
+        "id": "cleft",
+        "phenomenon": "pseudocleft_complement_category",
+        "url": "https://raw.githubusercontent.com/cpllab/syntactic-generalization/43f1f86b746254406dafc89bd17b9d4976607ef6/test_suites/json/cleft.json",
+        "sha256": "b6e19bedec743fc8af079638d145e4af224efa4d671e403d2d7ff4a395d10713",
+        "families": 40,
+        "condition_sentences": 160,
+        "region_metadata": {
+          "1": "intro",
+          "2": "subj",
+          "3": "verb",
+          "4": "passive",
+          "5": "verb.1",
+          "6": "matrix_v"
+        },
+        "source_predictions": [
+          {
+            "type": "formula",
+            "formula": "[(6;%np_mismatch%)-(6;%np_match%)]+[[(5;%vp_mismatch%)+(6;%vp_mismatch%)]-[(5;%vp_match%)+(6;%vp_match%)]]>0"
+          }
+        ],
+        "outcomes": "regional model-surprisal predictions; not participant reading times"
+      }
+    ],
+    "family_count_scope": "Sum of within-suite item sets; shared lexical material across suites means these are not 253 independent lexical families."
+  },
+  "additional_blocks": [
+    {
+      "id": "fracas",
+      "purpose": "compositional inference including quantifiers, plurals, anaphora and ellipsis",
+      "citation": "FraCaS consortium (Cooper et al., 1996); machine-evaluation discussion in MacCartney & Manning (2007)",
+      "paper_url": "https://aclanthology.org/W07-1431/",
+      "materials_url": "https://gu-clasp.github.io/multifracas/",
+      "commit": "580ed0a73bd125185648a7fb6cfcbc7339506851",
+      "greek_file": "fracas_greek_final_ipa_team_crete.xml",
+      "greek_problem_records_verified": 346,
+      "greek_sha256": "7958fc0f3bb03ee3af8e6e7094fd567322e7e9929e2ba588c0d6cc3fc873f0e4",
+      "availability": "Original English test-suite PDF and the current website-linked Greek XML downloaded; no participant response distributions. Curate ill-defined/degenerate cases before defining scored denominator."
+    },
+    {
+      "id": "nielsen_christiansen",
+      "purpose": "sequence/chunk priming and exposure history",
+      "paper_url": "https://www.nature.com/articles/s41562-025-02387-z",
+      "materials_url": "https://osf.io/ymndq/",
+      "availability": "Existing local four-study reanalysis: 497 participants and 26962 retained pairs; grammar coverage remains a limitation, and these data have already been inspected."
+    },
+    {
+      "id": "fine_2013",
+      "purpose": "adaptation to changed distributions of relative clauses/main verbs",
+      "citation": "Fine, Jaeger, Farmer & Qian (2013), Rapid Expectation Adaptation during Syntactic Comprehension",
+      "paper_url": "https://doi.org/10.1371/journal.pone.0077661",
+      "materials_url": "https://journals.plos.org/plosone/article/file?type=supplementary&id=10.1371/journal.pone.0077661.s002",
+      "materials_sha256": "1fae9092096ca881c4dc0f298a9885b1b8293a37ca9c22dcfdd915069bfa0a18",
+      "availability": "Experiment 2 items, fillers and block order verified in Appendix S2; raw participant responses not verified."
+    },
+    {
+      "id": "davis_vanschijndel_2020",
+      "purpose": "given/new status, referential context and temporal context affecting garden paths",
+      "citation": "Davis & van Schijndel (2020), Interaction with Context During Recurrent Neural Network Sentence Processing",
+      "paper_url": "https://psyarxiv.com/8r65d/",
+      "materials_url": "https://github.com/forrestdavis/GardenPath",
+      "commit": "3f6a8affce3e9641fc5128103897d023569f29cf",
+      "availability": "Stimuli repository verified; one/two-referent contexts and reduced-relative continuations downloaded. Repository results are LM outputs; not human RT observations."
+    },
+    {
+      "id": "natural_stories",
+      "purpose": "held-out naturalistic word-by-word reading-time generalization",
+      "citation": "Futrell et al. (2021), The Natural Stories corpus: A reading-time corpus of English texts containing rare syntactic constructions",
+      "materials_url": "https://github.com/languageMIT/naturalstories",
+      "commit": "4700daad696e942f5aba23c957a7423d0de66612",
+      "availability": "Corpus documentation, release correction and RT-file listing verified. Large participant RT table not downloaded in this literature search. Use corrected release after 2025-05-12 and retain original token IDs."
+    },
+    {
+      "id": "dialogue",
+      "purpose": "cross-speaker completion, fragments and repair",
+      "citation": "Purver, Cann & Kempson (2006), Grammars as Parsers: Meeting the Dialogue Challenge",
+      "paper_url": "https://doi.org/10.1007/s11168-006-9007-x",
+      "availability": "Bibliographic record verified. Full text and a ready-made normed test set were not obtained; curate corpus examples and add independent judgments before scoring."
+    },
+    {
+      "id": "blimp",
+      "purpose": "broad grammatical licensing regression, supplementary to processing/inference",
+      "citation": "Warstadt et al. (2020), BLiMP: The Benchmark of Linguistic Minimal Pairs for English",
+      "paper_url": "https://doi.org/10.1162/tacl_a_00321",
+      "materials_url": "https://github.com/alexwarstadt/blimp",
+      "availability": "Repository README verified: 67 x 1000 generated minimal pairs, sampled human validation, CC BY 4.0. No claim of human validation of every pair or RT data."
+    }
+  ],
+  "quarantined": [
+    {
+      "id": "fgd_hierarchy",
+      "reason": "The pinned JSON contains < and = predictions on the same region-6 subject-gap contrast in separate prediction records. Resolve intended scoring against the paper before adoption; not silently repaired.",
+      "sha256": "ed5ddf73c04fc0bf577f6fcd4aef62b660b01c4fecb5b69216b1164128924693"
+    }
+  ],
+  "evaluation_policy": [
+    "Keep syntax, human RT, adaptation, discourse and inference scores separate.",
+    "No arbitrary parser counts relabelled as surprisal; normalized predictive probabilities require a defined model.",
+    "Retain condition families, critical regions, punctuation, contexts and exposure order.",
+    "Separate missing lexical coverage and search limits from grammatical rejection.",
+    "Use item-family/story holdouts with tuning confined to development materials.",
+    "Do not choose the scientific test set solely from strings the current fragments already handle.",
+    "Known public materials are reference diagnostics, not a guarantee of unseen LLM evaluation.",
+    "Group shared lexical material across related suites when splitting; do not treat the sum of suite item counts as independent families."
+  ]
+}
