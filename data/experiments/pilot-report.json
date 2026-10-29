@@ -1,0 +1,2744 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "status": "synthetic_design_pilot",
+  "protocol": {
+    "schema": 1,
+    "study": {
+      "schema": 1,
+      "id": "contextual-fragment-memory-v1",
+      "date": "2026-10-29",
+      "seed": 20261029,
+      "status": "computational_design_pilot_no_new_human_data",
+      "task": "contextual_fragment_decision",
+      "question": "Do memory and grammar configurations yield distinguishable predictions under shared observations?",
+      "scope": "Boundary/length/POS differences covary; not a clean test of structure versus POS priming",
+      "families": [
+        {
+          "id": "f00",
+          "target": {
+            "text": "likes the book",
+            "left_context": "John",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a dog",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the dog",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f01",
+          "target": {
+            "text": "likes the dog",
+            "left_context": "John",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a stone",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the stone",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f02",
+          "target": {
+            "text": "likes the stone",
+            "left_context": "John",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a library",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the library",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f03",
+          "target": {
+            "text": "likes the library",
+            "left_context": "John",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a park",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the park",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f04",
+          "target": {
+            "text": "likes the park",
+            "left_context": "John",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a peacock",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the peacock",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f05",
+          "target": {
+            "text": "likes the peacock",
+            "left_context": "John",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a book",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the book",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f06",
+          "target": {
+            "text": "likes the book",
+            "left_context": "Mary",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a dog",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the dog",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f07",
+          "target": {
+            "text": "likes the dog",
+            "left_context": "Mary",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a stone",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the stone",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f08",
+          "target": {
+            "text": "likes the stone",
+            "left_context": "Mary",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a library",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the library",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f09",
+          "target": {
+            "text": "likes the library",
+            "left_context": "Mary",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a park",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the park",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f10",
+          "target": {
+            "text": "likes the park",
+            "left_context": "Mary",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a peacock",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the peacock",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f11",
+          "target": {
+            "text": "likes the peacock",
+            "left_context": "Mary",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a book",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the book",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f12",
+          "target": {
+            "text": "likes the book",
+            "left_context": "Bill",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a dog",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the dog",
+              "left_context": "George likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f13",
+          "target": {
+            "text": "likes the dog",
+            "left_context": "Bill",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a stone",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the stone",
+              "left_context": "George likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f14",
+          "target": {
+            "text": "likes the stone",
+            "left_context": "Bill",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a library",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the library",
+              "left_context": "George likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f15",
+          "target": {
+            "text": "likes the library",
+            "left_context": "Bill",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a park",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the park",
+              "left_context": "George likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f16",
+          "target": {
+            "text": "likes the park",
+            "left_context": "Bill",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a peacock",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the peacock",
+              "left_context": "George likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f17",
+          "target": {
+            "text": "likes the peacock",
+            "left_context": "Bill",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a book",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the book",
+              "left_context": "George likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f18",
+          "target": {
+            "text": "likes the book",
+            "left_context": "George",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a dog",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the dog",
+              "left_context": "John likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f19",
+          "target": {
+            "text": "likes the dog",
+            "left_context": "George",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a stone",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the stone",
+              "left_context": "John likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f20",
+          "target": {
+            "text": "likes the stone",
+            "left_context": "George",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a library",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the library",
+              "left_context": "John likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f21",
+          "target": {
+            "text": "likes the library",
+            "left_context": "George",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a park",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the park",
+              "left_context": "John likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f22",
+          "target": {
+            "text": "likes the park",
+            "left_context": "George",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a peacock",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the peacock",
+              "left_context": "John likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        },
+        {
+          "id": "f23",
+          "target": {
+            "text": "likes the peacock",
+            "left_context": "George",
+            "task": "fragment"
+          },
+          "conditions": {
+            "matched": {
+              "text": "likes a book",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "shifted_boundary": {
+              "text": "the book",
+              "left_context": "John likes",
+              "task": "fragment"
+            }
+          },
+          "annotation_status": "author_constructed_requires_independent_review"
+        }
+      ],
+      "lags": [
+        0,
+        2
+      ],
+      "fillers": [
+        {
+          "text": "walks",
+          "left_context": "John",
+          "task": "sentence"
+        },
+        {
+          "text": "arrives",
+          "left_context": "Mary",
+          "task": "sentence"
+        }
+      ],
+      "grammars": [
+        "ds-english-v1",
+        "ccg-incremental-v1",
+        "ccg-application-v1"
+      ],
+      "memories": [
+        "none-v1",
+        "count-v1",
+        "exponential-v1"
+      ],
+      "measurements": [
+        "lognormal-v1",
+        "shifted-lognormal-v1"
+      ],
+      "representation": "native",
+      "decay": 0.8,
+      "primary_split": "new participants; item families remain shared",
+      "counterbalance": "four cyclic lists cross prime condition and intervening lag; order randomized per participant",
+      "human_collection": "Independent stimulus review and prospective protocol approval are outstanding; local task is a rehearsal",
+      "instructions": "Read the context, then decide whether the displayed continuation can occur after it. Some continuations may be unfinished.",
+      "limitations": [
+        "Small declared grammars",
+        "Unreviewed authored stimuli",
+        "Grammar-native cues are different projections",
+        "A grammatical derivation is not a human judgment",
+        "Default RT coefficients are illustrative",
+        "All authored items are intended positive; independently reviewed negative controls are needed before a decision experiment"
+      ]
+    },
+    "study_sha256": "2ec0bfa7d576d38079e38f992d39645b308e363999e3f74449d985edcd0058d0",
+    "configurations": [
+      {
+        "grammar": "ds-english-v1",
+        "memory": "none-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ds-english-v1",
+        "memory": "none-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ds-english-v1",
+        "memory": "count-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ds-english-v1",
+        "memory": "count-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ds-english-v1",
+        "memory": "exponential-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ds-english-v1",
+        "memory": "exponential-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-incremental-v1",
+        "memory": "none-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-incremental-v1",
+        "memory": "none-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-incremental-v1",
+        "memory": "count-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-incremental-v1",
+        "memory": "count-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-incremental-v1",
+        "memory": "exponential-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-incremental-v1",
+        "memory": "exponential-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-application-v1",
+        "memory": "none-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-application-v1",
+        "memory": "none-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-application-v1",
+        "memory": "count-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-application-v1",
+        "memory": "count-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-application-v1",
+        "memory": "exponential-v1",
+        "representation": "native",
+        "measurement": "lognormal-v1",
+        "decay": 0.8
+      },
+      {
+        "grammar": "ccg-application-v1",
+        "memory": "exponential-v1",
+        "representation": "native",
+        "measurement": "shifted-lognormal-v1",
+        "decay": 0.8
+      }
+    ],
+    "participants_per_simulation": 36,
+    "recovery_repetitions": 3,
+    "provenance": "synthetic design pilot; not preregistered, not a human experiment",
+    "software_sha256": {
+      "experiments/ccg_engine.py": "a6b0b7bc3a2a44aa45b5debb9b58654ca5e1345b6c4faf82dcf3c31f35638278",
+      "experiments/responses.py": "bafcc4f51d8bbf22f4ec7bae4c03d7eb82cb33ea1636ef0f51ae51fe7d746d28",
+      "experiments/memory.py": "15ce23eef9b8c4b1b3d1aaafaeccb5264f25f798558d4f73359a7a1d0559855f",
+      "experiments/registry.py": "c085fda7b3efd92208d5dbff685e8f16f2633068e15ad68a37d68eaac8a24104",
+      "experiments/host.py": "494f9ac56ff4501a0f6f2240a66c78ace444449a3c2874112ceea6f135f97840",
+      "experiments/evaluation.py": "8cbff00d84e06a958d8e52fe78f6a67960d4c9133f8567f077bcd68c458ff680",
+      "experiments/measurement.py": "918018fdc81a13f1ca5caa1aeb5b401075924d11470400bc33f4481df1bdad71",
+      "experiments/__init__.py": "aab4e884ed65dac5fb483372339c299c8247c908734c81a4533a95b348202474",
+      "experiments/api.py": "652e0cd822dc3adb0f2625791ebb11a2b75c80909617c73742d6ad1a97aab573",
+      "experiments/ds_engine.py": "5925a22ad25dde8002cecd6e3a644588763db49b28df7eb8a3878bf930b51677",
+      "experiments/contracts.py": "54b49e480c84c31ebaa9c7efd97e60c8268bd08b5ac24ce1c0258fdd207bee7f",
+      "experiments/study.py": "9a247535e605b52aaf03b8439d6d7883e0d7dda08da387b3b2364a592eb0a754",
+      "__init__.py": "d80de8c76fcb26b20babef1f0559aaf1f0c17288261ad09fb636219a0eef8829",
+      "parser/__init__.py": "8116110f3f160f7fb70e9c61571ab40407291a8e8bff210085e2eae517e1fbfa",
+      "hybrid/mixed_model.py": "d3ed776cbd24d80bf56d9071dbc76f37ab33954cce56fec914fcbd8b0b2954c9",
+      "hybrid/ccg.py": "1dbb1d0b34693862a157d851772cee5b71b65b65ed6038dc25b5f38ffe97ec2d",
+      "hybrid/terms.py": "6042762f856599827bb4df3fb0dc51b2704a1d8e4e5bbea8e226f9d0c0398802",
+      "hybrid/traces.py": "1410af0159a59555955daa5b10151a3f2a2e3e1ffbbb269721d328322a6e95b3"
+    },
+    "grammar_fingerprints": {
+      "ds-english-v1": {
+        "grammar_sha256": "7b6ecea9be2e3949ef9ef8bf8df7962e47e0893d81f0050bf2cacec7db49ce89",
+        "adapter_sha256": "3df053a47dfa9f37031e6923125734a7e06a3308d26df3131041f8b77e5c4ae1"
+      },
+      "ccg-incremental-v1": {
+        "lexicon_sha256": "5be98a1a271dbff183ce87ed05c606df4d3d66b9a2cd509f1be5cbb612fa330b",
+        "implementation_sha256": "6f0e85c8cd30a5e28244bfa630faf51f0362670efec948c767ee6a3d4ca20f8e"
+      },
+      "ccg-application-v1": {
+        "lexicon_sha256": "5be98a1a271dbff183ce87ed05c606df4d3d66b9a2cd509f1be5cbb612fa330b",
+        "implementation_sha256": "6f0e85c8cd30a5e28244bfa630faf51f0362670efec948c767ee6a3d4ca20f8e"
+      }
+    },
+    "parameters": {
+      "intercept": "log(.9)",
+      "activation_slope": -0.3,
+      "order_slope": 0.001,
+      "subject_sd": 0.12,
+      "item_sd": 0.08,
+      "residual_sd": 0.18
+    }
+  },
+  "coverage": {
+    "grammars": {
+      "ds-english-v1": {
+        "observations": 74,
+        "statuses": {
+          "recognized_fragment": 72,
+          "complete": 2
+        },
+        "supported_families": [
+          "f00",
+          "f01",
+          "f02",
+          "f03",
+          "f04",
+          "f05",
+          "f06",
+          "f07",
+          "f08",
+          "f09",
+          "f10",
+          "f11",
+          "f12",
+          "f13",
+          "f14",
+          "f15",
+          "f16",
+          "f17",
+          "f18",
+          "f19",
+          "f20",
+          "f21",
+          "f22",
+          "f23"
+        ],
+        "failures": []
+      },
+      "ccg-incremental-v1": {
+        "observations": 74,
+        "statuses": {
+          "complete": 74
+        },
+        "supported_families": [
+          "f00",
+          "f01",
+          "f02",
+          "f03",
+          "f04",
+          "f05",
+          "f06",
+          "f07",
+          "f08",
+          "f09",
+          "f10",
+          "f11",
+          "f12",
+          "f13",
+          "f14",
+          "f15",
+          "f16",
+          "f17",
+          "f18",
+          "f19",
+          "f20",
+          "f21",
+          "f22",
+          "f23"
+        ],
+        "failures": []
+      },
+      "ccg-application-v1": {
+        "observations": 74,
+        "statuses": {
+          "complete": 74
+        },
+        "supported_families": [
+          "f00",
+          "f01",
+          "f02",
+          "f03",
+          "f04",
+          "f05",
+          "f06",
+          "f07",
+          "f08",
+          "f09",
+          "f10",
+          "f11",
+          "f12",
+          "f13",
+          "f14",
+          "f15",
+          "f16",
+          "f17",
+          "f18",
+          "f19",
+          "f20",
+          "f21",
+          "f22",
+          "f23"
+        ],
+        "failures": []
+      }
+    },
+    "common_families": [
+      "f00",
+      "f01",
+      "f02",
+      "f03",
+      "f04",
+      "f05",
+      "f06",
+      "f07",
+      "f08",
+      "f09",
+      "f10",
+      "f11",
+      "f12",
+      "f13",
+      "f14",
+      "f15",
+      "f16",
+      "f17",
+      "f18",
+      "f19",
+      "f20",
+      "f21",
+      "f22",
+      "f23"
+    ],
+    "criterion": "Every prime alternative, target and intervening filler must be supported"
+  },
+  "legacy_ccg_coverage": {
+    "grammars": {
+      "ccg-original-v1": {
+        "observations": 74,
+        "statuses": {
+          "complete": 7,
+          "unsupported_lexicon": 67
+        },
+        "supported_families": [],
+        "failures": [
+          {
+            "observation": {
+              "text": "likes a dog",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the dog",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the dog",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a stone",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the stone",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the stone",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a library",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the library",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the library",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a park",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the park",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the park",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a peacock",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the peacock",
+              "left_context": "Mary likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the peacock",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a dog",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the dog",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the dog",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a stone",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the stone",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the stone",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a library",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the library",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the library",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a park",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the park",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the park",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a peacock",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the peacock",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the peacock",
+              "left_context": "Mary",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a book",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the book",
+              "left_context": "Bill likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the book",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a dog",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the dog",
+              "left_context": "George likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the dog",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a stone",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the stone",
+              "left_context": "George likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the stone",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a library",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the library",
+              "left_context": "George likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the library",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a park",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the park",
+              "left_context": "George likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the park",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a peacock",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the peacock",
+              "left_context": "George likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the peacock",
+              "left_context": "Bill",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a book",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the book",
+              "left_context": "George likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the book",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a dog",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the dog",
+              "left_context": "John likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the dog",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a stone",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the stone",
+              "left_context": "John likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the stone",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a library",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the library",
+              "left_context": "John likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the library",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a park",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the park",
+              "left_context": "John likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the park",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes a peacock",
+              "left_context": "John",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "the peacock",
+              "left_context": "John likes",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "likes the peacock",
+              "left_context": "George",
+              "task": "fragment"
+            },
+            "status": "unsupported_lexicon"
+          },
+          {
+            "observation": {
+              "text": "arrives",
+              "left_context": "Mary",
+              "task": "sentence"
+            },
+            "status": "unsupported_lexicon"
+          }
+        ]
+      }
+    },
+    "common_families": [],
+    "criterion": "Every prime alternative, target and intervening filler must be supported"
+  },
+  "comparison": {
+    "data_kind": "synthetic",
+    "n": 864,
+    "participants": 36,
+    "families": 24,
+    "exclusions": {},
+    "split": "3 folds holding out whole participants; lexical families shared",
+    "metric": "predictive log density on RT in seconds, including transform Jacobian",
+    "status": "evaluated",
+    "models": {
+      "ds-english-v1/none-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ds-english-v1",
+          "memory": "none-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.49396270518518226,
+        "rmse_ms": 152.3302690756981,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.035119399062738685,
+            "group_variances": [
+              0.016352599927013416,
+              0.007000935153616712
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03350310953942135,
+            "group_variances": [
+              0.01266949904082489,
+              0.00487876105817698
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03431118029936981,
+            "group_variances": [
+              0.009050937073165132,
+              0.004844249485816676
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.0,
+          "interval_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "ds-english-v1/none-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ds-english-v1",
+          "memory": "none-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.48601433172165504,
+        "rmse_ms": 152.35152669045502,
+        "converged": false,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.060946694868487986,
+            "group_variances": [
+              0.02871046595015651,
+              0.012209292421505301
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": false,
+            "message": "ABNORMAL: ",
+            "residual_variance": 0.05744514624396222,
+            "group_variances": [
+              0.022216698163157265,
+              0.008312153845148218
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05840225214591169,
+            "group_variances": [
+              0.015543658269618463,
+              0.008150832177190797
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": -0.007948373463527201,
+          "interval_95": [
+            -0.013505977089517509,
+            -0.003253272314958113
+          ]
+        }
+      },
+      "ds-english-v1/count-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ds-english-v1",
+          "memory": "count-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5189585791268428,
+        "rmse_ms": 147.996120794521,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03326435400143805,
+            "group_variances": [
+              0.015889900905651087,
+              0.006219106114936091
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.030917267477358457,
+            "group_variances": [
+              0.012735257258703421,
+              0.0046925335974003085
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03215544151647267,
+            "group_variances": [
+              0.00886338978757261,
+              0.004313113619069504
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.024995873941660505,
+          "interval_95": [
+            0.012299423247496864,
+            0.03850180270445419
+          ]
+        }
+      },
+      "ds-english-v1/count-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ds-english-v1",
+          "memory": "count-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5098199866382189,
+        "rmse_ms": 148.01837627074875,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05787381830468471,
+            "group_variances": [
+              0.027917267813922376,
+              0.010862042617746802
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.053193274835012176,
+            "group_variances": [
+              0.022316253548088576,
+              0.00800600778668578
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05493508560752335,
+            "group_variances": [
+              0.015235005353595944,
+              0.0072583308028059575
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.01585728145303667,
+          "interval_95": [
+            0.0027695384101248375,
+            0.030455756121372347
+          ]
+        }
+      },
+      "ds-english-v1/exponential-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ds-english-v1",
+          "memory": "exponential-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5206860222315532,
+        "rmse_ms": 147.94093924583083,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03287865278319968,
+            "group_variances": [
+              0.015942485896871632,
+              0.006020358116073652
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.030399916234995262,
+            "group_variances": [
+              0.012505669372013603,
+              0.004577180543927825
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03188167871210338,
+            "group_variances": [
+              0.00911607628888676,
+              0.00431001026980871
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.026723317046371,
+          "interval_95": [
+            0.015864251643909658,
+            0.04059296270102711
+          ]
+        }
+      },
+      "ds-english-v1/exponential-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ds-english-v1",
+          "memory": "exponential-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5117348375197852,
+        "rmse_ms": 148.04725789115346,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05720404926349986,
+            "group_variances": [
+              0.028000323083208472,
+              0.010527951957577317
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05230012259533232,
+            "group_variances": [
+              0.021932750932260457,
+              0.007813172848870955
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05447147631472599,
+            "group_variances": [
+              0.015642607670813758,
+              0.007267017316142069
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.017772132334602977,
+          "interval_95": [
+            0.005903112188410535,
+            0.029512633035628934
+          ]
+        }
+      },
+      "ccg-incremental-v1/none-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-incremental-v1",
+          "memory": "none-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.49396270518518226,
+        "rmse_ms": 152.3302690756981,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.035119399062738685,
+            "group_variances": [
+              0.016352599927013416,
+              0.007000935153616712
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03350310953942135,
+            "group_variances": [
+              0.01266949904082489,
+              0.00487876105817698
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03431118029936981,
+            "group_variances": [
+              0.009050937073165132,
+              0.004844249485816676
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.0,
+          "interval_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "ccg-incremental-v1/none-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-incremental-v1",
+          "memory": "none-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.48601433172165504,
+        "rmse_ms": 152.35152669045502,
+        "converged": false,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.060946694868487986,
+            "group_variances": [
+              0.02871046595015651,
+              0.012209292421505301
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": false,
+            "message": "ABNORMAL: ",
+            "residual_variance": 0.05744514624396222,
+            "group_variances": [
+              0.022216698163157265,
+              0.008312153845148218
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05840225214591169,
+            "group_variances": [
+              0.015543658269618463,
+              0.008150832177190797
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": -0.007948373463527201,
+          "interval_95": [
+            -0.013505977089517509,
+            -0.003253272314958113
+          ]
+        }
+      },
+      "ccg-incremental-v1/count-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-incremental-v1",
+          "memory": "count-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.518222062643767,
+        "rmse_ms": 148.11309402179177,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03320759915723914,
+            "group_variances": [
+              0.016144379172638095,
+              0.006174298918022952
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03085959541332769,
+            "group_variances": [
+              0.012862685352724602,
+              0.00466950182229237
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03216974387164611,
+            "group_variances": [
+              0.0089398452632675,
+              0.004313897985229217
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.024259357458584766,
+          "interval_95": [
+            0.01002380570606662,
+            0.03808942756030042
+          ]
+        }
+      },
+      "ccg-incremental-v1/count-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-incremental-v1",
+          "memory": "count-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5091463521847066,
+        "rmse_ms": 148.13521886295598,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05777529799155748,
+            "group_variances": [
+              0.02835032076394971,
+              0.010786225894577001
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05308566599631264,
+            "group_variances": [
+              0.022534605887805495,
+              0.007967588639953293
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05494573909078399,
+            "group_variances": [
+              0.015368231037554582,
+              0.007256728077114703
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.015183646999524401,
+          "interval_95": [
+            0.00042235517531790724,
+            0.029286235065666917
+          ]
+        }
+      },
+      "ccg-incremental-v1/exponential-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-incremental-v1",
+          "memory": "exponential-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5207378827241089,
+        "rmse_ms": 147.91378837393987,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.032822501088497665,
+            "group_variances": [
+              0.01598065898884012,
+              0.005906786165940556
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.030298289625836708,
+            "group_variances": [
+              0.012564948708202232,
+              0.0044172568138156195
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03200891559636014,
+            "group_variances": [
+              0.009166946039192804,
+              0.004282434685690329
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.026775177538926612,
+          "interval_95": [
+            0.013983287166171065,
+            0.04068027856679483
+          ]
+        }
+      },
+      "ccg-incremental-v1/exponential-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-incremental-v1",
+          "memory": "exponential-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5119356655994811,
+        "rmse_ms": 147.9742536539375,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05708248136483248,
+            "group_variances": [
+              0.028062003614607978,
+              0.010323483880755104
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05209757543589865,
+            "group_variances": [
+              0.02202919317992043,
+              0.007542541136161826
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.054669147703918765,
+            "group_variances": [
+              0.015729765501469945,
+              0.007208994632056628
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.01797296041429879,
+          "interval_95": [
+            0.0054569662299189204,
+            0.030500940889247232
+          ]
+        }
+      },
+      "ccg-application-v1/none-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-application-v1",
+          "memory": "none-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.49396270518518226,
+        "rmse_ms": 152.3302690756981,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.035119399062738685,
+            "group_variances": [
+              0.016352599927013416,
+              0.007000935153616712
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03350310953942135,
+            "group_variances": [
+              0.01266949904082489,
+              0.00487876105817698
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03431118029936981,
+            "group_variances": [
+              0.009050937073165132,
+              0.004844249485816676
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.0,
+          "interval_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "ccg-application-v1/none-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-application-v1",
+          "memory": "none-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.48601433172165504,
+        "rmse_ms": 152.35152669045502,
+        "converged": false,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.060946694868487986,
+            "group_variances": [
+              0.02871046595015651,
+              0.012209292421505301
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": false,
+            "message": "ABNORMAL: ",
+            "residual_variance": 0.05744514624396222,
+            "group_variances": [
+              0.022216698163157265,
+              0.008312153845148218
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 5,
+            "columns": 5,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05840225214591169,
+            "group_variances": [
+              0.015543658269618463,
+              0.008150832177190797
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": -0.007948373463527201,
+          "interval_95": [
+            -0.013505977089517509,
+            -0.003253272314958113
+          ]
+        }
+      },
+      "ccg-application-v1/count-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-application-v1",
+          "memory": "count-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5184493530191466,
+        "rmse_ms": 148.08717815705992,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.033214243314459706,
+            "group_variances": [
+              0.016119109826196534,
+              0.006182693520243516
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.030858577340936545,
+            "group_variances": [
+              0.012806324514191982,
+              0.004670782731575163
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.032172881072116744,
+            "group_variances": [
+              0.008965312722478412,
+              0.004314763606780052
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.024486647833964394,
+          "interval_95": [
+            0.011036091634621272,
+            0.03826653163788348
+          ]
+        }
+      },
+      "ccg-application-v1/count-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-application-v1",
+          "memory": "count-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5093838218655679,
+        "rmse_ms": 148.10723342276532,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.0577858064043554,
+            "group_variances": [
+              0.02830672001075026,
+              0.010800676354010547
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.053084612411915644,
+            "group_variances": [
+              0.022439263460253787,
+              0.007969564730650107
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05495186825695983,
+            "group_variances": [
+              0.01540852460853343,
+              0.007258419242832044
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.015421116680385672,
+          "interval_95": [
+            0.0006340050219991395,
+            0.0296148330684483
+          ]
+        }
+      },
+      "ccg-application-v1/exponential-v1/lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-application-v1",
+          "memory": "exponential-v1",
+          "representation": "native",
+          "measurement": "lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.521143834299152,
+        "rmse_ms": 147.85785940654543,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03282596270197806,
+            "group_variances": [
+              0.015965937277340296,
+              0.0059147647554137605
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.030292658176914955,
+            "group_variances": [
+              0.012529428170814394,
+              0.004420905457486896
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.03198693112017862,
+            "group_variances": [
+              0.009172432626122589,
+              0.0042676929881255475
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.02718112911396977,
+          "interval_95": [
+            0.01459297812523459,
+            0.04094673075086693
+          ]
+        }
+      },
+      "ccg-application-v1/exponential-v1/shifted-lognormal-v1": {
+        "configuration": {
+          "grammar": "ccg-application-v1",
+          "memory": "exponential-v1",
+          "representation": "native",
+          "measurement": "shifted-lognormal-v1",
+          "decay": 0.8
+        },
+        "mean_log_density": 0.5123025098948081,
+        "rmse_ms": 147.92554575918524,
+        "converged": true,
+        "diagnostics": [
+          {
+            "fold": 0,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.0570951360115394,
+            "group_variances": [
+              0.028035281140791124,
+              0.010338122577667471
+            ]
+          },
+          {
+            "fold": 1,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05209738570483499,
+            "group_variances": [
+              0.02196753040491751,
+              0.007548378126748099
+            ]
+          },
+          {
+            "fold": 2,
+            "train": 576,
+            "test": 288,
+            "rank": 6,
+            "columns": 6,
+            "converged": true,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "residual_variance": 0.05463801422442142,
+            "group_variances": [
+              0.01573796995115094,
+              0.007185690761260268
+            ]
+          }
+        ],
+        "gain_over_baseline": {
+          "mean": 0.01833980470962585,
+          "interval_95": [
+            0.006023557038076509,
+            0.03089770946900085
+          ]
+        }
+      }
+    },
+    "identical_design_groups": [
+      [
+        "ds-english-v1/none-v1/lognormal-v1",
+        "ccg-incremental-v1/none-v1/lognormal-v1",
+        "ccg-application-v1/none-v1/lognormal-v1"
+      ],
+      [
+        "ds-english-v1/none-v1/shifted-lognormal-v1",
+        "ccg-incremental-v1/none-v1/shifted-lognormal-v1",
+        "ccg-application-v1/none-v1/shifted-lognormal-v1"
+      ]
+    ],
+    "baseline": "ds-english-v1/none-v1/lognormal-v1",
+    "uncertainty": "300 participant bootstrap resamples of fixed held-out predictions; no refitting per draw",
+    "interpretation": "Synthetic recovery cannot establish human predictive adequacy"
+  },
+  "recovery": [
+    {
+      "generator": "ds-english-v1/exponential-v1/lognormal-v1",
+      "repetition": 0,
+      "seed": 20261029,
+      "best": [
+        "ccg-application-v1/exponential-v1/lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ds-english-v1-exponential-v1-lognormal-v1-0.json",
+      "report_sha256": "04316ebd4c9a308f83c94e7a653bfdf0f3feff823eb6681a3b7426328a8195a5",
+      "nonconverged": [
+        "ds-english-v1/none-v1/shifted-lognormal-v1",
+        "ccg-incremental-v1/none-v1/shifted-lognormal-v1",
+        "ccg-application-v1/none-v1/shifted-lognormal-v1"
+      ],
+      "generator_converged": true,
+      "generator_gain_from_best": -0.0004578120675987618,
+      "all_fits_converged": false
+    },
+    {
+      "generator": "ds-english-v1/exponential-v1/lognormal-v1",
+      "repetition": 1,
+      "seed": 20261030,
+      "best": [
+        "ccg-application-v1/exponential-v1/lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ds-english-v1-exponential-v1-lognormal-v1-1.json",
+      "report_sha256": "3f159063ed893f3fb6721360d178d9f17de4044374acab19e93a65b718c9ce12",
+      "nonconverged": [],
+      "generator_converged": true,
+      "generator_gain_from_best": -0.0002139618607914784,
+      "all_fits_converged": true
+    },
+    {
+      "generator": "ds-english-v1/exponential-v1/lognormal-v1",
+      "repetition": 2,
+      "seed": 20261031,
+      "best": [
+        "ds-english-v1/exponential-v1/lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ds-english-v1-exponential-v1-lognormal-v1-2.json",
+      "report_sha256": "963b3b01fe661e09b58baa672df2fbe8a19232923098a598dca788c61c31adaf",
+      "nonconverged": [],
+      "generator_converged": true,
+      "generator_gain_from_best": 0.0,
+      "all_fits_converged": true
+    },
+    {
+      "generator": "ccg-incremental-v1/count-v1/lognormal-v1",
+      "repetition": 0,
+      "seed": 20261029,
+      "best": [
+        "ccg-application-v1/count-v1/lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ccg-incremental-v1-count-v1-lognormal-v1-0.json",
+      "report_sha256": "26421a2ea42cc47db4b27542a7afd6440baa159fe1d379a4245175d7980c7233",
+      "nonconverged": [],
+      "generator_converged": true,
+      "generator_gain_from_best": -0.00011466610307331315,
+      "all_fits_converged": true
+    },
+    {
+      "generator": "ccg-incremental-v1/count-v1/lognormal-v1",
+      "repetition": 1,
+      "seed": 20261030,
+      "best": [
+        "ccg-application-v1/count-v1/lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ccg-incremental-v1-count-v1-lognormal-v1-1.json",
+      "report_sha256": "f6c48f0a98a980f014c631535b5ba411d7e019c1094a301ef2e1f57fcd4773da",
+      "nonconverged": [],
+      "generator_converged": true,
+      "generator_gain_from_best": -0.00019601634661503553,
+      "all_fits_converged": true
+    },
+    {
+      "generator": "ccg-incremental-v1/count-v1/lognormal-v1",
+      "repetition": 2,
+      "seed": 20261031,
+      "best": [
+        "ds-english-v1/count-v1/lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ccg-incremental-v1-count-v1-lognormal-v1-2.json",
+      "report_sha256": "f0c33805d185788f242fac1160097bb16f7186a47025f3bcec4c95ac9df5392f",
+      "nonconverged": [],
+      "generator_converged": true,
+      "generator_gain_from_best": -0.004144921409537927,
+      "all_fits_converged": true
+    },
+    {
+      "generator": "ccg-incremental-v1/exponential-v1/shifted-lognormal-v1",
+      "repetition": 0,
+      "seed": 20261029,
+      "best": [
+        "ccg-incremental-v1/exponential-v1/lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ccg-incremental-v1-exponential-v1-shifted-lognormal-v1-0.json",
+      "report_sha256": "6aa60ee6fef77e90ae17a1c6931f2a15903c97e55172285ac2c728b765447001",
+      "nonconverged": [],
+      "generator_converged": true,
+      "generator_gain_from_best": -0.0008672043041459965,
+      "all_fits_converged": true
+    },
+    {
+      "generator": "ccg-incremental-v1/exponential-v1/shifted-lognormal-v1",
+      "repetition": 1,
+      "seed": 20261030,
+      "best": [
+        "ccg-application-v1/exponential-v1/shifted-lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ccg-incremental-v1-exponential-v1-shifted-lognormal-v1-1.json",
+      "report_sha256": "529572564b8308a879e4499c5dd24048d1295d8aa87de0259376c049c920d1b5",
+      "nonconverged": [],
+      "generator_converged": true,
+      "generator_gain_from_best": -1.0880874599661361e-05,
+      "all_fits_converged": true
+    },
+    {
+      "generator": "ccg-incremental-v1/exponential-v1/shifted-lognormal-v1",
+      "repetition": 2,
+      "seed": 20261031,
+      "best": [
+        "ds-english-v1/exponential-v1/shifted-lognormal-v1"
+      ],
+      "status": "evaluated",
+      "report": "recovery-ccg-incremental-v1-exponential-v1-shifted-lognormal-v1-2.json",
+      "report_sha256": "52dea34800a9ee87bddaa65449f5e1b2b3d3685d79aba7db8610d0bf71d043ee",
+      "nonconverged": [],
+      "generator_converged": true,
+      "generator_gain_from_best": -0.0014016257509642527,
+      "all_fits_converged": true
+    }
+  ],
+  "limitations": [
+    "No newly collected human responses",
+    "Authored stimuli lack independent review",
+    "Memory features predict RT through a fitted observation model; no mechanistic latency claim",
+    "Reference grammars are bounded implementation fragments",
+    "Model recovery is assessed only on this small design",
+    "Boundary, POS and length covary in the two prime conditions",
+    "Shared item families limit generalization claims",
+    "All items are intended positive; independent negative controls are still needed",
+    "DS cues exclude context-only actions; CCG cues include the supplied context in full-span derivations",
+    "Non-converged fits are reported but excluded from recovery winners; small score gaps do not establish identification"
+  ],
+  "recovery_summary": {
+    "exact_generator_best": 1,
+    "runs": 9,
+    "interpretation": "Descriptive recovery on this design only; no power or human superiority claim"
+  }
+}

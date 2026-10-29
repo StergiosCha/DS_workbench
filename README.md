@@ -31,6 +31,13 @@ experiment, and bounded MG/CCG comparisons. See the
 and [evidence snapshot](data/hybrid/README.md). These experiments have not
 been deployed to the public site.
 
+The **Configuration lab** at `/experiments.html` adds a framework-neutral
+experiment host: independent DS/CCG engines, interchangeable memory and response
+models, a reproducible synthetic pilot, and a local task rehearsal. DS remains
+a preserved reference configuration. See the
+[modular experiment guide](docs/design/modular-experiments.md) and
+[pilot interpretation](data/experiments/README.md).
+
 ## Run locally
 
 Python 3.11–3.13; the current handover check uses Python 3.12 on macOS.

@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "reference_commit": "c285928deb76f1f594f653feec36bba764f7d57b",
+  "files": {
+    "src/dylan/hybrid/traces.py": "1410af0159a59555955daa5b10151a3f2a2e3e1ffbbb269721d328322a6e95b3",
+    "src/dylan/hybrid/ccg.py": "1dbb1d0b34693862a157d851772cee5b71b65b65ed6038dc25b5f38ffe97ec2d",
+    "src/dylan/hybrid/polydefinites.py": "1bcee4f5e26480fefa1e79d60a353cfc453d96cb232594b21fe6124c83ad8488",
+    "src/dylan/hybrid/features.py": "50a345a232861a36a7e5ddf7d40efcdfb782a808403a7cab5df41708ea8cb64d",
+    "src/dylan/hybrid/terms.py": "6042762f856599827bb4df3fb0dc51b2704a1d8e4e5bbea8e226f9d0c0398802"
+  },
+  "cases": [
+    {
+      "grammar": "2026-english-classical",
+      "extensions": [],
+      "text": "John likes",
+      "complete": false,
+      "grammar_sha256": "7b6ecea9be2e3949ef9ef8bf8df7962e47e0893d81f0050bf2cacec7db49ce89",
+      "status": "recognized_fragment",
+      "state_sha256": "ed880d673ccb12b45dec47d97f4a34e6183370aa1558d728097b7239963394df",
+      "frames_sha256": "b79e99babbee5dbbcaa6d42f8e6ab609e374ed48a79a78a44238981d2180535f"
+    },
+    {
+      "grammar": "2026-english-classical",
+      "extensions": [],
+      "text": "John likes Mary",
+      "complete": true,
+      "grammar_sha256": "7b6ecea9be2e3949ef9ef8bf8df7962e47e0893d81f0050bf2cacec7db49ce89",
+      "status": "complete",
+      "state_sha256": "cb2f794409e3f611f9f43e9b45d27211cdd4c80874e5e612b85db7a68d38114a",
+      "frames_sha256": "5ddadfc000923191c261115fe618b5730cfc0831a48a1fdec678a6956158f76c"
+    },
+    {
+      "grammar": "2026-english-classical",
+      "extensions": [],
+      "text": "John gives Mary a book",
+      "complete": true,
+      "grammar_sha256": "7b6ecea9be2e3949ef9ef8bf8df7962e47e0893d81f0050bf2cacec7db49ce89",
+      "status": "complete",
+      "state_sha256": "971aae376f5cbf339e3af8f60e22966fd5f535bc345331ae7f393e760b4f9994",
+      "frames_sha256": "c6fd628f92737b8f45a0d6cd949fbe6aafda072f03b03b209a8ec2692021575c"
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "extensions": [],
+      "text": "ο άνθρωπος περπατάει",
+      "complete": true,
+      "grammar_sha256": "2dab101c6880e6f4610ee37febee6c888052f750c152d66b9726a187442ece7b",
+      "status": "complete",
+      "state_sha256": "029bcde5c9d50f22cb9799afd379bb51def2132f69d5f176929922695cb01108",
+      "frames_sha256": "9fc00714606857fbd7aea3be69f32097fe6cec8093ba46d6282a6c034044c583"
+    },
+    {
+      "grammar": "2026-smg-classical",
+      "extensions": [
+        "polydefinites"
+      ],
+      "text": "ο άνθρωπος ο μεγάλος περπατάει",
+      "complete": true,
+      "grammar_sha256": "1d8a97a255d6a46ce624b550c8b54e0c282e0a9e7da2264fff91f555e569b9ee",
+      "status": "complete",
+      "state_sha256": "4e42af0b96ddf751e35ce678db9b8a5f303be02cccecc5dbdc1400c342c323d3",
+      "frames_sha256": "d7284aa2b02072d1331ca4578f5b8494b158f50c3c826dce326593774e4461e5"
+    }
+  ]
+}

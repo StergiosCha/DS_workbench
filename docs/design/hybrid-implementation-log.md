@@ -16,3 +16,18 @@ See [the implementation guide](hybrid-syntax-implementation.md) for formal contr
 Raw data, responses, full traces, fit artifacts and screenshots remain under `build/hybrid/`. Committed evidence is aggregate and attributed. Existing untracked paper/report files and Arash scripts were untouched. No public deployment or main-branch merge was performed.
 
 Scientific milestones remain distinct from this executable prototype: independently reviewed prospective contrasts, new hybrid-task ordinary/count/Jev calibration, wider grammar coverage, and optional phase/cartographic/nanosyntactic hypotheses. None is represented as established evidence.
+
+## Modular experiment host · 2026-10-29
+
+- Preserved the `c285928` grammar/trace/combinator references with file hashes and five native DS state/action fixtures.
+- Added a neutral observation/session/registry contract, independent incremental CCG chart, grammar package selection, native/lexical cue projections, three memory choices and two response measurements.
+- Made parser facade imports lazy while preserving existing exports and the original formula bootstrap; fresh-process tests cover both DS entry points and CCG without DS parser imports.
+- Added the Configuration lab, native state inspectors, JSON downloads, bounded API, local counterbalanced rehearsal and strict response import with provenance labels.
+- Ran the frozen 24-family, 18-configuration synthetic pilot: 36 simulated participants, three generators and three seeds. All three maintained study engines support all families. Exact configuration recovery is 1/9; one shared shifted/no-memory fit is non-converged. Diagnostics are retained; no human superiority claim is supported.
+- Browser checks pass for the new comparison/rehearsal interface and all nine existing hybrid examples, including mobile layout and request validation. The browser export imports successfully and correctly reports insufficient independent groups for comparison.
+- Final regression: 2,236 passed, five existing skips, one existing collection warning. Lint and staged whitespace checks pass. The frozen report matches its recorded source hashes.
+- The built wheel was installed into an isolated target and imported from outside the checkout. CCG executes without importing DS parsers; English DS, the Greek construction, packaged reports and both new pages pass. Wheel source files match the checkout; raw responses and credentials are excluded.
+
+See [modular-experiments.md](modular-experiments.md) for contracts, statistical
+details, commands and interpretation. Raw synthetic responses, full recovery
+reports, rehearsal output and screenshots are under ignored `build/experiments`.

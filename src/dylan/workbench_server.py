@@ -43,7 +43,20 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
         self.wfile.write(data)
 
     def do_GET(self) -> None:
-        if urlsplit(self.path).path in {"/api/hybrid/config", "/api/hybrid/evidence"}:
+        if urlsplit(self.path).path.startswith("/api/experiments/"):
+            from dylan.experiments.api import resource
+            try:
+                parts = urlsplit(self.path)
+                params = parse_qs(parts.query, keep_blank_values=True, max_num_fields=1)
+                if set(params) - {"participant"} or any(len(v) != 1 for v in params.values()):
+                    raise ValueError("Unknown or repeated study options")
+                self.send_json(resource(parts.path.removeprefix("/api/experiments/"),
+                                        participant=int(params.get("participant", ["0"])[0])))
+            except KeyError:
+                self.send_json({"error": "Unknown experiment endpoint."}, 404)
+            except ValueError as exc:
+                self.send_json({"error": str(exc)}, 400)
+        elif urlsplit(self.path).path in {"/api/hybrid/config", "/api/hybrid/evidence"}:
             from dylan.hybrid.api import configuration as hybrid_config, evidence
             self.send_json(hybrid_config() if urlsplit(self.path).path.endswith("config") else evidence())
         elif urlsplit(self.path).path == "/api/config":
@@ -83,6 +96,9 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self) -> None:
         endpoint = urlsplit(self.path).path
+        if endpoint == "/api/experiments/run":
+            self.hybrid_experiment(modular=True)
+            return
         if endpoint == "/api/hybrid/analyse":
             self.hybrid_experiment()
             return
@@ -145,8 +161,11 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
         finally:
             _WORKERS.release()
 
-    def hybrid_experiment(self) -> None:
-        from dylan.hybrid.api import validate
+    def hybrid_experiment(self, *, modular=False) -> None:
+        if modular:
+            from dylan.experiments.api import validate
+        else:
+            from dylan.hybrid.api import validate
 
         origin = self.headers.get("Origin")
         if origin and urlsplit(origin).netloc != self.headers.get("Host"):
@@ -164,7 +183,7 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
             self.send_json({"error": "Experiment workers are busy."}, 503)
             return
         try:
-            worker = subprocess.run([sys.executable, "-m", "dylan.hybrid.api"],
+            worker = subprocess.run([sys.executable, "-m", "dylan.experiments.api" if modular else "dylan.hybrid.api"],
                 input=json.dumps(payload), text=True, capture_output=True, timeout=45,
                 cwd=WORKING_ROOT, check=False)
             if worker.returncode:

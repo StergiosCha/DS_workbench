@@ -1,0 +1,560 @@
+{
+  "schema": 1,
+  "id": "contextual-fragment-memory-v1",
+  "date": "2026-10-29",
+  "seed": 20261029,
+  "status": "computational_design_pilot_no_new_human_data",
+  "task": "contextual_fragment_decision",
+  "question": "Do memory and grammar configurations yield distinguishable predictions under shared observations?",
+  "scope": "Boundary/length/POS differences covary; not a clean test of structure versus POS priming",
+  "families": [
+    {
+      "id": "f00",
+      "target": {
+        "text": "likes the book",
+        "left_context": "John",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a dog",
+          "left_context": "Mary",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the dog",
+          "left_context": "Mary likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f01",
+      "target": {
+        "text": "likes the dog",
+        "left_context": "John",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a stone",
+          "left_context": "Mary",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the stone",
+          "left_context": "Mary likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f02",
+      "target": {
+        "text": "likes the stone",
+        "left_context": "John",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a library",
+          "left_context": "Mary",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the library",
+          "left_context": "Mary likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f03",
+      "target": {
+        "text": "likes the library",
+        "left_context": "John",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a park",
+          "left_context": "Mary",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the park",
+          "left_context": "Mary likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f04",
+      "target": {
+        "text": "likes the park",
+        "left_context": "John",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a peacock",
+          "left_context": "Mary",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the peacock",
+          "left_context": "Mary likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f05",
+      "target": {
+        "text": "likes the peacock",
+        "left_context": "John",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a book",
+          "left_context": "Mary",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the book",
+          "left_context": "Mary likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f06",
+      "target": {
+        "text": "likes the book",
+        "left_context": "Mary",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a dog",
+          "left_context": "Bill",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the dog",
+          "left_context": "Bill likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f07",
+      "target": {
+        "text": "likes the dog",
+        "left_context": "Mary",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a stone",
+          "left_context": "Bill",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the stone",
+          "left_context": "Bill likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f08",
+      "target": {
+        "text": "likes the stone",
+        "left_context": "Mary",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a library",
+          "left_context": "Bill",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the library",
+          "left_context": "Bill likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f09",
+      "target": {
+        "text": "likes the library",
+        "left_context": "Mary",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a park",
+          "left_context": "Bill",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the park",
+          "left_context": "Bill likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f10",
+      "target": {
+        "text": "likes the park",
+        "left_context": "Mary",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a peacock",
+          "left_context": "Bill",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the peacock",
+          "left_context": "Bill likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f11",
+      "target": {
+        "text": "likes the peacock",
+        "left_context": "Mary",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a book",
+          "left_context": "Bill",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the book",
+          "left_context": "Bill likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f12",
+      "target": {
+        "text": "likes the book",
+        "left_context": "Bill",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a dog",
+          "left_context": "George",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the dog",
+          "left_context": "George likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f13",
+      "target": {
+        "text": "likes the dog",
+        "left_context": "Bill",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a stone",
+          "left_context": "George",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the stone",
+          "left_context": "George likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f14",
+      "target": {
+        "text": "likes the stone",
+        "left_context": "Bill",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a library",
+          "left_context": "George",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the library",
+          "left_context": "George likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f15",
+      "target": {
+        "text": "likes the library",
+        "left_context": "Bill",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a park",
+          "left_context": "George",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the park",
+          "left_context": "George likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f16",
+      "target": {
+        "text": "likes the park",
+        "left_context": "Bill",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a peacock",
+          "left_context": "George",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the peacock",
+          "left_context": "George likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f17",
+      "target": {
+        "text": "likes the peacock",
+        "left_context": "Bill",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a book",
+          "left_context": "George",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the book",
+          "left_context": "George likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f18",
+      "target": {
+        "text": "likes the book",
+        "left_context": "George",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a dog",
+          "left_context": "John",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the dog",
+          "left_context": "John likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f19",
+      "target": {
+        "text": "likes the dog",
+        "left_context": "George",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a stone",
+          "left_context": "John",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the stone",
+          "left_context": "John likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f20",
+      "target": {
+        "text": "likes the stone",
+        "left_context": "George",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a library",
+          "left_context": "John",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the library",
+          "left_context": "John likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f21",
+      "target": {
+        "text": "likes the library",
+        "left_context": "George",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a park",
+          "left_context": "John",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the park",
+          "left_context": "John likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f22",
+      "target": {
+        "text": "likes the park",
+        "left_context": "George",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a peacock",
+          "left_context": "John",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the peacock",
+          "left_context": "John likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    },
+    {
+      "id": "f23",
+      "target": {
+        "text": "likes the peacock",
+        "left_context": "George",
+        "task": "fragment"
+      },
+      "conditions": {
+        "matched": {
+          "text": "likes a book",
+          "left_context": "John",
+          "task": "fragment"
+        },
+        "shifted_boundary": {
+          "text": "the book",
+          "left_context": "John likes",
+          "task": "fragment"
+        }
+      },
+      "annotation_status": "author_constructed_requires_independent_review"
+    }
+  ],
+  "lags": [
+    0,
+    2
+  ],
+  "fillers": [
+    {
+      "text": "walks",
+      "left_context": "John",
+      "task": "sentence"
+    },
+    {
+      "text": "arrives",
+      "left_context": "Mary",
+      "task": "sentence"
+    }
+  ],
+  "grammars": [
+    "ds-english-v1",
+    "ccg-incremental-v1",
+    "ccg-application-v1"
+  ],
+  "memories": [
+    "none-v1",
+    "count-v1",
+    "exponential-v1"
+  ],
+  "measurements": [
+    "lognormal-v1",
+    "shifted-lognormal-v1"
+  ],
+  "representation": "native",
+  "decay": 0.8,
+  "primary_split": "new participants; item families remain shared",
+  "counterbalance": "four cyclic lists cross prime condition and intervening lag; order randomized per participant",
+  "human_collection": "Independent stimulus review and prospective protocol approval are outstanding; local task is a rehearsal",
+  "instructions": "Read the context, then decide whether the displayed continuation can occur after it. Some continuations may be unfinished.",
+  "limitations": [
+    "Small declared grammars",
+    "Unreviewed authored stimuli",
+    "Grammar-native cues are different projections",
+    "A grammatical derivation is not a human judgment",
+    "Default RT coefficients are illustrative",
+    "All authored items are intended positive; independently reviewed negative controls are needed before a decision experiment"
+  ]
+}

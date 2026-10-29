@@ -161,3 +161,12 @@ uv build --wheel --out-dir build/hybrid/package
 ```
 
 Browser checks need Playwright/Chromium. Screenshots and checks are in `build/hybrid/browser/`. This is a reviewable research branch; it has not been merged into `workbench-main` or publicly deployed.
+
+## Modular host extension · 2026-10-29
+
+The [Configuration lab](modular-experiments.md) now runs the preserved DS
+baseline and an independent incremental CCG engine through a neutral experiment
+host. Memory, representation and response models are selectable components.
+The new authored synthetic pilot and local task rehearsal are separate from the
+article reanalysis above. They expose coverage, convergence and weak model
+identification; no new human evidence has been collected.
