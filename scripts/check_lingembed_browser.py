@@ -22,14 +22,23 @@ def main():
         page = context.new_page()
         page.goto(args.workbench + "/experiments.html")
         expect(page.locator("#connection")).to_contain_text("workers ready")
+        expect(page.locator("#open-lingembed")).to_be_visible()
+        expect(page.locator("#open-lingembed")).to_be_disabled()
         page.get_by_text("LingEmbed connection", exact=True).click()
         page.fill("#lingembed-url", args.viewer)
         page.click("#run-pair")
         expect(page.locator("#run-status")).to_contain_text("Comparison ready", timeout=50000)
         cards = page.locator(".run-grid > article")
         assert cards.count() == 2
+        expect(page.locator("#open-lingembed")).to_be_enabled()
+        assert page.locator("#lingembed-analysis option").count() == 4
+        assert "Target" in page.locator("#lingembed-analysis option:checked").inner_text()
+        page.set_viewport_size({"width": 390, "height": 844})
+        assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        expect(page.locator("#open-lingembed")).to_be_visible()
+        page.set_viewport_size({"width": 1440, "height": 1000})
         with page.expect_popup() as popup:
-            cards.nth(0).locator(".open-lingembed").last.click()
+            page.click("#open-lingembed")
         viewer = popup.value
         expect(page.locator("#lingembed-status")).to_have_text("Analysis opened in LingEmbed.")
         expect(viewer.locator("#engine")).to_have_text("ds-english-v1")

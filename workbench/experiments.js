@@ -2,6 +2,7 @@
 const $ = id => document.getElementById(id);
 const el = (tag, text, cls) => { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; };
 let catalog, study, lastResult;
+let lingembedChoices = [];
 async function api(path, payload) {
   const response = await fetch(`/api/experiments/${path}`, payload ? {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)} : {});
   const result = await response.json();
@@ -65,7 +66,9 @@ function openLingEmbed(analysis) {
 }
 function renderRuns(result) {
   const grid = el("div", undefined, "run-grid");
-  result.runs.forEach(run => {
+  lingembedChoices = []; $("lingembed-analysis").replaceChildren();
+  let defaultChoice = 0;
+  result.runs.forEach((run, runIndex) => {
     const card = el("article", undefined, "panel block"), c = run.configuration;
     card.append(el("h2", c.grammar), el("p", `${c.memory} · ${c.representation} · ${c.measurement}`, "configuration-id"));
     run.events.forEach((event,i) => {
@@ -80,6 +83,11 @@ function renderRuns(result) {
         section.append(buttons, viewer);
       }
       if (event.lingembed) {
+        const role = i === run.events.length - 1 ? "Target" : i === 0 ? "Prime" : "Filler";
+        const option = el("option", `Configuration ${runIndex + 1} · ${role} · ${c.grammar}: ${o.text}`);
+        option.value = String(lingembedChoices.length); $("lingembed-analysis").append(option);
+        if (runIndex === 0 && role === "Target") defaultChoice = lingembedChoices.length;
+        lingembedChoices.push(event.lingembed);
         const controls = el("div", undefined, "controls"), open = el("button", "Open in LingEmbed ↗"), save = el("button", "Download LingEmbed JSON");
         open.type = save.type = "button"; open.className = "open-lingembed"; save.className = "download-lingembed";
         open.onclick = () => openLingEmbed(event.lingembed); save.onclick = () => downloadJSON(event.lingembed, `${c.grammar}-${i}-lingembed.json`);
@@ -88,9 +96,13 @@ function renderRuns(result) {
       section.append(disclosure("Cues, native trace and provenance", event)); card.append(section);
     }); grid.append(card);
   }); $("results").replaceChildren(grid);
+  $("lingembed-analysis").value = String(defaultChoice);
+  $("open-lingembed").disabled = $("lingembed-analysis").disabled = !lingembedChoices.length;
+  $("lingembed-help").textContent = lingembedChoices.length ? "Choose an analysis above, then click Open in LingEmbed. Individual results also have open and download buttons." : "This response has no LingEmbed exports. Restart the updated local workbench and run the comparison again.";
 }
 async function run(mode) {
   $("run-status").textContent = "Running the selected configurations…"; $("run-pair").disabled = $("run-study").disabled = true;
+  $("open-lingembed").disabled = $("lingembed-analysis").disabled = true;
   try {
     let payload = {mode, configurations: configurations(), export_lingembed:true};
     if (mode === "study") Object.assign(payload, {family: $("family").value, condition: $("condition").value, lag: Number($("study-lag").value)});
@@ -116,6 +128,7 @@ function renderReport(report) {
   const limits = el("ul"); report.limitations.forEach(x => limits.append(el("li", x))); panel.append(limits, disclosure("Frozen protocol, configuration hashes and fit diagnostics", report)); $("report").replaceChildren(panel);
 }
 $("pair-form").onsubmit = event => {event.preventDefault(); run("pair");}; $("run-study").onclick = () => run("study"); $("add-config").onclick = () => addConfiguration();
+$("open-lingembed").onclick = () => {const choice = lingembedChoices[Number($("lingembed-analysis").value)]; if (choice) openLingEmbed(choice);};
 $("download").onclick = () => {const url = URL.createObjectURL(new Blob([JSON.stringify(lastResult,null,2)],{type:"application/json"})); const a = el("a"); a.href=url; a.download="configuration-comparison.json"; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000);};
 (async () => {try {
   [catalog, study] = await Promise.all([api("catalog"),api("study")]); addConfiguration("ds-english-v1"); addConfiguration("ccg-incremental-v1");
