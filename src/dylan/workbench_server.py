@@ -163,7 +163,7 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
 
     def hybrid_experiment(self, *, modular=False) -> None:
         if modular:
-            from dylan.experiments.api import validate
+            from dylan.experiments.lingembed_api import validate
         else:
             from dylan.hybrid.api import validate
 
@@ -183,7 +183,7 @@ class WorkbenchHandler(SimpleHTTPRequestHandler):
             self.send_json({"error": "Experiment workers are busy."}, 503)
             return
         try:
-            worker = subprocess.run([sys.executable, "-m", "dylan.experiments.api" if modular else "dylan.hybrid.api"],
+            worker = subprocess.run([sys.executable, "-m", "dylan.experiments.lingembed_api" if modular else "dylan.hybrid.api"],
                 input=json.dumps(payload), text=True, capture_output=True, timeout=45,
                 cwd=WORKING_ROOT, check=False)
             if worker.returncode:

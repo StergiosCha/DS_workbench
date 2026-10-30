@@ -8,6 +8,8 @@
 <p id="connection" role="status">Loading the component catalog…</p>
 <section id="configure"><h2>Assemble a comparison</h2><p class="scope">DS and CCG run through independent engines. Grammar, processing and semantics stay together where their interfaces require it; memory and measurement can be swapped. The <a href="hybrid.html">formal analysis lab</a> retains LFG projections, feature constraints, construction experiments and the Minimalist Grammar fragment.</p>
 <div id="configurations" class="configuration-grid"></div><button id="add-config" type="button">Add configuration</button>
+<details><summary>LingEmbed connection</summary><label>LINGEMBED VIEWER ADDRESS<input id="lingembed-url" type="url" value="http://127.0.0.1:8781/workbench.html"></label><p>Each result can open in the companion viewer or download as a LingEmbed JSON file. The viewer runs separately; choose its address here.</p></details>
+<p id="lingembed-status" role="status"></p>
 <form id="pair-form" class="panel"><label>PRIME CONTEXT<input id="prime-context" value="Mary" maxlength="500"></label><label>TARGET CONTEXT<input id="target-context" value="John" maxlength="500"></label>
 <label>PRIME CONTINUATION<input id="prime" value="likes a dog" maxlength="500" required></label><label>TARGET CONTINUATION<input id="target" value="likes the book" maxlength="500" required></label>
 <label>TASK<select id="task"><option value="fragment">Allow an unfinished continuation</option><option value="sentence">Require a complete sentence with context</option></select></label>

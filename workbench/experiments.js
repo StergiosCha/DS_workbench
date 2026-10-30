@@ -37,6 +37,32 @@ function stateView(analysis, state) {
   else v.append(el("pre", JSON.stringify(state, null, 2)));
   v.append(el("p", `Native completion: ${state.complete ? "complete" : "open"}`)); return v;
 }
+function downloadJSON(value, filename) {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(value,null,2)], {type:"application/json"}));
+  const a = el("a"); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000);
+}
+let cancelLingEmbed = null;
+function openLingEmbed(analysis) {
+  try {
+    if (cancelLingEmbed) cancelLingEmbed();
+    const url = new URL($("lingembed-url").value);
+    if (!["http:", "https:"].includes(url.protocol) || url.username || url.password) throw new Error("Use an HTTP or HTTPS viewer address without credentials.");
+    const channel = crypto.randomUUID(); url.hash = new URLSearchParams({bridge:channel, origin:location.origin}).toString();
+    let popup, timeout;
+    const cleanup = () => {clearTimeout(timeout); window.removeEventListener("message", receive); cancelLingEmbed = null;};
+    const receive = event => {
+      if (event.source !== popup || event.origin !== url.origin || event.data?.channel !== channel) return;
+      if (event.data.type === "lingembed:ready") popup.postMessage({type:"lingembed:analysis",channel,analysis}, url.origin);
+      if (event.data.type === "lingembed:loaded") {$("lingembed-status").textContent = "Analysis opened in LingEmbed."; cleanup();}
+      if (event.data.type === "lingembed:error") {$("lingembed-status").textContent = `LingEmbed rejected the export: ${event.data.error}`; cleanup();}
+    };
+    window.addEventListener("message", receive); cancelLingEmbed = cleanup;
+    popup = window.open(url.href, "_blank");
+    if (!popup) {cleanup(); throw new Error("The browser blocked the viewer tab. Download the LingEmbed JSON and import it in the viewer.");}
+    $("lingembed-status").textContent = "Connecting to LingEmbed…";
+    timeout = setTimeout(() => {cleanup(); $("lingembed-status").textContent = "Viewer connection timed out. Check its address, or download the LingEmbed JSON for manual import.";},15000);
+  } catch (error) {$("lingembed-status").textContent = error.message;}
+}
 function renderRuns(result) {
   const grid = el("div", undefined, "run-grid");
   result.runs.forEach(run => {
@@ -53,6 +79,12 @@ function renderRuns(result) {
         a.states.forEach((frame,j) => {const b = el("button", frame.word, frame.context ? "context-word" : ""); b.type = "button"; b.setAttribute("aria-pressed", "false"); b.onclick = () => {buttons.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); viewer.replaceChildren(el("p", `After “${frame.word}”`), stateView(a, frame.after));}; buttons.append(b); if (j === a.states.length - 1) b.click();});
         section.append(buttons, viewer);
       }
+      if (event.lingembed) {
+        const controls = el("div", undefined, "controls"), open = el("button", "Open in LingEmbed ↗"), save = el("button", "Download LingEmbed JSON");
+        open.type = save.type = "button"; open.className = "open-lingembed"; save.className = "download-lingembed";
+        open.onclick = () => openLingEmbed(event.lingembed); save.onclick = () => downloadJSON(event.lingembed, `${c.grammar}-${i}-lingembed.json`);
+        controls.append(open,save); section.append(controls);
+      }
       section.append(disclosure("Cues, native trace and provenance", event)); card.append(section);
     }); grid.append(card);
   }); $("results").replaceChildren(grid);
@@ -60,7 +92,7 @@ function renderRuns(result) {
 async function run(mode) {
   $("run-status").textContent = "Running the selected configurations…"; $("run-pair").disabled = $("run-study").disabled = true;
   try {
-    let payload = {mode, configurations: configurations()};
+    let payload = {mode, configurations: configurations(), export_lingembed:true};
     if (mode === "study") Object.assign(payload, {family: $("family").value, condition: $("condition").value, lag: Number($("study-lag").value)});
     else Object.assign(payload, {prime: $("prime").value, target: $("target").value, prime_context: $("prime-context").value, target_context: $("target-context").value, task: $("task").value, fillers: study.fillers.slice(0,Number($("pair-lag").value))});
     lastResult = await api("run", payload); renderRuns(lastResult); $("download").disabled = false; $("run-status").textContent = "Comparison ready · illustrative coefficients";
