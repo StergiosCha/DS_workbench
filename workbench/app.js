@@ -90,7 +90,7 @@ function setBusy(busy) {
   $("parse-label").textContent = busy ? "Parsing…" : state.inputMode === "dialogue" ? "Build dialogue" : state.inputMode === "paragraph" ? "Parse paragraph" : "Build derivation";
   $("grammar").disabled = busy;
   $("system").disabled = busy;
-  $("scope").disabled = busy || $("system").value !== "mltt" || Boolean(greekGrammar());
+  $("scope").disabled = busy || $("system").value === "ttr" || Boolean(greekGrammar()) || Boolean(conditionalBeta());
   $("n-best").disabled = busy || state.inputMode !== "sentence";
   $("sentence").disabled = busy || state.inputMode !== "sentence";
   $("paragraph").disabled = busy || state.inputMode !== "paragraph";
@@ -100,6 +100,7 @@ function setBusy(busy) {
   for (const button of document.querySelectorAll("[data-guide-example]")) button.disabled = busy || !state.config;
   for (const control of document.querySelectorAll("#lexical-examples button")) control.disabled = busy;
   for (const control of document.querySelectorAll("#dialogue-editor input, #dialogue-editor select, #dialogue-editor button, [data-input-mode]")) control.disabled = busy;
+  for (const button of document.querySelectorAll("[data-input-mode]")) button.disabled = busy || betaBlocksMode(button.dataset.inputMode);
   $("add-turn").disabled = busy || $("dialogue-rows").children.length >= 12;
   document.querySelector(".workbench").setAttribute("aria-busy", String(busy));
   for (const button of document.querySelectorAll("#examples button, #action-list button")) button.disabled = busy;
@@ -609,6 +610,19 @@ function render() {
       : "";
   $("reflexive-binding").hidden = !frame.reflexive_bindings?.length;
   $("reflexive-binding").textContent = (frame.reflexive_bindings || []).map((binding) => `${binding.word} → local subject ${binding.antecedent_label || binding.antecedent} · spoken by ${binding.speaker}`).join("; ");
+  const feedback = $("feedback-events");
+  feedback.hidden = !frame.feedback_events?.length;
+  feedback.replaceChildren();
+  for (const event of frame.feedback_events || []) {
+    const movement = event.node === event.pointer_after ? "The clause was already complete." : `The pointer moved from Tn(${event.node}) to Tn(${event.pointer_after}); the sentence continues on the same tree.`;
+    feedback.append(element("p", "", `${event.speaker}: “${event.word}” · feedback on ${event.content}. ${movement}`));
+  }
+  if (frame.feedback_events?.length) {
+    const source = element("a", "", "Backchannel rule · Howes & Eshghi (2021) ↗");
+    source.href = "https://doi.org/10.1007/s10849-020-09328-1";
+    source.target = "_blank"; source.rel = "noopener noreferrer";
+    feedback.append(source, element("p", "", "Records overt feedback on a compiled unit. Participant understanding and agreement are not inferred."));
+  }
   const finished = typeof state.result?.complete === "boolean";
   const finalComplete = Boolean(selectedReading() || state.result?.complete);
   const atEnd = state.index === frames().length - 1;
@@ -780,6 +794,7 @@ function setDialogue(turns) {
 }
 
 function dialogueExamples() {
+  if (laughterBeta()) return laughterBeta().dialogues;
   const family = greekGrammar()?.dialect || "english";
   return (state.config?.dialogue?.examples || []).filter((example) => example.family === family && (!example.backends || example.backends.includes($("system").value)));
 }
@@ -789,11 +804,12 @@ function renderDialogueExamples() {
     const button = element("button", "", example.label); button.type = "button"; button.dataset.dialogueExample = example.id;
     button.addEventListener("click", () => { setDialogue(example.turns); parseSentence(); }); return button;
   }));
-  $("dialogue-coverage-text").textContent = state.config?.dialogue?.coverage || "";
+  $("dialogue-coverage-text").textContent = laughterBeta()?.coverage || state.config?.dialogue?.coverage || "";
 }
 
 function setInputMode(mode) {
   if (state.busy) return;
+  if (betaBlocksMode(mode)) return;
   stop(); state.inputMode = mode;
   $("dialogue-editor").hidden = mode !== "dialogue";
   $("paragraph-editor").hidden = mode !== "paragraph";
@@ -913,10 +929,47 @@ function renderDialoguePlayback(frame) {
   if (!$("context-history").children.length) $("context-history").append(element("p", "context-empty", "This point in the dialogue has no earlier tree. Speaker changes continue the current one."));
 }
 
+function conditionalBeta() {
+  return state.config?.beta_grammars?.[$("grammar").value];
+}
+
+function laughterBeta() {
+  const beta = state.config?.laughter_beta;
+  return beta?.grammar === $("grammar").value ? beta : null;
+}
+
+function betaBlocksMode(mode) {
+  return Boolean((conditionalBeta() && mode !== "sentence") || (laughterBeta() && mode === "paragraph"));
+}
+
 function updateGrammar() {
   const greek = greekGrammar();
-  $("scope").disabled = $("system").value !== "mltt" || Boolean(greek);
-  $("coverage").textContent = greek ? `${greek.short}: ${greek.explanation}`
+  const beta = conditionalBeta();
+  const laughter = laughterBeta();
+  if (betaBlocksMode(state.inputMode)) setInputMode("sentence");
+  for (const button of document.querySelectorAll("[data-input-mode]")) button.disabled = betaBlocksMode(button.dataset.inputMode);
+  $("laughter-beta-notice").hidden = !laughter;
+  $("try-laughter-beta").hidden = Boolean(laughter);
+  if (laughter) {
+    $("laughter-beta-coverage").textContent = laughter.coverage;
+    $("laughter-beta-source").textContent = laughter.source;
+    $("laughter-beta-limits").textContent = laughter.limits;
+    $("lexical-mode").value = "off";
+    $("decision-mode").value = "off";
+    $("llm-enabled").checked = $("jev-enabled").checked = $("experimental-enabled").checked = false;
+  }
+  $("conditional-beta-notice").hidden = !beta;
+  $("try-conditional-beta").hidden = Boolean(beta);
+  if (beta) {
+    $("conditional-beta-coverage").textContent = beta.coverage;
+    $("conditional-beta-limits").textContent = beta.limits;
+    $("conditional-beta-source").textContent = `Source: ${beta.source}`;
+    $("lexical-mode").value = "off";
+    $("decision-mode").value = "off";
+    $("llm-enabled").checked = $("jev-enabled").checked = $("experimental-enabled").checked = false;
+  }
+  $("scope").disabled = $("system").value === "ttr" || Boolean(greek) || Boolean(beta);
+  $("coverage").textContent = laughter ? laughter.coverage : beta ? beta.coverage : greek ? `${greek.short}: ${greek.explanation}`
     : $("system").value === "ttr" ? "Installed DS-TTR grammars."
     : "English fragment: names, determiners, verbs, PP arguments and modifiers, finite complements, temporal/causal/conditional/concessive clauses, restrictive relatives and main-clause nonrestrictive relatives with named heads.";
   $("greek-context").hidden = !greek;
@@ -1540,7 +1593,7 @@ function renderGreekLab() {
 function renderExamples() {
   const grammar = $("grammar").value;
   if (state.exampleGrammar !== grammar) { state.exampleGrammar = grammar; state.showAllExamples = false; }
-  const examples = greekGrammar()?.examples || (/-(mltt|classical)$/.test(grammar) ? state.config.native_examples
+  const examples = laughterBeta()?.examples || conditionalBeta()?.examples || greekGrammar()?.examples || (/-(mltt|classical)$/.test(grammar) ? state.config.native_examples
     : grammar === "2015-english-ttr" ? state.config.examples
     : grammar === "2026-english-ttr-test" ? [{ sentence: "a man knows you", label: "The small test grammar" }]
     : grammar === "2026-english-ttr" ? [{ sentence: "a man arrives", label: "An intransitive sentence" }] : []);
@@ -1557,7 +1610,7 @@ $("all-examples").addEventListener("click", () => { state.showAllExamples = !sta
 $("grammar").addEventListener("change", () => {
   stop(); updateGrammar();
   if (state.inputMode === "dialogue") setDialogue(dialogueExamples()[0]?.turns || [{speaker:"A",text:""}]);
-  $("sentence").value = greekGrammar()?.examples[0]?.sentence || ($("system").value === "ttr" ? "a man knows you." : "a man walks.");
+  $("sentence").value = laughterBeta()?.examples[0]?.sentence || conditionalBeta()?.examples[0]?.sentence || greekGrammar()?.examples[0]?.sentence || ($("system").value === "ttr" ? "a man knows you." : "a man walks.");
   parseSentence();
 });
 
@@ -1566,7 +1619,7 @@ function selectSystem() {
   const previous = greekGrammar();
   const system = state.config.systems.find((item) => item.id === $("system").value);
   $("grammar").replaceChildren(...system.grammars.map((id) => {
-    const option = element("option", "", state.config.greek?.grammars[id]?.label || (/^2026-english-(mltt|classical)$/.test(id) ? "English" : id.replace("2026-english-", "English · ").replace("2015-english-ttr", "English · TTR (2015)")));
+    const option = element("option", "", (id === state.config.laughter_beta?.grammar && state.config.laughter_beta.label) || state.config.beta_grammars?.[id]?.label || state.config.greek?.grammars[id]?.label || (/^2026-english-(mltt|classical)$/.test(id) ? "English" : id.replace("2026-english-", "English · ").replace("2015-english-ttr", "English · TTR (2015)")));
     option.value = id; return option;
   }));
   const paired = previous && `2026-${previous.dialect}-${system.id}`;
@@ -1576,6 +1629,25 @@ function selectSystem() {
   if (state.inputMode === "dialogue" && previous && !system.grammars.includes(paired)) setDialogue(dialogueExamples()[0].turns);
 }
 $("system").addEventListener("change", () => { selectSystem(); parseSentence(); });
+$("try-conditional-beta").addEventListener("click", () => {
+  if (state.busy || !state.config) return;
+  $("system").value = "classical";
+  selectSystem();
+  $("grammar").value = Object.keys(state.config.beta_grammars)[0];
+  updateGrammar();
+  $("sentence").value = conditionalBeta().examples[0].sentence;
+  parseSentence();
+});
+$("try-laughter-beta").addEventListener("click", () => {
+  if (state.busy || !state.config?.laughter_beta) return;
+  $("system").value = "ttr";
+  selectSystem();
+  $("grammar").value = state.config.laughter_beta.grammar;
+  updateGrammar();
+  setInputMode("dialogue");
+  setDialogue(laughterBeta().dialogues[0].turns);
+  parseSentence();
+});
 $("scope").addEventListener("change", parseSentence);
 $("n-best").addEventListener("change", parseSentence);
 $("reading").addEventListener("change", () => {

@@ -63,6 +63,25 @@
         <p class="paragraph-note">Up to 400 tokens · 24 sentences. Every sentence is checked by DS. Grammar coverage is incomplete; unsupported sentences remain visible as failures.</p>
         <details class="coverage-evidence"><summary>Coverage measurements</summary><p id="paragraph-baseline" class="paragraph-note"></p><p id="paragraph-assisted-probe" class="paragraph-note"></p></details>
       </div>
+      <div class="beta-entry"><button id="try-conditional-beta" type="button" class="text-button">Try Classical conditionals · Beta ↗</button> <button id="try-laughter-beta" type="button" class="text-button">Try laughter in dialogue · TTR Beta ↗</button></div>
+      <section id="laughter-beta-notice" class="method-overview" aria-label="Laughter grammar beta" hidden>
+        <strong>Laughter in dialogue · TTR Beta</strong>
+        <p id="laughter-beta-coverage"></p>
+        <details><summary>Source, vocabulary and limits</summary>
+          <p id="laughter-beta-source"></p><p id="laughter-beta-limits"></p>
+          <p>Names: John, Mary, George, Bill, Sue. Nouns with <em>a</em>: man, woman, person, telescope, book, dog. Verbs: arrives, walks, runs, sleeps, likes, knows, sees, greets. Write <code>[laugh]</code> for the laughter contribution. With an ambiguous target, the first complete analysis is one possible reading.</p>
+          <a href="https://doi.org/10.3390/languages11020025" target="_blank" rel="noopener noreferrer">Read the laughter paper ↗</a>
+        </details>
+      </section>
+      <section id="conditional-beta-notice" class="method-overview" aria-label="Conditional grammar beta" hidden>
+        <strong>Conditional grammar · Beta</strong>
+        <p id="conditional-beta-coverage"></p>
+        <details><summary>How this beta works and what remains</summary>
+          <p><em>If John cries, Mary laughs.</em> The antecedent builds a τ term over situations where John cries. LINK evaluation copies that term into the main clause’s situation argument. The resulting conditional says that Mary laughs in every situation in that domain where John cries; it does not independently assert that John cries.</p>
+          <p>For this beta, the domain of relevant situations is assumed. It is not selected by a model or inferred from the conversation.</p>
+          <p id="conditional-beta-limits"></p><p id="conditional-beta-source"></p>
+        </details>
+      </section>
       <section id="ai-controls" class="method-overview" aria-labelledby="method-title">
         <strong id="method-title">AI assistance</strong>
         <div class="assistance-switches">
@@ -82,7 +101,7 @@
         </div></details>
       </section>
       <details id="parse-options" class="parse-options"><summary>Parse options & coverage</summary>
-      <div class="scope-control"><label for="scope">Existential scope</label><select id="scope"><option value="narrow">Inside universal · ΠΣ</option><option value="wide">Outside universal · ΣΠ</option></select><span id="coverage">English fragment: names, determiners, verbs, adjectives and VP modifiers.</span></div>
+      <div class="scope-control"><label for="scope">Existential scope</label><select id="scope"><option value="narrow">Inside universal · may vary</option><option value="wide">Outside universal · shared choice</option></select><span id="coverage">English fragment: names, determiners, verbs, adjectives and VP modifiers.</span></div>
       <div class="analysis-settings"><label for="n-best">Complete analyses</label><select id="n-best"><option value="1">First analysis</option><option value="3">Up to 3 analyses</option><option value="8">Up to 8 analyses</option></select><span>Explore alternative trees and meanings using the grammar.</span></div>
       </details>
       <div id="personal-controls" class="personal-controls"><button id="grammar-workshop-open" type="button" class="text-button">My grammars · edit & review rules ↗</button><select id="personal-pack" aria-label="Saved personal grammar"><option value="">Choose a saved grammar…</option></select><label><input id="personal-enabled" type="checkbox" disabled> Use my rules</label><span id="personal-state">Saved rules run without AI.</span></div>
@@ -142,7 +161,7 @@
           </div>
       <div class="semantics-panel">
         <div class="semantics-heading"><div class="section-title"><span class="section-number">02</span><h2 id="meaning-title">Meaning at this step</h2><span id="semantic-system" class="badge muted">Σ / Π</span></div><button id="coq" class="text-button" disabled hidden>Export Coq ↓</button><button id="copy" class="text-button" disabled>Copy formula</button></div>
-        <div class="semantics-body"><pre id="semantics">The formula will develop alongside the tree.</pre><div class="semantics-note"><p id="speech-act" hidden></p><p id="reflexive-binding" hidden></p><p id="normalized" hidden></p><span id="semantic-status">INCREMENTAL INTERPRETATION</span><p id="semantic-note">Move through the derivation to see how each word contributes.</p></div></div>
+        <div class="semantics-body"><pre id="semantics">The formula will develop alongside the tree.</pre><div class="semantics-note"><p id="speech-act" hidden></p><p id="reflexive-binding" hidden></p><div id="feedback-events" hidden aria-live="polite"></div><p id="normalized" hidden></p><span id="semantic-status">INCREMENTAL INTERPRETATION</span><p id="semantic-note">Move through the derivation to see how each word contributes.</p></div></div>
       </div>
         </div>
 
@@ -310,7 +329,7 @@
     <p><strong>What “complete” verifies:</strong> the derivation satisfies the implemented grammar and its type requirements, given its lexical and context assumptions. A dictionary or model can still supply the wrong sense. Completion does not establish the intended reading, truth or an independent grammaticality judgment. Missing rules, missing vocabulary and search limits remain visible as failures.</p>
     <p>Connecting OpenRouter checks your key and lists models. Model requests send text and relevant parser context to that provider and are billed to your account. The checkboxes control your next parse; the result reports the requests actually made. With both boxes ticked, Jev ranks word meanings and the analysis LLM supplies missing words; full open text construction assistance is available when Jev is off. <strong>Turn off all AI</strong> unticks both models and turns off Jev search ordering for subsequent parses; a connected key can stay in this tab unused.</p>
     <details class="guide-section" id="guide-semantics"><summary>Why Classical, Constructive and TTR differ</summary>
-      <dl><dt>Classical DS</dt><dd>Composes entity and proposition meanings using λ terms, ε/τ choice terms and logical operators. Distributive “all” introduces ∀.</dd><dt>Constructive DS</dt><dd>Composes typed witnesses and dependent Σ/Π meanings: roughly, “a man walks” requires a man together with evidence of walking; “all people enter” requires the property for each person. Complete supported meanings can be exported to Coq.</dd><dt>DS–TTR</dt><dd>Uses record types in its own grammar. The wide-vocabulary assistance compiler currently supports Classical and Constructive English and Standard Greek only. Selecting TTR does not translate one of their results into a verified TTR derivation.</dd></dl>
+      <dl><dt>Classical DS</dt><dd>Composes entity and proposition meanings using λ terms, ε/τ choice terms and logical operators. “Every” and distributive “all” use τ terms. The scope setting controls whether an indefinite choice can vary with each individual.</dd><dt>Constructive DS</dt><dd>Composes typed witnesses and dependent Σ/Π meanings: roughly, “a man walks” requires a man together with evidence of walking; “all people enter” requires the property for each person. Complete supported meanings can be exported to Coq.</dd><dt>DS–TTR</dt><dd>Uses record types in its own grammar. The wide-vocabulary assistance compiler currently supports Classical and Constructive English and Standard Greek only. Selecting TTR does not translate one of their results into a verified TTR derivation.</dd></dl>
       <p>The semantic system determines composition and checking. An LLM proposes lexical information under that system’s available templates; it does not choose a replacement semantic theory or write the final tree.</p>
     </details>
     <details class="guide-section" id="guide-pps"><summary>Prepositional phrases: arguments, modifiers and predicates</summary>

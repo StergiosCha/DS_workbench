@@ -1,0 +1,55 @@
+// Minimal DS-TTR fragment using the inherited Introduction/Prediction,
+// completion, beta reduction and record LINK evaluation mechanisms.
+intro-pred
+IF ?Ty(t)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(e>t))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(e))
+ELSE abort
+
+anticipation0
+IF <\/0>Ex.?x
+THEN go(\/0)
+ELSE abort
+
+anticipation1
+IF <\/1>Ex.?x
+THEN go(\/1)
+ELSE abort
+
+*thinning
+IF ?X
+   X
+THEN delete(?X)
+ELSE abort
+
+completion
+IF Ty(X)
+   ¬Ex.?x
+   </\>Ex.x
+THEN go(/\)
+ELSE abort
+
+*elimination
+IF ?Ty(X)
+   ¬Ex.Fo(x)
+   <\/1>Ty(Y>X)
+   <\/0>Ty(Y)
+   ¬<\/1>Ex.?x
+   ¬<\/0>Ex.?x
+THEN beta-reduce
+ELSE abort
+
+*link-evaluation
+IF ?+eval
+   Ex.Fo(x)
+   <\/L>Fo(X)
+THEN conjoin(X)
+   delete(?+eval)
+ELSE abort

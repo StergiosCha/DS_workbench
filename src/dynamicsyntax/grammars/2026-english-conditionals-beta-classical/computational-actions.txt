@@ -1,0 +1,89 @@
+// Fixed-position situation fragment, Gregoromichelaki (2011), §§8.4.1–8.4.3.
+// A supplied antecedent situation daughter is preserved by this rule.
+introduce-situation
+IF ?Ty(classical:t)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(es,t)))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:es))
+ELSE abort
+
+introduce-antecedent-predicate
+IF ?Ty(classical:t)
+   <\/0>Ty(classical:es)
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(es,t)))
+ELSE abort
+
+predict-matrix-predicate
+IF ?Ty(classical:es)
+   ¬?[+SITUATION-SHARED]
+   </\0>Tn(0)
+   </\0><\/1>?Ty(classical:arrow(es,t))
+THEN go(/\0)
+   go(\/1)
+ELSE abort
+
+introduce-situated-predicate
+IF ?Ty(classical:arrow(es,t))
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(?Ty(classical:arrow(e,arrow(es,t))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+anticipation0
+!completion
+IF <\/0>Ex.?x
+THEN go(\/0)
+ELSE abort
+
+anticipation1
+!completion
+IF <\/1>Ex.?x
+THEN go(\/1)
+ELSE abort
+
+*thinning
+IF Ty(x)
+   Ex.?x
+THEN semantic-thin
+ELSE abort
+
+completion
+!completion
+IF Ty(x)
+   ¬Ex.?x
+   </\>Ex.x
+   ¬</\L>Ex.x
+THEN go(/\)
+ELSE abort
+
+*elimination
+IF Ex.?x
+   ¬Ex.fo(x)
+   <\/0>Ty(x)
+   <\/1>Ty(x)
+   ¬<\/0>Ex.?x
+   ¬<\/1>Ex.?x
+THEN beta-reduce
+ELSE abort
+
+evaluate-conditional-link
+IF [+CONDITIONAL-RESTRICTOR]
+   Ty(classical:es)
+   ¬Ex.?x
+THEN conditional-beta-link
+ELSE abort

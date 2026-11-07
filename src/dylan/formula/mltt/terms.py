@@ -86,6 +86,8 @@ class Expr:
         if self.kind == "name":
             return {"top": r"\top", "unit": r"\star"}.get(self.name, identifier(self.name))
         args = [arg.to_tex() for arg in self.args]
+        if self.kind == "choice_scope":
+            return args[0]
         if self.kind in {"lam", "pi", "sigma", "eps", "tau", "iota", "forall"}:
             symbol = {"forall": r"\forall", "lam": r"\lambda", "pi": r"\Pi", "sigma": r"\Sigma",
                       "eps": r"\varepsilon", "tau": r"\tau", "iota": r"\iota"}[self.kind]
@@ -122,6 +124,8 @@ class Expr:
     def __str__(self) -> str:
         if self.kind == "name":
             return "⊤" if self.name == "top" else self.name
+        if self.kind == "choice_scope":
+            return str(self.args[0])
         if self.kind == "arrow":
             left, right = self.args
             a = f"({left})" if left.kind in {"arrow", "pi", "sigma"} else str(left)
@@ -235,6 +239,7 @@ def parse_expr(source: str) -> Expr:
             "choice_tau": 1,
             "choice_iota": 1,
             "definite": 1,
+            "choice_scope": 1,
         }
         if symbol in arities:
             if len(args) != arities[symbol]:

@@ -82,9 +82,8 @@ ELSE abort"""
         actions = actions.replace(block(actions, "negative"), block(actions, "negative").replace("   ?[+BARE-VERB]", "   ?[+BARE-VERB]\n   ¬[+MODAL]"))
     (en / "lexical-actions.txt").write_text(actions + "\n")
     all_plural = block(actions, "universal").replace("universal(", "all-plural(", 1)
-    if b == "classical":
-        all_plural = all_plural.replace("arrow(cn,e)", "arrow(cn,arrow(arrow(e,t),t))")
-        all_plural = all_plural.replace("lam(P,cn,choice_tau(P))", "lam(P,cn,lam(Q,arrow(e,t),forall(x,e,implies(predication(P,x),Q(x)))))")
+    # Classical all uses the same individual-valued tau construction as
+    # every; plural/context restrictions change the CN, not its semantic type.
     all_plural = all_plural.replace("\nELSE abort", "\n   put([+DISTRIBUTIVE-PLURAL])\nELSE abort")
     all_contextual = all_plural.replace("all-plural(", "all-contextual(", 1).replace("\nELSE abort", "\n   put([+CONTEXT-ALL])\n   put(?[+ALL-ARTICLE])\nELSE abort")
     all_article = """all-article(UNUSED)

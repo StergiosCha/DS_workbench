@@ -1,0 +1,64 @@
+// Bounded record semantics for the laughter demonstrator. No tense/agreement.
+proper(NAME)
+IF ?Ty(e)
+   ¬Ex.Fo(x)
+THEN put(Ty(e))
+   ttrput([x==NAME:e|head==x:e])
+ELSE abort
+
+indefinite(UNUSED)
+IF ?Ty(e)
+   ¬Ex.Fo(x)
+   ¬<\/0>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(cn>e))
+   ttrput(R^(R ++ [head==R.head:e]))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(cn))
+ELSE abort
+
+noun(PRED)
+IF ?Ty(cn)
+   ¬Ex.Fo(x)
+THEN put(Ty(cn))
+   ttrput([x:e|p==PRED(x):t|head==x:e])
+ELSE abort
+
+intransitive(PRED)
+IF ?Ty(e>t)
+   ¬Ex.Fo(x)
+THEN put(Ty(e>t))
+   ttrput(R^(R ++ [e==PRED:es|p==subj(e,R.head):t|head==e:es]))
+ELSE abort
+
+transitive(PRED)
+IF ?Ty(e>t)
+   ¬Ex.Fo(x)
+   ¬<\/1>Ex.x
+THEN make(\/1)
+   go(\/1)
+   put(Ty(e>(e>t)))
+   ttrput(R1^R2^(R1 ++ (R2 ++ [e==PRED:es|p==obj(e,R1.head):t|q==subj(e,R2.head):t|head==e:es])))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(e))
+ELSE abort
+
+// Maraev et al. 2026 §4.2, Fig. 7: immediately preceding complete unit.
+// Resolve the known head, build LINK, then ordinary link-evaluation conjoins.
+backward-laughter(UNUSED)
+IF Ty(X)
+   ¬Ex.?x
+THEN ttr-laughter-backward
+ELSE abort
+
+boundary(UNUSED)
+IF Tn(0)
+   Ty(t)
+   complete
+THEN do_nothing
+ELSE abort

@@ -24,6 +24,8 @@ EXAMPLES = [
 
 
 def configuration() -> dict[str, Any]:
+    from dylan.action.atomic.conditional_beta import BETA_GRAMMAR
+    from dylan.action.atomic.ttr_laughter import BETA_GRAMMAR as LAUGHTER_GRAMMAR
     from dynamicsyntax import get_grammars
     from dylan.greek_workbench import configuration as greek_configuration
     from dylan.dialogue_workbench import configuration as dialogue_configuration
@@ -51,6 +53,7 @@ def configuration() -> dict[str, Any]:
                 "label": "Classical DS · λ / ε / τ",
                 "grammars": [
                     "2026-english-classical",
+                    BETA_GRAMMAR,
                     *[g for g in greek["grammars"] if g.endswith("-classical")],
                 ],
             },
@@ -60,6 +63,37 @@ def configuration() -> dict[str, Any]:
                 "grammars": [g for g in get_grammars() if "ttr" in g and g != "ttr"],
             },
         ],
+        "beta_grammars": {
+            BETA_GRAMMAR: {
+                "label": "English · conditionals (Beta)",
+                "source": "Gregoromichelaki (2011), Conditionals in Dynamic Syntax, §§8.4.1–8.4.3, (8.61)–(8.78).",
+                "coverage": "Classical beta: one if-clause, before or after the main clause, with named subjects/objects and the listed verbs. Situation LINK and τ evaluation are shown in the tree. Sentence mode; fixed vocabulary; no AI requests.",
+                "limits": "Pending: unfixed/embedded attachment, pronouns, quantified NPs, when/because, tense/aspect, context-based domain selection, and Constructive/TTR adaptations.",
+                "examples": [
+                    {"sentence": "If John cries, Mary laughs.", "label": "Chapter example: antecedent builds a shared situation τ term"},
+                    {"sentence": "Mary laughs if John cries.", "label": "Same restriction with the antecedent after the main clause"},
+                    {"sentence": "If John likes Mary, Bill greets Sue.", "label": "Authored transitive example with separate nominal and situation arguments"},
+                    {"sentence": "If Bill shouts John leaves.", "label": "No comma required"},
+                    {"sentence": "If John walks then Mary runs.", "label": "Optional then boundary"},
+                ],
+            },
+        },
+        "laughter_beta": {
+            "grammar": LAUGHTER_GRAMMAR,
+            "label": "English · laughter (TTR Beta)",
+            "coverage": "Local backward laughter: [laugh] targets a completed individual or situation. DS builds a LINK and conjoins laughable(target) into the TTR record. This records what is laughed at; it does not infer humour, agreement or understanding.",
+            "limits": "Small listed English vocabulary; Sentence and Dialogue only. No tense, questions, quotation, forward/distant laughter, speech overlap, participant grounding or AI expansion. Classical and Constructive laughter adaptations are not implemented.",
+            "source": "Maraev, Eshghi, Mazzocconi & Howes (2026), Incremental Processing of Laughter in Interaction, §4.2, Fig. 7. Local resolution is a bounded adaptation of their general rule.",
+            "examples": [
+                {"sentence": "John likes Mary. [laugh]", "label": "Laugh at the completed liking situation"},
+                {"sentence": "A man [laugh] arrives.", "label": "Laugh at the individual, then finish the clause"},
+                {"sentence": "John sees a telescope [laugh].", "label": "Potential noun-phrase/clause ambiguity; request alternative sentence analyses"},
+            ],
+            "dialogues": [
+                {"id": "laughter-situation", "label": "Laugh at what was said", "turns": [{"speaker": "A", "text": "John likes Mary."}, {"speaker": "B", "text": "[laugh]"}]},
+                {"id": "laughter-mid-sentence", "label": "Laugh, then finish", "turns": [{"speaker": "A", "text": "a man"}, {"speaker": "B", "text": "[laugh]"}, {"speaker": "A", "text": "arrives."}]},
+            ],
+        },
         "native_examples": [
             {"sentence": s, "label": label}
             for s, label in [
@@ -105,6 +139,12 @@ def validate_request(payload: Any, *, sentence_limits=(500, 40)) -> tuple[str, s
     if not isinstance(payload, dict):
         raise ValueError("Send a JSON object with a sentence and grammar.")
     sentence, grammar = payload.get("sentence"), payload.get("grammar")
+    from dylan.action.atomic.conditional_beta import BETA_GRAMMAR
+    from dylan.action.atomic.ttr_laughter import BETA_GRAMMAR as LAUGHTER_GRAMMAR
+    if grammar == BETA_GRAMMAR and ("paragraph" in payload or "dialogue" in payload):
+        raise ValueError("The conditional beta currently supports Sentence mode.")
+    if grammar == LAUGHTER_GRAMMAR and "paragraph" in payload:
+        raise ValueError("The laughter beta supports Sentence and Dialogue modes.")
     if "paragraph" in payload:
         from dylan.paragraph_workbench import validate_paragraph
 
@@ -123,6 +163,18 @@ def validate_request(payload: Any, *, sentence_limits=(500, 40)) -> tuple[str, s
             raise ValueError(f"Use a sentence of at most {sentence_limits[1]} tokens.")
     if not isinstance(grammar, str) or grammar not in configuration()["grammars"]:
         raise ValueError("Choose one of the available grammars.")
+    if grammar == BETA_GRAMMAR:
+        if (payload.get("lexical_mode", "off") != "off"
+                or payload.get("decision_mode", "off") != "off"
+                or payload.get("experimental_rules") or payload.get("grammar_pack")
+                or payload.get("compare_jev")):
+            raise ValueError("The conditional beta uses its fixed situation grammar; AI and personal-rule extensions are not enabled.")
+    if grammar == LAUGHTER_GRAMMAR:
+        if (payload.get("lexical_mode", "off") != "off"
+                or payload.get("decision_mode", "off") != "off"
+                or payload.get("experimental_rules") or payload.get("grammar_pack")
+                or payload.get("compare_jev")):
+            raise ValueError("The laughter beta uses a fixed TTR grammar; AI and personal-rule extensions are not enabled.")
     if payload.get("scope", "narrow") not in {"narrow", "wide"}:
         raise ValueError("Choose narrow or wide existential scope.")
     top_n = payload.get("top_n", 3)
@@ -249,10 +301,13 @@ def tree_snapshot(tree: Tree, context: Any) -> dict[str, Any]:
         "semantics": semantics,
         "normalized": normalized,
         "backend": tree.semantic_profile.get("backend", "ttr"),
+        **({"conditional_beta": tree.semantic_profile["conditional_beta"]}
+           if tree.semantic_profile.get("conditional_beta") else {}),
         "type_errors": type_errors,
         "semantic_error": semantic_error,
         "context_assumptions": list(tree.semantic_profile.get("context_assumptions", {}).values()),
         "reflexive_bindings": tree.semantic_profile.get("reflexive_bindings", []),
+        "feedback_events": tree.semantic_profile.get("feedback_events", []),
         "speech_act": (
             {"kind": "polar_question", "content": semantics, "asserted": False}
             if tree.get_root_node().contains(FeatureLabel("POLAR-QUESTION")) else

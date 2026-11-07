@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "date": "2026-10-07",
-  "scope": "53 selected works: original inspection ledger, cited follow-ups, discovery admissions and the 7 October evening expansion (JoLLI 30(2) special issue, SemDial anthology, repository copies). Not an exhaustive DS bibliography.",
+  "date": "2026-11-07",
+  "scope": "55 selected works: original inspection ledger, cited follow-ups, discovery admissions and subsequent source reviews. Not an exhaustive DS bibliography.",
   "papers": [
     {
       "id": "CKM05",
@@ -1792,10 +1792,10 @@
         "URL": "https://aclanthology.org/W17-6913/"
       },
       "review": {
-        "status": "abstract_read",
-        "scope": "Abstract inspected in the ACL Anthology PDF (W17-6913): low-level semantic processing model of where feedback is licensed (feedback relevance spaces) and how non-FRS feedback is integrated. Body not audited.",
-        "evidence_level": "proposal",
-        "origin": "2026-10-07 evening expansion pass (Cowork session); ACL Anthology PDF.",
+        "status": "selected_passages",
+        "scope": "Selected §§2.3–2.4, PDF pp.4–5, Fig.3; completion-based feedback and early/late alternatives.",
+        "evidence_level": "worked_analysis",
+        "origin": "Primary PDF inspected 2026-11-07; not a claim of full reading or community adjudication.",
         "community_review": "pending"
       },
       "tags": {
@@ -1830,7 +1830,7 @@
           "description": "Published short paper; 8 PDF pages; ACL Anthology ID W17-6913 (BibTeX gives no page range)."
         }
       ],
-      "next_action": "Compare grounding updates with E15 and identify participant-state requirements."
+      "next_action": "Review the local feedback adaptation and extend participant coordination/clarification separately; see the dated source comparison."
     },
     {
       "id": "PGMC10",
@@ -2245,10 +2245,10 @@
         "page": "331-362"
       },
       "review": {
-        "status": "abstract_read",
-        "scope": "Crossref deposited abstract and HG21 §3, printed p.274. Corpus/model scope inspected; numerical results have not been reproduced.",
-        "evidence_level": "secondary_pointer",
-        "origin": "Discovery screening and source inspection, 2026-10-07",
+        "status": "selected_passages",
+        "scope": "Selected §3.5, pp.343–345; Fig.6 visually inspected; §§4–5 for empirical scope. Source of the bounded native feedback adaptation.",
+        "evidence_level": "worked_analysis",
+        "origin": "Primary PDF inspected 2026-11-07; not a claim of full reading or community adjudication.",
         "community_review": "pending"
       },
       "tags": {
@@ -2276,8 +2276,19 @@
         "HG21 §3, printed p.274",
         "2026-10-07 evening expansion pass (Cowork session): confirmed as part of JoLLI 30(2) (2021), the Dynamic Syntax special issue; full issue table of contents retrieved from Crossref (eight articles)."
       ],
-      "versions": [],
-      "next_action": "Read the journal study and compare its corpus and model with HE17; retain them as separate publications.",
+      "versions": [
+        {
+          "source_id": "HE21",
+          "inspected_filename": "HE21.pdf",
+          "sha256": "78e38b794c2b2f99963d52370754fcb5ec5c9054230ccbd46a5d6679e3679d1d",
+          "bytes": 828578,
+          "pdf_pages": 32,
+          "public_location": "https://link.springer.com/content/pdf/10.1007/s10849-020-09328-1.pdf",
+          "acquisition": "Publisher/ACL PDF download, 2026-11-07; not redistributed",
+          "description": "Published article; selected passages inspected."
+        }
+      ],
+      "next_action": "Review the local feedback adaptation and extend participant coordination/clarification separately; see the dated source comparison.",
       "ttr_integration": "ds_ttr",
       "related_works": [
         {
@@ -3691,6 +3702,171 @@
         }
       ],
       "next_action": "Read the full text and extract bounded analysis cards with exact locators.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "GQ17",
+      "bibliographic": {
+        "type": "chapter",
+        "title": "Quotation in Dialogue",
+        "author": [
+          {
+            "family": "Gregoromichelaki",
+            "given": "Eleni"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2017
+            ]
+          ]
+        },
+        "container-title": "The Semantics and Pragmatics of Quotation",
+        "page": "195–255",
+        "publisher": "Springer",
+        "DOI": "10.1007/978-3-319-68747-6_8",
+        "URL": "https://doi.org/10.1007/978-3-319-68747-6_8"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "Author manuscript: opening argument, §§7.1–7.3.3 and conclusion; macros (95), (98), (117), (133) visually inspected on manuscript pp.48, 50, 55, 62. Not a full audit of the competing accounts in §§2–6.",
+        "evidence_level": "worked_analysis",
+        "origin": "User-supplied 74-page author manuscript inspected 2026-11-07; publication identity checked against Crossref/publisher.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13"
+        ],
+        "mechanisms": [
+          "context_reuse",
+          "tree_growth",
+          "record_update",
+          "link",
+          "substitution",
+          "situation_structure",
+          "repair"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "English"
+        ]
+      },
+      "classification_basis": "§7 develops a DS-TTR account: action execution under grammar g, demonstrated versus echoed utterance events, direct-report LINK and per-word context/evaluation parameters; precise manuscript locators recorded in the analysis card.",
+      "metadata_provenance": [
+        "Crossref DOI record and publisher chapter page, 2026-11-07"
+      ],
+      "versions": [
+        {
+          "source_id": "GQ17",
+          "inspected_filename": "Gregoromichelaki160117upload.pdf",
+          "sha256": "7d72ef2482c1c1e4746822726990fb7d8655a4b38d7a040432bf1c60ca9a1297",
+          "bytes": 1344121,
+          "pdf_pages": 74,
+          "public_location": null,
+          "acquisition": "User-supplied author manuscript in Downloads, inspected 2026-11-07; not redistributed",
+          "description": "Author manuscript created 16 January 2017. Manuscript pp.1–74 differ from published pp.195–255."
+        }
+      ],
+      "next_action": "Implement a bounded direct/shared quotation beta from (95), (98), (117), keeping event identities and per-word context; see docs/design/quotation.md. No quotation grammar is implemented yet.",
+      "ttr_integration": "ds_ttr"
+    },
+    {
+      "id": "MEMH26",
+      "bibliographic": {
+        "type": "article-journal",
+        "title": "Incremental Processing of Laughter in Interaction",
+        "author": [
+          {
+            "family": "Maraev",
+            "given": "Vladislav"
+          },
+          {
+            "family": "Eshghi",
+            "given": "Arash"
+          },
+          {
+            "family": "Mazzocconi",
+            "given": "Chiara"
+          },
+          {
+            "family": "Howes",
+            "given": "Christine"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2026,
+              1,
+              29
+            ]
+          ]
+        },
+        "container-title": "Languages",
+        "volume": "11",
+        "issue": "2",
+        "page": "25",
+        "DOI": "10.3390/languages11020025",
+        "URL": "https://doi.org/10.3390/languages11020025"
+      },
+      "review": {
+        "status": "selected_passages",
+        "scope": "§§1–2.3; relevant §2.5 background; §§4–5, especially §4.2 and Fig.7. Rule (6) and Figs.6–7 visually inspected pp.13–14; Table5 counts checked. Corpus study not reproduced.",
+        "evidence_level": "worked_analysis",
+        "origin": "Published PDF and Christine Howes publications page, inspected 2026-11-07.",
+        "community_review": "pending"
+      },
+      "tags": {
+        "categories": [
+          "C13",
+          "C18"
+        ],
+        "mechanisms": [
+          "link",
+          "unfixed",
+          "merge",
+          "substitution",
+          "context_reuse",
+          "record_update",
+          "situation_structure"
+        ],
+        "frameworks": [
+          "ttr"
+        ],
+        "roles": [
+          "analysis"
+        ],
+        "languages": [
+          "English",
+          "French",
+          "Chinese"
+        ]
+      },
+      "classification_basis": "§4 proposes DS-TTR laughter with an underspecified referent, LINK and laughable(head), resolved by local or distant strategies. §2.5.2 calls the proposal theoretical; the new workbench beta implements only immediate backward resolution.",
+      "metadata_provenance": [
+        "https://www.christinehowes.com/publications",
+        "Published PDF title page and DOI, 2026-11-07"
+      ],
+      "versions": [
+        {
+          "source_id": "MEMH26",
+          "inspected_filename": "languages-11-00025.pdf",
+          "sha256": "4c0e8cadcaf941f309126f0d2bd052898b2ccdc9cd9d9951c56ba30203414953",
+          "bytes": 820621,
+          "pdf_pages": 22,
+          "public_location": "https://mdpi-res.com/d_attachment/languages/languages-11-00025/article_deploy/languages-11-00025.pdf",
+          "acquisition": "Publisher PDF retrieved 2026-11-07 via author publications list; full text not redistributed in the repo.",
+          "description": "Published open-access article, 29 January 2026. Selected passages and rule/trees inspected."
+        }
+      ],
+      "next_action": "Review the local backward-laughter TTR beta; add the pending referent and Late-*Adjunction/MERGE route for forward laughter, then distant typed SUBSTITUTION.",
       "ttr_integration": "ds_ttr"
     }
   ]

@@ -105,7 +105,16 @@ def test_native_ds_adapter_preserves_frozen_states_and_action_traces(index):
     finally:
         engine.close()
     assert result.status == ref["status"]
-    assert result.provenance["grammar_sha256"] == ref["grammar_sha256"]
+    revisions = json.loads((ROOT / "data/experiments/grammar-revisions.json").read_text())
+    revision = revisions["grammars"].get(ref["grammar"])
+    expected_grammar = ref["grammar_sha256"]
+    if revision:
+        # Preserve the historical fixture. A separately reviewed grammar
+        # revision changes its fingerprint, not these unchanged state/trace
+        # expectations for sentences without universal determiners.
+        assert revision["previous_sha256"] == expected_grammar
+        expected_grammar = revision["current_sha256"]
+    assert result.provenance["grammar_sha256"] == expected_grammar
     assert digest(result.provenance["native_state"]) == ref["state_sha256"]
     fields = ("word", "before", "after", "lexical_candidates", "selected_actions")
     assert digest([{k: f[k] for k in fields} for f in result.states]) == ref["frames_sha256"]

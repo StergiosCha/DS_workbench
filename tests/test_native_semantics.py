@@ -112,7 +112,7 @@ def test_scope_is_explicit_witness_closure_and_both_readings_typecheck(tmp_path)
     "sentence,expected",
     [
         ("a man walks.", "walk(ε x0:e. man(x0))"),
-        ("every man walks.", "walk(τ x0:e. man(x0))"),
+        ("every man walks.", "(man(τ c:e. (man(c) ⇒ walk(c))) ⇒ walk(τ c:e. (man(c) ⇒ walk(c))))"),
         ("a black dog walks.", "walk(ε x0:e. (dog(x0) ∧ black(x0)))"),
         ("john likes mary.", "like(john, mary)"),
     ],

@@ -100,9 +100,11 @@ def test_quantified_binding_stays_inside_its_scope_and_negative_answer(backend, 
     r = dialogue(backend, [("A", f"Did {subject} burn {reflexive}?", {}), ("B", "No", {})], lexical_mode="dictionary")
     assert r["complete"], r["failure"]
     content = r["context_trees"][0]["normalized"]
-    if backend == "classical" and subject != "All people":
-        choice = "τ" if subject == "Every man" else "ε"
-        assert content == f"burn({choice} x0:e. man(x0), {choice} x0:e. man(x0))"
+    if backend == "classical":
+        if subject == "A man":
+            assert content == "burn(ε x0:e. man(x0), ε x0:e. man(x0))"
+        else:
+            assert "τ" in content and "burn(c, c)" in content
     else:
         assert "burn(x, x)" in content
     assert r["words"][-1]["normalized"].startswith("¬")

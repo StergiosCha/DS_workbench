@@ -1,0 +1,21 @@
+{
+  "backend": "classical",
+  "axiom": "classical:t",
+  "conditional_beta": "fixed-situation-v1",
+  "subtyping": {"es": ["e"], "e": [], "cns": [], "t": []},
+  "constants": {"john": "e", "mary": "e", "bill": "e", "sue": "e", "george": "e"},
+  "predicates": {
+    "cry": ["e", "es"], "laugh": ["e", "es"], "walk": ["e", "es"],
+    "run": ["e", "es"], "shout": ["e", "es"], "arrive": ["e", "es"],
+    "leave": ["e", "es"], "like": ["e", "e", "es"],
+    "know": ["e", "e", "es"], "greet": ["e", "e", "es"]
+  },
+  "context_assumptions": {
+    "situation_domain": "Beta assumption: es ranges over a fixed nonempty domain of relevant situations. No contextual domain selection or world/tense reasoning is computed."
+  },
+  "interpretation_notes": [
+    "Beta Classical conditional grammar after Gregoromichelaki (2011), §§8.4.1–8.4.3: explicit situation argument, LINK restrictor, shared tau term, and choice evaluation during composition.",
+    "One if-clause before or after the matrix clause; named subjects/objects and the listed verbs. An initial antecedent may be followed by a comma or then, or neither.",
+    "Fixed-position route only. Unfixed attachment, embedded clauses, pronouns, quantified NPs, temporal/causal clauses, tense, modality and speech-act conditionals are pending. Constructive and TTR adaptations are not included."
+  ]
+}

@@ -197,10 +197,15 @@ class EffectFactory:
 
             return Substitute()
 
-        if low.startswith(("semantic-reflexive(", "semantic-answer(")):
+        if low in {"conditional-beta-open", "conditional-beta-link"}:
+            from dylan.action.atomic.conditional_beta import ConditionalBetaEffect
+
+            return ConditionalBetaEffect(low)
+
+        if low.startswith(("semantic-reflexive(", "semantic-answer(", "semantic-backchannel(")):
             from dylan.action.atomic.native_dialogue import NativeDialogueEffect
 
-            match = re.fullmatch(r"(semantic-reflexive|semantic-answer)\(([a-z]+)\)", s)
+            match = re.fullmatch(r"(semantic-reflexive|semantic-answer|semantic-backchannel)\(([a-z]+)\)", s)
             if match is None:
                 raise ValueError("A dialogue action requires one licensed role or polarity")
             return NativeDialogueEffect(*match.groups())
@@ -233,6 +238,11 @@ class EffectFactory:
             if match is None:
                 raise ValueError("A clause construction requires a reviewed relation ID")
             return CausalEffect(*match.groups())
+
+        if low == "ttr-laughter-backward":
+            from dylan.action.atomic.ttr_laughter import TTRLaughter
+
+            return TTRLaughter()
 
         if low in {"nonrestrictive-open", "nonrestrictive-pronoun", "nonrestrictive-close", "nonrestrictive-end", "nonrestrictive-evaluate"}:
             from dylan.action.atomic.nonrestrictive_effects import NonrestrictiveEffect

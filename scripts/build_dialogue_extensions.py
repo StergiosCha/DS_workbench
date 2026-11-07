@@ -51,9 +51,19 @@ IF Tn(0)
    ¬<\/1>Ex.x
 THEN semantic-answer(POLARITY)
 ELSE abort
+
+// Howes & Eshghi (2021), §3.5, Fig. 6: compile before acknowledging.
+// The effect checks the complete subtree and both binary sisters, then ascends.
+// At the root it records feedback in place; early/late feedback is not modelled.
+backchannel(WORD)
+IF Ty(x)
+   ¬Ex.?x
+THEN semantic-backchannel(WORD)
+ELSE abort
 '''
     rows = ['do polar-do none', 'does polar-do none', 'did polar-do none', '? question-boundary none',
-            'yes polarity-answer yes', 'no polarity-answer no']
+            'yes polarity-answer yes', 'no polarity-answer no',
+            'mhm backchannel mhm', 'mm backchannel mm']
     rows += [f'{word} local-reflexive {word}' for word in ('myself', 'yourself', 'himself', 'herself', 'itself', 'themselves')]
     # A reviewed verb for offline dialogue presets; dictionary/model templates
     # can supply other transitive predicates without changing the binding rule.

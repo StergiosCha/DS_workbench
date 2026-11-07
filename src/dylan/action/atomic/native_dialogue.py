@@ -38,7 +38,8 @@ def previous_question(context):
 class NativeDialogueEffect(Effect):
     def __init__(self, operation, value):
         allowed = {"semantic-reflexive": {"myself", "yourself", "himself", "herself", "itself", "themselves"},
-                   "semantic-answer": {"yes", "no"}}
+                   "semantic-answer": {"yes", "no"},
+                   "semantic-backchannel": {"mhm", "mm"}}
         if value not in allowed.get(operation, ()):
             raise ValueError("Unsupported native dialogue action")
         self.operation, self.value = operation, value
@@ -54,7 +55,29 @@ class NativeDialogueEffect(Effect):
             return None
         if self.operation == "semantic-answer":
             return self.answer(tree, context)
+        if self.operation == "semantic-backchannel":
+            return self.backchannel(tree, context)
         return self.reflexive(tree, context)
+
+    def backchannel(self, tree, context):
+        from dylan.action.atomic.go import Go
+        from dylan.action.atomic.semantic_effects import _sequence
+        from dylan.feedback import backchannel_site
+
+        site = backchannel_site(tree)
+        if site is None:
+            return self.fail(context, "This backchannel needs a compiled semantic unit. "
+                             "Early and late feedback are outside this fragment.", "feedback_site")
+        event = {**site, "word": self.value, "speaker": context.get_current_speaker(),
+                 "source": "Howes & Eshghi 2021, §3.5, Fig. 6",
+                 "interpretation": "overt_backchannel"}
+        # Branch-local data: a rejected lexical/search branch must not mark any
+        # shared DAG edges as understood, agreed with, or no longer repairable.
+        tree.semantic_profile = {**tree.semantic_profile, "feedback_events": [
+            *tree.semantic_profile.get("feedback_events", []), event]}
+        if site["pointer_after"] != site["node"]:
+            return _sequence(tree, context, [Go.parse(r"go(/\)")])
+        return tree
 
     def fail(self, context, message, kind="reflexive_binding"):
         context.last_reference_failure = {"kind": kind, "message": message}

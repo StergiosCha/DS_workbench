@@ -99,6 +99,56 @@ called by the native English everyday generator.
 
 ## Diagnostics and scope
 
+### Completion-based backchannels (7 November 2026)
+
+The **Mid-sentence feedback** preset runs `A: the man / B: mhm / A: walks.`
+without a model in the two native English grammars. `mhm` and `mm` have lexical
+programs based on Howes and Eshghi (2021), §3.5, Fig.6 (printed p.344); see also
+Eshghi et al. (2015), §3.1 and Howes and Eshghi (2017), §2.3, Fig.3.
+
+The lexical program requires an already compiled semantic unit under the tree
+pointer. It checks that the node/subtree has no requirements and that its binary
+sister is not also complete. When both sisters are complete, ordinary Thinning,
+Elimination and Completion must run first. The feedback then moves the pointer
+to the parent. At the root, our adaptation records the feedback in place.
+There is no added truth-conditional predicate or automatic positive answer.
+
+Thus `the man / mhm / walks` compiles the entire DP before feedback; `the / mhm`
+and `John likes / mhm` do not receive the local-feedback reading. This does not
+classify early/late feedback as ungrammatical: those context-dependent mechanisms
+in the source are outside this fragment. The `uhu` control inherited from the
+parser is distinct and has not been relabelled as this analysis.
+
+`feedback_events` records the actual unit address, formula/type, contributing
+speaker and pointer destination in each snapshot. The UI shows this information
+at the corresponding playback point. This is branch-local trace data: it does
+not modify shared DAG grounding flags. The source's dual coordination pointers,
+participant-private contexts and grounding-based repair restrictions remain
+unimplemented. The implementation is a bounded adaptation of a DS-TTR analysis
+to Classical/Constructive, not a claim of full DS-TTR feedback coverage.
+
+Tests: `tests/test_backchannels.py` checks nominal compilation, missing units,
+clause-root adaptation, preserved question polarity, repairs and stream/replay
+agreement; `scripts/check_backchannel_browser.py` exercises both native backends.
+The source comparison and next extensions are in
+[`../research/subordination-quotation-feedback-2026-11-07.md`](../research/subordination-quotation-feedback-2026-11-07.md).
+
+## Laughter beta and quotation follow-up
+
+The separate **English · laughter (TTR Beta)** grammar now handles local
+backward laughter through an actual LINK and TTR record conjunction. The
+browser's **Try laughter in dialogue · TTR Beta** button opens working shared
+dialogues. `John sees a telescope [laugh].` also exposes individual-versus-
+situation target ambiguity as two sentence analyses. See
+[laughter-beta.md](laughter-beta.md) for the Maraev, Eshghi, Mazzocconi & Howes
+(2026) source, implementation boundaries and tests. The native backchannel
+fragment above and this TTR fragment have different backend coverage.
+
+Gregoromichelaki's full *Quotation in Dialogue* author manuscript has now been
+inspected. [quotation.md](quotation.md) records its `run`, demonstrated/reported
+event, LINK and per-word context mechanisms, and the remaining implementation
+work. Quotation itself has not been added to the dialogue grammar.
+
 Parser-control tokens such as `sorry` are identified as controls in the coverage
 report, so their absence from the grammar's lexical file is not reported as an
 unknown word. A final repair marker without a replacement leaves the dialogue

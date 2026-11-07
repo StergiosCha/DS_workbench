@@ -99,10 +99,10 @@ def test_wide_scope_stays_inside_its_complement(tmp_path):
 def test_classical_embedded_dps_keep_cn_and_choice_terms():
     result = parse("a man thinks that every doctor examined a patient.", "classical")
     assert result["complete"]
-    assert (
-        result["words"][-1]["normalized"]
-        == "think(ε x0:e. man(x0), examine(τ x1:e. doctor(x1), ε x2:e. patient(x2)))"
-    )
+    meaning = result["words"][-1]["normalized"]
+    assert meaning.startswith("think(ε x0:e. man(x0), (doctor(τ")
+    assert "patient(ε" in meaning and "examine(c, c1)" in meaning
+    assert "∀" not in meaning
     assert sum(n["type"] == "cn" for n in result["words"][-1]["nodes"]) == 3
     assert result["coq"] is None
 

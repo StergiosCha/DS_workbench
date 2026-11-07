@@ -546,8 +546,8 @@ IF ?Ty(classical:e)
    ¬<\/1>Ex.x
 THEN make(\/1)
    go(\/1)
-   put(Ty(classical:arrow(cn,arrow(arrow(e,t),t))))
-   put(Fo(classical:lam(P,cn,lam(Q,arrow(e,t),forall(x,e,implies(predication(P,x),Q(x)))))))
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_tau(P))))
    put(!)
    go(/\1)
    make(\/0)
@@ -571,8 +571,8 @@ IF ?Ty(classical:e)
    ¬<\/1>Ex.x
 THEN make(\/1)
    go(\/1)
-   put(Ty(classical:arrow(cn,arrow(arrow(e,t),t))))
-   put(Fo(classical:lam(P,cn,lam(Q,arrow(e,t),forall(x,e,implies(predication(P,x),Q(x)))))))
+   put(Ty(classical:arrow(cn,e)))
+   put(Fo(classical:lam(P,cn,choice_tau(P))))
    put(!)
    go(/\1)
    make(\/0)
@@ -1075,4 +1075,14 @@ THEN make(\/1)
    put(?Ty(classical:arrow(e,cn)))
    put([+DISTRIBUTIVE-PLURAL])
    put([+CONTEXT-ALL])
+ELSE abort
+
+
+// Howes & Eshghi (2021), §3.5, Fig. 6: compile before acknowledging.
+// The effect checks the complete subtree and both binary sisters, then ascends.
+// At the root it records feedback in place; early/late feedback is not modelled.
+backchannel(WORD)
+IF Ty(x)
+   ¬Ex.?x
+THEN semantic-backchannel(WORD)
 ELSE abort

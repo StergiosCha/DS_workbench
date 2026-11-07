@@ -27,8 +27,9 @@ The shared `Formula` result interface accepts all three semantic families.
 
 An immutable term AST implements capture-avoiding substitution and beta
 normalization. Constructive formulas reject ε and τ constructors. Typed
-elimination chooses the functor by type, including a generalized quantifier on
-daughter 0. Predicate-slot satisfaction is distinct from function subtyping;
+elimination chooses the functor by type, including a constructive generalized
+quantifier on daughter 0. Classical nominals remain individual-valued choice
+terms; `all` and `every` both use tau. Predicate-slot satisfaction is distinct from function subtyping;
 application checks contravariant function domains and declared nominal inclusions.
 
 An indefinite first constructs `Σ x:A.⊤`. Its NP contributes a fresh witness

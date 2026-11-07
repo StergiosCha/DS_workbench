@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-07",
+  "scope": "Selected primary-source passages and rendered rule figures; exact source versions and locators, not a full reading of every work.",
+  "sources": [
+    {
+      "source": "C10",
+      "locator": "§2.2.2.4 pp.83–85; §3.4.3.2 pp.144–147; §4.2.1 p.166; §4.2.2 pp.170–171; §4.6.2 pp.184–196, especially (4.47)–(4.55); conclusion pp.231–232. Printed page numbers.",
+      "path": "chatzikyriakidis-phdthesis.pdf",
+      "sha256": "d7681c154ebee723b4ff9e5054cee2593b0f44809617f1438f22d360ddebc91d",
+      "bytes": 1622337,
+      "pdf_pages": 396,
+      "public_location": null
+    },
+    {
+      "source": "C12-poster",
+      "locator": "single-page poster, DS account and examples (1)–(8)",
+      "path": "iel_apella/fakelos_2025/publications/originals/mgdltghent_poster_complex_subordinators.pdf",
+      "sha256": "b8389115454723cc2f987f70daa2cd97fc5221336cdb0de04ec819e862550707",
+      "bytes": 162025,
+      "pdf_pages": 1,
+      "public_location": null
+    },
+    {
+      "source": "Procedural Syntax and Interactions",
+      "locator": "§2.1, PDF pp.2–4; discussion surrounding (6)–(17)",
+      "path": "book_LLMs/gregoromichelaki.pdf",
+      "sha256": "cbb62f59cad9066f1dfdda7efc69dbf3e96546f791f670640e3652e496c3c51e",
+      "bytes": 123357,
+      "pdf_pages": 5,
+      "public_location": null
+    },
+    {
+      "source": "E15",
+      "locator": "§§2.3–3.2, printed pp.265–269",
+      "path": "E15.pdf",
+      "sha256": "4de033c7f1147f67a9673055de17e84b7e804d477e9c6f637e537c16afc87ee1",
+      "bytes": 207358,
+      "pdf_pages": 11,
+      "public_location": "https://aclanthology.org/W15-0130.pdf"
+    },
+    {
+      "source": "HE17",
+      "locator": "§§2.3–2.4, PDF pp.4–5, Fig.3",
+      "path": "HE17.pdf",
+      "sha256": "7fde9363fd7f5f9b765a473dd1154a1bb782bef3489de7846b870fb9b7e0c17e",
+      "bytes": 98701,
+      "pdf_pages": 8,
+      "public_location": "https://aclanthology.org/W17-6913.pdf"
+    },
+    {
+      "source": "HE21",
+      "locator": "§3.5, printed pp.343–345, Fig.6; §§4–5",
+      "path": "HE21.pdf",
+      "sha256": "78e38b794c2b2f99963d52370754fcb5ec5c9054230ccbd46a5d6679e3679d1d",
+      "bytes": 828578,
+      "pdf_pages": 32,
+      "public_location": "https://link.springer.com/content/pdf/10.1007/s10849-020-09328-1.pdf"
+    },
+    {
+      "sha256": "7d72ef2482c1c1e4746822726990fb7d8655a4b38d7a040432bf1c60ca9a1297",
+      "bytes": 1344121,
+      "pdf_pages": 74,
+      "public_location": null,
+      "source": "GQ17",
+      "path": "Downloads/Gregoromichelaki160117upload.pdf",
+      "locator": "Opening argument; §§7.1–7.3.3, manuscript pp.29–65; conclusion. Macros (95), (98), (117), (133) visually inspected pp.48, 50, 55, 62."
+    },
+    {
+      "source": "Gregoromichelaki 2011 chapter",
+      "path": "Downloads/Conditionals.pdf",
+      "sha256": "1ad8f5c481b1b9177a5c1a9a62bf0ef2bfdae789161e90e41340f485e446a1d1",
+      "bytes": 416491,
+      "pdf_pages": 41,
+      "public_location": null,
+      "locator": "Author copy dated May 2010, chapter 8, printed pp.231–271; §§8.4.1–8.4.4 and §8.5; rule (8.73) p.254 and tree (8.68) p.252 visually inspected. Distinct from the 2006 thesis."
+    },
+    {
+      "source": "MEMH26",
+      "locator": "§§1–2.3; relevant §2.5 background; §§4–5. Rule (6), Figs.6–7 visually inspected pp.13–14. Table5 included counts checked, not a corpus replication.",
+      "path": "languages-11-00025.pdf",
+      "sha256": "4c0e8cadcaf941f309126f0d2bd052898b2ccdc9cd9d9951c56ba30203414953",
+      "bytes": 820621,
+      "pdf_pages": 22,
+      "public_location": "https://mdpi-res.com/d_attachment/languages/languages-11-00025/article_deploy/languages-11-00025.pdf"
+    }
+  ],
+  "unavailable": [
+    "Gregoromichelaki 2006 thesis: original text not obtained; account inspected through C10 §4.6.2."
+  ]
+}

@@ -1018,3 +1018,13 @@ THEN make(\/1)
    put([+DISTRIBUTIVE-PLURAL])
    put([+CONTEXT-ALL])
 ELSE abort
+
+
+// Howes & Eshghi (2021), §3.5, Fig. 6: compile before acknowledging.
+// The effect checks the complete subtree and both binary sisters, then ascends.
+// At the root it records feedback in place; early/late feedback is not modelled.
+backchannel(WORD)
+IF Ty(x)
+   ¬Ex.?x
+THEN semantic-backchannel(WORD)
+ELSE abort

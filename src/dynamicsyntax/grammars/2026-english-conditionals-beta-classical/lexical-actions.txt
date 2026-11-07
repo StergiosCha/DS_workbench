@@ -1,0 +1,48 @@
+proper(NAME)
+IF ?Ty(classical:e)
+   ¬<\/0>Ex.x
+   ¬<\/1>Ex.x
+THEN put(Ty(classical:e))
+   put(Fo(classical:NAME))
+ELSE abort
+
+intransitive(PRED)
+IF ?Ty(classical:arrow(e,arrow(es,t)))
+THEN put(Ty(classical:arrow(e,arrow(es,t))))
+   put(Fo(classical:lam(x,e,lam(s,es,PRED(x,s)))))
+ELSE abort
+
+transitive(PRED)
+IF ?Ty(classical:arrow(e,arrow(es,t)))
+THEN make(\/1)
+   go(\/1)
+   put(Ty(classical:arrow(e,arrow(e,arrow(es,t)))))
+   put(Fo(classical:lam(y,e,lam(x,e,lam(s,es,PRED(x,y,s))))))
+   go(/\1)
+   make(\/0)
+   go(\/0)
+   put(?Ty(classical:e))
+ELSE abort
+
+conditional(UNUSED)
+IF ?Ty(classical:es)
+THEN conditional-beta-open
+ELSE abort
+
+boundary(KIND)
+IF Ty(classical:es)
+   ¬Ex.?x
+   </\0>Tn(0)
+   <\/L>[+CONDITIONAL-RESTRICTOR]
+   ¬[+CONDITIONAL-KIND]
+   ¬[+CONDITIONAL-THEN]
+   ¬</\0><\/1><\/0>Ex.x
+THEN put([+CONDITIONAL-KIND])
+ELSE abort
+
+punctuation(UNUSED)
+IF Tn(0)
+   Ty(classical:t)
+   ¬Ex.?x
+THEN do_nothing
+ELSE abort

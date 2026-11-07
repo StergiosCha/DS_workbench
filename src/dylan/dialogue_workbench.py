@@ -64,8 +64,19 @@ def configuration():
         "max_turns": 12,
         "max_tokens": 80,
         "max_characters": 1200,
-        "coverage": "Shared tree growth across speakers; explicit local repair of the last lexical contribution; earlier trees retained for inspection. Native English supports do/does/did polar questions, local subject-binding reflexives and Yes/No answers to the immediately preceding complete question. Speaker and addressee are evaluated at each word. Question content and answer polarity are labelled separately. General ellipsis, clarification acts, grounding, tense semantics and full agreement are not implemented.",
+        "coverage": "Shared tree growth across speakers; explicit local repair of the last lexical contribution; earlier trees retained for inspection. Native English supports do/does/did polar questions, local subject-binding reflexives and Yes/No answers to the immediately preceding complete question. Mhm/mm feedback follows a compiled semantic unit and moves the pointer out of that unit (Howes & Eshghi 2021, §3.5); the result records the unit and contributing speaker. Early/late feedback and participant grounding states are not implemented. Speaker and addressee are evaluated at each word. Question content and answer polarity are labelled separately. General ellipsis, clarification acts, tense semantics and full agreement are not implemented.",
         "examples": [
+            {
+                "id": "backchannel",
+                "label": "Mid-sentence feedback",
+                "family": "english",
+                "backends": ["classical", "mltt"],
+                "turns": [
+                    {"speaker": "A", "text": "the man"},
+                    {"speaker": "B", "text": "mhm"},
+                    {"speaker": "A", "text": "walks."},
+                ],
+            },
             {
                 "id": "shared-question",
                 "label": "Question & answer",

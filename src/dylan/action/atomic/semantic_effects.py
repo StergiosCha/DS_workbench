@@ -131,6 +131,13 @@ def eliminate(tree: Tree) -> Tree | None:
             result.witnesses + (Witness(variable, result.term),),
             tree.semantic_profile,
         )
+    if result.backend == "classical" and result_type.term == name("t"):
+        # Resolve choice dependencies during DS elimination, not by
+        # translating a finished TTR tree or changing only the final display.
+        try:
+            result = result.close_witnesses(tree.semantic_profile.get("scope", "narrow"))
+        except TypeError:
+            return None
     node.add_label(TypeLabel(result_type))
     node.add_label(FormulaLabel(result))
     return tree

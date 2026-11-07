@@ -771,7 +771,7 @@
     "container-title": "Proceedings of the 12th International Conference on Computational Semantics (IWCS 2017), Short papers",
     "URL": "https://aclanthology.org/W17-6913/",
     "keyword": "DS:categories:C13, DS:frameworks:unclassified",
-    "note": "Review: abstract_read. Abstract inspected in the ACL Anthology PDF (W17-6913): low-level semantic processing model of where feedback is licensed (feedback relevance spaces) and how non-FRS feedback is integrated. Body not audited."
+    "note": "Review: selected_passages. Selected §§2.3–2.4, PDF pp.4–5, Fig.3; completion-based feedback and early/late alternatives."
   },
   {
     "id": "PGMC10",
@@ -977,7 +977,7 @@
     "issue": "2",
     "page": "331-362",
     "keyword": "DS:categories:C13, DS:categories:C18, DS:frameworks:ttr, DS:mechanisms:context_reuse, DS:ttr_integration:ds_ttr",
-    "note": "Review: abstract_read. Crossref deposited abstract and HG21 §3, printed p.274. Corpus/model scope inspected; numerical results have not been reproduced."
+    "note": "Review: selected_passages. Selected §3.5, pp.343–345; Fig.6 visually inspected; §§4–5 for empirical scope. Source of the bounded native feedback adaptation."
   },
   {
     "id": "CL25",
@@ -1607,5 +1607,70 @@
     "URL": "https://semdial.org/anthology/papers/Z/Z21/Z21-2002",
     "keyword": "DS:categories:C13, DS:categories:C18, DS:frameworks:general, DS:frameworks:ttr, DS:mechanisms:tree_growth, DS:ttr_integration:ds_ttr",
     "note": "Review: abstract_read. Two-page invited-talk abstract (byline 'Ruth Kempson with Ronnie Cann & Eleni Gregoromichelaki'): responds to Bickhard's encodingism challenge; positions a composite DS-TTR framework as process-based. Anthology lists Kempson as sole author; that is followed here."
+  },
+  {
+    "id": "GQ17",
+    "type": "chapter",
+    "title": "Quotation in Dialogue",
+    "author": [
+      {
+        "family": "Gregoromichelaki",
+        "given": "Eleni"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "container-title": "The Semantics and Pragmatics of Quotation",
+    "page": "195–255",
+    "publisher": "Springer",
+    "DOI": "10.1007/978-3-319-68747-6_8",
+    "URL": "https://doi.org/10.1007/978-3-319-68747-6_8",
+    "keyword": "DS:categories:C13, DS:frameworks:ttr, DS:mechanisms:context_reuse, DS:mechanisms:tree_growth, DS:mechanisms:record_update, DS:mechanisms:link, DS:mechanisms:substitution, DS:mechanisms:situation_structure, DS:mechanisms:repair, DS:ttr_integration:ds_ttr",
+    "note": "Review: selected_passages. Author manuscript: opening argument, §§7.1–7.3.3 and conclusion; macros (95), (98), (117), (133) visually inspected on manuscript pp.48, 50, 55, 62. Not a full audit of the competing accounts in §§2–6."
+  },
+  {
+    "id": "MEMH26",
+    "type": "article-journal",
+    "title": "Incremental Processing of Laughter in Interaction",
+    "author": [
+      {
+        "family": "Maraev",
+        "given": "Vladislav"
+      },
+      {
+        "family": "Eshghi",
+        "given": "Arash"
+      },
+      {
+        "family": "Mazzocconi",
+        "given": "Chiara"
+      },
+      {
+        "family": "Howes",
+        "given": "Christine"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          1,
+          29
+        ]
+      ]
+    },
+    "container-title": "Languages",
+    "volume": "11",
+    "issue": "2",
+    "page": "25",
+    "DOI": "10.3390/languages11020025",
+    "URL": "https://doi.org/10.3390/languages11020025",
+    "keyword": "DS:categories:C13, DS:categories:C18, DS:frameworks:ttr, DS:mechanisms:link, DS:mechanisms:unfixed, DS:mechanisms:merge, DS:mechanisms:substitution, DS:mechanisms:context_reuse, DS:mechanisms:record_update, DS:mechanisms:situation_structure, DS:ttr_integration:ds_ttr",
+    "note": "Review: selected_passages. §§1–2.3; relevant §2.5 background; §§4–5, especially §4.2 and Fig.7. Rule (6) and Figs.6–7 visually inspected pp.13–14; Table5 counts checked. Corpus study not reproduced."
   }
 ]

@@ -37,7 +37,8 @@ def test_distributive_quantification_without_model_calls(backend, sentence, monk
     assert parsed["derivation"]["actions"]
     assert parsed["lexical"]["attempts"] == []
     meaning = parsed["words"][-1]["normalized"]
-    assert ("∀" if backend == "classical" else "Π") in meaning
+    assert ("τ" if backend == "classical" else "Π") in meaning
+    assert "∀" not in meaning
     if sentence == USER_TEXT:
         assert "∧" in meaning and "person_n00007846" in meaning
         assert "people_n" not in meaning
@@ -70,7 +71,7 @@ def test_dictionary_people_are_individual_persons_and_keep_the_human_sort():
 
 
 def test_classical_universal_is_capture_avoiding_and_round_trips():
-    term = parse_expr("forall(x,e,implies(person(x),enter(x,y)))")
+    term = parse_expr("tau(x,e,implies(person(x),enter(x,y)))")
     assert "x" not in term.free() and "y" in term.free()
     changed = term.substitute("y", parse_expr("x"))
     assert changed.name != "x" and "x" in changed.free()

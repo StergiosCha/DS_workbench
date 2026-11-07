@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "date": "2026-10-07",
+  "date": "2026-11-07",
   "note": "Bounded source-to-implementation cards. Source inspection, community review, parser completion and semantic adequacy are independent. Examples marked authored are not quotations from the cited work. Cards added on 7 October (evening) rest on abstract/introduction-level inspection and say so in their locators; they are reading queues, not implemented analyses.",
   "analyses": [
     {
@@ -472,6 +472,222 @@
       ],
       "community_review": "pending",
       "next_action": "Read SPHK18 §§2–4 and obtain PSHK21; decide whether a distributional decoration is a research card only or a candidate fourth semantic backend."
+    },
+    {
+      "id": "local-backchannel-completion",
+      "title": "Local backchannels after semantic compilation",
+      "topics": [
+        "C13.05"
+      ],
+      "sources": [
+        {
+          "paper": "HE21",
+          "locator": "§3.5, printed pp.343–345; Fig.6, p.344",
+          "version": "Published 32-page PDF; fingerprint in paper record"
+        },
+        {
+          "paper": "HE17",
+          "locator": "§§2.3–2.4, pp.4–5; Fig.3",
+          "version": "Published ACL Anthology PDF"
+        }
+      ],
+      "claim": "A local backchannel waits for a complete semantic unit with no complete binary sister, then leaves that subtree. Ordinary compilation must precede feedback if both sisters are complete.",
+      "mechanisms": [
+        "tree_growth",
+        "requirements",
+        "context_reuse"
+      ],
+      "language": "English",
+      "limits": "Native adaptation of a DS-TTR account. At a complete root feedback is recorded in place. Early/late feedback, dual participant coordination DAGs, grounding-based repair restrictions and a TTR lexical port are not implemented.",
+      "examples": [
+        {
+          "text": "A: the man / B: mhm / A: walks.",
+          "origin": "Authored regression, not a source quotation",
+          "expected": "Complete; DP compiled before feedback; pointer moves 00 to 0; sentence meaning preserved."
+        },
+        {
+          "text": "A: the / B: mhm / A: man walks.",
+          "origin": "Authored non-FRS contrast, not a general ungrammaticality judgment",
+          "expected": "No local-feedback derivation at mhm; no guessed noun."
+        },
+        {
+          "text": "A: Did John walk? / B: mhm / A: No",
+          "origin": "Authored polarity regression",
+          "expected": "mhm preserves the question; No supplies a separate negative answer."
+        }
+      ],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "tested_fragment",
+          "scope": "Native English lexical action, branch-local feedback trace and UI preset."
+        },
+        {
+          "backend": "constructive",
+          "status": "tested_fragment",
+          "scope": "Native English lexical action, branch-local feedback trace and UI preset."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_implemented",
+          "scope": "Source is DS-TTR; no TTR lexical entry added in this patch."
+        }
+      ],
+      "code": [
+        "src/dylan/feedback.py",
+        "src/dylan/action/atomic/native_dialogue.py",
+        "tests/test_backchannels.py",
+        "scripts/check_backchannel_browser.py",
+        "docs/research/subordination-quotation-feedback-2026-11-07.md"
+      ],
+      "community_review": "pending",
+      "next_action": "Review the source adaptation; next add local nominal clarification with return to the pending tree."
+    },
+    {
+      "id": "quotation-demonstration-context",
+      "title": "Quotation as action execution with utterance context",
+      "topics": [
+        "C13.01",
+        "C13.03"
+      ],
+      "sources": [
+        {
+          "paper": "GQ17",
+          "locator": "§7.2 pp.34–38; §7.3.1 pp.44–50, (95), (98); §7.3.2 pp.53–61, (113), (117), (126), (132); §7.3.3 pp.62–65, (133)",
+          "version": "74-page author manuscript created 16 January 2017; these are manuscript page numbers, not published pagination"
+        }
+      ],
+      "claim": "Quoted material is processed by DS actions; the demonstration and echoed/reported utterance are distinct events. Direct reports can introduce an event metavariable and LINK. Per-word context and evaluation changes support shared and mixed quotation.",
+      "mechanisms": [
+        "tree_growth",
+        "link",
+        "context_reuse",
+        "record_update",
+        "substitution",
+        "situation_structure"
+      ],
+      "language": "English",
+      "limits": "Worked source analysis, not an implemented app feature. Printed macros are schematic. A first marked direct-quotation fragment would not cover pure/mixed quotation, accommodation, full ellipsis or all unmarked reports.",
+      "examples": [
+        {
+          "text": "John said “I was loud”.",
+          "origin": "Source (116), manuscript p.55",
+          "expected": "The direct-report macro uses the reported speaker John for I and constructs an event-valued report object through LINK; quoted content remains available."
+        },
+        {
+          "text": "A: Will you say to Nick… / B: “I hate you”? Yes, why?",
+          "origin": "Source (113), manuscript p.54",
+          "expected": "B hates Nick in the quoted content; actual dialogue turn and reported addressee have different roles."
+        },
+        {
+          "text": "A: John said “I walk”. / A: I run.",
+          "origin": "Authored restoration test; second contribution starts a new proposition",
+          "expected": "First I refers to John; second I refers to A. This is a target, not a passing test."
+        }
+      ],
+      "implementations": [
+        {
+          "backend": "classical",
+          "status": "not_implemented",
+          "scope": "Existing dialogue/context infrastructure; no quotation semantics or lexical programs."
+        },
+        {
+          "backend": "constructive",
+          "status": "not_implemented",
+          "scope": "Existing dialogue/context infrastructure; no quotation semantics or lexical programs."
+        },
+        {
+          "backend": "ttr",
+          "status": "not_implemented",
+          "scope": "The source uses DS-TTR; existing record operations do not supply the quotation grammar."
+        }
+      ],
+      "code": [
+        "docs/design/quotation.md",
+        "src/dylan/context/context.py",
+        "src/dylan/action/atomic/semantic_effects.py",
+        "src/dylan/action/atomic/native_dialogue.py"
+      ],
+      "community_review": "pending",
+      "next_action": "Implement event/context records and branch-safe action execution; verify direct quotation and a shared quote before integrating into main grammars."
+    },
+    {
+      "id": "laughter-local-backward",
+      "title": "Local backward laughter through LINK and TTR record conjunction",
+      "topics": [
+        "C13.01",
+        "C13.05"
+      ],
+      "sources": [
+        {
+          "paper": "MEMH26",
+          "locator": "§4.2 pp.13–14, Fig.7; general rule (6) p.13; §§4.3–5 pp.15–17 for broader scope and limits",
+          "version": "Published 22-page article; fingerprint in paper record"
+        },
+        {
+          "paper": "HE21",
+          "locator": "§3.5 pp.343–345, Fig.6, for the related compiled-unit feedback account",
+          "version": "Published 32-page article; fingerprint in paper record"
+        }
+      ],
+      "claim": "Local laughter can target a completed individual or situation record; LINK evaluation integrates laughable(head) while preserving that referent and the rest of the sentence.",
+      "mechanisms": [
+        "tree_growth",
+        "link",
+        "requirements",
+        "record_update",
+        "situation_structure"
+      ],
+      "language": "English beta; source corpus also French and Chinese",
+      "limits": "Immediate completed target only. Direct resolution copies the current record rather than implementing the source general unresolved placeholder. No forward/distant laughter, Late-*Adjunction/MERGE, speech overlap, grounding inference, tense or native backend adaptations.",
+      "examples": [
+        {
+          "text": "A: a man / B: [laugh] / A: arrives.",
+          "origin": "Authored beta regression inspired by the source mechanism",
+          "expected": "Complete TTR derivation; laughable targets the man; same sentence continues across actual speakers."
+        },
+        {
+          "text": "A: John likes Mary. / B: [laugh]",
+          "origin": "Authored beta regression",
+          "expected": "The completed liking situation is the target of laughable; no inference of humour or agreement."
+        },
+        {
+          "text": "John sees a telescope [laugh].",
+          "origin": "Authored ambiguity regression",
+          "expected": "Two complete sentence analyses: telescope head versus seeing situation; subject/object identities preserved."
+        },
+        {
+          "text": "[laugh] John walks.",
+          "origin": "Authored coverage control; no natural-language ungrammaticality claim",
+          "expected": "Incomplete in this beta: forward resolution is pending."
+        }
+      ],
+      "implementations": [
+        {
+          "backend": "ttr",
+          "status": "tested_fragment",
+          "scope": "Separate 2026-english-laughter-beta-ttr grammar, actual LINK construction, record conjunction, dialogue presets, two target readings and 23 focused tests."
+        },
+        {
+          "backend": "classical",
+          "status": "not_implemented",
+          "scope": "The native feedback fragment is separate; laughter requires its own semantics."
+        },
+        {
+          "backend": "constructive",
+          "status": "not_implemented",
+          "scope": "The native feedback fragment is separate; laughter requires its own semantics."
+        }
+      ],
+      "code": [
+        "docs/design/laughter-beta.md",
+        "src/dylan/action/atomic/ttr_laughter.py",
+        "src/dynamicsyntax/grammars/2026-english-laughter-beta-ttr/lexical-actions.txt",
+        "tests/test_ttr_laughter.py",
+        "scripts/check_laughter_beta_browser.py"
+      ],
+      "community_review": "pending",
+      "next_action": "Review local adaptation and target selection; implement source forward-LINK/unfixed resolution, then earlier targets and clarification."
     }
   ]
 }

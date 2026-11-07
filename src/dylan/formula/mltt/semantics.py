@@ -35,7 +35,7 @@ class SemanticType(DSType):
         if required == actual:
             return True
         if self.backend == "classical":
-            return required == name("e") and is_gq(actual, "t")
+            return False
         if self.backend != "mltt":
             return False
         if required == name("object"):
@@ -67,7 +67,7 @@ def is_gq(term: Expr, proposition="Prop") -> bool:
 
 def gq_consumes_predicate(left: SemanticType, right: SemanticType) -> bool:
     proposition = "Prop" if left.backend == "mltt" else "t"
-    return left.backend == right.backend and is_gq(left.term, proposition) and right.term.kind == "arrow" and right.term.args[1] == name(proposition)
+    return left.backend == right.backend == "mltt" and is_gq(left.term, proposition) and right.term.kind == "arrow" and right.term.args[1] == name(proposition)
 
 
 def left_consumes_predicate(left: SemanticType, right: SemanticType, *, reflexive=False) -> bool:
@@ -162,6 +162,11 @@ class SemanticFormula(Formula):
         return SemanticFormula(self.term.simplify(), self.backend, (), self.theory)
 
     def close_witnesses(self, scope: str = "narrow") -> SemanticFormula:
+        if self.backend == "classical":
+            from dylan.formula.mltt.choice_scope import close_choices
+
+            return SemanticFormula(close_choices(self.term, scope), self.backend, (), self.theory)
+
         def wrap(body: Expr) -> Expr:
             for witness in reversed(self.witnesses):
                 if witness.variable in body.free():
@@ -220,7 +225,7 @@ def apply_semantics(
     domain, result_type = ft.args
     witnesses = tuple(dict.fromkeys(function.witnesses + argument.witnesses))
     if (
-        is_gq(at, "Prop" if function.backend == "mltt" else "t")
+        function.backend == "mltt" and is_gq(at)
         and ft.kind == "arrow"
         and result_type.kind == "arrow"
     ):
