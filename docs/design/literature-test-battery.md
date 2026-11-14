@@ -232,3 +232,14 @@ SyntaxGym `meta.comment` is kept: six suites record the authors' alternative
 prediction criteria there. Davis & van Schijndel, Natural Stories,
 dialogue and BLiMP are not imported: they lack pinned file hashes or retrieved
 materials. Task contracts, engine coverage audits and scoring are the next steps.
+
+## First scored diagnostic · 2026-11-14
+
+The [agreement and reflexive diagnostic](literature-diagnostic-v1.md) now
+provides a derived licensing task for all 38 families in number_prep and
+reflexive_prep_masc. It audits the original DS/CCG configurations and compares
+five configurations sharing a new CCG lexicon, with typed-number constraints
+enabled, disabled or controlled by the nearest noun. This is source-informed
+development evaluation; original surprisal predictions remain unscored.
+The reproducible CLI writes an offline interactive report with source regions,
+coverage, family scores and explicit constraint decisions.

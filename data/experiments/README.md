@@ -24,3 +24,17 @@ interpreting or extending the experiment.
 Full per-seed reports and raw synthetic responses are reproducible under ignored
 `build/experiments/pilot`. The aggregate includes their canonical JSON hashes.
 This snapshot was computed with Python 3.12.8, NumPy 2.4.4 and SciPy 1.17.1.
+
+## Literature diagnostic · 2026-11-14
+
+The later literature-diagnostic-v1.json protocol and
+literature-diagnostic-results-v1.json aggregate belong to a separate,
+source-informed development evaluation of agreement and reflexive number.
+They do not modify or replace the frozen synthetic pilot.
+
+The two SyntaxGym suites provide 38 item sets / 152 conditions / 19 shared
+lexical frames. A new CCG plus typed-feature configuration and four ablations
+are scored on derived licensing decisions; original DS/CCG coverage is audited
+separately. Original regional-surprisal predictions are preserved but unscored.
+See [the diagnostic guide](../../docs/design/literature-diagnostic-v1.md) for
+the component contracts, result limits and reproduction commands.
