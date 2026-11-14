@@ -1,0 +1,41 @@
+{
+  "schema": "literature.diagnostic.protocol.v1",
+  "date": "2026-11-14",
+  "status": "development diagnostic; stimuli inspected; not preregistered or held out",
+  "selection": {
+    "number_prep": {"items": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], "critical_region": 6},
+    "reflexive_prep_masc": {"items": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], "critical_region": 7}
+  },
+  "selection_reason": "All items in two previously selected suites test number dependencies across a PP distractor. Selection is independent of parser success; no source sentences are rewritten.",
+  "task": "Derived whole-sentence licensing contrast: match_sing and match_plural should be accepted; mismatch_sing and mismatch_plural should be rejected.",
+  "original_task": "Regional surprisal inequalities. These remain preserved and unscored: the grammar engines supply no normalized word probabilities.",
+  "family_unit": "One suite/item has four conditions. The same item number in both selected suites shares a lexical frame and must stay in one split.",
+  "split": "All 19 shared lexical frames are development material. Lexicon declarations use both suites. No held-out generalization estimate, significance test or independent-family confidence interval.",
+  "primary_measure": "All four conditions correct in an evaluable family; ties or accept-all do not pass a family.",
+  "secondary_measures": ["condition accuracy on evaluable conditions", "positive acceptance", "negative rejection", "complete-family coverage", "shared evaluable family intersection"],
+  "unavailable": ["unknown vocabulary", "unsupported structure", "word or search bound", "worker timeout", "execution error"],
+  "negative_credit": "Only an explicit feature conflict on an otherwise complete derivation counts as rejection in the new constraint engines. Failure to derive in an unextended engine is unavailable, never negative credit.",
+  "configurations": [
+    "ds-english-v1",
+    "ccg-original-v1",
+    "ccg-incremental-v1",
+    "ccg-application-v1",
+    "ccg-feature-head-v1",
+    "ccg-feature-none-v1",
+    "ccg-feature-nearest-v1",
+    "ccg-feature-no-agreement-v1",
+    "ccg-feature-no-binding-v1"
+  ],
+  "component_contrasts": {
+    "head_vs_none": "Same diagnostic CCG lexicon and application rules; enable subject-number and local reflexive-number constraints.",
+    "head_vs_nearest": "Keep constraints and lexicon; change controller from the subject NP head to its last nominal.",
+    "head_vs_no_agreement": "Disable only subject-verb number agreement.",
+    "head_vs_no_binding": "Disable only local reflexive-number agreement."
+  },
+  "interpretation_limits": [
+    "A deliberately narrow CCG plus typed-feature hybrid, not a full HPSG or binding theory.",
+    "Gender is not tested; singular masculine reflexives assume a context permitting a masculine referent.",
+    "No calibrated surprisal, reading-time fit, learned neural model, new human data or claim of superiority over DS.",
+    "A correct result on source-informed development examples verifies implementation of the stated dependency, not discovery of that dependency."
+  ]
+}
