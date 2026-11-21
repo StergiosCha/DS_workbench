@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-21",
+  "url": "https://ds-workbench.vercel.app",
+  "deployment_id": "dpl_B5GxQ5Wi63L1ACffs2UUmDkocTPG",
+  "deployment_url": "https://ds-workbench-id5pydzlq-stergios-projects3.vercel.app",
+  "source_commit": "0c6eff0",
+  "branch": "codex/nominal-pp-coverage",
+  "problem": "Jev comparison was enabled by default and silently disabled the complete-analyses selector.",
+  "change": "Comparison is opt-in; choosing more analyses exits comparison while keeping Jev enabled. Remaining one-analysis restrictions are explained.",
+  "runtime_files_changed": [
+    "workbench/app.js",
+    "workbench/index.html"
+  ],
+  "manifest_entries_verified": 413,
+  "public_assets_match_source": true,
+  "assets_sha256": {
+    "workbench/app.js": "77e3a856f2994ab75fb97ba418d2ec77a7500e0f95dd721d816fa92204baa7dc",
+    "workbench/index.html": "e927eba3b39c10818aca793c0ccc1911106a8d3df74b2300097f3cfcc3e2be27"
+  },
+  "parser_regressions": {
+    "passed": 96,
+    "files": [
+      "tests/test_workbench_readings.py",
+      "tests/test_jev_comparison.py",
+      "tests/test_nominal_pp.py"
+    ]
+  },
+  "browser": {
+    "local_passed": 19,
+    "public_passed": 19,
+    "checks": [
+      "No AI or credential sent on initial parse",
+      "Connecting enables the controls without switching on either model",
+      "Real DS parse: 2026-english-mltt, analysis LLM=False, Jev=False",
+      "Real DS parse: 2026-english-mltt, analysis LLM=True, Jev=False",
+      "Real DS parse: 2026-english-mltt, analysis LLM=True, Jev=True",
+      "Real DS parse: 2026-english-mltt, analysis LLM=False, Jev=True",
+      "Real DS parse: 2026-english-classical, analysis LLM=False, Jev=False",
+      "Real DS parse: 2026-english-classical, analysis LLM=True, Jev=False",
+      "Real DS parse: 2026-english-classical, analysis LLM=True, Jev=True",
+      "Real DS parse: 2026-english-classical, analysis LLM=False, Jev=True",
+      "mltt: up to 3 analyses with both AI switches on; two real PP attachments, zero model calls",
+      "mltt: up to 8 analyses with both AI switches on; two real PP attachments, zero model calls",
+      "classical: up to 3 analyses with both AI switches on; two real PP attachments, zero model calls",
+      "classical: up to 8 analyses with both AI switches on; two real PP attachments, zero model calls",
+      "Fixture counts remain separate and stay attached to their result",
+      "Advanced strategy changes and Turn off all AI stay synchronized",
+      "Greek, dialogue, paragraph and TTR capability changes cannot leave hidden AI on",
+      "Disconnect clears both switches; credentials stay out of state and storage",
+      "Desktop/mobile layout, keyboard control, refresh and console checks passed"
+    ]
+  },
+  "validation_limits": "Browser checks used a fixture OpenRouter connection and real DS parses with maintained vocabulary. Both PP attachments were verified for john likes a man with a knife. No live model inference or accuracy benchmark was run."
+}

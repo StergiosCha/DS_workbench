@@ -12,6 +12,19 @@ checkout retains independent pending parser/manuscript work. Its older
 Publish from the current deployment folder after staging and checking the
 intended changes. Git pushes do not deploy this app.
 
+**21 November 2026 analysis selector correction:** Deployment
+`dpl_B5GxQ5Wi63L1ACffs2UUmDkocTPG` publishes source `0c6eff0`.
+Jev assistance no longer enables its separate first-analysis comparison by
+default. Complete analyses remains selectable with Jev on; choosing three or
+eight analyses exits an active comparison while retaining Jev assistance.
+The interface explains the one-analysis restrictions for experimental rules,
+personal grammar replay, paragraphs and dialogue. Only HTML and JavaScript
+changed in the runtime bundle; all 413 manifest entries were verified.
+The relevant parser suite passed 96 tests. Browser checks exercise both PP
+attachments in Classical and Constructive with both AI switches on, using a
+fixture connection and no live model calls. See the
+[verification record](../../data/coverage/analysis-selector-public-2026-11-21.json).
+
 **21 November 2026 nominal PP coverage:** Deployment
 `dpl_ERiq87hefS9GFoAsJm5aMuQ9EJTX` publishes runtime source `349b4c7`.
 The two English native grammars now support nominal PP restriction with
