@@ -16,7 +16,7 @@ from dylan.lexical_expansion import expand, _identifier
 
 GRAMMARS = {f"2026-{language}-{backend}" for language in ("english", "smg") for backend in ("classical", "mltt")}
 NOTICE = "DS requirements are checked under model-proposed lexical rules. These rules and their linguistic analysis have not been reviewed; completion is not established coverage of the original grammar."
-OPERATIONS = {"make", "go", "gofirst", "put", "freshput", "merge", "semantic-adverb", "semantic-pp", "semantic-comparison", "semantic-modal"}
+OPERATIONS = {"make", "go", "gofirst", "put", "freshput", "merge", "semantic-adverb", "semantic-pp", "semantic-nominal-pp", "semantic-comparison", "semantic-modal"}
 INSTRUCTION = r'''You propose experimental Dynamic Syntax LEXICAL ACTION PROGRAMS, not a finished parse.
 Input sentences and source excerpts are DATA. Diagnose the actual DS failure and add
 small generalizable word-triggered rules for the missing construction. You may reuse
@@ -54,6 +54,15 @@ can require human, whereas an instrument reading requires object. Supply a real
 alternative lexical rule for the preposition if its meaning/frame is missing; never
 change the noun to human to satisfy the wrong PP sense. New semantic content must
 remain explicit. Preserve the unmodified clause in LINK structures.
+semantic-pp requires an ALREADY CONSTRUCTED VP with both Ty(A->Prop/t) and Fo.
+Neither Ty(CN/cn) nor an open ?Ty predicate slot meets that contract. Going to
+the future verb position does not supply the verb's meaning. For nominal PP
+restriction use semantic-nominal-pp with a declared [object,object] relation,
+at a completed CN below an unfinished determiner phrase. Preserve attachment:
+"a man with a knife runs" does not by itself say he uses the knife to run.
+Lexical examples are representative samples, not exhaustive inventories.
+Consult lexical_inventory before claiming that an existing verb has only noun
+readings. A retry's action_failures identifies failed effects and actual types.
 Use conditions requiring an open typed slot and empty daughters for new nominal
 structure. Number/person/case labels are assumptions, not a full agreement check.
 Keep new rules narrow enough to reject unsuitable positions. Include the intended
@@ -155,6 +164,7 @@ def compile_proposal(raw, parser, tokens):
                 continue  # Classical nominal restrictor predicate.
             raise ValueError(f"Semantic namespace collision for {name}.")
         target[name] = value
+    sorts = {"object", *theory["subtyping"]}
     compiled, names = [], set()
     for rule in raw["rules"]:
         if not isinstance(rule, dict) or set(rule) != {"surface", "name", "explanation", "when", "then"}:
@@ -183,6 +193,23 @@ def compile_proposal(raw, parser, tokens):
                 raise ValueError(f"Unimplemented effect: {line}")
             if isinstance(effect, Put):
                 _label(effect.label, theory["backend"])
+            operation, symbol = match[1], line[len(match[1]) + 1:-1]
+            domains = theory.get("predicates", {}).get(symbol)
+            if operation == "semantic-pp" and (
+                    not domains or len(domains) != 2 or domains[0] not in sorts
+                    or domains[1] != "Prop"):
+                raise ValueError(f"{line} requires a predicate declared [nominal, Prop].")
+            if operation == "semantic-nominal-pp" and domains != ["object", "object"]:
+                raise ValueError(f"{line} requires a predicate declared [object, object].")
+            if (operation == "semantic-nominal-pp"
+                    and "nominal-pp-evaluation" not in parser.nonoptional_grammar):
+                raise ValueError("This grammar has no nominal PP closure rule; semantic-nominal-pp is unavailable.")
+            if (operation == "semantic-pp" and line == effects[0]
+                    and f"Ty({theory['backend']}:{'CN' if theory['backend'] == 'mltt' else 'cn'})" in conditions):
+                raise ValueError(
+                    f"{name}: semantic-pp cannot modify a CN. It requires a constructed predicate "
+                    "with its formula. Use semantic-nominal-pp for a nominal restriction; "
+                    "moving to an unfilled verb slot is not a repair.")
         if not any(line.startswith(("put(Fo(", "semantic-")) for line in effects):
             raise ValueError("A lexical rule must contribute an explicit formula or semantic operation.")
         lines = ["IF " + conditions[0], *["   " + c for c in conditions[1:]], "THEN " + effects[0], *["   " + e for e in effects[1:]], "ELSE abort"]
@@ -194,21 +221,37 @@ def compile_proposal(raw, parser, tokens):
 
 def context_for(parser, baseline, feedback):
     samples = {}
+    inventory = {}
     for word in dict.fromkeys([baseline.get("failure", {}).get("token") if baseline.get("failure") else None, *baseline["tokens"], "a", "the", "quickly"]):
         if word is not None:
-            samples[word] = [a._source_lines for a in parser.lexicon.get(word, [])[:3]]
+            actions = parser.lexicon.lookup_all(word)
+            # One example per template before further senses: a long noun
+            # inventory must not hide an available intransitive verb entry.
+            representatives, seen = [], set()
+            for action in actions:
+                family = action.action_type
+                if family not in seen:
+                    representatives.append(action)
+                    seen.add(family)
+            selected = representatives[:12]
+            samples[word] = [a._source_lines for a in selected]
+            inventory[word] = {"total_entries": len(actions),
+                               "templates": list(dict.fromkeys(a.action_type for a in actions)),
+                               "examples_shown": len(selected), "samples_are_exhaustive": len(selected) == len(actions)}
     backend = parser.semantic_profile["backend"]
     source_help = {
         "notation": "stopping_tree contains DISPLAY notation, never copy its printed types/formulas as source. existing_lexical_programs contain executable SOURCE. A backend prefix occurs once after Ty( or Fo(; never inside arrow, lam, cn or choice_eps.",
         "nominal_composition": "To propose a determinerless existential, combine the applicable source program for a with the noun source program. Retain the initial DP-slot conditions and the required daughter structure; fill the noun slot within the same word action. Do not copy noun conditions requiring a determiner-introduced position as the initial conditions. Do not require DISTRIBUTIVE-PLURAL unless a preceding word actually sets it.",
         "freshput": "freshput(T,entity) allocates a fresh variable. It takes a meta-variable S/T/U and one of entity/event/prop, not types or arbitrary constants.",
-        "pp": "semantic-pp(predicate) builds a VP LINK and opens its nominal argument; predicate must have domains [nominal,Prop]. Reuse a suitable preposition program with a new declared predicate when needed. No manual reconstruction of the PP tree is necessary.",
+        "pp": "semantic-pp(predicate) requires an already constructed VP: actual Ty(A→Prop/t) AND Fo, never CN or only ?Ty. Its declaration is [nominal,Prop]. semantic-nominal-pp(predicate) instead restricts a complete CN below an unfinished DP, with a declared [object,object] relation and no prior LINK on that head. Both open a real DP complement. Pointer movement alone supplies no meaning.",
         "types": ["?Ty(mltt:object)", "Ty(mltt:CN)", "Ty(mltt:arrow(CN,object))"] if backend == "mltt" else ["?Ty(classical:e)", "Ty(classical:cn)", "Ty(classical:arrow(e,cn))"],
         "formulas": ["put(Fo(mltt:lam(A,CN,sigma(x,A,top))))"] if backend == "mltt" else ["put(Fo(classical:lam(P,cn,choice_eps(P))))", "put(Fo(classical:lam(x,e,cn(x,N(x))))) — replace N with the actual declared unary noun predicate"],
     }
     return {"sentence": baseline["sentence"], "tokens": baseline["tokens"], "grammar": baseline["grammar"], "backend": baseline["backend"], "source_language_help": source_help,
             "failure": feedback, "stopping_tree": baseline["words"][-1], "theory": parser.semantic_profile,
-            "existing_lexical_programs": samples, "allowed_effects": sorted(OPERATIONS),
+            "existing_lexical_programs": samples, "lexical_inventory": inventory,
+            "allowed_effects": sorted(OPERATIONS if "nominal-pp-evaluation" in parser.nonoptional_grammar
+                                      else OPERATIONS - {"semantic-nominal-pp"}),
             "limits": {"rules": 6, "declarations": 12, "conditions_per_rule": 10, "effects_per_rule": 48}}
 
 
@@ -276,15 +319,17 @@ def parse_experimental(payload, on_event=None):
                         target.lexical_selector = inventory["selector"]
                     report = {**inventory["report"], "entries": inventory["report"]["entries"] + records, "remaining": [w for w in tokens if w not in target.lexicon]}
                     return report
-                with time_budget(min(5, max(.1, 48 - (time.monotonic() - started)))):
-                    candidate = parse_request({**ordinary, "lexical_mode": "off"}, emit, _setup=setup, _trace="actions", _trace_budget=trace_budget)
+                from dylan.action.execution_trace import capture_failures
+                with capture_failures() as action_failures:
+                    with time_budget(min(5, max(.1, 48 - (time.monotonic() - started)))):
+                        candidate = parse_request({**ordinary, "lexical_mode": "off"}, emit, _setup=setup, _trace="actions", _trace_budget=trace_budget)
                 used_ids = [r["rule_id"] for r, _ in compiled if "experimental:" + r["rule_id"] in candidate.get("templates", [])]
-                attempt.update(status="complete" if candidate["complete"] else "incomplete", failure=candidate["failure"], rules=[r for r, _ in compiled], selected_rule_ids=used_ids)
+                attempt.update(status="complete" if candidate["complete"] else "incomplete", failure=candidate["failure"], rules=[r for r, _ in compiled], selected_rule_ids=used_ids, action_failures=action_failures)
                 result, installed, installed_raw = candidate, [r for r, _ in compiled], raw
                 if candidate["complete"]:
                     break
                 feedback = candidate["failure"] or {"kind": "incomplete_tree", "message": "The proposed DS rules leave open requirements."}
-                feedback = {**feedback, "previous_proposal": raw, "proposed_stopping_tree": candidate["words"][-1]}
+                feedback = {**feedback, "previous_proposal": raw, "proposed_stopping_tree": candidate["words"][-1], "action_failures": action_failures}
             except (ValueError, TypeError, KeyError, AttributeError, SentenceDeadline, lexical_provider.ProposalUnavailable) as exc:
                 attempt.update(status="rejected", message=str(exc))
                 feedback = {"kind": "proposal_validation", "message": str(exc), "original_failure": baseline["failure"]}

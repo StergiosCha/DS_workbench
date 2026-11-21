@@ -27,9 +27,9 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
-_ITE_PATTERN = re.compile(r"(?i)(IF|THEN|ELSE)?\s*(.*)")
-_IF_RE = re.compile(r"(?i)\bIF\b")
-_ELSE_RE = re.compile(r"(?i)\bELSE\b")
+_ITE_PATTERN = re.compile(r"(?i)(?:(IF|THEN|ELSE)\b)?\s*(.*)")
+_IF_RE = re.compile(r"(?i)^(?:(?:THEN|ELSE)\s+)?(?P<conditional>IF\b.*)$")
+_ELSE_RE = re.compile(r"(?i)^ELSE\b")
 
 
 def _find_end_of_embedded_ite(lines: list[str], start: int) -> int:
@@ -40,12 +40,12 @@ def _find_end_of_embedded_ite(lines: list[str], start: int) -> int:
     embed = 1
     j = start + 1
     while j < len(lines):
-        cur = lines[j].lower()
-        if "else" in cur:
+        cur = lines[j].strip()
+        if _ELSE_RE.match(cur):
             embed -= 1
         if embed < 0:
             break
-        if "if" in cur:
+        if _IF_RE.match(cur):
             embed += 1
         j += 1
     return j
@@ -175,11 +175,11 @@ class IfThenElse(Effect):
                 i += 1
 
             elif phase == cls.THEN_FUNCTOR:
-                idx_if = line.lower().find("if")
-                if idx_if >= 0:
+                embedded = _IF_RE.match(line)
+                if embedded:
                     j = _find_end_of_embedded_ite(src, i)
                     sub = src[i:j]
-                    sub[0] = line[idx_if:]
+                    sub[0] = embedded["conditional"]
                     then_effects.append(
                         cls.from_lines(sub, embedding_level + 1, None),
                     )
@@ -191,11 +191,11 @@ class IfThenElse(Effect):
                     i += 1
 
             elif phase == cls.ELSE_FUNCTOR:
-                idx_if = line.lower().find("if")
-                if idx_if >= 0:
+                embedded = _IF_RE.match(line)
+                if embedded:
                     j = _find_end_of_embedded_ite(src, i)
                     sub = src[i:j]
-                    sub[0] = line[idx_if:]
+                    sub[0] = embedded["conditional"]
                     else_effects.append(
                         cls.from_lines(sub, embedding_level + 1, None),
                     )

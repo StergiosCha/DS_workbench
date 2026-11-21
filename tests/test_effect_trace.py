@@ -27,6 +27,27 @@ def contents(tree):
     ]
 
 
+@pytest.mark.parametrize("symbol", ["knife", "gift", "different", "otherwise", "if", "else"])
+def test_instruction_words_inside_formulas_do_not_start_branches(symbol):
+    rule = IfThenElse.from_lines([
+        "IF ?Ty(t)", f"THEN put(Fo({symbol}))", "put(+kept)", "ELSE abort",
+    ])
+    result = rule.exec(Tree(), None)
+    assert result is not None
+    assert str(result.pointed_node.get_formula()) == symbol
+    assert any(str(label) == "+kept" for label in result.pointed_node.labels)
+
+
+def test_nested_branch_boundaries_ignore_instruction_substrings():
+    rule = IfThenElse.from_lines([
+        "IF ?Ty(t)", "THEN IF Ty(e)", "THEN put(Fo(gift))",
+        "ELSE put(Fo(knife))", "put(+inner)", "ELSE put(Fo(otherwise))",
+    ])
+    result = rule.exec(Tree(), None)
+    assert result is not None and str(result.pointed_node.get_formula()) == "knife"
+    assert any(str(label) == "+inner" for label in result.pointed_node.labels)
+
+
 def test_nested_then_else_and_macros_record_only_executed_primitives():
     macro = LexicalMacro(
         "build-child", [EffectFactory.create(r"make(\/0)"), EffectFactory.create(r"go(\/0)")]

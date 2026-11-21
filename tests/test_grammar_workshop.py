@@ -16,13 +16,13 @@ def pack(backend="mltt"):
         "name": "Eyewear review",
         "grammar": grammar,
         "base_hash": grammar_hash(grammar),
-        "seed_sentence": "A person entered the room with glasses",
+        "seed_sentence": "A person entered the room with goggles",
         "proposal": bare_program(backend),
         "notes": "Personal review fixture. No wearing inference.",
         "origin": {"model": "fixture", "proposal_hash": ""},
         "tests": [
-            {"sentence": "John walks with glasses.", "complete": True, "meaning": ""},
-            {"sentence": "John walks with with glasses.", "complete": False, "meaning": ""},
+            {"sentence": "John walks with goggles.", "complete": True, "meaning": ""},
+            {"sentence": "John walks with with goggles.", "complete": False, "meaning": ""},
         ],
     }
 
@@ -41,7 +41,7 @@ def test_reuse_on_another_sentence_without_models(backend):
     p = pack(backend)
     r = parse_request(
         {
-            "sentence": "John walks with glasses.",
+            "sentence": "John walks with goggles.",
             "grammar": p["grammar"],
             "grammar_pack": p,
             "allow_model_fallback": False,
@@ -53,7 +53,7 @@ def test_reuse_on_another_sentence_without_models(backend):
     assert "experimental_grammar" not in r
     original = parse_request(
         {
-            "sentence": "John walks with glasses.",
+            "sentence": "John walks with goggles.",
             "grammar": p["grammar"],
             "lexical_mode": "dictionary",
         }
@@ -122,7 +122,7 @@ def test_negative_expectation_does_not_hide_real_dictionary_overgeneration():
     p = pack()
     # WordNet also supplies a determiner-taking noun reading. The personal
     # object-with rule permits it: this needs review, not a false passing badge.
-    p["tests"] = [{"sentence": "John walks with a glasses.", "complete": False, "meaning": ""}]
+    p["tests"] = [{"sentence": "John walks with a goggles.", "complete": False, "meaning": ""}]
     result = check_pack(p)
     assert result["cases"][0]["status"] == "mismatch"
     assert not result["all_matched"]

@@ -72,27 +72,22 @@ class LexicalAction(Action):
 
     def exec(self, tree: Tree, context: Context[DAGTuple, Any] | None) -> Tree | None:
         """Execute every effect segment on *tree*."""
-        cur: Tree | None = tree
-        for eff in self.effects:
-            assert cur is not None
-            from dylan.action.execution_trace import execute_effect
-
-            cur = execute_effect(eff, cur, context)
-            if cur is None:
-                return None
-        return cur
+        return self._execute(tree, context, tuple_context=False)
 
     def exec_tuple_context(self, tree: Tree, context: ParserTuple | None) -> Tree | None:
         """Execute effects with parser-tuple context compatibility."""
-        cur: Tree | None = tree
-        for eff in self.effects:
-            assert cur is not None
-            from dylan.action.execution_trace import execute_effect
+        return self._execute(tree, context, tuple_context=True)
 
-            cur = execute_effect(eff, cur, context, tuple_context=True)
-            if cur is None:
-                return None
-        return cur
+    def _execute(self, tree, context, *, tuple_context):
+        from dylan.action.execution_trace import execute_effect, failure_rule
+
+        with failure_rule(self):
+            cur = tree
+            for eff in self.effects:
+                cur = execute_effect(eff, cur, context, tuple_context=tuple_context)
+                if cur is None:
+                    return None
+            return cur
 
     def instantiate(self) -> LexicalAction:
         """Return a fresh lexical action copy."""

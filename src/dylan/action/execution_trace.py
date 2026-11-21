@@ -30,6 +30,54 @@ class EffectTrace:
 
 
 _active: ContextVar[EffectTrace | None] = ContextVar("ds_effect_trace", default=None)
+_failures: ContextVar[list | None] = ContextVar("ds_effect_failures", default=None)
+_lexical_rule: ContextVar[dict | None] = ContextVar("ds_failure_rule", default=None)
+
+
+@contextmanager
+def capture_failures():
+    """Bounded diagnostics of failed experimental effects, separate from replay."""
+    failures = []
+    token = _failures.set(failures)
+    try:
+        yield failures
+    finally:
+        _failures.reset(token)
+
+
+@contextmanager
+def failure_rule(action):
+    if _failures.get() is None:
+        yield
+        return
+    experimental = (action.action_type or "").startswith("experimental:")
+    token = _lexical_rule.set(
+        {"rule_id": action.metadata.get("rule_id", action.action_type), "surface": action.word}
+        if experimental else None
+    )
+    try:
+        yield
+    finally:
+        _lexical_rule.reset(token)
+
+
+def _failure_state(effect, tree):
+    if _failures.get() is None or _lexical_rule.get() is None:
+        return None
+    operation = str(effect)
+    if operation == "abort" or type(effect).__name__ == "IfThenElse":
+        return None
+    node = tree.pointed_node
+    expected = {
+        "semantic-pp": "Requires an existing predicate of type A → Prop (Classical: A → t) AND its formula. A CN or an unfilled ?Ty predicate slot cannot host this operation.",
+        "semantic-nominal-pp": "Requires a complete CN directly below an unfinished determiner phrase, no existing LINK on that head, and a predicate declared [object, object].",
+        "go": "The requested destination must already exist. Moving the pointer does not construct a type or formula.",
+    }.get(operation.split("(")[0], "The action could not execute at this position; inspect its conditions, types and destination.")
+    return {**_lexical_rule.get(), "operation": operation, "pointer": str(tree.pointer),
+            "actual_type": str(node.get_type()) if node.get_type() else None,
+            "required_type": str(node.get_required_type()) if node.get_required_type() else None,
+            "formula": str(node.get_formula()) if node.get_formula() else None,
+            "message": expected}
 
 
 @contextmanager
@@ -75,8 +123,14 @@ def execute_effect(effect, tree: Tree, context: Any, *, tuple_context: bool = Fa
     """Execute normally; when observed, record leaves with frozen decorations."""
     call = effect.exec_tuple_context if tuple_context else effect.exec
     trace = _active.get()
+    failure = _failure_state(effect, tree)
     if trace is None:
-        return call(tree, context)
+        result = call(tree, context)
+        if result is None and failure is not None:
+            failures = _failures.get()
+            if len(failures) < 24 and failure not in failures:
+                failures.append(failure)
+        return result
     # Tree.clone intentionally shares labels. Historical operation snapshots
     # must also freeze formula/label metavariables before the next rule resets.
     before = deepcopy(tree)
@@ -85,6 +139,10 @@ def execute_effect(effect, tree: Tree, context: Any, *, tuple_context: bool = Fa
     result = call(tree, context)
     if result is None:
         del trace.steps[start:]
+        if failure is not None:
+            failures = _failures.get()
+            if len(failures) < 24 and failure not in failures:
+                failures.append(failure)
     elif len(trace.steps) == start:
         trace.steps.append(EffectStep(operation, before, deepcopy(result), trace.conditions))
     return result

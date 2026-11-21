@@ -218,6 +218,16 @@ class EffectFactory:
                 raise ValueError("A pronoun needs a reference role and nominal sort")
             return SemanticEffect("semantic-pronoun", match.groups())
 
+        if low.startswith("semantic-nominal-pp(") or low == "semantic-nominal-pp-close":
+            from dylan.action.atomic.nominal_pp import NominalPP
+
+            if low == "semantic-nominal-pp-close":
+                return NominalPP()
+            match = re.fullmatch(r"semantic-nominal-pp\(([A-Za-z_][A-Za-z_0-9']*)\)", s)
+            if match is None:
+                raise ValueError("A nominal PP requires one binary nominal predicate symbol")
+            return NominalPP(match.group(1))
+
         if low.startswith(("semantic-adverb(", "semantic-pp(", "semantic-comparison(", "semantic-modal(")):
             from dylan.action.atomic.semantic_effects import SemanticEffect
 

@@ -53,16 +53,19 @@ def test_missing_complements_and_wrong_markers_do_not_complete(sentence, backend
 
 @pytest.mark.parametrize("backend", ["mltt", "classical"])
 def test_pp_dp_structure_and_pointer_are_visible(backend):
-    result = run("john reads a book in a library.", backend)
-    nodes = {node["id"]: node for node in result["words"][-1]["nodes"]}
+    result = run("john reads a book in a library.", backend, n_best=4, reading_traces=True)
+    # Nominal attachment is now also licensed. Inspect the original VP reading
+    # explicitly instead of assuming that it is the only/first alternative.
+    reading = next(r for r in result["readings"] if "in_location" in r["normalized"])
+    nodes = {node["id"]: node for node in reading["tree"]["nodes"]}
     assert "+PP" in nodes["01L1"]["labels"]
     assert nodes["01L10"]["formula"] and "library" in nodes["01L100"]["formula"]
     assert any(frame.get("pointer_before") == "01L1" and frame["pointer"] == "01L10"
-               for frame in result["operations"])
+               for frame in reading.get("trace", result)["operations"])
     if backend == "classical":
         assert nodes["01L100"]["type"] == "cn"
         assert "01L1000" in nodes and "01L1001" in nodes
-        assert "ε" in result["words"][-1]["normalized"]
+        assert "ε" in reading["normalized"]
 
 
 @pytest.mark.parametrize("backend", ["mltt", "classical"])
@@ -87,7 +90,9 @@ def test_negation_survives_pp_and_adverb_recomposition(backend):
 
 
 def test_companion_sort_and_quantified_locations():
-    assert not run("john walks with a stone.")["complete"]
+    result = run("john walks with a stone.")
+    assert result["complete"]
+    assert "with_accompaniment" in result["words"][-1]["normalized"]
     assert run("every man walks in every park.")["words"][-1]["normalized"] == (
         "Π x:man. Π x2:park. in_location(x2, walk(x))")
 

@@ -3,15 +3,20 @@
   "reference": "references-v1.json",
   "grammars": {
     "2026-english-classical": {
-      "revision": "2026-11-07-local-feedback",
+      "revision": "2026-11-21-nominal-pp",
       "previous_sha256": "7b6ecea9be2e3949ef9ef8bf8df7962e47e0893d81f0050bf2cacec7db49ce89",
-      "current_sha256": "5f3e59a4ad81dc13c937796aaafebc9e0af6000b3dd54b9ba75917b1e965b74c",
-      "change": "Retains the 2026-11-06 tau correction; adds mhm/mm and the completion-based backchannel template. Frozen reference inputs contain no feedback words; state and trace hashes remain subject to the unchanged historical checks.",
+      "current_sha256": "50fdf3a8acdc18a976d576537a420614c96608ad814f6c905e272af31d6c4195",
+      "change": "Adds nominal PP restriction and general object/human accompaniment; knife/run/eyewear vocabulary and bare glasses. Historical references-v1.json and all recorded study results are unchanged. The three reference inputs use none of the added entries; their exact state and action-trace checks remain required. Earlier grammar revision hashes are retained in history.",
       "history": [
         {
           "revision": "2026-11-06-choice-scope",
           "current_sha256": "6c565c554697b533b1f2fbe11e939583f370f0326a7aeed75587fa4887199912",
           "change": "all-plural and all-contextual use the individual-valued tau template instead of a generalized quantifier. The three frozen English reference sentences contain no universal; their state and action-trace hashes remain unchanged."
+        },
+        {
+          "revision": "2026-11-07-local-feedback",
+          "current_sha256": "5f3e59a4ad81dc13c937796aaafebc9e0af6000b3dd54b9ba75917b1e965b74c",
+          "change": "Retains the 2026-11-06 tau correction; adds mhm/mm and the completion-based backchannel template. Frozen reference inputs contain no feedback words; state and trace hashes remain subject to the unchanged historical checks."
         }
       ]
     }

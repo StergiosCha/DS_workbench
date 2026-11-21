@@ -43,6 +43,12 @@
     ],
     "burn_injury": [
       "object"
+    ],
+    "knife": [
+      "object"
+    ],
+    "eyewear": [
+      "object"
     ]
   },
   "constants": {
@@ -243,6 +249,33 @@
     "contrast": [
       "Content",
       "Content"
+    ],
+    "with_nominal": [
+      "object",
+      "object"
+    ],
+    "in_nominal": [
+      "object",
+      "object"
+    ],
+    "at_nominal": [
+      "object",
+      "object"
+    ],
+    "on_nominal": [
+      "object",
+      "object"
+    ],
+    "near_nominal": [
+      "object",
+      "object"
+    ],
+    "with_accompaniment": [
+      "object",
+      "Prop"
+    ],
+    "run": [
+      "animal"
     ]
   },
   "modifiers": {

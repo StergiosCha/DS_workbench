@@ -1382,6 +1382,16 @@ function renderExperimental(result) {
     details.append(element("summary", "", `Model attempt ${attempt.number} · ${attempt.status.replaceAll("_", " ")}${attempt.model ? " · " + attempt.model : ""}`));
     if (attempt.message) details.append(element("p", "", attempt.message));
     if (attempt.failure) details.append(element("p", "", attempt.failure.message));
+    for (const failure of attempt.action_failures || []) {
+      const diagnostic = element("details", "experimental-action-failure");
+      diagnostic.append(
+        element("summary", "", "Failed action · " + failure.surface + " · " + failure.rule_id),
+        element("pre", "", failure.operation),
+        element("p", "", failure.message),
+        element("p", "", "Position " + failure.pointer + ": type " + (failure.actual_type || "not constructed") + "; required type " + (failure.required_type || "none") + "; formula " + (failure.formula || "not constructed") + ".")
+      );
+      details.append(diagnostic);
+    }
     for (const rule of attempt.rules || []) {
       const selected = attempt.selected_rule_ids?.includes(rule.rule_id) ? " · selected by DS" : " · candidate";
       details.append(element("h4", "", `${rule.surface} · ${rule.rule_id}${selected}`), element("p", "", rule.evidence), element("pre", "", rule.program.join("\n")));

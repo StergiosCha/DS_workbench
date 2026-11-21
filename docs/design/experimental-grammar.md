@@ -15,9 +15,12 @@ remain enabled for dictionary sense preferences. The result panel shows each
 proposal, its explanation, the compiled lexical programs and the outcome of
 the DS replay. **Export JSON** retains this information for review.
 
-For `A person entered the room with glasses`, there are two distinct gaps:
-the ordinary noun entries need a determiner, and the maintained `with` entry
-has a human-companion interpretation. A useful proposal must supply a bare
+The maintained English grammars now cover nominal PPs such as `the man with
+a knife runs`, object accompaniment, and bare existential `glasses`; see
+[nominal PP coverage](nominal-pp-coverage.md). These no longer need experimental
+rules. For an unmaintained bare nominal, there can still be two distinct gaps:
+the ordinary noun entry may need a determiner, and the preposition may lack
+the intended relation. A useful proposal must supply a bare
 nominal construction and an appropriate object-taking PP interpretation.
 Changing the noun to `human`, silently adding an article or ignoring the PP
 would not be a faithful analysis. Even a successful object-accompaniment
@@ -41,6 +44,7 @@ The compiler wraps each program in `IF … THEN … ELSE abort`. It validates
 declaration namespaces and signatures, selected-backend `Ty`/`Fo` syntax,
 implemented labels and allowed effect classes. The allowed effects are `make`,
 `go`, `gofirst`, `put`, `freshput`, `merge`, `semantic-adverb`, `semantic-pp`,
+`semantic-nominal-pp` (English, with its maintained closure rule),
 `semantic-comparison` and `semantic-modal`. Existing semantic operations can
 be combined with new lexical structure; this is broader than filling slots
 in a fixed list of vocabulary templates. Python, arbitrary macros, loops,
@@ -51,7 +55,8 @@ A fresh parser tries the proposed actions before the original alternatives.
 Normal DS introduction, anticipation, completion, thinning, elimination and
 other applicable computational rules still perform the derivation. All input
 tokens must be consumed and all requirements satisfied. An incomplete parse or
-validation error is sent back once, with the preceding proposal, for a second
+validation error is sent back once, with the preceding proposal and failed-action
+diagnostics (operation, pointer, actual/required types and formula), for a second
 attempt. A proposal does not alter grammar files, subsequent requests or the
 shared vocabulary cache. The browser retains the result until replaced/refreshed.
 To keep and revise a proposal, choose **Edit & keep rules** in its result panel.

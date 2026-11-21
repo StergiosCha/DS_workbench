@@ -10,7 +10,7 @@ from dylan.lexical_expansion import proposal
 from dylan.workbench_api import parse_request
 
 
-def bare_program(backend, word="glasses"):
+def bare_program(backend, word="goggles"):
     if backend == "mltt":
         when = ["?Ty(mltt:object)", r"¬<\/0>Ex.x", r"¬<\/1>Ex.x"]
         effects = ["put(Number(pl))", r"make(\/1)", r"go(\/1)", "put(Ty(mltt:arrow(CN,object)))",
@@ -49,7 +49,7 @@ def dictionary(monkeypatch, tmp_path):
 
 
 def request(backend, **extra):
-    return {"sentence":"A person entered the room with glasses", "grammar":f"2026-english-{backend}", "lexical_mode":"assisted", "allow_model_fallback":True, "experimental_rules":True, **extra}
+    return {"sentence":"A person entered a room with goggles", "grammar":f"2026-english-{backend}", "lexical_mode":"assisted", "allow_model_fallback":True, "experimental_rules":True, **extra}
 
 
 @pytest.mark.parametrize("backend", ["mltt", "classical"])
@@ -81,7 +81,7 @@ def test_new_bare_nominal_rule_runs_in_ds_but_is_not_installed_globally(dictiona
 @pytest.mark.parametrize("backend", ["mltt", "classical"])
 def test_compiled_rule_does_not_invent_an_article_position(dictionary, monkeypatch, backend):
     monkeypatch.setattr(lexical_provider, "propose", lambda *args, **kwargs: (bare_program(backend), {}))
-    result = parse_request(request(backend, sentence="John walks with a glasses."))
+    result = parse_request(request(backend, sentence="John walks with a goggles."))
     assert not result["complete"]
     assert len(result["experimental_grammar"]["attempts"]) == 2
 
@@ -94,8 +94,8 @@ def test_invalid_programs_cannot_mutate_the_grammar(effect):
         raw = bare_program("mltt")
         raw["rules"][0]["then"].append(effect)
         with pytest.raises((ValueError, TypeError)):
-            compile_proposal(raw, parser, ["glasses"])
-        assert parser.semantic_profile == before and "glasses" not in parser.lexicon
+            compile_proposal(raw, parser, ["goggles"])
+        assert parser.semantic_profile == before and "goggles" not in parser.lexicon
     finally:
         parser.close()
 
@@ -106,9 +106,9 @@ def test_unknown_condition_and_wrong_surface_are_rejected():
         raw = bare_program("mltt")
         raw["rules"][0]["when"].append("PretendEverythingFits")
         with pytest.raises(ValueError):
-            compile_proposal(raw, parser, ["glasses"])
+            compile_proposal(raw, parser, ["goggles"])
         with pytest.raises(ValueError):
-            compile_proposal(bare_program("mltt", "anotherword"), parser, ["glasses"])
+            compile_proposal(bare_program("mltt", "anotherword"), parser, ["goggles"])
     finally:
         parser.close()
 
@@ -158,6 +158,86 @@ def test_existing_success_and_pcc_do_not_request_experimental_rules(dictionary, 
     bad = parse_request(request(backend, sentence="του με έδωσε", grammar=f"2026-smg-{backend}"))
     assert not bad["complete"] and bad["experimental_grammar"]["blocked_by_reviewed_constraint"]
     assert not bad["experimental_grammar"]["attempts"]
+
+
+def test_direct_vp_operation_on_cn_is_rejected_with_action_contract():
+    parser = icp("2026-english-mltt")
+    try:
+        raw = {"declarations": [], "rules": [{
+            "surface": "with", "name": "wrong_host", "explanation": "Wrong host regression.",
+            "when": ["Ty(mltt:CN)"], "then": ["semantic-pp(with_accompaniment)"],
+        }]}
+        with pytest.raises(ValueError, match="cannot modify a CN"):
+            compile_proposal(raw, parser, ["with"])
+    finally:
+        parser.close()
+
+
+def test_nominal_pp_proposal_requires_its_grammar_closure_rule():
+    parser = icp("2026-smg-mltt")
+    try:
+        raw = {"declarations": [{"name": "with_nominal", "kind": "predicate",
+                                 "domains": ["object", "object"]}], "rules": [{
+            "surface": "με", "name": "nominal_test", "explanation": "Missing closure regression.",
+            "when": ["Ty(mltt:CN)"], "then": ["semantic-nominal-pp(with_nominal)"],
+        }]}
+        with pytest.raises(ValueError, match="no nominal PP closure"):
+            compile_proposal(raw, parser, ["με"])
+    finally:
+        parser.close()
+
+
+def test_retry_receives_failed_effect_and_open_predicate_state(dictionary, monkeypatch):
+    calls = []
+
+    def model(context, schema, **kwargs):
+        calls.append(context)
+        assert "intransitive" in context["lexical_inventory"]["runs"]["templates"]
+        if len(calls) == 1:
+            effects = [r"go(/\0)", r"go(/\0)", r"go(\/1)", "semantic-pp(with_accompaniment)"]
+        else:
+            failures = context["failure"]["action_failures"]
+            failure = next(f for f in failures if f["operation"] == "semantic-pp(with_accompaniment)")
+            assert failure["pointer"] == "01"
+            assert failure["actual_type"] is None and failure["formula"] is None
+            assert failure["required_type"] == "object → Prop"
+            assert "existing predicate" in failure["message"]
+            effects = ["semantic-nominal-pp(beside_nominal)"]
+        return {"declarations": [{"name": "beside_nominal", "kind": "predicate",
+                                   "domains": ["object", "object"]}],
+                "rules": [{"surface": "beside", "name": "beside_rule",
+                           "explanation": "A nominal spatial relation, for this test.",
+                           "when": ["Ty(mltt:CN)", "¬Ex.?x"], "then": effects}]}, {}
+
+    monkeypatch.setattr(lexical_provider, "propose", model)
+    result = parse_request(request("mltt", sentence="a man beside a knife runs"))
+    assert result["complete"]
+    attempts = result["experimental_grammar"]["attempts"]
+    assert [a["status"] for a in attempts] == ["incomplete", "complete"]
+    assert attempts[0]["action_failures"]
+    assert "beside_nominal" in result["words"][-1]["normalized"]
+    # Collection is request-local and does not leak into an ordinary parse.
+    ordinary = parse_request({"sentence": "a man runs", "grammar": "2026-english-mltt"})
+    assert ordinary["complete"] and "experimental_grammar" not in ordinary
+
+
+def test_lexical_examples_include_all_template_families_before_extra_senses():
+    from dylan.experimental_grammar import context_for
+
+    parser = icp("2026-english-mltt")
+    try:
+        noun = parser.lexicon["man"][0]
+        verb = parser.lexicon["runs"][0]
+        parser.lexicon["runs"] = [noun] * 8 + [verb]
+        baseline = {"sentence": "a man runs", "tokens": ["a", "man", "runs"],
+                    "grammar": "2026-english-mltt", "backend": "mltt",
+                    "failure": None, "words": [{}]}
+        context = context_for(parser, baseline, {})
+        assert verb._source_lines in context["existing_lexical_programs"]["runs"]
+        assert context["lexical_inventory"]["runs"]["total_entries"] == 9
+        assert not context["lexical_inventory"]["runs"]["samples_are_exhaustive"]
+    finally:
+        parser.close()
 
 
 @pytest.mark.parametrize("overrides", [{"allow_model_fallback":False}, {"experimental_rules":"true"}, {"lexical_mode":"dictionary"}, {"grammar":"2015-english-ttr"}, {"compare_jev":True, "lexical_mode":"jev"}, {"dialogue":[{"speaker":"A","text":"John walks.","boundary":"continue"}]}])
