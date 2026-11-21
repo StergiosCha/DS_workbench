@@ -4,11 +4,31 @@ Public demo: **https://ds-workbench.vercel.app/**
 
 ## Current working folders
 
-The active source checkout is the visible `DS_workbench` folder. Its deployment
-bundle is the visible sibling **`DS_workbench_deploy`**. In the current workspace
-these are `Dropbox/DS_workbench` and `Dropbox/DS_workbench_deploy`.
-Edit the source checkout; publish from the deployment folder after staging
-and checking the intended changes. Git pushes do not deploy this app.
+The current deployed source is `Dropbox/DS_workbench_nominal_pp`, branch
+`codex/nominal-pp-coverage`; its bundle is
+**`Dropbox/DS_workbench_nominal_pp_deploy`**. The original `DS_workbench`
+checkout retains independent pending parser/manuscript work. Its older
+`DS_workbench_deploy` bundle is preserved as the preceding production snapshot.
+Publish from the current deployment folder after staging and checking the
+intended changes. Git pushes do not deploy this app.
+
+**21 November 2026 nominal PP coverage:** Deployment
+`dpl_ERiq87hefS9GFoAsJm5aMuQ9EJTX` publishes runtime source `349b4c7`.
+The two English native grammars now support nominal PP restriction with
+with/in/at/on/near, general postverbal accompaniment, and bare existential
+glasses. The action reader no longer treats the letters `if` in `knife` as a
+nested conditional. Experimental proposals receive explicit failed-action
+diagnostics and representative lexical entries across available templates.
+The local-only research lab links stay hidden in hosted navigation because
+their APIs are not served by this deployment.
+
+All 413 bundle hashes were checked. The full suite passed 2,438 tests with six
+skips; 33 hosting checks passed after the navigation adjustment. All 33 public
+API cases and 11 desktop/mobile browser checks passed with zero live model
+calls. The failed-action display/export uses a real DS result with an offline
+provider fixture. Public HTML/JavaScript match source.
+See the [analysis and limits](nominal-pp-coverage.md) and
+[verification record](../../data/coverage/nominal-pp-public-2026-11-21.json).
 
 **16 October 2026 overt Greek subject correction:** Deployment
 `dpl_KpeuFhQmu7ZutbdmupfGz2zHRm5V` publishes source `4614d49`. Only the shared

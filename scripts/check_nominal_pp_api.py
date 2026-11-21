@@ -3,7 +3,10 @@
 import argparse
 import json
 from pathlib import Path
+import ssl
 from urllib.request import Request, urlopen
+
+import certifi
 
 
 def main():
@@ -34,13 +37,14 @@ def main():
                   (f"2026-smg-{backend}", "ο γιώργος περπατάει", True, None)]
     cases.append(("2015-english-ttr", "a man knows you.", True, None))
     outcomes = []
+    tls = ssl.create_default_context(cafile=certifi.where())
     for grammar, sentence, expected, relation in cases:
         request = Request(args.url.rstrip("/") + "/api/parse",
                           data=json.dumps({"sentence": sentence, "grammar": grammar,
                                            "lexical_mode": "dictionary" if "english" in grammar and "ttr" not in grammar else "off",
                                            "allow_model_fallback": False}).encode(),
                           headers={"Content-Type": "application/json"})
-        with urlopen(request, timeout=60) as response:
+        with urlopen(request, timeout=60, context=tls) as response:
             result = json.load(response)
         final = result["words"][-1]
         relation_present = relation is None or any(

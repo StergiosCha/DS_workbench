@@ -1,0 +1,612 @@
+{
+  "checked_at": "2026-11-21T11:55:37.424509+00:00",
+  "deployment": {
+    "id": "dpl_ERiq87hefS9GFoAsJm5aMuQ9EJTX",
+    "alias": "https://ds-workbench.vercel.app",
+    "url": "https://ds-workbench-9a9phiyr4-stergios-projects3.vercel.app",
+    "source_commit": "349b4c7",
+    "branch": "codex/nominal-pp-coverage",
+    "runtime_files": 413,
+    "manifest_sha256": "82bf9eca73f5cf991a9c8c8e894acf7c9a087336a34f6bf84a726abdd380aa1b"
+  },
+  "verification": {
+    "full_suite": {
+      "passed": 2438,
+      "skipped": 6,
+      "warnings": 2
+    },
+    "hosting_checks_after_navigation_change": 33,
+    "ruff": "passed",
+    "javascript_syntax": "passed",
+    "constructive_export_checker": "Coq 8.20.1",
+    "live_model_calls": 0,
+    "api": {
+      "url": "https://ds-workbench.vercel.app",
+      "kind": "authored deployment regression cases; not independent linguistic gold",
+      "cases": [
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "the man with a knife runs",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "run(π₁(definite_00))",
+          "context_assumptions": [
+            "definite_00: a contextually identified referent of type Σ n000:man. Σ p000L10:(Σ x:knife. ⊤). with_nominal(n000, π₁(p000L10)); its identification is assumed."
+          ],
+          "failure": null,
+          "elapsed_ms": 442,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a man with a knife runs",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Σ x:(Σ n000:man. Σ x:knife. with_nominal(n000, x)). run(π₁(x))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 445,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "every man with a knife runs",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Π x:(Σ n000:man. Σ x:knife. with_nominal(n000, x)). run(π₁(x))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 486,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a man with glasses runs",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Σ x:(Σ n000:man. Σ x:eyewear. with_nominal(n000, x)). run(π₁(x))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 429,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a woman in the park walks",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "in_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Σ x:(Σ n000:woman. in_nominal(n000, definite_000L10)). walk(π₁(x))",
+          "context_assumptions": [
+            "definite_000L10: a contextually identified referent of type park; its identification is assumed."
+          ],
+          "failure": null,
+          "elapsed_ms": 436,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a doctor at a library walks",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "at_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Σ x:(Σ n000:doctor. Σ x:library. at_nominal(n000, x)). walk(π₁(x))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 446,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "john likes a book on a stone",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "on_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Σ x:(Σ n0100:book. Σ x:stone. on_nominal(n0100, x)). like(john, π₁(x))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 515,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a man near a woman walks",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "near_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Σ x:(Σ n000:man. Σ x:woman. near_nominal(n000, x)). walk(π₁(x))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 446,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "john walks with a knife",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_accompaniment",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Σ x:knife. with_accompaniment(x, walk(john))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 365,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "A person entered the room with glasses",
+          "expected_complete": true,
+          "complete": true,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "Σ x:person_n00007846. enter_vho02016523(x, π₁(definite_010))",
+          "context_assumptions": [
+            "definite_010: a contextually identified referent of type Σ n0100:room_n04105893. Σ p0100L10:(Σ x:eyewear. ⊤). with_nominal(n0100, π₁(p0100L10)); its identification is assumed."
+          ],
+          "failure": null,
+          "elapsed_ms": 707,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a man with a knife",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 405,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a man with a",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 237,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a man with with a knife runs",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": {
+            "token": "with",
+            "index": 3,
+            "message": "The grammar could not continue at “with”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "elapsed_ms": 188,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-mltt",
+          "sentence": "a man with a glasses runs",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": {
+            "token": "glasses",
+            "index": 4,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "elapsed_ms": 232,
+          "passed": true
+        },
+        {
+          "grammar": "2026-smg-mltt",
+          "sentence": "του με έδωσε",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": {
+            "token": "με",
+            "index": 1,
+            "message": "Person–Case Constraint (PCC), under the clitic reading: “του” is a genitive clitic and “με” is a first/second-person accusative clitic. In this grammar both target the same locally unfixed node, where their referent/case requirements clash. The cluster is blocked; the tree shown is only the prefix before the second clitic.",
+            "kind": "pcc_violation"
+          },
+          "elapsed_ms": 198,
+          "passed": true
+        },
+        {
+          "grammar": "2026-smg-mltt",
+          "sentence": "ο γιώργος περπατάει",
+          "expected_complete": true,
+          "complete": true,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "walk(giorgos)",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 331,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "the man with a knife runs",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "run(ι x0:e. (man(x0) ∧ with_nominal(x0, ε x1:e. knife(x1))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 674,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a man with a knife runs",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "run(ε x0:e. (man(x0) ∧ with_nominal(x0, ε x1:e. knife(x1))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 672,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "every man with a knife runs",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "((man(τ c:e. ((man(c) ∧ with_nominal(c, ε x1:e. knife(x1))) ⇒ run(c))) ∧ with_nominal(τ c:e. ((man(c) ∧ with_nominal(c, ε x1:e. knife(x1))) ⇒ run(c)), ε x1:e. knife(x1))) ⇒ run(τ c:e. ((man(c) ∧ with_nominal(c, ε x1:e. knife(x1))) ⇒ run(c))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 683,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a man with glasses runs",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "run(ε x0:e. (man(x0) ∧ with_nominal(x0, ε x1:e. eyewear(x1))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 659,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a woman in the park walks",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "in_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "walk(ε x0:e. (woman(x0) ∧ in_nominal(x0, ι x1:e. park(x1))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 671,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a doctor at a library walks",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "at_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "walk(ε x0:e. (doctor(x0) ∧ at_nominal(x0, ε x1:e. library(x1))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 657,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "john likes a book on a stone",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "on_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "like(john, ε x0:e. (book(x0) ∧ on_nominal(x0, ε x1:e. stone(x1))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 767,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a man near a woman walks",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "near_nominal",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "walk(ε x0:e. (man(x0) ∧ near_nominal(x0, ε x1:e. woman(x1))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 657,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "john walks with a knife",
+          "expected_complete": true,
+          "complete": true,
+          "relation": "with_accompaniment",
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "with_accompaniment(ε x0:e. knife(x0), walk(john))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 459,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "A person entered the room with glasses",
+          "expected_complete": true,
+          "complete": true,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "enter_vho02016523(ε x0:e. person_n00007846(x0), ι x1:e. (room_n04105893(x1) ∧ with_nominal(x1, ε x2:e. eyewear(x2))))",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 1122,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a man with a knife",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 592,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a man with a",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 341,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a man with with a knife runs",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": {
+            "token": "with",
+            "index": 3,
+            "message": "The grammar could not continue at “with”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "elapsed_ms": 266,
+          "passed": true
+        },
+        {
+          "grammar": "2026-english-classical",
+          "sentence": "a man with a glasses runs",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": {
+            "token": "glasses",
+            "index": 4,
+            "message": "The grammar could not continue at “glasses”. No grammaticality judgment follows: the construction may be outside this grammar’s coverage.",
+            "kind": "unresolved_parse_failure"
+          },
+          "elapsed_ms": 337,
+          "passed": true
+        },
+        {
+          "grammar": "2026-smg-classical",
+          "sentence": "του με έδωσε",
+          "expected_complete": false,
+          "complete": false,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": {
+            "token": "με",
+            "index": 1,
+            "message": "Person–Case Constraint (PCC), under the clitic reading: “του” is a genitive clitic and “με” is a first/second-person accusative clitic. In this grammar both target the same locally unfixed node, where their referent/case requirements clash. The cluster is blocked; the tree shown is only the prefix before the second clitic.",
+            "kind": "pcc_violation"
+          },
+          "elapsed_ms": 208,
+          "passed": true
+        },
+        {
+          "grammar": "2026-smg-classical",
+          "sentence": "ο γιώργος περπατάει",
+          "expected_complete": true,
+          "complete": true,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": "walk(giorgos)",
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 352,
+          "passed": true
+        },
+        {
+          "grammar": "2015-english-ttr",
+          "sentence": "a man knows you.",
+          "expected_complete": true,
+          "complete": true,
+          "relation": null,
+          "relation_present": true,
+          "model_requests": 0,
+          "meaning": null,
+          "context_assumptions": [],
+          "failure": null,
+          "elapsed_ms": 751,
+          "passed": true
+        }
+      ],
+      "passed": 33,
+      "total": 33
+    },
+    "browser": {
+      "url": "https://ds-workbench.vercel.app",
+      "checks": [
+        {
+          "backend": "mltt",
+          "sentence": "the man with a knife runs",
+          "complete": true,
+          "model_requests": 0
+        },
+        {
+          "backend": "mltt",
+          "sentence": "every man with a knife runs",
+          "complete": true,
+          "model_requests": 0
+        },
+        {
+          "backend": "mltt",
+          "sentence": "a man with glasses runs",
+          "complete": true,
+          "model_requests": 0
+        },
+        {
+          "backend": "mltt",
+          "sentence": "john walks with a knife",
+          "complete": true,
+          "model_requests": 0
+        },
+        {
+          "backend": "mltt",
+          "sentence": "a man with a knife",
+          "complete": false,
+          "model_requests": 0
+        },
+        {
+          "backend": "classical",
+          "sentence": "the man with a knife runs",
+          "complete": true,
+          "model_requests": 0
+        },
+        {
+          "backend": "classical",
+          "sentence": "every man with a knife runs",
+          "complete": true,
+          "model_requests": 0
+        },
+        {
+          "backend": "classical",
+          "sentence": "a man with glasses runs",
+          "complete": true,
+          "model_requests": 0
+        },
+        {
+          "backend": "classical",
+          "sentence": "john walks with a knife",
+          "complete": true,
+          "model_requests": 0
+        },
+        {
+          "backend": "classical",
+          "sentence": "a man with a knife",
+          "complete": false,
+          "model_requests": 0
+        },
+        {
+          "fixture": "offline provider; real DS replay",
+          "failed_action_visible": true,
+          "failed_action_exported": true
+        }
+      ],
+      "errors": []
+    }
+  },
+  "public_assets": {
+    "workbench/app.js": "b3453666ca6489ac3f90af8c749d3934e2cbef15f50cdd1ff9dc8f8047cea85e",
+    "workbench/index.html": "8f9bef339c74b991a7c9ceff29ea316c3ddb6088949c4ae693cf21a0dbd347fc"
+  },
+  "limits": [
+    "Authored implementation/deployment regressions; not independently annotated gold or held-out accuracy.",
+    "Nominal PP relations remain explicit and context-dependent; instrumentality/ownership/wearing is not inferred.",
+    "Multiple NP/VP attachments may be licensed; default search does not establish the intended attachment.",
+    "Stacked restrictions on the same nominal head and general bare-plural semantics remain outside this fragment.",
+    "Model feedback is verified with an offline provider fixture; no new live-LLM success-rate claim."
+  ]
+}

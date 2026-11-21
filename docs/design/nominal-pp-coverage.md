@@ -95,3 +95,27 @@ glasses, so they continue to test actual model-supplied lexical additions.
 These are authored implementation regressions, not an independently annotated
 coverage benchmark or a demonstration of model generalization. Deployment
 verification and wider-suite outcomes are recorded separately.
+
+## Published milestone, 21 November 2026
+
+Production: https://ds-workbench.vercel.app/ — deployment
+dpl_ERiq87hefS9GFoAsJm5aMuQ9EJTX, runtime source 349b4c7.
+The implementation and evidence are on branch codex/nominal-pp-coverage in
+/Users/graogro/Dropbox/DS_workbench_nominal_pp; the deployable bundle is the
+adjacent DS_workbench_nominal_pp_deploy directory. The original DS_workbench
+checkout and its pending edits were preserved.
+
+The full suite passed 2,438 tests with six skips. A subsequent 33-test hosting
+check covers the final navigation change. Ruff and JavaScript syntax checks
+passed. Constructive exports in the new tests compiled with Coq 8.20.1.
+The production service passed 33 English/Greek/TTR cases with zero model calls;
+11 desktop/mobile browser checks passed, including exported failure feedback
+from a real DS replay using an offline provider fixture. Public HTML and
+JavaScript match the source hashes.
+
+The [committed verification record](../../data/coverage/nominal-pp-public-2026-11-21.json)
+includes inputs, outcomes, meanings, context assumptions and deployment hashes.
+Screenshots and the detailed retry fixture are under build/nominal-pp locally.
+The historical research fixtures and recorded study scores were not rewritten;
+grammar-revisions.json records the new resource fingerprint and retains the
+earlier revision history. The unchanged reference state/trace checks pass.
