@@ -1702,6 +1702,8 @@ async function boot() {
     if (!response.ok) throw new Error("The Python API did not respond.");
     const config = await response.json();
     state.config = config;
+    $("hybrid-lab-link").hidden = config.local_labs === false;
+    $("configuration-lab-link").hidden = config.local_labs === false;
     window.openrouterControls?.init(config);
     if (config.lexical?.dictionary?.installed) $("lexical-mode").value = "dictionary";
     $("system").replaceChildren(...config.systems.map((system) => {

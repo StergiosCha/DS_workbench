@@ -47,6 +47,8 @@ def public_configuration():
     result["lexical"]["selection"]["configured"] = False
     result["decision"]["configured"] = False
     result["openrouter"] = {"enabled": True}
+    # The experimental lab APIs are implemented by the local server only.
+    result["local_labs"] = False
     return result
 
 

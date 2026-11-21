@@ -26,6 +26,7 @@ def test_configuration_and_static_files(client):
     assert not config.json()["lexical"]["provider"]["configured"]
     assert not config.json()["lexical"]["selection"]["configured"]
     assert not config.json()["decision"]["configured"]
+    assert config.json()["local_labs"] is False
     assert client.get("/").status_code == 200
     assert client.get("/research.js").status_code == 200
     assert client.get("/data/wordnet.sqlite3").status_code == 404
