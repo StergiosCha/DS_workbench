@@ -1082,6 +1082,7 @@ function renderAssistanceControls() {
   for (const id of ["llm", "jev"]) $(id + "-enabled").closest(".assistance-card").classList.toggle("enabled", $(id + "-enabled").checked);
   $("assistance-hint").textContent = !lexicalSupported() ? "AI unavailable for this grammar" : !config.provider.configured ? "Optional · connect to enable" : "DS checks every derivation";
   window.grammarWorkshop?.refresh();
+  renderAnalysisControls();
 }
 
 function liveGreekSourcesActive() {
@@ -1135,7 +1136,19 @@ function renderJevControls() {
     return button;
   }));
   if (jevComparisonActive()) { $("n-best").value = "1"; $("decision-mode").value = "off"; }
-  $("n-best").disabled = state.busy || state.inputMode !== "sentence" || jevComparisonActive() || $("experimental-enabled").checked || window.grammarWorkshop?.active();
+  renderAnalysisControls();
+}
+
+function renderAnalysisControls() {
+  let reason = "";
+  if (state.busy) reason = "Wait for the current derivation to finish.";
+  else if (state.inputMode !== "sentence") reason = "Alternative analyses are available in Sentence mode.";
+  else if ($("experimental-enabled").checked) reason = "Experimental grammar proposals currently return one analysis. Turn them off to explore alternatives.";
+  else if (window.grammarWorkshop?.active()) reason = "Personal grammar replay currently returns one analysis. Turn off Use my rules to explore alternatives.";
+  $("n-best").disabled = Boolean(reason);
+  $("analyses-help").textContent = reason || (jevComparisonActive()
+    ? "Jev comparison uses the first analysis. Choosing more analyses turns off the comparison and keeps Jev on."
+    : "Explore alternative trees and meanings using the grammar.");
 }
 
 function renderMethodMode() {
@@ -1659,7 +1672,11 @@ $("try-laughter-beta").addEventListener("click", () => {
   parseSentence();
 });
 $("scope").addEventListener("change", parseSentence);
-$("n-best").addEventListener("change", parseSentence);
+$("n-best").addEventListener("change", () => {
+  if (Number($("n-best").value) > 1) $("compare-jev").checked = false;
+  renderLexicalSettings();
+  parseSentence();
+});
 $("reading").addEventListener("change", () => {
   stop(); state.readingIndex = Number($("reading").value); state.expandedFormulas = [];
   state.view = null; settleOnResult();

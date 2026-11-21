@@ -102,7 +102,7 @@
       </section>
       <details id="parse-options" class="parse-options"><summary>Parse options & coverage</summary>
       <div class="scope-control"><label for="scope">Existential scope</label><select id="scope"><option value="narrow">Inside universal · may vary</option><option value="wide">Outside universal · shared choice</option></select><span id="coverage">English fragment: names, determiners, verbs, adjectives and VP modifiers.</span></div>
-      <div class="analysis-settings"><label for="n-best">Complete analyses</label><select id="n-best"><option value="1">First analysis</option><option value="3">Up to 3 analyses</option><option value="8">Up to 8 analyses</option></select><span>Explore alternative trees and meanings using the grammar.</span></div>
+      <div class="analysis-settings"><label for="n-best">Complete analyses</label><select id="n-best" aria-describedby="analyses-help"><option value="1">First analysis</option><option value="3">Up to 3 analyses</option><option value="8">Up to 8 analyses</option></select><span id="analyses-help" role="status">Explore alternative trees and meanings using the grammar.</span></div>
       </details>
       <div id="personal-controls" class="personal-controls"><button id="grammar-workshop-open" type="button" class="text-button">My grammars · edit & review rules ↗</button><select id="personal-pack" aria-label="Saved personal grammar"><option value="">Choose a saved grammar…</option></select><label><input id="personal-enabled" type="checkbox" disabled> Use my rules</label><span id="personal-state">Saved rules run without AI.</span></div>
       <div class="examples"><span>Try an example</span><div id="examples"></div><button id="all-examples" type="button" class="text-button" aria-expanded="false">All examples</button></div>
@@ -209,7 +209,7 @@
         <summary>Jev in action · compare word meanings</summary>
         <p>Watch Jev choose between dictionary senses as words arrive. Compare two actual DS runs with identical lexical candidates: normal order, then Jev preferences. DS checks both derivations.</p>
         <div id="jev-examples" class="jev-examples"></div>
-        <label class="source-toggle"><input type="checkbox" id="compare-jev" checked> Include the comparison when using Jev on an English sentence</label>
+        <label class="source-toggle"><input type="checkbox" id="compare-jev"> Include the comparison when using Jev on an English sentence · first analysis only</label>
         <div class="method-actions"><button id="jev-run" type="button" class="primary" disabled>Compare this sentence</button><span id="jev-demo-status" role="status">Connect OpenRouter to run Jev. These examples use native English Classical or Constructive DS.</span></div>
         <p>A different sense is not automatically a better interpretation. Ambiguous context, unchanged results and unavailable model answers remain visible. Model calls use your OpenRouter account; the selected vocabulary model does not replace the pinned Jev model.</p>
       </details>

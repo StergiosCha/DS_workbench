@@ -57,6 +57,8 @@ def main():
         expect(page.locator("#llm-enabled")).to_be_enabled()
         expect(page.locator("#jev-enabled")).to_be_enabled()
         expect(page.locator("#advanced-settings")).not_to_have_attribute("open", "")
+        expect(page.locator("#compare-jev")).not_to_be_checked()
+        page.locator("#models-close").click()
         checks.append("Connecting enables the controls without switching on either model")
 
         def run(llm, jev):
@@ -103,6 +105,55 @@ def main():
             page.locator("#jev-enabled").uncheck()
             expect(page.locator("#llm-enabled")).not_to_be_checked()
 
+        # Jev assistance must leave ambiguity search available. Its optional
+        # two-run comparison can also be exited directly through this selector.
+        page.locator("#parse-options").evaluate("node => node.open = true")
+        for backend in ("mltt", "classical"):
+            page.locator("#use-dictionaries").click()
+            page.locator("#system").select_option(backend)
+            expect(page.locator("#parse-button")).to_be_enabled()
+            page.locator("#llm-enabled").check()
+            page.locator("#jev-enabled").check()
+            page.locator("#sentence").fill("john likes a man with a knife.")
+            expect(page.locator("#n-best")).to_be_enabled()
+            expect(page.locator("#n-best option")).to_have_count(3)
+            for limit in (3, 8):
+                if limit == 8:
+                    page.locator("#jev-demo").evaluate("node => node.open = true")
+                    page.locator("#compare-jev").check()
+                    expect(page.locator("#n-best")).to_have_value("1")
+                    expect(page.locator("#n-best")).to_be_enabled()
+                    expect(page.locator("#analyses-help")).to_contain_text("keeps Jev on")
+                with page.expect_request("**/api/parse/stream") as pending:
+                    page.locator("#n-best").select_option(str(limit))
+                expect(page.locator("#parse-button")).to_be_enabled()
+                body = pending.value.post_data_json
+                assert body["n_best"] == limit and body["reading_traces"]
+                assert body["lexical_mode"] == "jev" and body["allow_model_fallback"]
+                assert not body.get("compare_jev")
+                expect(page.locator("#compare-jev")).not_to_be_checked()
+                expect(page.locator("#jev-enabled")).to_be_checked()
+                expect(page.locator("#n-best")).to_be_enabled()
+                expect(page.locator("#reading option")).to_have_count(2)
+                result = page.evaluate("state.result")
+                assert result["complete"]
+                assert not result["lexical"]["model_requests"]
+                assert not result["lexical"]["selection"]["live_calls"]
+                meanings = [r["normalized"] for r in result["readings"]]
+                assert any("with_nominal" in meaning for meaning in meanings)
+                assert any("with_accompaniment" in meaning for meaning in meanings)
+                page.locator("#reading").select_option("1")
+                expect(page.locator("#semantics")).to_contain_text("with_accompaniment")
+                checks.append(f"{backend}: up to {limit} analyses with both AI switches on; two real PP attachments, zero model calls")
+            page.locator("#experimental-enabled").check()
+            expect(page.locator("#n-best")).to_be_disabled()
+            expect(page.locator("#analyses-help")).to_contain_text("Experimental grammar proposals")
+            page.locator("#experimental-enabled").uncheck()
+            expect(page.locator("#n-best")).to_be_enabled()
+            page.locator("#n-best").select_option("1")
+            expect(page.locator("#parse-button")).to_be_enabled()
+        page.locator("#jev-demo").evaluate("node => node.open = false")
+
         # Recorded usage belongs to the result, not to subsequently edited controls.
         def displayed_usage(llm_calls, jev_calls, *, complete=True):
             result = deepcopy(baseline)
@@ -122,6 +173,7 @@ def main():
         checks.append("Fixture counts remain separate and stay attached to their result")
 
         # The advanced controls and main switches must agree in both directions.
+        page.locator("#model-settings-button").click()
         page.locator("#advanced-settings > summary").click()
         page.locator("#lexical-mode").select_option("model")
         expect(page.locator("#llm-enabled")).to_be_checked()
@@ -129,6 +181,7 @@ def main():
         page.locator("#lexical-mode").select_option("jev")
         expect(page.locator("#llm-enabled")).to_be_checked()
         expect(page.locator("#jev-enabled")).to_be_checked()
+        page.locator("#models-close").click()
         page.locator("#use-dictionaries").click()
         expect(page.locator("#decision-mode")).to_have_value("off")
         decision_config = page.evaluate("state.config.decision")
@@ -136,7 +189,9 @@ def main():
             state.config.decision.grammars[$('grammar').value] = {entry: true};
             renderLexicalSettings();
         }""")
+        page.locator("#model-settings-button").click()
         page.locator("#decision-mode").select_option("jev")
+        page.locator("#models-close").click()
         expect(page.locator("#jev-enabled")).to_be_checked()
         page.locator("#jev-enabled").uncheck()
         expect(page.locator("#decision-mode")).to_have_value("off")
@@ -173,6 +228,7 @@ def main():
         expect(page.locator("#parse-button")).to_be_enabled()
         page.locator("#llm-enabled").check()
         page.locator("#jev-enabled").check()
+        page.locator("#model-settings-button").click()
         page.locator("#openrouter-disconnect").click()
         for control in ("llm-enabled", "jev-enabled"):
             expect(page.locator("#" + control)).not_to_be_checked()
@@ -181,11 +237,12 @@ def main():
         checks.append("Disconnect clears both switches; credentials stay out of state and storage")
 
         connect(page, key)
+        page.locator("#models-close").click()
         page.locator("#llm-enabled").check()
-        page.locator("#lexical-settings > summary").click()
-        page.locator(".method-overview").screenshot(path=str(args.output / "desktop.png"))
+        page.locator("#ai-controls").screenshot(path=str(args.output / "desktop.png"))
         page.set_viewport_size({"width": 390, "height": 844})
-        page.locator(".method-overview").screenshot(path=str(args.output / "mobile.png"))
+        page.locator("#ai-controls").screenshot(path=str(args.output / "mobile.png"))
+        expect(page.locator("#n-best")).to_be_enabled()
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth + 1"), "Mobile overflow"
         page.reload()
         expect(page.locator("#parse-button")).to_be_enabled()
